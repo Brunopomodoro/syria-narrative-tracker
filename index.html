@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Syria narrative tracker</title>
-<meta name="description" content="Hourly overview of what people in Syrian online discussion are talking about, how they are reacting, and how that compares with outlet coverage.">
+<meta name="description" content="Hourly overview of what people in Syrian online discussion are talking about, and how they are reacting. Arabic and English.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500&family=Noto+Kufi+Arabic:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #F3F5F2;
@@ -21,18 +21,23 @@
     --pos: #2C7663;
     --brass: #8A6420;
     --sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
-    --serif: "IBM Plex Serif", Georgia, serif;
-    --kufi: "Noto Kufi Arabic", "IBM Plex Sans Arabic", sans-serif;
+    --display: "IBM Plex Serif", "Noto Naskh Arabic", Georgia, serif;
+    --ar-sans: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, sans-serif;
+    --ar-display: "Noto Naskh Arabic", "IBM Plex Sans Arabic", serif;
     --ease: cubic-bezier(.2, .7, .2, 1);
   }
   @media (prefers-color-scheme: dark) {
     :root { --paper: #172024; --ink: #E7ECE8; --muted: #A1ACAF; --faint: #6B777B; --rule: #2C383D; --wash: #1E292E;
             --neg: #D8606B; --neu: #6F7670; --pos: #4FAE94; --brass: #D2A95A; }
   }
+  html[lang="ar"] { --sans: var(--ar-sans); --display: var(--ar-display); }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 var(--sans); }
-  [lang="ar"] { font-family: "IBM Plex Sans Arabic", var(--sans); }
+  html[lang="ar"] body { font-size: 18px; line-height: 1.75; }
+  .ar-text { font-family: var(--ar-sans); }
+  .ar-title { font-family: var(--ar-display); font-weight: 600; }
+  .en-title { font-family: "IBM Plex Serif", Georgia, serif; font-weight: 500; }
   a { color: inherit; text-decoration-color: var(--brass); text-underline-offset: 3px; }
   a:hover { color: var(--brass); }
   button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
@@ -40,38 +45,41 @@
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
 
   /* header */
-  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
-         padding: 24px 0 20px; }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 24px 0 20px; }
   .top h1 { font-size: 1rem; font-weight: 600; margin: 0; }
-  .top nav { display: flex; gap: 20px; color: var(--muted); font-size: .88rem; }
+  .top nav { display: flex; gap: 20px; align-items: baseline; color: var(--muted); font-size: .88rem; }
   .top nav a { text-decoration: none; }
+  .lang { border: 1px solid var(--rule); border-radius: 999px; padding: 3px 12px; color: var(--ink); font-size: .85rem; transition: border-color .2s; }
+  .lang:hover { border-color: var(--ink); }
+  .lang[lang="ar"] { font-family: var(--ar-sans); }
+  .lang[lang="en"] { font-family: "IBM Plex Sans", sans-serif; }
   .stale { color: var(--neg); }
 
   /* hero */
-  .hero { padding: 48px 0 56px; border-top: 1px solid var(--rule); }
-  .eyebrow { color: var(--muted); font-size: .92rem; margin: 0 0 6px; }
-  .mood { font-family: var(--serif); font-weight: 600; font-size: clamp(3.2rem, 9vw, 6rem); line-height: 1.02;
-          letter-spacing: -.025em; margin: 0 0 28px; display: inline-block; padding-bottom: 12px;
-          background: linear-gradient(var(--tone, var(--neu)), var(--tone, var(--neu))) left bottom / 100% 7px no-repeat; }
-  .brief { font-size: 1.16rem; line-height: 1.6; max-width: 58ch; margin: 0 0 18px; }
+  .hero { padding: 52px 0 56px; border-top: 1px solid var(--rule); }
+  .eyebrow { color: var(--muted); font-size: .92rem; margin: 0 0 10px; }
+  .mood { font-family: var(--display); font-weight: 500; font-size: clamp(2.4rem, 5.6vw, 3.9rem); line-height: 1.1;
+          letter-spacing: -.015em; margin: 0 0 26px; display: inline-block; padding-bottom: 10px;
+          background: linear-gradient(var(--tone, var(--neu)), var(--tone, var(--neu))) 0 100% / 100% 4px no-repeat; }
+  html[lang="ar"] .mood { letter-spacing: 0; font-weight: 600; line-height: 1.35; }
+  .brief { font-size: 1.14rem; line-height: 1.65; max-width: 58ch; margin: 0 0 18px; }
   .meta { color: var(--muted); font-size: .92rem; margin: 0; max-width: 64ch; }
-  .meta i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin: 0 6px 0 0; vertical-align: 0; font-style: normal; }
+  .meta i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-inline-end: 6px; font-style: normal; }
   .hint { color: var(--brass); font-size: .92rem; margin: 12px 0 0; max-width: 60ch; }
 
   /* sections */
   section { padding: 44px 0 52px; border-top: 1px solid var(--rule); }
   .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 22px; }
-  h2 { font-family: var(--serif); font-weight: 600; font-size: 1.75rem; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 1.7rem; line-height: 1.25; margin: 0; }
   .sub { color: var(--muted); font-size: .92rem; margin: 4px 0 0; }
 
-  /* sort control */
   .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; }
   .seg button { font-size: .85rem; padding: 6px 14px; border-radius: 999px; color: var(--muted); transition: background .2s, color .2s; }
   .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
-  /* story list */
+  /* stories */
   .axis-head, .row { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(180px, 300px); gap: 20px; align-items: center; }
-  .axis-head { font-size: .78rem; color: var(--faint); padding: 0 0 8px 28px; }
+  .axis-head { font-size: .78rem; color: var(--faint); padding-bottom: 8px; padding-inline-start: 28px; }
   .axis-head .scale { display: flex; justify-content: space-between; }
   .axis-head .key { display: flex; gap: 14px; justify-content: flex-end; grid-column: 1 / 3; }
   .axis-head .key span { display: inline-flex; align-items: center; gap: 6px; }
@@ -79,20 +87,21 @@
   .k-ring { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); display: inline-block; }
   .story { border-top: 1px solid var(--rule); }
   .story:last-child { border-bottom: 1px solid var(--rule); }
-  .row { width: 100%; text-align: left; padding: 16px 0; }
-  .row:hover .t-en { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 5px; }
+  .row { width: 100%; text-align: start; padding: 16px 0; }
+  .row:hover .t-main { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 5px; }
   .t { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
-  .chev { flex: none; width: 16px; color: var(--faint); transition: transform .3s var(--ease); font-size: .8rem; }
-  .story.open .chev { transform: rotate(90deg); }
+  .chev { flex: none; width: 16px; color: var(--faint); transition: transform .3s var(--ease); font-size: .8rem; display: inline-block; }
+  html[dir="rtl"] .chev { transform: rotate(180deg); }
+  .story.open .chev, html[dir="rtl"] .story.open .chev, details[open] > summary .chev, html[dir="rtl"] details[open] > summary .chev { transform: rotate(90deg); }
   .t-text { min-width: 0; }
-  .t-en { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; line-height: 1.3; display: block; }
-  .t-ar { font-family: var(--kufi); font-weight: 600; font-size: .9rem; color: var(--muted); display: block; margin-top: 2px; }
-  .badge { font-size: .74rem; color: var(--brass); margin-left: 8px; font-family: var(--sans); font-weight: 500; white-space: nowrap; }
-  .share { font-variant-numeric: tabular-nums; text-align: right; color: var(--muted); font-size: .95rem; }
-  .share b { color: var(--ink); font-weight: 500; }
+  .t-main { font-size: 1.2rem; line-height: 1.35; display: block; }
+  .t-alt { font-size: .88rem; color: var(--muted); display: block; margin-top: 2px; }
+  .t-alt.en-title { font-size: .9rem; }
+  .badge { font-size: .74rem; color: var(--brass); margin-inline-start: 8px; font-family: var(--sans); font-weight: 500; white-space: nowrap; }
+  .share { font-variant-numeric: tabular-nums; text-align: end; color: var(--ink); font-weight: 500; font-size: .95rem; }
 
   .db { position: relative; height: 22px; }
-  .db::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule); }
+  .db::before { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 1px; background: var(--rule); }
   .db .zero { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 1px; background: var(--faint); opacity: .6; }
   .db .gap { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--faint); transition: left .9s var(--ease), width .9s var(--ease); }
   .db .p, .db .o { position: absolute; top: 50%; border-radius: 50%; transform: translate(-50%, -50%); transition: left .9s var(--ease); }
@@ -104,51 +113,51 @@
   .detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s var(--ease); }
   .story.open .detail { grid-template-rows: 1fr; }
   .detail > div { overflow: hidden; }
-  .detail-in { padding: 2px 0 30px 28px; display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 12px 44px; }
+  .detail-in { padding: 2px 0 30px; padding-inline-start: 28px; display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 12px 44px; }
   .detail-in p { margin: 0 0 14px; max-width: 64ch; }
-  .reaction { border-left: 3px solid var(--c, var(--neu)); padding: 2px 0 2px 16px; margin: 0 0 16px; max-width: 62ch; }
+  .reaction { border-inline-start: 3px solid var(--c, var(--neu)); padding-block: 2px; padding-inline-start: 16px; margin: 0 0 16px; max-width: 62ch; }
   .lbl { display: block; font-size: .82rem; color: var(--muted); margin-bottom: 3px; }
   .framings { list-style: none; margin: 0 0 16px; padding: 0; }
-  .framings li { position: relative; padding-left: 14px; margin-bottom: 4px; color: var(--muted); font-size: .95rem; max-width: 62ch; }
-  .framings li::before { content: ""; position: absolute; left: 0; top: .75em; width: 6px; height: 1px; background: var(--muted); }
+  .framings li { position: relative; padding-inline-start: 14px; margin-bottom: 4px; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+  .framings li::before { content: ""; position: absolute; inset-inline-start: 0; top: .8em; width: 6px; height: 1px; background: var(--muted); }
   .flag { color: var(--brass); font-size: .93rem; }
   .side { font-size: .86rem; color: var(--muted); display: grid; gap: 18px; align-content: start; }
   .side b { color: var(--ink); font-weight: 500; }
   .side a { display: block; margin-top: 2px; }
   .spark { display: block; width: 100%; height: 34px; margin-top: 4px; }
+  html[dir="rtl"] .spark { transform: scaleX(-1); }
   .spark polyline { fill: none; stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
   .spark .area { fill: var(--wash); stroke: none; }
 
-  /* week mosaic */
+  /* week */
   .week { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 40px; align-items: start; }
-  .mosaic { display: grid; grid-template-columns: 34px repeat(24, 16px); gap: 3px; align-items: center; outline: none; }
+  .mosaic { display: grid; grid-template-columns: 38px repeat(24, 16px); gap: 3px; align-items: center; outline: none; }
   .mosaic .hr, .mosaic .day { font-size: .72rem; color: var(--faint); line-height: 1; }
   .tile { width: 16px; height: 16px; border-radius: 3px; box-shadow: inset 0 0 0 1px var(--rule); }
-  .tile.on { box-shadow: none; transition: transform .15s var(--ease); }
+  .tile.on { box-shadow: none; cursor: pointer; transition: transform .15s var(--ease); }
   .tile.on:hover { transform: scale(1.25); }
   .tile.sel { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
   .mosaic:focus-visible .tile.sel { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--brass); }
   .legend { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: var(--faint); margin-top: 12px; }
-  .legend i { width: 80px; height: 7px; border-radius: 4px; background: linear-gradient(90deg, var(--neg), var(--neu), var(--pos)); }
-  .hour h3 { font-size: .92rem; font-weight: 500; color: var(--muted); margin: 0 0 2px; }
-  .hour .hmood { font-family: var(--serif); font-size: 2rem; font-weight: 600; line-height: 1.15; margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
-  .hour .hmood i { width: 14px; height: 14px; border-radius: 3px; flex: none; }
+  .legend i { width: 80px; height: 7px; border-radius: 4px; background: linear-gradient(to right, var(--neg), var(--neu), var(--pos)); }
+  html[dir="rtl"] .legend i { background: linear-gradient(to left, var(--neg), var(--neu), var(--pos)); }
+  .hour h3 { font-size: .92rem; font-weight: 500; color: var(--muted); margin: 0 0 4px; }
+  .hmood { font-family: var(--display); font-size: 1.8rem; font-weight: 500; line-height: 1.3; margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
+  .hmood i { width: 14px; height: 14px; border-radius: 3px; flex: none; }
   .hour ol { margin: 0; padding: 0; list-style: none; }
   .hour li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
   .hour li span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
-  .hour .none { color: var(--muted); }
 
   /* about */
-  details.about summary { cursor: pointer; list-style: none; font-family: var(--serif); font-weight: 600; font-size: 1.35rem; display: flex; gap: 12px; align-items: baseline; }
+  details.about summary { cursor: pointer; list-style: none; font-family: var(--display); font-weight: 600; font-size: 1.3rem; display: flex; gap: 12px; align-items: baseline; }
   details.about summary::-webkit-details-marker { display: none; }
   details.about summary .chev { font-family: var(--sans); }
-  details.about[open] summary .chev { transform: rotate(90deg); }
-  .about-body { padding: 24px 0 0 28px; }
+  .about-body { padding-top: 24px; padding-inline-start: 28px; }
   .method { columns: 2 300px; column-gap: 44px; margin-bottom: 28px; }
   .method p { margin: 0 0 14px; break-inside: avoid; color: var(--muted); font-size: .95rem; }
   .method strong { color: var(--ink); font-weight: 500; }
   table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th, td { text-align: start; padding-block: 9px; padding-inline-end: 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
   th { font-weight: 500; color: var(--muted); }
   .bad { color: var(--neg); }
   footer { padding: 28px 0 56px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--rule); }
@@ -157,16 +166,16 @@
 
   @media (max-width: 760px) {
     .wrap { padding: 0 18px; }
-    .axis-head { grid-template-columns: 1fr; padding-left: 0; }
+    .axis-head { grid-template-columns: 1fr; padding-inline-start: 0; }
     .axis-head .key { grid-column: 1; justify-content: flex-start; }
-    .axis-head .scale { margin-left: 28px; }
+    .axis-head .scale { margin-inline-start: 28px; }
     .row { grid-template-columns: minmax(0, 1fr) 48px; gap: 8px 12px; }
-    .row .db { grid-column: 1 / -1; margin-left: 28px; }
+    .row .db { grid-column: 1 / -1; margin-inline-start: 28px; }
     .detail-in { grid-template-columns: 1fr; }
     .week { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 480px) {
-    .mosaic { grid-template-columns: 28px repeat(24, minmax(7px, 1fr)); gap: 2px; }
+    .mosaic { grid-template-columns: 30px repeat(24, minmax(7px, 1fr)); gap: 2px; }
     .tile { width: 100%; height: 11px; border-radius: 2px; }
     .seg button { padding: 6px 10px; }
   }
@@ -180,23 +189,137 @@
   <header class="top">
     <h1 id="site-title">Syria narrative tracker</h1>
     <nav>
-      <span id="updated" aria-live="polite">Loading…</span>
-      <a href="#about">About</a>
+      <span id="updated" aria-live="polite"></span>
+      <a href="#about" id="about-link">About</a>
+      <button class="lang" id="lang-btn"></button>
     </nav>
   </header>
   <main id="app"></main>
-  <footer>Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.</footer>
+  <footer id="footer"></footer>
 </div>
 
 <script>
+/* =================== words =================== */
+const T = {
+  en: {
+    title: "Syria narrative tracker", about: "About", switchTo: "العربية", switchLang: "ar",
+    loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
+    nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
+    outletsMeanwhile: "Outlets meanwhile:",
+    voices: (p, o, h) => `${p} voices from people and ${o} from outlets, last ${h} hours.`,
+    postsFrom: (n, s, h) => `${n} posts from ${s} sources, last ${h} hours.`,
+    hint: "Only outlets are being read so far. Turn on YouTube, Telegram comments or X in config.yaml to see how people react.",
+    stories: "Stories", storiesSub: (n, h) => `${n} stories in the last ${h} hours. Open one to read more.`,
+    sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
+    people: "People", outlets: "Outlets", negative: "Negative", neutral: "Neutral", positive: "Positive",
+    noStories: "No clear stories in this update.",
+    reacting: "How people are reacting", framed: "How it's framed", watch: "Watch for:",
+    last48: "Last 48 updates", voicesLbl: "Voices", where: "Where",
+    voicesCount: (p, o) => `${p} from people, ${o} from outlets`, postsCount: (n) => `${n} posts`,
+    trend: { New: "New", Rising: "Rising", Fading: "Fading", Steady: "Steady", Returning: "Returning" },
+    tone: ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
+    week: "The past week", twoWeeks: "The past two weeks", weekSub: "Each square is one hour, in Damascus time, colored by how people felt.",
+    mosaicLabel: "Hourly mood. Use the arrow keys to move between hours.",
+    chooseHour: "Choose an hour", chooseHourSub: "Click a square, or use the arrow keys.",
+    aboutTitle: "About this tracker and its sources",
+    method: [
+      ["Every hour", "an automated job collects recent public posts, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
+      ["People and outlets are kept apart.", "Outlets are channels and news sites. People are comments under posts and videos, messages in public group chats, posts by individuals, and emoji reactions."],
+      ["Tone is not truth.", "A story appearing here means people are saying it, not that it is accurate."],
+      ["This is not all Syrians.", "Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen."],
+      ["Privacy.", "Only aggregate patterns are shown. Individual users are never named, quoted or profiled, and posts by private people are not linked."],
+      ["AI can misread", "sarcasm, dialect and context. Treat tone as a rough indicator and read the linked examples."]],
+    source: "Source", type: "Type", status: "Status", working: (n) => `Working, ${n} recent`, notWorking: "Not working:",
+    types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts" },
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
+    emptyTitle: "No results yet",
+    emptyBody: "The first update runs within an hour of setup. To run it now, open your repository on GitHub, go to the Actions tab, choose “Update narratives” and press “Run workflow”.",
+    emptySub: "This page checks for new results every 10 minutes.",
+    locale: "en-GB"
+  },
+  ar: {
+    title: "متتبّع السرديات السورية", about: "حول الموقع", switchTo: "English", switchLang: "en",
+    loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
+    nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
+    outletsMeanwhile: "أما وسائل الإعلام:",
+    voices: (p, o, h) => `${p} مشاركة من الناس و${o} من وسائل الإعلام، خلال آخر ${h} ساعة.`,
+    postsFrom: (n, s, h) => `${n} منشوراً من ${s} مصادر، خلال آخر ${h} ساعة.`,
+    hint: "لا تُقرأ حتى الآن سوى وسائل الإعلام. فعّل تعليقات يوتيوب أو تيليغرام أو منصة X في ملف config.yaml لمعرفة كيف يتفاعل الناس.",
+    stories: "القصص", storiesSub: (n, h) => `عدد القصص خلال آخر ${h} ساعة: ${n}. افتح أي قصة لمعرفة المزيد.`,
+    sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
+    people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
+    noStories: "لا توجد قصص واضحة في هذا التحديث.",
+    reacting: "كيف يتفاعل الناس", framed: "كيف تُقدَّم القصة", watch: "انتبه إلى:",
+    last48: "آخر ٤٨ تحديثاً", voicesLbl: "الأصوات", where: "المصادر",
+    voicesCount: (p, o) => `${p} من الناس، ${o} من وسائل الإعلام`, postsCount: (n) => `${n} منشوراً`,
+    trend: { New: "جديدة", Rising: "في صعود", Fading: "في تراجع", Steady: "مستقرة", Returning: "عائدة" },
+    tone: ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
+    week: "الأسبوع الماضي", twoWeeks: "الأسبوعان الماضيان", weekSub: "كل مربع يمثّل ساعة واحدة بتوقيت دمشق، ولونه يعكس شعور الناس.",
+    mosaicLabel: "المزاج ساعة بساعة. استخدم مفاتيح الأسهم للتنقل بين الساعات.",
+    chooseHour: "اختر ساعة", chooseHourSub: "انقر على أي مربع، أو استخدم مفاتيح الأسهم.",
+    aboutTitle: "حول هذا المتتبّع ومصادره",
+    method: [
+      ["كل ساعة", "تجمع مهمة آلية أحدث المنشورات العامة، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
+      ["نفصل بين الناس ووسائل الإعلام.", "وسائل الإعلام هي القنوات والمواقع الإخبارية. أما الناس فهم التعليقات تحت المنشورات والفيديوهات، ورسائل المجموعات العامة، ومنشورات الأفراد، والتفاعلات بالرموز التعبيرية."],
+      ["النبرة ليست حقيقة.", "ظهور قصة هنا يعني أن الناس يتداولونها، لا أنها صحيحة."],
+      ["هذا ليس صوت كل السوريين.", "النقاش على الإنترنت يُبرز أكثر من يملكون اتصالاً جيداً، ومجتمعات المغتربين، ووسائل الإعلام، ويتأثر باختيار المصادر."],
+      ["الخصوصية.", "لا نعرض إلا الأنماط العامة. لا نذكر أسماء المستخدمين ولا نقتبس كلامهم ولا ننشئ ملفات عنهم، ولا نضع روابط لمنشورات الأفراد."],
+      ["قد يخطئ الذكاء الاصطناعي", "في فهم السخرية واللهجة والسياق. تعامل مع النبرة كمؤشر تقريبي، واقرأ الأمثلة المرفقة."]],
+    source: "المصدر", type: "النوع", status: "الحالة", working: (n) => `يعمل، ${n} حديثة`, notWorking: "لا يعمل:",
+    types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X" },
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
+    emptyTitle: "لا نتائج بعد",
+    emptyBody: "يُجرى التحديث الأول خلال ساعة من الإعداد. لتشغيله الآن، افتح المستودع على GitHub، ثم تبويب Actions، واختر «Update narratives» واضغط «Run workflow».",
+    emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
+    locale: "ar-SY"
+  }
+};
+
+/* =================== state & helpers =================== */
 const TZ = "Asia/Damascus";
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
 const has = (v) => v !== null && v !== undefined && v !== "";
-const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true };
+const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true, lang: null };
+const L = () => T[state.lang];
+const rtl = () => state.lang === "ar";
+const cap = (s) => { s = String(s || "").trim(); return s ? s[0].toUpperCase() + s.slice(1) : s; };
+const num = (n) => Number(n || 0).toLocaleString(L().locale);
+const pctText = (v) => Math.round((v || 0) * 100).toLocaleString(L().locale) + (rtl() ? "٪" : "%");
 
-/* ---------- tone helpers ---------- */
+/* pick the right-language version of a field, falling back to the other language */
+function tx(obj, field) {
+  if (!obj) return "";
+  const ar = obj[field + "_ar"], en = obj[field];
+  if (rtl()) return has(ar) && (!Array.isArray(ar) || ar.length) ? ar : en;
+  return has(en) && (!Array.isArray(en) || en.length) ? en : ar;
+}
+const titleMain = (n) => rtl() ? (n.title_ar || n.title) : (n.title || n.title_ar);
+const titleAlt = (n) => rtl() ? (n.title_ar ? n.title : "") : (n.title ? n.title_ar : "");
+
+function pickLang(latest) {
+  const url = new URLSearchParams(location.search).get("lang");
+  if (url === "ar" || url === "en") return url;
+  try { const s = localStorage.getItem("snt-lang"); if (s === "ar" || s === "en") return s; } catch (e) {}
+  return latest?.default_language === "ar" ? "ar" : "en";
+}
+function applyLang() {
+  const t = L();
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = rtl() ? "rtl" : "ltr";
+  const title = (rtl() ? state.latest?.site_title_ar : state.latest?.site_title) || t.title;
+  $("#site-title").textContent = title;
+  document.title = title;
+  $("#about-link").textContent = t.about;
+  const b = $("#lang-btn");
+  b.textContent = t.switchTo;
+  b.setAttribute("lang", t.switchLang);
+  b.setAttribute("aria-label", t.switchLang === "ar" ? "اعرض الموقع بالعربية" : "Show the site in English");
+  $("#footer").textContent = t.footer;
+}
+
+/* tone */
 const cssv = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const rgb = (h) => { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
 const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
@@ -206,131 +329,123 @@ function toneColor(s) {
   return `rgb(${c.join(",")})`;
 }
 function toneLabel(s) {
-  if (!has(s)) return "No reactions yet";
-  if (s <= -0.5) return "Strongly negative";
-  if (s <= -0.15) return "Leaning negative";
-  if (s < 0.15) return "Mostly neutral";
-  if (s < 0.5) return "Leaning positive";
-  return "Strongly positive";
+  const w = L().tone;
+  if (!has(s)) return w[5];
+  return s <= -0.5 ? w[0] : s <= -0.15 ? w[1] : s < 0.15 ? w[2] : s < 0.5 ? w[3] : w[4];
 }
-const pct = (v) => Math.round((Number(v) + 1) * 50);          // -1..1 -> 0..100
+/* -1..1 -> position in %, mirrored in Arabic so "negative" sits at the reading start */
+const pos = (v) => { const p = (Number(v) + 1) * 50; return rtl() ? 100 - p : p; };
 const peopleTone = (n) => has(n.public_sentiment) ? n.public_sentiment : null;
 
-/* ---------- time helpers ---------- */
+/* time */
 function ago(iso) {
-  const m = Math.round((Date.now() - new Date(iso)) / 60000);
-  if (m < 1) return "just now";
-  if (m < 60) return `${m} min ago`;
+  const rtf = new Intl.RelativeTimeFormat(L().locale, { numeric: "auto" });
+  const m = Math.round((new Date(iso) - Date.now()) / 60000);
+  if (Math.abs(m) < 60) return rtf.format(m, "minute");
   const h = Math.round(m / 60);
-  return h < 48 ? `${h} h ago` : `${Math.round(h / 24)} days ago`;
+  return Math.abs(h) < 48 ? rtf.format(h, "hour") : rtf.format(Math.round(h / 24), "day");
 }
-const fmt = (iso, o) => new Intl.DateTimeFormat("en-GB", { timeZone: TZ, ...o }).format(new Date(iso));
+const fmt = (iso, o) => new Intl.DateTimeFormat(L().locale, { timeZone: TZ, ...o }).format(new Date(iso));
 function hourKey(iso) {
   const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit",
     day: "2-digit", hour: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
   return { day: `${p.year}-${p.month}-${p.day}`, hour: Number(p.hour) };
 }
+const hh = (h) => rtl() ? (String(h).padStart(2, "0") + ":00").replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]) : String(h).padStart(2, "0") + ":00";
 
-/* ---------- stories ---------- */
+/* =================== stories =================== */
 function trend(n) {
-  const h = state.history;
   if (Date.now() - new Date(n.first_seen) < 2.5 * 3600000) return "New";
-  const past = h.slice(-13, -1).map(x => (x.narratives || []).find(y => y.id === n.id)?.share || 0);
+  const past = state.history.slice(-13, -1).map(x => (x.narratives || []).find(y => y.id === n.id)?.share || 0);
   if (!past.length) return "New";
   const avg = past.reduce((a, b) => a + b, 0) / past.length;
   if (avg === 0) return "Returning";
   const r = n.share / avg;
   return r > 1.3 ? "Rising" : r < 0.7 ? "Fading" : "Steady";
 }
-
 function sparkline(id) {
   const pts = state.history.slice(-48).map(x => (x.narratives || []).find(y => y.id === id)?.volume || 0);
-  if (pts.filter(v => v > 0).length < 2) return "";   // not enough history to draw a trend yet
+  if (pts.filter(v => v > 0).length < 2) return "";
   const max = Math.max(...pts, 1);
-  const xy = pts.map((v, i) => [(i / (pts.length - 1)) * 100, 32 - (v / max) * 29]);
-  const line = xy.map(p => p.join(",")).join(" ");
-  return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
-    <polygon class="area" points="0,34 ${line} 100,34"/><polyline points="${line}"/></svg>`;
+  const line = pts.map((v, i) => `${(i / (pts.length - 1)) * 100},${32 - (v / max) * 29}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true"><polygon class="area" points="0,34 ${line} 100,34"/><polyline points="${line}"/></svg>`;
 }
-
 function dumbbell(n) {
-  const p = peopleTone(n), o = Number(n.sentiment) || 0;
-  const po = pct(o);
-  let html = `<div class="db" role="img" aria-label="People: ${toneLabel(p)}. Outlets: ${toneLabel(o)}."><span class="zero"></span>`;
+  const p = peopleTone(n), o = Number(n.sentiment) || 0, t = L();
+  const po = pos(o);
+  let h = `<div class="db" role="img" aria-label="${esc(t.people)}: ${esc(toneLabel(p))}. ${esc(t.outlets)}: ${esc(toneLabel(o))}."><span class="zero"></span>`;
   if (p !== null) {
-    const pp = pct(p);
-    html += `<span class="gap" style="left:${Math.min(pp, po)}%;width:${Math.abs(pp - po)}%"></span>`;
-    html += `<span class="o" style="left:${po}%"></span><span class="p" style="left:${pp}%;--c:${toneColor(p)}"></span>`;
-  } else {
-    html += `<span class="o" style="left:${po}%"></span>`;
-  }
-  return html + `</div>`;
-}
-
-function sorted(list) {
-  const arr = [...list];
-  if (state.sort === "negative") arr.sort((a, b) => (peopleTone(a) ?? a.sentiment) - (peopleTone(b) ?? b.sentiment));
-  else if (state.sort === "gap") arr.sort((a, b) => gapOf(b) - gapOf(a));
-  else arr.sort((a, b) => b.share - a.share);
-  return arr;
+    const pp = pos(p);
+    h += `<span class="gap" style="left:${Math.min(pp, po)}%;width:${Math.abs(pp - po)}%"></span>`;
+    h += `<span class="o" style="left:${po}%"></span><span class="p" style="left:${pp}%;--c:${toneColor(p)}"></span>`;
+  } else h += `<span class="o" style="left:${po}%"></span>`;
+  return h + `</div>`;
 }
 const gapOf = (n) => peopleTone(n) === null ? -1 : Math.abs(peopleTone(n) - n.sentiment);
-
+function sorted(list) {
+  const a = [...list];
+  if (state.sort === "negative") a.sort((x, y) => (peopleTone(x) ?? x.sentiment) - (peopleTone(y) ?? y.sentiment));
+  else if (state.sort === "gap") a.sort((x, y) => gapOf(y) - gapOf(x));
+  else a.sort((x, y) => y.share - x.share);
+  return a;
+}
 function storyHTML(n) {
-  const p = peopleTone(n);
-  const tr = trend(n);
-  const open = state.open.has(n.id);
-  const framings = (n.framings || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
-  const links = (n.examples || []).filter(e => safeUrl(e.url))
-    .map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a>`).join("");
+  const t = L(), p = peopleTone(n), tr = trend(n), open = state.open.has(n.id);
+  const alt = titleAlt(n);
+  const framings = (tx(n, "framings") || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
+  const flags = tx(n, "flags") || [];
+  const emotions = tx(n, "emotions") || [];
+  const reaction = tx(n, "public_reaction");
+  const links = (n.examples || []).filter(e => safeUrl(e.url)).map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener" dir="auto">${esc(e.source)}</a>`).join("");
   const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
-  const voices = has(n.public_volume) ? `${n.public_volume} from people, ${n.volume - n.public_volume} from outlets` : `${n.volume} posts`;
+  const voices = has(n.public_volume) ? t.voicesCount(num(n.public_volume), num(n.volume - n.public_volume)) : t.postsCount(num(n.volume));
+  const mainCls = rtl() ? "ar-title" : "en-title", altCls = rtl() ? "en-title" : "ar-title";
   return `
   <article class="story${open ? " open" : ""}" data-id="${esc(n.id)}">
     <button class="row" aria-expanded="${open}" aria-controls="d-${esc(n.id)}">
       <span class="t"><span class="chev" aria-hidden="true">▶</span>
-        <span class="t-text"><span class="t-en" dir="auto">${esc(n.title)}${tr === "New" || tr === "Rising" ? `<span class="badge">${tr}</span>` : ""}</span>
-        ${n.title_ar ? `<span class="t-ar" lang="ar" dir="rtl">${esc(n.title_ar)}</span>` : ""}</span></span>
-      <span class="share"><b>${Math.round((n.share || 0) * 100)}%</b></span>
+        <span class="t-text"><span class="t-main ${mainCls}" dir="auto">${esc(titleMain(n))}${tr === "New" || tr === "Rising" ? `<span class="badge">${t.trend[tr]}</span>` : ""}</span>
+        ${alt ? `<span class="t-alt ${altCls}" lang="${rtl() ? "en" : "ar"}" dir="${rtl() ? "ltr" : "rtl"}">${esc(alt)}</span>` : ""}</span></span>
+      <span class="share">${pctText(n.share)}</span>
       ${dumbbell(n)}
     </button>
     <div class="detail" id="d-${esc(n.id)}"><div><div class="detail-in">
       <div>
-        <p dir="auto">${esc(n.summary)}</p>
-        ${n.public_reaction ? `<div class="reaction" style="--c:${p !== null ? toneColor(p) : "var(--neu)"}"><span class="lbl">How people are reacting</span><span dir="auto">${esc(n.public_reaction)}</span></div>` : ""}
-        ${framings ? `<span class="lbl">How it's framed</span><ul class="framings">${framings}</ul>` : ""}
-        ${(n.flags || []).length ? `<p class="flag" dir="auto">Watch for: ${n.flags.map(esc).join("; ")}</p>` : ""}
+        <p dir="auto">${esc(tx(n, "summary"))}</p>
+        ${reaction ? `<div class="reaction" style="--c:${p !== null ? toneColor(p) : "var(--neu)"}"><span class="lbl">${t.reacting}</span><span dir="auto">${esc(reaction)}</span></div>` : ""}
+        ${framings ? `<span class="lbl">${t.framed}</span><ul class="framings">${framings}</ul>` : ""}
+        ${flags.length ? `<p class="flag" dir="auto">${t.watch} ${flags.map(esc).join(rtl() ? "؛ " : "; ")}</p>` : ""}
       </div>
       <div class="side">
-        <div><span class="lbl">People</span><b>${toneLabel(p)}</b>${(n.emotions || []).length ? `<br><span dir="auto">${n.emotions.map(esc).join(", ")}</span>` : ""}</div>
-        <div><span class="lbl">Outlets</span><b>${toneLabel(n.sentiment)}</b></div>
-        <div><span class="lbl">Last 48 updates</span><b>${tr}</b>${sparkline(n.id)}</div>
-        <div><span class="lbl">Voices</span>${voices}</div>
-        ${links || others.length ? `<div><span class="lbl">Where</span>${links}${others.length ? `<span dir="auto">${others.map(esc).join(", ")}</span>` : ""}</div>` : ""}
+        <div><span class="lbl">${t.people}</span><b>${toneLabel(p)}</b>${emotions.length ? `<br><span dir="auto">${emotions.map(esc).join(rtl() ? "، " : ", ")}</span>` : ""}</div>
+        <div><span class="lbl">${t.outlets}</span><b>${toneLabel(n.sentiment)}</b></div>
+        <div><span class="lbl">${t.last48}</span><b>${t.trend[tr]}</b>${sparkline(n.id)}</div>
+        <div><span class="lbl">${t.voicesLbl}</span>${voices}</div>
+        ${links || others.length ? `<div><span class="lbl">${t.where}</span>${links}${others.length ? `<span dir="auto">${others.map(esc).join(rtl() ? "، " : ", ")}</span>` : ""}</div>` : ""}
       </div>
     </div></div></div>
   </article>`;
 }
-
 function storiesHTML() {
-  const nars = state.latest.narratives || [];
+  const t = L(), nars = state.latest.narratives || [], h = num(state.latest.window_hours || 24);
   const btn = (k, label) => `<button data-sort="${k}" aria-pressed="${state.sort === k}">${label}</button>`;
+  const scale = [t.negative, t.neutral, t.positive];   // the grid flows right-to-left in Arabic, matching the mirrored chart
   return `
   <section aria-labelledby="h-stories">
     <div class="sec-head">
-      <div><h2 id="h-stories">Stories</h2><p class="sub">${nars.length} stories in the last ${state.latest.window_hours || 24} hours. Open one to read more.</p></div>
-      <div class="seg" role="group" aria-label="Sort stories">${btn("share", "Most discussed")}${btn("negative", "Most negative")}${btn("gap", "Biggest gap")}</div>
+      <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}</p></div>
+      <div class="seg" role="group" aria-label="${t.sortLabel}">${btn("share", t.mostDiscussed)}${btn("negative", t.mostNegative)}${btn("gap", t.biggestGap)}</div>
     </div>
     ${nars.length ? `
     <div class="axis-head" aria-hidden="true">
-      <span class="key"><span><i class="k-dot"></i>People</span><span><i class="k-ring"></i>Outlets</span></span>
-      <span class="scale"><span>Negative</span><span>Neutral</span><span>Positive</span></span>
+      <span class="key"><span><i class="k-dot"></i>${t.people}</span><span><i class="k-ring"></i>${t.outlets}</span></span>
+      <span class="scale">${scale.map(s => `<span>${s}</span>`).join("")}</span>
     </div>
-    <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>` : `<p>No clear stories in this update.</p>`}
+    <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>` : `<p>${t.noStories}</p>`}
   </section>`;
 }
 
-/* ---------- week mosaic ---------- */
+/* =================== week =================== */
 function weekData() {
   const byHour = new Map();
   for (const h of state.history) { const k = hourKey(h.time); byHour.set(`${k.day}|${k.hour}`, h); }
@@ -340,100 +455,85 @@ function weekData() {
     return { key: hourKey(d).day, label: fmt(d, { weekday: "short" }) };
   });
   const cells = [];
-  days.forEach((d, r) => { for (let h = 0; h < 24; h++) cells.push({ r, h, day: d, e: byHour.get(`${d.key}|${h}`) || null }); });
+  days.forEach((d) => { for (let h = 0; h < 24; h++) cells.push({ h, day: d, e: byHour.get(`${d.key}|${h}`) || null }); });
   return { days, cells };
 }
-
 function hourPanel(c) {
-  if (!c || !c.e) return `<div class="hour"><h3>Choose an hour</h3><p class="none">Click a square, or use the arrow keys.</p></div>`;
+  const t = L();
+  if (!c || !c.e) return `<div class="hour"><h3>${t.chooseHour}</h3><p class="sub">${t.chooseHourSub}</p></div>`;
   const e = c.e, top = [...(e.narratives || [])].sort((a, b) => b.share - a.share).slice(0, 4);
+  const mood = cap(rtl() ? (e.mood_ar || e.mood) : (e.mood || e.mood_ar)) || toneLabel(e.sentiment);
   return `<div class="hour" aria-live="polite">
-    <h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}, ${String(c.h).padStart(2, "0")}:00</h3>
-    <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(e.mood || toneLabel(e.sentiment))}</span></p>
-    ${top.length ? `<ol>${top.map(n => `<li><span dir="auto">${esc(n.title)}</span><span>${Math.round((n.share || 0) * 100)}%</span></li>`).join("")}</ol>` : ""}
+    <h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}${rtl() ? "، " : ", "}${hh(c.h)}</h3>
+    <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(mood)}</span></p>
+    ${top.length ? `<ol>${top.map(n => `<li><span dir="auto">${esc(titleMain(n))}</span><span>${pctText(n.share)}</span></li>`).join("")}</ol>` : ""}
   </div>`;
 }
-
 function weekHTML() {
-  const { days, cells } = weekData();
+  const t = L(), { days, cells } = weekData();
   if (state.sel === null || !cells[state.sel]?.e) {
-    const last = cells.findIndex(c => c.e && c.day.key === days[0].key && c.h === Math.max(...cells.filter(x => x.e && x.day.key === days[0].key).map(x => x.h)));
-    state.sel = last >= 0 ? last : cells.findIndex(c => c.e);
+    const today = cells.filter(c => c.e && c.day.key === days[0].key);
+    const target = today.length ? today[today.length - 1] : cells.find(c => c.e);
+    state.sel = target ? cells.indexOf(target) : -1;
   }
-  let g = `<span></span>` + Array.from({ length: 24 }, (_, h) => `<span class="hr">${h % 6 === 0 ? String(h).padStart(2, "0") : ""}</span>`).join("");
+  let g = `<span></span>` + Array.from({ length: 24 }, (_, h) => `<span class="hr">${h % 6 === 0 ? (rtl() ? String(h).padStart(2, "0").replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]) : String(h).padStart(2, "0")) : ""}</span>`).join("");
   cells.forEach((c, i) => {
     if (c.h === 0) g += `<span class="day">${esc(c.day.label)}</span>`;
-    g += c.e
-      ? `<span class="tile on${i === state.sel ? " sel" : ""}" data-i="${i}" style="background:${toneColor(c.e.sentiment)}" title="${esc(c.day.label)} ${String(c.h).padStart(2, "0")}:00"></span>`
-      : `<span class="tile"></span>`;
+    g += c.e ? `<span class="tile on${i === state.sel ? " sel" : ""}" data-i="${i}" style="background:${toneColor(c.e.sentiment)}" title="${esc(c.day.label)} ${hh(c.h)}"></span>` : `<span class="tile"></span>`;
   });
   return `
   <section aria-labelledby="h-week">
-    <div class="sec-head"><div><h2 id="h-week">The past ${days.length === 14 ? "two weeks" : "week"}</h2>
-      <p class="sub">Each square is one hour, in Damascus time, colored by how people felt.</p></div></div>
+    <div class="sec-head"><div><h2 id="h-week">${days.length === 14 ? t.twoWeeks : t.week}</h2><p class="sub">${t.weekSub}</p></div></div>
     <div class="week">
       <div>
-        <div class="mosaic" id="mosaic" tabindex="0" role="group" aria-label="Hourly mood. Use arrow keys to move between hours.">${g}</div>
-        <div class="legend"><span>Negative</span><i></i><span>Positive</span></div>
+        <div class="mosaic" id="mosaic" tabindex="0" role="group" aria-label="${t.mosaicLabel}">${g}</div>
+        <div class="legend"><span>${t.negative}</span><i></i><span>${t.positive}</span></div>
       </div>
       <div id="hour">${hourPanel(cells[state.sel])}</div>
     </div>
   </section>`;
 }
 
-/* ---------- about ---------- */
+/* =================== about =================== */
 function aboutHTML() {
-  const L = state.latest;
-  const label = { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group",
-                  news: "News site", youtube: "YouTube comments", x: "X posts" };
-  const rows = (L.sources || []).map(s => `<tr><td dir="auto">${esc(s.name)}</td><td>${label[s.platform] || esc(s.platform)}</td><td>${
-    s.ok ? `Working, ${s.recent ?? s.fetched} recent` : `<span class="bad">Not working: ${esc(s.error || "unknown error")}</span>`}</td></tr>`).join("");
+  const t = L(), D = state.latest || {};
+  const rows = (D.sources || []).map(s => `<tr><td dir="auto">${esc(s.name)}</td><td>${t.types[s.platform] || esc(s.platform)}</td><td>${
+    s.ok ? t.working(num(s.recent ?? s.fetched)) : `<span class="bad">${t.notWorking} <span dir="ltr">${esc(s.error || "")}</span></span>`}</td></tr>`).join("");
   return `
   <section id="about">
     <details class="about">
-      <summary><span class="chev" aria-hidden="true">▶</span>About this tracker and its sources</summary>
+      <summary><span class="chev" aria-hidden="true">▶</span>${t.aboutTitle}</summary>
       <div class="about-body">
-        <div class="method">
-          <p><strong>Every hour</strong> an automated job collects recent public posts, removes duplicates and off-topic items, and asks an AI model (${esc(L.model || "Claude")}) to group them into stories and describe their tone.</p>
-          <p><strong>People and outlets are kept apart.</strong> Outlets are channels and news sites. People are comments under posts and videos, messages in public group chats, posts by individuals, and emoji reactions.</p>
-          <p><strong>Tone is not truth.</strong> A story appearing here means people are saying it, not that it is accurate.</p>
-          <p><strong>This is not all Syrians.</strong> Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen.</p>
-          <p><strong>Privacy.</strong> Only aggregate patterns are shown. Individual users are never named, quoted or profiled, and posts by private people are not linked.</p>
-          <p><strong>AI can misread</strong> sarcasm, dialect and context. Treat tone as a rough indicator and read the linked examples.</p>
-        </div>
-        ${rows ? `<table><thead><tr><th>Source</th><th>Type</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>` : ""}
+        <div class="method">${t.method.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
+        ${rows ? `<table><thead><tr><th>${t.source}</th><th>${t.type}</th><th>${t.status}</th></tr></thead><tbody>${rows}</tbody></table>` : ""}
       </div>
     </details>
   </section>`;
 }
 
-/* ---------- page ---------- */
+/* =================== page =================== */
 function heroHTML() {
-  const L = state.latest, o = L.overall || {}, st = L.stats || {};
+  const t = L(), D = state.latest, o = D.overall || {}, st = D.stats || {}, h = num(D.window_hours || 24);
   const pub = has(o.public_sentiment) && (st.public_posts || 0) > 0;
   const tone = pub ? o.public_sentiment : o.sentiment;
-  const word = pub ? (o.public_mood || toneLabel(tone)) : (o.mood || toneLabel(tone));
-  const voices = pub
-    ? `${st.public_posts} voices from people and ${st.outlet_posts} from outlets, last ${L.window_hours || 24} hours.`
-    : `${st.posts_analyzed ?? 0} posts from ${st.sources_ok ?? 0} sources, last ${L.window_hours || 24} hours.`;
+  const word = cap(pub ? tx(o, "public_mood") : tx(o, "mood")) || toneLabel(tone);
+  const outletMood = cap(tx(o, "mood"));
+  const voices = pub ? t.voices(num(st.public_posts), num(st.outlet_posts), h) : t.postsFrom(num(st.posts_analyzed), num(st.sources_ok), h);
   return `
   <div class="hero">
-    <p class="eyebrow">${pub ? "How people are reacting right now" : "How outlets are covering Syria right now"}</p>
+    <p class="eyebrow">${pub ? t.nowPeople : t.nowOutlets}</p>
     <p class="mood" dir="auto" style="--tone:${toneColor(tone)}">${esc(word)}</p>
-    <p class="brief" dir="auto">${esc(o.brief)}</p>
-    <p class="meta">${pub && o.mood ? `<i style="background:${toneColor(o.sentiment)}"></i>Outlets meanwhile: <span dir="auto">${esc(o.mood)}</span>. ` : ""}${voices}</p>
-    ${pub ? "" : `<p class="hint">Only outlets are being read so far. Turn on YouTube, Telegram comments or X in config.yaml to see how people react.</p>`}
+    <p class="brief" dir="auto">${esc(tx(o, "brief"))}</p>
+    <p class="meta">${pub && outletMood ? `<i style="background:${toneColor(o.sentiment)}"></i>${t.outletsMeanwhile} <span dir="auto">${esc(outletMood)}</span>. ` : ""}${voices}</p>
+    ${pub ? "" : `<p class="hint">${t.hint}</p>`}
   </div>`;
 }
-
 function render() {
-  const L = state.latest;
-  if (L.site_title) { $("#site-title").textContent = L.site_title; document.title = L.site_title; }
-  const checked = L.checked_at || L.generated_at;
+  applyLang();
+  const t = L(), D = state.latest;
+  const checked = D.checked_at || D.generated_at;
   const stale = Date.now() - new Date(checked) > 3 * 3600000;
-  $("#updated").innerHTML = stale
-    ? `<span class="stale">Last update ${ago(checked)}; updates may have stopped</span>`
-    : `Updated ${ago(checked)}`;
+  $("#updated").innerHTML = stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
   const aboutOpen = $("details.about")?.open;
   $("#app").innerHTML = heroHTML() + storiesHTML() + weekHTML() + aboutHTML();
   if (aboutOpen) $("details.about").open = true;
@@ -443,12 +543,10 @@ function render() {
     requestAnimationFrame(() => requestAnimationFrame(() => $("#stories")?.classList.remove("pending")));
   }
 }
-
 function bind() {
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
     state.sort = b.dataset.sort;
-    const list = $("#stories");
-    list.innerHTML = sorted(state.latest.narratives || []).map(storyHTML).join("");
+    $("#stories").innerHTML = sorted(state.latest.narratives || []).map(storyHTML).join("");
     document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
     bindRows();
   }));
@@ -459,37 +557,41 @@ function bind() {
   const select = (i) => {
     if (i < 0 || i >= cells.length || !cells[i].e) return false;
     state.sel = i;
-    mosaic.querySelectorAll(".tile.sel").forEach(t => t.classList.remove("sel"));
+    mosaic.querySelectorAll(".tile.sel").forEach(x => x.classList.remove("sel"));
     mosaic.querySelector(`[data-i="${i}"]`)?.classList.add("sel");
     $("#hour").innerHTML = hourPanel(cells[i]);
     return true;
   };
-  mosaic.addEventListener("click", (e) => { const t = e.target.closest(".tile.on"); if (t) select(Number(t.dataset.i)); });
+  mosaic.addEventListener("click", (e) => { const x = e.target.closest(".tile.on"); if (x) select(Number(x.dataset.i)); });
   mosaic.addEventListener("keydown", (e) => {
-    const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 24, ArrowUp: -24 }[e.key];
+    let step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 24, ArrowUp: -24 }[e.key];
     if (!step) return;
+    if (rtl() && Math.abs(step) === 1) step = -step;      // the grid is mirrored in Arabic
     e.preventDefault();
     for (let i = state.sel + step; i >= 0 && i < cells.length; i += step) if (select(i)) break;
   });
 }
-
 function bindRows() {
   document.querySelectorAll(".story .row").forEach(r => r.addEventListener("click", () => {
-    const art = r.closest(".story"), id = art.dataset.id;
-    const open = !art.classList.contains("open");
+    const art = r.closest(".story"), id = art.dataset.id, open = !art.classList.contains("open");
     art.classList.toggle("open", open);
     r.setAttribute("aria-expanded", open);
     open ? state.open.add(id) : state.open.delete(id);
   }));
 }
-
 function renderEmpty(sources) {
-  $("#updated").textContent = "Waiting for the first update";
-  $("#app").innerHTML = `<div class="empty"><h2>No results yet</h2>
-    <p>The first update runs within an hour of setup. To run it now, open your repository on GitHub, go to the Actions tab, choose “Update narratives” and press “Run workflow”.</p>
-    <p class="sub">This page checks for new results every 10 minutes.</p></div>`;
-  if (sources && sources.length) { state.latest = { sources }; $("#app").insertAdjacentHTML("beforeend", aboutHTML()); $("details.about").open = true; }
+  applyLang();
+  const t = L();
+  $("#updated").textContent = "";
+  $("#app").innerHTML = `<div class="empty"><h2>${t.emptyTitle}</h2><p>${t.emptyBody}</p><p class="sub">${t.emptySub}</p></div>`;
+  if (sources && sources.length) { state.latest = { ...(state.latest || {}), sources }; $("#app").insertAdjacentHTML("beforeend", aboutHTML()); $("details.about").open = true; }
 }
+
+$("#lang-btn").addEventListener("click", () => {
+  state.lang = L().switchLang;
+  try { localStorage.setItem("snt-lang", state.lang); } catch (e) {}
+  state.latest?.generated_at ? render() : renderEmpty(state.latest?.sources);
+});
 
 async function getJSON(path) {
   const r = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
@@ -497,15 +599,17 @@ async function getJSON(path) {
   return r.json();
 }
 async function load() {
-  try {
-    const latest = await getJSON("data/latest.json");
-    if (!latest.generated_at) return renderEmpty(latest.sources);
-    let history = [];
-    try { history = await getJSON("data/history.json"); } catch (e) {}
-    state.latest = latest; state.history = history;
-    render();
-  } catch (e) { renderEmpty(); }
+  let latest = null;
+  try { latest = await getJSON("data/latest.json"); } catch (e) {}
+  if (!state.lang) state.lang = pickLang(latest);
+  if (!latest || !latest.generated_at) { state.latest = latest; return renderEmpty(latest?.sources); }
+  let history = [];
+  try { history = await getJSON("data/history.json"); } catch (e) {}
+  state.latest = latest; state.history = history;
+  render();
 }
+state.lang = null;
+$("#updated").textContent = "…";
 load();
 setInterval(load, 10 * 60 * 1000);
 </script>
