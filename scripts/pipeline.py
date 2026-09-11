@@ -319,7 +319,10 @@ def extract_json(text: str) -> dict:
 
 def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
     import anthropic  # imported here so --dry-run works without it
-    client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from the environment
+    key = os.environ.get("ANTHROPIC_API_KEY", "").strip()  # strip stray spaces/newlines from the secret
+    if not key:
+        raise RuntimeError("ANTHROPIC_API_KEY secret is missing")
+    client = anthropic.Anthropic(api_key=key)
     lang = "Arabic" if cfg.get("summary_language") == "ar" else "English"
     model = cfg.get("model", "claude-haiku-4-5-20251001")
     last_err = None
