@@ -6,6 +6,7 @@
 # =============================================================
 
 site_title: "Syria narrative tracker"
+site_title_ar: "متتبّع السرديات السورية"
 
 # How far back to look on every run, in hours. 24 = "the last day".
 window_hours: 24
@@ -16,15 +17,19 @@ window_hours: 24
 #                                 of dialect, sarcasm and competing framings
 model: "claude-haiku-4-5-20251001"
 
-# Language of the summaries on the website: "en" (English) or "ar" (Arabic).
-# Narrative titles are always shown in both languages.
-summary_language: "en"
+# The language the website opens in: "en" (English) or "ar" (Arabic).
+# Everything is written in both; visitors switch with the button at the top.
+default_language: "en"
 
 # Cost control. These two numbers decide most of your monthly bill.
 #   max_posts: the most posts sent to Claude per run
 #   max_chars_per_post: long posts are cut to this length
 max_posts: 150
 max_chars_per_post: 400
+
+# Share of the analysis reserved for ordinary people's voices (comments, groups)
+# rather than outlets. 0.7 = 70% public, 30% outlets. Unused room is shared.
+public_share: 0.7
 
 # Hours of history kept for the trend views (336 = 14 days).
 history_hours: 336
@@ -58,42 +63,78 @@ keywords:
 
 # -------------------------------------------------------------
 #  SOURCES
+#  Two kinds: OUTLETS (what channels and news sites publish) and
+#  PUBLIC VOICES (how ordinary people talk and react).
 # -------------------------------------------------------------
+
+# ===== OUTLETS =====
 
 # 1) Public Telegram channels - free, no key needed.
 #    "name" is the part after t.me/  (https://t.me/SANANewsEnglish -> SANANewsEnglish)
 #    Test a channel by opening https://t.me/s/NAME in your browser.
 #    If you see posts there, it will work here.
-#    Aim for balance: official, opposition, Kurdish, Druze, Alawite-coast,
-#    independent and local community channels, in Arabic and English.
+#    Pick popular channels whose posts have COMMENT sections - once the
+#    Telegram connection (below) is on, the tracker also reads those comments
+#    and the emoji reactions under every post.
+#    Aim for balance: official, opposition, Kurdish, Druze, coastal,
+#    independent and local city channels, in Arabic and English.
+#    Add "comments: false" to a channel to skip reading its comments.
+#    "label_ar" (optional) is the source's name on the Arabic version of the site.
 telegram_channels:
   - name: SANANewsEnglish
     label: "SANA - state news agency (EN)"
+    label_ar: "سانا - وكالة الأنباء الرسمية (إنجليزي)"
     filter: false
   - name: Enabbaladi_en
     label: "Enab Baladi - independent (EN)"
+    label_ar: "عنب بلدي - مستقلة (إنجليزي)"
     filter: false
 
 # 2) News websites through RSS - free, no key needed. Adds news context.
 rss_feeds:
   - url: https://feeds.bbci.co.uk/arabic/rss.xml
     label: "BBC Arabic"
+    label_ar: "بي بي سي عربي"
     filter: true
-  - url: https://www.enabbaladi.net/feed
-    label: "Enab Baladi - independent (AR)"
-    filter: false
 
-# 3) YouTube comments - free with a Google API key (GUIDE.md, extra A).
-#    This is the best free source of ordinary people's voices.
+# ===== PUBLIC VOICES =====
+
+# 3) YouTube comments on recent videos - free with a Google API key
+#    (GUIDE.md, extra A1).
+#    Google gives 10,000 free units a day. Each search term uses about
+#    2,400 a day when run hourly, so keep it to 2-3 terms.
+#    "|" means OR, so one term can cover several words.
 youtube:
   enabled: false
-  search_terms: ["سوريا", "سوريا اليوم"]
-  videos_per_term: 4
-  comments_per_video: 20
+  search_terms: ["سوريا|السوريين|دمشق|حلب", "الشارع السوري"]
+  videos_per_term: 5
+  comments_per_video: 25
 
-# 4) X / Twitter - paid per post read (GUIDE.md, extra B).
-#    20 posts per hour is about 14,400 reads a month.
-x_twitter:
+# 4) Telegram connection - comments under channel posts, emoji reactions,
+#    and public group chats. Free; needs a one-time login (GUIDE.md, extra A2).
+telegram_api:
   enabled: false
-  query: "(سوريا OR سورية OR Syria) -is:retweet"
-  max_results: 20
+  posts_per_channel: 8      # recent posts per channel to read comments from
+  comments_per_post: 25
+  messages_per_group: 80
+  # Public group chats (open community discussions). Same "name" rule as channels.
+  groups: []
+  # Example:
+  # groups:
+  #   - name: SomePublicGroup
+  #     label: "Aleppo community chat"
+  #     filter: false
+
+# 5) X / Twitter - paid: about $0.005 per post read (GUIDE.md, extra B).
+#    Every hour the tracker reads the most-engaged posts from about the last hour.
+#      max_results: 10 -> about 7,200 posts a month, roughly $36
+#      max_results: 20 -> about 14,400 posts a month, roughly $72
+#    (10 is the smallest amount X allows per request.)
+#    The query keeps Arabic posts about Syria, skips reposts, and skips posts
+#    with links, so you pay for people's own words rather than shared news
+#    links. Delete "-has:links" to include posts with links and images.
+x_twitter:
+  enabled: true
+  max_results: 10
+  sort: relevancy          # "relevancy" = most engaged, "recency" = newest
+  query: "(سوريا OR سورية OR السوريين OR دمشق OR حلب OR حمص OR حماة OR ادلب OR اللاذقية OR درعا OR السويداء OR الرقة OR دير الزور) lang:ar -is:retweet -has:links"

@@ -65,7 +65,8 @@
   .brief { font-size: 1.14rem; line-height: 1.65; max-width: 58ch; margin: 0 0 18px; }
   .meta { color: var(--muted); font-size: .92rem; margin: 0; max-width: 64ch; }
   .meta i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-inline-end: 6px; font-style: normal; }
-  .hint { color: var(--brass); font-size: .92rem; margin: 12px 0 0; max-width: 60ch; }
+  .hint { color: var(--muted); font-size: .92rem; margin: 12px 0 0; max-width: 60ch; }
+  .notice { color: var(--brass); font-size: .88rem; margin: 0 0 28px; max-width: 64ch; }
 
   /* sections */
   section { padding: 44px 0 52px; border-top: 1px solid var(--rule); }
@@ -97,6 +98,8 @@
   .t-main { font-size: 1.2rem; line-height: 1.35; display: block; }
   .t-alt { font-size: .88rem; color: var(--muted); display: block; margin-top: 2px; }
   .t-alt.en-title { font-size: .9rem; }
+  html[dir="ltr"] .t-alt { text-align: left; }
+  html[dir="rtl"] .t-alt { text-align: right; }
   .badge { font-size: .74rem; color: var(--brass); margin-inline-start: 8px; font-family: var(--sans); font-weight: 500; white-space: nowrap; }
   .share { font-variant-numeric: tabular-nums; text-align: end; color: var(--ink); font-weight: 500; font-size: .95rem; }
 
@@ -133,6 +136,8 @@
   .week { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 40px; align-items: start; }
   .mosaic { display: grid; grid-template-columns: 38px repeat(24, 16px); gap: 3px; align-items: center; outline: none; }
   .mosaic .hr, .mosaic .day { font-size: .72rem; color: var(--faint); line-height: 1; }
+  .mosaic .day { white-space: nowrap; overflow: hidden; }
+  html[lang="ar"] .mosaic { grid-template-columns: 54px repeat(24, 16px); }
   .tile { width: 16px; height: 16px; border-radius: 3px; box-shadow: inset 0 0 0 1px var(--rule); }
   .tile.on { box-shadow: none; cursor: pointer; transition: transform .15s var(--ease); }
   .tile.on:hover { transform: scale(1.25); }
@@ -176,6 +181,7 @@
   }
   @media (max-width: 480px) {
     .mosaic { grid-template-columns: 30px repeat(24, minmax(7px, 1fr)); gap: 2px; }
+    html[lang="ar"] .mosaic { grid-template-columns: 46px repeat(24, minmax(7px, 1fr)); }
     .tile { width: 100%; height: 11px; border-radius: 2px; }
     .seg button { padding: 6px 10px; }
   }
@@ -208,8 +214,9 @@ const T = {
     outletsMeanwhile: "Outlets meanwhile:",
     voices: (p, o, h) => `${p} voices from people and ${o} from outlets, last ${h} hours.`,
     postsFrom: (n, s, h) => `${n} posts from ${s} sources, last ${h} hours.`,
-    hint: "Only outlets are being read so far. Turn on YouTube, Telegram comments or X in config.yaml to see how people react.",
-    stories: "Stories", storiesSub: (n, h) => `${n} stories in the last ${h} hours. Open one to read more.`,
+    hint: "This update is based on news outlets only. People's reactions will appear here as comment sources are added.",
+    fallback: "",
+    stories: "Stories", storiesSub: (n, h) => `${n} ${n === "1" ? "story" : "stories"} in the last ${h} hours. Open one to read more.`,
     sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
     people: "People", outlets: "Outlets", negative: "Negative", neutral: "Neutral", positive: "Positive",
     noStories: "No clear stories in this update.",
@@ -229,11 +236,11 @@ const T = {
       ["This is not all Syrians.", "Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen."],
       ["Privacy.", "Only aggregate patterns are shown. Individual users are never named, quoted or profiled, and posts by private people are not linked."],
       ["AI can misread", "sarcasm, dialect and context. Treat tone as a rough indicator and read the linked examples."]],
-    source: "Source", type: "Type", status: "Status", working: (n) => `Working, ${n} recent`, notWorking: "Not working:",
+    source: "Source", type: "Type", status: "Status", working: (n) => `Working, ${n} recent`, notWorking: "Not working right now",
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts" },
     footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
     emptyTitle: "No results yet",
-    emptyBody: "The first update runs within an hour of setup. To run it now, open your repository on GitHub, go to the Actions tab, choose “Update narratives” and press “Run workflow”.",
+    emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
     locale: "en-GB"
   },
@@ -242,16 +249,17 @@ const T = {
     loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
     nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
     outletsMeanwhile: "أما وسائل الإعلام:",
-    voices: (p, o, h) => `${p} مشاركة من الناس و${o} من وسائل الإعلام، خلال آخر ${h} ساعة.`,
-    postsFrom: (n, s, h) => `${n} منشوراً من ${s} مصادر، خلال آخر ${h} ساعة.`,
-    hint: "لا تُقرأ حتى الآن سوى وسائل الإعلام. فعّل تعليقات يوتيوب أو تيليغرام أو منصة X في ملف config.yaml لمعرفة كيف يتفاعل الناس.",
+    voices: (p, o, h) => `عدد مشاركات الناس ${p}، ومنشورات وسائل الإعلام ${o}، خلال آخر ${h} ساعة.`,
+    postsFrom: (n, s, h) => `عدد المنشورات ${n}، من مصادر عددها ${s}، خلال آخر ${h} ساعة.`,
+    hint: "يعتمد هذا التحديث على وسائل الإعلام فقط، وستظهر تفاعلات الناس هنا عند إضافة مصادر التعليقات.",
+    fallback: "بعض النصوص في هذا التحديث متوفرة بالإنجليزية فقط، وستظهر بالعربية مع التحديث القادم.",
     stories: "القصص", storiesSub: (n, h) => `عدد القصص خلال آخر ${h} ساعة: ${n}. افتح أي قصة لمعرفة المزيد.`,
     sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
     people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
     noStories: "لا توجد قصص واضحة في هذا التحديث.",
     reacting: "كيف يتفاعل الناس", framed: "كيف تُقدَّم القصة", watch: "انتبه إلى:",
     last48: "آخر ٤٨ تحديثاً", voicesLbl: "الأصوات", where: "المصادر",
-    voicesCount: (p, o) => `${p} من الناس، ${o} من وسائل الإعلام`, postsCount: (n) => `${n} منشوراً`,
+    voicesCount: (p, o) => `${p} من الناس، ${o} من وسائل الإعلام`, postsCount: (n) => `عدد المنشورات: ${n}`,
     trend: { New: "جديدة", Rising: "في صعود", Fading: "في تراجع", Steady: "مستقرة", Returning: "عائدة" },
     tone: ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
     week: "الأسبوع الماضي", twoWeeks: "الأسبوعان الماضيان", weekSub: "كل مربع يمثّل ساعة واحدة بتوقيت دمشق، ولونه يعكس شعور الناس.",
@@ -265,11 +273,11 @@ const T = {
       ["هذا ليس صوت كل السوريين.", "النقاش على الإنترنت يُبرز أكثر من يملكون اتصالاً جيداً، ومجتمعات المغتربين، ووسائل الإعلام، ويتأثر باختيار المصادر."],
       ["الخصوصية.", "لا نعرض إلا الأنماط العامة. لا نذكر أسماء المستخدمين ولا نقتبس كلامهم ولا ننشئ ملفات عنهم، ولا نضع روابط لمنشورات الأفراد."],
       ["قد يخطئ الذكاء الاصطناعي", "في فهم السخرية واللهجة والسياق. تعامل مع النبرة كمؤشر تقريبي، واقرأ الأمثلة المرفقة."]],
-    source: "المصدر", type: "النوع", status: "الحالة", working: (n) => `يعمل، ${n} حديثة`, notWorking: "لا يعمل:",
+    source: "المصدر", type: "النوع", status: "الحالة", working: (n) => `يعمل، المنشورات الحديثة: ${n}`, notWorking: "لا يعمل حالياً",
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X" },
     footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
     emptyTitle: "لا نتائج بعد",
-    emptyBody: "يُجرى التحديث الأول خلال ساعة من الإعداد. لتشغيله الآن، افتح المستودع على GitHub، ثم تبويب Actions، واختر «Update narratives» واضغط «Run workflow».",
+    emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
     locale: "ar-SY"
   }
@@ -288,14 +296,40 @@ const cap = (s) => { s = String(s || "").trim(); return s ? s[0].toUpperCase() +
 const num = (n) => Number(n || 0).toLocaleString(L().locale);
 const pctText = (v) => Math.round((v || 0) * 100).toLocaleString(L().locale) + (rtl() ? "٪" : "%");
 
-/* pick the right-language version of a field, falling back to the other language */
+/* pick the right-language version of a field; if it is missing, fall back to the other language and remember it */
+let usedFallback = false;
+const filled = (v) => has(v) && (!Array.isArray(v) || v.length > 0);
 function tx(obj, field) {
   if (!obj) return "";
   const ar = obj[field + "_ar"], en = obj[field];
-  if (rtl()) return has(ar) && (!Array.isArray(ar) || ar.length) ? ar : en;
-  return has(en) && (!Array.isArray(en) || en.length) ? en : ar;
+  if (rtl()) {
+    if (filled(ar)) return ar;
+    if (filled(en)) { usedFallback = true; return en; }
+    return Array.isArray(en) ? [] : "";
+  }
+  return filled(en) ? en : (filled(ar) ? ar : (Array.isArray(ar) ? [] : ""));
 }
-const titleMain = (n) => rtl() ? (n.title_ar || n.title) : (n.title || n.title_ar);
+function titleMain(n) {
+  if (!rtl()) return n.title || n.title_ar;
+  if (!n.title_ar && n.title) usedFallback = true;
+  return n.title_ar || n.title;
+}
+/* mood words are never mixed across languages: if missing, use the translated tone label */
+function moodIn(obj, field, tone) {
+  const v = rtl() ? obj?.[field + "_ar"] : obj?.[field];
+  return cap(v) || toneLabel(tone);
+}
+function srcName(name) {
+  name = String(name || "");
+  if (!rtl()) return name;
+  const map = state.latest?.source_names_ar || {};
+  if (map[name]) return map[name];
+  let m;
+  if ((m = name.match(/^Comments on (.+)$/))) return "تعليقات على " + srcName(m[1]);
+  if ((m = name.match(/^Group: (.+)$/))) return "مجموعة: " + srcName(m[1]);
+  return { "YouTube comments": "تعليقات يوتيوب", "X posts": "منشورات X", "X search": "منشورات X",
+           "Telegram connection": "الاتصال بتيليغرام" }[name] || name;
+}
 const titleAlt = (n) => rtl() ? (n.title_ar ? n.title : "") : (n.title ? n.title_ar : "");
 
 function pickLang(latest) {
@@ -396,7 +430,7 @@ function storyHTML(n) {
   const flags = tx(n, "flags") || [];
   const emotions = tx(n, "emotions") || [];
   const reaction = tx(n, "public_reaction");
-  const links = (n.examples || []).filter(e => safeUrl(e.url)).map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener" dir="auto">${esc(e.source)}</a>`).join("");
+  const links = (n.examples || []).filter(e => safeUrl(e.url)).map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener" dir="auto">${esc(srcName(e.source))}</a>`).join("");
   const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
   const voices = has(n.public_volume) ? t.voicesCount(num(n.public_volume), num(n.volume - n.public_volume)) : t.postsCount(num(n.volume));
   const mainCls = rtl() ? "ar-title" : "en-title", altCls = rtl() ? "en-title" : "ar-title";
@@ -421,7 +455,7 @@ function storyHTML(n) {
         <div><span class="lbl">${t.outlets}</span><b>${toneLabel(n.sentiment)}</b></div>
         <div><span class="lbl">${t.last48}</span><b>${t.trend[tr]}</b>${sparkline(n.id)}</div>
         <div><span class="lbl">${t.voicesLbl}</span>${voices}</div>
-        ${links || others.length ? `<div><span class="lbl">${t.where}</span>${links}${others.length ? `<span dir="auto">${others.map(esc).join(rtl() ? "، " : ", ")}</span>` : ""}</div>` : ""}
+        ${links || others.length ? `<div><span class="lbl">${t.where}</span>${links}${others.length ? `<span>${others.map(o => `<bdi>${esc(srcName(o))}</bdi>`).join(rtl() ? "، " : ", ")}</span>` : ""}</div>` : ""}
       </div>
     </div></div></div>
   </article>`;
@@ -462,7 +496,7 @@ function hourPanel(c) {
   const t = L();
   if (!c || !c.e) return `<div class="hour"><h3>${t.chooseHour}</h3><p class="sub">${t.chooseHourSub}</p></div>`;
   const e = c.e, top = [...(e.narratives || [])].sort((a, b) => b.share - a.share).slice(0, 4);
-  const mood = cap(rtl() ? (e.mood_ar || e.mood) : (e.mood || e.mood_ar)) || toneLabel(e.sentiment);
+  const mood = moodIn(e, "mood", e.sentiment);
   return `<div class="hour" aria-live="polite">
     <h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}${rtl() ? "، " : ", "}${hh(c.h)}</h3>
     <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(mood)}</span></p>
@@ -497,8 +531,8 @@ function weekHTML() {
 /* =================== about =================== */
 function aboutHTML() {
   const t = L(), D = state.latest || {};
-  const rows = (D.sources || []).map(s => `<tr><td dir="auto">${esc(s.name)}</td><td>${t.types[s.platform] || esc(s.platform)}</td><td>${
-    s.ok ? t.working(num(s.recent ?? s.fetched)) : `<span class="bad">${t.notWorking} <span dir="ltr">${esc(s.error || "")}</span></span>`}</td></tr>`).join("");
+  const rows = (D.sources || []).map(s => `<tr><td dir="auto">${esc(srcName(s.name))}</td><td>${t.types[s.platform] || esc(s.platform)}</td><td>${
+    s.ok ? t.working(num(s.recent ?? s.fetched)) : `<span class="bad" title="${esc(s.error || "")}">${t.notWorking}</span>`}</td></tr>`).join("");
   return `
   <section id="about">
     <details class="about">
@@ -516,14 +550,16 @@ function heroHTML() {
   const t = L(), D = state.latest, o = D.overall || {}, st = D.stats || {}, h = num(D.window_hours || 24);
   const pub = has(o.public_sentiment) && (st.public_posts || 0) > 0;
   const tone = pub ? o.public_sentiment : o.sentiment;
-  const word = cap(pub ? tx(o, "public_mood") : tx(o, "mood")) || toneLabel(tone);
-  const outletMood = cap(tx(o, "mood"));
+  const word = pub ? moodIn(o, "public_mood", tone) : moodIn(o, "mood", tone);
+  const outletMood = moodIn(o, "mood", o.sentiment);
+  const brief = tx(o, "brief");
   const voices = pub ? t.voices(num(st.public_posts), num(st.outlet_posts), h) : t.postsFrom(num(st.posts_analyzed), num(st.sources_ok), h);
   return `
   <div class="hero">
+    <!--notice-->
     <p class="eyebrow">${pub ? t.nowPeople : t.nowOutlets}</p>
     <p class="mood" dir="auto" style="--tone:${toneColor(tone)}">${esc(word)}</p>
-    <p class="brief" dir="auto">${esc(tx(o, "brief"))}</p>
+    ${brief ? `<p class="brief" dir="auto">${esc(brief)}</p>` : ""}
     <p class="meta">${pub && outletMood ? `<i style="background:${toneColor(o.sentiment)}"></i>${t.outletsMeanwhile} <span dir="auto">${esc(outletMood)}</span>. ` : ""}${voices}</p>
     ${pub ? "" : `<p class="hint">${t.hint}</p>`}
   </div>`;
@@ -535,7 +571,10 @@ function render() {
   const stale = Date.now() - new Date(checked) > 3 * 3600000;
   $("#updated").innerHTML = stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
   const aboutOpen = $("details.about")?.open;
-  $("#app").innerHTML = heroHTML() + storiesHTML() + weekHTML() + aboutHTML();
+  usedFallback = false;
+  let html = heroHTML() + storiesHTML() + weekHTML() + aboutHTML();
+  if (usedFallback && t.fallback) html = html.replace("<!--notice-->", `<p class="notice">${t.fallback}</p>`);
+  $("#app").innerHTML = html;
   if (aboutOpen) $("details.about").open = true;
   bind();
   if (state.first) {

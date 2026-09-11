@@ -39,6 +39,7 @@ DATA = ROOT / "data"
 UTC = dt.timezone.utc
 NOW = dt.datetime.now(UTC)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; SyriaNarrativeTracker/1.0)"}
+FORMAT_VERSION = 3                # bump when the results format changes, so old results are rebuilt
 REACTIONS: dict[str, str] = {}   # "channel/123" -> "😡 320, 👍 45"  (filled by the Telegram connection)
 
 # USD per million tokens (input, output). Only used for the cost estimate in the logs.
@@ -512,6 +513,17 @@ def mood_word(v) -> str:
     return v[:1].upper() + v[1:]
 
 
+def source_names_ar(cfg: dict) -> dict:
+    """Optional Arabic names for sources ("label_ar" in config.yaml), shown on the Arabic site."""
+    out = {}
+    groups = (cfg.get("telegram_api") or {}).get("groups") or []
+    for item in (cfg.get("telegram_channels") or []) + (cfg.get("rss_feeds") or []) + groups:
+        label = item.get("label") or item.get("name") or item.get("url")
+        if label and item.get("label_ar"):
+            out[str(label)] = str(item["label_ar"])
+    return out
+
+
 def build_narratives(result: dict, sample: list, known_first_seen: dict) -> list:
     by_pid = {p["pid"]: p for p in sample}
     total = sum(p["copies"] for p in sample) or 1
@@ -608,7 +620,10 @@ def main() -> int:
         return 0
 
     new_ids = {p["id"] for p in sample} - set(state.get("last_ids", []))
-    if not new_ids and not args.force and latest_prev.get("narratives"):
+    same_format = latest_prev.get("format") == FORMAT_VERSION
+    if not same_format and latest_prev:
+        log("Results were made by an older version - rebuilding them now.")
+    if not new_ids and not args.force and latest_prev.get("narratives") and same_format:
         log("Nothing new since the last run - skipping analysis to save money.")
         latest_prev.update({"checked_at": iso(NOW), "sources": status})
         save_json(latest_path, latest_prev)
@@ -640,6 +655,7 @@ def main() -> int:
     headline = overall["public_sentiment"] if overall["public_sentiment"] is not None else overall["sentiment"]
 
     latest = {
+        "format": FORMAT_VERSION,
         "site_title": cfg.get("site_title", "Syria narrative tracker"),
         "site_title_ar": cfg.get("site_title_ar", "متتبّع السرديات السورية"),
         "default_language": cfg.get("default_language") or cfg.get("summary_language") or "en",
@@ -660,6 +676,7 @@ def main() -> int:
         "overall": overall,
         "narratives": narratives,
         "sources": status,
+        "source_names_ar": source_names_ar(cfg),
         "cost_usd": cost,
     }
 

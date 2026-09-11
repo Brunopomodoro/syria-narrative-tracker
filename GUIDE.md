@@ -16,7 +16,7 @@ Behind it, GitHub runs a small program every hour that collects public posts, as
 | Telegram channels and news RSS feeds | Free |
 | Claude API (the analysis) | Pay per use, see below |
 | YouTube comments (optional) | Free within Google's daily quota |
-| X / Twitter (optional) | Pay per post read |
+| X / Twitter (optional) | About $0.005 per post read (roughly $36/month at default settings) |
 
 Claude cost depends on how many posts you analyze. With the default settings (up to 150 posts per run) and the default model `claude-haiku-4-5-20251001`, a busy hour costs roughly 2 to 5 US cents, which works out to about $20–40 a month if every hour is busy. With only a few sources it will be much less, and runs are skipped (free) when nothing new was posted. If you later want a more nuanced reading of dialect and sarcasm, switch the model to `claude-sonnet-5` in `config.yaml`; it costs about twice as much. Every run prints its exact cost in the log, so you can watch it.
 
@@ -82,9 +82,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -175,31 +175,103 @@ The two starter Telegram channels (SANA's English channel and Enab Baladi's Engl
 
 ## Optional extras
 
-### A. Add YouTube comments (free, recommended)
+The starter sources are outlets: what channels and news sites publish. To hear ordinary people, add one or both of the public-voice sources below. The website then shows "How people are reacting" for each story, next to how outlets cover it.
 
-Telegram channels and news sites mostly show what outlets say. YouTube comments add what ordinary people say in response.
+### A1. Add YouTube comments (free, 10 minutes)
 
-1. Go to **https://console.cloud.google.com** and create a project (any name).
-2. Open **APIs & Services → Library**, search for **YouTube Data API v3**, and click **Enable**.
-3. Open **APIs & Services → Credentials → Create credentials → API key**. Copy it.
-   (Recommended: click the key and restrict it to "YouTube Data API v3".)
-4. Add it to GitHub as a secret named `YOUTUBE_API_KEY` (same as step 5).
-5. In `config.yaml`, change `enabled: false` to `enabled: true` under `youtube`.
+1. Go to **https://console.cloud.google.com** and sign in with a Google account.
+2. At the top, click the project picker, then **New project**. Name it `narrative-tracker` and click **Create**. Make sure it's selected afterwards.
+3. In the search bar at the top, type **YouTube Data API v3**, open it, and click **Enable**.
+4. Open the menu (☰) → **APIs & Services → Credentials → Create credentials → API key**. Copy the key.
+5. Recommended: click the new key, and under **API restrictions** choose **Restrict key** and tick **YouTube Data API v3**. Save.
+6. In GitHub, add a secret named `YOUTUBE_API_KEY` with this key (same way as step 5).
+7. In `config.yaml`, under `youtube:`, change `enabled: false` to `enabled: true`. Commit.
+8. Run the workflow manually (step 6) and check the log for `ok    youtube`.
 
-The default settings use roughly half of Google's free daily quota. If you add many search terms, runs may start failing near the end of the day; lower `videos_per_term` if that happens.
+The default settings use about half of Google's free daily allowance. No billing account is needed.
+
+### A2. Add Telegram comments, reactions and groups (free, 20 minutes)
+
+This is the richest source of Syrian public opinion: the comment sections under channel posts, the emoji reactions on each post (😡 👍 😢), and open community group chats. It needs a one-time login, which you'll do in your browser with Google Colab (nothing to install).
+
+**Before you start:** the tracker reads Telegram as a normal user account. It's best to use a **separate Telegram account** (a second phone number) rather than your personal one. It doesn't need to join any channels.
+
+**1. Get your Telegram API ID**
+
+1. Go to **https://my.telegram.org** and log in with the phone number of the account you'll use. Telegram sends the code to your Telegram app.
+2. Click **API development tools**.
+3. Fill in App title: `narrative tracker`, Short name: `narrtracker`, Platform: **Desktop**. Leave the rest.
+4. Click **Create application**. Copy the **api_id** (a number) and **api_hash** (letters and numbers).
+
+**2. Create your login "session" in Google Colab**
+
+1. Go to **https://colab.research.google.com** and click **New notebook**.
+2. In the first box (cell), paste this and press the ▶ button:
+
+```
+!pip -q install telethon
+```
+
+3. Click **+ Code** to add a second cell, paste this, and press ▶:
+
+```python
+from telethon import TelegramClient
+from telethon.sessions import StringSession
+from telethon.errors import SessionPasswordNeededError
+from getpass import getpass
+
+api_id = int(input("API ID: "))
+api_hash = input("API hash: ").strip()
+phone = input("Phone number with country code, e.g. +963...: ").strip()
+
+client = TelegramClient(StringSession(), api_id, api_hash)
+await client.connect()
+await client.send_code_request(phone)
+code = input("Login code Telegram just sent to your Telegram app: ").strip()
+try:
+    await client.sign_in(phone, code)
+except SessionPasswordNeededError:
+    await client.sign_in(password=getpass("Your Telegram two-step verification password: "))
+print("\nYour session string. Treat it like a password:\n")
+print(client.session.save())
+await client.disconnect()
+```
+
+4. Boxes appear under the cell asking for your API ID, API hash, phone number and the login code. Type each and press Enter.
+5. A long line of letters and numbers is printed. That's your **session string**. Copy all of it.
+6. **Delete the notebook afterwards** (File → Move to trash), because the session string is shown in it. Anyone with that string can use the Telegram account.
+
+**3. Add three secrets in GitHub** (same way as step 5):
+
+| Name | Value |
+|---|---|
+| `TELEGRAM_API_ID` | the api_id number |
+| `TELEGRAM_API_HASH` | the api_hash |
+| `TELEGRAM_SESSION` | the session string |
+
+**4. Turn it on:** in `config.yaml`, under `telegram_api:`, change `enabled: false` to `enabled: true`. Commit, then run the workflow manually and look for `ok    comments` lines in the log.
+
+**5. Choose channels with comment sections.** Comments are read from every channel in `telegram_channels`. Busy local and news channels with active comment sections give the best picture. To add public group chats, list them under `groups:` in the `telegram_api` section.
+
+You can disconnect the tracker at any time: in the Telegram app, open **Settings → Devices** and end the session named after your app.
 
 ### B. Add X (Twitter) posts (paid)
 
-X charges per post read, roughly $0.005 each at the time of writing. The default of 20 posts per hour is about 14,400 reads, or about $70 a month.
+X charges about $0.005 for every post the tracker reads, paid from credits you buy in advance. With the default setting (10 posts an hour) that's about 7,200 posts, roughly $36, a month. With 20 an hour, it's about $72.
 
-1. Create a developer account at **https://developer.x.com**, open the Developer Console, buy credits and set a spending limit.
-2. Create an app and copy its **Bearer token**.
-3. Add it to GitHub as a secret named `X_BEARER_TOKEN`.
-4. In `config.yaml`, set `enabled: true` under `x_twitter`.
+1. Go to **https://console.x.com** and sign in with an X account.
+2. Accept the Developer Agreement. When asked how you'll use the API, describe it plainly, for example: *"Non-commercial dashboard that summarizes public discussion about Syria. Posts are analyzed in aggregate only; no individual users are displayed, profiled or linked, and post text is not republished."*
+3. In **Billing**, buy a small amount of credit (for example $10) and **set a spending limit**. Leave automatic top-up off until you've seen a few days of real costs.
+4. Create a new **App** (any name, e.g. `narrative-tracker`). Copy the **Bearer Token**. It's shown only once, so keep it in your password manager.
+5. In GitHub, add a secret named `X_BEARER_TOKEN` with the Bearer Token (same way as step 5).
+6. X is already switched on in `config.yaml` (`enabled: true` under `x_twitter:`). If you ever want to stop paying for it, change that to `enabled: false`.
+7. Run the workflow manually. The log shows a line like `X: 10 posts read, about $0.05`.
 
-### C. Arabic summaries
+Good to know: the X search picks up everyone writing in Arabic about Syria, not only Syrians, so treat it as regional discussion. The tracker skips reposts and posts with links, which makes each paid post more likely to be someone's own opinion.
 
-In `config.yaml`, set `summary_language: "ar"`. Titles are always in both languages.
+### C. Languages
+
+The website is fully bilingual. Everything is written in both English and Arabic, and visitors switch with the button at the top right; the site remembers their choice. To make the site open in Arabic by default, set `default_language: "ar"` in `config.yaml`. You can also link straight to either version by adding `?lang=ar` or `?lang=en` to your site address.
 
 ### D. Update less often to save money
 
