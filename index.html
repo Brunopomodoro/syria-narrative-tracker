@@ -4,118 +4,174 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Syria narrative tracker</title>
-<meta name="description" content="Hourly overview of the narratives circulating in public Syrian online discussion, and the tone around them.">
+<meta name="description" content="Hourly overview of what people in Syrian online discussion are talking about, how they are reacting, and how that compares with outlet coverage.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500&family=Noto+Kufi+Arabic:wght@600&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #F3F5F2;
     --ink: #1D262B;
     --muted: #5B666A;
-    --rule: #D3D9D5;
+    --faint: #9AA3A6;
+    --rule: #D6DCD8;
+    --wash: #E9EEEA;
     --neg: #A3303C;
     --neu: #A7ABA3;
     --pos: #2C7663;
     --brass: #8A6420;
-    --tile-empty: transparent;
     --sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --serif: "IBM Plex Serif", Georgia, serif;
     --kufi: "Noto Kufi Arabic", "IBM Plex Sans Arabic", sans-serif;
+    --ease: cubic-bezier(.2, .7, .2, 1);
   }
   @media (prefers-color-scheme: dark) {
-    :root { --paper: #172024; --ink: #E7ECE8; --muted: #9AA5A8; --rule: #2E3A3F;
+    :root { --paper: #172024; --ink: #E7ECE8; --muted: #A1ACAF; --faint: #6B777B; --rule: #2C383D; --wash: #1E292E;
             --neg: #D8606B; --neu: #6F7670; --pos: #4FAE94; --brass: #D2A95A; }
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans);
-         font-size: 17px; line-height: 1.55; }
-  [lang="ar"], .ar { font-family: "IBM Plex Sans Arabic", var(--sans); }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 var(--sans); }
+  [lang="ar"] { font-family: "IBM Plex Sans Arabic", var(--sans); }
   a { color: inherit; text-decoration-color: var(--brass); text-underline-offset: 3px; }
   a:hover { color: var(--brass); }
-  :focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
 
-  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-         flex-wrap: wrap; padding: 22px 0 18px; border-bottom: 1px solid var(--rule); }
-  .top h1 { font-size: 1rem; font-weight: 600; margin: 0; letter-spacing: .01em; }
-  .top p { margin: 0; color: var(--muted); font-size: .9rem; }
+  /* header */
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+         padding: 24px 0 20px; }
+  .top h1 { font-size: 1rem; font-weight: 600; margin: 0; }
+  .top nav { display: flex; gap: 20px; color: var(--muted); font-size: .88rem; }
+  .top nav a { text-decoration: none; }
   .stale { color: var(--neg); }
 
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; padding: 44px 0 40px;
-          border-bottom: 1px solid var(--rule); align-items: start; }
-  .now-label { color: var(--muted); font-size: .9rem; margin: 0 0 4px; }
-  .mood { font-size: clamp(3rem, 8vw, 5.6rem); line-height: 1.05; font-weight: 600; margin: 0 0 24px;
-          letter-spacing: -.02em; display: inline-block; padding-bottom: 10px;
-          border-bottom: 8px solid var(--tone, var(--neu)); }
-  .brief { max-width: 60ch; margin: 0 0 14px; font-size: 1.08rem; }
-  .facts { color: var(--muted); font-size: .92rem; margin: 0; }
+  /* hero */
+  .hero { padding: 48px 0 56px; border-top: 1px solid var(--rule); }
+  .eyebrow { color: var(--muted); font-size: .92rem; margin: 0 0 6px; }
+  .mood { font-family: var(--serif); font-weight: 600; font-size: clamp(3.2rem, 9vw, 6rem); line-height: 1.02;
+          letter-spacing: -.025em; margin: 0 0 28px; display: inline-block; padding-bottom: 12px;
+          background: linear-gradient(var(--tone, var(--neu)), var(--tone, var(--neu))) left bottom / 100% 7px no-repeat; }
+  .brief { font-size: 1.16rem; line-height: 1.6; max-width: 58ch; margin: 0 0 18px; }
+  .meta { color: var(--muted); font-size: .92rem; margin: 0; max-width: 64ch; }
+  .meta i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin: 0 6px 0 0; vertical-align: 0; font-style: normal; }
+  .hint { color: var(--brass); font-size: .92rem; margin: 12px 0 0; max-width: 60ch; }
 
-  .mosaic-box { min-width: 0; }
-  .mosaic { display: grid; grid-template-columns: 38px repeat(24, 15px); gap: 3px; align-items: center; }
-  .mosaic .hr, .mosaic .day { font-size: .72rem; color: var(--muted); line-height: 1; }
-  .mosaic .hr { text-align: left; height: 14px; }
-  .tile { width: 15px; height: 15px; border-radius: 2px; background: var(--tile-empty);
-          box-shadow: inset 0 0 0 1px var(--rule); }
-  .tile.on { box-shadow: none; cursor: default; }
-  .tile.now { outline: 2px solid var(--ink); outline-offset: 1px; }
-  .mosaic-cap { font-size: .85rem; color: var(--muted); margin: 12px 0 0; min-height: 2.6em; max-width: 42ch; }
-  .scale { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--muted); margin-top: 10px; }
-  .scale i { display: inline-block; width: 90px; height: 8px; border-radius: 2px;
-             background: linear-gradient(90deg, var(--neg), var(--neu), var(--pos)); }
+  /* sections */
+  section { padding: 44px 0 52px; border-top: 1px solid var(--rule); }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 22px; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 1.75rem; line-height: 1.2; margin: 0; letter-spacing: -.01em; }
+  .sub { color: var(--muted); font-size: .92rem; margin: 4px 0 0; }
 
-  section { padding: 40px 0; border-bottom: 1px solid var(--rule); }
-  h2 { font-size: 1.35rem; font-weight: 600; margin: 0 0 4px; letter-spacing: -.01em; }
-  .sub { color: var(--muted); margin: 0 0 24px; font-size: .95rem; }
+  /* sort control */
+  .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; }
+  .seg button { font-size: .85rem; padding: 6px 14px; border-radius: 999px; color: var(--muted); transition: background .2s, color .2s; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
-  .nar { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 8px 40px;
-         padding: 28px 0; border-top: 1px solid var(--rule); }
-  .nar:first-of-type { border-top: 0; padding-top: 8px; }
-  .nar-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline;
-              gap: 24px; flex-wrap: wrap; }
-  .nar h3 { font-size: 1.45rem; line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -.01em; max-width: 32ch; }
-  .nar .t-ar { font-family: var(--kufi); font-weight: 700; font-size: 1.2rem; margin: 0 0 0 auto; color: var(--muted); }
-  .nar-body p { margin: 0 0 12px; max-width: 68ch; }
-  .framings { margin: 0 0 12px; padding: 0; list-style: none; }
-  .framings li { padding-left: 14px; position: relative; margin-bottom: 4px; max-width: 66ch; color: var(--muted); font-size: .95rem; }
-  .framings li::before { content: ""; position: absolute; left: 0; top: .72em; width: 6px; height: 1px; background: var(--muted); }
+  /* story list */
+  .axis-head, .row { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(180px, 300px); gap: 20px; align-items: center; }
+  .axis-head { font-size: .78rem; color: var(--faint); padding: 0 0 8px 28px; }
+  .axis-head .scale { display: flex; justify-content: space-between; }
+  .axis-head .key { display: flex; gap: 14px; justify-content: flex-end; grid-column: 1 / 3; }
+  .axis-head .key span { display: inline-flex; align-items: center; gap: 6px; }
+  .k-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); display: inline-block; }
+  .k-ring { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink); display: inline-block; }
+  .story { border-top: 1px solid var(--rule); }
+  .story:last-child { border-bottom: 1px solid var(--rule); }
+  .row { width: 100%; text-align: left; padding: 16px 0; }
+  .row:hover .t-en { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 5px; }
+  .t { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
+  .chev { flex: none; width: 16px; color: var(--faint); transition: transform .3s var(--ease); font-size: .8rem; }
+  .story.open .chev { transform: rotate(90deg); }
+  .t-text { min-width: 0; }
+  .t-en { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; line-height: 1.3; display: block; }
+  .t-ar { font-family: var(--kufi); font-weight: 600; font-size: .9rem; color: var(--muted); display: block; margin-top: 2px; }
+  .badge { font-size: .74rem; color: var(--brass); margin-left: 8px; font-family: var(--sans); font-weight: 500; white-space: nowrap; }
+  .share { font-variant-numeric: tabular-nums; text-align: right; color: var(--muted); font-size: .95rem; }
+  .share b { color: var(--ink); font-weight: 500; }
+
+  .db { position: relative; height: 22px; }
+  .db::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule); }
+  .db .zero { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 1px; background: var(--faint); opacity: .6; }
+  .db .gap { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--faint); transition: left .9s var(--ease), width .9s var(--ease); }
+  .db .p, .db .o { position: absolute; top: 50%; border-radius: 50%; transform: translate(-50%, -50%); transition: left .9s var(--ease); }
+  .db .p { width: 13px; height: 13px; background: var(--c); box-shadow: 0 0 0 2px var(--paper); }
+  .db .o { width: 12px; height: 12px; border: 2px solid var(--ink); background: var(--paper); }
+  .pending .db .p, .pending .db .o { left: 50% !important; }
+  .pending .db .gap { left: 50% !important; width: 0 !important; }
+
+  .detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s var(--ease); }
+  .story.open .detail { grid-template-rows: 1fr; }
+  .detail > div { overflow: hidden; }
+  .detail-in { padding: 2px 0 30px 28px; display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 12px 44px; }
+  .detail-in p { margin: 0 0 14px; max-width: 64ch; }
+  .reaction { border-left: 3px solid var(--c, var(--neu)); padding: 2px 0 2px 16px; margin: 0 0 16px; max-width: 62ch; }
+  .lbl { display: block; font-size: .82rem; color: var(--muted); margin-bottom: 3px; }
+  .framings { list-style: none; margin: 0 0 16px; padding: 0; }
+  .framings li { position: relative; padding-left: 14px; margin-bottom: 4px; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+  .framings li::before { content: ""; position: absolute; left: 0; top: .75em; width: 6px; height: 1px; background: var(--muted); }
   .flag { color: var(--brass); font-size: .93rem; }
-  .seen { font-size: .88rem; color: var(--muted); }
-  .seen a { margin-right: 10px; }
-
-  .nar-side { font-size: .85rem; color: var(--muted); display: grid; gap: 16px; align-content: start; padding-top: 4px; }
-  .meter-label { display: flex; justify-content: space-between; margin-bottom: 5px; gap: 8px; }
-  .meter-label b { color: var(--ink); font-weight: 500; }
-  .bar { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; }
-  .bar i { display: block; height: 100%; background: var(--ink); }
-  .track { position: relative; height: 6px; border-radius: 3px;
-           background: linear-gradient(90deg, var(--neg), var(--neu), var(--pos)); opacity: .85; }
-  .track i { position: absolute; top: -4px; width: 4px; height: 14px; margin-left: -2px; background: var(--ink); border-radius: 1px; }
-  .spark { display: block; width: 100%; height: 30px; }
+  .side { font-size: .86rem; color: var(--muted); display: grid; gap: 18px; align-content: start; }
+  .side b { color: var(--ink); font-weight: 500; }
+  .side a { display: block; margin-top: 2px; }
+  .spark { display: block; width: 100%; height: 34px; margin-top: 4px; }
   .spark polyline { fill: none; stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+  .spark .area { fill: var(--wash); stroke: none; }
 
-  .empty { padding: 72px 0; max-width: 60ch; }
-  .empty h2 { font-size: 1.8rem; margin-bottom: 12px; }
+  /* week mosaic */
+  .week { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 40px; align-items: start; }
+  .mosaic { display: grid; grid-template-columns: 34px repeat(24, 16px); gap: 3px; align-items: center; outline: none; }
+  .mosaic .hr, .mosaic .day { font-size: .72rem; color: var(--faint); line-height: 1; }
+  .tile { width: 16px; height: 16px; border-radius: 3px; box-shadow: inset 0 0 0 1px var(--rule); }
+  .tile.on { box-shadow: none; transition: transform .15s var(--ease); }
+  .tile.on:hover { transform: scale(1.25); }
+  .tile.sel { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
+  .mosaic:focus-visible .tile.sel { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--brass); }
+  .legend { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: var(--faint); margin-top: 12px; }
+  .legend i { width: 80px; height: 7px; border-radius: 4px; background: linear-gradient(90deg, var(--neg), var(--neu), var(--pos)); }
+  .hour h3 { font-size: .92rem; font-weight: 500; color: var(--muted); margin: 0 0 2px; }
+  .hour .hmood { font-family: var(--serif); font-size: 2rem; font-weight: 600; line-height: 1.15; margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
+  .hour .hmood i { width: 14px; height: 14px; border-radius: 3px; flex: none; }
+  .hour ol { margin: 0; padding: 0; list-style: none; }
+  .hour li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
+  .hour li span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hour .none { color: var(--muted); }
 
-  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
-  th, td { text-align: left; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  th { font-weight: 500; color: var(--muted); }
-  .bad { color: var(--neg); }
-  .method { columns: 2 320px; column-gap: 48px; }
+  /* about */
+  details.about summary { cursor: pointer; list-style: none; font-family: var(--serif); font-weight: 600; font-size: 1.35rem; display: flex; gap: 12px; align-items: baseline; }
+  details.about summary::-webkit-details-marker { display: none; }
+  details.about summary .chev { font-family: var(--sans); }
+  details.about[open] summary .chev { transform: rotate(90deg); }
+  .about-body { padding: 24px 0 0 28px; }
+  .method { columns: 2 300px; column-gap: 44px; margin-bottom: 28px; }
   .method p { margin: 0 0 14px; break-inside: avoid; color: var(--muted); font-size: .95rem; }
   .method strong { color: var(--ink); font-weight: 500; }
-  footer { padding: 28px 0 48px; color: var(--muted); font-size: .85rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { text-align: left; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-weight: 500; color: var(--muted); }
+  .bad { color: var(--neg); }
+  footer { padding: 28px 0 56px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--rule); }
+  .empty { padding: 72px 0; max-width: 58ch; border-top: 1px solid var(--rule); }
+  .empty h2 { margin-bottom: 12px; }
 
-  @media (max-width: 820px) {
-    .hero { grid-template-columns: 1fr; gap: 32px; }
-    .nar { grid-template-columns: 1fr; }
-    .nar-side { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 760px) {
+    .wrap { padding: 0 18px; }
+    .axis-head { grid-template-columns: 1fr; padding-left: 0; }
+    .axis-head .key { grid-column: 1; justify-content: flex-start; }
+    .axis-head .scale { margin-left: 28px; }
+    .row { grid-template-columns: minmax(0, 1fr) 48px; gap: 8px 12px; }
+    .row .db { grid-column: 1 / -1; margin-left: 28px; }
+    .detail-in { grid-template-columns: 1fr; }
+    .week { grid-template-columns: 1fr; gap: 28px; }
   }
-  @media (max-width: 520px) {
-    .wrap { padding: 0 16px; }
-    .mosaic { grid-template-columns: 30px repeat(24, minmax(8px, 1fr)); gap: 2px; }
-    .tile { width: 100%; height: 11px; }
-    .nar-side { grid-template-columns: 1fr; }
+  @media (max-width: 480px) {
+    .mosaic { grid-template-columns: 28px repeat(24, minmax(7px, 1fr)); gap: 2px; }
+    .tile { width: 100%; height: 11px; border-radius: 2px; }
+    .seg button { padding: 6px 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
   }
 </style>
 </head>
@@ -123,36 +179,44 @@
 <div class="wrap">
   <header class="top">
     <h1 id="site-title">Syria narrative tracker</h1>
-    <p id="updated" aria-live="polite">Loading the latest update…</p>
+    <nav>
+      <span id="updated" aria-live="polite">Loading…</span>
+      <a href="#about">About</a>
+    </nav>
   </header>
   <main id="app"></main>
-  <footer>
-    Summaries are generated automatically by an AI model from public posts. They describe what is being said, not what is true.
-  </footer>
+  <footer>Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.</footer>
 </div>
 
 <script>
 const TZ = "Asia/Damascus";
-const $ = (s) => document.querySelector(s);
+const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
+const has = (v) => v !== null && v !== undefined && v !== "";
+const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true };
 
-function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
-function hex(h) { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); }
-function mix(a, b, t) { return a.map((v, i) => Math.round(v + (b[i] - v) * t)); }
+/* ---------- tone helpers ---------- */
+const cssv = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const rgb = (h) => { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
 function toneColor(s) {
   s = Math.max(-1, Math.min(1, Number(s) || 0));
-  const neg = hex(css("--neg")), neu = hex(css("--neu")), pos = hex(css("--pos"));
-  const c = s < 0 ? mix(neu, neg, -s) : mix(neu, pos, s);
+  const c = s < 0 ? mix(rgb(cssv("--neu")), rgb(cssv("--neg")), -s) : mix(rgb(cssv("--neu")), rgb(cssv("--pos")), s);
   return `rgb(${c.join(",")})`;
 }
 function toneLabel(s) {
+  if (!has(s)) return "No reactions yet";
   if (s <= -0.5) return "Strongly negative";
   if (s <= -0.15) return "Leaning negative";
   if (s < 0.15) return "Mostly neutral";
   if (s < 0.5) return "Leaning positive";
   return "Strongly positive";
 }
+const pct = (v) => Math.round((Number(v) + 1) * 50);          // -1..1 -> 0..100
+const peopleTone = (n) => has(n.public_sentiment) ? n.public_sentiment : null;
+
+/* ---------- time helpers ---------- */
 function ago(iso) {
   const m = Math.round((Date.now() - new Date(iso)) / 60000);
   if (m < 1) return "just now";
@@ -160,76 +224,18 @@ function ago(iso) {
   const h = Math.round(m / 60);
   return h < 48 ? `${h} h ago` : `${Math.round(h / 24)} days ago`;
 }
-function clock(iso, opts) {
-  return new Intl.DateTimeFormat("en-GB", { timeZone: TZ, ...opts }).format(new Date(iso));
-}
+const fmt = (iso, o) => new Intl.DateTimeFormat("en-GB", { timeZone: TZ, ...o }).format(new Date(iso));
 function hourKey(iso) {
-  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric",
-    month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit",
+    day: "2-digit", hour: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
   return { day: `${p.year}-${p.month}-${p.day}`, hour: Number(p.hour) };
 }
 
-async function getJSON(path) {
-  const r = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
-  if (!r.ok) throw new Error(r.status);
-  return r.json();
-}
-
-function renderEmpty(sources) {
-  $("#updated").textContent = "Waiting for the first update";
-  $("#app").innerHTML = `
-    <div class="empty">
-      <h2>No results yet</h2>
-      <p>The first update runs within an hour of setup. To run it now, open your repository on GitHub, go to the Actions tab, choose “Update narratives” and press “Run workflow”.</p>
-      <p>This page checks for new results every 10 minutes.</p>
-      ${sources && sources.length ? `<h2 style="font-size:1.2rem;margin-top:32px">Source check</h2><p class="sub">The last run found no usable posts. Fix the sources marked “Not working” in config.yaml.</p>${sourcesHTML(sources)}` : ""}
-    </div>`;
-}
-
-function mosaic(history, latest) {
-  const byHour = new Map();
-  for (const h of history) {
-    const k = hourKey(h.time);
-    byHour.set(`${k.day}|${k.hour}`, h);
-  }
-  const nowK = hourKey(new Date().toISOString());
-  const days = [];
-  const spanDays = history.length > 24 * 7 ? 14 : 7;
-  for (let i = 0; i < spanDays; i++) {
-    const d = new Date(Date.now() - i * 86400000);
-    days.push({ key: hourKey(d.toISOString()).day, label: clock(d.toISOString(), { weekday: "short" }) });
-  }
-  let html = `<div class="mosaic" role="img" aria-label="Tone of discussion for each hour over the last ${spanDays} days, newest day at the top">`;
-  html += `<span></span>` + Array.from({ length: 24 }, (_, h) => `<span class="hr">${h % 6 === 0 ? String(h).padStart(2, "0") : ""}</span>`).join("");
-  for (const d of days) {
-    html += `<span class="day">${esc(d.label)}</span>`;
-    for (let h = 0; h < 24; h++) {
-      const e = byHour.get(`${d.key}|${h}`);
-      const isNow = d.key === nowK.day && h === nowK.hour;
-      if (e) {
-        const top = (e.narratives || [])[0];
-        const cap = `${d.label} ${String(h).padStart(2, "0")}:00: ${e.mood || toneLabel(e.sentiment)}, ${e.posts} posts${top ? `. Biggest story: ${top.title}` : ""}`;
-        html += `<span class="tile on${isNow ? " now" : ""}" style="background:${toneColor(e.sentiment)}" data-cap="${esc(cap)}" title="${esc(cap)}"></span>`;
-      } else {
-        html += `<span class="tile${isNow ? " now" : ""}"></span>`;
-      }
-    }
-  }
-  html += `</div>`;
-  return html;
-}
-
-function sparkline(id, history) {
-  const pts = history.slice(-48).map(h => (h.narratives || []).find(n => n.id === id)?.volume || 0);
-  if (pts.length < 2) return `<svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"></svg>`;
-  const max = Math.max(...pts, 1);
-  const coords = pts.map((v, i) => `${(i / (pts.length - 1)) * 100},${28 - (v / max) * 26}`).join(" ");
-  return `<svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><polyline points="${coords}"/></svg>`;
-}
-
-function trend(n, history) {
+/* ---------- stories ---------- */
+function trend(n) {
+  const h = state.history;
   if (Date.now() - new Date(n.first_seen) < 2.5 * 3600000) return "New";
-  const past = history.slice(-13, -1).map(h => (h.narratives || []).find(x => x.id === n.id)?.share || 0);
+  const past = h.slice(-13, -1).map(x => (x.narratives || []).find(y => y.id === n.id)?.share || 0);
   if (!past.length) return "New";
   const avg = past.reduce((a, b) => a + b, 0) / past.length;
   if (avg === 0) return "Returning";
@@ -237,121 +243,268 @@ function trend(n, history) {
   return r > 1.3 ? "Rising" : r < 0.7 ? "Fading" : "Steady";
 }
 
-function narrativeHTML(n, history) {
-  const pct = Math.round((n.share || 0) * 100);
-  const pos = ((Number(n.sentiment) + 1) / 2) * 100;
+function sparkline(id) {
+  const pts = state.history.slice(-48).map(x => (x.narratives || []).find(y => y.id === id)?.volume || 0);
+  if (pts.filter(v => v > 0).length < 2) return "";   // not enough history to draw a trend yet
+  const max = Math.max(...pts, 1);
+  const xy = pts.map((v, i) => [(i / (pts.length - 1)) * 100, 32 - (v / max) * 29]);
+  const line = xy.map(p => p.join(",")).join(" ");
+  return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+    <polygon class="area" points="0,34 ${line} 100,34"/><polyline points="${line}"/></svg>`;
+}
+
+function dumbbell(n) {
+  const p = peopleTone(n), o = Number(n.sentiment) || 0;
+  const po = pct(o);
+  let html = `<div class="db" role="img" aria-label="People: ${toneLabel(p)}. Outlets: ${toneLabel(o)}."><span class="zero"></span>`;
+  if (p !== null) {
+    const pp = pct(p);
+    html += `<span class="gap" style="left:${Math.min(pp, po)}%;width:${Math.abs(pp - po)}%"></span>`;
+    html += `<span class="o" style="left:${po}%"></span><span class="p" style="left:${pp}%;--c:${toneColor(p)}"></span>`;
+  } else {
+    html += `<span class="o" style="left:${po}%"></span>`;
+  }
+  return html + `</div>`;
+}
+
+function sorted(list) {
+  const arr = [...list];
+  if (state.sort === "negative") arr.sort((a, b) => (peopleTone(a) ?? a.sentiment) - (peopleTone(b) ?? b.sentiment));
+  else if (state.sort === "gap") arr.sort((a, b) => gapOf(b) - gapOf(a));
+  else arr.sort((a, b) => b.share - a.share);
+  return arr;
+}
+const gapOf = (n) => peopleTone(n) === null ? -1 : Math.abs(peopleTone(n) - n.sentiment);
+
+function storyHTML(n) {
+  const p = peopleTone(n);
+  const tr = trend(n);
+  const open = state.open.has(n.id);
   const framings = (n.framings || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
-  const flags = (n.flags || []).length ? `<p class="flag" dir="auto">Watch for: ${(n.flags).map(esc).join("; ")}</p>` : "";
-  const links = (n.examples || []).map(e => safeUrl(e.url) ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a>` : "").join("");
+  const links = (n.examples || []).filter(e => safeUrl(e.url))
+    .map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a>`).join("");
   const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
-  const feelings = (n.emotions || []).length ? `<p class="seen" dir="auto">Feelings expressed: ${n.emotions.map(esc).join(", ")}</p>` : "";
+  const voices = has(n.public_volume) ? `${n.public_volume} from people, ${n.volume - n.public_volume} from outlets` : `${n.volume} posts`;
   return `
-  <article class="nar">
-    <div class="nar-head">
-      <h3 dir="auto">${esc(n.title)}</h3>
-      ${n.title_ar ? `<p class="t-ar" lang="ar" dir="rtl">${esc(n.title_ar)}</p>` : ""}
-    </div>
-    <div class="nar-body">
-      <p dir="auto">${esc(n.summary)}</p>
-      ${framings ? `<ul class="framings" aria-label="How it is framed">${framings}</ul>` : ""}
-      ${flags}
-      ${feelings}
-      <p class="seen">${links ? `Examples: ${links}` : ""}${others.length ? `${links ? "<br>" : ""}Also seen in ${others.map(esc).join(", ")}` : ""}</p>
-    </div>
-    <div class="nar-side">
+  <article class="story${open ? " open" : ""}" data-id="${esc(n.id)}">
+    <button class="row" aria-expanded="${open}" aria-controls="d-${esc(n.id)}">
+      <span class="t"><span class="chev" aria-hidden="true">▶</span>
+        <span class="t-text"><span class="t-en" dir="auto">${esc(n.title)}${tr === "New" || tr === "Rising" ? `<span class="badge">${tr}</span>` : ""}</span>
+        ${n.title_ar ? `<span class="t-ar" lang="ar" dir="rtl">${esc(n.title_ar)}</span>` : ""}</span></span>
+      <span class="share"><b>${Math.round((n.share || 0) * 100)}%</b></span>
+      ${dumbbell(n)}
+    </button>
+    <div class="detail" id="d-${esc(n.id)}"><div><div class="detail-in">
       <div>
-        <div class="meter-label"><span>Share of posts</span><b>${pct}%</b></div>
-        <div class="bar"><i style="width:${Math.max(2, pct)}%"></i></div>
+        <p dir="auto">${esc(n.summary)}</p>
+        ${n.public_reaction ? `<div class="reaction" style="--c:${p !== null ? toneColor(p) : "var(--neu)"}"><span class="lbl">How people are reacting</span><span dir="auto">${esc(n.public_reaction)}</span></div>` : ""}
+        ${framings ? `<span class="lbl">How it's framed</span><ul class="framings">${framings}</ul>` : ""}
+        ${(n.flags || []).length ? `<p class="flag" dir="auto">Watch for: ${n.flags.map(esc).join("; ")}</p>` : ""}
       </div>
-      <div>
-        <div class="meter-label"><span>Tone</span><b>${toneLabel(n.sentiment)}</b></div>
-        <div class="track" role="img" aria-label="Tone ${n.sentiment} on a scale from -1 to 1"><i style="left:${pos}%"></i></div>
+      <div class="side">
+        <div><span class="lbl">People</span><b>${toneLabel(p)}</b>${(n.emotions || []).length ? `<br><span dir="auto">${n.emotions.map(esc).join(", ")}</span>` : ""}</div>
+        <div><span class="lbl">Outlets</span><b>${toneLabel(n.sentiment)}</b></div>
+        <div><span class="lbl">Last 48 updates</span><b>${tr}</b>${sparkline(n.id)}</div>
+        <div><span class="lbl">Voices</span>${voices}</div>
+        ${links || others.length ? `<div><span class="lbl">Where</span>${links}${others.length ? `<span dir="auto">${others.map(esc).join(", ")}</span>` : ""}</div>` : ""}
       </div>
-      <div>
-        <div class="meter-label"><span>Last 48 updates</span><b>${trend(n, history)}</b></div>
-        ${sparkline(n.id, history)}
-      </div>
-    </div>
+    </div></div></div>
   </article>`;
 }
 
-function sourcesHTML(sources) {
-  const label = { telegram: "Telegram", news: "News site", youtube: "YouTube", x: "X" };
-  return `<table><thead><tr><th>Source</th><th>Type</th><th>Status</th></tr></thead><tbody>${
-    (sources || []).map(s => `<tr><td dir="auto">${esc(s.name)}</td><td>${label[s.platform] || esc(s.platform)}</td><td>${
-      s.ok ? `Working, ${s.recent ?? s.fetched} recent posts` : `<span class="bad">Not working: ${esc(s.error || "unknown error")}</span>`
-    }</td></tr>`).join("")}</tbody></table>`;
+function storiesHTML() {
+  const nars = state.latest.narratives || [];
+  const btn = (k, label) => `<button data-sort="${k}" aria-pressed="${state.sort === k}">${label}</button>`;
+  return `
+  <section aria-labelledby="h-stories">
+    <div class="sec-head">
+      <div><h2 id="h-stories">Stories</h2><p class="sub">${nars.length} stories in the last ${state.latest.window_hours || 24} hours. Open one to read more.</p></div>
+      <div class="seg" role="group" aria-label="Sort stories">${btn("share", "Most discussed")}${btn("negative", "Most negative")}${btn("gap", "Biggest gap")}</div>
+    </div>
+    ${nars.length ? `
+    <div class="axis-head" aria-hidden="true">
+      <span class="key"><span><i class="k-dot"></i>People</span><span><i class="k-ring"></i>Outlets</span></span>
+      <span class="scale"><span>Negative</span><span>Neutral</span><span>Positive</span></span>
+    </div>
+    <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>` : `<p>No clear stories in this update.</p>`}
+  </section>`;
 }
 
-function render(latest, history) {
-  if (latest.site_title) { $("#site-title").textContent = latest.site_title; document.title = latest.site_title; }
-  const checked = latest.checked_at || latest.generated_at;
+/* ---------- week mosaic ---------- */
+function weekData() {
+  const byHour = new Map();
+  for (const h of state.history) { const k = hourKey(h.time); byHour.set(`${k.day}|${k.hour}`, h); }
+  const span = state.history.length > 24 * 7 ? 14 : 7;
+  const days = Array.from({ length: span }, (_, i) => {
+    const d = new Date(Date.now() - i * 86400000).toISOString();
+    return { key: hourKey(d).day, label: fmt(d, { weekday: "short" }) };
+  });
+  const cells = [];
+  days.forEach((d, r) => { for (let h = 0; h < 24; h++) cells.push({ r, h, day: d, e: byHour.get(`${d.key}|${h}`) || null }); });
+  return { days, cells };
+}
+
+function hourPanel(c) {
+  if (!c || !c.e) return `<div class="hour"><h3>Choose an hour</h3><p class="none">Click a square, or use the arrow keys.</p></div>`;
+  const e = c.e, top = [...(e.narratives || [])].sort((a, b) => b.share - a.share).slice(0, 4);
+  return `<div class="hour" aria-live="polite">
+    <h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}, ${String(c.h).padStart(2, "0")}:00</h3>
+    <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(e.mood || toneLabel(e.sentiment))}</span></p>
+    ${top.length ? `<ol>${top.map(n => `<li><span dir="auto">${esc(n.title)}</span><span>${Math.round((n.share || 0) * 100)}%</span></li>`).join("")}</ol>` : ""}
+  </div>`;
+}
+
+function weekHTML() {
+  const { days, cells } = weekData();
+  if (state.sel === null || !cells[state.sel]?.e) {
+    const last = cells.findIndex(c => c.e && c.day.key === days[0].key && c.h === Math.max(...cells.filter(x => x.e && x.day.key === days[0].key).map(x => x.h)));
+    state.sel = last >= 0 ? last : cells.findIndex(c => c.e);
+  }
+  let g = `<span></span>` + Array.from({ length: 24 }, (_, h) => `<span class="hr">${h % 6 === 0 ? String(h).padStart(2, "0") : ""}</span>`).join("");
+  cells.forEach((c, i) => {
+    if (c.h === 0) g += `<span class="day">${esc(c.day.label)}</span>`;
+    g += c.e
+      ? `<span class="tile on${i === state.sel ? " sel" : ""}" data-i="${i}" style="background:${toneColor(c.e.sentiment)}" title="${esc(c.day.label)} ${String(c.h).padStart(2, "0")}:00"></span>`
+      : `<span class="tile"></span>`;
+  });
+  return `
+  <section aria-labelledby="h-week">
+    <div class="sec-head"><div><h2 id="h-week">The past ${days.length === 14 ? "two weeks" : "week"}</h2>
+      <p class="sub">Each square is one hour, in Damascus time, colored by how people felt.</p></div></div>
+    <div class="week">
+      <div>
+        <div class="mosaic" id="mosaic" tabindex="0" role="group" aria-label="Hourly mood. Use arrow keys to move between hours.">${g}</div>
+        <div class="legend"><span>Negative</span><i></i><span>Positive</span></div>
+      </div>
+      <div id="hour">${hourPanel(cells[state.sel])}</div>
+    </div>
+  </section>`;
+}
+
+/* ---------- about ---------- */
+function aboutHTML() {
+  const L = state.latest;
+  const label = { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group",
+                  news: "News site", youtube: "YouTube comments", x: "X posts" };
+  const rows = (L.sources || []).map(s => `<tr><td dir="auto">${esc(s.name)}</td><td>${label[s.platform] || esc(s.platform)}</td><td>${
+    s.ok ? `Working, ${s.recent ?? s.fetched} recent` : `<span class="bad">Not working: ${esc(s.error || "unknown error")}</span>`}</td></tr>`).join("");
+  return `
+  <section id="about">
+    <details class="about">
+      <summary><span class="chev" aria-hidden="true">▶</span>About this tracker and its sources</summary>
+      <div class="about-body">
+        <div class="method">
+          <p><strong>Every hour</strong> an automated job collects recent public posts, removes duplicates and off-topic items, and asks an AI model (${esc(L.model || "Claude")}) to group them into stories and describe their tone.</p>
+          <p><strong>People and outlets are kept apart.</strong> Outlets are channels and news sites. People are comments under posts and videos, messages in public group chats, posts by individuals, and emoji reactions.</p>
+          <p><strong>Tone is not truth.</strong> A story appearing here means people are saying it, not that it is accurate.</p>
+          <p><strong>This is not all Syrians.</strong> Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen.</p>
+          <p><strong>Privacy.</strong> Only aggregate patterns are shown. Individual users are never named, quoted or profiled, and posts by private people are not linked.</p>
+          <p><strong>AI can misread</strong> sarcasm, dialect and context. Treat tone as a rough indicator and read the linked examples.</p>
+        </div>
+        ${rows ? `<table><thead><tr><th>Source</th><th>Type</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>` : ""}
+      </div>
+    </details>
+  </section>`;
+}
+
+/* ---------- page ---------- */
+function heroHTML() {
+  const L = state.latest, o = L.overall || {}, st = L.stats || {};
+  const pub = has(o.public_sentiment) && (st.public_posts || 0) > 0;
+  const tone = pub ? o.public_sentiment : o.sentiment;
+  const word = pub ? (o.public_mood || toneLabel(tone)) : (o.mood || toneLabel(tone));
+  const voices = pub
+    ? `${st.public_posts} voices from people and ${st.outlet_posts} from outlets, last ${L.window_hours || 24} hours.`
+    : `${st.posts_analyzed ?? 0} posts from ${st.sources_ok ?? 0} sources, last ${L.window_hours || 24} hours.`;
+  return `
+  <div class="hero">
+    <p class="eyebrow">${pub ? "How people are reacting right now" : "How outlets are covering Syria right now"}</p>
+    <p class="mood" dir="auto" style="--tone:${toneColor(tone)}">${esc(word)}</p>
+    <p class="brief" dir="auto">${esc(o.brief)}</p>
+    <p class="meta">${pub && o.mood ? `<i style="background:${toneColor(o.sentiment)}"></i>Outlets meanwhile: <span dir="auto">${esc(o.mood)}</span>. ` : ""}${voices}</p>
+    ${pub ? "" : `<p class="hint">Only outlets are being read so far. Turn on YouTube, Telegram comments or X in config.yaml to see how people react.</p>`}
+  </div>`;
+}
+
+function render() {
+  const L = state.latest;
+  if (L.site_title) { $("#site-title").textContent = L.site_title; document.title = L.site_title; }
+  const checked = L.checked_at || L.generated_at;
   const stale = Date.now() - new Date(checked) > 3 * 3600000;
   $("#updated").innerHTML = stale
-    ? `<span class="stale">Last update ${ago(checked)}. Updates may have stopped; check the Actions tab on GitHub.</span>`
-    : `Updated ${ago(checked)}, ${clock(checked, { hour: "2-digit", minute: "2-digit" })} Damascus time`;
+    ? `<span class="stale">Last update ${ago(checked)}; updates may have stopped</span>`
+    : `Updated ${ago(checked)}`;
+  const aboutOpen = $("details.about")?.open;
+  $("#app").innerHTML = heroHTML() + storiesHTML() + weekHTML() + aboutHTML();
+  if (aboutOpen) $("details.about").open = true;
+  bind();
+  if (state.first) {
+    state.first = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => $("#stories")?.classList.remove("pending")));
+  }
+}
 
-  const o = latest.overall || {};
-  const st = latest.stats || {};
-  const nars = latest.narratives || [];
-  $("#app").innerHTML = `
-    <div class="hero">
-      <div>
-        <p class="now-label">The tone of discussion right now</p>
-        <div>
-        <p class="mood" dir="auto" style="--tone:${toneColor(o.sentiment)}">${esc(o.mood || toneLabel(o.sentiment))}</p>
-        </div>
-        <p class="brief" dir="auto">${esc(o.brief)}</p>
-        <p class="facts">Based on ${st.posts_analyzed ?? 0} posts from ${st.sources_ok ?? 0} of ${st.sources_total ?? 0} sources over the last ${latest.window_hours || 24} hours.</p>
-      </div>
-      <div class="mosaic-box">
-        ${mosaic(history, latest)}
-        <p class="mosaic-cap" id="cap">Each square is one hour, in Damascus time. Point at a square to see that hour.</p>
-        <div class="scale"><span>Negative</span><i></i><span>Positive</span></div>
-      </div>
-    </div>
-
-    <section aria-labelledby="h-nar">
-      <h2 id="h-nar">What people are discussing</h2>
-      <p class="sub">${nars.length} narratives, largest first.</p>
-      ${nars.length ? nars.map(n => narrativeHTML(n, history)).join("") : `<p>No clear narratives in this update.</p>`}
-    </section>
-
-    <section aria-labelledby="h-src">
-      <h2 id="h-src">Sources in this update</h2>
-      <p class="sub">To add or remove sources, edit config.yaml in the repository.</p>
-      ${sourcesHTML(latest.sources)}
-    </section>
-
-    <section aria-labelledby="h-method">
-      <h2 id="h-method">How this works, and its limits</h2>
-      <div class="method">
-        <p><strong>Every hour</strong> an automated job collects recent public posts from the sources above, removes duplicates and off-topic items, and asks an AI model (${esc(latest.model || "Claude")}) to group them into narratives and describe their tone.</p>
-        <p><strong>Tone is not truth.</strong> A narrative appearing here means people are saying it, not that it is accurate. Claims are summarised as claims.</p>
-        <p><strong>This is not all Syrians.</strong> Online discussion over-represents people with good connectivity, diaspora communities and media outlets. The picture depends heavily on which sources are chosen.</p>
-        <p><strong>Privacy.</strong> Only aggregate patterns are shown. Individual users are never named or profiled, and posts by private people are not linked.</p>
-        <p><strong>Copy-paste messaging</strong> is merged and counted, and flagged when it looks coordinated.</p>
-        <p><strong>AI can misread</strong> sarcasm, dialect and context. Treat scores as a rough indicator and read the linked examples.</p>
-      </div>
-    </section>`;
-
-  const cap = $("#cap");
-  document.querySelectorAll(".tile.on").forEach(t => {
-    t.addEventListener("mouseenter", () => cap.textContent = t.dataset.cap);
-    t.addEventListener("click", () => cap.textContent = t.dataset.cap);
+function bind() {
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+    state.sort = b.dataset.sort;
+    const list = $("#stories");
+    list.innerHTML = sorted(state.latest.narratives || []).map(storyHTML).join("");
+    document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    bindRows();
+  }));
+  bindRows();
+  const mosaic = $("#mosaic");
+  if (!mosaic) return;
+  const { cells } = weekData();
+  const select = (i) => {
+    if (i < 0 || i >= cells.length || !cells[i].e) return false;
+    state.sel = i;
+    mosaic.querySelectorAll(".tile.sel").forEach(t => t.classList.remove("sel"));
+    mosaic.querySelector(`[data-i="${i}"]`)?.classList.add("sel");
+    $("#hour").innerHTML = hourPanel(cells[i]);
+    return true;
+  };
+  mosaic.addEventListener("click", (e) => { const t = e.target.closest(".tile.on"); if (t) select(Number(t.dataset.i)); });
+  mosaic.addEventListener("keydown", (e) => {
+    const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 24, ArrowUp: -24 }[e.key];
+    if (!step) return;
+    e.preventDefault();
+    for (let i = state.sel + step; i >= 0 && i < cells.length; i += step) if (select(i)) break;
   });
 }
 
+function bindRows() {
+  document.querySelectorAll(".story .row").forEach(r => r.addEventListener("click", () => {
+    const art = r.closest(".story"), id = art.dataset.id;
+    const open = !art.classList.contains("open");
+    art.classList.toggle("open", open);
+    r.setAttribute("aria-expanded", open);
+    open ? state.open.add(id) : state.open.delete(id);
+  }));
+}
+
+function renderEmpty(sources) {
+  $("#updated").textContent = "Waiting for the first update";
+  $("#app").innerHTML = `<div class="empty"><h2>No results yet</h2>
+    <p>The first update runs within an hour of setup. To run it now, open your repository on GitHub, go to the Actions tab, choose “Update narratives” and press “Run workflow”.</p>
+    <p class="sub">This page checks for new results every 10 minutes.</p></div>`;
+  if (sources && sources.length) { state.latest = { sources }; $("#app").insertAdjacentHTML("beforeend", aboutHTML()); $("details.about").open = true; }
+}
+
+async function getJSON(path) {
+  const r = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
 async function load() {
   try {
     const latest = await getJSON("data/latest.json");
+    if (!latest.generated_at) return renderEmpty(latest.sources);
     let history = [];
     try { history = await getJSON("data/history.json"); } catch (e) {}
-    if (!latest.generated_at) return renderEmpty(latest.sources);
-    render(latest, history);
-  } catch (e) {
-    renderEmpty();
-  }
+    state.latest = latest; state.history = history;
+    render();
+  } catch (e) { renderEmpty(); }
 }
 load();
 setInterval(load, 10 * 60 * 1000);
