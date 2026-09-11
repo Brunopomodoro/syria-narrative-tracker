@@ -1,0 +1,99 @@
+# =============================================================
+#  Syria Narrative Tracker - settings
+#  This is the only file you normally need to edit.
+#  Lines starting with # are notes and are ignored.
+#  Keep the spacing (indentation) exactly as it is.
+# =============================================================
+
+site_title: "Syria narrative tracker"
+
+# How far back to look on every run, in hours. 24 = "the last day".
+window_hours: 24
+
+# Which Claude model does the analysis:
+#   claude-haiku-4-5-20251001  -> lowest cost, fast (current setting)
+#   claude-sonnet-5            -> about twice the cost, more nuanced reading
+#                                 of dialect, sarcasm and competing framings
+model: "claude-haiku-4-5-20251001"
+
+# Language of the summaries on the website: "en" (English) or "ar" (Arabic).
+# Narrative titles are always shown in both languages.
+summary_language: "en"
+
+# Cost control. These two numbers decide most of your monthly bill.
+#   max_posts: the most posts sent to Claude per run
+#   max_chars_per_post: long posts are cut to this length
+max_posts: 150
+max_chars_per_post: 400
+
+# Hours of history kept for the trend views (336 = 14 days).
+history_hours: 336
+
+# Words used to keep only Syria-related posts from general sources.
+# Only applied to sources below that have "filter: true".
+keywords:
+  - سوريا
+  - سورية
+  - سوري
+  - السوريين
+  - دمشق
+  - حلب
+  - حمص
+  - حماة
+  - إدلب
+  - درعا
+  - السويداء
+  - اللاذقية
+  - طرطوس
+  - دير الزور
+  - الرقة
+  - الحسكة
+  - القامشلي
+  - الشرع
+  - Syria
+  - Syrian
+  - Damascus
+  - Aleppo
+  - Idlib
+
+# -------------------------------------------------------------
+#  SOURCES
+# -------------------------------------------------------------
+
+# 1) Public Telegram channels - free, no key needed.
+#    "name" is the part after t.me/  (https://t.me/SANANewsEnglish -> SANANewsEnglish)
+#    Test a channel by opening https://t.me/s/NAME in your browser.
+#    If you see posts there, it will work here.
+#    Aim for balance: official, opposition, Kurdish, Druze, Alawite-coast,
+#    independent and local community channels, in Arabic and English.
+telegram_channels:
+  - name: SANANewsEnglish
+    label: "SANA - state news agency (EN)"
+    filter: false
+  - name: Enabbaladi_en
+    label: "Enab Baladi - independent (EN)"
+    filter: false
+
+# 2) News websites through RSS - free, no key needed. Adds news context.
+rss_feeds:
+  - url: https://feeds.bbci.co.uk/arabic/rss.xml
+    label: "BBC Arabic"
+    filter: true
+  - url: https://www.enabbaladi.net/feed
+    label: "Enab Baladi - independent (AR)"
+    filter: false
+
+# 3) YouTube comments - free with a Google API key (GUIDE.md, extra A).
+#    This is the best free source of ordinary people's voices.
+youtube:
+  enabled: false
+  search_terms: ["سوريا", "سوريا اليوم"]
+  videos_per_term: 4
+  comments_per_video: 20
+
+# 4) X / Twitter - paid per post read (GUIDE.md, extra B).
+#    20 posts per hour is about 14,400 reads a month.
+x_twitter:
+  enabled: false
+  query: "(سوريا OR سورية OR Syria) -is:retweet"
+  max_results: 20

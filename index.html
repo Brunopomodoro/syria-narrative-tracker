@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syria narrative tracker</title>
+<meta name="description" content="Hourly overview of the narratives circulating in public Syrian online discussion, and the tone around them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F3F5F2;
+    --ink: #1D262B;
+    --muted: #5B666A;
+    --rule: #D3D9D5;
+    --neg: #A3303C;
+    --neu: #A7ABA3;
+    --pos: #2C7663;
+    --brass: #8A6420;
+    --tile-empty: transparent;
+    --sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --kufi: "Noto Kufi Arabic", "IBM Plex Sans Arabic", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #172024; --ink: #E7ECE8; --muted: #9AA5A8; --rule: #2E3A3F;
+            --neg: #D8606B; --neu: #6F7670; --pos: #4FAE94; --brass: #D2A95A; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans);
+         font-size: 17px; line-height: 1.55; }
+  [lang="ar"], .ar { font-family: "IBM Plex Sans Arabic", var(--sans); }
+  a { color: inherit; text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  a:hover { color: var(--brass); }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+         flex-wrap: wrap; padding: 22px 0 18px; border-bottom: 1px solid var(--rule); }
+  .top h1 { font-size: 1rem; font-weight: 600; margin: 0; letter-spacing: .01em; }
+  .top p { margin: 0; color: var(--muted); font-size: .9rem; }
+  .stale { color: var(--neg); }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; padding: 44px 0 40px;
+          border-bottom: 1px solid var(--rule); align-items: start; }
+  .now-label { color: var(--muted); font-size: .9rem; margin: 0 0 4px; }
+  .mood { font-size: clamp(3rem, 8vw, 5.6rem); line-height: 1.05; font-weight: 600; margin: 0 0 24px;
+          letter-spacing: -.02em; display: inline-block; padding-bottom: 10px;
+          border-bottom: 8px solid var(--tone, var(--neu)); }
+  .brief { max-width: 60ch; margin: 0 0 14px; font-size: 1.08rem; }
+  .facts { color: var(--muted); font-size: .92rem; margin: 0; }
+
+  .mosaic-box { min-width: 0; }
+  .mosaic { display: grid; grid-template-columns: 38px repeat(24, 15px); gap: 3px; align-items: center; }
+  .mosaic .hr, .mosaic .day { font-size: .72rem; color: var(--muted); line-height: 1; }
+  .mosaic .hr { text-align: left; height: 14px; }
+  .tile { width: 15px; height: 15px; border-radius: 2px; background: var(--tile-empty);
+          box-shadow: inset 0 0 0 1px var(--rule); }
+  .tile.on { box-shadow: none; cursor: default; }
+  .tile.now { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .mosaic-cap { font-size: .85rem; color: var(--muted); margin: 12px 0 0; min-height: 2.6em; max-width: 42ch; }
+  .scale { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--muted); margin-top: 10px; }
+  .scale i { display: inline-block; width: 90px; height: 8px; border-radius: 2px;
+             background: linear-gradient(90deg, var(--neg), var(--neu), var(--pos)); }
+
+  section { padding: 40px 0; border-bottom: 1px solid var(--rule); }
+  h2 { font-size: 1.35rem; font-weight: 600; margin: 0 0 4px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0 0 24px; font-size: .95rem; }
+
+  .nar { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 8px 40px;
+         padding: 28px 0; border-top: 1px solid var(--rule); }
+  .nar:first-of-type { border-top: 0; padding-top: 8px; }
+  .nar-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline;
+              gap: 24px; flex-wrap: wrap; }
+  .nar h3 { font-size: 1.45rem; line-height: 1.25; font-weight: 600; margin: 0; letter-spacing: -.01em; max-width: 32ch; }
+  .nar .t-ar { font-family: var(--kufi); font-weight: 700; font-size: 1.2rem; margin: 0 0 0 auto; color: var(--muted); }
+  .nar-body p { margin: 0 0 12px; max-width: 68ch; }
+  .framings { margin: 0 0 12px; padding: 0; list-style: none; }
+  .framings li { padding-left: 14px; position: relative; margin-bottom: 4px; max-width: 66ch; color: var(--muted); font-size: .95rem; }
+  .framings li::before { content: ""; position: absolute; left: 0; top: .72em; width: 6px; height: 1px; background: var(--muted); }
+  .flag { color: var(--brass); font-size: .93rem; }
+  .seen { font-size: .88rem; color: var(--muted); }
+  .seen a { margin-right: 10px; }
+
+  .nar-side { font-size: .85rem; color: var(--muted); display: grid; gap: 16px; align-content: start; padding-top: 4px; }
+  .meter-label { display: flex; justify-content: space-between; margin-bottom: 5px; gap: 8px; }
+  .meter-label b { color: var(--ink); font-weight: 500; }
+  .bar { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--ink); }
+  .track { position: relative; height: 6px; border-radius: 3px;
+           background: linear-gradient(90deg, var(--neg), var(--neu), var(--pos)); opacity: .85; }
+  .track i { position: absolute; top: -4px; width: 4px; height: 14px; margin-left: -2px; background: var(--ink); border-radius: 1px; }
+  .spark { display: block; width: 100%; height: 30px; }
+  .spark polyline { fill: none; stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+
+  .empty { padding: 72px 0; max-width: 60ch; }
+  .empty h2 { font-size: 1.8rem; margin-bottom: 12px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th, td { text-align: left; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-weight: 500; color: var(--muted); }
+  .bad { color: var(--neg); }
+  .method { columns: 2 320px; column-gap: 48px; }
+  .method p { margin: 0 0 14px; break-inside: avoid; color: var(--muted); font-size: .95rem; }
+  .method strong { color: var(--ink); font-weight: 500; }
+  footer { padding: 28px 0 48px; color: var(--muted); font-size: .85rem; }
+
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .nar { grid-template-columns: 1fr; }
+    .nar-side { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 16px; }
+    .mosaic { grid-template-columns: 30px repeat(24, minmax(8px, 1fr)); gap: 2px; }
+    .tile { width: 100%; height: 11px; }
+    .nar-side { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1 id="site-title">Syria narrative tracker</h1>
+    <p id="updated" aria-live="polite">Loading the latest update…</p>
+  </header>
+  <main id="app"></main>
+  <footer>
+    Summaries are generated automatically by an AI model from public posts. They describe what is being said, not what is true.
+  </footer>
+</div>
+
+<script>
+const TZ = "Asia/Damascus";
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
+
+function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+function hex(h) { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); }
+function mix(a, b, t) { return a.map((v, i) => Math.round(v + (b[i] - v) * t)); }
+function toneColor(s) {
+  s = Math.max(-1, Math.min(1, Number(s) || 0));
+  const neg = hex(css("--neg")), neu = hex(css("--neu")), pos = hex(css("--pos"));
+  const c = s < 0 ? mix(neu, neg, -s) : mix(neu, pos, s);
+  return `rgb(${c.join(",")})`;
+}
+function toneLabel(s) {
+  if (s <= -0.5) return "Strongly negative";
+  if (s <= -0.15) return "Leaning negative";
+  if (s < 0.15) return "Mostly neutral";
+  if (s < 0.5) return "Leaning positive";
+  return "Strongly positive";
+}
+function ago(iso) {
+  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  if (m < 1) return "just now";
+  if (m < 60) return `${m} min ago`;
+  const h = Math.round(m / 60);
+  return h < 48 ? `${h} h ago` : `${Math.round(h / 24)} days ago`;
+}
+function clock(iso, opts) {
+  return new Intl.DateTimeFormat("en-GB", { timeZone: TZ, ...opts }).format(new Date(iso));
+}
+function hourKey(iso) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric",
+    month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
+  return { day: `${p.year}-${p.month}-${p.day}`, hour: Number(p.hour) };
+}
+
+async function getJSON(path) {
+  const r = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+function renderEmpty(sources) {
+  $("#updated").textContent = "Waiting for the first update";
+  $("#app").innerHTML = `
+    <div class="empty">
+      <h2>No results yet</h2>
+      <p>The first update runs within an hour of setup. To run it now, open your repository on GitHub, go to the Actions tab, choose “Update narratives” and press “Run workflow”.</p>
+      <p>This page checks for new results every 10 minutes.</p>
+      ${sources && sources.length ? `<h2 style="font-size:1.2rem;margin-top:32px">Source check</h2><p class="sub">The last run found no usable posts. Fix the sources marked “Not working” in config.yaml.</p>${sourcesHTML(sources)}` : ""}
+    </div>`;
+}
+
+function mosaic(history, latest) {
+  const byHour = new Map();
+  for (const h of history) {
+    const k = hourKey(h.time);
+    byHour.set(`${k.day}|${k.hour}`, h);
+  }
+  const nowK = hourKey(new Date().toISOString());
+  const days = [];
+  const spanDays = history.length > 24 * 7 ? 14 : 7;
+  for (let i = 0; i < spanDays; i++) {
+    const d = new Date(Date.now() - i * 86400000);
+    days.push({ key: hourKey(d.toISOString()).day, label: clock(d.toISOString(), { weekday: "short" }) });
+  }
+  let html = `<div class="mosaic" role="img" aria-label="Tone of discussion for each hour over the last ${spanDays} days, newest day at the top">`;
+  html += `<span></span>` + Array.from({ length: 24 }, (_, h) => `<span class="hr">${h % 6 === 0 ? String(h).padStart(2, "0") : ""}</span>`).join("");
+  for (const d of days) {
+    html += `<span class="day">${esc(d.label)}</span>`;
+    for (let h = 0; h < 24; h++) {
+      const e = byHour.get(`${d.key}|${h}`);
+      const isNow = d.key === nowK.day && h === nowK.hour;
+      if (e) {
+        const top = (e.narratives || [])[0];
+        const cap = `${d.label} ${String(h).padStart(2, "0")}:00: ${e.mood || toneLabel(e.sentiment)}, ${e.posts} posts${top ? `. Biggest story: ${top.title}` : ""}`;
+        html += `<span class="tile on${isNow ? " now" : ""}" style="background:${toneColor(e.sentiment)}" data-cap="${esc(cap)}" title="${esc(cap)}"></span>`;
+      } else {
+        html += `<span class="tile${isNow ? " now" : ""}"></span>`;
+      }
+    }
+  }
+  html += `</div>`;
+  return html;
+}
+
+function sparkline(id, history) {
+  const pts = history.slice(-48).map(h => (h.narratives || []).find(n => n.id === id)?.volume || 0);
+  if (pts.length < 2) return `<svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"></svg>`;
+  const max = Math.max(...pts, 1);
+  const coords = pts.map((v, i) => `${(i / (pts.length - 1)) * 100},${28 - (v / max) * 26}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><polyline points="${coords}"/></svg>`;
+}
+
+function trend(n, history) {
+  if (Date.now() - new Date(n.first_seen) < 2.5 * 3600000) return "New";
+  const past = history.slice(-13, -1).map(h => (h.narratives || []).find(x => x.id === n.id)?.share || 0);
+  if (!past.length) return "New";
+  const avg = past.reduce((a, b) => a + b, 0) / past.length;
+  if (avg === 0) return "Returning";
+  const r = n.share / avg;
+  return r > 1.3 ? "Rising" : r < 0.7 ? "Fading" : "Steady";
+}
+
+function narrativeHTML(n, history) {
+  const pct = Math.round((n.share || 0) * 100);
+  const pos = ((Number(n.sentiment) + 1) / 2) * 100;
+  const framings = (n.framings || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
+  const flags = (n.flags || []).length ? `<p class="flag" dir="auto">Watch for: ${(n.flags).map(esc).join("; ")}</p>` : "";
+  const links = (n.examples || []).map(e => safeUrl(e.url) ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a>` : "").join("");
+  const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
+  const feelings = (n.emotions || []).length ? `<p class="seen" dir="auto">Feelings expressed: ${n.emotions.map(esc).join(", ")}</p>` : "";
+  return `
+  <article class="nar">
+    <div class="nar-head">
+      <h3 dir="auto">${esc(n.title)}</h3>
+      ${n.title_ar ? `<p class="t-ar" lang="ar" dir="rtl">${esc(n.title_ar)}</p>` : ""}
+    </div>
+    <div class="nar-body">
+      <p dir="auto">${esc(n.summary)}</p>
+      ${framings ? `<ul class="framings" aria-label="How it is framed">${framings}</ul>` : ""}
+      ${flags}
+      ${feelings}
+      <p class="seen">${links ? `Examples: ${links}` : ""}${others.length ? `${links ? "<br>" : ""}Also seen in ${others.map(esc).join(", ")}` : ""}</p>
+    </div>
+    <div class="nar-side">
+      <div>
+        <div class="meter-label"><span>Share of posts</span><b>${pct}%</b></div>
+        <div class="bar"><i style="width:${Math.max(2, pct)}%"></i></div>
+      </div>
+      <div>
+        <div class="meter-label"><span>Tone</span><b>${toneLabel(n.sentiment)}</b></div>
+        <div class="track" role="img" aria-label="Tone ${n.sentiment} on a scale from -1 to 1"><i style="left:${pos}%"></i></div>
+      </div>
+      <div>
+        <div class="meter-label"><span>Last 48 updates</span><b>${trend(n, history)}</b></div>
+        ${sparkline(n.id, history)}
+      </div>
+    </div>
+  </article>`;
+}
+
+function sourcesHTML(sources) {
+  const label = { telegram: "Telegram", news: "News site", youtube: "YouTube", x: "X" };
+  return `<table><thead><tr><th>Source</th><th>Type</th><th>Status</th></tr></thead><tbody>${
+    (sources || []).map(s => `<tr><td dir="auto">${esc(s.name)}</td><td>${label[s.platform] || esc(s.platform)}</td><td>${
+      s.ok ? `Working, ${s.recent ?? s.fetched} recent posts` : `<span class="bad">Not working: ${esc(s.error || "unknown error")}</span>`
+    }</td></tr>`).join("")}</tbody></table>`;
+}
+
+function render(latest, history) {
+  if (latest.site_title) { $("#site-title").textContent = latest.site_title; document.title = latest.site_title; }
+  const checked = latest.checked_at || latest.generated_at;
+  const stale = Date.now() - new Date(checked) > 3 * 3600000;
+  $("#updated").innerHTML = stale
+    ? `<span class="stale">Last update ${ago(checked)}. Updates may have stopped; check the Actions tab on GitHub.</span>`
+    : `Updated ${ago(checked)}, ${clock(checked, { hour: "2-digit", minute: "2-digit" })} Damascus time`;
+
+  const o = latest.overall || {};
+  const st = latest.stats || {};
+  const nars = latest.narratives || [];
+  $("#app").innerHTML = `
+    <div class="hero">
+      <div>
+        <p class="now-label">The tone of discussion right now</p>
+        <div>
+        <p class="mood" dir="auto" style="--tone:${toneColor(o.sentiment)}">${esc(o.mood || toneLabel(o.sentiment))}</p>
+        </div>
+        <p class="brief" dir="auto">${esc(o.brief)}</p>
+        <p class="facts">Based on ${st.posts_analyzed ?? 0} posts from ${st.sources_ok ?? 0} of ${st.sources_total ?? 0} sources over the last ${latest.window_hours || 24} hours.</p>
+      </div>
+      <div class="mosaic-box">
+        ${mosaic(history, latest)}
+        <p class="mosaic-cap" id="cap">Each square is one hour, in Damascus time. Point at a square to see that hour.</p>
+        <div class="scale"><span>Negative</span><i></i><span>Positive</span></div>
+      </div>
+    </div>
+
+    <section aria-labelledby="h-nar">
+      <h2 id="h-nar">What people are discussing</h2>
+      <p class="sub">${nars.length} narratives, largest first.</p>
+      ${nars.length ? nars.map(n => narrativeHTML(n, history)).join("") : `<p>No clear narratives in this update.</p>`}
+    </section>
+
+    <section aria-labelledby="h-src">
+      <h2 id="h-src">Sources in this update</h2>
+      <p class="sub">To add or remove sources, edit config.yaml in the repository.</p>
+      ${sourcesHTML(latest.sources)}
+    </section>
+
+    <section aria-labelledby="h-method">
+      <h2 id="h-method">How this works, and its limits</h2>
+      <div class="method">
+        <p><strong>Every hour</strong> an automated job collects recent public posts from the sources above, removes duplicates and off-topic items, and asks an AI model (${esc(latest.model || "Claude")}) to group them into narratives and describe their tone.</p>
+        <p><strong>Tone is not truth.</strong> A narrative appearing here means people are saying it, not that it is accurate. Claims are summarised as claims.</p>
+        <p><strong>This is not all Syrians.</strong> Online discussion over-represents people with good connectivity, diaspora communities and media outlets. The picture depends heavily on which sources are chosen.</p>
+        <p><strong>Privacy.</strong> Only aggregate patterns are shown. Individual users are never named or profiled, and posts by private people are not linked.</p>
+        <p><strong>Copy-paste messaging</strong> is merged and counted, and flagged when it looks coordinated.</p>
+        <p><strong>AI can misread</strong> sarcasm, dialect and context. Treat scores as a rough indicator and read the linked examples.</p>
+      </div>
+    </section>`;
+
+  const cap = $("#cap");
+  document.querySelectorAll(".tile.on").forEach(t => {
+    t.addEventListener("mouseenter", () => cap.textContent = t.dataset.cap);
+    t.addEventListener("click", () => cap.textContent = t.dataset.cap);
+  });
+}
+
+async function load() {
+  try {
+    const latest = await getJSON("data/latest.json");
+    let history = [];
+    try { history = await getJSON("data/history.json"); } catch (e) {}
+    if (!latest.generated_at) return renderEmpty(latest.sources);
+    render(latest, history);
+  } catch (e) {
+    renderEmpty();
+  }
+}
+load();
+setInterval(load, 10 * 60 * 1000);
+</script>
+</body>
+</html>
