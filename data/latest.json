@@ -3,296 +3,87 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-18T05:56:36Z",
- "checked_at": "2026-09-18T05:56:36Z",
+ "generated_at": "2026-09-18T11:17:40Z",
+ "checked_at": "2026-09-18T11:17:40Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 31,
+  "posts_analyzed": 27,
   "public_posts": 10,
-  "outlet_posts": 21,
+  "outlet_posts": 17,
   "reactions_posts": 0,
-  "unique_posts": 31,
+  "unique_posts": 27,
   "sources_ok": 4,
   "sources_total": 4,
   "platforms": {
+   "telegram": 15,
    "news": 2,
-   "telegram": 19,
    "x": 10
   }
  },
  "overall": {
-  "sentiment": 0.6,
-  "mood": "Diplomatic",
-  "mood_ar": "دبلوماسي",
-  "public_sentiment": -0.3,
-  "public_mood": "Divided",
-  "public_mood_ar": "منقسم",
-  "brief": "State media presents Syria as an integrated regional and international partner, highlighting diplomatic support, refugee coordination, and artist returns as symbols of national healing. Public commentary is fragmented: some celebrate Assad's fall and Asala Nasri's return as revolutionary victories, others criticize economic management (hidden restaurant prices, diesel subsidies), sectarian policies, and territorial disputes with opposition-held areas. Few public voices directly engage with the diplomatic narrative.",
-  "brief_ar": "تقدم وسائل الإعلام الرسمية سوريا كشريك إقليمي ودولي متكامل، مسلطة الضوء على الدعم الدبلوماسي وتنسيق العائدين واللاجئين وعودة الفنانين كرموز للشفاء الوطني. التعليقات العامة منقسمة: البعض يحتفي بسقوط الأسد وعودة أصالة نصري كانتصارات ثورية، والآخرون ينتقدون الإدارة الاقتصادية (أسعار المطاعم المخفية، دعم الديزل) والسياسات الطائفية والنزاعات الإقليمية مع المناطق التي تسيطر عليها المعارضة. قلة من الأصوات العامة تتفاعل مباشرة مع السرد الدبلوماسي."
+  "sentiment": 0.1,
+  "mood": "Neutral",
+  "mood_ar": "محايد",
+  "public_sentiment": -0.65,
+  "public_mood": "Angry",
+  "public_mood_ar": "غاضب",
+  "brief": "State media reports focus on cultural events, international cooperation, and security matters, maintaining a positive or neutral tone. Public discourse is sharply divided and predominantly negative, with commenters expressing anger over fuel prices, sectarian tensions, corruption allegations, and governance failures. While some posts celebrate cultural returns and agricultural heritage, the dominant public voices are characterized by deep frustration with economic conditions, regional inequality, and perceived nepotism in business and security sectors.",
+  "brief_ar": "تركز وسائل الإعلام الرسمية على الأحداث الثقافية والتعاون الدولي والقضايا الأمنية، وتحافظ على نبرة إيجابية أو محايدة. الخطاب العام حاد للغاية وسلبي في المقام الأول، حيث يعبر المعلقون عن غضبهم من أسعار الوقود والتوترات الطائفية والاتهامات الفساد وإخفاقات الحكم. بينما يحتفل بعض المنشورات بعودة ثقافية وتراث زراعي، فإن الأصوات العامة السائدة تتميز بالإحباط العميق من الأوضاع الاقتصادية والتفاوت الإقليمي والمحسوبية المتصورة في قطاعات الأعمال والأمن."
  },
  "narratives": [
   {
-   "id": "international-cooperation-expansion",
-   "title": "Syria's Diplomatic Integration and Regional Legitimacy",
-   "title_ar": "التكامل الدبلوماسي السوري والشرعية الإقليمية",
-   "summary": "State media reports extensive international endorsement of Syria's government at UN forums, with representatives from Turkey, France, Oman, Pakistan, Panama, Latvia, and Greece expressing support for Syrian sovereignty, territorial integrity, and international reintegration. Syrian officials present the country as a stabilizing force against regional threats, particularly Israeli aggression. The narrative emphasizes that Syria has matched diplomatic words with actions.",
-   "summary_ar": "تقرر وسائل الإعلام الرسمية موافقة دولية واسعة على حكومة سوريا في المنتديات الأممية، حيث أعرب ممثلو تركيا وفرنسا وعمان وباكستان وبنما ولاتفيا واليونان عن دعمهم للسيادة السورية والسلامة الإقليمية وإعادة الاندماج الدولي. يقدم المسؤولون السوريون البلاد كقوة مستقرة ضد التهديدات الإقليمية، خاصة العدوان الإسرائيلي. يركز السرد على أن سوريا طابقت بين الكلام الدبلوماسي والأفعال.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
+   "id": "cultural-reunion-and-healing",
+   "title": "Artist Cultural Return and Reunion with Audience",
+   "title_ar": "عودة الفنانة والاجتماع بالجمهور",
+   "summary": "State media and BBC Arabic report on Syrian singer Assala Nasri's return to Damascus stage after 15-16 years of absence, performing at al-Fayhaa Sports Hall to a large audience. The coverage emphasizes healing through art and cultural reunion as symbolic of Syria's recovery.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية و BBC Arabic عن عودة الفنانة السورية أصالة نصري إلى مسرح دمشق بعد غياب 15-16 سنة، حيث أقامت حفلها في قاعة الفيحاء الرياضية أمام جمهور كبير. يركز التغطية على الشفاء من خلال الفن والاجتماع الثقافي كرمز لتعافي سوريا.",
+   "public_reaction": "One commenter expresses skepticism about cultural gatherings as a symbol of healing, arguing that excluded regions in Aleppo, Hama, and Daraa are abandoned and that such performances represent misguided priorities.",
+   "public_reaction_ar": "علّق أحد المستخدمين بتشكك حول الحفلات الثقافية كرمز للشفاء، محتجاً بأن المناطق المستبعدة في حلب وحماة ودرعا مهملة وأن مثل هذه العروض تمثل أولويات مضللة.",
    "sentiment": 0.7,
-   "public_sentiment": null,
+   "public_sentiment": -0.4,
    "emotions": [
-    "confidence",
-    "pride"
+    "Joy",
+    "Nostalgia",
+    "Pride"
    ],
    "emotions_ar": [
-    "ثقة",
+    "فرح",
+    "حنين",
     "فخر"
    ],
    "framings": [
-    "Syria as regional stabilizer",
-    "international community support for Syrian sovereignty",
-    "Israeli aggression as destabilizing force",
-    "matched words with actions"
+    "Healing and recovery through art and music",
+    "National reunion and cultural restoration",
+    "Symbol of Syria's normalization"
    ],
    "framings_ar": [
-    "سوريا كمستقرة إقليمية",
-    "دعم المجتمع الدولي للسيادة السورية",
-    "العدوان الإسرائيلي كقوة مزعزعة للاستقرار",
-    "مطابقة الكلام بالأفعال"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 10,
-   "public_volume": 0,
-   "share": 0.323,
-   "engagement": 575,
-   "platforms": {
-    "telegram": 10
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77872",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-17T13:29:43Z"
-  },
-  {
-   "id": "refugee-return-and-reconstruction",
-   "title": "Housing Development and Refugee Return Coordination",
-   "title_ar": "تطوير الإسكان وتنسيق عودة اللاجئين",
-   "summary": "State media reports multiple discussions between Syrian government, World Bank, UNHCR, and Swedish representatives focused on facilitating voluntary, safe refugee returns and developing Syria's housing and mortgage finance sectors. These posts emphasize international technical cooperation and institutional development rather than concrete progress metrics.",
-   "summary_ar": "تقرر وسائل الإعلام الرسمية نقاشات متعددة بين الحكومة السورية والبنك الدولي والمفوضية السامية للاجئين والممثلين السويديين تركز على تسهيل عودة اللاجئين الطوعية والآمنة وتطوير قطاعات الإسكان والتمويل العقاري السورية. تؤكد هذه المشاركات على التعاون التقني الدولي والتطوير المؤسسي بدلاً من مقاييس التقدم الملموسة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.5,
-   "public_sentiment": null,
-   "emotions": [
-    "cooperation",
-    "institutional focus"
-   ],
-   "emotions_ar": [
-    "تعاون",
-    "تركيز مؤسسي"
-   ],
-   "framings": [
-    "voluntary and safe returns",
-    "World Bank technical assistance",
-    "housing finance sector development",
-    "coordination with international partners"
-   ],
-   "framings_ar": [
-    "عودات طوعية وآمنة",
-    "المساعدة التقنية للبنك الدولي",
-    "تطوير قطاع تمويل الإسكان",
-    "التنسيق مع الشركاء الدوليين"
+    "الشفاء والتعافي من خلال الفن والموسيقى",
+    "اجتماع وطني واستعادة ثقافية",
+    "رمز لتطبيع سوريا"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 4,
-   "public_volume": 0,
-   "share": 0.129,
-   "engagement": 235,
-   "platforms": {
-    "telegram": 4
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77878",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-17T21:28:06Z"
-  },
-  {
-   "id": "sectarian-tensions-and-territorial-disputes",
-   "title": "Sectarian Tensions and Opposition-Held Territory Control",
-   "title_ar": "التوترات الطائفية والسيطرة على المناطق التابعة للمعارضة",
-   "summary": "Public commenters raise concerns about government policies in Suwayda (implying sectarian targeting), territorial control by opposition forces (Idlib), and alleged sectarian violence during the recent conflict. One commenter frames government control as preferable because it prevents food and resource cutoffs, while another references historic sectarian violence against civilians by extremist groups. These posts suggest ongoing grievances about sectarian discrimination and territorial fragmentation.",
-   "summary_ar": "يثير المعلقون العموميون مخاوف بشأن السياسات الحكومية في السويداء (يعني استهداف طائفي)، والسيطرة الإقليمية من قبل قوات المعارضة (إدلب)، والعنف الطائفي المزعوم أثناء النزاع الأخير. يطرح معلق واحد السيطرة الحكومية كخيار أفضل لأنها تمنع قطع الغذاء والموارد، بينما يشير آخر إلى العنف الطائفي التاريخي ضد المدنيين من قبل المجموعات المتطرفة. تشير هذه المشاركات إلى استياءات جارية بشأن التمييز الطائفي والتفكك الإقليمي.",
-   "public_reaction": "Commenters express frustration with government policies toward minority regions like Suwayda, acknowledge food and security provisions from Damascus, but frame opposition-held territories (Idlib) as worse. Some reference historical sectarian atrocities to explain current divisions.",
-   "public_reaction_ar": "يعبر المعلقون عن الإحباط من السياسات الحكومية تجاه المناطق الأقلية مثل السويداء، ويعترفون بالمؤن الغذائية والأمنية من دمشق، لكنهم يطرحون المناطق التي تسيطر عليها المعارضة (إدلب) كأسوأ. يشير البعض إلى الفظائع الطائفية التاريخية لتفسير الانقسامات الحالية.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.4,
-   "emotions": [
-    "frustration",
-    "division",
-    "historical trauma"
-   ],
-   "emotions_ar": [
-    "إحباط",
-    "انقسام",
-    "صدمة تاريخية"
-   ],
-   "framings": [
-    "minority region governance concerns",
-    "territorial fragmentation",
-    "sectarian violence history",
-    "food security vs. ideological coercion"
-   ],
-   "framings_ar": [
-    "مخاوف حوكمة المناطق الأقلية",
-    "التفكك الإقليمي",
-    "تاريخ العنف الطائفي",
-    "الأمن الغذائي مقابل الإكراه الأيديولوجي"
-   ],
-   "flags": [
-    "territorial fragmentation claims",
-    "sectarian discrimination allegations"
-   ],
-   "flags_ar": [
-    "ادعاءات التفكك الإقليمي",
-    "ادعاءات التمييز الطائفي"
-   ],
-   "volume": 3,
-   "public_volume": 3,
-   "share": 0.097,
-   "engagement": 2,
-   "platforms": {
-    "x": 3
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-18T05:56:36Z"
-  },
-  {
-   "id": "unverified-allegations-and-judicial-proceedings",
-   "title": "Alleged Attack Planning Network and Judicial Claims",
-   "title_ar": "شبكة تخطيط هجمات مزعومة وادعاءات قضائية",
-   "summary": "Public commentary references Lebanese judicial allegations claiming a network planning attacks in Syria involving a Hezbollah member and a Syrian intelligence officer from the Assad era. The post explicitly notes that the event is confirmed but emphasizes lack of verified evidence linking it to Syrian oil sales narratives. Another post reports BBC allegations of Assad regime planning to kidnap an American journalist.",
-   "summary_ar": "تشير التعليقات العامة إلى ادعاءات قضائية لبنانية تدعي شبكة تخطط هجمات في سوريا تتضمن عنصر حزب الله وضابط استخبارات سوري من عهد الأسد. تؤكد المشاركة صراحة أن الحادثة مؤكدة لكن تؤكد على نقص الأدلة الموثوقة ربطها بسرديات بيع النفط السوري. تقرر مشاركة أخرى ادعاءات بي بي سي بأن نظام الأسد كان يخطط لاختطاف صحفي أمريكي.",
-   "public_reaction": "One commenter explicitly cautions against unverified claims, noting that while the Turkish ship incident is confirmed, linking it to Syrian oil sales lacks evidence. This suggests public skepticism toward speculation.",
-   "public_reaction_ar": "يحذر معلق واحد صراحة من الادعاءات غير الموثوقة، ويلاحظ أنه بينما حادثة السفينة التركية مؤكدة، فإن ربطها ببيع النفط السوري يفتقر إلى أدلة. يشير هذا إلى الشك العام تجاه التكهنات.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.2,
-   "emotions": [
-    "skepticism",
-    "caution"
-   ],
-   "emotions_ar": [
-    "تشكك",
-    "حذر"
-   ],
-   "framings": [
-    "alleged attack networks",
-    "judicial proceedings",
-    "intelligence officer involvement",
-    "unverified claims about oil sales"
-   ],
-   "framings_ar": [
-    "شبكات هجمات مزعومة",
-    "إجراءات قضائية",
-    "تورط ضابط استخبارات",
-    "ادعاءات غير موثوقة حول بيع النفط"
-   ],
-   "flags": [
-    "unverified claims about oil sales",
-    "allegations of attack planning require judicial verification"
-   ],
-   "flags_ar": [
-    "ادعاءات غير موثوقة حول بيع النفط",
-    "ادعاءات التخطيط للهجمات تحتاج تحقق قضائي"
-   ],
-   "volume": 3,
-   "public_volume": 2,
-   "share": 0.097,
-   "engagement": 0,
-   "platforms": {
-    "news": 1,
-    "x": 2
-   },
-   "sources": [
-    "X posts",
-    "BBC Arabic"
-   ],
-   "examples": [
-    {
-     "source": "BBC Arabic",
-     "url": "https://www.bbc.com/arabic/articles/c81dl6026z11o?at_medium=RSS&at_campaign=rss",
-     "platform": "news"
-    }
-   ],
-   "first_seen": "2026-09-18T05:56:36Z"
-  },
-  {
-   "id": "cultural-reunion-and-healing",
-   "title": "Artist Returns and Cultural Symbolic Healing",
-   "title_ar": "عودة الفنانين والشفاء الرمزي الثقافي",
-   "summary": "BBC Arabic reports on singer Asala Nasri's return to Damascus after 15 years, describing a public concert at al-Fihaa theatre where she was received with tears and applause. State framing presents this as evidence of cultural healing and national unity. One public commenter celebrates her return as a 'revolutionary victory' but questions why she was prevented from returning during the previous regime.",
-   "summary_ar": "تقرر بي بي سي عربية عودة المغنية أصالة نصري إلى دمشق بعد 15 سنة، وتصف حفلاً عاماً في مسرح الفيحاء حيث استقبلت بالدموع والتصفيق. يقدم السرد الرسمي هذا كدليل على الشفاء الثقافي والوحدة الوطنية. يحتفي معلق عام واحد بعودتها كـ'انتصار ثوري' لكن يتساءل لماذا منعت من العودة في عهد النظام السابق.",
-   "public_reaction": "One commenter celebrates the return as a revolutionary victory and symbols of national liberation, framing it as proof that the revolution succeeded. However, the comment also implicitly questions why artists were prevented from returning under the previous system.",
-   "public_reaction_ar": "يحتفي معلق واحد بالعودة كانتصار ثوري ورموز التحرر الوطني، ويطرحها كدليل على نجاح الثورة. لكن التعليق يتساءل أيضاً بشكل ضمني لماذا منع الفنانون من العودة تحت النظام السابق.",
-   "sentiment": 0.8,
-   "public_sentiment": 0.6,
-   "emotions": [
-    "hope",
-    "pride",
-    "healing"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "فخر",
-    "شفاء"
-   ],
-   "framings": [
-    "healing through art and music",
-    "national reunion",
-    "symbolic victory of revolution",
-    "cultural freedom"
-   ],
-   "framings_ar": [
-    "الشفاء من خلال الفن والموسيقى",
-    "اللقاء الوطني",
-    "الانتصار الرمزي للثورة",
-    "الحرية الثقافية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 2,
    "public_volume": 1,
-   "share": 0.065,
-   "engagement": 1,
+   "share": 0.148,
+   "engagement": 83,
    "platforms": {
     "news": 1,
+    "telegram": 2,
     "x": 1
    },
    "sources": [
+    "SANA - state news agency (EN)",
     "BBC Arabic",
     "X posts"
    ],
    "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77880",
+     "platform": "telegram"
+    },
     {
      "source": "BBC Arabic",
      "url": "https://www.bbc.com/arabic/articles/c3zxz1yr002do?at_medium=RSS&at_campaign=rss",
@@ -302,41 +93,192 @@
    "first_seen": "2026-09-17T21:28:06Z"
   },
   {
-   "id": "saudi-solidarity-and-regional-alliance",
-   "title": "Syria's Solidarity with Saudi Arabia Against Houthi Threats",
-   "title_ar": "تضامن سوريا مع السعودية ضد تهديدات الحوثيين",
-   "summary": "State media reports Syria's condemnation of Houthi drone attacks on Taif in Saudi Arabia, framing this as regional stabilization. Additional reporting notes China's private diplomatic pressure on Iran to rein in Houthis, positioning Syria within a broader regional security architecture. This narrative connects Syria's security posture to Saudi and international interests.",
-   "summary_ar": "تقرر وسائل الإعلام الرسمية إدانة سوريا لهجمات الحوثيين بالطائرات بدون طيار على الطائف في السعودية، مما يصيغ هذا كتثبيت إقليمي. يلاحظ التقرير الإضافي الضغط الدبلوماسي الخاص للصين على إيران للسيطرة على الحوثيين، مما يضع سوريا ضمن هندسة أمنية إقليمية أوسع. يربط هذا السرد موقف سوريا الأمني بالمصالح السعودية والدولية.",
+   "id": "fuel-price-protests-and-economic-grievance",
+   "title": "Fuel Price Increases and Continued Public Protests",
+   "title_ar": "زيادات أسعار الوقود والاحتجاجات العامة المستمرة",
+   "summary": "Public posts report ongoing protests in Deir ez-Zor and other provinces against fuel price hikes, with commenters claiming the government and Energy Ministry have not addressed public demands for price reconsideration. A related post alleges that Syrian oil is being diverted to Turkey at reduced rates.",
+   "summary_ar": "منشورات عامة تبلغ عن احتجاجات مستمرة في دير الزور ومحافظات أخرى ضد زيادات أسعار الوقود، حيث يزعم المعلقون أن الحكومة ووزارة الطاقة لم تعالج مطالب الجمهور بإعادة النظر في الأسعار. منشور ذي صلة يزعم أن النفط السوري يتم تحويله إلى تركيا بأسعار منخفضة.",
+   "public_reaction": "Strong anger and frustration with government economic policies; commenters demand price rollback and accuse authorities of corruption and neglecting provincial concerns. One post explicitly links fuel prices to allegations of favoritism toward Turkish interests.",
+   "public_reaction_ar": "غضب شديد وإحباط من السياسات الاقتصادية الحكومية؛ يطالب المعلقون بإلغاء الزيادات ويتهمون السلطات بالفساد وإهمال المخاوف الإقليمية. منشور واحد يربط بوضوح أسعار الوقود بالاتهامات بالمحاباة لصالح المصالح التركية.",
+   "sentiment": -0.5,
+   "public_sentiment": -0.9,
+   "emotions": [
+    "Anger",
+    "Frustration",
+    "Betrayal"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "إحباط",
+    "خيانة"
+   ],
+   "framings": [
+    "Government economic mismanagement",
+    "Corruption and nepotism in energy sector",
+    "Regional inequality and neglect",
+    "Foreign favoritism over citizen welfare"
+   ],
+   "framings_ar": [
+    "سوء إدارة اقتصادية حكومية",
+    "فساد ومحاباة في قطاع الطاقة",
+    "عدم المساواة الإقليمية والإهمال",
+    "تفضيل أجنبي على حساب رعاية المواطنين"
+   ],
+   "flags": [
+    "Unverified claim about oil diversion to Turkey"
+   ],
+   "flags_ar": [
+    "ادعاء غير مثبت حول تحويل النفط إلى تركيا"
+   ],
+   "volume": 2,
+   "public_volume": 2,
+   "share": 0.074,
+   "engagement": 3,
+   "platforms": {
+    "x": 2
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-18T11:17:40Z"
+  },
+  {
+   "id": "sectarian-tensions-and-governance-critique",
+   "title": "Sectarian Grievances and Administrative Corruption",
+   "title_ar": "الشكاوى الطائفية والفساد الإداري",
+   "summary": "Multiple public posts express sectarian grievances, alleging that Alawite-affiliated security and business elites monopolize economic opportunities while marginalizing other communities. Posts claim provincial residents are excluded from high-level positions and business licenses.",
+   "summary_ar": "عدة منشورات عامة تعبر عن شكاوى طائفية، وتزعم أن النخب الأمنية وأصحاب الأعمال من الطائفة العلوية يحتكرون الفرص الاقتصادية بينما يهمشون المجتمعات الأخرى. تزعم المنشورات أن سكان المحافظات مستبعدون من المناصب العليا والتراخيص التجارية.",
+   "public_reaction": "Strong sectarian expressions of grievance; commenters argue that economic opportunities and security positions are reserved for Alawites, particularly from coastal provinces, while residents of other regions are systematically excluded from business and governmental advancement.",
+   "public_reaction_ar": "تعبيرات طائفية قوية عن الشكوى؛ يحتج المعلقون بأن الفرص الاقتصادية والمناصب الأمنية محجوزة للعلويين، لا سيما من المحافظات الساحلية، بينما يتم استبعاد سكان المناطق الأخرى بشكل منهجي من الترقي في الأعمال والحكومة.",
+   "sentiment": -0.6,
+   "public_sentiment": -0.85,
+   "emotions": [
+    "Anger",
+    "Resentment",
+    "Sectarian grievance"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "استياء",
+    "شكاوى طائفية"
+   ],
+   "framings": [
+    "Sectarian monopoly of economic power",
+    "Exclusion by geography and sect",
+    "Corruption and nepotism in business licensing"
+   ],
+   "framings_ar": [
+    "احتكار طائفي للقوة الاقتصادية",
+    "الاستبعاد على أساس الجغرافيا والطائفة",
+    "فساد ومحاباة في منح التراخيص التجارية"
+   ],
+   "flags": [
+    "Sectarian incitement and inflammatory language"
+   ],
+   "flags_ar": [
+    "تحريض طائفي ولغة مستفزة"
+   ],
+   "volume": 2,
+   "public_volume": 2,
+   "share": 0.074,
+   "engagement": 0,
+   "platforms": {
+    "x": 2
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-18T11:17:40Z"
+  },
+  {
+   "id": "violence-and-security-concerns",
+   "title": "Security Deaths and Violence in Civilian Areas",
+   "title_ar": "وفيات أمنية والعنف في المناطق المدنية",
+   "summary": "State media reports on Internal Security Forces identifying a cell responsible for three personnel deaths in al-Sanamayn, Daraa province, with seizure of weapons and explosives. A public post expresses anguish over violence against a child in rural Idlib, framing it as systemic societal failure.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية عن قوات الأمن الداخلي تحديد خلية مسؤولة عن مقتل ثلاثة من موظفيها في السنيمة بدرعا، مع مصادرة أسلحة ومتفجرات. منشور عام يعبر عن الألم من العنف ضد طفلة في ريف إدلب، محاولاً إرجاعه إلى فشل نظامي للمجتمع.",
+   "public_reaction": "A commenter expresses deep existential despair about violence in Syria, Iraq, Yemen, and Libya, framing these societies as cursed and describing violence as endemic to regional civilization. Posts demonstrate frustration with ongoing security threats.",
+   "public_reaction_ar": "يعبر معلق عن اليأس الوجودي العميق بشأن العنف في سوريا والعراق واليمن وليبيا، ويصور هذه المجتمعات على أنها ملعونة ويصف العنف بأنه متوطن في الحضارة الإقليمية. تظهر المنشورات إحباطاً من التهديدات الأمنية المستمرة.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.8,
+   "emotions": [
+    "Security concern",
+    "Despair"
+   ],
+   "emotions_ar": [
+    "قلق أمني",
+    "يأس"
+   ],
+   "framings": [
+    "Counter-terrorism operations",
+    "Systemic violence and civilizational despair",
+    "Child victimization and societal failure"
+   ],
+   "framings_ar": [
+    "عمليات مكافحة الإرهاب",
+    "العنف المنهجي واليأس الحضاري",
+    "استهداف الأطفال وفشل المجتمع"
+   ],
+   "flags": [
+    "Hyperbolic despair and sweeping civilizational claims"
+   ],
+   "flags_ar": [
+    "يأس مبالغ فيه واتهامات حضارية شاملة"
+   ],
+   "volume": 2,
+   "public_volume": 1,
+   "share": 0.074,
+   "engagement": 46,
+   "platforms": {
+    "telegram": 1,
+    "x": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77884",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-18T11:17:40Z"
+  },
+  {
+   "id": "saudi-solidarity-and-regional-security",
+   "title": "Syrian Solidarity with Saudi Arabia Against Houthi Threats",
+   "title_ar": "التضامن السوري مع السعودية ضد التهديدات الحوثية",
+   "summary": "State media reports Syria's strong condemnation of Houthi drone attacks on Saudi Arabia's Taif province, describing them as violations of sovereignty. Coverage emphasizes regional Arab and Islamic condemnation and Syria's reaffirmation of solidarity with the Kingdom.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية يتضمن إدانة سوريا القوية لهجمات الحوثيين بالطائرات بدون طيار على محافظة الطائف السعودية، واصفة إياها بانتهاكات السيادة. تركز التغطية على الإدانة العربية والإسلامية الإقليمية وإعادة تأكيد تضامن سوريا مع المملكة.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": 0.5,
    "public_sentiment": null,
    "emotions": [
-    "regional stability",
-    "partnership"
+    "Solidarity",
+    "Condemnation"
    ],
    "emotions_ar": [
-    "الاستقرار الإقليمي",
-    "الشراكة"
+    "تضامن",
+    "إدانة"
    ],
    "framings": [
-    "Houthi threat to Saudi security",
-    "China-Iran diplomatic pressure",
-    "regional stability partnership",
-    "sovereignty and security cooperation"
+    "Regional security threat and sovereignty protection",
+    "Arab and Islamic unity against external threats"
    ],
    "framings_ar": [
-    "تهديد الحوثيين للأمن السعودي",
-    "الضغط الدبلوماسي الصيني الإيراني",
-    "شراكة الاستقرار الإقليمي",
-    "التعاون الأمني والسيادي"
+    "تهديد أمني إقليمي وحماية السيادة",
+    "الوحدة العربية والإسلامية ضد التهديدات الخارجية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 2,
    "public_volume": 0,
-   "share": 0.065,
-   "engagement": 131,
+   "share": 0.074,
+   "engagement": 143,
    "platforms": {
     "telegram": 2
    },
@@ -350,42 +292,38 @@
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T00:21:15Z"
+   "first_seen": "2026-09-18T11:17:40Z"
   },
   {
-   "id": "energy-pricing-and-subsidy-adjustment",
-   "title": "Diesel Subsidies and Differential Pricing by Sector",
-   "title_ar": "دعم الديزل والتسعير التفاضلي حسب القطاع",
-   "summary": "Energy Minister Mohammad al-Bashir announces two-tiered diesel pricing: 115 Syrian pounds per liter for heating and agriculture, 150 pounds for productive and service sectors. This represents a continuation of previous energy subsidy adjustments aimed at balancing affordability with sector-specific economic needs.",
-   "summary_ar": "يعلن وزير الطاقة محمد الباشير عن تسعير ديزل ثنائي المستوى: 115 ليرة سورية للتر للتدفئة والزراعة، و150 للقطاعات الإنتاجية والخدمية. يمثل هذا استمراراً لتعديلات دعم الطاقة السابقة التي تهدف إلى موازنة القدرة على التحمل مع الاحتياجات الاقتصادية الخاصة بالقطاع.",
+   "id": "captagon-and-drug-trafficking",
+   "title": "Captagon Production and Smuggling Networks",
+   "title_ar": "شبكات إنتاج وتهريب القَبتاغون",
+   "summary": "State media reports on Syria's efforts to dismantle Captagon production and smuggling networks through international cooperation and prevention programs. The post emphasizes the government's commitment to tackling the drug trade through institutional measures.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية حول جهود سوريا لتفكيك شبكات إنتاج وتهريب القَبتاغون من خلال التعاون الدولي والبرامج الوقائية. ينؤكد المنشور على التزام الحكومة بمكافحة تجارة المخدرات من خلال تدابير مؤسسية.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.3,
+   "sentiment": 0.0,
    "public_sentiment": null,
    "emotions": [
-    "policy adjustment",
-    "subsidy management"
+    "Neutral"
    ],
    "emotions_ar": [
-    "تعديل السياسة",
-    "إدارة الدعم"
+    "محايد"
    ],
    "framings": [
-    "tiered pricing",
-    "subsidy targeting",
-    "sector-specific affordability"
+    "International cooperation against drug networks",
+    "Institutional strengthening and prevention"
    ],
    "framings_ar": [
-    "التسعير المتدرج",
-    "استهداف الدعم",
-    "القدرة على التحمل الخاصة بالقطاع"
+    "التعاون الدولي ضد شبكات المخدرات",
+    "تعزيز المؤسسات والوقاية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
-   "share": 0.032,
-   "engagement": 61,
+   "share": 0.037,
+   "engagement": 22,
    "platforms": {
     "telegram": 1
    },
@@ -395,93 +333,189 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77860",
+     "url": "https://t.me/SANANewsEnglish/77898",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T00:21:15Z"
+   "first_seen": "2026-09-18T11:17:40Z"
   },
   {
-   "id": "economic-management-and-consumer-complaints",
-   "title": "Hidden Menu Prices and Consumer Protection Gaps",
-   "title_ar": "أسعار القوائم المخفية والفجوات في حماية المستهلك",
-   "summary": "Public commentary reports restaurant owners removing prices from menus, causing customers to receive bills exceeding their budget estimates. One commenter describes visiting a restaurant with family and receiving an unexpectedly high bill. This reflects broader economic concerns about price transparency and consumer protections in the informal sector.",
-   "summary_ar": "تقرر التعليقات العامة أن أصحاب المطاعم يزيلون الأسعار من القوائم، مما يتسبب في فواتير تتجاوز تقديرات ميزانية العملاء. يصف معلق واحد زيارة مطعم مع الأسرة واستقبال فاتورة عالية غير متوقعة. يعكس هذا مخاوف اقتصادية أوسع بشأن شفافية الأسعار وحماية المستهلك في القطاع غير الرسمي.",
-   "public_reaction": "Customers express frustration with hidden pricing practices, indicating a trust gap between consumers and service providers. The complaint suggests weak enforcement of consumer protection standards.",
-   "public_reaction_ar": "يعبر العملاء عن إحباطهم من ممارسات التسعير المخفية، مما يشير إلى فجوة ثقة بين المستهلكين ومقدمي الخدمات. يشير الشكوى إلى إنفاذ ضعيف لمعايير حماية المستهلك.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.5,
+   "id": "journalist-abduction-allegations",
+   "title": "Alleged Planning of American Journalist Abduction",
+   "title_ar": "الاتهامات بتخطيط اختطاف صحفي أمريكي",
+   "summary": "BBC Arabic reports an investigation claiming that Bashar al-Assad planned the kidnapping of American journalist Austin Tice, with a source alleging presidential approval for the abduction. This represents serious allegations of state involvement in kidnapping.",
+   "summary_ar": "تقرير من BBC Arabic عن تحقيق يدعي أن بشار الأسد خطط لاختطاف الصحفي الأمريكي أوستن تايس، مع ادعاء مصدر بموافقة رئاسية على الاختطاف. يمثل هذا اتهامات خطيرة بتورط الدولة في عملية اختطاف.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": -0.8,
+   "public_sentiment": null,
    "emotions": [
-    "frustration",
-    "distrust"
+    "Damning allegations"
    ],
    "emotions_ar": [
-    "إحباط",
-    "عدم ثقة"
+    "اتهامات مدمرة"
    ],
    "framings": [
-    "consumer protection failure",
-    "price transparency",
-    "informal economy regulation"
+    "Alleged state kidnapping conspiracy",
+    "Investigative journalism"
    ],
    "framings_ar": [
-    "فشل حماية المستهلك",
-    "شفافية الأسعار",
-    "تنظيم الاقتصاد غير الرسمي"
+    "مؤامرة اختطاف حكومية مزعومة",
+    "صحافة استقصائية"
+   ],
+   "flags": [
+    "Unverified allegations requiring attribution"
+   ],
+   "flags_ar": [
+    "اتهامات غير مثبتة تتطلب نسبة دقيقة"
+   ],
+   "volume": 1,
+   "public_volume": 0,
+   "share": 0.037,
+   "engagement": 0,
+   "platforms": {
+    "news": 1
+   },
+   "sources": [
+    "BBC Arabic"
+   ],
+   "examples": [
+    {
+     "source": "BBC Arabic",
+     "url": "https://www.bbc.com/arabic/articles/c81dl6026z11o?at_medium=RSS&at_campaign=rss",
+     "platform": "news"
+    }
+   ],
+   "first_seen": "2026-09-18T11:17:40Z"
+  },
+  {
+   "id": "youth-programs-and-cultural-development",
+   "title": "Youth Summer Programs and Cultural Skills Development",
+   "title_ar": "برامج صيفية للشباب وتطوير المهارات الثقافية",
+   "summary": "State media reports on the Impact Makers Club's summer program in Homs, highlighting 500+ children and youth participants in art exhibitions and skills development. The coverage emphasizes cultural institution rebuilding and youth engagement.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية عن برنامج نادي المؤثرين الصيفي في حمص، يبرز مشاركة أكثر من 500 طفل وشاب في معارض فنية وتطوير مهارات. تركز التغطية على إعادة بناء المؤسسات الثقافية وتفعيل الشباب.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.6,
+   "public_sentiment": null,
+   "emotions": [
+    "Positive",
+    "Constructive"
+   ],
+   "emotions_ar": [
+    "إيجابي",
+    "بناء"
+   ],
+   "framings": [
+    "Youth engagement and skills development",
+    "Cultural institution building"
+   ],
+   "framings_ar": [
+    "تفعيل الشباب وتطوير المهارات",
+    "بناء المؤسسات الثقافية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
-   "public_volume": 1,
-   "share": 0.032,
-   "engagement": 0,
+   "public_volume": 0,
+   "share": 0.037,
+   "engagement": 50,
    "platforms": {
-    "x": 1
+    "telegram": 1
    },
    "sources": [
-    "X posts"
+    "SANA - state news agency (EN)"
    ],
-   "examples": [],
-   "first_seen": "2026-09-18T05:56:36Z"
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77891",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-18T11:17:40Z"
   },
   {
-   "id": "revolutionary-narrative-and-regime-critique",
-   "title": "Celebrating Regime Change and Revolutionary Victories",
-   "title_ar": "الاحتفال بتغيير النظام والانتصارات الثورية",
-   "summary": "Public commenters celebrate the fall of the Assad regime as a triumph, with one explicitly stating 'the fall of the criminal Assad is joy beyond joy,' though noting this joy is incomplete without Palestinian liberation. Another commenter frames artist returns and cultural reopening as embodying revolutionary victory. These posts position current developments as evidence that the revolutionary struggle succeeded.",
-   "summary_ar": "يحتفي المعلقون العموميون بسقوط نظام الأسد كنصر، مع تصريح واضح بأن 'سقوط المجرم الأسد فرحة تتجاوز الفرح'، مع الإشارة إلى أن هذه الفرحة غير مكتملة بدون تحرير فلسطين. يطرح معلق آخر عودة الفنانين والانفتاح الثقافي كجسد للانتصار الثوري. تضع هذه المشاركات التطورات الحالية كدليل على أن الكفاح الثوري نجح.",
-   "public_reaction": "Celebratory tone framing Assad's fall as historical victory; one commenter connects this to Palestine liberation as an incomplete but essential goal.",
-   "public_reaction_ar": "نبرة احتفالية تطرح سقوط الأسد كنصر تاريخي؛ يربط معلق واحد هذا بتحرير فلسطين كهدف ضروري لكن غير مكتمل.",
-   "sentiment": 0.0,
+   "id": "international-cooperation-and-trade",
+   "title": "Bilateral Economic Cooperation and Trade Development",
+   "title_ar": "التعاون الاقتصادي الثنائي وتطوير التجارة",
+   "summary": "State media reports Syria exploring cooperation with Uzbekistan on light industries and exports, with the Minister of Economy reviewing development strategies. Coverage emphasizes institutional bilateral engagement and economic partnership building.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية عن استكشاف سوريا التعاون مع أوزبكستان في الصناعات الخفيفة والصادرات، حيث يستعرض وزير الاقتصاد استراتيجيات التنمية. تركز التغطية على الارتباط الثنائي المؤسسي وبناء الشراكات الاقتصادية.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.3,
+   "public_sentiment": null,
+   "emotions": [
+    "Optimistic about trade"
+   ],
+   "emotions_ar": [
+    "متفائل حول التجارة"
+   ],
+   "framings": [
+    "Economic diversification and export development",
+    "Bilateral institutional cooperation"
+   ],
+   "framings_ar": [
+    "تنويع اقتصادي وتطوير الصادرات",
+    "التعاون المؤسسي الثنائي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 0,
+   "share": 0.037,
+   "engagement": 38,
+   "platforms": {
+    "telegram": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77889",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-18T11:17:40Z"
+  },
+  {
+   "id": "agricultural-heritage-and-exports",
+   "title": "Aleppo Pistachios and Agricultural Heritage Celebration",
+   "title_ar": "الفستق الحلبي والاحتفاء بالتراث الزراعي",
+   "summary": "A public post celebrates Hama as a major center for Aleppo pistachio production, highlighting a regional festival marking the crop and its producers and exporters. The post frames the pistachio trade as a story of Syrian agricultural heritage worth sharing globally.",
+   "summary_ar": "منشور عام يحتفي بحماة كمركز رئيسي لإنتاج الفستق الحلبي، مسلطاً الضوء على مهرجان إقليمي يميز المحصول ومنتجيه والمصدرين. يطرح المنشور تجارة الفستق كقصة تراث زراعي سوري تستحق المشاركة عالمياً.",
+   "public_reaction": "The post celebrates agricultural heritage with pride and optimism, suggesting that Syria's agricultural traditions are a valuable cultural asset worth international recognition.",
+   "public_reaction_ar": "يحتفي المنشور بالتراث الزراعي بفخر وتفاؤل، مما يشير إلى أن التقاليد الزراعية السورية تمثل أصلاً ثقافياً قيماً يستحق الاعتراف الدولي.",
+   "sentiment": 0.6,
    "public_sentiment": 0.7,
    "emotions": [
-    "joy",
-    "triumph",
-    "revolutionary pride"
+    "Pride",
+    "Optimism",
+    "Cultural celebration"
    ],
    "emotions_ar": [
-    "فرح",
-    "انتصار",
-    "فخر ثوري"
+    "فخر",
+    "تفاؤل",
+    "احتفاء ثقافي"
    ],
    "framings": [
-    "regime fall as historical victory",
-    "revolutionary struggle success",
-    "cultural freedom as proof of change",
-    "incomplete without Palestinian liberation"
+    "Agricultural heritage and cultural pride",
+    "Regional economic contribution",
+    "Global recognition of Syrian traditions"
    ],
    "framings_ar": [
-    "سقوط النظام كنصر تاريخي",
-    "نجاح الكفاح الثوري",
-    "الحرية الثقافية كدليل على التغيير",
-    "غير مكتمل بدون تحرير فلسطين"
+    "التراث الزراعي والفخر الثقافي",
+    "المساهمة الاقتصادية الإقليمية",
+    "الاعتراف العالمي بالتقاليد السورية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 1,
-   "share": 0.032,
-   "engagement": 0,
+   "share": 0.037,
+   "engagement": 1,
    "platforms": {
     "x": 1
    },
@@ -489,46 +523,89 @@
     "X posts"
    ],
    "examples": [],
-   "first_seen": "2026-09-18T05:56:36Z"
+   "first_seen": "2026-09-18T11:17:40Z"
   },
   {
-   "id": "pan-arab-anti-imperialism-discourse",
-   "title": "Pan-Arab Anti-Imperialism and Historical Struggle Narratives",
-   "title_ar": "الخطاب القومي العربي المناهض للإمبريالية والسرديات التاريخية للكفاح",
-   "summary": "Public posts reference broader pan-Arab nationalist themes, arguing that previous Arab generations fought against Western imperialism ('al-istikrab'), with one commenter noting the tragedy that despite these sacrifices, current circumstances reflect ongoing struggles. This framing situates Syria's current situation within a longer historical narrative of Arab resistance and anti-colonial struggle.",
-   "summary_ar": "تشير المشاركات العامة إلى مواضيع قومية عربية أوسع، حيث تجادل بأن الأجيال العربية السابقة كافحت ضد الإمبريالية الغربية ('الاستخراب')، مع لاحظة معلق واحد أن الأسف هو أنه على الرغم من هذه التضحيات، الظروف الحالية تعكس الكفاح المستمر. يضع هذا الإطار موقف سوريا الحالي ضمن سرد تاريخي أطول للمقاومة العربية والكفاح المناهض للاستعمار.",
-   "public_reaction": "One commenter articulates melancholic nationalist sentiment, connecting historical Arab anti-imperialist struggle to current conditions, emphasizing the tragic incompleteness of revolutionary victories.",
-   "public_reaction_ar": "يصرح معلق واحد بالشعور بالحزن القومي، ويربط كفاح الجيل العربي المناهض للإمبريالية التاريخي بالظروف الحالية، مع التأكيد على عدم اكتمال الانتصارات الثورية بشكل مأساوي.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.3,
+   "id": "housing-finance-and-reconstruction",
+   "title": "Housing Finance Sector Development and Mortgage Coordination",
+   "title_ar": "تطوير قطاع التمويل السكني وتنسيق الرهون العقارية",
+   "summary": "State media reports the Foreign Ministry hosting a World Bank roundtable on Syria's housing and mortgage finance sector, discussing current state and development prospects. Coverage emphasizes international technical cooperation on post-conflict reconstruction.",
+   "summary_ar": "تقرير من وسائل الإعلام الرسمية عن استضافة وزارة الخارجية لجلسة مائدة مستديرة من البنك الدولي حول قطاع التمويل السكني والرهون العقارية في سوريا، تناقش الوضع الحالي والآفاق التنموية. تركز التغطية على التعاون التقني الدولي في إعادة البناء بعد النزاع.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.4,
+   "public_sentiment": null,
    "emotions": [
-    "melancholia",
-    "nationalist sentiment",
-    "historical consciousness"
+    "Reconstructive optimism"
    ],
    "emotions_ar": [
-    "حنين",
-    "شعور قومي",
-    "وعي تاريخي"
+    "تفاؤل إعمار"
    ],
    "framings": [
-    "Arab anti-imperialism history",
-    "Western imperialist threat",
-    "generational sacrifice",
-    "incomplete revolutionary victory"
+    "Post-conflict reconstruction and development",
+    "International institutional cooperation",
+    "Housing sector modernization"
    ],
    "framings_ar": [
-    "تاريخ المناهضة العربية للإمبريالية",
-    "التهديد الإمبريالي الغربي",
-    "تضحية الأجيال",
-    "انتصار ثوري غير مكتمل"
+    "إعادة البناء والتنمية بعد النزاع",
+    "التعاون المؤسسي الدولي",
+    "تحديث القطاع السكني"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 0,
+   "share": 0.037,
+   "engagement": 96,
+   "platforms": {
+    "telegram": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77878",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-18T11:17:40Z"
+  },
+  {
+   "id": "personal-faith-journey-and-resilience",
+   "title": "Individual Spiritual Journey and Perseverance",
+   "title_ar": "الرحلة الروحية الفردية والإصرار",
+   "summary": "A public post celebrates an individual's pilgrimage journey on foot to Mecca, framing it as an expression of faith, determination, and resolve. The post offers religious blessings for the journey's completion.",
+   "summary_ar": "منشور عام يحتفي برحلة حج فردية سيراً على الأقدام إلى مكة، ويطرحها كتعبير عن الإيمان والعزيمة والإصرار. يقدم المنشور دعاء ديني لإتمام الرحلة.",
+   "public_reaction": "The post frames the individual's journey positively, with religious language expressing hope and perseverance despite hardship.",
+   "public_reaction_ar": "يطرح المنشور رحلة الفرد بشكل إيجابي، مع لغة دينية تعبر عن الأمل والإصرار رغم المشقة.",
+   "sentiment": 0.5,
+   "public_sentiment": 0.6,
+   "emotions": [
+    "Faith",
+    "Determination",
+    "Hope"
+   ],
+   "emotions_ar": [
+    "إيمان",
+    "عزيمة",
+    "أمل"
+   ],
+   "framings": [
+    "Individual spiritual perseverance",
+    "Faith-based resilience"
+   ],
+   "framings_ar": [
+    "الإصرار الروحي الفردي",
+    "الصمود القائم على الإيمان"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 1,
-   "share": 0.032,
-   "engagement": 0,
+   "share": 0.037,
+   "engagement": 1,
    "platforms": {
     "x": 1
    },
@@ -536,7 +613,7 @@
     "X posts"
    ],
    "examples": [],
-   "first_seen": "2026-09-18T05:56:36Z"
+   "first_seen": "2026-09-18T11:17:40Z"
   }
  ],
  "sources": [
@@ -544,8 +621,8 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
-   "recent": 19
+   "fetched": 15,
+   "recent": 15
   },
   {
    "name": "Enab Baladi - independent (EN)",
@@ -574,5 +651,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0424
+ "cost_usd": 0.0425
 }
