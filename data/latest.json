@@ -3,8 +3,8 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-19T18:02:31Z",
- "checked_at": "2026-09-19T18:02:31Z",
+ "generated_at": "2026-09-19T20:42:19Z",
+ "checked_at": "2026-09-19T20:42:19Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
@@ -21,44 +21,48 @@
   }
  },
  "overall": {
-  "sentiment": 0.3,
-  "mood": "Optimistic",
-  "mood_ar": "متفائل",
-  "public_sentiment": -0.6,
-  "public_mood": "Grieving and Divided",
-  "public_mood_ar": "حزين ومنقسم",
-  "brief": "State media emphasizes development projects in Aleppo, institutional reforms, and cultural achievements, projecting optimism about Syria's future. Public voices are sharply divided: some celebrate military victories and development plans, while others express deep grief over repeated ammunition depot explosions killing soldiers and anger over what they perceive as misplaced priorities. Sectarian tensions resurface in comments, and some commenters blame recent regional visitors for security incidents.",
-  "brief_ar": "وسائل الإعلام الرسمية تركز على مشاريع التطوير في حلب والإصلاحات المؤسسية والإنجازات الثقافية، وتعكس تفاؤلاً بشأن مستقبل سوريا. الأصوات العامة منقسمة بشدة: البعض يحتفي بالانتصارات العسكرية والخطط التنموية، بينما يعبّر آخرون عن حزن عميق على الانفجارات المتكررة في مستودعات الذخيرة التي تودي بحياة الجنود، وغضب على ما يعتبرونه أولويات منحرفة. تعاود التوترات الطائفية الظهور في التعليقات، وينسب البعض الحوادث الأمنية الأخيرة إلى زوّار إقليميين."
+  "sentiment": 0.2,
+  "mood": "Constructive",
+  "mood_ar": "بنّاء",
+  "public_sentiment": -0.3,
+  "public_mood": "Divided",
+  "public_mood_ar": "منقسم",
+  "brief": "State media outlets emphasize institutional development, international cooperation, and security operations against former regime figures and drug trafficking. Public discourse splits between those sharing and amplifying security announcements, others mocking or criticizing political figures, and some engaging in sectarian or territorial disputes. The arrest of a former Republican Guard commander dominates public conversation, drawing mixed reactions ranging from validation to political mockery.",
+  "brief_ar": "تركز وسائل الإعلام الرسمية على التطوير المؤسسي والتعاون الدولي والعمليات الأمنية ضد شخصيات من النظام السابق والاتجار بالمخدرات. ينقسم الخطاب العام بين من يشاركون الإعلانات الأمنية ويضخمونها، وآخرين يسخرون من الشخصيات السياسية، وبعضهم يشارك في نزاعات طائفية وإقليمية. اعتقال قائد من الحرس الجمهوري السابق يهيمن على النقاش العام برد فعل متباين بين التصديق والسخرية السياسية."
  },
  "narratives": [
   {
-   "id": "unrelated-regional-news",
+   "id": "unrelated-regional-and-international",
    "title": "Unrelated Regional and International News",
    "title_ar": "أخبار إقليمية ودولية غير ذات صلة",
-   "summary": "State media carries reports on US troop deaths in the Middle East conflict with Iran, IMF analysis on AI and European productivity, EU-US tensions over tech taxes, Yemen's foreign policy stance, Houthi commander deaths, UNHCR refugee movements, Egyptian-US maritime cooperation, and EU criticism of US visa denials to Palestinian officials.",
-   "summary_ar": "تنشر وسائل الإعلام الرسمية تقارير عن وفيات الجنود الأمريكيين في الصراع الشرق أوسطي مع إيران، وتحليل صندوق النقد الدولي حول الذكاء الاصطناعي والإنتاجية الأوروبية، والتوترات بين الاتحاد الأوروبي والولايات المتحدة حول ضرائب التكنولوجيا، وموقف اليمن السياسي الخارجي، ووفيات قائد حوثي، وحركات اللاجئين بحسب مفوضية الأمم المتحدة، والتعاون المصري الأمريكي البحري، وانتقاد الاتحاد الأوروبي لرفض الولايات المتحدة منح تأشيرات لمسؤولين فلسطينيين.",
+   "summary": "State media publishes coverage of unrelated international events: US AI policy announcements, EU-US tech tax tensions, IMF statements on AI, Nobel laureate commentary on Iran, Yemen foreign minister statements, Washington Post report on US troop deaths, and Premier League sports results.",
+   "summary_ar": "تنشر وسائل الإعلام الرسمية تغطية لأحداث دولية غير ذات صلة: إعلانات السياسة الأمريكية بشأن الذكاء الاصطناعي وتوترات الضريبة التكنولوجية بين الاتحاد الأوروبي والولايات المتحدة وبيانات صندوق النقد الدولي حول الذكاء الاصطناعي وتعليقات الحائزة على جائزة نوبل عن إيران وتصريحات وزيرة خارجية اليمن وتقرير واشنطن بوست عن الوفيات العسكرية الأمريكية ونتائج الدوري الممتاز.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": 0.0,
    "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "emotions": [
+    "neutral"
+   ],
+   "emotions_ar": [
+    "محايد"
+   ],
    "framings": [
-    "International affairs coverage",
-    "Regional geopolitics",
-    "Global economic trends"
+    "International news relay",
+    "Tech policy coverage",
+    "Sports reporting"
    ],
    "framings_ar": [
-    "تغطية الشؤون الدولية",
-    "الجيوسياسة الإقليمية",
-    "الاتجاهات الاقتصادية العالمية"
+    "نقل الأخبار الدولية",
+    "تغطية سياسة التكنولوجيا",
+    "تقارير رياضية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 8,
    "public_volume": 0,
    "share": 0.258,
-   "engagement": 424,
+   "engagement": 362,
    "platforms": {
     "telegram": 8
    },
@@ -68,59 +72,49 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77948",
+     "url": "https://t.me/SANANewsEnglish/77950",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T22:35:18Z"
+   "first_seen": "2026-09-19T20:42:19Z"
   },
   {
-   "id": "recurring-military-explosions",
-   "title": "Repeated Ammunition Depot Explosions and Soldier Deaths",
-   "title_ar": "الانفجارات المتكررة في مستودعات الذخيرة ووفيات الجنود",
-   "summary": "State media reports that 11 soldiers were killed in an ammunition depot explosion in Deir Ezzor. Public posts express grief over repeated such incidents, with commenters noting multiple explosions across several provinces in a single week and questioning security protocols or attributing incidents to external actors.",
-   "summary_ar": "تقرر وسائل الإعلام الرسمية مقتل 11 جندياً في انفجار مستودع ذخيرة بدير الزور. تعبّر المنشورات العامة عن حزن على الحوادث المتكررة، مع ملاحظات حول انفجارات متعددة في عدة محافظات في أسبوع واحد والتساؤل عن بروتوكولات الأمان أو نسبة الحوادث إلى جهات خارجية.",
-   "public_reaction": "Commenters grieve the deaths and express frustration over multiple explosions within days across Aleppo, Deir Ezzor, and Daraa. Some suggest external sabotage or blame recent Arab visitors. Others point to the contrast between celebratory state messaging and ongoing military casualties.",
-   "public_reaction_ar": "يعبر المعلقون عن الحزن والإحباط من الانفجارات المتعددة خلال أيام في حلب ودير الزور ودرعا. يقترح البعض تخريباً خارجياً أو يلومون زوّاراً عرباً حديثي العهد. يشير آخرون إلى التناقض بين الرسائل الاحتفالية الرسمية والخسائر العسكرية المستمرة.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.8,
+   "id": "arrest-republican-guard-commander",
+   "title": "Arrest of Former Republican Guard Commander Ahmad Ismail",
+   "title_ar": "اعتقال اللواء السابق أحمد محمد إسماعيل من الحرس الجمهوري",
+   "summary": "State media announces the arrest of Former Major General Ahmad Mohammad Ismail, described as a senior Republican Guard commander and leader of the elite 14th Airborne Division under the deposed regime. He is accused of leading military attacks on Aleppo, Daraa, and Eastern Ghouta. Public discussion amplifies the announcement and discusses implications of such arrests.",
+   "summary_ar": "أعلنت وسائل الإعلام الرسمية عن اعتقال اللواء السابق أحمد محمد إسماعيل الذي وصف بأنه قائد من الصف الأول في الحرس الجمهوري وقائد الفرقة 14 المتخصصة في الإنزالات الجوية تحت النظام السابق. يُتهم بقيادة هجمات عسكرية على حلب ودرعا والغوطة الشرقية. ينشر النقاش العام الإعلان ويناقش تداعياته.",
+   "public_reaction": "Public voices amplify the security announcement and discuss the significance of arresting former regime military commanders. Some commenters engage in political sarcasm and mockery of opposing figures rather than focusing on the arrest itself.",
+   "public_reaction_ar": "يضخم الناشطون العموميون الإعلان الأمني ويناقشون أهمية اعتقال قادة عسكريين من النظام السابق. يشارك بعض المعلقين في السخرية السياسية والاستهزاء بالشخصيات المعارضة بدلاً من التركيز على الاعتقال.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.0,
    "emotions": [
-    "grief",
-    "frustration",
-    "suspicion"
+    "validation",
+    "sarcasm"
    ],
    "emotions_ar": [
-    "حزن",
-    "إحباط",
-    "ريبة"
+    "تصديق",
+    "سخرية"
    ],
    "framings": [
-    "Operational security concerns",
-    "Series of incidents in short timeframe",
-    "Human cost of military operations",
-    "Possible external sabotage"
+    "Justice against former regime figures",
+    "Closure on wartime commanders",
+    "Political mockery of opponents"
    ],
    "framings_ar": [
-    "مخاوف الأمان التشغيلي",
-    "سلسلة حوادث في فترة قصيرة",
-    "الثمن الإنساني للعمليات العسكرية",
-    "احتمال التخريب الخارجي"
+    "العدالة ضد شخصيات النظام السابق",
+    "إغلاق الملف على قادة الحرب",
+    "السخرية السياسية من الخصوم"
    ],
-   "flags": [
-    "Unverified claim of external sabotage by Arab visitors",
-    "Coordinated blame-attribution without evidence"
-   ],
-   "flags_ar": [
-    "ادعاء غير مثبت بتخريب خارجي من قبل زوّار عرب",
-    "إسناد موحد للذنب دون أدلة"
-   ],
-   "volume": 5,
-   "public_volume": 4,
-   "share": 0.161,
-   "engagement": 80,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 3,
+   "public_volume": 2,
+   "share": 0.097,
+   "engagement": 29,
    "platforms": {
     "telegram": 1,
-    "x": 4
+    "x": 2
    },
    "sources": [
     "X posts",
@@ -129,97 +123,48 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77947",
+     "url": "https://t.me/SANANewsEnglish/77968",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-19T01:11:31Z"
-  },
-  {
-   "id": "aleppo-development-projects",
-   "title": "Aleppo Development and Regional Centrality",
-   "title_ar": "مشاريع تطوير حلب والمركزية الإقليمية",
-   "summary": "State media reports on President al-Sharaa's discussions of major development projects in Aleppo, including real estate, tourism, industrial facilities and an exhibition city. Officials frame Aleppo as a hub for economic and institutional integration.",
-   "summary_ar": "تغطي وسائل الإعلام الرسمية نقاشات الرئيس الشرع حول مشاريع تطوير كبرى في حلب تشمل العقارات والسياحة والمرافق الصناعية ومدينة معارض. يصور المسؤولون حلب كمركز للتكامل الاقتصادي والمؤسسي.",
-   "public_reaction": "Some commenters praise development initiatives and assert Aleppo's historical centrality to Syrian commerce and industry. Others mock the government's confidence, suggesting Aleppo is merely part of a larger regional territory and questioning the credibility of announced plans.",
-   "public_reaction_ar": "يمتدح بعض المعلقين مبادرات التطوير ويؤكدون أهمية حلب التاريخية للتجارة والصناعة السورية. آخرون يسخرون من ثقة الحكومة، ويقترحون أن حلب مجرد جزء من إقليم أكبر ويطعنون في مصداقية الخطط المعلنة.",
-   "sentiment": 0.6,
-   "public_sentiment": 0.1,
-   "emotions": [
-    "optimism",
-    "pride"
-   ],
-   "emotions_ar": [
-    "تفاؤل",
-    "اعتزاز"
-   ],
-   "framings": [
-    "Economic and territorial centrality",
-    "Major infrastructure investment",
-    "Regional integration through development"
-   ],
-   "framings_ar": [
-    "المركزية الاقتصادية والإقليمية",
-    "الاستثمار في البنية التحتية الضخمة",
-    "التكامل الإقليمي عبر التطوير"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 4,
-   "public_volume": 2,
-   "share": 0.129,
-   "engagement": 51,
-   "platforms": {
-    "telegram": 2,
-    "x": 2
-   },
-   "sources": [
-    "SANA - state news agency (EN)",
-    "X posts"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77961",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-19T18:02:31Z"
+   "first_seen": "2026-09-19T20:42:19Z"
   },
   {
    "id": "institutional-integration-and-governance",
    "title": "Institutional Integration and Governance Reforms",
-   "title_ar": "التكامل المؤسسي والإصلاحات الحكومية",
-   "summary": "State media reports on Syria-Qatar cooperation on institutional oversight and transparency, Aleppo governor meetings on institutional integration, and formation of a Syrian-Uzbek Business Council. These reports frame ongoing efforts to strengthen governance structures.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية عن التعاون السوري القطري في الإشراف المؤسسي والشفافية، واجتماعات محافظ حلب حول التكامل المؤسسي، وتشكيل مجلس أعمال سوري أوزبكي. تصور هذه التقارير جهوداً مستمرة لتعزيز الهياكل الحكومية.",
+   "title_ar": "التكامل المؤسسي وإصلاحات الحوكمة",
+   "summary": "Aleppo Governor and Presidential Advisor discuss institutional integration mechanisms; Syria-Qatar oversight bodies discuss cooperation in transparency and integrity; Syria-Uzbek Business Council is formed. These posts signal ongoing administrative restructuring and capacity-building.",
+   "summary_ar": "يناقش محافظ حلب والمستشار الرئاسي آليات التكامل المؤسسي؛ تناقش أجهزة الرقابة السورية والقطرية التعاون في الشفافية والنزاهة؛ تتشكل المجلس السوري-الأوزبكي للأعمال. تشير هذه الإعلانات إلى إعادة هيكلة إدارية مستمرة وبناء قدرات.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.5,
+   "sentiment": 0.3,
    "public_sentiment": null,
    "emotions": [
-    "confidence"
+    "neutral",
+    "administrative"
    ],
    "emotions_ar": [
-    "ثقة"
+    "محايد",
+    "إداري"
    ],
    "framings": [
-    "International cooperation on governance",
-    "Regional integration frameworks",
-    "Institutional capacity-building"
+    "Administrative modernization",
+    "International institutional cooperation",
+    "Governance capacity-building"
    ],
    "framings_ar": [
-    "التعاون الدولي على الحكومة",
-    "أطر التكامل الإقليمي",
-    "بناء القدرات المؤسسية"
+    "تحديث إداري",
+    "التعاون المؤسسي الدولي",
+    "بناء قدرات الحوكمة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 2,
+   "volume": 3,
    "public_volume": 0,
-   "share": 0.065,
-   "engagement": 111,
+   "share": 0.097,
+   "engagement": 203,
    "platforms": {
-    "telegram": 2
+    "telegram": 3
    },
    "sources": [
     "SANA - state news agency (EN)"
@@ -234,39 +179,88 @@
    "first_seen": "2026-09-19T14:26:37Z"
   },
   {
-   "id": "cultural-and-artistic-restoration",
-   "title": "Cultural Achievements and Artistic Restoration",
-   "title_ar": "الإنجازات الثقافية واستعادة التراث الفني",
-   "summary": "State media reports on the reopening of Al-Hamra Theater in Damascus after restoration and a Digital Arts Exhibition at the Syrian National Library showcasing young creative talent. These reports emphasize cultural recovery and creative expression.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية عن إعادة افتتاح مسرح الحمراء في دمشق بعد الترميم ومعرض الفنون الرقمية بالمكتبة الوطنية السورية يعرض مواهب إبداعية شابة. تركز هذه التقارير على التعافي الثقافي والتعبير الإبداعي.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.7,
-   "public_sentiment": null,
+   "id": "political-sarcasm-and-mockery",
+   "title": "Political Sarcasm and Mockery of Government Figures",
+   "title_ar": "السخرية السياسية والاستهزاء بشخصيات حكومية",
+   "summary": "Public posts mock government figures and programs using sarcasm, mockery of song parodies ('We are your men, oh Bashar'), and dismissive language toward media figures and political opponents. These posts do not address specific policies but focus on ridicule.",
+   "summary_ar": "ينشر الناشطون العموميون سخرية وسخاء من الشخصيات الحكومية والبرامج باستخدام التهكم واستهزاء من تحوير الأغاني ('احنا رجالك يا بشار') ولغة استهزائية تجاه شخصيات إعلامية وخصوم سياسيين. لا تتناول هذه الإعلانات سياسات محددة بل تركز على السخرية.",
+   "public_reaction": "Public posts employ sarcasm and political mockery, including parodies of nationalist songs, suggesting frustration or disdain toward government narratives and media figures without articulating specific grievances.",
+   "public_reaction_ar": "تستخدم الإعلانات العامة السخرية والاستهزاء السياسي بما فيها تحوير الأغاني الوطنية مما يشير إلى إحباط أو احتقار للسرديات الحكومية والشخصيات الإعلامية دون التعبير عن شكاوى محددة.",
+   "sentiment": -0.5,
+   "public_sentiment": -0.5,
    "emotions": [
-    "pride",
-    "hope"
+    "sarcasm",
+    "mockery",
+    "contempt"
    ],
    "emotions_ar": [
-    "اعتزاز",
-    "أمل"
+    "سخرية",
+    "استهزاء",
+    "احتقار"
    ],
    "framings": [
-    "Cultural revival",
-    "Historical preservation",
-    "Youth creativity and talent"
+    "Political criticism through satire",
+    "Media figure ridicule",
+    "Nationalist narrative rejection"
    ],
    "framings_ar": [
-    "الإحياء الثقافي",
-    "الحفاظ على التراث التاريخي",
-    "الإبداع والمواهب الشابة"
+    "نقد سياسي عبر السخرية",
+    "السخرية من شخصيات إعلامية",
+    "رفض السردية القومية"
+   ],
+   "flags": [
+    "coordinated mockery of specific media figures"
+   ],
+   "flags_ar": [
+    "سخرية منسقة من شخصيات إعلامية محددة"
+   ],
+   "volume": 3,
+   "public_volume": 3,
+   "share": 0.097,
+   "engagement": 0,
+   "platforms": {
+    "x": 3
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-19T20:42:19Z"
+  },
+  {
+   "id": "aleppo-development-projects",
+   "title": "Aleppo Development and Regional Centrality Projects",
+   "title_ar": "مشاريع تطوير حلب والمركزية الإقليمية",
+   "summary": "President al-Sharaa discusses proposed development projects in Aleppo including real estate, tourism, industrial facilities, and an exhibition city, meeting with senior officials. This follows earlier reports on Aleppo's role in regional development.",
+   "summary_ar": "يناقش الرئيس الشرع مشاريع تطويرية مقترحة في حلب تشمل العقارات والسياحة والمنشآت الصناعية ومدينة معارض، في اجتماع مع كبار المسؤولين. يتابع هذا التقارير السابقة حول دور حلب في التطوير الإقليمي.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.4,
+   "public_sentiment": null,
+   "emotions": [
+    "optimism",
+    "ambition"
+   ],
+   "emotions_ar": [
+    "تفاؤل",
+    "طموح"
+   ],
+   "framings": [
+    "Regional development hub",
+    "Post-war reconstruction",
+    "Presidential strategic vision"
+   ],
+   "framings_ar": [
+    "مركز تطوير إقليمي",
+    "إعادة بناء ما بعد الحرب",
+    "رؤية استراتيجية رئاسية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 2,
    "public_volume": 0,
    "share": 0.065,
-   "engagement": 119,
+   "engagement": 95,
    "platforms": {
     "telegram": 2
    },
@@ -276,142 +270,95 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77943",
+     "url": "https://t.me/SANANewsEnglish/77961",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-09-19T18:02:31Z"
   },
   {
-   "id": "wedding-costs-and-social-disruption",
-   "title": "Rising Wedding Costs and Social Impact",
-   "title_ar": "ارتفاع تكاليف الزفاف والتأثير الاجتماعي",
-   "summary": "Independent outlet reports that rising marriage costs and effects of July 2025 events have led couples in Suwayda to shorten traditional wedding rituals or forgo celebrations altogether, pointing to ongoing economic strain and social disruption.",
-   "summary_ar": "تقارير المنافذ المستقلة حول ارتفاع تكاليف الزواج وتأثيرات أحداث تموز 2025 التي دفعت الأزواج في السويداء إلى تقصير الطقوس الزفافية التقليدية أو الامتناع عن الاحتفالات، مما يشير إلى استمرار الضغط الاقتصادي والاضطراب الاجتماعي.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": -0.4,
-   "public_sentiment": null,
+   "id": "security-operations-crime",
+   "title": "Security Operations Against Drug Trafficking and Economic Crime",
+   "title_ar": "العمليات الأمنية ضد الاتجار بالمخدرات والجرائم الاقتصادية",
+   "summary": "Drug Enforcement Department in Homs neutralizes a major drug trafficking network chief; Latakia security forces arrest five suspects accused of embezzling tens of millions of Syrian pounds from public funds. Public posts amplify these announcements.",
+   "summary_ar": "تحيّد إدارة مكافحة المخدرات في حمص رئيس شبكة اتجار مخدرات رئيسية؛ تعتقل قوى الأمن في اللاذقية خمسة مشتبهين بهم بتهمة اختلاس عشرات الملايين من الليرات السورية من أموال عامة. ينشر الناشطون العموميون هذه الإعلانات.",
+   "public_reaction": "Public voices amplify and share security announcements about arrests and operations, treating them as positive developments in law enforcement.",
+   "public_reaction_ar": "ينشر الناشطون العموميون إعلانات أمنية عن الاعتقالات والعمليات ويعاملونها كتطورات إيجابية في إنفاذ القانون.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.2,
    "emotions": [
-    "concern",
-    "economic stress"
+    "approval",
+    "shared information"
    ],
    "emotions_ar": [
-    "قلق",
-    "ضغط اقتصادي"
+    "موافقة",
+    "معلومات مشتركة"
    ],
    "framings": [
-    "Economic hardship affecting life events",
-    "Social tradition erosion",
-    "Impact of recent disruptions"
+    "Crime suppression",
+    "Public funds protection",
+    "Drug enforcement"
    ],
    "framings_ar": [
-    "الضغط الاقتصادي يؤثر على الأحداث الحياتية",
-    "تآكل التقاليد الاجتماعية",
-    "تأثير الاضطرابات الأخيرة"
+    "قمع الجريمة",
+    "حماية الأموال العامة",
+    "إنفاذ مكافحة المخدرات"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 1,
-   "public_volume": 0,
-   "share": 0.032,
-   "engagement": 11,
+   "volume": 2,
+   "public_volume": 1,
+   "share": 0.065,
+   "engagement": 68,
    "platforms": {
-    "telegram": 1
+    "telegram": 1,
+    "x": 1
    },
    "sources": [
-    "Enab Baladi - independent (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6747",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-19T05:55:04Z"
-  },
-  {
-   "id": "missing-persons-dna-identification",
-   "title": "DNA Training Program for Missing Persons Identification",
-   "title_ar": "برنامج تدريب الحمض النووي لتحديد المفقودين",
-   "summary": "State media reports that Syria's National Commission for Missing Persons participated in a specialized DNA training program in The Hague hosted by the International Commission on Missing Persons, aimed at enhancing national capacity to analyze biological samples and identify missing persons.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية حول مشاركة اللجنة الوطنية السورية للمفقودين في برنامج تدريب متخصص للحمض النووي في لاهاي تستضيفه اللجنة الدولية للمفقودين، بهدف تعزيز القدرة الوطنية على تحليل العينات البيولوجية وتحديد المفقودين.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.5,
-   "public_sentiment": null,
-   "emotions": [
-    "hope",
-    "resolve"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "عزيمة"
-   ],
-   "framings": [
-    "International cooperation on accountability",
-    "Closure for families",
-    "Technical capacity-building"
-   ],
-   "framings_ar": [
-    "التعاون الدولي على المساءلة",
-    "إحالة للعائلات",
-    "بناء القدرات التقنية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 0,
-   "share": 0.032,
-   "engagement": 59,
-   "platforms": {
-    "telegram": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
+    "SANA - state news agency (EN)",
+    "X posts"
    ],
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77944",
+     "url": "https://t.me/SANANewsEnglish/77957",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-19T11:01:34Z"
+   "first_seen": "2026-09-19T18:02:31Z"
   },
   {
    "id": "bus-accident-casualties",
    "title": "Bus Collision on Baniyas-Tartous Road",
-   "title_ar": "تصادم حافلة على طريق بنياس – طرطوس",
-   "summary": "State media reports that 24 people, including women and children, were injured when a passenger coach collided with a car on the Baniyas-Tartous road on Saturday.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية حول إصابة 24 شخصاً، بينهم نساء وأطفال، عندما اصطدمت حافلة ركاب بسيارة على طريق بنياس – طرطوس يوم السبت.",
+   "title_ar": "حادث تصادم حافلة على طريق بانياس طرطوس",
+   "summary": "A passenger coach collides with a car on the Baniyas-Tartous road, injuring 24 people including women and children. This continues the recurring narrative of traffic accidents.",
+   "summary_ar": "تصطدم حافلة ركاب بسيارة على طريق بانياس طرطوس مما يؤدي إلى إصابة 24 شخصاً من بينهم نساء وأطفال. يتابع هذا السرد المتكرر لحوادث المرور.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": -0.3,
+   "sentiment": -0.5,
    "public_sentiment": null,
    "emotions": [
-    "concern"
+    "concern",
+    "tragedy"
    ],
    "emotions_ar": [
-    "قلق"
+    "قلق",
+    "مأساة"
    ],
    "framings": [
-    "Traffic safety incident",
-    "Road hazards",
-    "Civilian casualties"
+    "Traffic accident",
+    "Road safety concern"
    ],
    "framings_ar": [
-    "حادث سلامة مرور",
-    "أخطار الطرق",
-    "خسائر مدنية"
+    "حادث مرور",
+    "مخاوف سلامة الطرق"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
    "share": 0.032,
-   "engagement": 61,
+   "engagement": 68,
    "platforms": {
     "telegram": 1
    },
@@ -428,212 +375,32 @@
    "first_seen": "2026-09-19T18:02:31Z"
   },
   {
-   "id": "sectarian-tensions-and-grievances",
-   "title": "Sectarian Divisions and Religious Tensions",
-   "title_ar": "الانقسامات الطائفية والتوترات الدينية",
-   "summary": "A public comment accuses a figure of removing Salafis (characterized as Hanbali Sunnis) and promoting Ash'aris and Sufis instead, framing this as alignment with non-Islamic enemies. The comment reflects sectarian grievances and religious identity disputes.",
-   "summary_ar": "تعليق عام يتهم شخصية ما بإزالة السلفيين (يوصفون بأنهم حنابلة أهل السنة) وتعزيز الأشاعرة والصوفيين بدلاً منهم، ويصور هذا كمواءمة مع أعداء غير إسلاميين. يعكس التعليق الشكاوى الطائفية والنزاعات على الهوية الدينية.",
-   "public_reaction": "A single comment expresses sectarian grievance against Ash'ari and Sufi theological positions and accuses leadership of favoring these groups over Salafi-Hanbali traditions.",
-   "public_reaction_ar": "تعليق واحد يعبّر عن شكوى طائفية ضد المواقف اللاهوتية الأشعرية والصوفية ويتهم القيادة بتفضيل هذه المجموعات على التقاليد السلفية الحنبلية.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.7,
-   "emotions": [
-    "grievance",
-    "sectarian anger"
-   ],
-   "emotions_ar": [
-    "تذمر",
-    "غضب طائفي"
-   ],
-   "framings": [
-    "Religious doctrine disputes",
-    "Sectarian favoritism accusations",
-    "Theological identity conflicts"
-   ],
-   "framings_ar": [
-    "نزاعات العقيدة الدينية",
-    "اتهامات التحيز الطائفي",
-    "نزاعات الهوية اللاهوتية"
-   ],
-   "flags": [
-    "Sectarian incitement against Ash'ari and Sufi traditions"
-   ],
-   "flags_ar": [
-    "تحريض طائفي ضد التقاليد الأشعرية والصوفية"
-   ],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.032,
-   "engagement": 2,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-19T18:02:31Z"
-  },
-  {
-   "id": "tourism-and-trade-cooperation",
-   "title": "International Cooperation on Tourism and Trade",
-   "title_ar": "التعاون الدولي في السياحة والتجارة",
-   "summary": "Public posts report on visits by international officials promoting bilateral cooperation in tourism, agriculture, trade, and reconstruction support. A Turkish municipal leader visits Syria to meet with officials and investors.",
-   "summary_ar": "منشورات عامة تقرر زيارات من مسؤولين دوليين يروجون للتعاون الثنائي في السياحة والزراعة والتجارة ودعم إعادة الإعمار. يزور قائد بلدية تركي سوريا للاجتماع مع المسؤولين والمستثمرين.",
-   "public_reaction": "One commenter suggests that security incidents follow visits by Arab investors and associates external actors with instability.",
-   "public_reaction_ar": "يقترح أحد المعلقين أن الحوادث الأمنية تتبع زيارات المستثمرين العرب وينسب الحوادث إلى جهات خارجية.",
-   "sentiment": 0.4,
-   "public_sentiment": -0.5,
-   "emotions": [
-    "optimism",
-    "suspicion"
-   ],
-   "emotions_ar": [
-    "تفاؤل",
-    "ريبة"
-   ],
-   "framings": [
-    "Regional economic integration",
-    "Investment and reconstruction",
-    "International partnerships"
-   ],
-   "framings_ar": [
-    "التكامل الاقتصادي الإقليمي",
-    "الاستثمار وإعادة الإعمار",
-    "الشراكات الدولية"
-   ],
-   "flags": [
-    "Unverified conspiracy claim linking Arab visitors to security incidents"
-   ],
-   "flags_ar": [
-    "ادعاء مؤامرة غير مثبت يربط الزوّار العرب بالحوادث الأمنية"
-   ],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.032,
-   "engagement": 0,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-19T18:02:31Z"
-  },
-  {
-   "id": "kurdish-language-education",
-   "title": "Kurdish Language Teacher Selection Tests",
-   "title_ar": "اختبارات اختيار معلمي اللغة الكردية",
-   "summary": "Public post reports that Syrian education ministry is conducting competitive selection tests for Kurdish language teachers in Damascus with 120 applicants from multiple provinces, testing teaching competency and language skills.",
-   "summary_ar": "منشور عام يقرر أن وزارة التربية السورية تجري اختبارات انتقاء تنافسية لمعلمي اللغة الكردية في دمشق مع 120 متقدماً من عدة محافظات، واختبار كفاءة التدريس ومهارات اللغة.",
+   "id": "cultural-and-artistic-restoration",
+   "title": "Al-Hamra Theater Reopens After Restoration",
+   "title_ar": "إعادة فتح مسرح الحمراء بعد الترميم",
+   "summary": "Al-Hamra Theater in Damascus reopens after comprehensive restoration works, reclaiming its place in Syria's cultural and artistic scene. Continues the narrative of cultural heritage restoration.",
+   "summary_ar": "يعاد فتح مسرح الحمراء في دمشق بعد أعمال ترميم شاملة، استعادة مكانته في المشهد الثقافي والفني السوري. يتابع سرد ترميم التراث الثقافي.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.3,
+   "sentiment": 0.5,
    "public_sentiment": null,
    "emotions": [
-    "administrative progress"
+    "pride",
+    "cultural recovery"
    ],
    "emotions_ar": [
-    "تقدم إداري"
+    "فخر",
+    "استعادة ثقافية"
    ],
    "framings": [
-    "Minority language education",
-    "Educational capacity-building",
-    "Professional standards"
+    "Cultural heritage restoration",
+    "Artistic revival",
+    "Post-war reconstruction"
    ],
    "framings_ar": [
-    "تعليم اللغات الأقلية",
-    "بناء قدرات تعليمية",
-    "معايير مهنية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.032,
-   "engagement": 0,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-19T18:02:31Z"
-  },
-  {
-   "id": "gold-prices-local-market",
-   "title": "Gold Price Fluctuations in Local Market",
-   "title_ar": "تقلبات أسعار الذهب في السوق المحلية",
-   "summary": "State media reports a 50 Syrian pound increase in 21-karat gold prices on Saturday compared to Thursday, reflecting ongoing currency and commodity market movements.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية ارتفاع سعر الذهب عيار 21 بمقدار 50 ليرة سورية يوم السبت مقابل أسعار يوم الخميس، معكساً تحركات السوق المتعلقة بالعملة والسلع.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": -0.2,
-   "public_sentiment": null,
-   "emotions": [
-    "economic concern"
-   ],
-   "emotions_ar": [
-    "قلق اقتصادي"
-   ],
-   "framings": [
-    "Currency volatility",
-    "Commodity price movements",
-    "Inflation indicators"
-   ],
-   "framings_ar": [
-    "تقلب العملة",
-    "تحركات أسعار السلع",
-    "مؤشرات التضخم"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 0,
-   "share": 0.032,
-   "engagement": 66,
-   "platforms": {
-    "telegram": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77946",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-19T18:02:31Z"
-  },
-  {
-   "id": "security-operations-crime",
-   "title": "Security Operations Against Drug Trafficking",
-   "title_ar": "العمليات الأمنية ضد تجارة المخدرات",
-   "summary": "State media reports that the Drug Enforcement Department in Homs neutralized a leading drug trafficking network chief in a security operation launched two days earlier, framed as part of efforts to combat organized crime.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية أن إدارة مكافحة المخدرات في حمص قضت على زعيم شبكة تجارة مخدرات رئيسي في عملية أمنية بدأت قبل يومين، تُصوّر كجزء من جهود مكافحة الجريمة المنظمة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.2,
-   "public_sentiment": null,
-   "emotions": [
-    "law-and-order confidence"
-   ],
-   "emotions_ar": [
-    "ثقة بالقانون والنظام"
-   ],
-   "framings": [
-    "Drug enforcement success",
-    "Organized crime crackdown",
-    "Public security operations"
-   ],
-   "framings_ar": [
-    "نجاح إنفاذ قوانين المخدرات",
-    "حملة مكافحة الجريمة المنظمة",
-    "عمليات الأمان العام"
+    "استعادة التراث الثقافي",
+    "إحياء الفن",
+    "إعادة بناء ما بعد الحرب"
    ],
    "flags": [],
    "flags_ar": [],
@@ -650,11 +417,242 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77957",
+     "url": "https://t.me/SANANewsEnglish/77951",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-09-19T18:02:31Z"
+  },
+  {
+   "id": "kurdish-language-education",
+   "title": "Kurdish Language Teacher Selection Tests",
+   "title_ar": "اختبارات اختيار مدرسي اللغة الكردية",
+   "summary": "Ministry of Education conducts tests to select Kurdish language teachers for schools in Damascus, Raqqa, and Hama. A public post announces this development, signaling curriculum expansion.",
+   "summary_ar": "تجري وزارة التربية اختبارات لاختيار مدرسي اللغة الكردية للمدارس في دمشق والرقة وحماة. ينشر ناشط عام هذا التطور مشيراً إلى توسع المناهج.",
+   "public_reaction": "Public voice shares the announcement of Kurdish language teacher selection, framing it as an educational development.",
+   "public_reaction_ar": "ينشر ناشط عام إعلان اختيار مدرسي اللغة الكردية معتبراً إياه تطوراً تعليمياً.",
+   "sentiment": 0.2,
+   "public_sentiment": 0.2,
+   "emotions": [
+    "neutral",
+    "institutional"
+   ],
+   "emotions_ar": [
+    "محايد",
+    "مؤسسي"
+   ],
+   "framings": [
+    "Educational curriculum expansion",
+    "Minority language inclusion",
+    "Teacher recruitment"
+   ],
+   "framings_ar": [
+    "توسع المناهج التعليمية",
+    "شمول لغات الأقليات",
+    "توظيف المعلمين"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.032,
+   "engagement": 1,
+   "platforms": {
+    "x": 1
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-19T18:02:31Z"
+  },
+  {
+   "id": "territorial-disputes-regional",
+   "title": "Territorial Disputes and Regional Geopolitics",
+   "title_ar": "النزاعات الإقليمية والجغرافيا السياسية الإقليمية",
+   "summary": "A public post disputes claims about Turkish military bases in Syria, distinguishing them from Israeli occupation of the Golan Heights, arguing Turkey has Syrian government approval while Israel's occupation is internationally recognized as illegitimate.",
+   "summary_ar": "ينشر ناشط عام رداً يطعن في الادعاءات حول القواعد العسكرية التركية في سوريا، ويميز بينها وبين الاحتلال الإسرائيلي لجولان، معتجاً بأن تركيا لديها موافقة حكومية سورية بينما يُعتبر احتلال إسرائيل غير شرعي دولياً.",
+   "public_reaction": "Public voice engages in territorial argument, defending Syrian government position on Turkish military presence while criticizing Israeli occupation, suggesting sectarian or geopolitical tensions remain in public discourse.",
+   "public_reaction_ar": "ينشر ناشط عام حجة إقليمية يدافع عن موقف الحكومة السورية من الوجود العسكري التركي بينما ينتقد الاحتلال الإسرائيلي مما يشير إلى استمرار التوترات الطائفية أو الجيوسياسية في الخطاب العام.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.3,
+   "emotions": [
+    "defensive",
+    "territorial concern"
+   ],
+   "emotions_ar": [
+    "دفاعي",
+    "قلق إقليمي"
+   ],
+   "framings": [
+    "Turkish military presence justification",
+    "Israeli occupation condemnation",
+    "Regional sovereignty"
+   ],
+   "framings_ar": [
+    "تبرير الوجود العسكري التركي",
+    "إدانة الاحتلال الإسرائيلي",
+    "السيادة الإقليمية"
+   ],
+   "flags": [
+    "sectarian undertones in geopolitical argument"
+   ],
+   "flags_ar": [
+    "نبرات طائفية في الحجة الجيوسياسية"
+   ],
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.032,
+   "engagement": 0,
+   "platforms": {
+    "x": 1
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-19T20:42:19Z"
+  },
+  {
+   "id": "currency-and-economic-pressures",
+   "title": "Currency Exchange Rate Crisis and Economic Pressures",
+   "title_ar": "أزمة سعر صرف العملة والضغوط الاقتصادية",
+   "summary": "Independent outlet reports widening gap between Syria's official and parallel exchange rates, attributed to persistent trade deficit, costly energy imports, and high foreign currency demand. This signals ongoing currency instability.",
+   "summary_ar": "تقرر وسيلة إعلام مستقلة اتساع الفجوة بين سعر الصرف الرسمي والموازي للعملة السورية، تُعزى إلى عجز تجاري مستمر وواردات طاقة مكلفة وطلب مرتفع على العملات الأجنبية. يشير هذا إلى عدم استقرار العملة المستمر.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": -0.4,
+   "public_sentiment": null,
+   "emotions": [
+    "economic concern",
+    "instability"
+   ],
+   "emotions_ar": [
+    "قلق اقتصادي",
+    "عدم استقرار"
+   ],
+   "framings": [
+    "Currency crisis",
+    "Economic imbalance",
+    "Monetary instability"
+   ],
+   "framings_ar": [
+    "أزمة عملة",
+    "عدم توازن اقتصادي",
+    "عدم استقرار نقدي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 0,
+   "share": 0.032,
+   "engagement": 4,
+   "platforms": {
+    "telegram": 1
+   },
+   "sources": [
+    "Enab Baladi - independent (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6748",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-19T20:42:19Z"
+  },
+  {
+   "id": "international-trade-and-business",
+   "title": "International Trade and Business Council Formation",
+   "title_ar": "التجارة الدولية وتشكيل المجالس التجارية",
+   "summary": "Syria participates in Uzbek-Syrian Business Forum in Tashkent with economy ministry delegation; Syrian-Uzbek Business Council is formally established to organize joint business activities. Posts signal post-war economic engagement with regional partners.",
+   "summary_ar": "تشارك سوريا في منتدى الأعمال الأوزبكي-السوري في طشقند مع وفد من وزارة الاقتصاد؛ يتم تأسيس المجلس السوري-الأوزبكي للأعمال رسمياً لتنظيم الأنشطة التجارية المشتركة. تشير الإعلانات إلى التفاعل الاقتصادي ما بعد الحرب مع الشركاء الإقليميين.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.3,
+   "public_sentiment": null,
+   "emotions": [
+    "hopeful",
+    "economic engagement"
+   ],
+   "emotions_ar": [
+    "متفائل",
+    "تفاعل اقتصادي"
+   ],
+   "framings": [
+    "Regional trade expansion",
+    "Economic partnership",
+    "Business council formalization"
+   ],
+   "framings_ar": [
+    "توسع التجارة الإقليمية",
+    "الشراكة الاقتصادية",
+    "رسميّة المجلس التجاري"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 0,
+   "share": 0.032,
+   "engagement": 30,
+   "platforms": {
+    "telegram": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77969",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-19T20:42:19Z"
+  },
+  {
+   "id": "raqqa-reconstruction-and-investment",
+   "title": "Raqqa Reconstruction and Presidential Investment Support",
+   "title_ar": "إعادة بناء الرقة والدعم الاستثماري الرئاسي",
+   "summary": "Raqqa governor announces consumption statistics and reconstruction plans, disclosing presidential allocations for Raqqa, Hasaka, and Deir ez-Zor. Public post amplifies this announcement about regional development priorities.",
+   "summary_ar": "يعلن محافظ الرقة عن إحصائيات الاستهلاك وخطط إعادة البناء، مكاشفاً عن تخصيصات رئاسية للرقة والحسكة ودير الزور. ينشر ناشط عام هذا الإعلان عن أولويات التطوير الإقليمي.",
+   "public_reaction": "Public post amplifies governor's announcement about reconstruction figures and presidential support allocations.",
+   "public_reaction_ar": "ينشر ناشط عام إعلان المحافظ عن أرقام إعادة البناء والتخصيصات الرئاسية للدعم.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.2,
+   "emotions": [
+    "development-focused",
+    "informational"
+   ],
+   "emotions_ar": [
+    "موجه نحو التطوير",
+    "معلوماتي"
+   ],
+   "framings": [
+    "Regional reconstruction",
+    "Presidential investment priority",
+    "Eastern Syria development"
+   ],
+   "framings_ar": [
+    "إعادة بناء إقليمية",
+    "أولوية الاستثمار الرئاسي",
+    "تطوير شرق سوريا"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.032,
+   "engagement": 1,
+   "platforms": {
+    "x": 1
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-19T20:42:19Z"
   }
  ],
  "sources": [
@@ -692,5 +690,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0401
+ "cost_usd": 0.0399
 }
