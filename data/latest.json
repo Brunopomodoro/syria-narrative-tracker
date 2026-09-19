@@ -3,8 +3,8 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-18T22:35:18Z",
- "checked_at": "2026-09-18T22:35:18Z",
+ "generated_at": "2026-09-19T01:11:31Z",
+ "checked_at": "2026-09-19T01:11:31Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
@@ -12,65 +12,96 @@
   "public_posts": 10,
   "outlet_posts": 20,
   "reactions_posts": 0,
-  "unique_posts": 29,
+  "unique_posts": 30,
   "sources_ok": 4,
   "sources_total": 4,
   "platforms": {
    "telegram": 20,
-   "x": 9
+   "x": 10
   }
  },
  "overall": {
   "sentiment": 0.1,
-  "mood": "Neutral",
-  "mood_ar": "محايد",
-  "public_sentiment": -0.4,
-  "public_mood": "Anxious",
-  "public_mood_ar": "قلق",
-  "brief": "State media reports routine security operations, airport inspections, international agreements, and sports participation alongside incidents of Israeli military activity and an explosion at a Syrian Army site in Deir Ezzor. Public commentary reflects deep political divisions: some express anger at alleged corruption and foreign military presence, others grieve reported military casualties, and a few celebrate cultural events and aviation developments. The disconnect between official framing of normalcy and public anxiety about security and governance is pronounced.",
-  "brief_ar": "تنشر وسائل الإعلام الرسمية تقارير عن عمليات أمنية روتينية وعمليات تفتيش للمطارات واتفاقيات دولية والمشاركة الرياضية، إلى جانب حوادث النشاط العسكري الإسرائيلي وانفجار في موقع عسكري سوري بدير الزور. يعكس التعليق العام انقسامات سياسية عميقة: يعبر البعض عن غضب من الفساد المزعوم والوجود العسكري الأجنبي، والآخرون ينعون الخسائر العسكرية المبلغ عنها، وقلة تحتفي بالفعاليات الثقافية والتطورات الطيرانية. الفجوة بين الإطار الرسمي للاستقرار والقلق العام بشأن الأمن والحوكمة واضحة جداً."
+  "mood": "Official",
+  "mood_ar": "رسمي",
+  "public_sentiment": -0.3,
+  "public_mood": "Suspicious",
+  "public_mood_ar": "مريب",
+  "brief": "State media reports routine diplomatic agreements, military coordination, and regional developments with neutral to positive framing. Public commentary shows skepticism about official narratives, concern over recurring military explosions, questions about Syrian involvement in Yemen, and frustration over unresolved Israeli occupation issues. A small number of posts are unrelated or off-topic.",
+  "brief_ar": "تغطي وسائل الإعلام الرسمية اتفاقيات دبلوماسية روتينية والتنسيق العسكري والتطورات الإقليمية بأسلوب محايد إلى إيجابي. التعليقات العامة تظهر تشككاً في السردية الرسمية، والقلق من الانفجارات العسكرية المتكررة، وأسئلة حول الدور السوري في اليمن، والإحباط من عدم حل قضايا الاحتلال الإسرائيلي."
  },
  "narratives": [
   {
-   "id": "israeli-military-activity",
-   "title": "Israeli Military Operations and Detentions",
-   "title_ar": "العمليات العسكرية الإسرائيلية والاعتقالات",
-   "summary": "Israeli forces conducted operations across multiple Syrian border areas including Quneitra, Damascus Countryside, and Daraa, with shelling reported and civilian detentions. State media reports these incidents factually. Public commentary frames Israel as occupying force and raises allegations of coordination with current Syrian government.",
-   "summary_ar": "أجرت القوات الإسرائيلية عمليات في عدة مناطق حدودية سورية بما فيها القنيطرة وريف دمشق ودرعا، مع تقارير عن قصف واعتقالات. تنشر وسائل الإعلام الرسمية هذه الحوادث بطريقة واقعية. يؤطر التعليق العام إسرائيل كقوة احتلال ويثير اتهامات بالتنسيق مع الحكومة السورية الحالية.",
-   "public_reaction": "One commenter alleges Israeli military coordination with Damascus government and claims imminent mass displacement of Daraa residents, framing it as a grave threat requiring disclosure by leadership.",
-   "public_reaction_ar": "يدعي أحد المعلقين التنسيق العسكري الإسرائيلي مع حكومة دمشق ويزعم تهديد بتهجير جماعي قريب لسكان درعا، ويؤطره كتهديد خطير يتطلب إفصاحاً من القيادة.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.8,
-   "emotions": [
-    "fear",
-    "anger",
-    "distrust"
-   ],
-   "emotions_ar": [
-    "خوف",
-    "غضب",
-    "عدم ثقة"
-   ],
+   "id": "unrelated-content",
+   "title": "Unrelated Regional and Foreign News",
+   "title_ar": "أخبار إقليمية وأجنبية غير ذات صلة",
+   "summary": "State media carries reports unrelated to Syria: US arms sales to Saudi Arabia, Yemeni forces targeting Houthi positions, UAE-India bilateral discussions on regional security, Russia-Turkey maritime security dialogue, and Syrian esports team preparations for Asian Games.",
+   "summary_ar": "وسائل الإعلام الرسمية تنقل تقارير غير ذات صلة بسوريا: مبيعات أسلحة أميركية للسعودية، قوات يمنية تستهدف مواقع حوثية، مناقشات ثنائية إماراتية-هندية حول الأمن الإقليمي، حوار روسي-تركي حول أمن بحر قزوين.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.0,
+   "public_sentiment": null,
+   "emotions": [],
+   "emotions_ar": [],
    "framings": [
-    "Occupation forces conducting attacks (state media neutral reporting)",
-    "Alleged secret agreement enabling Israeli military presence and deportation (public allegations)"
+    "State media: covering regional and international developments"
    ],
    "framings_ar": [
-    "قوات احتلال تشن هجمات (تقرير محايد من وسائل إعلام رسمية)",
-    "اتفاق سري مزعوم يمكّن الوجود العسكري الإسرائيلي والتهجير (اتهامات عامة)"
+    "الإعلام الرسمي: تغطية التطورات الإقليمية والدولية"
    ],
-   "flags": [
-    "Unverified claims of secret agreement and imminent mass displacement",
-    "Conspiracy framing in public commentary"
-   ],
-   "flags_ar": [
-    "مطالبات غير موثقة بوجود اتفاق سري وتهديد بتهجير جماعي",
-    "إطار نظرية مؤامرة في التعليق العام"
-   ],
+   "flags": [],
+   "flags_ar": [],
    "volume": 5,
-   "public_volume": 2,
+   "public_volume": 0,
    "share": 0.167,
-   "engagement": 215,
+   "engagement": 298,
+   "platforms": {
+    "telegram": 5
+   },
+   "sources": [
+    "SANA - state news agency (EN)"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/77914",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-19T01:11:31Z"
+  },
+  {
+   "id": "israeli-military-activity",
+   "title": "Israeli Military Activity and Detentions",
+   "title_ar": "النشاط العسكري الإسرائيلي والاعتقالات",
+   "summary": "State media reports multiple Israeli operations: shelling of Quneitra and Damascus Countryside areas, detention of a young man in western Daraa, and burning of a hospital in southern Lebanon. Public commentary questions why Israeli threats remain unresolved while Syria focuses on other regional issues.",
+   "summary_ar": "تقارير وسائل الإعلام الرسمية عن عمليات إسرائيلية متعددة: قصف مناطق القنيطرة وريف دمشق، واعتقال شاب في درعا الغربية، وحرق مستشفى في جنوب لبنان. التعليقات العامة تتساءل عن سبب بقاء التهديدات الإسرائيلية دون حل بينما تركز سوريا على قضايا إقليمية أخرى.",
+   "public_reaction": "Public posts contrast Israeli activity with Syrian focus on Yemen and other issues, expressing frustration that the Israeli occupation remains unresolved.",
+   "public_reaction_ar": "المنشورات العامة تقارن النشاط الإسرائيلي بتركيز سوريا على اليمن وقضايا أخرى، معبّرة عن إحباط من بقاء الاحتلال الإسرائيلي دون حل.",
+   "sentiment": -0.1,
+   "public_sentiment": -0.5,
+   "emotions": [
+    "frustration",
+    "concern"
+   ],
+   "emotions_ar": [
+    "إحباط",
+    "قلق"
+   ],
+   "framings": [
+    "State media: reporting Israeli violations as ongoing security incidents",
+    "Public: questioning priorities and unresolved occupation"
+   ],
+   "framings_ar": [
+    "الإعلام الرسمي: الإبلاغ عن الانتهاكات الإسرائيلية كحوادث أمنية جارية",
+    "الجمهور: التساؤل عن الأولويات والاحتلال غير المحلول"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 4,
+   "public_volume": 1,
+   "share": 0.133,
+   "engagement": 224,
    "platforms": {
     "telegram": 3,
     "x": 1
@@ -89,44 +120,48 @@
    "first_seen": "2026-09-18T16:25:46Z"
   },
   {
-   "id": "military-explosions-deir-ezzor",
-   "title": "Military Explosion at Deir Ezzor Site",
-   "title_ar": "انفجار في موقع عسكري بدير الزور",
-   "summary": "An explosion occurred at a Syrian Arab Army site in the Ayyash area west of Deir Ezzor on Friday, with causes under investigation. State media reports the incident neutrally with minimal detail. Public sources claim higher casualty figures (9 deaths) than initially reported.",
-   "summary_ar": "وقع انفجار في موقع للجيش العربي السوري بمنطقة عياش غرب دير الزور يوم الجمعة، وتحقيقات جارية لتحديد الأسباب. تنشر وسائل الإعلام الرسمية الحادثة بحياد مع تفاصيل محدودة. تؤكد مصادر عامة أرقام خسائر أعلى (9 قتلى) مما أُبلغ عنه في البداية.",
-   "public_reaction": "Public posts express grief and condolences for reported casualties, with some claiming higher death tolls than official reports. One commenter offers prayers for the deceased and comfort for affected families.",
-   "public_reaction_ar": "تعبر منشورات عامة عن حزن وتعازي بشأن الخسائر المبلغ عنها، مع مطالبة البعض بأرقام وفيات أعلى من التقارير الرسمية. يقدم أحد المعلقين دعاء للمتوفين وتعزية للعائلات المتضررة.",
+   "id": "recurring-military-explosions",
+   "title": "Recurring Military Explosions and Lack of Transparency",
+   "title_ar": "الانفجارات العسكرية المتكررة ونقص الشفافية",
+   "summary": "State media reports an explosion at a Syrian Arab Army site in Deir Ezzor while investigations are ongoing, but provides minimal details. Public commenters express alarm over a pattern of ammunition depot explosions across multiple locations (Damascus, Aleppo, Idlib, Deir Ezzor) and call for urgent, expanded investigations, suggesting the pattern cannot be coincidence.",
+   "summary_ar": "تقارير وسائل الإعلام الرسمية عن انفجار في موقع للجيش العربي السوري في دير الزور مع تحقيقات جارية، لكن مع تفاصيل محدودة جداً. يعبّر معلقون عن قلق من نمط متكرر من انفجارات مستودعات الذخائر عبر مواقع متعددة ويطالبون بتحقيقات موسعة وعاجلة، ويشيرون إلى أن النمط لا يمكن أن يكون مصادفة.",
+   "public_reaction": "Public voices express alarm and suspicion, demanding urgent investigations into what they describe as a pattern of explosions that is unlikely to be accidental given current circumstances. Some appeal to religious sentiment while voicing concerns.",
+   "public_reaction_ar": "أصوات عامة تعبّر عن قلق وريبة، وتطالب بتحقيقات عاجلة في ما تصفه بنمط من الانفجارات لا يمكن أن يكون مصادفة في الظروف الحالية.",
    "sentiment": 0.0,
    "public_sentiment": -0.7,
    "emotions": [
-    "grief",
-    "loss"
+    "alarm",
+    "suspicion",
+    "demand for accountability"
    ],
    "emotions_ar": [
-    "حزن",
-    "فقدان"
+    "قلق",
+    "ريبة",
+    "مطالبة بالمساءلة"
    ],
    "framings": [
-    "Technical incident under investigation (state media)",
-    "Unreported casualty toll (public sources)"
+    "State media: ongoing investigation, details to follow",
+    "Public: pattern of negligence or sabotage, demand for transparency"
    ],
    "framings_ar": [
-    "حادثة تقنية قيد التحقيق (وسائل إعلام رسمية)",
-    "خسائر غير مبلغ عنها (مصادر عامة)"
+    "الإعلام الرسمي: تحقيق جار، تفاصيل لاحقة",
+    "الجمهور: نمط من الإهمال أو التخريب، مطالبة بالشفافية"
    ],
    "flags": [
-    "Discrepancy between official and public casualty claims"
+    "Lack of detail in official statements despite recurring incidents",
+    "Public suspicion of coordinated pattern without evidence provided"
    ],
    "flags_ar": [
-    "تضارب بين الأرقام الرسمية والعامة للخسائر"
+    "نقص التفاصيل في البيانات الرسمية رغم تكرار الحوادث",
+    "الريبة العامة من نمط منسق دون توفير أدلة"
    ],
-   "volume": 4,
-   "public_volume": 2,
-   "share": 0.133,
-   "engagement": 151,
+   "volume": 3,
+   "public_volume": 1,
+   "share": 0.1,
+   "engagement": 155,
    "platforms": {
     "telegram": 2,
-    "x": 2
+    "x": 1
    },
    "sources": [
     "SANA - state news agency (EN)",
@@ -139,76 +174,47 @@
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T16:25:46Z"
-  },
-  {
-   "id": "unrelated-regional-news",
-   "title": "Unrelated Regional News Coverage",
-   "title_ar": "تغطية أخبار إقليمية غير ذات صلة",
-   "summary": "State media reports incidents unrelated to Syria: Israeli forces burning a hospital in Lebanon, Yemeni forces targeting Houthi positions, and US military assistance to Saudi Arabia.",
-   "summary_ar": "تنشر وسائل الإعلام الرسمية حوادث غير ذات صلة بسوريا: قوات إسرائيلية تحرق مستشفى في لبنان، قوات يمنية تستهدف مواقع حوثية، والمساعدات العسكرية الأمريكية للسعودية.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.0,
-   "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
-   "framings": [
-    "Regional military and political developments (state media)"
-   ],
-   "framings_ar": [
-    "التطورات العسكرية والسياسية الإقليمية (وسائل إعلام رسمية)"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 3,
-   "public_volume": 0,
-   "share": 0.1,
-   "engagement": 139,
-   "platforms": {
-    "telegram": 3
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77914",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-18T22:35:18Z"
+   "first_seen": "2026-09-19T01:11:31Z"
   },
   {
    "id": "airport-and-military-coordination",
    "title": "Latakia International Airport Inspection and Syria-Russia Military Coordination",
-   "title_ar": "تفتيش مطار اللاذقية الدولي والتنسيق العسكري السوري-الروسي",
-   "summary": "Foreign Minister al-Shaibani toured Latakia International Airport with senior military officials to review implementation of Syria-Russia memoranda of understanding. State media reports the diplomatic visit as routine bilateral coordination. No significant public reaction recorded.",
-   "summary_ar": "قام وزير الخارجية الشعيباني بجولة في مطار اللاذقية الدولي برفقة كبار المسؤولين العسكريين لمراجعة تنفيذ مذكرات التفاهم السورية-الروسية. تنشر وسائل الإعلام الرسمية الزيارة الدبلوماسية كتنسيق ثنائي روتيني. لم يتم تسجيل رد فعل عام كبير.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.0,
-   "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "title_ar": "فحص مطار اللاذقية الدولي والتنسيق العسكري السوري-الروسي",
+   "summary": "State media reports that Foreign Minister Asaad Hassan al-Shaibani conducted field tours of Latakia International Airport alongside senior military commanders to review implementation of a Syria-Russia memorandum of understanding. Public posts reshare the official announcement with photos.",
+   "summary_ar": "تقارير وسائل الإعلام الرسمية أن وزير الخارجية أجرى جولات ميدانية في مطار اللاذقية الدولي برفقة كبار القادة العسكريين لفحص تنفيذ مذكرة تفاهم سوري-روسية. المنشورات العامة تعيد مشاركة الإعلان الرسمي مع صور.",
+   "public_reaction": "Public posts reproduce official content with minimal commentary, functioning as amplification of official messaging.",
+   "public_reaction_ar": "المنشورات العامة تعيد إنتاج المحتوى الرسمي مع تعليق محدود جداً، وتعمل كتضخيم للرسائل الرسمية.",
+   "sentiment": 0.1,
+   "public_sentiment": 0.0,
+   "emotions": [
+    "official",
+    "routine"
+   ],
+   "emotions_ar": [
+    "رسمي",
+    "روتيني"
+   ],
    "framings": [
-    "Routine bilateral military-diplomatic coordination (state media)"
+    "State media: high-level coordination on military infrastructure development",
+    "Public: direct resharing of official announcements"
    ],
    "framings_ar": [
-    "تنسيق عسكري دبلوماسي ثنائي روتيني (وسائل إعلام رسمية)"
+    "الإعلام الرسمي: تنسيق عالي المستوى على تطوير البنية العسكرية",
+    "الجمهور: إعادة مباشرة للإعلانات الرسمية"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 2,
-   "public_volume": 0,
-   "share": 0.067,
-   "engagement": 139,
+   "volume": 3,
+   "public_volume": 1,
+   "share": 0.1,
+   "engagement": 143,
    "platforms": {
-    "telegram": 2
+    "telegram": 2,
+    "x": 1
    },
    "sources": [
-    "SANA - state news agency (EN)"
+    "SANA - state news agency (EN)",
+    "X posts"
    ],
    "examples": [
     {
@@ -222,29 +228,35 @@
   {
    "id": "economic-development-and-trade",
    "title": "Economic Cooperation Agreements and Development Initiatives",
-   "title_ar": "اتفاقيات التعاون الاقتصادي ومبادرات التطور",
-   "summary": "Syria signed memoranda of understanding with Uzbekistan for joint economic and trade committees and expanded cooperation with the IAEA on peaceful nuclear technology. State media frames these as positive steps toward development and international engagement. No public reaction recorded.",
-   "summary_ar": "وقعت سوريا مذكرات تفاهم مع أوزبكستان لإنشاء لجان اقتصادية وتجارية مشتركة وعززت التعاون مع الوكالة الدولية للطاقة الذرية بشأن التكنولوجيا النووية السلمية. تؤطر وسائل الإعلام الرسمية هذه كخطوات إيجابية نحو التطور والانخراط الدولي. لم يتم تسجيل رد فعل عام.",
+   "title_ar": "اتفاقيات التعاون الاقتصادي والمبادرات التنموية",
+   "summary": "State media reports Syria's signing of economic agreements with Uzbekistan (joint economic and trade committee), expanded cooperation with the IAEA on peaceful nuclear technology, and a rural women's empowerment initiative (Seed Initiative). No significant public commentary on these announcements.",
+   "summary_ar": "تقارير وسائل الإعلام الرسمية عن توقيع سوريا لاتفاقيات اقتصادية مع أوزبكستان، وتوسيع التعاون مع الوكالة الدولية للطاقة الذرية على التكنولوجيا السلمية، ومبادرة لتمكين الريفيات (مبادرة البذرة). لا توجد تعليقات عامة كبيرة على هذه الإعلانات.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.3,
+   "sentiment": 0.2,
    "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "emotions": [
+    "neutral",
+    "constructive"
+   ],
+   "emotions_ar": [
+    "محايد",
+    "بنّاء"
+   ],
    "framings": [
-    "Positive international economic engagement and development (state media)"
+    "State media: routine diplomatic and economic development progress"
    ],
    "framings_ar": [
-    "انخراط اقتصادي دولي إيجابي وتطور (وسائل إعلام رسمية)"
+    "الإعلام الرسمي: تقدم دبلوماسي واقتصادي روتيني"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 2,
+   "volume": 3,
    "public_volume": 0,
-   "share": 0.067,
-   "engagement": 131,
+   "share": 0.1,
+   "engagement": 210,
    "platforms": {
-    "telegram": 2
+    "telegram": 3
    },
    "sources": [
     "SANA - state news agency (EN)"
@@ -259,37 +271,43 @@
    "first_seen": "2026-09-18T19:37:46Z"
   },
   {
-   "id": "cultural-heritage-and-music",
-   "title": "Syrian Cultural Heritage and Music Celebrations",
-   "title_ar": "التراث الثقافي السوري والاحتفالات الموسيقية",
-   "summary": "Public posts celebrate Syrian cultural traditions and anticipate upcoming musical performances. One comment discusses the historical exchange of Egyptian musical traditions that became part of Aleppo's heritage, noting UNESCO recognition of Qudud as Syrian-Aleppi tradition. Another expresses enthusiasm for an upcoming music concert.",
-   "summary_ar": "تحتفي منشورات عامة بالتقاليد الثقافية السورية وتتوقع الفعاليات الموسيقية القادمة. يناقش أحد التعليقات التبادل التاريخي للتقاليد الموسيقية المصرية التي أصبحت جزءاً من التراث الحلبي، مشيراً إلى اعتراف اليونسكو بفن القدود كتراث سوري حلبي. يعبر آخر عن حماس لحفل موسيقي قادم.",
-   "public_reaction": "Commenters celebrate musical heritage and anticipate cultural events with enthusiasm. One defends the indigenous Syrian-Aleppi roots of Qudud music tradition while acknowledging Egyptian musical influences.",
-   "public_reaction_ar": "يحتفي المعلقون بالتراث الموسيقي ويتوقعون الفعاليات الثقافية بحماس. يدافع أحدهم عن الجذور السورية الحلبية الأصيلة لتقليد فن القدود مع الإقرار بالتأثيرات الموسيقية المصرية.",
-   "sentiment": 0.0,
-   "public_sentiment": 0.7,
+   "id": "military-expansion-israeli-concerns",
+   "title": "Syrian Military Buildup and Israeli Alarm",
+   "title_ar": "التوسع العسكري السوري والقلق الإسرائيلي",
+   "summary": "Public posts circulate Israeli media reports (from Kan website) claiming that Syrian President Ahmad al-Shara is directing significant state resources toward building a large regular military and purchasing advanced weapons systems, with Israeli concern over growing Syrian military capabilities and warnings that conflict with Israel is a matter of time.",
+   "summary_ar": "تنشر منشورات عامة تقارير إعلامية إسرائيلية تؤكد أن الرئيس السوري أحمد الشرع يوجّه موارد الدولة نحو بناء جيش نظامي كبير وشراء منظومات أسلحة متقدمة، مع قلق إسرائيلي من تنامي القدرات العسكرية السورية وتحذيرات بأن الاشتباك مع إسرائيل مسألة وقت.",
+   "public_reaction": "Public posts amplify the Israeli warnings, treating them as credible information about Syrian military intentions. Some commenters frame this as evidence of strategic military development.",
+   "public_reaction_ar": "تضخّم المنشورات العامة التحذيرات الإسرائيلية، معاملة إياها كمعلومات موثوقة عن النوايا العسكرية السورية. يصيغ بعض المعلقين هذا كدليل على التطور العسكري الاستراتيجي.",
+   "sentiment": 0.1,
+   "public_sentiment": 0.2,
    "emotions": [
-    "pride",
-    "enthusiasm",
-    "nostalgia"
+    "strategic optimism",
+    "concern"
    ],
    "emotions_ar": [
-    "فخر",
-    "حماس",
-    "حنين"
+    "تفاؤل استراتيجي",
+    "قلق"
    ],
    "framings": [
-    "Cultural pride and heritage preservation (public celebration)"
+    "Israeli sources: Syria is building military capacity as a potential regional threat",
+    "Public: framing Syrian military development as strategic strength"
    ],
    "framings_ar": [
-    "فخر ثقافي والحفاظ على التراث (احتفالات عامة)"
+    "مصادر إسرائيلية: سوريا تبني قدرات عسكرية كتهديد إقليمي محتمل",
+    "الجمهور: صياغة التطور العسكري السوري كقوة استراتيجية"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "Circulation of foreign media claims without Syrian official confirmation",
+    "Potential amplification of Israeli framing by Syrian public accounts"
+   ],
+   "flags_ar": [
+    "تداول مزاعم إعلامية أجنبية دون تأكيد رسمي سوري",
+    "تضخيم محتمل للصياغة الإسرائيلية من قبل الحسابات السورية العامة"
+   ],
    "volume": 2,
    "public_volume": 2,
    "share": 0.067,
-   "engagement": 14,
+   "engagement": 0,
    "platforms": {
     "x": 2
    },
@@ -297,71 +315,93 @@
     "X posts"
    ],
    "examples": [],
-   "first_seen": "2026-09-18T16:25:46Z"
+   "first_seen": "2026-09-19T01:11:31Z"
   },
   {
-   "id": "regional-security-coordination",
-   "title": "Regional Security and International Partnerships",
-   "title_ar": "الأمن الإقليمي والشراكات الدولية",
-   "summary": "State media reports UAE-India bilateral discussions on regional stability and strategic partnership, and Russia-Turkey dialogue on Black Sea maritime security. These are framed as positive diplomatic engagement for security cooperation.",
-   "summary_ar": "تنشر وسائل الإعلام الرسمية نقاشات ثنائية بين الإمارات والهند بشأن الاستقرار الإقليمي والشراكة الاستراتيجية، وحوار روسي-تركي بشأن أمن البحر الأسود البحري. يتم تأطيرها كانخراط دبلوماسي إيجابي للتعاون الأمني.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
+   "id": "syrian-military-yemen-deployment",
+   "title": "Syrian Military Involvement in Yemen Conflict",
+   "title_ar": "الدور العسكري السوري في اليمن",
+   "summary": "Public posts report claims that Saudi Arabia has deployed or attempted to deploy Syrian fighters to Yemen, citing activist and former military sources stating that 10,000 Syrian fighters have been sent to Yemen and bodies of Syrian casualties are now arriving in Idlib and Homs. One post reports Syria rejected a Saudi request for organized military deployment.",
+   "summary_ar": "تشير منشورات عامة إلى مزاعم بأن السعودية نشرت أو حاولت نشر مقاتلين سوريين في اليمن، بناءً على تصريحات ناشطين ومصادر عسكرية سابقة بأن 10 آلاف مقاتل سوري أُرسلوا إلى اليمن وأن جثامين قتلى سوريين بدأت تصل إلى إدلب وحمص. ومنشور آخر يفيد برفض سوريا طلباً سعودياً لنشر عسكري منظم.",
+   "public_reaction": "Public commentary expresses alarm and frustration about Syrian casualties in Yemen, demands protection of Syrian citizens, questions official handling of the issue, and contrasts this with unresolved Israeli occupation concerns.",
+   "public_reaction_ar": "التعليقات العامة تعبّر عن قلق وإحباط من الخسائر السورية في اليمن، تطالب بحماية المواطنين السوريين، وتشكك في التعامل الرسمي مع القضية، وتقارنها بقضايا الاحتلال الإسرائيلي غير المحلولة.",
    "sentiment": 0.0,
-   "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "public_sentiment": -0.6,
+   "emotions": [
+    "alarm",
+    "frustration",
+    "anger",
+    "protective concern"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "إحباط",
+    "غضب",
+    "قلق حماية"
+   ],
    "framings": [
-    "Positive regional diplomatic engagement for security (state media)"
+    "Public/activist: Syrian fighters deployed to Yemen, casualties mounting",
+    "Turkish report cited: Syria rejected Saudi request for organized deployment",
+    "Public contrast: Yemen involvement vs. unresolved Israeli threat"
    ],
    "framings_ar": [
-    "انخراط دبلوماسي إقليمي إيجابي من أجل الأمن (وسائل إعلام رسمية)"
+    "الجمهور/الناشطون: مقاتلون سوريون منتشرون في اليمن، الخسائر تتزايد",
+    "تقرير تركي مُستشهد به: سوريا رفضت طلباً سعودياً للنشر المنظم",
+    "مقارنة عامة: الانخراط في اليمن مقابل التهديد الإسرائيلي غير المحلول"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "Claims of 10,000 Syrian fighters in Yemen not independently verified",
+    "Source attribution to activist and former military without institutional verification",
+    "Potential coordination in posting similar claims with high engagement"
+   ],
+   "flags_ar": [
+    "مزاعم بـ 10 آلاف مقاتل سوري في اليمن لم تُتحقق بشكل مستقل",
+    "نسبة المصادر إلى ناشطين وعسكريين سابقين دون تحقق مؤسسي",
+    "تنسيق محتمل في نشر مزاعم مشابهة برصيد عالٍ"
+   ],
    "volume": 2,
-   "public_volume": 0,
+   "public_volume": 2,
    "share": 0.067,
-   "engagement": 94,
+   "engagement": 85,
    "platforms": {
-    "telegram": 2
+    "x": 2
    },
    "sources": [
-    "SANA - state news agency (EN)"
+    "X posts"
    ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77922",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-18T19:37:46Z"
+   "examples": [],
+   "first_seen": "2026-09-19T01:11:31Z"
   },
   {
-   "id": "security-operations-regime-officials",
-   "title": "Arrest of Former Regime Air Force Officers",
-   "title_ar": "اعتقال ضباط سلاح الجو من النظام السابق",
-   "summary": "Internal Security forces in Tartous arrested five senior Air Force officers and commanders from the ousted regime following security operations coordinated with the Counter-Terrorism Department. State media reports the action as a security operation with no public commentary.",
-   "summary_ar": "اعتقلت قوات الأمن الداخلي في طرطوس خمسة ضباط وقادة برتبة عالية من سلاح الجو للنظام السابق في عمليات أمنية منسقة مع إدارة مكافحة الإرهاب. تنشر وسائل الإعلام الرسمية الإجراء كعملية أمنية بدون تعليق عام.",
+   "id": "civil-defense-war-remnants",
+   "title": "War Remnants and Civilian Safety",
+   "title_ar": "البقايا الحربية وسلامة المدنيين",
+   "summary": "State media reports that the Civil Defense responded to an explosion of war remnants at an abandoned nursing school in Daraya, Damascus Countryside, killing one person and injuring another. This reflects ongoing hazards from abandoned military infrastructure.",
+   "summary_ar": "تقارير وسائل الإعلام الرسمية عن استجابة الدفاع المدني لانفجار بقايا حربية في مدرسة تمريض مهجورة في داريا بريف دمشق، أسفرت عن مقتل شخص وإصابة آخر. يعكس هذا المخاطر الجارية من البنية العسكرية المهجورة.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.2,
+   "sentiment": -0.3,
    "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "emotions": [
+    "concern",
+    "tragic"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "مأساوي"
+   ],
    "framings": [
-    "Security operation against former regime officials (state media)"
+    "State media: reporting civilian casualties from legacy war hazards"
    ],
    "framings_ar": [
-    "عملية أمنية ضد مسؤولي النظام السابق (وسائل إعلام رسمية)"
+    "الإعلام الرسمي: الإبلاغ عن خسائر مدنية من مخاطر الحرب الموروثة"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
    "share": 0.033,
-   "engagement": 62,
+   "engagement": 73,
    "platforms": {
     "telegram": 1
    },
@@ -371,68 +411,35 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77918",
+     "url": "https://t.me/SANANewsEnglish/77912",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T19:37:46Z"
+   "first_seen": "2026-09-19T01:11:31Z"
   },
   {
-   "id": "aviation-infrastructure-development",
-   "title": "Syrian Airspace Enhancement and Aviation Development",
-   "title_ar": "تحسين الأجواء السورية وتطور الطيران",
-   "summary": "Syrian airspace has been updated with new commercial aviation routes, including route L602 near Deir Ezzor, reflecting Syria's positioning on regional and international aviation maps. Public post celebrates this development with links to broader aviation growth metrics.",
-   "summary_ar": "تم تحديث الأجواء السورية بمسارات طيران تجارية جديدة بما فيها المسار L602 بالقرب من دير الزور، مما يعكس موقع سوريا على خرائط الطيران الإقليمية والدولية. ينشر منشور عام هذا التطور مع روابط لمقاييس نمو طيران أوسع.",
-   "public_reaction": "One commenter celebrates this aviation development with enthusiasm, framing it as positive infrastructure progress.",
-   "public_reaction_ar": "يحتفي أحد المعلقين بهذا التطور في الطيران بحماس، ويؤطره كتقدم إيجابي في البنية التحتية.",
-   "sentiment": 0.0,
-   "public_sentiment": 0.6,
-   "emotions": [
-    "interest",
-    "pride"
-   ],
-   "emotions_ar": [
-    "اهتمام",
-    "فخر"
-   ],
-   "framings": [
-    "Infrastructure modernization and international aviation positioning (public)"
-   ],
-   "framings_ar": [
-    "تحديث البنية التحتية والموقع الدولي للطيران (عام)"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.033,
-   "engagement": 4,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-18T22:35:18Z"
-  },
-  {
-   "id": "detention-safeguards-and-reform",
-   "title": "Detention Safeguards and Legal Reforms",
-   "title_ar": "ضمانات الاحتجاز والإصلاحات القانونية",
-   "summary": "An independent outlet reports that former detainees, families, and legal experts are describing gaps between detention safeguards and actual practices in Syria, while debating needed institutional and oversight reforms to prevent abuses.",
-   "summary_ar": "تنشر وسيلة إعلام مستقلة أن السجناء السابقين والعائلات والخبراء القانونيين يصفون الفجوات بين ضمانات الاحتجاز والممارسات الفعلية في سوريا، مع نقاش الإصلاحات المؤسسية والرقابية المطلوبة لمنع الانتهاكات.",
+   "id": "detention-reform-discourse",
+   "title": "Detention Safeguards and Legal Reform Debate",
+   "title_ar": "ضمانات الاعتقال والنقاش حول الإصلاح القانوني",
+   "summary": "Independent media reports on discussions by former detainees, families, and legal experts about gaps between detention safeguards in theory and practices in Syria, debating the legal, institutional, and oversight reforms needed to prevent further abuses.",
+   "summary_ar": "تقارير إعلام مستقل عن نقاشات من قبل معتقلين سابقين وعائلاتهم وخبراء قانونيين حول الفجوات بين ضمانات الاعتقال والممارسات الفعلية في سوريا، ويناقشون الإصلاحات القانونية والمؤسسية والإشرافية اللازمة لمنع المزيد من الانتهاكات.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": 0.0,
    "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "emotions": [
+    "critical",
+    "reform-focused"
+   ],
+   "emotions_ar": [
+    "نقدي",
+    "موجه نحو الإصلاح"
+   ],
    "framings": [
-    "Institutional accountability and legal reform advocacy (independent media)"
+    "Independent media: critical examination of detention practices and reform needs"
    ],
    "framings_ar": [
-    "دعوة المساءلة المؤسسية والإصلاح القانوني (وسائل إعلام مستقلة)"
+    "الإعلام المستقل: فحص نقدي لممارسات الاعتقال واحتياجات الإصلاح"
    ],
    "flags": [],
    "flags_ar": [],
@@ -453,29 +460,31 @@
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T19:37:46Z"
+   "first_seen": "2026-09-19T01:11:31Z"
   },
   {
-   "id": "wedding-costs-social-impact",
+   "id": "wedding-costs-cultural-impact",
    "title": "Rising Wedding Costs and Social Disruption",
-   "title_ar": "ارتفاع تكاليف الزفاف والاضطراب الاجتماعي",
-   "summary": "Rising marriage costs combined with effects of the July 2025 events have led couples in Suwayda to shorten wedding rituals or forgo celebrations entirely, according to independent reporting.",
-   "summary_ar": "أدت تكاليف الزواج المتزايدة بالإضافة إلى آثار أحداث يوليو 2025 إلى قيام الأزواج في السويداء بتقصير الطقوس الزفافية أو التخلي عن الاحتفالات بالكامل، وفقاً للتقارير المستقلة.",
+   "title_ar": "ارتفاع تكاليف الزفاف والتأثير الاجتماعي",
+   "summary": "Independent media reports that rising marriage costs and the effects of July 2025 events have pushed couples in Suwayda to shorten long-standing wedding rituals or forgo celebrations altogether, disrupting traditional social practices.",
+   "summary_ar": "تقارير إعلام مستقل بأن ارتفاع تكاليف الزواج وتأثيرات أحداث يوليو 2025 دفعت الأزواج في السويداء إلى تقصير الطقوس الزفافية التقليدية أو إلغاء الاحتفالات تماماً، مما يعطّل الممارسات الاجتماعية التقليدية.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": -0.3,
+   "sentiment": -0.2,
    "public_sentiment": null,
    "emotions": [
-    "hardship"
+    "concern",
+    "social disruption"
    ],
    "emotions_ar": [
-    "مشقة"
+    "قلق",
+    "تعطيل اجتماعي"
    ],
    "framings": [
-    "Economic and social disruption impact on families (independent media)"
+    "Independent media: economic hardship affecting cultural and social traditions"
    ],
    "framings_ar": [
-    "تأثير الاضطراب الاقتصادي والاجتماعي على الأسر (وسائل إعلام مستقلة)"
+    "الإعلام المستقل: الضائقة الاقتصادية تؤثر على التقاليد الثقافية والاجتماعية"
    ],
    "flags": [],
    "flags_ar": [],
@@ -496,222 +505,7 @@
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-18T22:35:18Z"
-  },
-  {
-   "id": "esports-asian-games",
-   "title": "Syrian Esports Team Asian Games Debut",
-   "title_ar": "فريق الرياضات الإلكترونية السوري في الألعاب الآسيوية",
-   "summary": "Syria's esports team continues preparations for its inaugural participation in the 2026 Asian Games in Japan, which begins Saturday. State media frames this as a positive achievement in international sports representation.",
-   "summary_ar": "يستمر فريق الرياضات الإلكترونية السوري في الإعدادات للمشاركة الأولى في الألعاب الآسيوية 2026 في اليابان، التي تبدأ يوم السبت. تؤطر وسائل الإعلام الرسمية هذا كإنجاز إيجابي في تمثيل الرياضات الدولية.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.3,
-   "public_sentiment": null,
-   "emotions": [
-    "pride"
-   ],
-   "emotions_ar": [
-    "فخر"
-   ],
-   "framings": [
-    "International sports achievement and representation (state media)"
-   ],
-   "framings_ar": [
-    "إنجاز وتمثيل رياضي دولي (وسائل إعلام رسمية)"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 0,
-   "share": 0.033,
-   "engagement": 55,
-   "platforms": {
-    "telegram": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77919",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-18T22:35:18Z"
-  },
-  {
-   "id": "political-blame-and-governance-criticism",
-   "title": "Political Criticism and Governance Failures",
-   "title_ar": "النقد السياسي وإخفاقات الحوكمة",
-   "summary": "Public commentary expresses anger toward current government officials, accusing them of widespread corruption, falsified credentials, embezzlement, and nepotism. Comments describe 60 years of oppression under regime rule and demand removal of foreign military settlements near Damascus, Homs, and Latakia.",
-   "summary_ar": "يعبر التعليق العام عن غضب تجاه مسؤولي الحكومة الحالية، متهماً إياهم بالفساد الواسع والشهادات المزيفة والاختلاس والمحسوبيات. تصف التعليقات 60 سنة من القمع تحت حكم النظام وتطالب بإزالة المستوطنات العسكرية الأجنبية بالقرب من دمشق وحمص واللاذقية.",
-   "public_reaction": "One commentator directly attacks current officials, accusing them of theft, counterfeiting, and money laundering, demanding they leave and claiming no place for them among people. Framing ties governance failures to alleged foreign military occupation of settlements.",
-   "public_reaction_ar": "يهاجم أحد المعلقين المسؤولين الحاليين مباشرة، متهماً إياهم بالسرقة والتزوير وتبييض الأموال، طالباً بالرحيل ومؤكداً عدم وجود مكان لهم بين الناس. يربط الإطار إخفاقات الحوكمة بالاحتلال العسكري الأجنبي المزعوم للمستوطنات.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.9,
-   "emotions": [
-    "anger",
-    "contempt",
-    "resentment"
-   ],
-   "emotions_ar": [
-    "غضب",
-    "ازدراء",
-    "استياء"
-   ],
-   "framings": [
-    "Systemic corruption and illegitimacy of current authorities (public criticism)"
-   ],
-   "framings_ar": [
-    "الفساد النظامي وعدم شرعية السلطات الحالية (نقد عام)"
-   ],
-   "flags": [
-    "Unverified accusations of systematic embezzlement and counterfeiting",
-    "Broad indictment without specific evidence"
-   ],
-   "flags_ar": [
-    "اتهامات غير موثقة باختلاس منهجي وتزوير",
-    "اتهام واسع بدون أدلة محددة"
-   ],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.033,
-   "engagement": 0,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-18T22:35:18Z"
-  },
-  {
-   "id": "revolutionary-narrative-commemoration",
-   "title": "Syrian Revolution and Resistance Commemoration",
-   "title_ar": "تأبين الثورة السورية والمقاومة",
-   "summary": "A public post commemorates the Syrian revolution and those who fought against the previous regime, praising their patience, determination, and faith while acknowledging the lengthy struggle against foreign-backed regime forces.",
-   "summary_ar": "ينشر منشور عام تأبيناً للثورة السورية ولمن قاتلوا ضد النظام السابق، مادحاً صبرهم وعزيمتهم وإيمانهم مع الإقرار بطول الكفاح ضد قوات النظام المدعومة من الخارج.",
-   "public_reaction": "Commenter praises revolutionary fighters' steadfastness and faith, framing their victory as overcoming overwhelming foreign military and state support for the deposed regime.",
-   "public_reaction_ar": "يمدح المعلق صمود المقاتلين الثوريين وإيمانهم، مؤطراً انتصارهم كتغلب على دعم عسكري ودولي أجنبي ساحق للنظام المخلوع.",
-   "sentiment": 0.0,
-   "public_sentiment": 0.4,
-   "emotions": [
-    "pride",
-    "determination",
-    "remembrance"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "عزيمة",
-    "تذكر"
-   ],
-   "framings": [
-    "Revolutionary struggle and triumph narrative (public commemoration)"
-   ],
-   "framings_ar": [
-    "سرد الكفاح الثوري والانتصار (تأبين عام)"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.033,
-   "engagement": 1,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-18T22:35:18Z"
-  },
-  {
-   "id": "alleged-foreign-activity",
-   "title": "Alleged Foreign Militant Activity",
-   "title_ar": "نشاط أجنبي مزعوم لمسلحين",
-   "summary": "A public post claims foreign terrorists are opening massage centers in Idlib. The allegation is unverified and lacks supporting detail.",
-   "summary_ar": "ينشر منشور عام ادعاء بأن إرهابيين أجانب يفتتحون مراكز تدليك في إدلب. الادعاء غير موثق ويفتقر إلى التفاصيل الداعمة.",
-   "public_reaction": "Brief allegation without context or corroboration.",
-   "public_reaction_ar": "ادعاء موجز بدون سياق أو تأكيد.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.5,
-   "emotions": [
-    "suspicion"
-   ],
-   "emotions_ar": [
-    "ريبة"
-   ],
-   "framings": [
-    "Unverified allegation of foreign militant presence (public post)"
-   ],
-   "framings_ar": [
-    "ادعاء غير موثق بوجود مسلحين أجانب (منشور عام)"
-   ],
-   "flags": [
-    "Unverified claim without supporting evidence"
-   ],
-   "flags_ar": [
-    "مطالبة غير موثقة بدون أدلة داعمة"
-   ],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.033,
-   "engagement": 0,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-18T22:35:18Z"
-  },
-  {
-   "id": "civil-infrastructure-safety",
-   "title": "Civilian Infrastructure Safety and War Remnants",
-   "title_ar": "سلامة البنية التحتية المدنية وبقايا الحرب",
-   "summary": "Civil Defense reports one killed and another injured by explosion of war remnants at a destroyed, out-of-service nursing school in Daraya, Damascus Countryside.",
-   "summary_ar": "تنشر الحماية المدنية تقرير وقوع قتيل وجريح من انفجار بقايا حربية في مدرسة تمريض مدمرة وخارج الخدمة في دراية بريف دمشق.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": -0.1,
-   "public_sentiment": null,
-   "emotions": [
-    "concern"
-   ],
-   "emotions_ar": [
-    "قلق"
-   ],
-   "framings": [
-    "War legacy civilian safety hazards (state reporting)"
-   ],
-   "framings_ar": [
-    "أخطار سلامة مدنية متوارثة من الحرب (التقرير الرسمي)"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 0,
-   "share": 0.033,
-   "engagement": 71,
-   "platforms": {
-    "telegram": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/77912",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-18T22:35:18Z"
+   "first_seen": "2026-09-19T01:11:31Z"
   }
  ],
  "sources": [
@@ -733,7 +527,7 @@
    "name": "BBC Arabic",
    "platform": "news",
    "ok": true,
-   "fetched": 23,
+   "fetched": 24,
    "recent": 0
   },
   {
@@ -749,5 +543,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0484
+ "cost_usd": 0.0373
 }
