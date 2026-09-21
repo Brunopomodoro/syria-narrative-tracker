@@ -3,275 +3,86 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-21T09:47:19Z",
- "checked_at": "2026-09-21T09:47:19Z",
+ "generated_at": "2026-09-21T13:43:00Z",
+ "checked_at": "2026-09-21T13:43:00Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 123,
-  "public_posts": 110,
-  "outlet_posts": 13,
+  "posts_analyzed": 89,
+  "public_posts": 66,
+  "outlet_posts": 23,
   "reactions_posts": 0,
-  "unique_posts": 122,
+  "unique_posts": 89,
   "sources_ok": 5,
   "sources_total": 5,
   "platforms": {
-   "telegram": 12,
+   "telegram": 22,
    "news": 1,
    "x": 10,
-   "youtube": 99
+   "youtube": 56
   }
  },
  "overall": {
-  "sentiment": 0.2,
-  "mood": "Upbeat",
+  "sentiment": 0.25,
+  "mood": "Optimistic",
   "mood_ar": "متفائل",
-  "public_sentiment": -0.3,
-  "public_mood": "Anxious",
-  "public_mood_ar": "قلق",
-  "brief": "State media reports on weapons depot explosions, court abolition, olive harvest recovery, and international developments with measured, optimistic framing. Public reaction splits sharply: some celebrate military strength and national pride, while others express alarm at repeated explosions, suspicion of sabotage or foreign interference, and frustration with government accountability. A smaller group praises infrastructure development and cultural figures, but concerns about security dominate discussion of military incidents.",
-  "brief_ar": "تغطي وسائل الإعلام الحكومية انفجارات مستودعات الذخيرة وإلغاء محكمة الإرهاب وتوقعات محصول الزيتون بإطار متفائل. ردود الفعل العامة انقسمت حدّة: البعض يحتفي بقوة الجيش والفخر الوطني، بينما يعبر آخرون عن قلق من الانفجارات المتكررة والشك في التخريب الأجنبي والإحباط من محاسبة الحكومة. مجموعة أصغر تمدح التطور البنيوي والشخصيات الثقافية، لكن المخاوف الأمنية تهيمن على النقاش حول الحوادث العسكرية."
+  "public_sentiment": -0.35,
+  "public_mood": "Divided",
+  "public_mood_ar": "منقسم",
+  "brief": "State outlets emphasize economic expansion, military capability, and reconstruction projects with uniformly positive framing. Public discourse is deeply divided: supporters celebrate military strength and government initiatives with religious language and patriotic expressions, while critics voice skepticism about military spending amid poverty, question government credibility, and express concern over recurring weapons depot explosions. Weapon security incidents dominate worried commentary, with some attributing them to sabotage or external interference.",
+  "brief_ar": "تركز المنافذ الرسمية على التوسع الاقتصادي والقدرة العسكرية ومشاريع إعادة البناء برسائل موحدة إيجابية. الحوار العام منقسم بشدة: المؤيدون يحتفون بالقوة العسكرية والمبادرات الحكومية بلغة دينية وتعابير وطنية، بينما ينتقد آخرون الإنفاق العسكري وسط الفقر ويشككون في مصداقية الحكومة ويعبرون عن القلق من تكرار انفجارات مستودعات الأسلحة، وينسب البعض ذلك للتخريب أو التدخل الخارجي."
  },
  "narratives": [
   {
-   "id": "weapons-depot-explosions",
-   "title": "Repeated weapons depot explosions raise security and sabotage concerns",
-   "title_ar": "انفجارات متكررة في مستودعات الذخيرة تثير مخاوف أمنية من التخريب",
-   "summary": "At least five weapons depot explosions have occurred across Syria in September 2026 (Bansh, Sermada, Al-Dhumayr, Deir ez-Zor, Al-Eis). State media reports four to zero casualties depending on location, with damage confined to property. Public discourse focuses on whether these are accidents, Israeli sabotage, internal espionage, or signs of deeper military instability.",
-   "summary_ar": "حدثت خمس انفجارات على الأقل في مستودعات ذخيرة عبر سوريا في سبتمبر 2026 في بنش وسرمدا والضمير ودير الزور والعيس. تقارير وسائل الإعلام الحكومية تتباين بين أربعة إلى صفر إصابات حسب الموقع، مع تحديد الأضرار بالممتلكات. النقاش العام يركز على ما إذا كانت حوادث عرضية أم صبرية إسرائيلية أم تجسس داخلي أم علامات على عدم استقرار عسكري أعمق.",
-   "public_reaction": "Commenters express alarm about frequency and pattern of explosions; many blame Israeli or foreign sabotage, while others suspect internal negligence or deliberate destabilization. Some defend the military's capacity and frame explosions as external attacks on Syrian strength. Sarcasm and dark humor appear alongside calls for government accountability and transparent investigations.",
-   "public_reaction_ar": "المعلقون يعبرون عن قلق من تكرار الانفجارات وأنماطها؛ كثيرون يلومون التخريب الإسرائيلي أو الأجنبي، بينما يشك آخرون في الإهمال الداخلي أو الزعزعة المتعمدة. البعض يدافع عن قدرة الجيش ويصور الانفجارات على أنها هجمات خارجية على القوة السورية. السخرية والفكاهة السوداء تظهر جنباً إلى جنب مع دعوات لمساءلة الحكومة والتحقيقات الشفافة.",
-   "sentiment": 0.1,
-   "public_sentiment": -0.5,
-   "emotions": [
-    "alarm",
-    "suspicion",
-    "frustration"
-   ],
-   "emotions_ar": [
-    "قلق",
-    "ريبة",
-    "إحباط"
-   ],
-   "framings": [
-    "Security threat and military vulnerability",
-    "Pattern of sabotage requiring investigation",
-    "Resource depletion affecting defense readiness",
-    "Israeli or foreign intelligence operation",
-    "Internal negligence or corruption"
-   ],
-   "framings_ar": [
-    "تهديد أمني وضعف عسكري",
-    "نمط من التخريب يتطلب تحقيقاً",
-    "استنزاف الموارد يؤثر على الجاهزية الدفاعية",
-    "عملية استخبارات إسرائيلية أو أجنبية",
-    "إهمال داخلي أو فساد"
-   ],
-   "flags": [
-    "Unverified claims of Israeli sabotage spread without evidence",
-    "Numerical claims (17 depots hit, 5 explosions in one month) circulate with incomplete sourcing",
-    "Speculation about 'foreign interference' and 'destabilization' without attribution"
-   ],
-   "flags_ar": [
-    "ادعاءات غير موثقة بالتخريب الإسرائيلي تنتشر بدون أدلة",
-    "ادعاءات رقمية (17 مستودع، 5 انفجارات في شهر واحد) تتداول بمصادر ناقصة",
-    "تكهنات حول 'التدخل الأجنبي' و'الزعزعة' بدون نسبة واضحة"
-   ],
-   "volume": 25,
-   "public_volume": 21,
-   "share": 0.203,
-   "engagement": 163,
-   "platforms": {
-    "news": 1,
-    "telegram": 3,
-    "x": 7,
-    "youtube": 14
-   },
-   "sources": [
-    "YouTube comments",
-    "X posts",
-    "SANA - state news agency (EN)",
-    "BBC Arabic"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78022",
-     "platform": "telegram"
-    },
-    {
-     "source": "BBC Arabic",
-     "url": "https://www.bbc.com/arabic/articles/c64gd0z1g5zno?at_medium=RSS&at_campaign=rss",
-     "platform": "news"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=_nX0cUZvfCU",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-21T06:23:10Z"
-  },
-  {
-   "id": "cultural-patriotism-debate",
-   "title": "Public debate on entertainer Asalah Nasri's return and patriotic credentials",
-   "title_ar": "نقاش عام حول عودة الفنانة أصالة نصري والاعتبارات الوطنية",
-   "summary": "Videos and commentary debate whether entertainer Asalah Nasri deserves a state honor and public celebration. Supporters cite her early anti-regime stance and patriotic commitment; critics argue celebrities should donate proceeds to charity or disaster relief. Discourse touches on inclusivity, nationalism, and the role of cultural figures in post-conflict society.",
-   "summary_ar": "مقاطع فيديو وتعليقات تناقش ما إذا كانت الفنانة أصالة نصري تستحق شرفاً دولاتياً واحتفاء عاماً. المؤيدون يستشهدون بموقفها المبكر المناهض للنظام والالتزام الوطني؛ النقاد يقولون إن المشاهير يجب أن يتبرعوا بالإيرادات للأعمال الخيرية أو الإغاثة. يتناول الخطاب الشمول والوطنية ودور الشخصيات الثقافية في مجتمع ما بعد الصراع.",
-   "public_reaction": "Strong support for Nasri's patriotism and right to honor; commenters defend her against critics and invoke her stance against the former regime. Some express reservations about celebrating entertainers while resources are scarce, or debate whether she should be treated as artist or activist. Implicit questions about post-conflict reconciliation and inclusion surface.",
-   "public_reaction_ar": "دعم قوي لوطنية أصالة وحقها في التكريم؛ المعلقون يدافعون عنها ضد النقاد ويستحضرون موقفها ضد النظام السابق. البعض يعبر عن تحفظات حول الاحتفاء بالفنانين بينما الموارد شحيحة، أو يناقش ما إذا كان يجب التعامل معها كفنانة أم ناشطة. تظهر أسئلة ضمنية حول المصالحة والشمول بعد الصراع.",
-   "sentiment": 0.5,
-   "public_sentiment": 0.4,
-   "emotions": [
-    "pride",
-    "gratitude",
-    "debate"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "امتنان",
-    "نقاش"
-   ],
-   "framings": [
-    "Patriotic credentials and anti-regime stance",
-    "Right to cultural honor and celebration",
-    "Charity and resource allocation ethics",
-    "Reconciliation and post-conflict inclusion",
-    "Artist vs. activist identity"
-   ],
-   "framings_ar": [
-    "الاعتبارات الوطنية والموقف المناهض للنظام",
-    "الحق في التكريم الثقافي والاحتفاء",
-    "أخلاقيات الخيرية وتوزيع الموارد",
-    "المصالحة والشمول بعد الصراع",
-    "هوية الفنان مقابل الناشط"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 22,
-   "public_volume": 22,
-   "share": 0.179,
-   "engagement": 79,
-   "platforms": {
-    "youtube": 22
-   },
-   "sources": [
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=kn81ydrWaJc",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-21T09:47:19Z"
-  },
-  {
-   "id": "infrastructure-and-development",
-   "title": "Government infrastructure projects receive public praise and technical scrutiny",
-   "title_ar": "مشاريع البنية التحتية الحكومية تتلقى ثناء عاماً وفحصاً تقنياً",
-   "summary": "Videos showcase new roads meeting international standards. Public responses are overwhelmingly positive, with many praising engineering quality and government commitment. Some technical experts offer constructive feedback on specifications and safety features. Comments also invoke religious blessings and patriotic sentiment.",
-   "summary_ar": "تعرض مقاطع فيديو طرقاً جديدة تستوفي معايير دولية. ردود الفعل العامة إيجابية بشكل ساحق، مع إطراء كثيرين لجودة الهندسة والالتزام الحكومي. بعض الخبراء التقنيين يقدمون تعليقات بناءة على المواصفات والميزات الأمنية. التعليقات أيضاً تستحضر البركات الدينية والشعور الوطني.",
-   "public_reaction": "Positive sentiment dominates; commenters celebrate infrastructure development as sign of state recovery and normalcy. Some offer technical improvements or request government transparency on delays. A few comment critically that visible projects distract from underlying economic problems.",
-   "public_reaction_ar": "المشاعر الإيجابية تهيمن؛ المعلقون يحتفون بتطور البنية التحتية كعلامة على تعافي الدولة والحياة الطبيعية. البعض يقدم تحسينات تقنية أو يطلب شفافية حكومية حول التأخيرات. قلة يعلقون بانتقاد بأن المشاريع المرئية تحرف الانتباه عن المشاكل الاقتصادية الكامنة.",
-   "sentiment": 0.6,
-   "public_sentiment": 0.6,
-   "emotions": [
-    "pride",
-    "hope",
-    "satisfaction"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "أمل",
-    "رضا"
-   ],
-   "framings": [
-    "State capacity and modernization",
-    "International standards achievement",
-    "National recovery and normalcy",
-    "Technical excellence in engineering",
-    "Government competence and vision"
-   ],
-   "framings_ar": [
-    "قدرة الدولة والحداثة",
-    "تحقيق المعايير الدولية",
-    "الانتعاش الوطني والحياة الطبيعية",
-    "التميز التقني في الهندسة",
-    "كفاءة الحكومة والرؤية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 21,
-   "public_volume": 21,
-   "share": 0.171,
-   "engagement": 81,
-   "platforms": {
-    "youtube": 21
-   },
-   "sources": [
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=cAtUmMXZTNA",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-21T09:47:19Z"
-  },
-  {
    "id": "military-strength-and-deterrence",
-   "title": "Public debate on Syrian military capacity and deterrence against Israel",
-   "title_ar": "نقاش عام حول القدرات العسكرية السورية والردع ضد إسرائيل",
-   "summary": "Videos and commentary frame Ahmad al-Sharaa's military leadership as strengthening Syria's defensive posture and alarming Israeli establishment. Public responses range from religious support for military buildup, to nationalist pride in sovereign defense capacity, to skepticism about leadership capability and contradictions in policy messaging.",
-   "summary_ar": "تصور مقاطع فيديو وتعليقات قيادة أحمد الشرع العسكرية كمعزّزة لموقف سوريا الدفاعي والقلق الإسرائيلي. تتراوح ردود الفعل العامة بين الدعم الديني للتسليح العسكري والفخر الوطني بقدرة الدفاع السيادية والشك في قدرة القيادة والتناقضات في رسائل السياسة.",
-   "public_reaction": "Strong nationalist and religious sentiment praising military capacity; many invoke Islamic framing and prophetic tradition about Levantine fighters. Some comments express pro-Iran or pro-Islamist ideology. Others voice skepticism about actual capability versus rhetoric, and tensions arise between those celebrating the current leadership and those criticizing inconsistencies or demanding transparency.",
-   "public_reaction_ar": "شعور وطني وديني قوي يمدح القدرة العسكرية؛ كثيرون يستحضرون الإطار الإسلامي والتقليد النبوي حول المقاتلين الشاميين. بعض التعليقات تعبر عن أيديولوجيا موالية لإيران أو إسلامية. آخرون يعبرون عن الشك في القدرة الفعلية مقابل الخطاب، وتنشأ توترات بين من يحتفي بالقيادة الحالية ومن ينتقد التناقضات أو يطالب بالشفافية.",
-   "sentiment": 0.4,
-   "public_sentiment": 0.2,
+   "title": "Military capability building under Ahmad al-Sharaa and deterrence narratives",
+   "title_ar": "بناء القدرة العسكرية تحت قيادة أحمد الشرع والحديث عن الردع",
+   "summary": "Video content and commentary emphasize Syria's military development and Ahmad al-Sharaa's leadership in building new military capacity. Supporters frame military strengthening as national duty and deterrence against Israel and regional threats. Critics mock the claims as hollow given Israeli military actions and argue resources should prioritize civilian welfare.",
+   "summary_ar": "يركز المحتوى المرئي والتعليقات على تطوير القدرات العسكرية السورية وقيادة أحمد الشرع في بناء قدرة عسكرية جديدة. يصور المؤيدون تقوية الجيش كواجب وطني وردع ضد إسرائيل والتهديدات الإقليمية. ينتقد آخرون هذه الادعاءات كونها مجردة من المعنى رغم الإجراءات العسكرية الإسرائيلية ويجادلون بأن الموارد يجب أن تعطي الأولوية لرفاهية المدنيين.",
+   "public_reaction": "Strong bifurcation: many commenters express patriotic fervor with religious language supporting military building and leadership; others express sarcasm and mockery about the military's capacity given continued Israeli strikes, arguing money is better spent on food and electricity for civilians. Some invoke jihadi rhetoric; others question the government's priorities.",
+   "public_reaction_ar": "انقسام قوي: يعبر كثيرون عن حماس وطني بلغة دينية يدعمون بناء الجيش والقيادة؛ بينما يعبر آخرون عن سخرية واستهزاء بقدرات الجيش في ضوء الغارات الإسرائيلية المستمرة، محتجين بأن الأموال يجب أن تُنفق على الغذاء والكهرباء للمدنيين. البعض يستحضر خطاب جهادي؛ والبعض الآخر يشكك في أولويات الحكومة.",
+   "sentiment": 0.35,
+   "public_sentiment": -0.15,
    "emotions": [
+    "patriotism",
     "pride",
-    "hope",
-    "skepticism"
+    "skepticism",
+    "sarcasm",
+    "anger"
    ],
    "emotions_ar": [
+    "وطنية",
     "فخر",
-    "أمل",
-    "شك"
+    "شك",
+    "سخرية",
+    "غضب"
    ],
    "framings": [
-    "Strong Syrian military under new leadership",
-    "Deterrence against Israeli aggression",
-    "Islamic and nationalist duty to defend",
-    "Regional power balance and sovereignty",
-    "Concerns about actual capability vs. rhetoric"
+    "Military modernization as national sovereignty and deterrence capability",
+    "Ahmad al-Sharaa's leadership framed as transformative for military",
+    "Military investment critiqued as misplaced given civilian poverty and Israeli military advantage"
    ],
    "framings_ar": [
-    "جيش سوري قوي تحت قيادة جديدة",
-    "الردع ضد العدوان الإسرائيلي",
-    "واجب إسلامي وطني للدفاع",
-    "توازن القوى الإقليمية والسيادة",
-    "مخاوف من القدرة الفعلية مقابل الخطاب"
+    "التحديث العسكري كسيادة وطنية وقدرة ردع",
+    "قيادة أحمد الشرع تُصور كتحول في المجال العسكري",
+    "الاستثمار العسكري ينُتقد كأولوية خاطئة أمام الفقر المدني والأفضلية العسكرية الإسرائيلية"
    ],
    "flags": [
-    "Pro-Iran messaging mixed with nationalist framing (p39: prayer for 'Islamic Republic of Iran')",
-    "Religious rhetoric used to mobilize support for military (multiple Islamic invocations)",
-    "Contradictory messaging: some praise Sharaa's ability to expel Assad while others cite prophetic tradition"
+    "Coordinated religious prayers and slogans in support comments ('اللهم احفظ', 'منصورين بإذن الله')",
+    "Invocation of jihadi themes and Islamic conquest rhetoric in some comments",
+    "Mockery posts use strong sarcasm and emoji abuse to undermine narrative"
    ],
    "flags_ar": [
-    "رسائل موالية لإيران ممزوجة برسائل وطنية (p39: دعاء ل'الجمهورية الإسلامية الإيرانية')",
-    "خطاب ديني يستخدم لحشد الدعم العسكري (استحضارات إسلامية متعددة)",
-    "رسائل متناقضة: البعض يمدح قدرة الشرع على طرد الأسد بينما يستشهد آخرون بالتقليد النبوي"
+    "أدعية وشعارات دينية منسقة في التعليقات الداعمة",
+    "استحضار مواضيع جهادية وخطاب الفتوحات الإسلامية في بعض التعليقات",
+    "تعليقات السخرية تستخدم سخرية قوية وإساءة استخدام الرموز التعبيرية"
    ],
-   "volume": 18,
-   "public_volume": 18,
-   "share": 0.146,
-   "engagement": 94,
+   "volume": 20,
+   "public_volume": 20,
+   "share": 0.225,
+   "engagement": 162,
    "platforms": {
-    "youtube": 18
+    "youtube": 20
    },
    "sources": [
     "YouTube comments"
@@ -286,43 +97,49 @@
    "first_seen": "2026-09-21T09:47:19Z"
   },
   {
-   "id": "parliamentary-governance",
-   "title": "First parliamentary session and questions about institutional legitimacy",
-   "title_ar": "أول جلسة برلمانية وأسئلة حول الشرعية المؤسسية",
-   "summary": "Videos discuss the first parliamentary session under new governance; commenters praise it as historic and note government patience with public demands. One commenter questions the naming of the body (Parliament, National Assembly, etc.). No state media commentary on this matter visible in batch.",
-   "summary_ar": "تناقش مقاطع فيديو أول جلسة برلمانية تحت الحكم الجديد؛ المعلقون يمدحونها كحدث تاريخي ويلاحظون صبر الحكومة على المطالب العامة. معلق واحد يطرح سؤالاً حول تسمية الهيئة (برلمان، جمعية وطنية، إلخ). لا توجد تعليقات وسائل إعلام حكومية على هذا الأمر مرئية في المجموعة.",
-   "public_reaction": "Mixed: some celebrate the first session and government restraint; others question the institutional naming or raise skepticism about whether Parliament will be effective in holding government accountable.",
-   "public_reaction_ar": "مختلط: البعض يحتفي بالجلسة الأولى وضبط النفس الحكومي؛ آخرون يطرحون أسئلة حول التسمية المؤسسية أو يرفعون الشك حول ما إذا كان البرلمان سيكون فعالاً في محاسبة الحكومة.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.1,
+   "id": "government-accountability-and-parliament",
+   "title": "Parliamentary sessions and government accountability debate",
+   "title_ar": "جلسات البرلمان ونقاش المساءلة الحكومية",
+   "summary": "State media covers a parliamentary session with government ministers including the energy minister. Public commentary questions ministerial competence, government accountability, and the nature of parliamentary oversight. Critics argue the government deflects blame to global factors while avoiding responsibility for mismanagement.",
+   "summary_ar": "تغطي وسائل الإعلام الرسمية جلسة برلمانية حضرها وزراء حكوميون بما فيهم وزير الطاقة. تتساءل التعليقات العامة عن كفاءة الوزراء والمساءلة الحكومية وطبيعة الإشراف البرلماني. يجادل النقاد بأن الحكومة تلقي باللوم على العوامل العالمية بدلاً من تحمل المسؤولية عن سوء الإدارة.",
+   "public_reaction": "Commenters express frustration with government excuses on global economic factors while dismissing ministerial responsibility. Some call for stricter parliamentary oversight; others mock the government's competence and sincerity, arguing it prioritizes bureaucrat comfort over citizen welfare.",
+   "public_reaction_ar": "يعبر المعلقون عن إحباط من أعذار الحكومة حول العوامل الاقتصادية العالمية مع تجاهل مسؤولية الوزراء. يطالب البعض بإشراف برلماني أقسى؛ بينما يسخر آخرون من كفاءة الحكومة وصدقيتها، محتجين بأنها تعطي الأولوية لراحة البيروقراطيين على رفاهية المواطنين.",
+   "sentiment": 0.1,
+   "public_sentiment": -0.55,
    "emotions": [
-    "hope",
-    "uncertainty"
+    "frustration",
+    "skepticism",
+    "contempt",
+    "demand for accountability"
    ],
    "emotions_ar": [
-    "أمل",
-    "عدم يقين"
+    "إحباط",
+    "شك",
+    "ازدراء",
+    "المطالبة بالمساءلة"
    ],
    "framings": [
-    "Historic first parliamentary session",
-    "Government restraint and patience with demands",
-    "Institutional naming and legitimacy",
-    "Accountability mechanisms"
+    "Parliamentary oversight and minister accountability framed as institutional test",
+    "Global energy crisis cited by government vs. domestic mismanagement blamed by public",
+    "Comparison of government sacrifice vs. citizen burden invoked by commenters"
    ],
    "framings_ar": [
-    "أول جلسة برلمانية تاريخية",
-    "ضبط النفس الحكومي والصبر على المطالب",
-    "التسمية المؤسسية والشرعية",
-    "آليات المساءلة"
+    "الإشراف البرلماني ومساءلة الوزراء يُطرح كاختبار مؤسسي",
+    "أزمة الطاقة العالمية المستشهد بها من الحكومة مقابل سوء الإدارة المحلية الموكول للجمهور",
+    "مقارنة التضحية الحكومية مقابل عبء المواطن يستحضرها المعلقون"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 4,
-   "public_volume": 4,
-   "share": 0.033,
-   "engagement": 5,
+   "flags": [
+    "Complaints about minister blame-shifting to global factors without accepting domestic responsibility"
+   ],
+   "flags_ar": [
+    "شكاوى من إلقاء الوزراء باللوم على عوامل عالمية دون قبول المسؤولية المحلية"
+   ],
+   "volume": 7,
+   "public_volume": 7,
+   "share": 0.079,
+   "engagement": 4,
    "platforms": {
-    "youtube": 4
+    "youtube": 7
    },
    "sources": [
     "YouTube comments"
@@ -334,91 +151,299 @@
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-15T21:23:53Z"
+   "first_seen": "2026-09-21T13:43:00Z"
   },
   {
-   "id": "international-news-standard",
-   "title": "Standard international news coverage: Russia elections, Gaza, French sports",
-   "title_ar": "تغطية إخبارية دولية معيارية: انتخابات روسيا وغزة والرياضة الفرنسية",
-   "summary": "State media publishes routine international news: United Russia's State Duma election results, Palestinian casualties in Gaza, PSG football match. These items serve to position Syria within broader international discourse. No Syrian public reaction recorded.",
-   "summary_ar": "تنشر وسائل الإعلام الحكومية أخباراً دولية روتينية: نتائج انتخابات الدوما الروسية لحزب روسيا الموحدة، ضحايا فلسطينيين في غزة، مباراة كرة قدم لفريق باريس سان جيرمان. تخدم هذه العناصر لتحديد موقع سوريا في السياق الدولي الأوسع. لم يتم تسجيل رد فعل عام سوري.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.1,
-   "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
+   "id": "israeli-southern-operations",
+   "title": "Israeli military actions in southern Syria and Golan presence",
+   "title_ar": "العمليات العسكرية الإسرائيلية في جنوب سوريا وحضورها في الجولان",
+   "summary": "State media reports Israeli shelling of villages in Yarmouk Basin causing livestock losses. Public commentary references Israeli strikes (840 raids claimed in two years, 720 destroyed targets, 7 airfields established) and debate over government response options. Discussion includes Golan occupation, ceasefire agreement violations, and Israeli land seizure.",
+   "summary_ar": "تقرر وسائل الإعلام الرسمية قصف إسرائيلي لقرى في حوض اليرموك تسبب خسائر في الثروة الحيوانية. تشير التعليقات العامة إلى غارات إسرائيلية (840 غارة مدعى بها في عامين، 720 هدفاً مدمراً، 7 مطارات منشأة) ونقاش حول خيارات رد الحكومة. يشمل النقاش احتلال الجولان وانتهاكات اتفاقية وقف الاشتباك والاستيلاء الإسرائيلي على الأراضي.",
+   "public_reaction": "Some commenters argue Israel has the right to occupy the Golan; others claim historical Egyptian tolerance of violations; some call for military response and national defense. Debate centers on government capabilities and political constraints in facing Israeli actions.",
+   "public_reaction_ar": "يجادل بعض المعلقين بأن لإسرائيل الحق في احتلال الجولان؛ بينما يدعي آخرون بتسامح مصري تاريخي مع الانتهاكات؛ والبعض يطالب برد عسكري والدفاع الوطني. ينصب النقاش على القدرات الحكومية والقيود السياسية في مواجهة الإجراءات الإسرائيلية.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.45,
+   "emotions": [
+    "concern",
+    "frustration",
+    "defiance",
+    "debate"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "إحباط",
+    "تحدي",
+    "نقاش"
+   ],
    "framings": [
-    "Regional and international news",
-    "Solidarity with Palestinian cause",
-    "Global connections"
+    "Israeli shelling as routine provocation with minimal damage (livestock losses)",
+    "Historical violations and ceasefire erosion documented in public claims",
+    "Government deterrence capability as central to response debate"
    ],
    "framings_ar": [
-    "الأخبار الإقليمية والدولية",
-    "التضامن مع القضية الفلسطينية",
-    "الاتصالات العالمية"
+    "القصف الإسرائيلي كاستفزاز روتيني مع أضرار محدودة",
+    "انتهاكات تاريخية وتآكل وقف الاشتباك موثق في ادعاءات عامة",
+    "القدرة الحكومية على الردع كمحور النقاش"
+   ],
+   "flags": [
+    "Unverified claim: '840 raids in two years, 720 destroyed targets' cited without source",
+    "Selective historical framing: some invoke Assad-era ceasefire to relativize current violations"
+   ],
+   "flags_ar": [
+    "ادعاء غير موثق: '840 غارة في عامين، 720 هدفاً مدمراً' مذكور بدون مصدر",
+    "إطار تاريخي انتقائي: يستحضر البعض وقف اشتباك عهد الأسد لتقليل الانتهاكات الحالية"
+   ],
+   "volume": 6,
+   "public_volume": 5,
+   "share": 0.067,
+   "engagement": 46,
+   "platforms": {
+    "telegram": 1,
+    "youtube": 4,
+    "x": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "SANA - state news agency (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78068",
+     "platform": "telegram"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=mza6efuzOyA",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-21T13:43:00Z"
+  },
+  {
+   "id": "regional-economic-expansion",
+   "title": "Syrian economic initiatives and international partnerships",
+   "title_ar": "المبادرات الاقتصادية السورية والشراكات الدولية",
+   "summary": "State outlets report Syrian Airlines expansion to European cities (Copenhagen, Vienna), Latakia Port livestock carrier project, Syrian-Arab banking cooperation, Chinese transport infrastructure investment talks, and an Arab banking conference in Amman focused on investment in Syria's recovery.",
+   "summary_ar": "تقرر المنافذ الرسمية توسع الخطوط الجوية السورية إلى مدن أوروبية (كوبنهاغن، فيينا)، مشروع ناقلة الثروة الحيوانية في ميناء اللاذقية، تعاون بنكي سوري عربي، محادثات استثمار البنية التحتية مع الشركات الصينية، ومؤتمر بنكي عربي في عمّان يركز على الاستثمار في التعافي السوري.",
+   "public_reaction": "Limited direct public commentary; one post notes UAE airlines transiting Syrian airspace on long routes (around 16 hours flight time), showing normalcy of air traffic. No critical public reaction visible.",
+   "public_reaction_ar": "تعليق عام محدود مباشر؛ تلاحظ منشور واحدة أن الخطوط الجوية الإماراتية تعبر المجال الجوي السوري في رحلات طويلة (حوالي 16 ساعة رحلة)، مما يدل على الحالة الطبيعية للحركة الجوية. لا يوجد رد نقدي عام مرئي.",
+   "sentiment": 0.6,
+   "public_sentiment": 0.0,
+   "emotions": [
+    "optimism",
+    "development-focus"
+   ],
+   "emotions_ar": [
+    "تفاؤل",
+    "التركيز على التنمية"
+   ],
+   "framings": [
+    "Economic recovery through international partnerships and aviation expansion",
+    "Regional financial cooperation as driver of Syria's reconstruction",
+    "Port modernization and transport infrastructure as reconstruction projects"
+   ],
+   "framings_ar": [
+    "التعافي الاقتصادي من خلال الشراكات الدولية وتوسع الطيران",
+    "التعاون المالي الإقليمي كمحرك لإعادة بناء سوريا",
+    "تحديث الموانئ والبنية التحتية للنقل كمشاريع إعادة بناء"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 6,
+   "public_volume": 1,
+   "share": 0.067,
+   "engagement": 178,
+   "platforms": {
+    "telegram": 5,
+    "x": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78052",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-21T13:43:00Z"
+  },
+  {
+   "id": "weapons-depot-explosions",
+   "title": "Repeated weapons depot explosions raise security and sabotage concerns",
+   "title_ar": "انفجارات متكررة في مستودعات الأسلحة تثير مخاوف الأمان والتخريب",
+   "summary": "A military ammunition depot in southern Aleppo experienced successive explosions causing four minor civilian injuries on Monday. This marks another incident in a pattern of recurring weapons storage explosions across multiple regions (Aleppo, Idlib, Deir ez-Zor) within the past month.",
+   "summary_ar": "شهد موقع ذخائر عسكري جنوب حلب انفجارات متتالية أسفرت عن إصابة أربعة مدنيين بجروح خفيفة. يشكل هذا حادثة أخرى في نمط من الانفجارات المتكررة في مستودعات أسلحة في عدة مناطق (حلب وإدلب وديرالزور) خلال الشهر الماضي.",
+   "public_reaction": "Commenters express alarm and suspicion about the frequency of explosions, questioning whether they result from Israeli strikes, sabotage, or internal security failures. Some suggest deliberate distraction or corruption, while others worry about government protection gaps. A minority blames external actors including Turkey and Qatar.",
+   "public_reaction_ar": "يعبر المعلقون عن قلق وريبة من تكرار الانفجارات، ويتساءلون عما إذا كانت نتيجة غارات إسرائيلية أو تخريب أو فشل أمني داخلي. يقترح البعض تحويل انتباه مقصود أو فساد، بينما يقلق آخرون بشأن ثغرات الحماية الحكومية. أقلية تلوم جهات خارجية بما فيها تركيا وقطر.",
+   "sentiment": -0.4,
+   "public_sentiment": -0.65,
+   "emotions": [
+    "alarm",
+    "suspicion",
+    "frustration"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "ريبة",
+    "إحباط"
+   ],
+   "framings": [
+    "Security incident with civilian injuries reported by state and independent outlets",
+    "Pattern of repeated explosions suggesting systemic vulnerability",
+    "Possible sabotage or external strike amid government silence on causes"
+   ],
+   "framings_ar": [
+    "حادثة أمنية مع إصابات مدنية تغطيها الوسائل الرسمية والمستقلة",
+    "نمط من الانفجارات المتكررة يشير إلى ضعف نظامي",
+    "احتمال تخريب أو ضربة خارجية وسط صمت حكومي عن الأسباب"
+   ],
+   "flags": [
+    "Recurring incidents within short timeframe raise coordination/sabotage theories",
+    "Government attribution ambiguity fueling speculation"
+   ],
+   "flags_ar": [
+    "الحوادث المتكررة في فترة زمنية قصيرة تثير نظريات التنسيق والتخريب",
+    "غموض العزو الحكومي يزيد التكهنات"
+   ],
+   "volume": 5,
+   "public_volume": 3,
+   "share": 0.056,
+   "engagement": 8,
+   "platforms": {
+    "news": 1,
+    "telegram": 1,
+    "x": 1,
+    "youtube": 2
+   },
+   "sources": [
+    "YouTube comments",
+    "BBC Arabic",
+    "Enab Baladi - independent (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6749",
+     "platform": "telegram"
+    },
+    {
+     "source": "BBC Arabic",
+     "url": "https://www.bbc.com/arabic/articles/c64gd0z1g5zno?at_medium=RSS&at_campaign=rss",
+     "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=OivMv0jXCRk",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-21T06:23:10Z"
+  },
+  {
+   "id": "humanitarian-and-reconstruction",
+   "title": "Humanitarian mine clearance and community development in Idlib",
+   "title_ar": "إزالة الألغام الإنسانية وتطوير المجتمع في إدلب",
+   "summary": "State media reports Syria-Ukraine humanitarian demining cooperation agreement and opening of a community development center in Maarat al-Numan serving 600 beneficiaries monthly with protection, health, and vocational programs. Separately, Idlib schools reopen with education services resuming.",
+   "summary_ar": "تقرر وسائل الإعلام الرسمية اتفاق تعاون سوري أوكراني لإزالة الألغام الإنسانية وافتتاح مركز تطوير مجتمعي في معرة النعمان يخدم 600 مستفيد شهرياً ببرامج حماية وصحة وتدريب مهني. بشكل منفصل، تعيد مدارس إدلب فتح أبوابها مع استئناف الخدمات التعليمية.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.7,
+   "public_sentiment": null,
+   "emotions": [
+    "hope",
+    "recovery",
+    "aid"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "التعافي",
+    "المساعدة"
+   ],
+   "framings": [
+    "International humanitarian cooperation (Ukraine) in demining",
+    "Community services restoration and economic empowerment for women",
+    "Education resumption as normalcy indicator"
+   ],
+   "framings_ar": [
+    "التعاون الإنساني الدولي (أوكرانيا) في إزالة الألغام",
+    "استعادة الخدمات المجتمعية والتمكين الاقتصادي للنساء",
+    "استئناف التعليم كمؤشر على الحالة الطبيعية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 4,
    "public_volume": 0,
-   "share": 0.033,
-   "engagement": 263,
+   "share": 0.045,
+   "engagement": 152,
    "platforms": {
     "telegram": 4
    },
    "sources": [
-    "SANA - state news agency (EN)"
+    "SANA - state news agency (EN)",
+    "Enab Baladi - independent (EN)"
    ],
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78021",
+     "url": "https://t.me/SANANewsEnglish/78055",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6750",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-21T09:36:45Z"
+   "first_seen": "2026-09-21T13:43:00Z"
   },
   {
-   "id": "flag-and-symbols-contention",
-   "title": "Dispute over Syrian national flag and post-conflict symbolism",
-   "title_ar": "نزاع حول العلم الوطني السوري والرمزية بعد الصراع",
-   "summary": "Commenters dispute the legitimacy of the current Syrian flag, with some calling it a 'flag of betrayal' and demanding a public referendum on national symbols. Others defend the flag as representing the transitional state. The debate touches on legitimacy, national identity, and the democratic process for symbolic change.",
-   "summary_ar": "المعلقون ينازعون شرعية العلم السوري الحالي، مع البعض يسميه 'علم الخيانة' والمطالبة باستفتاء عام على الرموز الوطنية. آخرون يدافعون عن العلم كتمثيل للدولة الانتقالية. يتناول النقاش الشرعية والهوية الوطنية والعملية الديمقراطية للتغيير الرمزي.",
-   "public_reaction": "Polarized: some reject the flag as illegitimate and demand democratic process; others defend it as representative of transitional governance. Underlying tensions about who has authority to determine national symbols and how legitimacy is established.",
-   "public_reaction_ar": "استقطاب: البعض يرفض العلم على أنه غير شرعي ويطالب بعملية ديمقراطية؛ آخرون يدافعون عنه كممثل للحكم الانتقالي. توترات أساسية حول من له السلطة لتحديد الرموز الوطنية وكيف يتم تحديد الشرعية.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.3,
+   "id": "flag-and-national-identity",
+   "title": "Dispute over national flag and post-conflict symbolism",
+   "title_ar": "النزاع حول العلم الوطني ورمزية ما بعد النزاع",
+   "summary": "Public commentary continues dispute over Syria's flag, with critics calling current flag a 'flag of betrayal' and demanding a national referendum on flag and symbols before unilateral government decision. Supporters defend the current flag as representing the new Syria, while opponents invoke the old flag as symbol of continuity and legitimacy.",
+   "summary_ar": "تستمر التعليقات العامة في النزاع حول علم سوريا، حيث يدعو النقاد العلم الحالي 'علم الخيانة' ويطالبون باستفتاء وطني على العلم والرموز قبل القرار الحكومي الأحادي. يدافع المؤيدون عن العلم الحالي باعتباره يمثل سوريا الجديدة، بينما يستحضر المعارضون العلم القديم كرمز للاستمرارية والشرعية.",
+   "public_reaction": "Significant division: some commenters support the flag change as signifying break from past regime; others demand democratic input through referendum before any symbolic change. Political identity contested through flag symbolism.",
+   "public_reaction_ar": "انقسام كبير: يدعم البعض تغيير العلم كتعبير عن القطع مع النظام السابق؛ بينما يطالب آخرون بمشاركة ديمقراطية عبر استفتاء قبل أي تغيير رمزي. الهوية السياسية متنازع عليها من خلال رمزية العلم.",
+   "sentiment": -0.15,
+   "public_sentiment": -0.35,
    "emotions": [
-    "anger",
-    "defiance",
-    "dispute"
+    "contestation",
+    "identity debate",
+    "demand for democracy"
    ],
    "emotions_ar": [
-    "غضب",
-    "تمرد",
-    "نزاع"
+    "تنافس",
+    "نقاش الهوية",
+    "المطالبة بالديمقراطية"
    ],
    "framings": [
-    "Legitimacy of national symbols",
-    "Democratic process for constitutional decisions",
-    "Transitional governance and representation",
-    "Historical continuity vs. break"
+    "Flag as symbol of regime break and new Syria (supporters)",
+    "Flag as betrayal of national identity and continuity (critics)",
+    "Demand for democratic referendum on national symbols"
    ],
    "framings_ar": [
-    "شرعية الرموز الوطنية",
-    "العملية الديمقراطية للقرارات الدستورية",
-    "الحكم الانتقالي والتمثيل",
-    "الاستمرارية التاريخية مقابل الانقطاع"
+    "العلم كرمز للقطع مع النظام وسوريا الجديدة (المؤيدون)",
+    "العلم كخيانة للهوية الوطنية والاستمرارية (النقاد)",
+    "المطالبة باستفتاء ديمقراطي على الرموز الوطنية"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 3,
-   "public_volume": 3,
-   "share": 0.024,
-   "engagement": 3,
+   "flags": [
+    "Symbolic contestation of state legitimacy through flag dispute"
+   ],
+   "flags_ar": [
+    "تنافس رمزي على شرعية الدولة من خلال نزاع العلم"
+   ],
+   "volume": 4,
+   "public_volume": 4,
+   "share": 0.045,
+   "engagement": 5,
    "platforms": {
-    "youtube": 3
+    "youtube": 4
    },
    "sources": [
     "YouTube comments"
@@ -430,142 +455,191 @@
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-21T09:47:19Z"
+   "first_seen": "2026-09-21T13:43:00Z"
   },
   {
-   "id": "anti-terrorism-court-abolition",
-   "title": "Parliament abolishes Anti-Terrorism Court amid property restitution debates",
-   "title_ar": "البرلمان يلغي محكمة الإرهاب وسط نقاشات حول استرجاع الممتلكات",
-   "summary": "Syria's parliament approved abolition of the Anti-Terrorism Court, which Justice Ministry says removes 'exceptional measures.' The law addresses restitution of thousands of confiscated properties. State media frames this as legal reform and normalization; no public comment visible in this batch.",
-   "summary_ar": "وافق البرلمان السوري على إلغاء محكمة الإرهاب، التي تقول وزارة العدل إنها تزيل 'الإجراءات الاستثنائية'. يتناول القانون استرجاع آلاف الممتلكات المصادرة. وسائل الإعلام الحكومية تطرح هذا كإصلاح قانوني وتطبيع؛ لا توجد تعليقات عامة مرئية في هذه المجموعة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.3,
-   "public_sentiment": null,
+   "id": "sectarian-and-political-identity",
+   "title": "Sectarian and regional political divisions on government legitimacy",
+   "title_ar": "الانقسامات السياسية الطائفية والإقليمية حول شرعية الحكومة",
+   "summary": "Comments on social media reflect sectarian and regional tensions regarding the new government, with references to Druze representation (petition signatures numbering less than half of Druze population), Sunni dominance in government, and historical claims about Lebanese origins of Syrian population groups. Commentary touches on government legitimacy and representation questions.",
+   "summary_ar": "تعكس التعليقات على وسائل التواصل التوترات الطائفية والإقليمية بشأن الحكومة الجديدة، مع إشارات إلى التمثيل الدرزي (التماسات بتوقيعات أقل من نصف السكان الدروز)، والهيمنة السنية على الحكومة، والادعاءات التاريخية حول الأصول اللبنانية للمجموعات السكانية السورية. يتطرق التعليق إلى أسئلة شرعية الحكومة والتمثيل.",
+   "public_reaction": "Commenters voice concerns about minority representation and sectarian balance in new government. Some invoke historical grievances and arguments about population origins and political belonging.",
+   "public_reaction_ar": "يعبر المعلقون عن مخاوف بشأن تمثيل الأقليات والتوازن الطائفي في الحكومة الجديدة. يستحضر البعض الشكاوى التاريخية والحجج حول أصول السكان والانتماء السياسي.",
+   "sentiment": -0.25,
+   "public_sentiment": -0.35,
    "emotions": [
-    "hope"
+    "concern",
+    "historical-grievance",
+    "representation-anxiety"
    ],
    "emotions_ar": [
-    "أمل"
+    "قلق",
+    "شكوى تاريخية",
+    "قلق التمثيل"
    ],
    "framings": [
-    "Legal normalization and removal of emergency measures",
-    "Property rights restoration",
-    "Justice system reform"
+    "Minority political representation and sectarian balance as governance questions",
+    "Historical claims about sectarian composition and regional origins",
+    "Government legitimacy tied to inclusive representation"
    ],
    "framings_ar": [
-    "تطبيع قانوني وإزالة الإجراءات الاستثنائية",
-    "استرجاع حقوق الملكية",
-    "إصلاح النظام القضائي"
+    "التمثيل السياسي للأقليات والتوازن الطائفي كقضايا حكم",
+    "ادعاءات تاريخية حول التركيب الطائفي والأصول الإقليمية",
+    "شرعية الحكومة مرتبطة بالتمثيل الشامل"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 2,
-   "public_volume": 0,
-   "share": 0.016,
-   "engagement": 73,
+   "flags": [
+    "Unverified historical claims about Lebanese population origins",
+    "Sectarian counting and representation grievances"
+   ],
+   "flags_ar": [
+    "ادعاءات تاريخية غير موثقة حول أصول السكان اللبنانيين",
+    "شكاوى من حساب طائفي وتمثيل"
+   ],
+   "volume": 4,
+   "public_volume": 4,
+   "share": 0.045,
+   "engagement": 1,
    "platforms": {
-    "telegram": 2
+    "x": 3,
+    "youtube": 1
    },
    "sources": [
-    "SANA - state news agency (EN)"
+    "X posts",
+    "YouTube comments"
    ],
    "examples": [
     {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78044",
-     "platform": "telegram"
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=YBr889Rnsa4",
+     "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-21T09:36:45Z"
+   "first_seen": "2026-09-21T13:43:00Z"
   },
   {
-   "id": "agricultural-recovery",
-   "title": "Record olive harvest projection boosts agricultural optimism",
-   "title_ar": "توقعات محصول زيتون قياسي تعزز التفاؤل الزراعي",
-   "summary": "State media reports Syria expects 954,000-ton olive harvest in 2026, a more than double increase from 2025's 412,000 tons, with Aleppo province leading. Framed as sign of recovery and return to normalcy. No public comment visible in this batch.",
-   "summary_ar": "وسائل الإعلام الحكومية تقول إن سوريا تتوقع محصول زيتون بـ 954 ألف طن في 2026، أكثر من ضعف الزيادة من محصول 2025 البالغ 412 ألف طن، مع قيادة محافظة حلب. مؤطر كعلامة على التعافي والعودة إلى الحياة الطبيعية. لا توجد تعليقات عامة مرئية في هذه المجموعة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.6,
-   "public_sentiment": null,
+   "id": "asalah-nasri-song-authorship",
+   "title": "Asalah Nasri song authorship dispute: Syrian vs. Egyptian origin",
+   "title_ar": "نزاع حول أصل أغنية أصالة ناصري: سوري مقابل مصري",
+   "summary": "Entertainer Asalah Nasri claimed during a Damascus concert that the song 'Ala Raud al-Habib' has Syrian traditional melody origins, prompting Egypt's Authors, Composers and Publishers Association to issue a statement rebutting this claim, asserting Egyptian authorship.",
+   "summary_ar": "ادعت الفنانة أصالة ناصري خلال حفلة في دمشق أن أغنية 'على روض الحبيب' تعود ألحانها إلى التراث السوري، مما دفع جمعية المؤلفين والملحنين والناشرين المصرية إلى إصدار بيان يرد هذا الادعاء ويؤكد الملكية المصرية.",
+   "public_reaction": "Limited public commentary visible; the post frames the issue as a potential misattribution or deliberate claim-shifting by the entertainer.",
+   "public_reaction_ar": "تعليق عام محدود؛ تطرح المنشورة القضية كسوء نسب محتمل أو ادعاء متعمد من قبل الفنانة.",
+   "sentiment": -0.2,
+   "public_sentiment": 0.0,
    "emotions": [
-    "hope",
-    "optimism"
+    "cultural-dispute",
+    "attribution-concern"
    ],
    "emotions_ar": [
-    "أمل",
-    "تفاؤل"
+    "نزاع ثقافي",
+    "مخاوف العزو"
    ],
    "framings": [
-    "Economic recovery through agriculture",
-    "Return to pre-war production levels",
-    "Regional agricultural leadership",
-    "Food security and rural prosperity"
+    "Song authorship dispute with national cultural stakes",
+    "Artist credibility questioned over false origin claims"
    ],
    "framings_ar": [
-    "الانتعاش الاقتصادي من خلال الزراعة",
-    "العودة إلى مستويات الإنتاج قبل الحرب",
-    "القيادة الزراعية الإقليمية",
-    "الأمن الغذائي والازدهار الريفي"
+    "نزاع حول ملكية الأغنية مع رهانات ثقافية وطنية",
+    "مصداقية الفنان موضع تساؤل بسبب ادعاءات أصل خاطئة"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "Potential deliberate misattribution for patriotic framing"
+   ],
+   "flags_ar": [
+    "احتمال سوء نسب متعمد للإطار الوطني"
+   ],
    "volume": 1,
-   "public_volume": 0,
-   "share": 0.008,
-   "engagement": 46,
+   "public_volume": 1,
+   "share": 0.011,
+   "engagement": 0,
    "platforms": {
-    "telegram": 1
+    "x": 1
    },
    "sources": [
-    "SANA - state news agency (EN)"
+    "X posts"
    ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78045",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-21T09:36:45Z"
+   "examples": [],
+   "first_seen": "2026-09-21T13:43:00Z"
   },
   {
-   "id": "regional-trade-expansion",
-   "title": "Syria's role in regional transport and trade connectivity highlighted",
-   "title_ar": "تسليط الضوء على دور سوريا في ربط النقل والتجارة الإقليمية",
-   "summary": "State media reports on CargoSyr 2026 conference highlighting Syria's strategic position in regional logistics, supply chain development, and market connectivity. Framed as evidence of Syria's return as a regional hub. No public comment visible.",
-   "summary_ar": "تقارير وسائل الإعلام الحكومية عن مؤتمر CargoSyr 2026 يبرز الموقع الاستراتيجي لسوريا في اللوجستيات الإقليمية وتطوير سلاسل الإمداد وربط الأسواق. مؤطر كدليل على عودة سوريا كمركز إقليمي. لا توجد تعليقات عامة مرئية.",
+   "id": "security-and-political-freedom",
+   "title": "Concerns about security threats and political freedom for returnees",
+   "title_ar": "مخاوف بشأن التهديدات الأمنية والحرية السياسية للعائدين",
+   "summary": "A post reports that a Syrian-Canadian citizen returning from Canada claims to have received death and arrest threats from groups affiliated with state authorities, prompting him to seek Canadian embassy assistance for evacuation. The incident raises concerns about security for diaspora returnees and government-linked intimidation.",
+   "summary_ar": "تقرر منشورة أن مواطناً سورياً كندياً عائداً من كندا يدعي تلقيه تهديدات بالقتل والاعتقال من مجموعات تتبع السلطات الرسمية، مما دفعه للسعي للمساعدة من السفارة الكندية للإجلاء. تثير الحادثة مخاوف بشأن أمان العائدين من الشتات والتخويف المرتبط بالحكومة.",
+   "public_reaction": "Single post documenting the claim; limited public commentary on the specific incident.",
+   "public_reaction_ar": "منشورة واحدة توثق الادعاء؛ تعليق عام محدود على الحادثة المحددة.",
+   "sentiment": -0.6,
+   "public_sentiment": 0.0,
+   "emotions": [
+    "fear",
+    "danger",
+    "concern-for-freedom"
+   ],
+   "emotions_ar": [
+    "خوف",
+    "خطر",
+    "قلق على الحرية"
+   ],
+   "framings": [
+    "Security threats to returning diaspora as sign of state intimidation",
+    "Government-affiliated groups alleged in threatening behavior"
+   ],
+   "framings_ar": [
+    "تهديدات أمنية للشتات العائد كعلامة على التخويف الحكومي",
+    "مجموعات مرتبطة بالحكومة متهمة بالسلوك المهدد"
+   ],
+   "flags": [
+    "Unverified claim of government-linked threats; single source reporting"
+   ],
+   "flags_ar": [
+    "ادعاء غير موثق بتهديدات مرتبطة بالحكومة؛ تقرير من مصدر واحد"
+   ],
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.011,
+   "engagement": 1,
+   "platforms": {
+    "x": 1
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-21T13:43:00Z"
+  },
+  {
+   "id": "cultural-heritage-preservation",
+   "title": "Syrian cultural heritage: Maaloula and Aramaic language preservation",
+   "title_ar": "التراث الثقافي السوري: معلولا والحفاظ على اللغة الآرامية",
+   "summary": "State media feature on Maaloula town highlighting preservation of Aramaic language and ancient monasteries in the Qalamoun Mountains as part of Syria's cultural memory and heritage.",
+   "summary_ar": "تقرير وسائل الإعلام الرسمية عن بلدة معلولا يسلط الضوء على الحفاظ على اللغة الآرامية والأديرة القديمة في جبال القلمون كجزء من الذاكرة الثقافية والتراث السوري.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": 0.5,
    "public_sentiment": null,
    "emotions": [
-    "optimism",
-    "pride"
+    "cultural-pride",
+    "heritage-preservation"
    ],
    "emotions_ar": [
-    "تفاؤل",
-    "فخر"
+    "فخر ثقافي",
+    "الحفاظ على التراث"
    ],
    "framings": [
-    "Regional economic hub restoration",
-    "Strategic connectivity and logistics",
-    "Trade expansion opportunities",
-    "Return to pre-war economic role"
+    "Ancient Christian heritage as part of Syrian national identity",
+    "Linguistic and architectural preservation as cultural continuity"
    ],
    "framings_ar": [
-    "استعادة دور المركز الاقتصادي الإقليمي",
-    "الربط الاستراتيجي واللوجستيات",
-    "فرص توسع التجارة",
-    "العودة إلى الدور الاقتصادي قبل الحرب"
+    "التراث المسيحي القديم كجزء من الهوية الوطنية السورية",
+    "الحفاظ اللغوي والمعماري كاستمرار ثقافي"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
-   "share": 0.008,
-   "engagement": 55,
+   "share": 0.011,
+   "engagement": 51,
    "platforms": {
     "telegram": 1
    },
@@ -575,62 +649,11 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78023",
+     "url": "https://t.me/SANANewsEnglish/78056",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-21T09:47:19Z"
-  },
-  {
-   "id": "foreign-american-relations",
-   "title": "Syrian-American Business Council reconstituted for bilateral ties",
-   "title_ar": "إعادة تشكيل مجلس الأعمال السوري الأمريكي لتعزيز العلاقات الثنائية",
-   "summary": "State media reports Economy Minister reconstituted the Syrian-American Business Council to strengthen cooperation and partnerships. Signals normalization of bilateral economic engagement. No public reaction recorded.",
-   "summary_ar": "وسائل الإعلام الحكومية تقول إن وزير الاقتصاد أعاد تشكيل مجلس الأعمال السوري الأمريكي لتعزيز التعاون والشراكات. يشير إلى تطبيع الانخراط الاقتصادي الثنائي. لم يتم تسجيل رد فعل عام.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.4,
-   "public_sentiment": null,
-   "emotions": [
-    "hope",
-    "pragmatism"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "براجماتية"
-   ],
-   "framings": [
-    "Bilateral economic normalization",
-    "Business partnership restoration",
-    "International reintegration",
-    "Economic cooperation"
-   ],
-   "framings_ar": [
-    "تطبيع اقتصادي ثنائي",
-    "استعادة الشراكة الاقتصادية",
-    "إعادة الاندماج الدولي",
-    "التعاون الاقتصادي"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 0,
-   "share": 0.008,
-   "engagement": 127,
-   "platforms": {
-    "telegram": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78020",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-21T09:47:19Z"
+   "first_seen": "2026-09-21T13:43:00Z"
   }
  ],
  "sources": [
@@ -638,15 +661,15 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
-   "recent": 12
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 2
   },
   {
    "name": "BBC Arabic",
@@ -659,8 +682,8 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 106,
-   "recent": 106
+   "fetched": 60,
+   "recent": 60
   },
   {
    "name": "X posts",
@@ -675,5 +698,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0663
+ "cost_usd": 0.0615
 }
