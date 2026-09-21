@@ -105,7 +105,7 @@ rss_feeds:
 #    2,400 a day when run hourly, so keep it to 2-3 terms.
 #    "|" means OR, so one term can cover several words.
 youtube:
-  enabled: false
+  enabled: true
   search_terms: ["سوريا|السوريين|دمشق|حلب", "الشارع السوري"]
   videos_per_term: 5
   comments_per_video: 25
