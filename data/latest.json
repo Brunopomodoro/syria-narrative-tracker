@@ -3,85 +3,92 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-21T09:36:45Z",
- "checked_at": "2026-09-21T09:36:45Z",
+ "generated_at": "2026-09-21T09:47:19Z",
+ "checked_at": "2026-09-21T09:47:19Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 23,
-  "public_posts": 10,
+  "posts_analyzed": 123,
+  "public_posts": 110,
   "outlet_posts": 13,
   "reactions_posts": 0,
-  "unique_posts": 23,
-  "sources_ok": 4,
-  "sources_total": 4,
+  "unique_posts": 122,
+  "sources_ok": 5,
+  "sources_total": 5,
   "platforms": {
    "telegram": 12,
    "news": 1,
-   "x": 10
+   "x": 10,
+   "youtube": 99
   }
  },
  "overall": {
-  "sentiment": 0.3,
-  "mood": "Optimistic",
+  "sentiment": 0.2,
+  "mood": "Upbeat",
   "mood_ar": "متفائل",
-  "public_sentiment": -0.65,
+  "public_sentiment": -0.3,
   "public_mood": "Anxious",
   "public_mood_ar": "قلق",
-  "brief": "State media presents Syria's domestic recovery agenda, emphasizing agriculture, legal reform, and business partnerships alongside standard international coverage. The public conversation is dominated by alarm over multiple weapons depot explosions across northern Syria in September, which commenters frame as intelligence warfare or acts of sabotage targeting Syria's military capacity. There is also sharp criticism of Israeli military incursions and a disconnect between official casualty denials and initial emergency response reports. Overall, public sentiment is anxious and distrustful of official accounts, while outlets maintain a constructive, forward-looking tone.",
-  "brief_ar": "تركز وسائل الإعلام الرسمية على أجندة الانتعاش المحلي السوري، مؤكدة على الزراعة والإصلاح القانوني والشراكات التجارية، إلى جانب التغطية الدولية العادية. يهيمن على النقاش العام خوف من انفجارات متعددة في مستودعات الذخيرة عبر شمال سوريا في سبتمبر، حيث يعتبرها المعلقون حرب استنزاف استخباراتية أو تخريباً موجهاً ضد القدرة العسكرية السورية. هناك أيضاً انتقاد حاد للتوغلات العسكرية الإسرائيلية وانقطاع بين إنكار الإصابات الرسمي والتقارير الأولية لفرق الطوارئ. بشكل عام، المشاعر العامة قلقة وعدم ثقة من الروايات الرسمية، بينما تحافظ المنافذ على نبرة بناءة وتتطلع للمستقبل."
+  "brief": "State media reports on weapons depot explosions, court abolition, olive harvest recovery, and international developments with measured, optimistic framing. Public reaction splits sharply: some celebrate military strength and national pride, while others express alarm at repeated explosions, suspicion of sabotage or foreign interference, and frustration with government accountability. A smaller group praises infrastructure development and cultural figures, but concerns about security dominate discussion of military incidents.",
+  "brief_ar": "تغطي وسائل الإعلام الحكومية انفجارات مستودعات الذخيرة وإلغاء محكمة الإرهاب وتوقعات محصول الزيتون بإطار متفائل. ردود الفعل العامة انقسمت حدّة: البعض يحتفي بقوة الجيش والفخر الوطني، بينما يعبر آخرون عن قلق من الانفجارات المتكررة والشك في التخريب الأجنبي والإحباط من محاسبة الحكومة. مجموعة أصغر تمدح التطور البنيوي والشخصيات الثقافية، لكن المخاوف الأمنية تهيمن على النقاش حول الحوادث العسكرية."
  },
  "narratives": [
   {
    "id": "weapons-depot-explosions",
-   "title": "Multiple weapons depot explosions across northern Syria",
-   "title_ar": "انفجارات متعددة في مستودعات الذخيرة عبر شمال سوريا",
-   "summary": "Five weapons depots have exploded across Idlib, Aleppo and Damascus countryside within September 2026, with initial reports citing casualties but official military statements denying deaths. Public commenters frame this as deliberate sabotage or intelligence warfare targeting Syria's military capacity, while the government emphasizes property damage only.",
-   "summary_ar": "انفجرت خمسة مستودعات ذخيرة عبر إدلب وريف حلب وريف دمشق خلال سبتمبر 2026، حيث أفادت التقارير الأولية عن إصابات لكن البيانات الرسمية للجيش تنفي الوفيات. يصف المعلقون العام هذا على أنه تخريب مقصود أو حرب استخباراتية موجهة ضد القدرة العسكرية السورية، بينما الحكومة تؤكد على الأضرار المادية فقط.",
-   "public_reaction": "Public voices express deep alarm and distrust, cataloguing the explosions as evidence of systematic sabotage, intelligence operations, or internal instability. Commenters demand official explanations and question the credibility gap between emergency responders' initial casualty reports and the Defense Ministry's denials.",
-   "public_reaction_ar": "تعبر الأصوات العامة عن قلق عميق وعدم ثقة، مع إدراج الانفجارات كدليل على تخريب منظم أو عمليات استخباراتية أو عدم استقرار داخلي. يطالب المعلقون بشروح رسمية ويطرحون أسئلة حول فجوة المصداقية بين التقارير الأولية لفريق الطوارئ والإنكار الرسمي من وزارة الدفاع.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.8,
+   "title": "Repeated weapons depot explosions raise security and sabotage concerns",
+   "title_ar": "انفجارات متكررة في مستودعات الذخيرة تثير مخاوف أمنية من التخريب",
+   "summary": "At least five weapons depot explosions have occurred across Syria in September 2026 (Bansh, Sermada, Al-Dhumayr, Deir ez-Zor, Al-Eis). State media reports four to zero casualties depending on location, with damage confined to property. Public discourse focuses on whether these are accidents, Israeli sabotage, internal espionage, or signs of deeper military instability.",
+   "summary_ar": "حدثت خمس انفجارات على الأقل في مستودعات ذخيرة عبر سوريا في سبتمبر 2026 في بنش وسرمدا والضمير ودير الزور والعيس. تقارير وسائل الإعلام الحكومية تتباين بين أربعة إلى صفر إصابات حسب الموقع، مع تحديد الأضرار بالممتلكات. النقاش العام يركز على ما إذا كانت حوادث عرضية أم صبرية إسرائيلية أم تجسس داخلي أم علامات على عدم استقرار عسكري أعمق.",
+   "public_reaction": "Commenters express alarm about frequency and pattern of explosions; many blame Israeli or foreign sabotage, while others suspect internal negligence or deliberate destabilization. Some defend the military's capacity and frame explosions as external attacks on Syrian strength. Sarcasm and dark humor appear alongside calls for government accountability and transparent investigations.",
+   "public_reaction_ar": "المعلقون يعبرون عن قلق من تكرار الانفجارات وأنماطها؛ كثيرون يلومون التخريب الإسرائيلي أو الأجنبي، بينما يشك آخرون في الإهمال الداخلي أو الزعزعة المتعمدة. البعض يدافع عن قدرة الجيش ويصور الانفجارات على أنها هجمات خارجية على القوة السورية. السخرية والفكاهة السوداء تظهر جنباً إلى جنب مع دعوات لمساءلة الحكومة والتحقيقات الشفافة.",
+   "sentiment": 0.1,
+   "public_sentiment": -0.5,
    "emotions": [
     "alarm",
-    "distrust",
-    "fear"
+    "suspicion",
+    "frustration"
    ],
    "emotions_ar": [
     "قلق",
-    "عدم ثقة",
-    "خوف"
+    "ريبة",
+    "إحباط"
    ],
    "framings": [
-    "Intelligence warfare targeting military capacity",
-    "Systematic sabotage of defense infrastructure",
-    "Official denial vs. emergency responder casualty reports",
-    "Regional security instability"
+    "Security threat and military vulnerability",
+    "Pattern of sabotage requiring investigation",
+    "Resource depletion affecting defense readiness",
+    "Israeli or foreign intelligence operation",
+    "Internal negligence or corruption"
    ],
    "framings_ar": [
-    "حرب استخباراتية موجهة ضد القدرة العسكرية",
-    "تخريب منظم للبنية التحتية الدفاعية",
-    "إنكار رسمي مقابل تقارير الإصابات من فرق الطوارئ",
-    "عدم استقرار أمني إقليمي"
+    "تهديد أمني وضعف عسكري",
+    "نمط من التخريب يتطلب تحقيقاً",
+    "استنزاف الموارد يؤثر على الجاهزية الدفاعية",
+    "عملية استخبارات إسرائيلية أو أجنبية",
+    "إهمال داخلي أو فساد"
    ],
    "flags": [
-    "Conflicting casualty narratives: BBC Arabic reports four injured; SANA denies casualties",
-    "Public catalogs all September explosions as pattern evidence"
+    "Unverified claims of Israeli sabotage spread without evidence",
+    "Numerical claims (17 depots hit, 5 explosions in one month) circulate with incomplete sourcing",
+    "Speculation about 'foreign interference' and 'destabilization' without attribution"
    ],
    "flags_ar": [
-    "روايات متضاربة حول الإصابات: BBC العربية تقول أربعة مصابين؛ سانا تنفي الخسائر",
-    "المعلقون يوثقون كل انفجارات سبتمبر كدليل على نمط"
+    "ادعاءات غير موثقة بالتخريب الإسرائيلي تنتشر بدون أدلة",
+    "ادعاءات رقمية (17 مستودع، 5 انفجارات في شهر واحد) تتداول بمصادر ناقصة",
+    "تكهنات حول 'التدخل الأجنبي' و'الزعزعة' بدون نسبة واضحة"
    ],
-   "volume": 8,
-   "public_volume": 4,
-   "share": 0.348,
-   "engagement": 129,
+   "volume": 25,
+   "public_volume": 21,
+   "share": 0.203,
+   "engagement": 163,
    "platforms": {
     "news": 1,
     "telegram": 3,
-    "x": 4
+    "x": 7,
+    "youtube": 14
    },
    "sources": [
+    "YouTube comments",
     "X posts",
     "SANA - state news agency (EN)",
     "BBC Arabic"
@@ -96,53 +103,272 @@
      "source": "BBC Arabic",
      "url": "https://www.bbc.com/arabic/articles/c64gd0z1g5zno?at_medium=RSS&at_campaign=rss",
      "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=_nX0cUZvfCU",
+     "platform": "youtube"
     }
    ],
    "first_seen": "2026-09-21T06:23:10Z"
   },
   {
-   "id": "international-news-standard",
-   "title": "Standard international news coverage: Russia, Gaza, French sports",
-   "title_ar": "التغطية الإخبارية الدولية العادية: روسيا وغزة والرياضة الفرنسية",
-   "summary": "State media carries routine international coverage including Russian elections, Palestinian casualties in Gaza, Ben-Gvir's Al-Aqsa incursion, and French football. One public commenter attributes destruction in Syrian cities to Russian actions during the war.",
-   "summary_ar": "وسائل الإعلام الرسمية تقدم تغطية دولية روتينية تشمل الانتخابات الروسية، والإصابات الفلسطينية في غزة، وتوغل بن غفير في الأقصى، والكرة القدم الفرنسية. معلق عام واحد ينسب الدمار في المدن السورية للإجراءات الروسية خلال الحرب.",
-   "public_reaction": "One commenter attributes destruction in multiple Syrian cities to Russian bombardment during the war, listing Aleppo, Idlib, Damascus, and Homs.",
-   "public_reaction_ar": "معلق واحد ينسب الدمار في عدة مدن سورية للقصف الروسي أثناء الحرب، مدرجاً حلب وإدلب ودمشق وحمص.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.6,
+   "id": "cultural-patriotism-debate",
+   "title": "Public debate on entertainer Asalah Nasri's return and patriotic credentials",
+   "title_ar": "نقاش عام حول عودة الفنانة أصالة نصري والاعتبارات الوطنية",
+   "summary": "Videos and commentary debate whether entertainer Asalah Nasri deserves a state honor and public celebration. Supporters cite her early anti-regime stance and patriotic commitment; critics argue celebrities should donate proceeds to charity or disaster relief. Discourse touches on inclusivity, nationalism, and the role of cultural figures in post-conflict society.",
+   "summary_ar": "مقاطع فيديو وتعليقات تناقش ما إذا كانت الفنانة أصالة نصري تستحق شرفاً دولاتياً واحتفاء عاماً. المؤيدون يستشهدون بموقفها المبكر المناهض للنظام والالتزام الوطني؛ النقاد يقولون إن المشاهير يجب أن يتبرعوا بالإيرادات للأعمال الخيرية أو الإغاثة. يتناول الخطاب الشمول والوطنية ودور الشخصيات الثقافية في مجتمع ما بعد الصراع.",
+   "public_reaction": "Strong support for Nasri's patriotism and right to honor; commenters defend her against critics and invoke her stance against the former regime. Some express reservations about celebrating entertainers while resources are scarce, or debate whether she should be treated as artist or activist. Implicit questions about post-conflict reconciliation and inclusion surface.",
+   "public_reaction_ar": "دعم قوي لوطنية أصالة وحقها في التكريم؛ المعلقون يدافعون عنها ضد النقاد ويستحضرون موقفها ضد النظام السابق. البعض يعبر عن تحفظات حول الاحتفاء بالفنانين بينما الموارد شحيحة، أو يناقش ما إذا كان يجب التعامل معها كفنانة أم ناشطة. تظهر أسئلة ضمنية حول المصالحة والشمول بعد الصراع.",
+   "sentiment": 0.5,
+   "public_sentiment": 0.4,
    "emotions": [
-    "grievance",
-    "memory of war"
+    "pride",
+    "gratitude",
+    "debate"
    ],
    "emotions_ar": [
-    "شكوى",
-    "ذاكرة الحرب"
+    "فخر",
+    "امتنان",
+    "نقاش"
    ],
    "framings": [
-    "Russian military actions during Syrian conflict",
-    "International solidarity (Ben-Gvir condemnation)"
+    "Patriotic credentials and anti-regime stance",
+    "Right to cultural honor and celebration",
+    "Charity and resource allocation ethics",
+    "Reconciliation and post-conflict inclusion",
+    "Artist vs. activist identity"
    ],
    "framings_ar": [
-    "الإجراءات العسكرية الروسية أثناء الصراع السوري",
-    "التضامن الدولي (إدانة بن غفير)"
+    "الاعتبارات الوطنية والموقف المناهض للنظام",
+    "الحق في التكريم الثقافي والاحتفاء",
+    "أخلاقيات الخيرية وتوزيع الموارد",
+    "المصالحة والشمول بعد الصراع",
+    "هوية الفنان مقابل الناشط"
    ],
-   "flags": [
-    "p21 attributes urban destruction to Russian actions; historical grievance commentary"
-   ],
-   "flags_ar": [
-    "p21 ينسب الدمار الحضري للإجراءات الروسية؛ تعليق حول شكاوى تاريخية"
-   ],
-   "volume": 4,
-   "public_volume": 1,
-   "share": 0.174,
-   "engagement": 200,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 22,
+   "public_volume": 22,
+   "share": 0.179,
+   "engagement": 79,
    "platforms": {
-    "telegram": 3,
-    "x": 1
+    "youtube": 22
    },
    "sources": [
-    "SANA - state news agency (EN)",
-    "X posts"
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=kn81ydrWaJc",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-21T09:47:19Z"
+  },
+  {
+   "id": "infrastructure-and-development",
+   "title": "Government infrastructure projects receive public praise and technical scrutiny",
+   "title_ar": "مشاريع البنية التحتية الحكومية تتلقى ثناء عاماً وفحصاً تقنياً",
+   "summary": "Videos showcase new roads meeting international standards. Public responses are overwhelmingly positive, with many praising engineering quality and government commitment. Some technical experts offer constructive feedback on specifications and safety features. Comments also invoke religious blessings and patriotic sentiment.",
+   "summary_ar": "تعرض مقاطع فيديو طرقاً جديدة تستوفي معايير دولية. ردود الفعل العامة إيجابية بشكل ساحق، مع إطراء كثيرين لجودة الهندسة والالتزام الحكومي. بعض الخبراء التقنيين يقدمون تعليقات بناءة على المواصفات والميزات الأمنية. التعليقات أيضاً تستحضر البركات الدينية والشعور الوطني.",
+   "public_reaction": "Positive sentiment dominates; commenters celebrate infrastructure development as sign of state recovery and normalcy. Some offer technical improvements or request government transparency on delays. A few comment critically that visible projects distract from underlying economic problems.",
+   "public_reaction_ar": "المشاعر الإيجابية تهيمن؛ المعلقون يحتفون بتطور البنية التحتية كعلامة على تعافي الدولة والحياة الطبيعية. البعض يقدم تحسينات تقنية أو يطلب شفافية حكومية حول التأخيرات. قلة يعلقون بانتقاد بأن المشاريع المرئية تحرف الانتباه عن المشاكل الاقتصادية الكامنة.",
+   "sentiment": 0.6,
+   "public_sentiment": 0.6,
+   "emotions": [
+    "pride",
+    "hope",
+    "satisfaction"
+   ],
+   "emotions_ar": [
+    "فخر",
+    "أمل",
+    "رضا"
+   ],
+   "framings": [
+    "State capacity and modernization",
+    "International standards achievement",
+    "National recovery and normalcy",
+    "Technical excellence in engineering",
+    "Government competence and vision"
+   ],
+   "framings_ar": [
+    "قدرة الدولة والحداثة",
+    "تحقيق المعايير الدولية",
+    "الانتعاش الوطني والحياة الطبيعية",
+    "التميز التقني في الهندسة",
+    "كفاءة الحكومة والرؤية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 21,
+   "public_volume": 21,
+   "share": 0.171,
+   "engagement": 81,
+   "platforms": {
+    "youtube": 21
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=cAtUmMXZTNA",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-21T09:47:19Z"
+  },
+  {
+   "id": "military-strength-and-deterrence",
+   "title": "Public debate on Syrian military capacity and deterrence against Israel",
+   "title_ar": "نقاش عام حول القدرات العسكرية السورية والردع ضد إسرائيل",
+   "summary": "Videos and commentary frame Ahmad al-Sharaa's military leadership as strengthening Syria's defensive posture and alarming Israeli establishment. Public responses range from religious support for military buildup, to nationalist pride in sovereign defense capacity, to skepticism about leadership capability and contradictions in policy messaging.",
+   "summary_ar": "تصور مقاطع فيديو وتعليقات قيادة أحمد الشرع العسكرية كمعزّزة لموقف سوريا الدفاعي والقلق الإسرائيلي. تتراوح ردود الفعل العامة بين الدعم الديني للتسليح العسكري والفخر الوطني بقدرة الدفاع السيادية والشك في قدرة القيادة والتناقضات في رسائل السياسة.",
+   "public_reaction": "Strong nationalist and religious sentiment praising military capacity; many invoke Islamic framing and prophetic tradition about Levantine fighters. Some comments express pro-Iran or pro-Islamist ideology. Others voice skepticism about actual capability versus rhetoric, and tensions arise between those celebrating the current leadership and those criticizing inconsistencies or demanding transparency.",
+   "public_reaction_ar": "شعور وطني وديني قوي يمدح القدرة العسكرية؛ كثيرون يستحضرون الإطار الإسلامي والتقليد النبوي حول المقاتلين الشاميين. بعض التعليقات تعبر عن أيديولوجيا موالية لإيران أو إسلامية. آخرون يعبرون عن الشك في القدرة الفعلية مقابل الخطاب، وتنشأ توترات بين من يحتفي بالقيادة الحالية ومن ينتقد التناقضات أو يطالب بالشفافية.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.2,
+   "emotions": [
+    "pride",
+    "hope",
+    "skepticism"
+   ],
+   "emotions_ar": [
+    "فخر",
+    "أمل",
+    "شك"
+   ],
+   "framings": [
+    "Strong Syrian military under new leadership",
+    "Deterrence against Israeli aggression",
+    "Islamic and nationalist duty to defend",
+    "Regional power balance and sovereignty",
+    "Concerns about actual capability vs. rhetoric"
+   ],
+   "framings_ar": [
+    "جيش سوري قوي تحت قيادة جديدة",
+    "الردع ضد العدوان الإسرائيلي",
+    "واجب إسلامي وطني للدفاع",
+    "توازن القوى الإقليمية والسيادة",
+    "مخاوف من القدرة الفعلية مقابل الخطاب"
+   ],
+   "flags": [
+    "Pro-Iran messaging mixed with nationalist framing (p39: prayer for 'Islamic Republic of Iran')",
+    "Religious rhetoric used to mobilize support for military (multiple Islamic invocations)",
+    "Contradictory messaging: some praise Sharaa's ability to expel Assad while others cite prophetic tradition"
+   ],
+   "flags_ar": [
+    "رسائل موالية لإيران ممزوجة برسائل وطنية (p39: دعاء ل'الجمهورية الإسلامية الإيرانية')",
+    "خطاب ديني يستخدم لحشد الدعم العسكري (استحضارات إسلامية متعددة)",
+    "رسائل متناقضة: البعض يمدح قدرة الشرع على طرد الأسد بينما يستشهد آخرون بالتقليد النبوي"
+   ],
+   "volume": 18,
+   "public_volume": 18,
+   "share": 0.146,
+   "engagement": 94,
+   "platforms": {
+    "youtube": 18
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=iQLG_xMBCJY",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-21T09:47:19Z"
+  },
+  {
+   "id": "parliamentary-governance",
+   "title": "First parliamentary session and questions about institutional legitimacy",
+   "title_ar": "أول جلسة برلمانية وأسئلة حول الشرعية المؤسسية",
+   "summary": "Videos discuss the first parliamentary session under new governance; commenters praise it as historic and note government patience with public demands. One commenter questions the naming of the body (Parliament, National Assembly, etc.). No state media commentary on this matter visible in batch.",
+   "summary_ar": "تناقش مقاطع فيديو أول جلسة برلمانية تحت الحكم الجديد؛ المعلقون يمدحونها كحدث تاريخي ويلاحظون صبر الحكومة على المطالب العامة. معلق واحد يطرح سؤالاً حول تسمية الهيئة (برلمان، جمعية وطنية، إلخ). لا توجد تعليقات وسائل إعلام حكومية على هذا الأمر مرئية في المجموعة.",
+   "public_reaction": "Mixed: some celebrate the first session and government restraint; others question the institutional naming or raise skepticism about whether Parliament will be effective in holding government accountable.",
+   "public_reaction_ar": "مختلط: البعض يحتفي بالجلسة الأولى وضبط النفس الحكومي؛ آخرون يطرحون أسئلة حول التسمية المؤسسية أو يرفعون الشك حول ما إذا كان البرلمان سيكون فعالاً في محاسبة الحكومة.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.1,
+   "emotions": [
+    "hope",
+    "uncertainty"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "عدم يقين"
+   ],
+   "framings": [
+    "Historic first parliamentary session",
+    "Government restraint and patience with demands",
+    "Institutional naming and legitimacy",
+    "Accountability mechanisms"
+   ],
+   "framings_ar": [
+    "أول جلسة برلمانية تاريخية",
+    "ضبط النفس الحكومي والصبر على المطالب",
+    "التسمية المؤسسية والشرعية",
+    "آليات المساءلة"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 4,
+   "public_volume": 4,
+   "share": 0.033,
+   "engagement": 5,
+   "platforms": {
+    "youtube": 4
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=K0cL5A0_rHc",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-15T21:23:53Z"
+  },
+  {
+   "id": "international-news-standard",
+   "title": "Standard international news coverage: Russia elections, Gaza, French sports",
+   "title_ar": "تغطية إخبارية دولية معيارية: انتخابات روسيا وغزة والرياضة الفرنسية",
+   "summary": "State media publishes routine international news: United Russia's State Duma election results, Palestinian casualties in Gaza, PSG football match. These items serve to position Syria within broader international discourse. No Syrian public reaction recorded.",
+   "summary_ar": "تنشر وسائل الإعلام الحكومية أخباراً دولية روتينية: نتائج انتخابات الدوما الروسية لحزب روسيا الموحدة، ضحايا فلسطينيين في غزة، مباراة كرة قدم لفريق باريس سان جيرمان. تخدم هذه العناصر لتحديد موقع سوريا في السياق الدولي الأوسع. لم يتم تسجيل رد فعل عام سوري.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.1,
+   "public_sentiment": null,
+   "emotions": [],
+   "emotions_ar": [],
+   "framings": [
+    "Regional and international news",
+    "Solidarity with Palestinian cause",
+    "Global connections"
+   ],
+   "framings_ar": [
+    "الأخبار الإقليمية والدولية",
+    "التضامن مع القضية الفلسطينية",
+    "الاتصالات العالمية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 4,
+   "public_volume": 0,
+   "share": 0.033,
+   "engagement": 263,
+   "platforms": {
+    "telegram": 4
+   },
+   "sources": [
+    "SANA - state news agency (EN)"
    ],
    "examples": [
     {
@@ -154,98 +380,90 @@
    "first_seen": "2026-09-21T09:36:45Z"
   },
   {
-   "id": "israeli-military-incursions",
-   "title": "Israeli military operations and territorial control in southern Syria",
-   "title_ar": "العمليات العسكرية الإسرائيلية والسيطرة الإقليمية في جنوب سوريا",
-   "summary": "State media reports Israeli military vehicles penetrating rural Damascus and artillery bombardment. Public commenters highlight Israeli control of Golan, Quneitra, Mount Hermon, and other areas, contextualizing this within broader occupation and linking it to regional security threats.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية عن مركبات عسكرية إسرائيلية تتوغل في ريف دمشق وقصف مدفعي. يركز المعلقون على السيطرة الإسرائيلية على الجولان والقنيطرة وجبل الشيخ ومناطق أخرى، ضمن سياق احتلال أوسع وربط هذا بالتهديدات الأمنية الإقليمية.",
-   "public_reaction": "Public voices express anger at Israeli operations and frame them as part of ongoing occupation. Some commenters list occupied territories comprehensively, others link Israeli actions to broader regional conflicts and Iran-aligned resistance narratives.",
-   "public_reaction_ar": "تعبر الأصوات العامة عن غضب من العمليات الإسرائيلية وتصورها كجزء من احتلال مستمر. يرسل بعض المعلقين قائمة شاملة بالأراضي المحتلة، بينما يربط آخرون الإجراءات الإسرائيلية بنزاعات إقليمية أوسع وروايات المقاومة الموالية لإيران.",
-   "sentiment": -0.5,
-   "public_sentiment": -0.7,
+   "id": "flag-and-symbols-contention",
+   "title": "Dispute over Syrian national flag and post-conflict symbolism",
+   "title_ar": "نزاع حول العلم الوطني السوري والرمزية بعد الصراع",
+   "summary": "Commenters dispute the legitimacy of the current Syrian flag, with some calling it a 'flag of betrayal' and demanding a public referendum on national symbols. Others defend the flag as representing the transitional state. The debate touches on legitimacy, national identity, and the democratic process for symbolic change.",
+   "summary_ar": "المعلقون ينازعون شرعية العلم السوري الحالي، مع البعض يسميه 'علم الخيانة' والمطالبة باستفتاء عام على الرموز الوطنية. آخرون يدافعون عن العلم كتمثيل للدولة الانتقالية. يتناول النقاش الشرعية والهوية الوطنية والعملية الديمقراطية للتغيير الرمزي.",
+   "public_reaction": "Polarized: some reject the flag as illegitimate and demand democratic process; others defend it as representative of transitional governance. Underlying tensions about who has authority to determine national symbols and how legitimacy is established.",
+   "public_reaction_ar": "استقطاب: البعض يرفض العلم على أنه غير شرعي ويطالب بعملية ديمقراطية؛ آخرون يدافعون عنه كممثل للحكم الانتقالي. توترات أساسية حول من له السلطة لتحديد الرموز الوطنية وكيف يتم تحديد الشرعية.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.3,
    "emotions": [
     "anger",
     "defiance",
-    "nationalism"
+    "dispute"
    ],
    "emotions_ar": [
     "غضب",
-    "استعصاء",
-    "وطنية"
+    "تمرد",
+    "نزاع"
    ],
    "framings": [
-    "Israeli occupation of Syrian territories",
-    "Ongoing military incursions into sovereign space",
-    "Regional security threat and resistance"
+    "Legitimacy of national symbols",
+    "Democratic process for constitutional decisions",
+    "Transitional governance and representation",
+    "Historical continuity vs. break"
    ],
    "framings_ar": [
-    "احتلال إسرائيلي للأراضي السورية",
-    "توغلات عسكرية مستمرة في الفضاء السيادي",
-    "تهديد أمني إقليمي ومقاومة"
+    "شرعية الرموز الوطنية",
+    "العملية الديمقراطية للقرارات الدستورية",
+    "الحكم الانتقالي والتمثيل",
+    "الاستمرارية التاريخية مقابل الانقطاع"
    ],
-   "flags": [
-    "p14 uses 'تحرير' (liberation) sarcastically, mocking official rhetoric",
-    "p17 lists territories with nationalistic framing, 'الكيان الصهيوني' terminology"
-   ],
-   "flags_ar": [
-    "p14 يستخدم 'تحرير' بسخرية، مستهزئ بالخطاب الرسمي",
-    "p17 يسرد الأراضي بإطار وطني، مصطلح 'الكيان الصهيوني'"
-   ],
+   "flags": [],
+   "flags_ar": [],
    "volume": 3,
-   "public_volume": 2,
-   "share": 0.13,
-   "engagement": 61,
+   "public_volume": 3,
+   "share": 0.024,
+   "engagement": 3,
    "platforms": {
-    "telegram": 1,
-    "x": 2
+    "youtube": 3
    },
    "sources": [
-    "X posts",
-    "SANA - state news agency (EN)"
+    "YouTube comments"
    ],
    "examples": [
     {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78025",
-     "platform": "telegram"
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=mRUytg1Bahg",
+     "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-21T09:36:45Z"
+   "first_seen": "2026-09-21T09:47:19Z"
   },
   {
    "id": "anti-terrorism-court-abolition",
-   "title": "Parliamentary abolition of Anti-Terrorism Court and confiscated property restoration",
-   "title_ar": "إلغاء البرلمان لمحكمة مكافحة الإرهاب وإعادة الممتلكات المصادرة",
-   "summary": "Syria's parliament approved abolishing the terrorism court, with the Justice Ministry stating thousands of cases are being reviewed. State media frames this as removal of 'exceptional measures' and poses the question of what this means for restoration of confiscated property.",
-   "summary_ar": "وافق البرلمان السوري على إلغاء محكمة مكافحة الإرهاب، مع تصريح وزارة العدل بأن آلاف القضايا قيد المراجعة. تؤطر وسائل الإعلام الرسمية هذا كإزالة للتدابير 'الاستثنائية' وتطرح سؤال حول ما يعنيه هذا لاستعادة الممتلكات المصادرة.",
+   "title": "Parliament abolishes Anti-Terrorism Court amid property restitution debates",
+   "title_ar": "البرلمان يلغي محكمة الإرهاب وسط نقاشات حول استرجاع الممتلكات",
+   "summary": "Syria's parliament approved abolition of the Anti-Terrorism Court, which Justice Ministry says removes 'exceptional measures.' The law addresses restitution of thousands of confiscated properties. State media frames this as legal reform and normalization; no public comment visible in this batch.",
+   "summary_ar": "وافق البرلمان السوري على إلغاء محكمة الإرهاب، التي تقول وزارة العدل إنها تزيل 'الإجراءات الاستثنائية'. يتناول القانون استرجاع آلاف الممتلكات المصادرة. وسائل الإعلام الحكومية تطرح هذا كإصلاح قانوني وتطبيع؛ لا توجد تعليقات عامة مرئية في هذه المجموعة.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.4,
+   "sentiment": 0.3,
    "public_sentiment": null,
    "emotions": [
-    "reform",
-    "justice"
+    "hope"
    ],
    "emotions_ar": [
-    "إصلاح",
-    "عدالة"
+    "أمل"
    ],
    "framings": [
-    "Removal of exceptional/emergency legal measures",
-    "Legal reform and transition justice",
-    "Thousands of cases under review"
+    "Legal normalization and removal of emergency measures",
+    "Property rights restoration",
+    "Justice system reform"
    ],
    "framings_ar": [
-    "إزالة التدابير القانونية الاستثنائية/الطارئة",
-    "الإصلاح القانوني والعدالة الانتقالية",
-    "آلاف القضايا قيد المراجعة"
+    "تطبيع قانوني وإزالة الإجراءات الاستثنائية",
+    "استرجاع حقوق الملكية",
+    "إصلاح النظام القضائي"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 2,
    "public_volume": 0,
-   "share": 0.087,
-   "engagement": 70,
+   "share": 0.016,
+   "engagement": 73,
    "platforms": {
     "telegram": 2
    },
@@ -262,137 +480,41 @@
    "first_seen": "2026-09-21T09:36:45Z"
   },
   {
-   "id": "regional-trade-and-business",
-   "title": "Syrian-American business council reconstituted; regional trade expansion",
-   "title_ar": "إعادة تشكيل المجلس الأمريكي السوري للأعمال؛ توسع التجارة الإقليمية",
-   "summary": "State media announces reconstitution of the Syrian-American Business Council and highlights CargoSyr 2026 conference on Syria's role as regional transport and trade hub. These are framed as partnerships strengthening Syria's economic integration.",
-   "summary_ar": "وسائل الإعلام الرسمية تعلن إعادة تشكيل المجلس الأمريكي السوري للأعمال وتسلط الضوء على مؤتمر كارجوسير 2026 حول دور سوريا كمحور نقل وتجارة إقليمي. يتم تأطير هذه كشراكات تعزز التكامل الاقتصادي السوري.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.5,
-   "public_sentiment": null,
-   "emotions": [
-    "economic optimism",
-    "cooperation"
-   ],
-   "emotions_ar": [
-    "تفاؤل اقتصادي",
-    "تعاون"
-   ],
-   "framings": [
-    "International business partnerships",
-    "Regional connectivity and trade flows",
-    "Syria as logistical hub"
-   ],
-   "framings_ar": [
-    "شراكات أعمال دولية",
-    "الربط الإقليمي وتدفقات التجارة",
-    "سوريا كمركز لوجستي"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 2,
-   "public_volume": 0,
-   "share": 0.087,
-   "engagement": 181,
-   "platforms": {
-    "telegram": 2
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78020",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-21T09:36:45Z"
-  },
-  {
-   "id": "unverified-sectarian-messaging",
-   "title": "Sectarian and Iran-aligned messaging with unverified claims",
-   "title_ar": "رسائل طائفية موالية لإيران مع ادعاءات غير مدققة",
-   "summary": "Two public posts contain sectarian language and unverified claims, one mixing Iranian Supreme Leader reverence with anti-American rhetoric and multiple hashtags linking Syria to Houthi, Hezbollah, and broader axis-of-resistance narratives; another uses slogans targeting unnamed groups and fragmented imagery without clear context.",
-   "summary_ar": "منشرين عامين يحتويان على لغة طائفية وادعاءات غير مدققة، أحدهما يمزج احترام قائد إيراني أعلى بخطاب معادٍ لأمريكا وهاشتاغات متعددة تربط سوريا بالحوثيين وحزب الله وروايات محور المقاومة الأوسع؛ والآخر يستخدم شعارات موجهة لمجموعات غير محددة وصوراً مجزأة بدون سياق واضح.",
-   "public_reaction": "Mixed sectarian rhetoric with unclear political messaging; one commenter combines Iranian reverence with anti-American framing and Axis-of-Resistance hashtags.",
-   "public_reaction_ar": "خطاب طائفي مختلط برسائل سياسية غير واضحة؛ معلق واحد يجمع بين احترام إيراني ورسائل معادية لأمريكا وهاشتاغات محور المقاومة.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.3,
-   "emotions": [
-    "sectarian identity",
-    "ideological messaging"
-   ],
-   "emotions_ar": [
-    "هوية طائفية",
-    "رسائل أيديولوجية"
-   ],
-   "framings": [
-    "Axis-of-Resistance ideology",
-    "Anti-Western sentiment",
-    "Sectarian allegiance signaling"
-   ],
-   "framings_ar": [
-    "أيديولوجية محور المقاومة",
-    "المشاعر المعادية للغرب",
-    "إشارات الولاء الطائفي"
-   ],
-   "flags": [
-    "p22: reverence for Iranian Supreme Leader, 'قُدِّسَ سِرُّهُ' (blessed be his secret), anti-American framing, Houthi/Hezbollah/Shiite axis references",
-    "p19: incoherent hashtag spam with unverified claims and sectarian terminology"
-   ],
-   "flags_ar": [
-    "p22: احترام لقائد إيراني أعلى، 'قُدِّسَ سِرُّهُ' (يقدسه سره)، رسائل معادية لأمريكا، إشارات لمحور الحوثيين والحزب الله والشيعة",
-    "p19: بريد مزعج مجزأ بهاشتاغات وادعاءات غير مدققة وألفاظ طائفية"
-   ],
-   "volume": 2,
-   "public_volume": 2,
-   "share": 0.087,
-   "engagement": 2,
-   "platforms": {
-    "x": 2
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-21T09:36:45Z"
-  },
-  {
    "id": "agricultural-recovery",
-   "title": "Record olive harvest projected for 2026 season",
-   "title_ar": "حصاد زيتون قياسي متوقع لموسم 2026",
-   "summary": "State media reports Syria expects 954,000 tons of olives in 2026, more than double the 412,000 tons in 2025, with Aleppo province leading. This is presented as a success narrative of economic recovery and agricultural development.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية تتوقع أن تصل أطنان الزيتون السوري إلى 954 ألف طن في 2026، أكثر من ضعف 412 ألف طن في 2025، مع قيادة محافظة حلب. يتم تقديم هذا كسرد نجاح للانتعاش الاقتصادي والتنمية الزراعية.",
+   "title": "Record olive harvest projection boosts agricultural optimism",
+   "title_ar": "توقعات محصول زيتون قياسي تعزز التفاؤل الزراعي",
+   "summary": "State media reports Syria expects 954,000-ton olive harvest in 2026, a more than double increase from 2025's 412,000 tons, with Aleppo province leading. Framed as sign of recovery and return to normalcy. No public comment visible in this batch.",
+   "summary_ar": "وسائل الإعلام الحكومية تقول إن سوريا تتوقع محصول زيتون بـ 954 ألف طن في 2026، أكثر من ضعف الزيادة من محصول 2025 البالغ 412 ألف طن، مع قيادة محافظة حلب. مؤطر كعلامة على التعافي والعودة إلى الحياة الطبيعية. لا توجد تعليقات عامة مرئية في هذه المجموعة.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": 0.6,
    "public_sentiment": null,
    "emotions": [
-    "optimism",
-    "recovery"
+    "hope",
+    "optimism"
    ],
    "emotions_ar": [
-    "تفاؤل",
-    "انتعاش"
+    "أمل",
+    "تفاؤل"
    ],
    "framings": [
-    "Economic recovery and growth",
-    "Agricultural sector development",
-    "Doubling of production year-on-year"
+    "Economic recovery through agriculture",
+    "Return to pre-war production levels",
+    "Regional agricultural leadership",
+    "Food security and rural prosperity"
    ],
    "framings_ar": [
-    "الانتعاش الاقتصادي والنمو",
-    "تطوير القطاع الزراعي",
-    "مضاعفة الإنتاج سنة على سنة"
+    "الانتعاش الاقتصادي من خلال الزراعة",
+    "العودة إلى مستويات الإنتاج قبل الحرب",
+    "القيادة الزراعية الإقليمية",
+    "الأمن الغذائي والازدهار الريفي"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
-   "share": 0.043,
-   "engagement": 43,
+   "share": 0.008,
+   "engagement": 46,
    "platforms": {
     "telegram": 1
    },
@@ -409,45 +531,106 @@
    "first_seen": "2026-09-21T09:36:45Z"
   },
   {
-   "id": "september-independence-commemoration",
-   "title": "Upcoming September 28 independence commemoration and separatist sentiment",
-   "title_ar": "إحياء ذكرى الاستقلال في 28 سبتمبر والمشاعر الانفصالية",
-   "summary": "Public commenter celebrates 'September 28 separation day' as 'first liberation,' using nationalist and separatist language to commemorate an event framed as breaking 'chains of unity' and restoring the nation's position. This reflects online commemoration of Syria's 1961 secession from the United Arab Republic.",
-   "summary_ar": "معلق عام يحتفل بـ'يوم الانفصال في 28 سبتمبر' باعتباره 'التحرير الأول'، مستخدماً لغة وطنية وانفصالية للاحتفاء بحدث يُؤطَّر على أنه كسر 'قيود الوحدة' واستعادة موقع الأمة. يعكس هذا الاحتفاء الإلكتروني بانفصال سوريا عن الجمهورية العربية المتحدة عام 1961.",
-   "public_reaction": "One commenter celebrates the upcoming 28 September commemoration with nationalist language, framing it as a 'glorious separation day' and 'first liberation,' emphasizing restoration of national position.",
-   "public_reaction_ar": "معلق واحد يحتفل بإحياء ذكرى 28 سبتمبر القادم باستخدام لغة وطنية، محدداً إياه بـ'يوم الانفصال المجيد' و'التحرير الأول'، مؤكداً على استعادة موقع الدولة.",
-   "sentiment": 0.0,
-   "public_sentiment": 0.5,
+   "id": "regional-trade-expansion",
+   "title": "Syria's role in regional transport and trade connectivity highlighted",
+   "title_ar": "تسليط الضوء على دور سوريا في ربط النقل والتجارة الإقليمية",
+   "summary": "State media reports on CargoSyr 2026 conference highlighting Syria's strategic position in regional logistics, supply chain development, and market connectivity. Framed as evidence of Syria's return as a regional hub. No public comment visible.",
+   "summary_ar": "تقارير وسائل الإعلام الحكومية عن مؤتمر CargoSyr 2026 يبرز الموقع الاستراتيجي لسوريا في اللوجستيات الإقليمية وتطوير سلاسل الإمداد وربط الأسواق. مؤطر كدليل على عودة سوريا كمركز إقليمي. لا توجد تعليقات عامة مرئية.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.5,
+   "public_sentiment": null,
    "emotions": [
-    "pride",
-    "nationalism"
+    "optimism",
+    "pride"
    ],
    "emotions_ar": [
-    "فخر",
-    "وطنية"
+    "تفاؤل",
+    "فخر"
    ],
    "framings": [
-    "National independence and separation narrative",
-    "Restoration of state sovereignty"
+    "Regional economic hub restoration",
+    "Strategic connectivity and logistics",
+    "Trade expansion opportunities",
+    "Return to pre-war economic role"
    ],
    "framings_ar": [
-    "رواية الاستقلال الوطني والانفصال",
-    "استعادة السيادة الدولية"
+    "استعادة دور المركز الاقتصادي الإقليمي",
+    "الربط الاستراتيجي واللوجستيات",
+    "فرص توسع التجارة",
+    "العودة إلى الدور الاقتصادي قبل الحرب"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
-   "public_volume": 1,
-   "share": 0.043,
-   "engagement": 0,
+   "public_volume": 0,
+   "share": 0.008,
+   "engagement": 55,
    "platforms": {
-    "x": 1
+    "telegram": 1
    },
    "sources": [
-    "X posts"
+    "SANA - state news agency (EN)"
    ],
-   "examples": [],
-   "first_seen": "2026-09-21T09:36:45Z"
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78023",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-21T09:47:19Z"
+  },
+  {
+   "id": "foreign-american-relations",
+   "title": "Syrian-American Business Council reconstituted for bilateral ties",
+   "title_ar": "إعادة تشكيل مجلس الأعمال السوري الأمريكي لتعزيز العلاقات الثنائية",
+   "summary": "State media reports Economy Minister reconstituted the Syrian-American Business Council to strengthen cooperation and partnerships. Signals normalization of bilateral economic engagement. No public reaction recorded.",
+   "summary_ar": "وسائل الإعلام الحكومية تقول إن وزير الاقتصاد أعاد تشكيل مجلس الأعمال السوري الأمريكي لتعزيز التعاون والشراكات. يشير إلى تطبيع الانخراط الاقتصادي الثنائي. لم يتم تسجيل رد فعل عام.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.4,
+   "public_sentiment": null,
+   "emotions": [
+    "hope",
+    "pragmatism"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "براجماتية"
+   ],
+   "framings": [
+    "Bilateral economic normalization",
+    "Business partnership restoration",
+    "International reintegration",
+    "Economic cooperation"
+   ],
+   "framings_ar": [
+    "تطبيع اقتصادي ثنائي",
+    "استعادة الشراكة الاقتصادية",
+    "إعادة الاندماج الدولي",
+    "التعاون الاقتصادي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 0,
+   "share": 0.008,
+   "engagement": 127,
+   "platforms": {
+    "telegram": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78020",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-21T09:47:19Z"
   }
  ],
  "sources": [
@@ -473,6 +656,13 @@
    "recent": 1
   },
   {
+   "name": "YouTube comments",
+   "platform": "youtube",
+   "ok": true,
+   "fetched": 106,
+   "recent": 106
+  },
+  {
    "name": "X posts",
    "platform": "x",
    "ok": true,
@@ -485,5 +675,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0363
+ "cost_usd": 0.0663
 }
