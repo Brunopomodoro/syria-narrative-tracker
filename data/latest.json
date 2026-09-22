@@ -3,146 +3,78 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-22T09:58:51Z",
- "checked_at": "2026-09-22T09:58:51Z",
+ "generated_at": "2026-09-22T14:56:18Z",
+ "checked_at": "2026-09-22T14:56:18Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 107,
-  "public_posts": 85,
-  "outlet_posts": 22,
+  "posts_analyzed": 91,
+  "public_posts": 70,
+  "outlet_posts": 21,
   "reactions_posts": 0,
-  "unique_posts": 106,
+  "unique_posts": 88,
   "sources_ok": 5,
   "sources_total": 5,
   "platforms": {
-   "telegram": 21,
-   "x": 10,
-   "youtube": 75
+   "telegram": 20,
+   "youtube": 59,
+   "x": 9
   }
  },
  "overall": {
-  "sentiment": 0.55,
-  "mood": "Celebratory",
-  "mood_ar": "احتفالي",
+  "sentiment": 0.45,
+  "mood": "Optimistic",
+  "mood_ar": "متفائل",
   "public_sentiment": -0.35,
-  "public_mood": "Anxious",
-  "public_mood_ar": "قلق",
-  "brief": "State media emphasizes Syria's international engagement and domestic development projects, with positive coverage of the president's UN meetings and economic initiatives. Public reaction splits sharply: many express devotional support for leadership and prayers for the country, but significant voices voice skepticism about official narratives, mock diaspora 'showing off' at state events, and express deep concern about ammunition depot explosions attributed to negligence or sabotage. Complaints about electricity blackouts and service failures persist. Quality-of-life frustrations coexist with nationalist sentiment.",
-  "brief_ar": "وسائل الإعلام الحكومية تركز على الانخراط الدولي لسوريا والمشاريع التنموية المحلية، مع تغطية إيجابية لاجتماعات الرئيس بالأمم المتحدة والمبادرات الاقتصادية. ردود الفعل العام تنقسم بشدة: الكثيرون يعبرون عن دعم عبادي للقيادة والدعاء للبلاد، لكن أصوات مهمة تشكك في الروايات الرسمية، وتسخر من 'التباهي' بالأحداث الحكومية، وتعبر عن قلق عميق بشأن انفجارات مستودعات الذخيرة التي تنسب إلى الإهمال أو التخريب. الشكاوى من انقطاع الكهرباء وفشل الخدمات مستمرة. تتعايش الإحباطات المتعلقة بمستوى المعيشة مع المشاعر القومية."
+  "public_mood": "Divided",
+  "public_mood_ar": "منقسم",
+  "brief": "State media emphasizes Syria's international re-engagement, reconstruction projects, and humanitarian initiatives under the new leadership, projecting optimism about economic recovery and regional integration. Public reaction is sharply divided: some users express cautious support or religious hope, but many voice skepticism about the leadership's legitimacy, economic hardship, sectarian concerns, and suspicion of foreign influence. Mockery of officials seeking comfort (the 'chair' incident) and criticism of wealth concentration coexist with appreciation for grassroots humanitarian work and security operations.",
+  "brief_ar": "وسائل الإعلام الحكومية تركز على إعادة انخراط سوريا دولياً والمشاريع الإعمارية والمبادرات الإنسانية تحت القيادة الجديدة، وتعكس تفاؤلاً حول التعافي الاقتصادي والتكامل الإقليمي. ردود الفعل العامة منقسمة بشدة: يعبر بعض المستخدمين عن دعم حذر أو أمل ديني، بينما يصرح آخرون بشكوكهم حول شرعية القيادة والمعاناة الاقتصادية والمخاوف الطائفية والشك في النفوذ الأجنبي. السخرية من المسؤولين الذين يطلبون الراحة (حادثة الكرسي) والنقد الموجه لتركز الثروة يتعايشان مع التقدير للعمل الإنساني الشعبي والعمليات الأمنية."
  },
  "narratives": [
   {
-   "id": "weapons-depot-explosions",
-   "title": "Ammunition depot explosions: negligence, sabotage, and military readiness concerns",
-   "title_ar": "انفجارات مستودعات الذخيرة: مخاوف من الإهمال والتخريب والجاهزية العسكرية",
-   "summary": "Independent outlet reports ammunition depot explosions in southern Aleppo with minor civilian injuries and evacuations. Public discourse strongly attributes incidents to negligence, potential Israeli sabotage, or systemic military storage failures. Commenters express anger at repeated incidents, question official explanations, and cite casualties across multiple recent explosions.",
-   "summary_ar": "تقارير الوسائل المستقلة عن انفجارات مستودع ذخيرة في جنوب حلب مع إصابات مدنية طفيفة وعمليات إجلاء. ينسب الخطاب العام الحوادث بقوة إلى الإهمال أو التخريب الإسرائيلي المحتمل أو فشل النظام في تخزين الأسلحة. يعبر المعلقون عن الغضب من الحوادث المتكررة ويطرحون أسئلة على التفسيرات الرسمية ويستشهدون بالقتلى في عدة انفجارات حديثة.",
-   "public_reaction": "Intense public anger and frustration: commenters demand answers about repeated explosions, accuse authorities of negligence and mismanagement, speculate about Israeli or internal sabotage, and criticize unsafe ammunition storage near civilian areas. Some mock government explanations; others cite 20+ deaths and dozens injured over recent weeks. Religious invocations mixed with anger at perceived incompetence.",
-   "public_reaction_ar": "غضب وإحباط شديد من الجمهور: يطالب المعلقون بإجابات حول الانفجارات المتكررة ويتهمون السلطات بالإهمال وسوء الإدارة ويتكهنون بالتخريب الإسرائيلي أو الداخلي وينتقدون تخزين الذخيرة غير الآمن بالقرب من المناطق المدنية. البعض يسخر من التفسيرات الحكومية؛ والبعض يستشهد بـ 20+ قتيل وعشرات الجرحى في الأسابيع الأخيرة. الاستحضارات الدينية مختلطة مع الغضب من الإهمال المتصور.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.75,
+   "id": "international-engagement-un",
+   "title": "Presidential diplomacy at UN General Assembly and international re-engagement",
+   "title_ar": "الدبلوماسية الرئاسية في الجمعية العامة للأمم المتحدة وإعادة الانخراط الدولي",
+   "summary": "State media reports President Ahmad al-Sharaa's visit to the UN General Assembly, meetings with U.S. lawmakers, and engagement with international partners including China and Ukraine on economic cooperation and technical agreements. The narrative emphasizes Syria's changing diplomatic landscape, removal of restrictions, and expanded international ties.",
+   "summary_ar": "تقارير وسائل الإعلام الحكومية عن زيارة الرئيس أحمد الشرع للجمعية العامة للأمم المتحدة، واجتماعاته مع أعضاء الكونجرس الأمريكي، والانخراط مع شركاء دوليين بما فيهم الصين وأوكرانيا بشأن التعاون الاقتصادي والاتفاقيات التقنية. السرد الإعلامي يركز على تغير المشهد الدبلوماسي السوري وإزالة القيود والروابط الدولية الموسعة.",
+   "public_reaction": "Public commentary is starkly divided: some commenters express religious blessing and cautious hope for the country's benefit; others voice deep skepticism about the president's legitimacy, invoking conspiracy theories about foreign installation and control, and comparing him unfavorably to historical rulers. Mocking comments about the 'chair incident' at the diaspora meeting suggest ridicule of performative gestures while serious problems persist.",
+   "public_reaction_ar": "التعليقات العامة منقسمة بشكل حاد: يعبر بعض المعلقين عن دعاء ديني وأمل حذر لصالح البلاد؛ بينما يصرح آخرون بشكوك عميقة حول شرعية الرئيس، مستحضرين نظريات مؤامرة عن تركيب أجنبي وسيطرة، ومقارنته بشكل سلبي بالحكام التاريخيين. التعليقات الساخرة حول حادثة الكرسي في لقاء الجالية تشير إلى السخرية من الإيماءات الشكلية بينما توجد مشاكل جدية قائمة.",
+   "sentiment": 0.6,
+   "public_sentiment": -0.25,
    "emotions": [
-    "anger",
-    "fear",
-    "frustration",
-    "contempt"
+    "hope",
+    "skepticism",
+    "suspicion"
    ],
    "emotions_ar": [
-    "غضب",
-    "خوف",
-    "إحباط",
-    "احتقار"
+    "أمل",
+    "شكوك",
+    "ريبة"
    ],
    "framings": [
-    "Military negligence and storage failures",
-    "Possible Israeli sabotage or external attacks",
-    "Systemic mismanagement endangering civilians",
-    "Demand for transparency and accountability"
+    "diplomatic recovery and international normalisation",
+    "foreign installation and loss of sovereignty",
+    "performative politics while domestic problems ignored"
    ],
    "framings_ar": [
-    "الإهمال العسكري وفشل التخزين",
-    "التخريب الإسرائيلي المحتمل أو الهجمات الخارجية",
-    "سوء إدارة النظام يعرض المدنيين للخطر",
-    "مطالبة بالشفافية والمساءلة"
+    "التعافي الدبلوماسي والتطبيع الدولي",
+    "تركيب أجنبي وفقدان السيادة",
+    "سياسة شكلية بينما تتجاهل المشاكل المحلية"
    ],
    "flags": [
-    "Unverified claims about Israeli sabotage spreading widely",
-    "Multiple commenters cite casualty figures (20+ deaths) without official confirmation",
-    "Systemic criticism of military competence"
+    "sectarian and conspiracy framing in comments (p33, p45, p60, p61, p65, p67, p72)"
    ],
    "flags_ar": [
-    "مطالبات غير موثقة حول التخريب الإسرائيلي تنتشر على نطاق واسع",
-    "معلقون متعددون يستشهدون بأرقام الضحايا (20+ قتيل) دون تأكيد رسمي",
-    "انتقاد منهجي للكفاءة العسكرية"
+    "إطار طائفي ونظريات مؤامرة في التعليقات"
    ],
    "volume": 37,
-   "public_volume": 36,
-   "share": 0.346,
-   "engagement": 193,
-   "platforms": {
-    "telegram": 1,
-    "youtube": 36
-   },
-   "sources": [
-    "YouTube comments",
-    "Enab Baladi - independent (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6749",
-     "platform": "telegram"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=Dp3ZL4txxaQ",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-21T06:23:10Z"
-  },
-  {
-   "id": "international-engagement-un",
-   "title": "Presidential diplomacy at UN General Assembly and international forums",
-   "title_ar": "الدبلوماسية الرئاسية في الجمعية العامة للأمم المتحدة والمنتديات الدولية",
-   "summary": "State media extensively covers the president's meetings with U.S. lawmakers, discussions with the Syrian diaspora in New York, and bilateral engagements on economic and political issues. Outlets frame this as Syria's return to the international stage and emphasis on regional leadership.",
-   "summary_ar": "وسائل الإعلام الحكومية تغطي بشكل مكثف اجتماعات الرئيس مع أعضاء الكونغرس الأمريكي والنقاشات مع الجالية السورية في نيويورك والمشاركات الثنائية حول القضايا الاقتصادية والسياسية. تؤطر وسائل الإعلام هذا على أنه عودة سوريا إلى الساحة الدولية والتركيز على القيادة الإقليمية.",
-   "public_reaction": "Public reaction combines devotional support (prayers for safe travel, religious blessings) with critiques: some commenters mock diaspora members seeking photo opportunities and patronage; others express hope for economic improvement and stability. A few voice weariness about symbolic gestures without material change.",
-   "public_reaction_ar": "يجمع رد الفعل العام بين الدعم العبادي (الدعاء برحلة آمنة والبركات الدينية) والنقد: يسخر بعض المعلقين من أعضاء الجالية الذين يسعون لفرص التصوير والرعاية؛ والبعض الآخر يعبر عن الأمل في التحسن الاقتصادي والاستقرار. البعض يعبر عن الملل من الحركات الرمزية دون تغيير مادي.",
-   "sentiment": 0.7,
-   "public_sentiment": 0.25,
-   "emotions": [
-    "pride",
-    "hope",
-    "skepticism"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "أمل",
-    "شك"
-   ],
-   "framings": [
-    "Return to the international stage",
-    "Bilateral cooperation and investment",
-    "Diaspora engagement and national contribution",
-    "Regional leadership and diplomacy"
-   ],
-   "framings_ar": [
-    "العودة إلى الساحة الدولية",
-    "التعاون الثنائي والاستثمار",
-    "الانخراط مع الجالية والمساهمة الوطنية",
-    "القيادة الإقليمية والدبلوماسية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 26,
-   "public_volume": 21,
-   "share": 0.243,
-   "engagement": 320,
+   "public_volume": 32,
+   "share": 0.407,
+   "engagement": 332,
    "platforms": {
     "telegram": 5,
-    "youtube": 21
+    "youtube": 32
    },
    "sources": [
     "YouTube comments",
@@ -151,54 +83,157 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78095",
+     "url": "https://t.me/SANANewsEnglish/78113",
      "platform": "telegram"
     },
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=stbQYTUQTs0",
+     "url": "https://www.youtube.com/watch?v=4KxKVSxhxZc",
      "platform": "youtube"
     }
    ],
    "first_seen": "2026-09-21T23:18:12Z"
   },
   {
-   "id": "misinformation-media-literacy",
-   "title": "Concerns about misinformation, sensationalism, and media credibility in Syrian public discourse",
-   "title_ar": "مخاوف من الأخبار المضللة والإثارة والمصداقية الإعلامية في الخطاب العام السوري",
-   "summary": "Multiple commenters discuss and criticize what they term 'habb' (showing off/sensationalism): spreading unverified rumors, false claims about power outages, exaggerating minor incidents, and using emotional narratives to gain attention. Some call for verification and responsible reporting; others praise content creators who attempt to counter misinformation.",
-   "summary_ar": "يناقش معلقون متعددون وينتقدون ما يسمونه 'الهبد' (التباهي والإثارة): نشر شائعات غير موثقة وادعاءات كاذبة عن انقطاع الكهرباء والمبالغة في الحوادث البسيطة واستخدام سرديات عاطفية لجذب الانتباه. يدعو البعض إلى التحقق والإبلاغ المسؤول؛ والبعض الآخر يثني على منشئي المحتوى الذين يحاولون مكافحة المعلومات المضللة.",
-   "public_reaction": "Mixed reactions: some commenters acknowledge they share unverified stories without checking sources, express frustration with sensationalism, and praise those calling for media literacy. Others defend the right to share opinions while admitting responsibility. A few note the prevalence of exaggeration about minor technical faults being presented as major crises.",
-   "public_reaction_ar": "ردود فعل مختلطة: يعترف بعض المعلقين بمشاركة قصص غير موثقة دون التحقق من المصادر ويعبرون عن الإحباط من الإثارة ويثنون على من يدعو إلى محو الأمية الإعلامية. يدافع آخرون عن الحق في تبادل الآراء مع الاعتراف بالمسؤولية. يلاحظ البعض انتشار المبالغة في الأعطال التقنية البسيطة التي تقدم كأزمات كبيرة.",
-   "sentiment": 0.2,
+   "id": "reconstruction-and-development",
+   "title": "Domestic reconstruction projects and development initiatives",
+   "title_ar": "مشاريع إعادة البناء والمبادرات التنموية المحلية",
+   "summary": "State media reports on reconstruction efforts including Deir Ezzor rubble removal project (8 million cubic meters), Nasib-Damascus highway rehabilitation with Kuwaiti contractor, education and summer arts programs, and professional hiring competitions. These paint a picture of systematic reconstruction and state capacity-building.",
+   "summary_ar": "تقارير وسائل الإعلام الحكومية عن جهود إعادة البناء بما فيها مشروع إزالة الأنقاض في دير الزور (8 ملايين متر مكعب)، وتأهيل طريق نصيب-دمشق مع مقاول كويتي، وبرامج التعليم والفنون الصيفية، ومسابقات التوظيف المهني. هذه تعطي صورة عن إعادة بناء منهجية وبناء القدرات الحكومية.",
+   "public_reaction": "Very limited public engagement with these stories; one comment expresses an idealistic environmental vision (tree-planting and water access for a green country), but most public posts do not engage with reconstruction narratives. The near-silence suggests either low public awareness or skepticism about the pace and scope of reconstruction.",
+   "public_reaction_ar": "مشاركة عامة محدودة جداً مع هذه القصص؛ يعبر أحد التعليقات عن رؤية بيئية مثالية (زراعة الأشجار وتوفر المياه لبلد أخضر)، لكن معظم المنشورات العامة لا تنخرط مع السرديات الإعمارية. الصمت شبه التام يشير إما إلى وعي عام منخفض أو شكوك حول وتيرة ونطاق إعادة البناء.",
+   "sentiment": 0.65,
    "public_sentiment": 0.0,
    "emotions": [
-    "frustration",
+    "optimism",
+    "indifference"
+   ],
+   "emotions_ar": [
+    "تفاؤل",
+    "لامبالاة"
+   ],
+   "framings": [
+    "systematic state-led reconstruction and capacity-building",
+    "sustainable development and environmental recovery"
+   ],
+   "framings_ar": [
+    "إعادة بناء منهجية بقيادة الدولة وبناء القدرات",
+    "التنمية المستدامة والتعافي البيئي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 9,
+   "public_volume": 2,
+   "share": 0.099,
+   "engagement": 297,
+   "platforms": {
+    "telegram": 6,
+    "x": 1,
+    "youtube": 1
+   },
+   "sources": [
+    "SANA - state news agency (EN)",
+    "X posts",
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78124",
+     "platform": "telegram"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=G_5hoQvsP1E",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-22T14:56:18Z"
+  },
+  {
+   "id": "grassroots-humanitarian-stories",
+   "title": "Individual humanitarian achievements and personal resilience narratives",
+   "title_ar": "إنجازات إنسانية فردية وسرديات المرونة الشخصية",
+   "summary": "Posts highlight individual stories: a man who lost his leg to a mine in 2018 creating prosthetics for 300 survivors, a young man walking from Deir Ezzor to perform Hajj pilgrimage. These emphasize personal agency, faith, and overcoming hardship without state intervention.",
+   "summary_ar": "المنشورات تسلط الضوء على قصص فردية: رجل فقد ساقه بسبب لغم عام 2018 يصنع أطرافاً صناعية لـ 300 ناجٍ، وشاب يمشي من دير الزور لأداء فريضة الحج. هذه تؤكد على الوكالة الفردية والإيمان والتغلب على المشقة بدون تدخل حكومي.",
+   "public_reaction": "Commenters express religious support and prayer-like blessings for the individuals ('God grant you success,' 'may God protect you'). Some debate religious jurisprudence about whether the long journey is lawful. A few comments express material pessimism (noting the lack of money inside Syria). Overall tone is one of admiration mixed with weary realism about economic conditions.",
+   "public_reaction_ar": "يعبر المعلقون عن دعم ديني ودعاءات لهؤلاء الأفراد ('الله ييسر أمرك'، 'الله يحفظك'). يناقش البعض الفقه الديني حول ما إذا كانت الرحلة الطويلة جائزة شرعاً. بعض التعليقات تعبر عن تشاؤم مادي (لاحظ نقص المال في سوريا). النبرة العامة هي إعجاب مختلط بواقعية متعبة حول الظروف الاقتصادية.",
+   "sentiment": 0.55,
+   "public_sentiment": 0.15,
+   "emotions": [
+    "admiration",
+    "hope",
+    "resignation"
+   ],
+   "emotions_ar": [
+    "إعجاب",
+    "أمل",
+    "استسلام"
+   ],
+   "framings": [
+    "faith and personal determination overcoming material hardship",
+    "grassroots humanitarian initiative without state dependency"
+   ],
+   "framings_ar": [
+    "الإيمان والعزم الشخصي يتغلبان على المشقة المادية",
+    "المبادرة الإنسانية الشعبية بدون الاعتماد على الدولة"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 8,
+   "public_volume": 8,
+   "share": 0.088,
+   "engagement": 16,
+   "platforms": {
+    "youtube": 7,
+    "x": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=G_5hoQvsP1E",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-22T14:56:18Z"
+  },
+  {
+   "id": "media-credibility-and-misinformation",
+   "title": "Public concerns about media literacy and misinformation",
+   "title_ar": "مخاوف الجمهور حول محو الأمية الإعلامية والمعلومات المضللة",
+   "summary": "Two videos and comments address how Syrians spread unverified or exaggerated claims on social media—including false stories about electricity blackouts at concerts and exaggerated reports of school violence. Commenters appeal for verification of sources and cautionary framing before sharing.",
+   "summary_ar": "تتناول فيديوهات وتعليقات كيفية نشر السوريين لادعاءات غير مثبتة أو مبالغة فيها على وسائل التواصل الاجتماعي—بما فيها قصص كاذبة عن انقطاعات الكهرباء في الحفلات وتقارير مبالغة عن العنف المدرسي. يناشد المعلقون التحقق من المصادر والإطار الحذري قبل المشاركة.",
+   "public_reaction": "Commenters acknowledge the problem and call for responsible media literacy: disclaiming expertise before opining, verifying sources before sharing, and noting when a story comes from social media rather than official sources. Some recognize this as a broader societal problem ('the hbd phenomenon').",
+   "public_reaction_ar": "يعترف المعلقون بالمشكلة ويدعون للمسؤولية الإعلامية: التنصل من الخبرة قبل الإدلاء برأي، التحقق من المصادر قبل المشاركة، والإشارة إلى متى تأتي القصة من وسائل التواصل الاجتماعي وليس من مصادر رسمية. يعترف البعض بأن هذا مشكلة اجتماعية أوسع ('ظاهرة الهبد').",
+   "sentiment": 0.25,
+   "public_sentiment": 0.35,
+   "emotions": [
     "concern",
+    "responsibility",
     "self-awareness"
    ],
    "emotions_ar": [
-    "إحباط",
     "قلق",
-    "الوعي الذاتي"
+    "مسؤولية",
+    "وعي ذاتي"
    ],
    "framings": [
-    "Call for media literacy and verification",
-    "Critique of sensationalism and exaggeration",
-    "Responsibility of social media users",
-    "Distinction between opinion and misinformation"
+    "media literacy and verification as social responsibility",
+    "folk diagnosis of a societal communication problem"
    ],
    "framings_ar": [
-    "دعوة إلى محو الأمية الإعلامية والتحقق",
-    "انتقاد الإثارة والمبالغة",
-    "مسؤولية مستخدمي وسائل التواصل الاجتماعي",
-    "التمييز بين الرأي والمعلومات المضللة"
+    "محو الأمية الإعلامية والتحقق كمسؤولية اجتماعية",
+    "تشخيص شعبي لمشكلة اتصال اجتماعية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 6,
    "public_volume": 6,
-   "share": 0.056,
+   "share": 0.066,
    "engagement": 14,
    "platforms": {
     "youtube": 6
@@ -213,44 +248,81 @@
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-22T09:58:51Z"
+   "first_seen": "2026-09-22T14:56:18Z"
   },
   {
-   "id": "domestic-development-initiatives",
-   "title": "State media coverage of domestic development and reconstruction projects",
-   "title_ar": "تغطية وسائل الإعلام الحكومية لمشاريع التنمية والإعمار المحلية",
-   "summary": "State outlets report on rubble removal in Deir Ezzor, health center upgrades in Rural Damascus, cultural events for children, and women's bazaars. These stories emphasize reconstruction, service expansion, and community engagement. Coverage is consistently positive with no significant public reaction.",
-   "summary_ar": "تقارير الوسائل الحكومية عن إزالة الأنقاض في دير الزور والترقيات الصحية في ريف دمشق والفعاليات الثقافية للأطفال وأسواق النساء. تركز هذه القصص على الإعمار وتوسيع الخدمات والانخراط المجتمعي. التغطية إيجابية باستمرار دون رد فعل عام كبير.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.6,
-   "public_sentiment": null,
+   "id": "security-and-law-enforcement",
+   "title": "Drug enforcement operations and security establishment",
+   "title_ar": "عمليات إنفاذ مكافحة المخدرات وتأسيس الأمن",
+   "summary": "State media reports drug interdiction by Homs narcotics authorities (200,000 captagon pills), and opening of military police branch in Hasakah. Public comments express support for security forces and light mockery of captagon use patterns.",
+   "summary_ar": "تقارير وسائل الإعلام الحكومية عن حجز المخدرات من قبل سلطات مكافحة المخدرات في حمص (200 ألف حبة كبتاغون)، وافتتاح فرع من الشرطة العسكرية في الحسكة. تعليقات الجمهور تعبر عن دعم قوات الأمن والسخرية الخفيفة من أنماط استخدام الكبتاغون.",
+   "public_reaction": "Commenters bless security forces and express support for law enforcement ('may God guide them'). Some make dark jokes about age and captagon use. Overall sentiment is supportive of security operations, though engagement is minimal.",
+   "public_reaction_ar": "يدعو المعلقون قوات الأمن ويعبرون عن الدعم لجهات تطبيق القانون ('الله يهديكم'). يسخر البعض بنكات سوداء حول السن واستخدام الكبتاغون. المشاعر العامة داعمة لعمليات الأمن، على الرغم من أن المشاركة محدودة.",
+   "sentiment": 0.7,
+   "public_sentiment": 0.45,
    "emotions": [
-    "optimism",
-    "pride"
+    "support",
+    "approval",
+    "humor"
    ],
    "emotions_ar": [
-    "تفاؤل",
-    "فخر"
+    "دعم",
+    "موافقة",
+    "فكاهة"
    ],
    "framings": [
-    "Reconstruction and recovery",
-    "Service expansion in underserved areas",
-    "Community participation and empowerment",
-    "Long-term infrastructure investment"
+    "law enforcement competence and drug interdiction",
+    "security institutionalisation in disputed areas"
    ],
    "framings_ar": [
-    "الإعمار والتعافي",
-    "توسيع الخدمات في المناطق المحرومة",
-    "المشاركة المجتمعية والتمكين",
-    "الاستثمار في البنية التحتية على المدى الطويل"
+    "كفاءة جهات تطبيق القانون وحجز المخدرات",
+    "تأسيس الأمن في مناطق متنازع عليها"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 6,
+   "public_volume": 6,
+   "share": 0.066,
+   "engagement": 3,
+   "platforms": {
+    "youtube": 5
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=uiEzXmoRBN8",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-22T14:56:18Z"
+  },
+  {
+   "id": "unrelated-international-news",
+   "title": "Unrelated international news with minimal Syrian relevance",
+   "title_ar": "أخبار دولية غير مرتبطة ذات صلة سورية ضئيلة",
+   "summary": "State media carries wire stories on Strait of Hormuz shipping, South Korean nuclear negotiations, Yemen aid programs, Guatemalan military equipment, and global oil markets. These appear to be routine international news filler with no apparent editorial connection to Syria.",
+   "summary_ar": "وسائل الإعلام الحكومية تنقل قصص وكالات عن شحن مضيق هرمز والمفاوضات النووية الكوريّة الجنوبية وبرامج المساعدات باليمن والمعدات العسكرية الغواتيمالية وأسواق النفط العالمية. تبدو هذه أخبار دولية روتينية بدون اتصال افتتاحي واضح بسوريا.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.0,
+   "public_sentiment": null,
+   "emotions": [],
+   "emotions_ar": [],
+   "framings": [
+    "routine international news"
+   ],
+   "framings_ar": [
+    "أخبار دولية روتينية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 5,
    "public_volume": 0,
-   "share": 0.056,
-   "engagement": 208,
+   "share": 0.055,
+   "engagement": 262,
    "platforms": {
     "telegram": 5
    },
@@ -260,368 +332,152 @@
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78098",
+     "url": "https://t.me/SANANewsEnglish/78114",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-09-22T09:58:51Z"
   },
   {
-   "id": "unrelated-international-news",
-   "title": "Unrelated international news with minimal Syrian relevance",
-   "title_ar": "أخبار دولية غير ذات صلة وذات صلة محدودة بسوريا",
-   "summary": "State media carries reports on Yemen humanitarian aid, Guatemala military equipment, and Saudi-led regional security discussions. These appear to be standard international wire service content with limited domestic framing. No public reaction.",
-   "summary_ar": "تنقل وسائل الإعلام الحكومية تقارير عن المساعدات الإنسانية في اليمن والمعدات العسكرية في غواتيمالا والنقاشات الأمنية الإقليمية بقيادة السعودية. يبدو أن هذه محتوى خدمة الأسلاك الدولية القياسي مع إطار محلي محدود. لا يوجد رد فعل عام.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.0,
-   "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
-   "framings": [
-    "International news service",
-    "Regional security dynamics",
-    "Humanitarian operations"
-   ],
-   "framings_ar": [
-    "خدمة الأنباء الدولية",
-    "الديناميكيات الأمنية الإقليمية",
-    "العمليات الإنسانية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 6,
-   "public_volume": 0,
-   "share": 0.056,
-   "engagement": 329,
-   "platforms": {
-    "telegram": 6
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78097",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-22T09:58:51Z"
-  },
-  {
-   "id": "international-humanitarian-agreements",
-   "title": "Syria's international humanitarian and technical cooperation agreements",
-   "title_ar": "اتفاقيات سوريا الدولية للتعاون الإنساني والتقني",
-   "summary": "Outlets report Syria signing demining cooperation agreement with Ukraine and hosting international forums on trade and logistics. These stories emphasize Syria's readiness for post-conflict reconstruction, technical expertise exchange, and integration into regional trade networks. Minimal public engagement.",
-   "summary_ar": "تقارير عن توقيع سوريا اتفاق تعاون لإزالة الألغام مع أوكرانيا واستضافة منتديات دولية حول التجارة واللوجستيات. تركز هذه القصص على جاهزية سوريا لإعادة البناء بعد الصراع وتبادل الخبرة التقنية والاندماج في شبكات التجارة الإقليمية. الحد الأدنى من الانخراط العام.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.65,
-   "public_sentiment": null,
-   "emotions": [
-    "hope",
-    "pragmatism"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "براغماتية"
-   ],
-   "framings": [
-    "Regional economic integration",
-    "Technical capacity building",
-    "Post-conflict reconstruction and mine clearance",
-    "Strategic geographic advantage in trade"
-   ],
-   "framings_ar": [
-    "الاندماج الاقتصادي الإقليمي",
-    "بناء القدرات التقنية",
-    "إعادة البناء بعد الصراع وإزالة الألغام",
-    "الميزة الجغرافية الاستراتيجية في التجارة"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 4,
-   "public_volume": 1,
-   "share": 0.037,
-   "engagement": 108,
-   "platforms": {
-    "telegram": 3,
-    "x": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)",
-    "Enab Baladi - independent (EN)",
-    "X posts"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78099",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6750",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-22T09:58:51Z"
-  },
-  {
-   "id": "sectarian-and-identity-tensions",
-   "title": "Sectarian and ethnic identity disputes in public comments",
-   "title_ar": "نزاعات الهوية الطائفية والعرقية في التعليقات العامة",
-   "summary": "A small number of comments engage in sectarian framing, with posts about Maronites' origins, Palestinian-Syrian distinctions, and assertions of ethnic/religious authenticity. These are isolated comments with minimal engagement but reflect persistent identity tensions in public discourse.",
-   "summary_ar": "عدد صغير من التعليقات ينخرط في الإطار الطائفي مع منشورات حول أصول الموارنة والتمييزات الفلسطينية السورية وتأكيدات الأصالة العرقية/الدينية. هذه تعليقات معزولة مع حد أدنى من الانخراط لكنها تعكس توترات الهوية المستمرة في الخطاب العام.",
-   "public_reaction": "Marginal engagement: a few commenters assert ethnic or religious authenticity and origin claims; reactions are limited and not widely amplified.",
-   "public_reaction_ar": "انخراط هامشي: يؤكد عدد قليل من المعلقين على أصالة عرقية أو دينية ومطالبات الأصول؛ ردود الفعل محدودة وليست موسعة على نطاق واسع.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.4,
-   "emotions": [
-    "defensiveness",
-    "assertion",
-    "tension"
-   ],
-   "emotions_ar": [
-    "دفاع",
-    "تأكيد",
-    "توتر"
-   ],
-   "framings": [
-    "Ethnic and religious authenticity claims",
-    "Origin and belonging disputes",
-    "In-group/out-group dynamics"
-   ],
-   "framings_ar": [
-    "مطالبات الأصالة العرقية والدينية",
-    "نزاعات الأصول والانتماء",
-    "ديناميكيات الداخل والخارج"
-   ],
-   "flags": [
-    "Potential sectarian incitement in identity assertions",
-    "Palestinian-Syrian distinction rhetoric"
-   ],
-   "flags_ar": [
-    "احتمال حض طائفي في تأكيدات الهوية",
-    "بلاغة التمييز بين الفلسطينيين والسوريين"
-   ],
-   "volume": 4,
-   "public_volume": 4,
-   "share": 0.037,
-   "engagement": 43,
-   "platforms": {
-    "x": 4
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-22T09:58:51Z"
-  },
-  {
-   "id": "electricity-service-failures",
-   "title": "Ongoing electricity outages and power grid failures",
-   "title_ar": "انقطاعات الكهرباء المستمرة وفشل شبكة الكهرباء",
-   "summary": "Reports of power grid failures affecting Daraa and Sweida governorates due to technical faults on transmission lines. Public commentary uses these incidents to illustrate broader service delivery failures and lack of infrastructure investment. Some frame outages as routine mismanagement; others question government capacity.",
-   "summary_ar": "تقارير عن فشل شبكة الكهرباء يؤثر على محافظات درعا والسويداء بسبب أعطال تقنية على خطوط النقل. يستخدم التعليق العام هذه الحوادث لتوضيح فشل تقديم الخدمات الأوسع ونقص الاستثمار في البنية التحتية. يؤطر البعض الانقطاعات على أنها سوء إدارة روتيني؛ ويتساءل آخرون عن قدرة الحكومة.",
-   "public_reaction": "Low-intensity complaints and resignation: commenters note repeated outages, reference the broader context of service failures (fuel, water, bread shortages), and express weariness. Some link electricity failures to larger economic dysfunction. Few high-engagement posts; sentiment is one of fatigue rather than acute anger.",
-   "public_reaction_ar": "شكاوى منخفضة الكثافة واستسلام: يلاحظ المعلقون الانقطاعات المتكررة ويرجعون إليها في سياق فشل الخدمات الأوسع (نقص الوقود والماء والخبز) ويعبرون عن الملل. يربط البعض فشل الكهرباء بالعجز الاقتصادي الأكبر. قليل من المشاركات عالية الانخراط؛ المشاعر تميل نحو الإرهاق بدلاً من الغضب الحاد.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.4,
+   "id": "infrastructure-and-services-failures",
+   "title": "Communication networks and electricity service gaps",
+   "title_ar": "فجوات شبكات الاتصالات وخدمات الكهرباء",
+   "summary": "A commenter criticizes the government's announcement of 5G technology that is only available in elite Damascus neighborhoods, while other cities like Hama experience poor connectivity. State media reports electricity repairs in Daraa and Suwayda. The gap between PR announcements and service reality is highlighted.",
+   "summary_ar": "ينتقد أحد المعلقين إعلان الحكومة عن تقنية 5G متاحة فقط في أحياء دمشق النخبوية، بينما تعاني مدن أخرى مثل حماة من اتصال سيء. تقارير وسائل الإعلام الحكومية عن إصلاحات الكهرباء في درعا والسويداء. يتم تسليط الضوء على الفجوة بين الإعلانات الإعلامية والواقع الخدماتي.",
+   "public_reaction": "One detailed X post criticizes the inequitable rollout of 5G, noting that it is only available in wealthy neighborhoods while other areas lack basic signal. The comment implies both poor service design and corruption favoring elites. Another post reports on electricity repairs but with minimal engagement.",
+   "public_reaction_ar": "تنتقد منشورة واحدة على X نشر 5G غير المتكافئ، لاحظت أنه متاح فقط في الأحياء الغنية بينما تفتقر مناطق أخرى للإشارة الأساسية. التعليق يعني أيضاً سوء تصميم الخدمة والفساد الذي يفضل النخب. تقرر منشورة أخرى عن إصلاحات الكهرباء لكن مع مشاركة محدودة.",
+   "sentiment": 0.15,
+   "public_sentiment": -0.5,
    "emotions": [
     "frustration",
-    "resignation",
-    "weariness"
+    "inequality"
    ],
    "emotions_ar": [
     "إحباط",
-    "استسلام",
-    "إرهاق"
+    "عدم مساواة"
    ],
    "framings": [
-    "Technical grid failures and maintenance issues",
-    "Broader pattern of infrastructure neglect",
-    "Ongoing service delivery crisis",
-    "Economic dysfunction reflected in utilities"
+    "digital divide and unequal service access",
+    "elite preference in infrastructure investment"
    ],
    "framings_ar": [
-    "أعطال الشبكة التقنية ومشاكل الصيانة",
-    "نمط أوسع من إهمال البنية التحتية",
-    "أزمة تقديم الخدمات المستمرة",
-    "الخلل الاقتصادي الذي ينعكس في المرافق"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 3,
-   "public_volume": 3,
-   "share": 0.028,
-   "engagement": 3,
-   "platforms": {
-    "x": 3
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-22T09:58:51Z"
-  },
-  {
-   "id": "reconciliation-skepticism",
-   "title": "Skepticism and irony toward 'reconciliation' narratives between people and government",
-   "title_ar": "الشك والسخرية من سردية 'الصلح' بين الشعب والحكومة",
-   "summary": "Comments on videos discussing 'reconciliation' between public and government show ironic and skeptical attitudes. Commenters sarcastically note that reconciliation benefits merchants and elites while excluding ordinary poor citizens, and question whether genuine rapprochement has occurred beyond ceremonial gestures.",
-   "summary_ar": "التعليقات على مقاطع فيديو تناقش 'الصلح' بين الجمهور والحكومة تظهر مواقف ساخرة وشاكة. يلاحظ المعلقون بسخرية أن المصالحة تفيد التجار والنخب بينما تستثني المواطنين العاديين الفقراء، ويتساءلون عما إذا حدث توافق حقيقي وراء الحركات الاحتفالية.",
-   "public_reaction": "Sardonic and doubtful: commenters use dark humor to question whether 'reconciliation' is real or merely symbolic. Some note that only wealthy merchants and government-connected elites have benefited, while poor and ordinary citizens remain marginalized. Tone is weary resignation mixed with sarcasm.",
-   "public_reaction_ar": "ساخرة وشاكة: يستخدم المعلقون الفكاهة السوداء للتشكيك في ما إذا كان 'الصلح' حقيقياً أم مجرد رمزي. يلاحظ البعض أن التجار الأثرياء والنخب المرتبطين بالحكومة فقط هم من استفادوا، بينما يبقى المواطنون العاديون والفقراء في الهامش. النبرة هي استسلام متعب مختلط مع السخرية.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.55,
-   "emotions": [
-    "skepticism",
-    "sarcasm",
-    "weariness"
-   ],
-   "emotions_ar": [
-    "شك",
-    "سخرية",
-    "إرهاق"
-   ],
-   "framings": [
-    "Elite-focused reconciliation excluding ordinary citizens",
-    "Symbolic gestures without material change",
-    "Class inequality in 'national' narratives",
-    "Question of sincerity in government-public relations"
-   ],
-   "framings_ar": [
-    "مصالحة موجهة نحو النخب تستثني المواطنين العاديين",
-    "حركات رمزية دون تغيير مادي",
-    "عدم المساواة الطبقية في السرديات 'الوطنية'",
-    "سؤال حول صدق العلاقات الحكومية العامة"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 3,
-   "public_volume": 3,
-   "share": 0.028,
-   "engagement": 0,
-   "platforms": {
-    "youtube": 3
-   },
-   "sources": [
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=ieM5UahhOU8",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-22T09:58:51Z"
-  },
-  {
-   "id": "diaspora-participation-mockery",
-   "title": "Satire and critique of diaspora members seeking official recognition and photo opportunities",
-   "title_ar": "السخرية والانتقاد من أعضاء الجالية الذين يسعون للاعتراف الرسمي وفرص التصوير",
-   "summary": "Posts mock diaspora Syrians who attend government events, seek photo opportunities with officials, and use formal settings to 'show off' or appear patriotic. Commenters sarcastically note the gap between their performative patriotism and actual commitment to Syria; some frame this as seeking patronage or networking rather than genuine engagement.",
-   "summary_ar": "منشورات تسخر من السوريين في الجالية الذين يحضرون الفعاليات الحكومية ويسعون لفرص التصوير مع المسؤولين ويستخدمون المناسبات الرسمية للتباهي أو الظهور بمظهر وطني. يلاحظ المعلقون بسخرية الفجوة بين وطنيتهم الظاهرية والالتزام الفعلي بسوريا؛ يؤطر البعض هذا على أنه السعي للرعاية أو الشبكات بدلاً من الانخراط الحقيقي.",
-   "public_reaction": "Derisive and skeptical tone: commenters mock diaspora 'performative patriotism,' imply they are seeking status or connections, and question the sincerity of their nationalism. Humor is used to express cynicism about elite networking disguised as national service. A few defend diaspora contributions but are drowned out.",
-   "public_reaction_ar": "نبرة ساخرة وشاكة: يسخر المعلقون من 'الوطنية الظاهرية' للجالية وينوون أنهم يسعون للحصول على حالة أو اتصالات ويطرحون تساؤلات حول صدق قوميتهم. يستخدم الفكاهة للتعبير عن التشاؤم بشأن الشبكات النخبوية المقنعة بخدمة وطنية. البعض يدافع عن مساهمات الجالية لكن يتم إغراقهم.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.65,
-   "emotions": [
-    "mockery",
-    "skepticism",
-    "contempt"
-   ],
-   "emotions_ar": [
-    "سخرية",
-    "شك",
-    "احتقار"
-   ],
-   "framings": [
-    "Performative patriotism and status-seeking",
-    "Networking disguised as national service",
-    "Gap between rhetoric and commitment",
-    "Elite patronage and favoritism"
-   ],
-   "framings_ar": [
-    "الوطنية الظاهرية والبحث عن الحالة",
-    "الشبكات المقنعة بالخدمة الوطنية",
-    "الفجوة بين الخطاب والالتزام",
-    "الرعاية النخبوية والمحسوبية"
+    "الفجوة الرقمية وعدم تكافؤ الوصول للخدمات",
+    "تفضيل النخبة في استثمارات البنية التحتية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 2,
    "public_volume": 2,
-   "share": 0.019,
-   "engagement": 0,
+   "share": 0.022,
+   "engagement": 23,
    "platforms": {
-    "x": 1,
-    "youtube": 1
+    "x": 2
    },
    "sources": [
-    "X posts",
-    "YouTube comments"
+    "X posts"
    ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=ieM5UahhOU8",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-22T09:58:51Z"
+   "examples": [],
+   "first_seen": "2026-09-22T14:56:18Z"
   },
   {
-   "id": "sports-and-culture",
-   "title": "Syrian cultural and sporting achievements",
-   "title_ar": "الإنجازات الثقافية والرياضية السورية",
-   "summary": "State media highlights a karate bronze medal at the Asian Games and student artwork exhibitions. These are brief positive stories with nationalist framing. No measurable public engagement in comments.",
-   "summary_ar": "تبرز وسائل الإعلام الحكومية ميدالية برونزية في الكاراتيه في الألعاب الآسيوية ومعارض الأعمال الفنية الطلابية. هذه قصص إيجابية موجزة مع إطار قومي. لا يوجد انخراط عام قابل للقياس في التعليقات.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.45,
-   "public_sentiment": null,
+   "id": "economic-concerns-wealth-inequality",
+   "title": "Wealth concentration, unequal recovery, and alleged corruption",
+   "title_ar": "تركز الثروة والتعافي غير المتساوي والفساد المزعوم",
+   "summary": "Commenters argue that wealthy elites and officials have benefited disproportionately from reconstruction, citing allegations of undisclosed kickbacks, inflated contracts, and wealth built through collusion with the former regime. One comment notes a discrepancy between claims of 80% asset seizure and reports of $800 million settlements, questioning whether confiscation actually occurred.",
+   "summary_ar": "يجادل المعلقون بأن النخب الثرية والمسؤولين استفادوا بشكل غير متناسب من إعادة البناء، مستشهدين بادعاءات عن الرشاوى غير المعلنة والعقود المضخمة والثروة المبنية من خلال التحالف مع النظام السابق. يشير أحد التعليقات إلى عدم تطابق بين ادعاءات مصادرة 80% من الأصول وتقارير تسويات بقيمة 800 مليون دولار، متسائلاً عما إذا حدثت المصادرة فعلاً.",
+   "public_reaction": "Commenters express anger and cynicism about wealth disparity, alleging that the leadership has enriched itself rather than the country. One X post contrasts government claims of asset recovery with reports of compromise settlements, suggesting a credibility gap. Some mockingly note that economic conditions have worsened rather than improved.",
+   "public_reaction_ar": "يعبر المعلقون عن غضب وسخرية حول الفجوة في الثروة، مدعين أن القيادة أثرت نفسها وليس البلد. تقارن منشورة على X بين ادعاءات حكومية باسترجاع الأصول وتقارير تسويات وسط، مما يشير إلى فجوة في المصداقية. يلاحظ البعض بسخرية أن الظروف الاقتصادية ساءت بدلاً من أن تتحسن.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.7,
    "emotions": [
-    "pride",
-    "celebration"
+    "anger",
+    "cynicism",
+    "contempt"
    ],
    "emotions_ar": [
-    "فخر",
-    "احتفال"
+    "غضب",
+    "سخرية",
+    "ازدراء"
    ],
    "framings": [
-    "National pride and achievement",
-    "Youth engagement in arts and sports",
-    "International representation"
+    "elite capture and self-enrichment",
+    "credibility gap between official claims and reality",
+    "unequal distribution of post-war recovery benefits"
    ],
    "framings_ar": [
-    "الفخر والإنجاز الوطني",
-    "انخراط الشباب في الفنون والرياضة",
-    "التمثيل الدولي"
+    "استحواذ النخبة والإثراء الذاتي",
+    "فجوة مصداقية بين الادعاءات الرسمية والواقع",
+    "توزيع غير متساوٍ لفوائد التعافي بعد الحرب"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "unverified claims of corruption and kickbacks (p28)"
+   ],
+   "flags_ar": [
+    "ادعاءات غير مثبتة حول الفساد والرشاوى"
+   ],
    "volume": 1,
-   "public_volume": 0,
-   "share": 0.009,
-   "engagement": 33,
+   "public_volume": 1,
+   "share": 0.011,
+   "engagement": 0,
    "platforms": {
-    "telegram": 1
+    "x": 1
    },
    "sources": [
-    "SANA - state news agency (EN)"
+    "X posts"
    ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78110",
-     "platform": "telegram"
-    }
+   "examples": [],
+   "first_seen": "2026-09-22T14:56:18Z"
+  },
+  {
+   "id": "sectarian-conspiracy-narratives",
+   "title": "Sectarian identity framing and foreign plot allegations",
+   "title_ar": "إطار الهوية الطائفية وادعاءات بمؤامرات أجنبية",
+   "summary": "Several commenters frame Syria's current situation through sectarian and conspiracy lenses, alleging that the leadership represents foreign interests, drawing parallels to historical Sunni-Shia conflict, and framing the removal of the previous government as an occupation rather than liberation. One comment invokes religious minority threats.",
+   "summary_ar": "يطرح عدة معلقين الوضع الحالي في سوريا من خلال عدسات طائفية ومؤامرتية، مدعين أن القيادة تمثل مصالح أجنبية، وترسم أوجه تشابه مع النزاع السني الشيعي التاريخي، وتصور إزالة الحكومة السابقة كاحتلال وليس كتحرير. يستحضر أحد التعليقات تهديدات الأقليات الدينية.",
+   "public_reaction": "Commenters express deep distrust of the current leadership through sectarian and geopolitical frames, claiming the new government is a foreign installation designed to occupy Syria rather than govern it. Some invoke religious language to express alarm about Christian or Western influence.",
+   "public_reaction_ar": "يعبر المعلقون عن عدم ثقة عميق في القيادة الحالية من خلال إطارات طائفية وجيوسياسية، مدعين أن الحكومة الجديدة تركيب أجنبي مصمم لاحتلال سوريا وليس حكمها. يستحضر البعض لغة دينية للتعبير عن القلق من التأثير المسيحي أو الغربي.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.75,
+   "emotions": [
+    "fear",
+    "distrust",
+    "anger"
    ],
-   "first_seen": "2026-09-22T09:58:51Z"
+   "emotions_ar": [
+    "خوف",
+    "عدم ثقة",
+    "غضب"
+   ],
+   "framings": [
+    "foreign installation and occupation",
+    "sectarian threat and religious minority dominance",
+    "betrayal of Sunni interests and nationalist project"
+   ],
+   "framings_ar": [
+    "تركيب أجنبي واحتلال",
+    "تهديد طائفي وهيمنة أقلية دينية",
+    "خيانة المصالح السنية والمشروع القومي"
+   ],
+   "flags": [
+    "sectarian incitement and conspiracy framing (p22, p33, p45, p60, p61, p65, p67, p72)",
+    "religious minority threat narrative (p33)"
+   ],
+   "flags_ar": [
+    "تحريض طائفي وإطار مؤامرتي",
+    "سرد تهديد الأقلية الدينية"
+   ],
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.011,
+   "engagement": 0,
+   "platforms": {
+    "x": 1
+   },
+   "sources": [
+    "X posts"
+   ],
+   "examples": [],
+   "first_seen": "2026-09-22T14:56:18Z"
   }
  ],
  "sources": [
@@ -637,7 +493,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 1
   },
   {
    "name": "BBC Arabic",
@@ -650,8 +506,8 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 81,
-   "recent": 81
+   "fetched": 65,
+   "recent": 65
   },
   {
    "name": "X posts",
@@ -666,5 +522,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0612
+ "cost_usd": 0.0552
 }
