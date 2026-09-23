@@ -656,7 +656,7 @@ def main() -> int:
 
     latest = {
         "format": FORMAT_VERSION,
-        "site_title": cfg.get("site_title", "Syria narrative tracker"),
+        "site_title": cfg.get("site_title", "Syria Narrative Tracker"),
         "site_title_ar": cfg.get("site_title_ar", "متتبّع السرديات السورية"),
         "default_language": cfg.get("default_language") or cfg.get("summary_language") or "en",
         "generated_at": iso(NOW),
