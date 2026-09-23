@@ -150,6 +150,16 @@
   .hmood { font-family: var(--display); font-size: 1.8rem; font-weight: 500; line-height: 1.3; margin: 0 0 14px; display: flex; align-items: center; gap: 12px; }
   .hmood i { width: 14px; height: 14px; border-radius: 3px; flex: none; }
   .hour ol { margin: 0; padding: 0; list-style: none; }
+  .hbrief { margin: 0 0 14px; font-size: .95rem; line-height: 1.6; }
+  .hstory { border-top: 1px solid var(--rule); }
+  .hrow { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 10px 0; font-size: .95rem; }
+  .hrow:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .hrow .t { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+  .hrow .share { color: var(--muted); font-variant-numeric: tabular-nums; flex: none; }
+  .story.hstory.open .hrow .chev { transform: rotate(90deg); }
+  .hstory .detail-in { grid-template-columns: 1fr; padding: 4px 0 18px; padding-inline-start: 26px; gap: 12px; }
+  .hstory .db { margin: 2px 0 6px; }
+  @media (min-width: 761px) { .week > div:first-child { position: sticky; top: 20px; } }
   .hour li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
   .hour li span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
 
@@ -228,6 +238,8 @@ const T = {
     week: "The past week", twoWeeks: "The past two weeks", weekSub: "Each square is one hour, in Damascus time, colored by how people felt.",
     mosaicLabel: "Hourly mood. Use the arrow keys to move between hours.",
     chooseHour: "Choose an hour", chooseHourSub: "Click a square, or use the arrow keys.",
+    hourStories: "Open a story to read its analysis from that hour.", loadingHour: "Loading this hour's analysis…",
+    noSnapshot: "The full analysis of this hour was not saved.",
     aboutTitle: "About this tracker and its sources",
     method: [
       ["Every hour", "an automated job collects recent public posts in Arabic, Kurdish and English, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
@@ -267,6 +279,8 @@ const T = {
     week: "الأسبوع الماضي", twoWeeks: "الأسبوعان الماضيان", weekSub: "كل مربع يمثّل ساعة واحدة بتوقيت دمشق، ولونه يعكس شعور الناس.",
     mosaicLabel: "المزاج ساعة بساعة. استخدم مفاتيح الأسهم للتنقل بين الساعات.",
     chooseHour: "اختر ساعة", chooseHourSub: "انقر على أي مربع، أو استخدم مفاتيح الأسهم.",
+    hourStories: "افتح أي قصة لقراءة تحليلها في تلك الساعة.", loadingHour: "جارٍ تحميل تحليل هذه الساعة…",
+    noSnapshot: "لم يُحفظ التحليل الكامل لهذه الساعة.",
     aboutTitle: "حول هذا المتتبّع ومصادره",
     method: [
       ["كل ساعة", "تجمع مهمة آلية أحدث المنشورات العامة بالعربية والكردية والإنجليزية، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
@@ -293,7 +307,8 @@ const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
 const has = (v) => v !== null && v !== undefined && v !== "";
-const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true, lang: null };
+const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true, lang: null,
+  snaps: new Map(), hourOpen: new Set() };   // snaps: saved analyses of past hours, loaded when an hour is opened
 const L = () => T[state.lang];
 const rtl = () => state.lang === "ar";
 const cap = (s) => { s = String(s || "").trim(); return s ? s[0].toUpperCase() + s.slice(1) : s; };
@@ -428,15 +443,8 @@ function sorted(list) {
   return a;
 }
 function storyHTML(n) {
-  const t = L(), p = peopleTone(n), tr = trend(n), open = state.open.has(n.id);
+  const t = L(), tr = trend(n), open = state.open.has(n.id);
   const alt = titleAlt(n);
-  const framings = (tx(n, "framings") || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
-  const flags = tx(n, "flags") || [];
-  const emotions = tx(n, "emotions") || [];
-  const reaction = tx(n, "public_reaction");
-  const links = (n.examples || []).filter(e => safeUrl(e.url)).map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener" dir="auto">${esc(srcName(e.source))}</a>`).join("");
-  const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
-  const voices = has(n.public_volume) ? t.voicesCount(num(n.public_volume), num(n.volume - n.public_volume)) : t.postsCount(num(n.volume));
   const mainCls = rtl() ? "ar-title" : "en-title", altCls = rtl() ? "en-title" : "ar-title";
   return `
   <article class="story${open ? " open" : ""}" data-id="${esc(n.id)}">
@@ -447,7 +455,20 @@ function storyHTML(n) {
       <span class="share">${pctText(n.share)}</span>
       ${dumbbell(n)}
     </button>
-    <div class="detail" id="d-${esc(n.id)}"><div><div class="detail-in">
+    <div class="detail" id="d-${esc(n.id)}"><div><div class="detail-in">${detailBody(n, tr)}</div></div></div>
+  </article>`;
+}
+/* the analysis inside a story; tr (trend) is null for past hours, which have no "last 48 updates" view */
+function detailBody(n, tr) {
+  const t = L(), p = peopleTone(n);
+  const framings = (tx(n, "framings") || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
+  const flags = tx(n, "flags") || [];
+  const emotions = tx(n, "emotions") || [];
+  const reaction = tx(n, "public_reaction");
+  const links = (n.examples || []).filter(e => safeUrl(e.url)).map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener" dir="auto">${esc(srcName(e.source))}</a>`).join("");
+  const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
+  const voices = has(n.public_volume) ? t.voicesCount(num(n.public_volume), num(n.volume - n.public_volume)) : t.postsCount(num(n.volume));
+  return `
       <div>
         <p dir="auto">${esc(tx(n, "summary"))}</p>
         ${reaction ? `<div class="reaction" style="--c:${p !== null ? toneColor(p) : "var(--neu)"}"><span class="lbl">${t.reacting}</span><span dir="auto">${esc(reaction)}</span></div>` : ""}
@@ -457,12 +478,10 @@ function storyHTML(n) {
       <div class="side">
         <div><span class="lbl">${t.people}</span><b>${toneLabel(p)}</b>${emotions.length ? `<br><span dir="auto">${emotions.map(esc).join(rtl() ? "، " : ", ")}</span>` : ""}</div>
         <div><span class="lbl">${t.outlets}</span><b>${toneLabel(n.sentiment)}</b></div>
-        <div><span class="lbl">${t.last48}</span><b>${t.trend[tr]}</b>${sparkline(n.id)}</div>
+        ${tr ? `<div><span class="lbl">${t.last48}</span><b>${t.trend[tr]}</b>${sparkline(n.id)}</div>` : ""}
         <div><span class="lbl">${t.voicesLbl}</span>${voices}</div>
         ${links || others.length ? `<div><span class="lbl">${t.where}</span>${links}${others.length ? `<span>${others.map(o => `<bdi>${esc(srcName(o))}</bdi>`).join(rtl() ? "، " : ", ")}</span>` : ""}</div>` : ""}
-      </div>
-    </div></div></div>
-  </article>`;
+      </div>`;
 }
 function storiesHTML() {
   const t = L(), nars = state.latest.narratives || [], h = num(state.latest.window_hours || 24);
@@ -499,13 +518,45 @@ function weekData() {
 function hourPanel(c) {
   const t = L();
   if (!c || !c.e) return `<div class="hour"><h3>${t.chooseHour}</h3><p class="sub">${t.chooseHourSub}</p></div>`;
-  const e = c.e, top = [...(e.narratives || [])].sort((a, b) => b.share - a.share).slice(0, 4);
+  const e = c.e, snap = e.snapshot ? state.snaps.get(e.snapshot) : null;
   const mood = moodIn(e, "mood", e.sentiment);
-  return `<div class="hour" aria-live="polite">
-    <h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}${rtl() ? "، " : ", "}${hh(c.h)}</h3>
-    <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(mood)}</span></p>
+  const head = `<h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}${rtl() ? "، " : ", "}${hh(c.h)}</h3>
+    <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(mood)}</span></p>`;
+  if (snap && snap !== "error") {
+    const brief = tx(snap.overall || {}, "brief");
+    const list = [...(snap.narratives || [])].sort((a, b) => b.share - a.share);
+    return `<div class="hour" aria-live="polite">${head}
+      ${brief ? `<p class="hbrief" dir="auto">${esc(brief)}</p>` : ""}
+      ${list.length ? `<p class="sub">${t.hourStories}</p>${list.map(n => pastStoryHTML(n, e.snapshot)).join("")}` : `<p>${t.noStories}</p>`}
+    </div>`;
+  }
+  const top = [...(e.narratives || [])].sort((a, b) => b.share - a.share);
+  const note = !e.snapshot || snap === "error" ? t.noSnapshot : t.loadingHour;
+  return `<div class="hour" aria-live="polite">${head}
     ${top.length ? `<ol>${top.map(n => `<li><span dir="auto">${esc(titleMain(n))}</span><span>${pctText(n.share)}</span></li>`).join("")}</ol>` : ""}
+    <p class="sub">${note}</p>
   </div>`;
+}
+function pastStoryHTML(n, snapName) {
+  const key = `${snapName}|${n.id}`, open = state.hourOpen.has(key), did = `h-${esc(snapName.replace(/\W/g, ""))}-${esc(n.id)}`;
+  return `
+  <article class="story hstory${open ? " open" : ""}" data-key="${esc(key)}">
+    <button class="hrow" aria-expanded="${open}" aria-controls="${did}">
+      <span class="t"><span class="chev" aria-hidden="true">▶</span><span class="t-main" dir="auto">${esc(titleMain(n))}</span></span>
+      <span class="share">${pctText(n.share)}</span>
+    </button>
+    <div class="detail" id="${did}"><div><div class="detail-in">${dumbbell(n)}${detailBody(n, null)}</div></div></div>
+  </article>`;
+}
+/* fetch the saved analysis of a past hour once, then redraw the panel if that hour is still selected */
+async function loadSnapshot(c) {
+  const name = c?.e?.snapshot;
+  if (!name || state.snaps.has(name)) return;
+  state.snaps.set(name, null);
+  try { state.snaps.set(name, await getJSON(`data/snapshots/${name}`)); }
+  catch (err) { state.snaps.set(name, "error"); }
+  const { cells } = weekData();
+  if (cells[state.sel]?.e?.snapshot === name && $("#hour")) $("#hour").innerHTML = hourPanel(cells[state.sel]);
 }
 function weekHTML() {
   const t = L(), { days, cells } = weekData();
@@ -607,8 +658,18 @@ function bind() {
     mosaic.querySelectorAll(".tile.sel").forEach(x => x.classList.remove("sel"));
     mosaic.querySelector(`[data-i="${i}"]`)?.classList.add("sel");
     $("#hour").innerHTML = hourPanel(cells[i]);
+    loadSnapshot(cells[i]);
     return true;
   };
+  loadSnapshot(cells[state.sel]);
+  $("#hour").addEventListener("click", (e) => {
+    const r = e.target.closest(".hrow");
+    if (!r) return;
+    const art = r.closest(".hstory"), key = art.dataset.key, open = !art.classList.contains("open");
+    art.classList.toggle("open", open);
+    r.setAttribute("aria-expanded", open);
+    open ? state.hourOpen.add(key) : state.hourOpen.delete(key);
+  });
   mosaic.addEventListener("click", (e) => { const x = e.target.closest(".tile.on"); if (x) select(Number(x.dataset.i)); });
   mosaic.addEventListener("keydown", (e) => {
     let step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 24, ArrowUp: -24 }[e.key];
