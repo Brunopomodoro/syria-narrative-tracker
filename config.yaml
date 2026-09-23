@@ -31,8 +31,11 @@ max_chars_per_post: 400
 # rather than outlets. 0.7 = 70% public, 30% outlets. Unused room is shared.
 public_share: 0.7
 
-# Hours of history kept for the trend views (336 = 14 days).
+# Hours of history kept for the trend views and story search (336 = 14 days).
 history_hours: 336
+
+# Days of outlet headlines kept for the website's search box.
+headline_days: 7
 
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
@@ -114,99 +117,123 @@ keywords:
 #    independent and local city channels, in Arabic and English.
 #    Add "comments: false" to a channel to skip reading its comments.
 #    "label_ar" (optional) is the source's name on the Arabic version of the site.
+#    "kind" groups sources for the search filters on the website:
+#    official, independent, kurdish, regional or aggregator.
 telegram_channels:
   # --- Official and state
   - name: SANANewsEnglish
     label: "SANA - state news agency (EN)"
     label_ar: "سانا - وكالة الأنباء الرسمية (إنجليزي)"
     filter: false
+    kind: official
   - name: SyPresidency
     label: "Syrian Presidency - official"
     label_ar: "رئاسة الجمهورية العربية السورية - رسمي"
     filter: false
+    kind: official
   - name: alekhbariahsy
     label: "Al-Ikhbariya Syria - state TV"
     label_ar: "الإخبارية السورية - تلفزيون رسمي"
     filter: false
+    kind: official
   - name: SyrianMOI
     label: "Syrian Ministry of Interior - official"
     label_ar: "وزارة الداخلية السورية - رسمي"
     filter: false
+    kind: official
   # --- Independent and opposition-origin
   - name: EnabBaladi
     label: "Enab Baladi - independent (AR)"
     label_ar: "عنب بلدي - مستقلة"
     filter: false
+    kind: independent
   - name: Enabbaladi_en
     label: "Enab Baladi - independent (EN)"
     label_ar: "عنب بلدي - مستقلة (إنجليزي)"
     filter: false
+    kind: independent
   - name: halabtodaytv
     label: "Halab Today TV - opposition-origin, Aleppo"
     label_ar: "قناة حلب اليوم - معارضة سابقاً، حلب"
     filter: false
+    kind: independent
   - name: shaamnetwork
     label: "Shaam News Network - opposition-origin"
     label_ar: "شبكة شام الإخبارية - معارضة سابقاً"
     filter: false
+    kind: independent
   - name: Levant24
     label: "Levant24 - Syria news (EN)"
     label_ar: "ليفانت 24 - أخبار سوريا (إنجليزي)"
     filter: false
+    kind: independent
   # --- Kurdish-run and north-east Syria
   - name: hawarnews
     label: "ANHA (Hawar) - north-east administration news agency (AR)"
     label_ar: "وكالة أنباء هاوار - الإدارة الذاتية (عربي)"
     filter: false
+    kind: kurdish
   - name: NPA_Syria
     label: "North Press Agency - Qamishli-based (AR)"
     label_ar: "نورث برس - مقرها القامشلي"
     filter: false
+    kind: kurdish
   - name: npasyria
     label: "North Press Agency (EN)"
     label_ar: "نورث برس (إنجليزي)"
     filter: false
+    kind: kurdish
   - name: sdf_press
     label: "SDF media center - official"
     label_ar: "المركز الإعلامي لقوات سوريا الديمقراطية - رسمي"
     filter: false
+    kind: kurdish
   - name: RudawArabic
     label: "Rudaw Arabic - Kurdistan Region outlet"
     label_ar: "رووداو عربية - إقليم كردستان"
     filter: true
+    kind: kurdish
   - name: k24arabic
     label: "Kurdistan24 Arabic - Kurdistan Region outlet"
     label_ar: "كوردستان 24 عربية - إقليم كردستان"
     filter: true
+    kind: kurdish
   - name: kurdistan24english
     label: "Kurdistan24 English"
     label_ar: "كوردستان 24 (إنجليزي)"
     filter: true
+    kind: kurdish
   # --- Regional outlets (only their Syria posts are kept)
   - name: ajanews
     label: "Al Jazeera - Qatar-based"
     label_ar: "الجزيرة - مقرها قطر"
     filter: true
+    kind: regional
   - name: alarabiya
     label: "Al Arabiya - Saudi-owned"
     label_ar: "العربية - مملوكة سعودياً"
     filter: true
+    kind: regional
   - name: asharqnews
     label: "Asharq News - Saudi-owned"
     label_ar: "الشرق للأخبار - مملوكة سعودياً"
     filter: true
+    kind: regional
   - name: almayadeen
     label: "Al Mayadeen - Beirut-based"
     label_ar: "الميادين - مقرها بيروت"
     filter: true
+    kind: regional
   - name: aa_arabic
     label: "Anadolu Agency - Turkish state news agency (AR)"
     label_ar: "وكالة الأناضول - وكالة تركية رسمية"
     filter: true
+    kind: regional
   - name: trtarabi
     label: "TRT Arabi - Turkish public broadcaster"
     label_ar: "تي آر تي عربي - الإذاعة والتلفزيون التركي"
     filter: true
+    kind: regional
 
 # 2) News websites through RSS - free, no key needed. Adds news context.
 #    Google News search feeds collect Syria stories from hundreds of outlets.
@@ -215,30 +242,37 @@ rss_feeds:
     label: "Google News - Syria (AR)"
     label_ar: "أخبار جوجل - سوريا"
     filter: false
+    kind: aggregator
   - url: https://news.google.com/rss/search?q=Syria&hl=en-US&gl=US&ceid=US:en
     label: "Google News - Syria (EN)"
     label_ar: "أخبار جوجل - سوريا (إنجليزي)"
     filter: false
+    kind: aggregator
   - url: https://sana.sy/feed
     label: "SANA website - state news agency (AR)"
     label_ar: "موقع سانا - وكالة الأنباء الرسمية"
     filter: false
+    kind: official
   - url: https://www.syria.tv/rss.xml
     label: "Syria TV - opposition-origin"
     label_ar: "تلفزيون سوريا - معارض سابقاً"
     filter: false
+    kind: independent
   - url: https://www.zamanalwsl.net/rss
     label: "Zaman al-Wasl - opposition-origin"
     label_ar: "زمان الوصل - معارضة سابقاً"
     filter: false
+    kind: independent
   - url: https://www.skynewsarabia.com/rss/middle-east.xml
     label: "Sky News Arabia - UAE-based"
     label_ar: "سكاي نيوز عربية - مقرها الإمارات"
     filter: true
+    kind: regional
   - url: https://feeds.bbci.co.uk/arabic/middleeast/rss.xml
     label: "BBC Arabic"
     label_ar: "بي بي سي عربي"
     filter: true
+    kind: regional
 
 # ===== PUBLIC VOICES =====
 
