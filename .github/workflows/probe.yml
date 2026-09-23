@@ -1,0 +1,14 @@
+name: Probe candidate sources (temporary)
+on:
+  push:
+    branches: [claude/affectionate-euler-4x4xyy]
+    paths: [scripts/probe_candidates.py, .github/workflows/probe.yml]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install requests beautifulsoup4 feedparser
+      - run: python scripts/probe_candidates.py
