@@ -128,7 +128,7 @@ def detect_lang(text: str) -> str:
         return "ku"
     if len(words & KURMANJI_WORDS) >= 4:
         return "ku"
-    return "en" if re.search(r"\b(the|and|of|in|to|is|for)\b", text.lower()) else "other"
+    return "en"  # the Latin-script sources tracked here are overwhelmingly English
 
 
 def post(pid, platform, source, text, when, engagement=0, url="", linkable=True, filt=False,
@@ -461,7 +461,8 @@ def prepare(posts: list, cfg: dict) -> list:
             p["time"] = NOW
         if p["time"] < since:
             continue
-        if p["filter"] and kws and not any(k in p["text"].lower() for k in kws):
+        # comments also count as on-topic when the post they reply to is ("post: ..." context)
+        if p["filter"] and kws and not any(k in (p["text"] + " " + p.get("context", "")).lower() for k in kws):
             continue
         key = p["voice"] + hashlib.sha1(re.sub(r"\W+", "", p["text"].lower())[:220].encode()).hexdigest()
         if key in seen:  # same text again: a repeat reaction, a repost, or possibly coordination
