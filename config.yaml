@@ -24,7 +24,7 @@ default_language: "en"
 # Cost control. These two numbers decide most of your monthly bill.
 #   max_posts: the most posts sent to Claude per run
 #   max_chars_per_post: long posts are cut to this length
-max_posts: 150
+max_posts: 300
 max_chars_per_post: 400
 
 # Share of the analysis reserved for ordinary people's voices (comments, groups)
@@ -60,6 +60,40 @@ keywords:
   - Damascus
   - Aleppo
   - Idlib
+  - Homs
+  - Latakia
+  - Deir ez-Zor
+  - Raqqa
+  - Hasakah
+  - Qamishli
+  - Suwayda
+  - Kobani
+  - Afrin
+  - SDF
+  - قسد
+  - عفرين
+  - كوباني
+  - عين العرب
+  - منبج
+  - الجولان
+  # Kurdish (Kurmanji, Latin script)
+  - Sûriye
+  - Sûriyê
+  - Suriye
+  - Rojava
+  - Qamişlo
+  - Kobanê
+  - Efrîn
+  - Hesekê
+  - Heseke
+  - Heleb
+  - Reqa
+  - Minbic
+  - QSD
+  # Kurdish (Sorani, Arabic script)
+  - سووریا
+  - ڕۆژاوا
+  - کۆبانێ
 
 # -------------------------------------------------------------
 #  SOURCES
@@ -81,18 +115,127 @@ keywords:
 #    Add "comments: false" to a channel to skip reading its comments.
 #    "label_ar" (optional) is the source's name on the Arabic version of the site.
 telegram_channels:
+  # --- Official and state
   - name: SANANewsEnglish
     label: "SANA - state news agency (EN)"
     label_ar: "سانا - وكالة الأنباء الرسمية (إنجليزي)"
+    filter: false
+  - name: SyPresidency
+    label: "Syrian Presidency - official"
+    label_ar: "رئاسة الجمهورية العربية السورية - رسمي"
+    filter: false
+  - name: alekhbariahsy
+    label: "Al-Ikhbariya Syria - state TV"
+    label_ar: "الإخبارية السورية - تلفزيون رسمي"
+    filter: false
+  - name: SyrianMOI
+    label: "Syrian Ministry of Interior - official"
+    label_ar: "وزارة الداخلية السورية - رسمي"
+    filter: false
+  # --- Independent and opposition-origin
+  - name: EnabBaladi
+    label: "Enab Baladi - independent (AR)"
+    label_ar: "عنب بلدي - مستقلة"
     filter: false
   - name: Enabbaladi_en
     label: "Enab Baladi - independent (EN)"
     label_ar: "عنب بلدي - مستقلة (إنجليزي)"
     filter: false
+  - name: halabtodaytv
+    label: "Halab Today TV - opposition-origin, Aleppo"
+    label_ar: "قناة حلب اليوم - معارضة سابقاً، حلب"
+    filter: false
+  - name: shaamnetwork
+    label: "Shaam News Network - opposition-origin"
+    label_ar: "شبكة شام الإخبارية - معارضة سابقاً"
+    filter: false
+  - name: Levant24
+    label: "Levant24 - Syria news (EN)"
+    label_ar: "ليفانت 24 - أخبار سوريا (إنجليزي)"
+    filter: false
+  # --- Kurdish-run and north-east Syria
+  - name: hawarnews
+    label: "ANHA (Hawar) - north-east administration news agency (AR)"
+    label_ar: "وكالة أنباء هاوار - الإدارة الذاتية (عربي)"
+    filter: false
+  - name: NPA_Syria
+    label: "North Press Agency - Qamishli-based (AR)"
+    label_ar: "نورث برس - مقرها القامشلي"
+    filter: false
+  - name: npasyria
+    label: "North Press Agency (EN)"
+    label_ar: "نورث برس (إنجليزي)"
+    filter: false
+  - name: sdf_press
+    label: "SDF media center - official"
+    label_ar: "المركز الإعلامي لقوات سوريا الديمقراطية - رسمي"
+    filter: false
+  - name: RudawArabic
+    label: "Rudaw Arabic - Kurdistan Region outlet"
+    label_ar: "رووداو عربية - إقليم كردستان"
+    filter: true
+  - name: k24arabic
+    label: "Kurdistan24 Arabic - Kurdistan Region outlet"
+    label_ar: "كوردستان 24 عربية - إقليم كردستان"
+    filter: true
+  - name: kurdistan24english
+    label: "Kurdistan24 English"
+    label_ar: "كوردستان 24 (إنجليزي)"
+    filter: true
+  # --- Regional outlets (only their Syria posts are kept)
+  - name: ajanews
+    label: "Al Jazeera - Qatar-based"
+    label_ar: "الجزيرة - مقرها قطر"
+    filter: true
+  - name: alarabiya
+    label: "Al Arabiya - Saudi-owned"
+    label_ar: "العربية - مملوكة سعودياً"
+    filter: true
+  - name: asharqnews
+    label: "Asharq News - Saudi-owned"
+    label_ar: "الشرق للأخبار - مملوكة سعودياً"
+    filter: true
+  - name: almayadeen
+    label: "Al Mayadeen - Beirut-based"
+    label_ar: "الميادين - مقرها بيروت"
+    filter: true
+  - name: aa_arabic
+    label: "Anadolu Agency - Turkish state news agency (AR)"
+    label_ar: "وكالة الأناضول - وكالة تركية رسمية"
+    filter: true
+  - name: trtarabi
+    label: "TRT Arabi - Turkish public broadcaster"
+    label_ar: "تي آر تي عربي - الإذاعة والتلفزيون التركي"
+    filter: true
 
 # 2) News websites through RSS - free, no key needed. Adds news context.
+#    Google News search feeds collect Syria stories from hundreds of outlets.
 rss_feeds:
-  - url: https://feeds.bbci.co.uk/arabic/rss.xml
+  - url: https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7&hl=ar&gl=SY&ceid=SY:ar
+    label: "Google News - Syria (AR)"
+    label_ar: "أخبار جوجل - سوريا"
+    filter: false
+  - url: https://news.google.com/rss/search?q=Syria&hl=en-US&gl=US&ceid=US:en
+    label: "Google News - Syria (EN)"
+    label_ar: "أخبار جوجل - سوريا (إنجليزي)"
+    filter: false
+  - url: https://sana.sy/feed
+    label: "SANA website - state news agency (AR)"
+    label_ar: "موقع سانا - وكالة الأنباء الرسمية"
+    filter: false
+  - url: https://www.syria.tv/rss.xml
+    label: "Syria TV - opposition-origin"
+    label_ar: "تلفزيون سوريا - معارض سابقاً"
+    filter: false
+  - url: https://www.zamanalwsl.net/rss
+    label: "Zaman al-Wasl - opposition-origin"
+    label_ar: "زمان الوصل - معارضة سابقاً"
+    filter: false
+  - url: https://www.skynewsarabia.com/rss/middle-east.xml
+    label: "Sky News Arabia - UAE-based"
+    label_ar: "سكاي نيوز عربية - مقرها الإمارات"
+    filter: true
+  - url: https://feeds.bbci.co.uk/arabic/middleeast/rss.xml
     label: "BBC Arabic"
     label_ar: "بي بي سي عربي"
     filter: true
@@ -102,13 +245,14 @@ rss_feeds:
 # 3) YouTube comments on recent videos - free with a Google API key
 #    (GUIDE.md, extra A1).
 #    Google gives 10,000 free units a day. Each search term uses about
-#    2,400 a day when run hourly, so keep it to 2-3 terms.
+#    2,400 a day when run hourly, so keep it to 3 terms or fewer.
+#    The third term finds Kurdish-language videos.
 #    "|" means OR, so one term can cover several words.
 youtube:
   enabled: true
-  search_terms: ["سوريا|السوريين|دمشق|حلب", "الشارع السوري"]
-  videos_per_term: 5
-  comments_per_video: 25
+  search_terms: ["سوريا|السوريين|دمشق|حلب", "الشارع السوري", "Rojava|Sûriye|Qamişlo|Kobanê|Efrîn"]
+  videos_per_term: 8
+  comments_per_video: 30
 
 # 4) Telegram connection - comments under channel posts, emoji reactions,
 #    and public group chats. Free; needs a one-time login (GUIDE.md, extra A2).
@@ -130,11 +274,32 @@ telegram_api:
 #      max_results: 10 -> about 7,200 posts a month, roughly $36
 #      max_results: 20 -> about 14,400 posts a month, roughly $72
 #    (10 is the smallest amount X allows per request.)
-#    The query keeps Arabic posts about Syria, skips reposts, and skips posts
+#    The query keeps Arabic posts about Syria plus posts using Kurdish place names, skips reposts, and skips posts
 #    with links, so you pay for people's own words rather than shared news
 #    links. Delete "-has:links" to include posts with links and images.
 x_twitter:
   enabled: true
   max_results: 10
   sort: relevancy          # "relevancy" = most engaged, "recency" = newest
-  query: "(سوريا OR سورية OR السوريين OR دمشق OR حلب OR حمص OR حماة OR ادلب OR اللاذقية OR درعا OR السويداء OR الرقة OR دير الزور) lang:ar -is:retweet -has:links"
+  query: "((سوريا OR سورية OR السوريين OR دمشق OR حلب OR حمص OR حماة OR ادلب OR اللاذقية OR درعا OR السويداء OR الرقة OR دير الزور) lang:ar OR Rojava OR Sûriyê OR Qamişlo OR Kobanê OR Efrîn OR Hesekê) -is:retweet -has:links"
+
+# 6) Reddit - free, no key. Reads the newest comments in a subreddit
+#    (type: comments) or its newest posts (type: posts).
+#    Reddit limits how often GitHub's servers may ask, so keep this list short:
+#    each extra subreddit may sometimes show "Not working right now" for an hour.
+reddit:
+  enabled: true
+  feeds:
+    - subreddit: syria
+      type: comments
+      label: "Reddit r/syria comments"
+      label_ar: "تعليقات ريديت r/syria"
+      filter: true          # keep comments that (or whose post) mention Syria
+
+# 7) Bluesky - free. Needs a free Bluesky account and an "app password"
+#    (GUIDE.md, extra A3); without one, Bluesky usually refuses GitHub's servers.
+bluesky:
+  enabled: false
+  search_terms: ["سوريا", "Syria", "Rojava", "Sûriyê"]
+  posts_per_term: 50
+  filter: true

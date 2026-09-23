@@ -230,14 +230,16 @@ const T = {
     chooseHour: "Choose an hour", chooseHourSub: "Click a square, or use the arrow keys.",
     aboutTitle: "About this tracker and its sources",
     method: [
-      ["Every hour", "an automated job collects recent public posts, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
+      ["Every hour", "an automated job collects recent public posts in Arabic, Kurdish and English, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
       ["People and outlets are kept apart.", "Outlets are channels and news sites. People are comments under posts and videos, messages in public group chats, posts by individuals, and emoji reactions."],
       ["Tone is not truth.", "A story appearing here means people are saying it, not that it is accurate."],
       ["This is not all Syrians.", "Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen."],
       ["Privacy.", "Only aggregate patterns are shown. Individual users are never named, quoted or profiled, and posts by private people are not linked."],
       ["AI can misread", "sarcasm, dialect and context. Treat tone as a rough indicator and read the linked examples."]],
     source: "Source", type: "Type", status: "Status", working: (n) => `Working, ${n} recent`, notWorking: "Not working right now",
-    types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts" },
+    types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", reddit: "Reddit" },
+    langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
+    langsLine: "Languages in this update:",
     footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
@@ -267,14 +269,16 @@ const T = {
     chooseHour: "اختر ساعة", chooseHourSub: "انقر على أي مربع، أو استخدم مفاتيح الأسهم.",
     aboutTitle: "حول هذا المتتبّع ومصادره",
     method: [
-      ["كل ساعة", "تجمع مهمة آلية أحدث المنشورات العامة، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
+      ["كل ساعة", "تجمع مهمة آلية أحدث المنشورات العامة بالعربية والكردية والإنجليزية، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
       ["نفصل بين الناس ووسائل الإعلام.", "وسائل الإعلام هي القنوات والمواقع الإخبارية. أما الناس فهم التعليقات تحت المنشورات والفيديوهات، ورسائل المجموعات العامة، ومنشورات الأفراد، والتفاعلات بالرموز التعبيرية."],
       ["النبرة ليست حقيقة.", "ظهور قصة هنا يعني أن الناس يتداولونها، لا أنها صحيحة."],
       ["هذا ليس صوت كل السوريين.", "النقاش على الإنترنت يُبرز أكثر من يملكون اتصالاً جيداً، ومجتمعات المغتربين، ووسائل الإعلام، ويتأثر باختيار المصادر."],
       ["الخصوصية.", "لا نعرض إلا الأنماط العامة. لا نذكر أسماء المستخدمين ولا نقتبس كلامهم ولا ننشئ ملفات عنهم، ولا نضع روابط لمنشورات الأفراد."],
       ["قد يخطئ الذكاء الاصطناعي", "في فهم السخرية واللهجة والسياق. تعامل مع النبرة كمؤشر تقريبي، واقرأ الأمثلة المرفقة."]],
     source: "المصدر", type: "النوع", status: "الحالة", working: (n) => `يعمل، المنشورات الحديثة: ${n}`, notWorking: "لا يعمل حالياً",
-    types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X" },
+    types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", reddit: "ريديت" },
+    langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
+    langsLine: "لغات المنشورات في هذا التحديث:",
     footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
@@ -533,12 +537,16 @@ function aboutHTML() {
   const t = L(), D = state.latest || {};
   const rows = (D.sources || []).map(s => `<tr><td dir="auto">${esc(srcName(s.name))}</td><td>${t.types[s.platform] || esc(s.platform)}</td><td>${
     s.ok ? t.working(num(s.recent ?? s.fetched)) : `<span class="bad" title="${esc(s.error || "")}">${t.notWorking}</span>`}</td></tr>`).join("");
+  const lg = (D.stats || {}).languages || {}, lgTotal = Object.values(lg).reduce((a, b) => a + b, 0);
+  const langs = lgTotal ? `<p class="sub">${t.langsLine} ${Object.entries(lg).sort((a, b) => b[1] - a[1])
+    .map(([k, v]) => `${t.langs[k] || esc(k)} ${pctText(v / lgTotal)}`).join(rtl() ? "، " : ", ")}</p>` : "";
   return `
   <section id="about">
     <details class="about">
       <summary><span class="chev" aria-hidden="true">▶</span>${t.aboutTitle}</summary>
       <div class="about-body">
         <div class="method">${t.method.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
+        ${langs}
         ${rows ? `<table><thead><tr><th>${t.source}</th><th>${t.type}</th><th>${t.status}</th></tr></thead><tbody>${rows}</tbody></table>` : ""}
       </div>
     </details>

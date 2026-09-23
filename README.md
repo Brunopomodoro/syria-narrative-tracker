@@ -2,6 +2,8 @@
 
 A website that updates itself every hour with the main narratives in public Syrian online discussion, and the tone around each one.
 
+It reads Arabic, Kurdish and English posts from about 30 sources: Telegram channels (official, independent, opposition-origin, Kurdish-run and regional outlets), news sites, YouTube comments, Reddit, X and, optionally, Telegram comments and Bluesky.
+
 - `index.html` is the website
 - `config.yaml` holds your settings and sources (the only file you normally edit)
 - `scripts/pipeline.py` collects posts, asks Claude to find narratives, and writes `data/`
