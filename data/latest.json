@@ -3,90 +3,100 @@
  "site_title": "Syria narrative tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-23T00:35:20Z",
- "checked_at": "2026-09-23T00:35:20Z",
+ "generated_at": "2026-09-23T06:00:00Z",
+ "checked_at": "2026-09-23T06:00:00Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 83,
-  "public_posts": 59,
+  "posts_analyzed": 122,
+  "public_posts": 98,
   "outlet_posts": 24,
   "reactions_posts": 0,
-  "unique_posts": 82,
+  "unique_posts": 122,
   "sources_ok": 5,
   "sources_total": 5,
   "platforms": {
    "telegram": 24,
-   "x": 9,
-   "youtube": 49
+   "x": 10,
+   "youtube": 88
   }
  },
  "overall": {
-  "sentiment": 0.45,
+  "sentiment": 0.4,
   "mood": "Diplomatic",
   "mood_ar": "دبلوماسي",
-  "public_sentiment": 0.35,
+  "public_sentiment": -0.35,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "State media emphasizes President al-Sharaa's diplomatic engagement at the UN, meetings with major world leaders, and messaging on Syria's sovereignty and territorial integrity. Public reaction is sharply divided: many commenters praise the president's demeanor and representation, some mock diplomatic theater while economic hardship persists, others express hope, and a minority voice sectarian and geopolitical concerns. Few ordinary Syrians engage substantively with policy positions.",
-  "brief_ar": "تركز وسائل الإعلام الرسمية على الانخراط الدبلوماسي للرئيس الشرع في الأمم المتحدة والاجتماعات مع قادة عالميين، والتأكيد على السيادة والسلامة الإقليمية. ردود الفعل العامة منقسمة حادة: كثيرون يثنون على تمثيل الرئيس، والبعض يسخر من المسرح الدبلوماسي والأزمة الاقتصادية المستمرة، آخرون يعبرون عن الأمل، وأقلية تثير مخاوف طائفية وجيوسياسية. قلة من السوريين العاديين يتفاعلون بعمق مع المواقف السياسية."
+  "brief": "State media heavily covers the president's UN diplomacy, meetings with international leaders, and statements on sovereignty and peace. Public reaction is sharply divided: diaspora supporters express pride and hope, while critics—often invoking sectarian, pro-Assad, or pro-Iran rhetoric—dismiss the president as a US puppet, question his commitment to the Golan and Palestine, and express despair over economic hardship. Accusations of normalization and foreign pressure appear alongside religious invocations and weary economic complaints.",
+  "brief_ar": "تركز وسائل الإعلام الرسمية على دبلوماسية الرئيس في الأمم المتحدة واجتماعاته مع القادة الدوليين وتصريحاته حول السيادة والسلام. ردود الفعل العامة منقسمة بشدة: أنصار الجالية في الشتات يعبرون عن الفخر والأمل، بينما ينتقده آخرون—غالباً باستخدام خطاب طائفي أو موالٍ للأسد أو إيران—واصفين الرئيس بأنه دمية أمريكية، ويشككون في التزامه تجاه الجولان وفلسطين، ويعبرون عن اليأس من الأزمة الاقتصادية. تظهر اتهامات بالتطبيع والضغط الأجنبي جنباً إلى جنب مع الاستحضارات الدينية والشكاوى الاقتصادية المرهقة."
  },
  "narratives": [
   {
    "id": "international-engagement-un",
-   "title": "Presidential diplomacy at UN General Assembly and international re-engagement",
-   "title_ar": "الانخراط الدبلوماسي الرئاسي في الجمعية العامة للأمم المتحدة وإعادة الانخراط الدولي",
-   "summary": "President al-Sharaa participates in the 81st UN General Assembly in New York, meeting with major world leaders including Trump, Macron, Turkish President Erdoğan, Qatar's Emir, and US Special Envoy Tom Barrack. State media reports extensive bilateral meetings on economic recovery, development cooperation, and Syria's participation in international organizations.",
-   "summary_ar": "يشارك الرئيس الشرع في الجمعية العامة للأمم المتحدة في نيويورك، ويلتقي قادة عالميين بارزين بينهم ترمب وماكرون والرئيس التركي وأمير قطر والمبعوث الأمريكي الخاص. تغطي وسائل الإعلام الرسمية اجتماعات ثنائية واسعة بشأن التعافي الاقتصادي والتعاون في التنمية ومشاركة سوريا في المنظمات الدولية.",
-   "public_reaction": "Public comments express pride in presidential representation and diplomatic engagement, with some praising demeanor and approachability; however, skeptics mock the value of diplomacy amid domestic economic hardship, and others voice sectarian concerns about regional politics.",
-   "public_reaction_ar": "تعليقات عامة تعبر عن فخر بالتمثيل الرئاسي والانخراط الدبلوماسي، مع إشادة ببعضها بالتواضع والقرب من الناس؛ لكن المتشككين يسخرون من قيمة الدبلوماسية وسط الأزمة الاقتصادية المحلية، وآخرون يثيرون مخاوف طائفية حول السياسة الإقليمية.",
-   "sentiment": 0.5,
-   "public_sentiment": 0.25,
+   "title": "Presidential diplomacy and UN General Assembly participation",
+   "title_ar": "الدبلوماسية الرئاسية والمشاركة في الجمعية العامة للأمم المتحدة",
+   "summary": "President al-Sharaa participates in the 81st UN General Assembly, holding bilateral meetings with senior EU, UN, and international officials on economic recovery, development cooperation, and regional stability. He meets with US President Trump, French President Macron, US Special Envoy Tom Barrack, and addresses the Atlantic Council on Syria's future, emphasizing diplomatic approaches to peace and sovereignty.",
+   "summary_ar": "يشارك الرئيس الشرع في الدورة الحادية والثمانين للجمعية العامة للأمم المتحدة، عاقداً اجتماعات ثنائية مع مسؤولين كبار من الاتحاد الأوروبي والأمم المتحدة والمنظمات الدولية حول التعافي الاقتصادي والتعاون في التنمية والاستقرار الإقليمي. يجتمع مع الرئيس الأمريكي ترامب والرئيس الفرنسي ماكرون والمبعوث الأمريكي الخاص توم باراك، ويخاطب مجلس الأطلسي بشأن مستقبل سوريا، مؤكداً على النهج الدبلوماسي للسلام والسيادة.",
+   "public_reaction": "Public reactions split sharply: diaspora members and supporters express pride in presidential representation and hope for economic partnership, while critics accuse him of being a US tool, abandoning Palestinian and Golan causes, and pursuing normalization with Israel. Some invoke sectarian rhetoric or dismiss the entire engagement as theater masking continued decline.",
+   "public_reaction_ar": "انقسمت ردود الفعل بشدة: يعبر أعضاء الجالية والمؤيدون عن الفخر بالتمثيل الرئاسي والأمل في الشراكة الاقتصادية، بينما يتهمه آخرون بأنه أداة أمريكية تتخلى عن القضايا الفلسطينية والجولان وتسعى للتطبيع مع إسرائيل. يستحضر البعض خطاباً طائفياً أو يرفضون الالتزام برمته باعتباره مسرحية تغطي تدهوراً مستمراً.",
+   "sentiment": 0.55,
+   "public_sentiment": -0.2,
    "emotions": [
+    "hope",
     "pride",
     "skepticism",
-    "hope",
-    "concern"
+    "anger"
    ],
    "emotions_ar": [
-    "فخر",
-    "شك",
     "أمل",
-    "قلق"
+    "فخر",
+    "تشكك",
+    "غضب"
    ],
    "framings": [
-    "Return to international community and multilateral engagement",
-    "Presidential demeanor as representation of nation",
-    "Diplomatic theater disconnected from domestic crisis",
-    "Sectarian and geopolitical positioning in regional dynamics"
+    "International re-engagement and economic partnership",
+    "Presidential assertiveness on sovereignty",
+    "US-led normalization plot",
+    "Performative diplomacy masking sellout",
+    "Regional power balancing"
    ],
    "framings_ar": [
-    "العودة إلى المجتمع الدولي والانخراط متعدد الأطراف",
-    "السلوك الرئاسي كتمثيل للأمة",
-    "مسرح دبلوماسي منفصل عن الأزمة المحلية",
-    "التموضع الطائفي والجيوسياسي في الديناميات الإقليمية"
+    "إعادة الالتزام الدولي والشراكة الاقتصادية",
+    "حزم رئاسي على السيادة",
+    "مؤامرة تطبيع بقيادة أمريكا",
+    "دبلوماسية تمثيلية تغطي تسليماً",
+    "توازن القوى الإقليمي"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 43,
-   "public_volume": 33,
-   "share": 0.518,
-   "engagement": 466,
+   "flags": [
+    "Anti-US and anti-normalization rhetoric widespread but not coordinated",
+    "Sectarian accusations (pro-Iran, pro-Assad language) scattered throughout",
+    "Unverified claims of 90% Israeli agreement and president's intentions"
+   ],
+   "flags_ar": [
+    "الخطاب المناهض للولايات المتحدة والمناهض للتطبيع منتشر لكن غير منسق",
+    "اتهامات طائفية (لغة موالية لإيران والأسد) منثورة في جميع أنحاء التعليقات",
+    "ادعاءات لم يتم التحقق منها بشأن اتفاق إسرائيلي بنسبة 90 بالمائة ونوايا الرئيس"
+   ],
+   "volume": 57,
+   "public_volume": 38,
+   "share": 0.467,
+   "engagement": 1099,
    "platforms": {
-    "telegram": 10,
-    "youtube": 32,
-    "x": 1
+    "telegram": 19,
+    "x": 6,
+    "youtube": 32
    },
    "sources": [
     "YouTube comments",
     "SANA - state news agency (EN)",
-    "Enab Baladi - independent (EN)",
-    "X posts"
+    "X posts",
+    "Enab Baladi - independent (EN)"
    ],
    "examples": [
     {
      "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78158",
+     "url": "https://t.me/SANANewsEnglish/78152",
      "platform": "telegram"
     },
     {
@@ -103,112 +113,49 @@
    "first_seen": "2026-09-21T23:18:12Z"
   },
   {
-   "id": "israeli-occupation-and-golan",
-   "title": "Israeli violations and occupation of Syrian territory",
-   "title_ar": "الانتهاكات الإسرائيلية واحتلال الأراضي السورية",
-   "summary": "President al-Sharaa emphasizes Syria's insistence on Golan Heights sovereignty, stating the territory is non-negotiable and must be restored as a condition for lasting peace with Israel. He claims Syria reached 90% agreement with Israel before Israel withdrew, and rejects the logic of Israeli security claims justifying territorial occupation. State media reports 267 Israeli violations in August and ongoing military incursions.",
-   "summary_ar": "يؤكد الرئيس الشرع إصرار سوريا على السيادة على الجولان، ويصرح أن الأرض غير قابلة للتفاوض ويجب استعادتها كشرط للسلام الدائم مع إسرائيل. يدعي أن سوريا وصلت إلى 90% من الاتفاق مع إسرائيل قبل انسحابها، ويرفض منطق مطالب الأمن الإسرائيلي الذي يبرر الاحتلال الإقليمي. تبلغ وسائل الإعلام الرسمية عن 267 انتهاكاً إسرائيلياً في أغسطس.",
-   "public_reaction": "Public posts circulate and amplify the president's statements on Golan, with some users praising firm territorial stance; one user sarcastically notes parallels to Trump's real estate holdings in dismissing logic of occupying others' land.",
-   "public_reaction_ar": "ينشر المستخدمون ويضخمون تصريحات الرئيس بشأن الجولان، مع إشادة البعض بالموقف الإقليمي الراسخ؛ يشير أحدهم بسخرية إلى تشابه مع ممتلكات ترمب العقارية في رفضه منطق احتلال أراضي الآخرين.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.4,
-   "emotions": [
-    "determination",
-    "sarcasm",
-    "affirmation"
-   ],
-   "emotions_ar": [
-    "عزم",
-    "سخرية",
-    "تأكيد"
-   ],
-   "framings": [
-    "Non-negotiable territorial sovereignty and restoration",
-    "Israeli violation of agreement and aggression",
-    "Diplomatic pursuit of peace with preconditions",
-    "Rejection of occupation justified by security claims"
-   ],
-   "framings_ar": [
-    "السيادة الإقليمية غير القابلة للتفاوض والاستعادة",
-    "انتهاك إسرائيلي للاتفاق والعدوان",
-    "السعي الدبلوماسي للسلام برشروط مسبقة",
-    "رفض الاحتلال الذي يبرره ادعاء الأمن"
-   ],
-   "flags": [
-    "Unverified claim: '90% agreement' with Israel; no independent confirmation of negotiations status"
-   ],
-   "flags_ar": [
-    "ادعاء لم يتم التحقق منه: '90% من الاتفاق' مع إسرائيل؛ لا تأكيد مستقل لحالة المفاوضات"
-   ],
-   "volume": 10,
-   "public_volume": 6,
-   "share": 0.12,
-   "engagement": 87,
-   "platforms": {
-    "telegram": 4,
-    "x": 5
-   },
-   "sources": [
-    "X posts",
-    "SANA - state news agency (EN)",
-    "Enab Baladi - independent (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78161",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6753",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-22T18:56:07Z"
-  },
-  {
    "id": "presidential-demeanor-and-accessibility",
-   "title": "President's approachability and informal engagement with diaspora",
-   "title_ar": "قرب الرئيس من الناس والانخراط غير الرسمي مع الجالية",
-   "summary": "Videos show President al-Sharaa jokingly requesting a different chair at a diaspora meeting and collecting written suggestions from audience members on paper. Public reactions range from praise for his humility and accessibility to mockery of performative gestures disconnected from addressing substantive issues.",
-   "summary_ar": "تظهر مقاطع الرئيس الشرع يطلب بمزاح تغيير الكرسي في اجتماع الجالية وجمع مقترحات مكتوبة من الحاضرين على الورق. تتراوح ردود الفعل العامة بين الإشادة بتواضعه والقرب من الناس والسخرية من الإيماءات الاستعراضية غير المرتبطة بمعالجة المسائل الموضوعية.",
-   "public_reaction": "Highly polarized: supporters celebrate humility and connection with citizens; critics dismiss it as performative theater, with some pointing out that informal gestures do not address economic crisis or occupation of territory.",
-   "public_reaction_ar": "منقسمة جداً: المؤيدون يحتفلون بالتواضع والاتصال بالمواطنين؛ الناقدون يعتبرونها مسرحاً استعراضياً، مع إشارة البعض إلى أن الإيماءات غير الرسمية لا تعالج الأزمة الاقتصادية أو احتلال الأراضي.",
-   "sentiment": 0.2,
-   "public_sentiment": 0.15,
+   "title": "President's informal engagement with diaspora and public listening",
+   "title_ar": "الانخراط غير الرسمي للرئيس مع الجالية والاستماع للعامة",
+   "summary": "The president meets members of the Syrian diaspora in New York, engaging informally, writing down citizens' concerns on paper, and allowing cultural performances (singer Yahya Hawwa performs). He claims he will step down if Syria reaches safety. This accessibility contrasts with perceptions of previous regimes.",
+   "summary_ar": "يلتقي الرئيس بأعضاء الجالية السورية في نيويورك، منخرطاً بطريقة غير رسمية، وكاتباً مخاوف المواطنين على الورق، وسامحاً بالعروض الثقافية (يؤدي المغني يحيى حوى). يؤكد أنه سينسحب إذا وصلت سوريا إلى الأمان. يتناقض هذا الوضوح مع تصورات الأنظمة السابقة.",
+   "public_reaction": "Supporters see this as refreshingly human and accessible leadership, praising his humility and willingness to listen. Critics remain skeptical, sarcastically noting that if he truly intended to step down, Syria would never reach safety under his rule, or comparing him to Assad for performative populism.",
+   "public_reaction_ar": "يرى المؤيدون هذا قيادة منعشة وإنسانية وميسورة، مادحين تواضعه واستعداده للاستماع. يبقى النقاد متشككين، ملاحظين بسخرية أنه إذا كان ينوي الانسحاب فعلاً، فلن تصل سوريا أبداً إلى الأمان تحت حكمه، أو مقارنين إياه بالأسد من حيث الشعبوية التمثيلية.",
+   "sentiment": 0.5,
+   "public_sentiment": 0.1,
    "emotions": [
-    "admiration",
-    "mockery",
-    "frustration",
-    "skepticism"
+    "pride",
+    "hope",
+    "skepticism",
+    "cynicism"
    ],
    "emotions_ar": [
-    "إعجاب",
-    "سخرية",
-    "إحباط",
-    "شك"
+    "فخر",
+    "أمل",
+    "تشكك",
+    "سخرية"
    ],
    "framings": [
-    "Authentic humility and presidential accessibility",
-    "Performative theater divorced from policy substance",
-    "Human touch in symbolic gesture",
-    "Contrast between image and material reality"
+    "Accessible, humble leadership",
+    "Listening to citizen concerns",
+    "Commitment to eventual departure",
+    "Performative populism without substance",
+    "Transition from authoritarian rule"
    ],
    "framings_ar": [
-    "التواضع الأصيل والقرب الرئاسي",
-    "مسرح استعراضي منفصل عن جوهر السياسة",
-    "اللمسة الإنسانية في الإيماءة الرمزية",
-    "التناقض بين الصورة والواقع المادي"
+    "قيادة ميسورة وتواضعة",
+    "الاستماع لمخاوف المواطنين",
+    "الالتزام بالرحيل النهائي",
+    "شعبوية تمثيلية بدون جوهر",
+    "الانتقال من الحكم الاستبدادي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 8,
-   "public_volume": 8,
-   "share": 0.096,
+   "volume": 34,
+   "public_volume": 34,
+   "share": 0.279,
    "engagement": 60,
    "platforms": {
-    "youtube": 8
+    "youtube": 34
    },
    "sources": [
     "YouTube comments"
@@ -216,52 +163,134 @@
    "examples": [
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=JLKQfYcMNmg",
+     "url": "https://www.youtube.com/watch?v=soJLBilP7I8",
      "platform": "youtube"
     }
    ],
    "first_seen": "2026-09-23T00:35:20Z"
   },
   {
+   "id": "israeli-occupation-and-golan",
+   "title": "Israeli violations and Golan negotiations",
+   "title_ar": "الانتهاكات الإسرائيلية ومفاوضات الجولان",
+   "summary": "President al-Sharaa discusses Israeli attacks, territory occupation, and attempts at negotiation, stating that Syria seeks lasting peace while insisting on territorial integrity and the return of the Golan. Reports document 267 Israeli violations in August, with ongoing shelling and incursions in Daraa and Quneitra. The president claims negotiations reached 90% agreement before Israel withdrew.",
+   "summary_ar": "يناقش الرئيس الشرع الهجمات الإسرائيلية واحتلال الأراضي ومحاولات التفاوض، مؤكداً أن سوريا تسعى للسلام الدائم مع الإصرار على السلامة الإقليمية وعودة الجولان. تتوثق التقارير 267 انتهاكاً إسرائيلياً في آب/أغسطس، مع قصف واقتحامات مستمرة في درعا والقنيطرة. يؤكد الرئيس أن المفاوضات وصلت إلى 90 بالمائة من الاتفاق قبل انسحاب إسرائيل.",
+   "public_reaction": "Critics argue the president is merely talking while Israel advances; some question whether he will ever actually recover the territory or if this is political theater. Supporters emphasize the diplomatic route and sovereignty claims. Religious expressions of solidarity with Gaza and Palestine appear frequently.",
+   "public_reaction_ar": "يجادل النقاد بأن الرئيس مجرد يتحدث بينما تتقدم إسرائيل؛ يتساءل البعض ما إذا كان سيستعيد الأراضي فعلاً أم أن هذا مسرح سياسي. يؤكد المؤيدون على الطريق الدبلوماسي والمطالب بالسيادة. تظهر التعبيرات الدينية عن التضامن مع غزة وفلسطين بشكل متكرر.",
+   "sentiment": 0.25,
+   "public_sentiment": -0.4,
+   "emotions": [
+    "defiance",
+    "doubt",
+    "frustration",
+    "religious solidarity"
+   ],
+   "emotions_ar": [
+    "تحدٍ",
+    "شك",
+    "إحباط",
+    "تضامن ديني"
+   ],
+   "framings": [
+    "Diplomatic negotiation as path to recovery",
+    "Israel's continued occupation and aggression",
+    "President as successor to Assad—talk without action",
+    "Golan as non-negotiable Syrian right",
+    "Palestine-Syria solidarity"
+   ],
+   "framings_ar": [
+    "التفاوض الدبلوماسي كطريق للاستعادة",
+    "الاحتلال والعدوان الإسرائيلي المستمر",
+    "الرئيس خليفة للأسد—حديث بدون فعل",
+    "الجولان كحق سوري غير قابل للتفاوض",
+    "تضامن فلسطين وسوريا"
+   ],
+   "flags": [
+    "Unverified claim of 90% negotiation agreement",
+    "Sectarian framing: accusations of US-Israeli conspiracy",
+    "Comparison to Assad's rule—implicit legitimacy question"
+   ],
+   "flags_ar": [
+    "ادعاء غير مؤكد بنسبة 90 بالمائة من الاتفاق",
+    "إطار طائفي: اتهامات بالمؤامرة الأمريكية-الإسرائيلية",
+    "مقارنة بحكم الأسد—تساؤل شرعية ضمني"
+   ],
+   "volume": 9,
+   "public_volume": 8,
+   "share": 0.074,
+   "engagement": 21,
+   "platforms": {
+    "telegram": 1,
+    "youtube": 7,
+    "x": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Enab Baladi - independent (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6753",
+     "platform": "telegram"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=10lQZW223fA",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-22T18:56:07Z"
+  },
+  {
    "id": "economic-hardship-and-skepticism",
-   "title": "Economic crisis persists amid government diplomatic activity",
-   "title_ar": "الأزمة الاقتصادية مستمرة وسط النشاط الدبلوماسي الحكومي",
-   "summary": "Public commenters repeatedly express skepticism that diplomatic engagement and ceremonial activities translate into economic relief. Users contrast diaspora members' apparent comfort abroad with bread shortages and economic hardship domestically, and voice doubt that government promises of improvement match reality.",
-   "summary_ar": "يعبر المعلقون العموميون بشكل متكرر عن شك في أن الانخراط الدبلوماسي والأنشطة الاحتفالية يترجم إلى تخفيف اقتصادي. يقارن المستخدمون الراحة الظاهرة لأعضاء الجالية بالخارج مع نقص الخبز والأزمات الاقتصادية محلياً، ويعبرون عن الشك في أن وعود الحكومة بالتحسن تطابق الواقع.",
-   "public_reaction": "Strong skepticism with sarcasm; commenters invoke economic hardship as counterpoint to diplomatic activity, joke about government exaggeration, and express frustration at gap between official narrative and lived experience.",
-   "public_reaction_ar": "شك قوي مع سخرية؛ المعلقون يستدعون الأزمة الاقتصادية كنقطة مقابلة للنشاط الدبلوماسي، يسخرون من المبالغة الحكومية، ويعبرون عن الإحباط من الفجوة بين السرد الرسمي والواقع المعاش.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.55,
+   "title": "Economic crisis persists amid diplomatic activity",
+   "title_ar": "استمرار الأزمة الاقتصادية في خضم النشاط الدبلوماسي",
+   "summary": "While state media reports on economic recovery initiatives and international partnerships, public comments reveal persistent hardship: lack of bread, unemployment, poverty, and no visible improvement despite diplomatic efforts. Commenters question whether diaspora meetings and international deals will translate to relief for ordinary Syrians.",
+   "summary_ar": "بينما تقارير وسائل الإعلام الرسمية عن مبادرات التعافي الاقتصادي والشراكات الدولية، تكشف التعليقات العامة عن معاناة مستمرة: نقص الخبز والبطالة والفقر وعدم وجود تحسن واضح رغم الجهود الدبلوماسية. يتساءل المعلقون ما إذا كانت اجتماعات الجالية والصفقات الدولية ستترجم إلى إغاثة للسوريين العاديين.",
+   "public_reaction": "Frustrated and weary; many express that bread shortages and joblessness are the real crisis, not symbolic diplomatic victories. Some mock the notion of 'safe harbor' while people starve. A few note the gap between international engagement and domestic reality, with dark humor or resignation.",
+   "public_reaction_ar": "محبطة ومرهقة؛ يعبر الكثيرون عن أن نقص الخبز والبطالة هي الأزمة الحقيقية، وليس النصائح الدبلوماسية الرمزية. يسخر البعض من فكرة 'بر الأمان' بينما الناس يتضورون جوعاً. لاحظ عدد قليل الفجوة بين الالتزام الدولي والواقع المحلي، بنكتة سوداء أو استسلام.",
+   "sentiment": 0.2,
+   "public_sentiment": -0.65,
    "emotions": [
     "frustration",
-    "sarcasm",
-    "doubt",
-    "cynicism"
+    "despair",
+    "weariness",
+    "skepticism"
    ],
    "emotions_ar": [
     "إحباط",
-    "سخرية",
-    "شك",
-    "سخرية سوداء"
+    "يأس",
+    "إرهاق",
+    "تشكك"
    ],
    "framings": [
-    "Diplomatic activity masks failure to address domestic crisis",
-    "Gap between official optimism and lived economic reality",
-    "Diaspora comfort contrasts with domestic scarcity",
-    "Performance of government statements lacks credibility"
+    "Economic recovery plans and partnerships",
+    "Bread shortages and joblessness",
+    "Diplomatic wins without domestic benefit",
+    "False promises and performative diplomacy",
+    "Gap between state narrative and lived reality"
    ],
    "framings_ar": [
-    "الأنشطة الدبلوماسية تخفي الفشل في معالجة الأزمة المحلية",
-    "الفجوة بين التفاؤل الرسمي والواقع الاقتصادي المعاش",
-    "راحة الجالية تتناقض مع الندرة المحلية",
-    "أداء البيانات الحكومية تفتقر للمصداقية"
+    "خطط التعافي الاقتصادي والشراكات",
+    "نقص الخبز والبطالة",
+    "انتصارات دبلوماسية بدون فائدة محلية",
+    "وعود كاذبة ودبلوماسية تمثيلية",
+    "الفجوة بين السرد الرسمي والواقع المعاش"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "Widespread cynicism but no coordinated messaging",
+    "Lived experiences shared anecdotally; no false statistics cited"
+   ],
+   "flags_ar": [
+    "تشاؤم منتشر لكن لا توجد رسائل منسقة",
+    "تم تبادل التجارب المعاشة بشكل روائي؛ لم يتم الاستشهاد بإحصائيات كاذبة"
+   ],
    "volume": 3,
    "public_volume": 3,
-   "share": 0.036,
-   "engagement": 2,
+   "share": 0.025,
+   "engagement": 4,
    "platforms": {
     "youtube": 3
    },
@@ -271,7 +300,72 @@
    "examples": [
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=zma71HEIDm4",
+     "url": "https://www.youtube.com/watch?v=-j9XPhDlk04",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T00:35:20Z"
+  },
+  {
+   "id": "sectarian-and-geopolitical-concerns",
+   "title": "Sectarian and geopolitical anxieties about regional power balance",
+   "title_ar": "القلق الطائفي والجيوسياسي بشأن توازن القوى الإقليمي",
+   "summary": "Public comments invoke concerns about Iran's influence, accusations that the president is controlled by the US or Israel, and worries about Iraq's autonomy from Iranian militias. Some commenters frame the president's meetings as subservient to Trump and Netanyahu, while others invoke religious language warning against sectarian plots.",
+   "summary_ar": "تستحضر التعليقات العامة مخاوف من نفوذ إيران، والاتهامات بأن الرئيس تحت السيطرة الأمريكية أو الإسرائيلية، والقلق من استقلالية العراق عن المليشيات الإيرانية. يطوّق بعض المعلقين اجتماعات الرئيس بأنها خاضعة لترامب ونتنياهو، بينما يستحضر آخرون لغة دينية تحذر من المؤامرات الطائفية.",
+   "public_reaction": "Sectarian and ideological divisions evident; pro-Iran voices accuse the president of betrayal; anti-Iran voices support regional de-escalation. Some invoke religious framings to delegitimize both the president and critics. The debate reflects broader Middle Eastern proxy conflicts.",
+   "public_reaction_ar": "تظهر الانقسامات الطائفية والأيديولوجية؛ الأصوات الموالية لإيران تتهم الرئيس بالخيانة؛ الأصوات المناهضة لإيران تدعم تخفيف التصعيد الإقليمي. يستحضر البعض إطارات دينية لإلغاء شرعية الرئيس والنقاد على حد سواء. يعكس النقاش الصراعات الأوسع للوسيط الشرق الأوسط.",
+   "sentiment": 0.15,
+   "public_sentiment": -0.55,
+   "emotions": [
+    "fear",
+    "anger",
+    "suspicion",
+    "religious concern"
+   ],
+   "emotions_ar": [
+    "خوف",
+    "غضب",
+    "شك",
+    "قلق ديني"
+   ],
+   "framings": [
+    "Iranian influence and militias",
+    "US-Israeli control of leadership",
+    "Sectarian plots and conspiracies",
+    "Regional power balance and autonomy",
+    "Religious obligation to resist foreign domination"
+   ],
+   "framings_ar": [
+    "النفوذ الإيراني والمليشيات",
+    "السيطرة الأمريكية-الإسرائيلية على القيادة",
+    "المؤامرات والمؤامرات الطائفية",
+    "توازن القوى الإقليمي والاستقلالية",
+    "الالتزام الديني بمقاومة الهيمنة الأجنبية"
+   ],
+   "flags": [
+    "Sectarian language and accusations widespread",
+    "Unverified claims of US-Israeli-Saudi coordination",
+    "Invocation of religious authority to frame geopolitics"
+   ],
+   "flags_ar": [
+    "اللغة والاتهامات الطائفية منتشرة",
+    "ادعاءات غير مؤكدة بتنسيق أمريكي-إسرائيلي-سعودي",
+    "استحضار السلطة الدينية لإطار الجيوسياسة"
+   ],
+   "volume": 3,
+   "public_volume": 3,
+   "share": 0.025,
+   "engagement": 3,
+   "platforms": {
+    "youtube": 3
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=wiRjJ_fSwaY",
      "platform": "youtube"
     }
    ],
@@ -280,144 +374,87 @@
   {
    "id": "regional-diplomatic-support",
    "title": "Regional and international leaders affirm support for Syria",
-   "title_ar": "زعماء إقليميون ودوليون يؤكدون دعمهم لسوريا",
-   "summary": "Turkish President Erdoğan, Qatar's Emir, French President Macron, and other regional and international leaders publicly affirm support for Syria's recovery, sovereignty, and territorial integrity. Messages emphasize continued backing and cooperation during Syria's reconstruction phase.",
-   "summary_ar": "يؤكد الرئيس التركي إردوغان وأمير قطر والرئيس الفرنسي ماكرون وزعماء إقليميون ودوليون آخرون علناً دعمهم لتعافي سوريا وسيادتها والسلامة الإقليمية. تركز الرسائل على الدعم المستمر والتعاون خلال مرحلة إعادة البناء.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
+   "title_ar": "قادة إقليميون ودوليون يؤكدون دعمهم لسوريا",
+   "summary": "Turkish President Erdoğan, Qatar's Emir Sheikh Tamim, and European officials (Romania, Cyprus) affirm support for Syrian sovereignty, territorial integrity, and stability. State media highlights these endorsements as validation of Syria's new direction and international re-engagement.",
+   "summary_ar": "يؤكد الرئيس التركي أردوغان وأمير قطر الشيخ تميم والمسؤولون الأوروبيون (رومانيا وقبرص) دعمهم لسيادة سوريا والسلامة الإقليمية والاستقرار. تبرز وسائل الإعلام الرسمية هذه الموافقات كتصديق لاتجاه سوريا الجديد وإعادة الالتزام الدولي.",
+   "public_reaction": "Mostly supportive among diaspora and state-aligned commenters; some express relief that Syria is no longer isolated. Critics dismiss these endorsements as hollow or conditional on compliance with Western/US interests. Limited public engagement overall on this narrative.",
+   "public_reaction_ar": "في الأساس داعم بين الجالية والمعلقين المحاذين للدولة؛ يعبر البعض عن ارتياح من أن سوريا لم تعد معزولة. ينبذ النقاد هذه الموافقات باعتبارها فارغة أو مشروطة بالامتثال لمصالح الغرب/الولايات المتحدة. مشاركة عامة محدودة بشكل عام في هذا السرد.",
    "sentiment": 0.6,
-   "public_sentiment": null,
+   "public_sentiment": 0.15,
    "emotions": [
-    "affirmation",
-    "support"
-   ],
-   "emotions_ar": [
-    "تأكيد",
-    "دعم"
-   ],
-   "framings": [
-    "International solidarity with Syria's recovery",
-    "Regional backing for sovereignty and stability",
-    "Multilateral support for reconstruction efforts"
-   ],
-   "framings_ar": [
-    "التضامن الدولي مع تعافي سوريا",
-    "الدعم الإقليمي للسيادة والاستقرار",
-    "الدعم متعدد الأطراف لجهود إعادة البناء"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 2,
-   "public_volume": 0,
-   "share": 0.024,
-   "engagement": 102,
-   "platforms": {
-    "telegram": 2
-   },
-   "sources": [
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78152",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-22T22:10:42Z"
-  },
-  {
-   "id": "sectarian-and-geopolitical-concerns",
-   "title": "Sectarian and geopolitical anxieties about regional power balance",
-   "title_ar": "قلق طائفي وجيوسياسي بشأن توازن القوى الإقليمي",
-   "summary": "Commenters articulate concerns about Turkish and Iranian regional ambitions, invoking historical Sunni-Shia and Ottoman-Safavid dynamics. One user expresses worry about proxy conflicts and sectarian dimensions of Turkish-Iranian competition for regional influence, framed as a continuation of historical imperial rivalries.",
-   "summary_ar": "يعبر المعلقون عن قلق بشأن الطموحات الإقليمية التركية والإيرانية، مستدعين الديناميات السنية-الشيعية والعثمانية-الصفوية التاريخية. يعبر أحدهم عن قلق بشأن الصراعات بالوكالة والأبعاد الطائفية للمنافسة التركية-الإيرانية على النفوذ الإقليمي، مؤطرة كاستمرار للتنافس الإمبراطوري التاريخي.",
-   "public_reaction": "Limited but explicit sectarian framing in one extended comment; most users avoid this framing, suggesting it remains a minority concern but noteworthy given its invocation of historical binaries and proxy conflict language.",
-   "public_reaction_ar": "تأطير طائفي محدود لكن واضح في تعليق واحد طويل؛ معظم المستخدمين يتجنبون هذا التأطير، مما يشير إلى أنه يبقى قلقاً أقلياً لكنه جدير بالملاحظة بسبب استدعاء الثنائيات التاريخية ولغة الصراع بالوكالة.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.6,
-   "emotions": [
-    "anxiety",
-    "concern",
+    "relief",
+    "validation",
     "skepticism"
    ],
    "emotions_ar": [
-    "قلق",
-    "مخاوف",
-    "شك"
+    "ارتياح",
+    "تصديق",
+    "تشكك"
    ],
    "framings": [
-    "Historical Sunni-Shia imperial competition revisited",
-    "Proxy warfare as vehicle for regional power competition",
-    "Turkish-Iranian rivalry continuing Ottoman-Safavid patterns",
-    "Sectarian implications of geopolitical positioning"
+    "International validation and support",
+    "Regional allies affirming sovereignty",
+    "Conditional endorsements serving Western interests",
+    "Syria's isolation ending"
    ],
    "framings_ar": [
-    "منافسة إمبراطورية سنية-شيعية تاريخية معاد اختبارها",
-    "الحروب بالوكالة كوسيلة لمنافسة القوى الإقليمية",
-    "منافسة تركية-إيرانية تستمر الأنماط العثمانية-الصفوية",
-    "الآثار الطائفية للتموضع الجيوسياسي"
+    "التحقق الدولي والدعم",
+    "الحلفاء الإقليميون يؤكدون السيادة",
+    "موافقات مشروطة تخدم المصالح الغربية",
+    "نهاية عزلة سوريا"
    ],
-   "flags": [
-    "Sectarian framing invoking historical binaries; potential to inflame communal sensitivities"
-   ],
-   "flags_ar": [
-    "تأطير طائفي يستدعي ثنائيات تاريخية؛ احتمال إشعال الحساسيات المجتمعية"
-   ],
-   "volume": 2,
-   "public_volume": 2,
-   "share": 0.024,
-   "engagement": 0,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.008,
+   "engagement": 11,
    "platforms": {
-    "x": 1,
     "youtube": 1
    },
    "sources": [
-    "X posts",
     "YouTube comments"
    ],
    "examples": [
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=JLKQfYcMNmg",
+     "url": "https://www.youtube.com/watch?v=wiRjJ_fSwaY",
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-23T00:35:20Z"
+   "first_seen": "2026-09-22T22:10:42Z"
   },
   {
    "id": "international-business-normalization",
    "title": "International business engagement signals normalization",
-   "title_ar": "انخراط الأعمال الدولية يشير إلى المعايرة",
-   "summary": "BMW Group appoints Citadel Premium Motors as official dealer in Syria, marking brand's planned return after 2011 suspension. State media presents this as sign of economic recovery and international business confidence in Syria's stability.",
-   "summary_ar": "تعين مجموعة بي إم دبليو شركة Citadel Premium Motors كموزع رسمي في سوريا، علامة على عودة العلامة المخطط لها بعد تعليق 2011. تعرض وسائل الإعلام الرسمية هذا كمؤشر على التعافي الاقتصادي وثقة الأعمال الدولية بالاستقرار السوري.",
+   "title_ar": "الانخراط التجاري الدولي يشير إلى التطبيع",
+   "summary": "BMW Group appoints Citadel Premium Motors as official dealer in Syria, marking the brand's planned return after operations were suspended in 2011. State media frames this as a sign of business confidence and normalization of Syria's international standing.",
+   "summary_ar": "تعين مجموعة BMW شركة Citadel Premium Motors كوكيل رسمي في سوريا، مما يشير إلى عودة الماركة المخطط لها بعد توقف العمليات في 2011. تطوّق وسائل الإعلام الرسمية هذا كعلامة على ثقة الأعمال وتطبيع الوضع الدولي لسوريا.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.5,
+   "sentiment": 0.7,
    "public_sentiment": null,
    "emotions": [
-    "optimism",
-    "confidence"
+    "optimism"
    ],
    "emotions_ar": [
-    "تفاؤل",
-    "ثقة"
+    "تفاؤل"
    ],
    "framings": [
-    "International corporate confidence in Syrian stability",
-    "Economic recovery signaled by business investment",
-    "Normalization of Syria's position in global commerce"
+    "International business confidence",
+    "Economic normalization",
+    "Return of global brands"
    ],
    "framings_ar": [
-    "ثقة الشركات الدولية بالاستقرار السوري",
-    "التعافي الاقتصادي يشير إليه الاستثمار التجاري",
-    "معايرة موقع سوريا في التجارة العالمية"
+    "ثقة الأعمال الدولية",
+    "التطبيع الاقتصادي",
+    "عودة العلامات العالمية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
-   "share": 0.012,
+   "share": 0.008,
    "engagement": 9,
    "platforms": {
     "telegram": 1
@@ -436,37 +473,37 @@
   },
   {
    "id": "social-cohesion-and-polarization",
-   "title": "Calls for civil peace and reduced polarization in Hasakah",
-   "title_ar": "دعوات للسلام المدني وتقليل الاستقطاب في الحسكة",
-   "summary": "Outlet reporting on residents of Hasakah calling for stronger civil peace, reduced polarization, and protection of social ties as political and administrative changes reshape the governorate.",
-   "summary_ar": "تقارير المنافذ عن سكان الحسكة يدعون إلى سلام مدني أقوى وتقليل الاستقطاب وحماية الروابط الاجتماعية مع إعادة تشكيل التغييرات السياسية والإدارية للمحافظة.",
+   "title": "Calls for civil peace and reduced polarization",
+   "title_ar": "دعوات للسلام المدني وتقليل الاستقطاب",
+   "summary": "Enab Baladi reports that residents of Hasakah are calling for stronger civil peace, reduced polarization, and protection of social ties as political and administrative changes reshape the governorate. This reflects broader concerns about social fracture in post-conflict Syria.",
+   "summary_ar": "تفيد Enab Baladi بأن سكان الحسكة يطالبون بسلام مدني أقوى وتقليل الاستقطاب وحماية الروابط الاجتماعية مع إعادة تشكيل التغييرات السياسية والإدارية للمحافظة. يعكس هذا المخاوف الأوسع بشأن الانقسام الاجتماعي في سوريا ما بعد الصراع.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.1,
+   "sentiment": 0.4,
    "public_sentiment": null,
    "emotions": [
-    "concern",
-    "appeal"
+    "hope",
+    "caution"
    ],
    "emotions_ar": [
-    "قلق",
-    "استشفاع"
+    "أمل",
+    "حذر"
    ],
    "framings": [
-    "Institutional change creates social tensions",
-    "Need for civic cohesion amid governance transition",
-    "Protection of community bonds during political restructuring"
+    "Social cohesion and reconciliation",
+    "Administrative reform and local governance",
+    "Protection of community ties"
    ],
    "framings_ar": [
-    "التغيير المؤسسي يخلق توترات اجتماعية",
-    "الحاجة إلى التماسك المدني وسط انتقال الحكم",
-    "حماية الروابط المجتمعية خلال إعادة الهيكلة السياسية"
+    "التماسك الاجتماعي والمصالحة",
+    "الإصلاح الإداري والحكم المحلي",
+    "حماية الروابط المجتمعية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 1,
    "public_volume": 0,
-   "share": 0.012,
+   "share": 0.008,
    "engagement": 12,
    "platforms": {
     "telegram": 1
@@ -510,8 +547,8 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 56,
-   "recent": 56
+   "fetched": 96,
+   "recent": 96
   },
   {
    "name": "X posts",
@@ -526,5 +563,5 @@
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
   "BBC Arabic": "بي بي سي عربي"
  },
- "cost_usd": 0.0463
+ "cost_usd": 0.062
 }
