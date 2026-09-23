@@ -5,79 +5,22 @@ H = {"User-Agent": "Mozilla/5.0 (compatible; SyriaNarrativeTracker/1.0)"}
 NOW = dt.datetime.now(dt.timezone.utc)
 KW = re.compile(r"سوري|دمشق|حلب|حمص|إدلب|ادلب|درعا|السويداء|اللاذقية|الحسكة|القامشلي|الرقة|دير الزور|Syria|Damascus|Aleppo|Sûriye|Suriye|Rojava|Qamişlo|Kobanê|Efrîn|Hesek|Şam|Heleb|سووریا|ڕۆژاوا", re.I)
 
-TG = """SANANewsEnglish Enabbaladi_en SANAArabic sana_syria SanaNews Sana_Ar sana_ar SyrianArabNewsAgency SyrianPresidency SyPresidency
-alekhbariahsy AlikhbariaSY alikhbariah syr_television syriatv SyriaTvNews tvsyria syria_tv SyriaTV_net
-EnabBaladiAR enabbaladi_ar enab_baladi EnabBaladi syriahr SOHR_ar SyrianObservatory HalabToday halabtodaytv HalabTodayTV
-orient_news OrientNews orienttv Step_news stepagency stepnewsagency step_agency baladinews Baladi_News zamanalwsl Zaman_alwasl
-Suwayda24 suwayda_24 suwayda24news sweida24 ShaamNews shaamnetwork Sham_Network jesrpress Jesr_press levant24_ Levant24 SyriaDirect
-ANHAArabic anha_ar ANHA_Arabic hawarnews hawarnews_ar ANHA_English ANHAKurdi hawar_news anhaenglish
-npasyria npa_arabic NPA_Syria npasyria_ar npa_english NorthPress_ar NorthPressAgency npaenglish
-ronahitv RonahiTV Ronahi_TV SDFpress sdf_press SDF_Syria sdfmediacenter
-rudaw Rudaw_net RudawKurdish RudawArabic rudaw_arabic rudawarabic rudawenglish
-Kurdistan24 k24arabic kurdistan24_ar kurdistan24english kurdistan24kurdi
-rojnews RojNews ANFNews anfarabic anf_arabic anfkurdi anfenglish
-LatakiaNews latakia_now Lattakia_now homs_now daraa24 Daraa_24 HouranFree horanfree DeirEzzor24 deirezzor24 eyeofeuphrates
-AJABreaking ajanews AlJazeera aljazeeranews alarabiya AlArabiya_Brk AlArabiya SkyNewsArabia skynewsarabia asharqnews aawsat_news
-AlMayadeenNews almayadeen rtarabic RTarabic bbcarabic BBCArabic France24_ar dw_arabic AnadoluAr aa_arabic trtarabi TRTArabi
-alaraby_tv AlarabyTV MiddleEastEye TheNewArab syrianobserver""".split()
+TG = """ronahi_tv Ronahitv_official rudawkurmanci RudawKurmanci kurdistan24kurmanci anhakurdi hawarnewskurdi ANHA_Kurdi rojavanews RojavaNews rojava_news xeber24 Xeber24 welatnews ANFKurmanci anfkurmanci sterktv SterkTV medyanews k24kurdi npa_kurdi npakurdi NPA_Kurdi RonahiNews anha_kurdi anhakurmanci ciratv jinnews rudawkurdish RudawSorani rudawsorani k24sorani RojavaIC rojava_ic aanes_ar AANES_official smart_news_ar SMARTNewsAgency smartnews SuwaydaNews suwayda_news alsuwayda24 sweida_24 ssnnews Suwayda24_ suwayda24_news SuwaydaAlaan Lattakia_24 lattakianow tartousnow SyrianCoast HomsNow Daraa24_ horan_free deir_ezzor24 furatpost FuratPost syriatv_net syria_tv_net SyriaTVChannel orientnews_net OrientNewsNet sohr_news damascusnow DamascusNow damascus_now AleppoNow SyrianCivilDefence SyriaCivilDefence syria_moi SyrianMOI moi_syria SyrianMoFA syrianmofa sanaarabic SANA_Syria sana_sy syriahr_ar sohr_ar2 rudawnews rudaw_kurdi sdf_press Syrian_Kurds kurdistan_24 rudawkurdi rojnews1 anf_kurdi ANHA_Kurmanci hawarnews_kurdi hawarnews_en""".split()
 
-RSS = """https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7&hl=ar&gl=SY&ceid=SY:ar
-https://news.google.com/rss/search?q=Syria&hl=en-US&gl=US&ceid=US:en
-https://news.google.com/rss/search?q=S%C3%BBriye+OR+Rojava&hl=tr&gl=TR&ceid=TR:tr
-https://news.google.com/rss/search?q=Rojava+OR+S%C3%BBriye+OR+Qami%C5%9Flo+OR+Kob%C3%AAn%C3%AA&hl=en-US&gl=US&ceid=US:en
-https://www.enabbaladi.net/feed
-https://english.enabbaladi.net/feed
-https://www.syriahr.com/feed
-https://www.syriahr.com/en/feed
-https://npasyria.com/feed
-https://npasyria.com/en/feed
-https://npasyria.com/ku/feed
-https://www.hawarnews.com/ar/rss
-https://www.hawarnews.com/kr/rss
-https://www.hawarnews.com/en/rss
-https://hawarnews.com/ar/feed
-https://www.rudaw.net/arabic/rss
-https://www.rudaw.net/rss/arabic
-https://www.rudaw.net/kurmanci/rss
-https://www.rudaw.net/english/rss
-https://www.kurdistan24.net/ar/rss
-https://www.kurdistan24.net/en/rss
-https://www.kurdistan24.net/ku/rss
-https://www.kurdistan24.net/kmr/rss
-https://www.syria.tv/rss.xml
-https://www.syria.tv/feed
-https://sana.sy/feed
-https://sana.sy/en/feed
-https://www.sana.sy/feed
-https://www.aljazeera.com/xml/rss/all.xml
-https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9
-https://syriadirect.org/feed/
-https://www.levant24.com/feed
-https://suwayda24.com/feed
-https://www.zamanalwsl.net/rss
-https://orient-news.net/rss
-https://www.france24.com/ar/rss
-https://rss.dw.com/xml/rss-ar-all
-https://feeds.bbci.co.uk/arabic/middleeast/rss.xml
-https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
-https://anfarabic.com/feed.rss
-https://anfkurdi.com/feed.rss
-https://anfenglish.com/feed.rss
-https://www.alaraby.co.uk/rss
-https://www.aa.com.tr/ar/rss/default?cat=guncel
-https://www.skynewsarabia.com/rss/middle-east.xml
-https://www.aawsat.com/feed
-https://www.independentarabia.com/rss
-https://www.syria.news/feed
-https://halabtodaytv.net/feed
-https://www.middleeasteye.net/rss
-https://www.newarab.com/rss
-https://stepagency-sy.net/feed
-https://www.alquds.co.uk/feed
-https://www.ronahi.net/feed
-https://www.xeber24.org/feed
-https://www.basnews.com/ar/rss
-https://ku.hawarnews.com/rss""".split()
+RSS = """https://www.reddit.com/r/syria/comments/.rss
+https://www.reddit.com/r/syria/new/.rss
+https://www.reddit.com/r/Kurdistan/comments/.rss
+https://www.reddit.com/r/kurdistan/new/.rss
+https://www.reddit.com/r/Rojava/new/.rss
+https://www.reddit.com/r/arabs/comments/.rss
+https://news.google.com/rss/search?q=Rojava&hl=ku&gl=IQ&ceid=IQ:ku
+https://news.google.com/rss/search?q=%D9%82%D8%B3%D8%AF+OR+%D8%A7%D9%84%D8%A3%D9%83%D8%B1%D8%A7%D8%AF+%D8%B3%D9%88%D8%B1%D9%8A%D8%A7&hl=ar&gl=SY&ceid=SY:ar
+https://news.google.com/rss/search?q=Suriye&hl=tr&gl=TR&ceid=TR:tr
+https://www.rudaw.net/arabic/rss.xml
+https://www.kurdistan24.net/ar/rss.xml
+https://anha.net/rss
+https://www.anha.net/ku/rss
+https://npasyria.com/rss""".split()
 
 def tg(name):
     try:
@@ -119,16 +62,21 @@ def extra():
         try:
             r = requests.get(u, headers=H, timeout=25); out.append(f"REDDIT {r.status_code} len={len(r.text)} {u}")
         except Exception as e: out.append(f"REDDIT ERR {e} {u}")
-    for q in ["سوريا", "Syria", "Rojava"]:
-        for base in ["https://public.api.bsky.app", "https://api.bsky.app"]:
+    for q in ["سوريا", "Syria", "Rojava", "Sûriyê", "Kurd", "Kobanê", "قسد", "السوريين"]:
+        for base in ["https://api.bsky.app"]:
             try:
                 r = requests.get(base + "/xrpc/app.bsky.feed.searchPosts", params={"q": q, "limit": 25, "sort": "latest"}, headers=H, timeout=25)
-                n = len(r.json().get("posts", [])) if r.ok else 0
+                ps = r.json().get("posts", []) if r.ok else []
+                n = len(ps)
+                ages = [round((NOW - dt.datetime.fromisoformat(x["record"]["createdAt"].replace("Z","+00:00"))).total_seconds()/3600,1) for x in ps if x.get("record",{}).get("createdAt")]
+                langs = [",".join(x["record"].get("langs") or ["?"]) for x in ps]
+                n = f"{n} ages_h={ages[:3]}..{ages[-1:] } langs={sorted(set(langs))} sample={[x['record'].get('text','')[:60] for x in ps[:2]]}"
                 out.append(f"BSKY {r.status_code} {base} q={q} posts={n} {r.text[:120] if not r.ok else ''}")
             except Exception as e: out.append(f"BSKY ERR {e}")
     return out
 
-with cf.ThreadPoolExecutor(12) as ex:
+with cf.ThreadPoolExecutor(4) as ex:
     for line in ex.map(tg, TG): print(line, flush=True)
-    for line in ex.map(rss, RSS): print(line, flush=True)
+for u in RSS:
+    import time; time.sleep(3); print(rss(u), flush=True)
 for line in extra(): print(line)
