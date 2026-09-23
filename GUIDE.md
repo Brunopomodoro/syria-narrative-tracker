@@ -1,4 +1,4 @@
-# Setup guide: Syria narrative tracker
+# Setup guide: Syria Narrative Tracker
 
 This guide takes you from nothing to a live website that updates itself every hour. No coding is needed; everything happens in your web browser. Plan on about 45 minutes.
 

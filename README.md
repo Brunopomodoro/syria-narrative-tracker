@@ -1,4 +1,4 @@
-# Syria narrative tracker
+# Syria Narrative Tracker
 
 A website that updates itself every hour with the main narratives in public Syrian online discussion, and the tone around each one.
 
