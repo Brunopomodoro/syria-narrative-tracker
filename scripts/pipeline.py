@@ -586,10 +586,10 @@ def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
     last_err = None
     usage = {"input_tokens": 0, "output_tokens": 0}   # summed over attempts, so the cost estimate is honest
     for attempt in (1, 2):
-        resp = client.messages.create(
-            model=model, max_tokens=32000,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_msg}])
+        # streamed, because the library refuses long non-streamed requests; the result is the same
+        with client.messages.stream(model=model, max_tokens=32000, system=SYSTEM_PROMPT,
+                                    messages=[{"role": "user", "content": user_msg}]) as stream:
+            resp = stream.get_final_message()
         text = "".join(b.text for b in resp.content if b.type == "text")
         usage["input_tokens"] += resp.usage.input_tokens
         usage["output_tokens"] += resp.usage.output_tokens
@@ -636,6 +636,12 @@ def source_names_ar(cfg: dict) -> dict:
         if label and item.get("label_ar"):
             out[str(label)] = str(item["label_ar"])
     return out
+
+
+def seen_key(post_id: str) -> str:
+    """data/state.json is public, so it stores one-way fingerprints of post ids, never the ids themselves:
+    an X or YouTube id would lead straight to an individual's post."""
+    return hashlib.sha256(("snt-seen|" + post_id).encode()).hexdigest()[:20]
 
 
 def compact_json(path: pathlib.Path, obj) -> None:
@@ -780,7 +786,7 @@ def main() -> int:
         save_json(latest_path, latest_prev)
         return 0
 
-    new_ids = {p["id"] for p in sample} - set(state.get("last_ids", []))
+    new_ids = {seen_key(p["id"]) for p in sample} - set(state.get("last_ids", []))
     same_format = latest_prev.get("format") == FORMAT_VERSION
     if not same_format and latest_prev:
         log("Results were made by an older version - rebuilding them now.")
@@ -870,7 +876,7 @@ def main() -> int:
             f.unlink()   # older than history_hours
 
     alive = {n["id"] for h in history for n in h["narratives"]}
-    state = {"last_ids": sorted(p["id"] for p in sample),
+    state = {"last_ids": sorted(seen_key(p["id"]) for p in sample),
              "first_seen": {k: v for k, v in first_seen.items() if k in alive}}
 
     save_json(latest_path, latest)
