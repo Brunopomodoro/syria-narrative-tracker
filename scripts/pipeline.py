@@ -314,7 +314,8 @@ def collect_reddit(feed: dict) -> list:
         out.append(post("rd:" + hashlib.sha1((e.get("id") or e.get("link", "")).encode()).hexdigest()[:16],
                         "reddit", label, text, dt.datetime(*tt[:6], tzinfo=UTC) if tt else None, 0, "", False,
                         feed.get("filter", False), "public", context))
-    return out
+    out.sort(key=lambda p: p["time"] or NOW, reverse=True)
+    return out[:int(feed.get("max_posts", 25))]  # a small forum should not outweigh bigger sources
 
 
 def _reactions(msg) -> list:
@@ -511,7 +512,7 @@ Some outlet posts also carry emoji reaction counts from readers; treat these as 
 Your main job is to understand how ORDINARY PEOPLE are talking and reacting, and how that compares with what outlets say.
 
 Rules:
-- Group posts into 3 to 8 narratives. A narrative is a specific story or framing (for example "Anger over electricity prices after the new tariff"), not a broad topic like "Politics". An outlet post and the comments reacting to it usually belong to the same narrative. Posts that fit nothing stay unassigned. Each post id belongs to at most one narrative.
+- Group posts into 3 to 8 narratives. A narrative is a specific story or framing (for example "Anger over electricity prices after the new tariff"), not a broad topic like "Politics". An outlet post and the comments reacting to it usually belong to the same narrative. Posts that fit nothing stay unassigned. Never make a catch-all narrative that mixes unrelated stories (for example "Everyday life updates"); leave such posts unassigned instead. Each post id belongs to at most one narrative.
 - If a narrative from the previous snapshot is clearly the same ongoing story, reuse its id exactly so trends can be tracked. Otherwise create a new short kebab-case English id.
 - Describe, never endorse. Attribute claims ("posts claim...", "state media reports...", "commenters argue..."). Never present an unverified claim as fact, and add no facts that are not in the posts.
 - Sentiment runs from -1 (anger, fear, grief, contempt) to +1 (hope, pride, celebration); 0 is neutral. Give "sentiment" for the tone of OUTLET coverage and "public_sentiment" for the tone of PUBLIC voices and reactions (null if there are none for that narrative). Read sarcasm, mockery, religious expressions and dialect carefully; for example "الله يفرجها" is weary hope, and mocking praise is negative.
@@ -575,18 +576,20 @@ def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
     client = anthropic.Anthropic(api_key=key)
     model = cfg.get("model", "claude-haiku-4-5-20251001")
     last_err = None
+    usage = {"input_tokens": 0, "output_tokens": 0}   # summed over attempts, so the cost estimate is honest
     for attempt in (1, 2):
         resp = client.messages.create(
-            model=model, max_tokens=16000,
+            model=model, max_tokens=32000,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_msg}])
         text = "".join(b.text for b in resp.content if b.type == "text")
-        usage = {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}
+        usage["input_tokens"] += resp.usage.input_tokens
+        usage["output_tokens"] += resp.usage.output_tokens
         try:
             return extract_json(text), usage
         except (ValueError, json.JSONDecodeError) as e:
             last_err = e
-            log(f"  reply was not valid JSON (attempt {attempt}), retrying...")
+            log(f"  reply was not valid JSON (attempt {attempt}, stop reason: {resp.stop_reason}), retrying...")
     raise RuntimeError(f"Claude did not return valid JSON: {last_err}")
 
 

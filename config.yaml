@@ -295,6 +295,7 @@ reddit:
       label: "Reddit r/syria comments"
       label_ar: "تعليقات ريديت r/syria"
       filter: true          # keep comments that (or whose post) mention Syria
+      max_posts: 25         # at most this many per run, so Reddit does not outweigh bigger sources
 
 # 7) Bluesky - free. Needs a free Bluesky account and an "app password"
 #    (GUIDE.md, extra A3); without one, Bluesky usually refuses GitHub's servers.
