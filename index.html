@@ -68,6 +68,30 @@
   .hint { color: var(--muted); font-size: .92rem; margin: 12px 0 0; max-width: 60ch; }
   .notice { color: var(--brass); font-size: .88rem; margin: 0 0 28px; max-width: 64ch; }
 
+  /* search */
+  .search-box { position: relative; max-width: 640px; }
+  .search-box svg { position: absolute; inset-inline-start: 14px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
+  .search-box input { width: 100%; font: inherit; font-size: 1.02rem; color: var(--ink); background: var(--paper); border: 1px solid var(--rule);
+                      border-radius: 999px; padding: 11px 18px; padding-inline-start: 44px; transition: border-color .2s; -webkit-appearance: none; }
+  .search-box input:focus { outline: none; border-color: var(--ink); }
+  .search-box input::placeholder { color: var(--faint); }
+  .kinds { margin: 16px 0 0; flex-wrap: wrap; border-radius: 18px; }
+  .s-status { color: var(--muted); font-size: .92rem; margin: 18px 0 0; }
+  .s-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 44px; margin-top: 22px; }
+  .s-cols h3 { font-size: .92rem; font-weight: 500; color: var(--muted); margin: 0 0 6px; }
+  .s-meta { display: block; color: var(--muted); font-size: .82rem; margin-top: 2px; }
+  .s-meta i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-inline-end: 6px; }
+  .hl { list-style: none; margin: 0; padding: 0; }
+  .hl li { padding: 10px 0; border-top: 1px solid var(--rule); font-size: .95rem; line-height: 1.5; }
+  .hl a { text-decoration: none; }
+  .hl a:hover { text-decoration: underline; text-decoration-color: var(--brass); color: inherit; }
+  mark { background: color-mix(in srgb, var(--brass) 28%, transparent); color: inherit; border-radius: 2px; padding: 0 1px; }
+  .more { margin-top: 10px; font-size: .88rem; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 14px; }
+  .more:hover { border-color: var(--ink); color: var(--ink); }
+  .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; max-width: 420px; margin-top: 18px; align-items: end; }
+  .days div { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: .75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .days b { display: block; width: 100%; background: var(--brass); border-radius: 2px 2px 0 0; min-height: 1px; opacity: .8; }
+
   /* sections */
   section { padding: 44px 0 52px; border-top: 1px solid var(--rule); }
   .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 24px; flex-wrap: wrap; margin-bottom: 22px; }
@@ -188,6 +212,7 @@
     .row .db { grid-column: 1 / -1; margin-inline-start: 28px; }
     .detail-in { grid-template-columns: 1fr; }
     .week { grid-template-columns: 1fr; gap: 28px; }
+    .s-cols { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 480px) {
     .mosaic { grid-template-columns: 30px repeat(24, minmax(7px, 1fr)); gap: 2px; }
@@ -238,7 +263,16 @@ const T = {
     week: "The past week", twoWeeks: "The past two weeks", weekSub: "Each square is one hour, in Damascus time, colored by how people felt.",
     mosaicLabel: "Hourly mood. Use the arrow keys to move between hours.",
     chooseHour: "Choose an hour", chooseHourSub: "Click a square, or use the arrow keys.",
-    hourStories: "Open a story to read its analysis from that hour.", loadingHour: "Loading this hour's analysis…",
+    hourStories: "Open a story to read its analysis from that hour.",
+    search: "Search", searchSub: (d, h) => `Stories from the past ${d} days and outlet headlines from the past ${h} days.`,
+    searchPh: "Search a keyword, e.g. electricity, قسد, Rojava", searchLabel: "Search stories and headlines",
+    searchLoading: "Loading…", searchShort: "Type at least 2 letters.",
+    searchCount: (s, h, q) => `${s} ${s === "1" ? "story" : "stories"} and ${h} ${h === "1" ? "headline" : "headlines"} mention “${q}”.`,
+    sStories: "Stories", sHeadlines: "Headlines from outlets", noMatch: "Nothing found.",
+    seen: (a, b, n) => `Seen ${a === b ? a : `${a} – ${b}`} · ${n} ${n === "1" ? "hour" : "hours"}`,
+    perDay: "Matching headlines per day", showMore: "Show more",
+    noHeadlines: "Headlines are collected from now on; they will appear here after the next hourly update.",
+    kinds: { "": "All sources", official: "Official", independent: "Independent & opposition-origin", kurdish: "Kurdish-run", regional: "Regional", aggregator: "News aggregators" }, loadingHour: "Loading this hour's analysis…",
     noSnapshot: "The full analysis of this hour was not saved.",
     aboutTitle: "About this tracker and its sources",
     method: [
@@ -279,7 +313,16 @@ const T = {
     week: "الأسبوع الماضي", twoWeeks: "الأسبوعان الماضيان", weekSub: "كل مربع يمثّل ساعة واحدة بتوقيت دمشق، ولونه يعكس شعور الناس.",
     mosaicLabel: "المزاج ساعة بساعة. استخدم مفاتيح الأسهم للتنقل بين الساعات.",
     chooseHour: "اختر ساعة", chooseHourSub: "انقر على أي مربع، أو استخدم مفاتيح الأسهم.",
-    hourStories: "افتح أي قصة لقراءة تحليلها في تلك الساعة.", loadingHour: "جارٍ تحميل تحليل هذه الساعة…",
+    hourStories: "افتح أي قصة لقراءة تحليلها في تلك الساعة.",
+    search: "البحث", searchSub: (d, h) => `القصص خلال آخر ${d} يوماً، وعناوين وسائل الإعلام خلال آخر ${h} أيام.`,
+    searchPh: "ابحث عن كلمة، مثل: الكهرباء، قسد، Rojava", searchLabel: "ابحث في القصص والعناوين",
+    searchLoading: "جارٍ التحميل…", searchShort: "اكتب حرفين على الأقل.",
+    searchCount: (s, h, q) => `عدد القصص التي تذكر «${q}»: ${s}، وعدد العناوين: ${h}.`,
+    sStories: "القصص", sHeadlines: "عناوين وسائل الإعلام", noMatch: "لا توجد نتائج.",
+    seen: (a, b, n) => `ظهرت ${a === b ? a : `${a} – ${b}`} · عدد الساعات: ${n}`,
+    perDay: "العناوين المطابقة في كل يوم", showMore: "عرض المزيد",
+    noHeadlines: "بدأ جمع العناوين الآن، وستظهر هنا بعد التحديث القادم.",
+    kinds: { "": "كل المصادر", official: "رسمية", independent: "مستقلة ومعارضة سابقاً", kurdish: "كردية", regional: "إقليمية", aggregator: "مجمّعات أخبار" }, loadingHour: "جارٍ تحميل تحليل هذه الساعة…",
     noSnapshot: "لم يُحفظ التحليل الكامل لهذه الساعة.",
     aboutTitle: "حول هذا المتتبّع ومصادره",
     method: [
@@ -308,7 +351,8 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<"
 const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
 const has = (v) => v !== null && v !== undefined && v !== "";
 const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true, lang: null,
-  snaps: new Map(), hourOpen: new Set() };   // snaps: saved analyses of past hours, loaded when an hour is opened
+  snaps: new Map(), hourOpen: new Set(),
+  search: { q: "", kind: "", data: null, loading: false, open: new Set(), shown: 30 } };   // snaps: saved analyses of past hours, loaded when an hour is opened
 const L = () => T[state.lang];
 const rtl = () => state.lang === "ar";
 const cap = (s) => { s = String(s || "").trim(); return s ? s[0].toUpperCase() + s.slice(1) : s; };
@@ -583,6 +627,173 @@ function weekHTML() {
   </section>`;
 }
 
+/* =================== search =================== */
+/* Arabic-aware matching: ignores diacritics and tatweel, treats أ/إ/آ/ا, ة/ه, ى/ي, ؤ/و, ئ/ي as the same,
+   and ignores case and Latin accents (Sûriye = suriye). norm() keeps a map back to the original text for highlighting. */
+const AR_MAP = { "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ة": "ه", "ى": "ي", "ؤ": "و", "ئ": "ي" };
+function normChar(ch) {
+  if (/[\u064B-\u065F\u0670\u0640]/.test(ch)) return "";          // Arabic diacritics and tatweel
+  ch = AR_MAP[ch] || ch;
+  return ch.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+function norm(text) {
+  let out = "", map = [];
+  const chars = Array.from(String(text || ""));
+  let pos = 0;
+  for (const ch of chars) {
+    const n = normChar(ch);
+    for (const c of n) { out += c; map.push(pos); }
+    pos += ch.length;
+  }
+  map.push(pos);
+  return { out, map };
+}
+const normQ = (q) => norm(q).out.replace(/\s+/g, " ").trim();
+/* names written several ways: typing any one finds the others (Arabic, English and Kurdish spellings, acronyms) */
+const ALIASES = [
+  ["قسد", "قوات سوريا الديمقراطية", "syrian democratic forces", "sdf", "qsd"],
+  ["هيئة تحرير الشام", "تحرير الشام", "hayat tahrir al-sham", "tahrir al-sham"],
+  ["داعش", "تنظيم الدولة", "islamic state", "isis"],
+  ["الإدارة الذاتية", "autonomous administration", "aanes", "rêveberiya xweser"],
+  ["الشرع", "al-sharaa", "sharaa", "al-shara"],
+  ["سوريا", "سورية", "syria", "sûriye", "suriye"],
+  ["القامشلي", "qamishli", "qamishlo", "qamişlo"],
+  ["كوباني", "عين العرب", "kobani", "kobanê"],
+  ["عفرين", "afrin", "efrîn"],
+  ["الحسكة", "hasakah", "hasaka", "hesekê", "heseke"],
+  ["الرقة", "raqqa", "reqa"],
+  ["دير الزور", "deir ez-zor", "deir ezzor", "deir al-zour"],
+  ["منبج", "manbij", "minbic"],
+  ["السويداء", "suwayda", "sweida", "as-suwayda"],
+  ["اللاذقية", "latakia", "lattakia"],
+  ["إدلب", "idlib"], ["حلب", "aleppo", "heleb"], ["دمشق", "damascus"], ["حمص", "homs"], ["درعا", "daraa", "deraa"],
+  ["الأكراد", "الكرد", "kurds", "kurdish", "kurd"],
+].map(g => g.map(normQ));
+/* each query word becomes a list of alternatives; a text matches when every word matches one of its alternatives */
+function terms(q) {
+  let rest = normQ(q);
+  const groups = [];
+  for (const g of ALIASES) for (const a of g) {             // multi-word names first, so "دير الزور" stays one term
+    if (a.includes(" ") && (" " + rest + " ").includes(" " + a + " ")) { groups.push(g); rest = (" " + rest + " ").replace(" " + a + " ", " ").trim(); }
+  }
+  for (const w of rest.split(" ").filter(Boolean)) groups.push(ALIASES.find(g => g.includes(w)) || [w]);
+  return groups;
+}
+const hit = (text, ts) => ts.every(g => g.some(a => text.includes(a)));
+function highlight(text, ts) {
+  const src = String(text || ""), { out, map } = norm(src), ranges = [];
+  for (const t of ts.flat()) { let i = out.indexOf(t); while (i >= 0) { ranges.push([map[i], map[i + t.length]]); i = out.indexOf(t, i + t.length); } }
+  if (!ranges.length) return esc(src);
+  ranges.sort((a, b) => a[0] - b[0]);
+  let h = "", last = 0;
+  for (const [a, b] of ranges) { if (a < last) continue; h += esc(src.slice(last, a)) + "<mark>" + esc(src.slice(a, b)) + "</mark>"; last = b; }
+  return h + esc(src.slice(last));
+}
+function storyText(n) {
+  const f = ["title", "summary", "public_reaction"].flatMap(k => [n[k], n[k + "_ar"]]);
+  return [...f, ...(n.framings || []), ...(n.framings_ar || []), ...(n.flags || []), ...(n.flags_ar || [])].join(" \n ");
+}
+async function loadSearchData() {
+  const S = state.search;
+  if (S.data || S.loading) return;
+  S.loading = true;
+  const [stories, heads] = await Promise.all([
+    getJSON("data/stories.json").catch(() => []), getJSON("data/headlines.json").catch(() => null)]);
+  S.data = { stories: stories.map(n => ({ n, text: norm(storyText(n)).out })),
+             heads: heads ? heads.map(h => ({ h, text: norm(h.x + " " + h.s).out })) : null };
+  S.loading = false;
+  renderResults();
+}
+function searchHTML() {
+  const t = L(), S = state.search, D = state.latest;
+  const days = num(Math.round((D.history_hours || 336) / 24)), hdays = num(D.headline_days || 7);
+  return `
+  <section aria-labelledby="h-search" id="search">
+    <div class="sec-head"><div><h2 id="h-search">${t.search}</h2><p class="sub">${t.searchSub(days, hdays)}</p></div></div>
+    <div class="search-box" role="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" dir="auto" autocomplete="off" spellcheck="false" placeholder="${esc(t.searchPh)}" aria-label="${esc(t.searchLabel)}" value="${esc(S.q)}">
+    </div>
+    <div id="results" aria-live="polite">${resultsHTML()}</div>
+  </section>`;
+}
+function dayBars(heads) {
+  const t = L(), counts = new Map(), days = [];
+  for (let i = 6; i >= 0; i--) { const d = new Date(Date.now() - i * 86400000).toISOString(); days.push({ key: hourKey(d).day, label: fmt(d, { weekday: "short" }) }); }
+  for (const { h } of heads) { const k = hourKey(h.t).day; counts.set(k, (counts.get(k) || 0) + 1); }
+  const max = Math.max(1, ...days.map(d => counts.get(d.key) || 0));
+  return `<p class="s-meta" style="margin-top:18px">${t.perDay}</p><div class="days" style="height:86px" aria-hidden="true">${days.map(d => {
+    const c = counts.get(d.key) || 0;
+    return `<div><span>${c ? num(c) : ""}</span><b style="height:${Math.round((c / max) * 44)}px"></b><span>${esc(d.label)}</span></div>`; }).join("")}</div>`;
+}
+function resultsHTML() {
+  const t = L(), S = state.search, q = S.q.trim();
+  if (!q) return "";
+  if (!S.data) return `<p class="s-status">${t.searchLoading}</p>`;
+  const ts = terms(q);
+  if (!ts.length || normQ(q).length < 2) return `<p class="s-status">${t.searchShort}</p>`;
+  const stories = S.data.stories.filter(x => hit(x.text, ts)).map(x => x.n);
+  const allHeads = S.data.heads ? S.data.heads.filter(x => hit(x.text, ts)) : [];
+  const heads = S.kind ? allHeads.filter(x => x.h.k === S.kind) : allHeads;
+  const kinds = [...new Set(allHeads.map(x => x.h.k).filter(Boolean))];
+  const chip = (k) => `<button data-kind="${k}" aria-pressed="${S.kind === k}">${t.kinds[k] || esc(k)}</button>`;
+  const d = (iso) => fmt(iso, { day: "numeric", month: "short" });
+  const storyList = stories.slice(0, 40).map(n => {
+    const key = `s|${n.id}`, open = S.open.has(key), hrs = n.hours || [], tone = hrs.length ? hrs[hrs.length - 1][2] : n.sentiment;
+    return `
+    <article class="story hstory${open ? " open" : ""}" data-key="${esc(key)}">
+      <button class="hrow" aria-expanded="${open}">
+        <span class="t"><span class="chev" aria-hidden="true">▶</span><span><span class="t-main" dir="auto">${highlight(titleMain(n), ts)}</span>
+        <span class="s-meta"><i style="background:${toneColor(tone)}"></i>${t.seen(d(hrs[0]?.[0] || n.last_seen), d(n.last_seen), num(hrs.length))}</span></span></span>
+      </button>
+      <div class="detail"><div><div class="detail-in">${dumbbell(n)}${detailBody(n, null)}</div></div></div>
+    </article>`; }).join("");
+  const headList = heads.slice(0, S.shown).map(({ h }) => {
+    const body = highlight(h.x.length > 240 ? h.x.slice(0, 240) + "…" : h.x, ts);
+    return `<li><span dir="auto">${safeUrl(h.u) ? `<a href="${esc(h.u)}" target="_blank" rel="noopener">${body}</a>` : body}</span>
+      <span class="s-meta"><bdi>${esc(srcName(h.s))}</bdi> · ${ago(h.t)}</span></li>`; }).join("");
+  return `
+    <p class="s-status">${t.searchCount(num(stories.length), num(allHeads.length), esc(q))}</p>
+    ${allHeads.length ? dayBars(allHeads) : ""}
+    <div class="s-cols">
+      <div><h3>${t.sStories}</h3>${storyList || `<p class="sub">${t.noMatch}</p>`}</div>
+      <div><h3>${t.sHeadlines}</h3>
+        ${kinds.length > 1 ? `<div class="seg kinds" role="group">${chip("")}${kinds.map(chip).join("")}</div>` : ""}
+        ${S.data.heads === null ? `<p class="sub">${t.noHeadlines}</p>` : headList ? `<ul class="hl">${headList}</ul>` : `<p class="sub">${t.noMatch}</p>`}
+        ${heads.length > S.shown ? `<button class="more" data-more>${t.showMore}</button>` : ""}
+      </div>
+    </div>`;
+}
+function renderResults() { const r = $("#results"); if (r) r.innerHTML = resultsHTML(); }
+function bindSearch() {
+  const input = $("#q");
+  if (!input) return;
+  let timer;
+  const run = () => {
+    const S = state.search;
+    S.q = input.value; S.shown = 30;
+    try {
+      const u = new URL(location.href);
+      S.q.trim() ? u.searchParams.set("q", S.q.trim()) : u.searchParams.delete("q");
+      history.replaceState(null, "", u);
+    } catch (e) {}
+    S.data ? renderResults() : (renderResults(), loadSearchData());
+  };
+  input.addEventListener("focus", loadSearchData);
+  input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(run, 180); });
+  input.addEventListener("keydown", (e) => { if (e.key === "Escape") { input.value = ""; run(); } });
+  $("#results").addEventListener("click", (e) => {
+    const S = state.search, k = e.target.closest("[data-kind]"), more = e.target.closest("[data-more]"), row = e.target.closest(".hrow");
+    if (k) { S.kind = k.dataset.kind; S.shown = 30; renderResults(); }
+    else if (more) { S.shown += 30; renderResults(); }
+    else if (row) {
+      const art = row.closest(".hstory"), key = art.dataset.key, open = !art.classList.contains("open");
+      art.classList.toggle("open", open); row.setAttribute("aria-expanded", open);
+      open ? S.open.add(key) : S.open.delete(key);
+    }
+  });
+}
+
 /* =================== about =================== */
 function aboutHTML() {
   const t = L(), D = state.latest || {};
@@ -631,11 +842,14 @@ function render() {
   $("#updated").innerHTML = stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
   const aboutOpen = $("details.about")?.open;
   usedFallback = false;
-  let html = heroHTML() + storiesHTML() + weekHTML() + aboutHTML();
+  const typing = document.activeElement?.id === "q", caret = typing ? document.activeElement.selectionStart : 0;
+  let html = heroHTML() + searchHTML() + storiesHTML() + weekHTML() + aboutHTML();
   if (usedFallback && t.fallback) html = html.replace("<!--notice-->", `<p class="notice">${t.fallback}</p>`);
   $("#app").innerHTML = html;
   if (aboutOpen) $("details.about").open = true;
   bind();
+  bindSearch();
+  if (typing) { const q = $("#q"); q.focus(); try { q.setSelectionRange(caret, caret); } catch (e) {} }
   if (state.first) {
     state.first = false;
     requestAnimationFrame(() => requestAnimationFrame(() => $("#stories")?.classList.remove("pending")));
@@ -717,6 +931,7 @@ async function load() {
   render();
 }
 state.lang = null;
+try { const q0 = new URL(location.href).searchParams.get("q"); if (q0) { state.search.q = q0; loadSearchData(); } } catch (e) {}
 $("#updated").textContent = "…";
 load();
 setInterval(load, 10 * 60 * 1000);

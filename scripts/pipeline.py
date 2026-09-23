@@ -397,14 +397,21 @@ def collect_telegram_api(cfg: dict, channels: list, since: dt.datetime) -> tuple
     return out, status
 
 
+def with_kind(posts: list, src: dict) -> list:
+    """Tag outlet posts with their source type ("kind" in config.yaml), used by the website's search filters."""
+    for p in posts:
+        p["kind"] = src.get("kind", "")
+    return posts
+
+
 def collect_all(cfg: dict) -> tuple[list, list]:
     since = NOW - dt.timedelta(hours=cfg.get("window_hours", 24))
     channels = cfg.get("telegram_channels") or []
     jobs = []
     for ch in channels:
-        jobs.append((ch.get("label") or ch["name"], "telegram", lambda ch=ch: collect_telegram(ch)))
+        jobs.append((ch.get("label") or ch["name"], "telegram", lambda ch=ch: with_kind(collect_telegram(ch), ch)))
     for fd in cfg.get("rss_feeds") or []:
-        jobs.append((fd.get("label") or fd["url"], "news", lambda fd=fd: collect_rss(fd)))
+        jobs.append((fd.get("label") or fd["url"], "news", lambda fd=fd: with_kind(collect_rss(fd), fd)))
     yt = cfg.get("youtube") or {}
     if yt.get("enabled"):
         jobs.append(("YouTube comments", "youtube", lambda: collect_youtube(yt, since)))
@@ -631,6 +638,42 @@ def source_names_ar(cfg: dict) -> dict:
     return out
 
 
+def compact_json(path: pathlib.Path, obj) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+
+def update_headlines(posts: list, cfg: dict) -> int:
+    """Keep outlet posts (never individuals' posts) for the website's search, for headline_days days."""
+    path = DATA / "headlines.json"
+    cutoff = NOW - dt.timedelta(days=float(cfg.get("headline_days", 7)))
+    keep = {h["id"]: h for h in load_json(path, []) if (parse_iso(h["t"]) or NOW) >= cutoff}
+    for p in posts:
+        if p["voice"] != "outlet" or not p["time"] or p["time"] < cutoff or p["id"] in keep:
+            continue
+        keep[p["id"]] = {"id": p["id"], "t": iso(p["time"]), "s": p["source"], "k": p.get("kind", ""),
+                         "u": p["url"] if p["url"].startswith("https://") else "", "l": p.get("lang", ""),
+                         "x": p["text"][:300]}
+    out = sorted(keep.values(), key=lambda h: h["t"], reverse=True)
+    compact_json(path, out)
+    return len(out)
+
+
+def build_story_index(history: list) -> list:
+    """One entry per story across the saved history: its latest full analysis plus every hour it appeared.
+    Written to data/stories.json for the website's search."""
+    index = {}
+    for h in history:                      # oldest first, so later hours overwrite the analysis text
+        snap = load_json(SNAPSHOTS / h["snapshot"], None) if h.get("snapshot") else None
+        for n in (snap or {}).get("narratives") or []:
+            e = index.setdefault(n["id"], {"hours": []})
+            e["story"] = n
+            tone = n["public_sentiment"] if n.get("public_sentiment") is not None else n.get("sentiment", 0)
+            e["hours"].append([h["time"], n.get("share", 0), tone])
+    out = [{**e["story"], "hours": e["hours"], "last_seen": e["hours"][-1][0]} for e in index.values()]
+    return sorted(out, key=lambda n: n["last_seen"], reverse=True)
+
+
 def snapshot_of(latest: dict) -> dict:
     """The parts of one update the website needs to show a past hour in full."""
     return {k: latest[k] for k in ("format", "generated_at", "window_hours", "stats", "overall",
@@ -728,6 +771,8 @@ def main() -> int:
         log("Dry run: nothing sent to Claude, nothing saved.")
         return 0
 
+    log(f"Search: {update_headlines(posts, cfg)} outlet headlines kept")
+
     if not sample:
         log("No posts found. Check your sources in config.yaml (see the status list above).")
         latest_prev.update({"checked_at": iso(NOW), "sources": status})
@@ -778,6 +823,8 @@ def main() -> int:
         "generated_at": iso(NOW),
         "checked_at": iso(NOW),
         "window_hours": cfg.get("window_hours", 24),
+        "history_hours": int(cfg.get("history_hours", 336)),
+        "headline_days": cfg.get("headline_days", 7),
         "model": cfg.get("model"),
         "stats": {
             "posts_analyzed": sum(p["copies"] for p in sample),
@@ -828,6 +875,7 @@ def main() -> int:
 
     save_json(latest_path, latest)
     save_json(history_path, history)
+    compact_json(DATA / "stories.json", build_story_index(history))
     save_json(state_path, state)
     log(f"Saved {len(narratives)} narratives. Done.")
     return 0

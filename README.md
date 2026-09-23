@@ -6,7 +6,7 @@ It reads Arabic, Kurdish and English posts from about 30 sources: Telegram chann
 
 - `index.html` is the website
 - `config.yaml` holds your settings and sources (the only file you normally edit)
-- `scripts/pipeline.py` collects posts, asks Claude to find narratives, and writes `data/` (including `data/snapshots/`, the full analysis of every hour, which the website opens when you click a past hour)
+- `scripts/pipeline.py` collects posts, asks Claude to find narratives, and writes `data/` (including `data/snapshots/`, the full analysis of every hour, which the website opens when you click a past hour), `data/stories.json` and `data/headlines.json` (what the website's search box looks through: stories from the past 14 days and outlet headlines from the past 7 days; posts by individuals are never stored)
 - `.github/workflows/update.yml` runs the pipeline every hour on GitHub Actions
 
 **Setup instructions: see [GUIDE.md](GUIDE.md).**
