@@ -13,12 +13,12 @@ Behind it, GitHub runs a small program every hour that collects public posts, as
 | Part | Cost |
 |---|---|
 | GitHub (runs the hourly job, hosts the website) | Free for public repositories |
-| Telegram channels and news RSS feeds | Free |
+| Telegram channels, news RSS feeds, Bluesky and Reddit | Free |
 | Claude API (the analysis) | Pay per use, see below |
 | YouTube comments (optional) | Free within Google's daily quota |
 | X / Twitter (optional) | About $0.005 per post read (roughly $36/month at default settings) |
 
-Claude cost depends on how many posts you analyze. With the default settings (up to 150 posts per run) and the default model `claude-haiku-4-5-20251001`, a busy hour costs roughly 2 to 5 US cents, which works out to about $20–40 a month if every hour is busy. With only a few sources it will be much less, and runs are skipped (free) when nothing new was posted. If you later want a more nuanced reading of dialect and sarcasm, switch the model to `claude-sonnet-5` in `config.yaml`; it costs about twice as much. Every run prints its exact cost in the log, so you can watch it.
+Claude cost depends on how many posts you analyze. With the default settings (up to 300 posts per run) and the default model `claude-haiku-4-5-20251001`, a busy hour costs roughly 4 to 10 US cents, which works out to about $40–75 a month if every hour is busy. Lower `max_posts` in `config.yaml` (for example to 150) to roughly halve that. With only a few sources it will be much less, and runs are skipped (free) when nothing new was posted. If you later want a more nuanced reading of dialect and sarcasm, switch the model to `claude-sonnet-5` in `config.yaml`; it costs about twice as much. Every run prints its exact cost in the log, so you can watch it.
 
 ---
 
@@ -97,6 +97,11 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
         run: python scripts/pipeline.py
 
       - name: Save results
@@ -148,7 +153,7 @@ Bookmark it. The page also refreshes itself every 10 minutes.
 
 ## Step 8: Choose your sources
 
-The two starter Telegram channels (SANA's English channel and Enab Baladi's English channel) are only there to get you running. The tracker's value depends almost entirely on which sources you pick, so this is the most important step to spend time on.
+`config.yaml` comes with about 25 tested Telegram channels and news feeds across official, opposition-leaning, independent, Kurdish and regional outlets, in Arabic, English and Kurdish. Each one was checked to be public and posting recently when it was added. The tracker's value depends almost entirely on which sources you pick, so review the list and add the local channels you know. Druze (Suwayda) and coastal community channels are still missing, because none could be verified; add them when you find reliable ones.
 
 **To find channels:** search Telegram for the outlets, cities and communities you care about. For each one, find its link (like `t.me/SomeChannel`) and test it by opening `https://t.me/s/SomeChannel` in your browser. If you can see posts there, the tracker can read it. (Private channels and groups can't be read.)
 
@@ -269,7 +274,22 @@ X charges about $0.005 for every post the tracker reads, paid from credits you b
 
 Good to know: the X search picks up everyone writing in Arabic about Syria, not only Syrians, so treat it as regional discussion. The tracker skips reposts and posts with links, which makes each paid post more likely to be someone's own opinion.
 
+### A3. Reddit (free, already on) and Bluesky (free, 5 minutes)
+
+Both are small next to Telegram and YouTube, and lean English-speaking and diaspora, so treat them as one extra window rather than a picture of Syria.
+
+**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria. Reddit sometimes briefly limits requests from GitHub's servers. When that happens the source shows "Not working right now" for that hour and recovers on its own.
+
+**Bluesky** needs a free account, because Bluesky usually refuses searches from GitHub's servers without one:
+
+1. Create an account at **https://bsky.app** (any account works; it never posts anything).
+2. Go to **Settings → Privacy and security → App passwords → Add App Password**. Name it `narrative-tracker` and copy the password it shows.
+3. Add two secrets in GitHub (same way as step 5): `BLUESKY_HANDLE` (for example `yourname.bsky.social`) and `BLUESKY_APP_PASSWORD`.
+4. In `config.yaml`, under `bluesky:`, change `enabled: false` to `enabled: true`. Commit and run the workflow.
+
 ### C. Languages
+
+Posts are read in Arabic, Kurdish (Kurmanji and Sorani) and English. Each post's language is detected automatically, and the "About" section of the website shows the language mix of every update. Kurdish coverage comes from Kurdish-run outlets (ANHA, North Press, Rudaw, Kurdistan24), the Kurdish YouTube and Bluesky search terms, and Kurdish words in the X search. If you care most about Kurdish voices, consider switching `model` to `claude-sonnet-5`: it reads Kurmanji more reliably than Haiku.
 
 The website is fully bilingual. Everything is written in both English and Arabic, and visitors switch with the button at the top right; the site remembers their choice. To make the site open in Arabic by default, set `default_language: "ar"` in `config.yaml`. You can also link straight to either version by adding `?lang=ar` or `?lang=en` to your site address.
 
