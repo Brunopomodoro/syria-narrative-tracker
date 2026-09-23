@@ -3,85 +3,664 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-23T11:39:45Z",
- "checked_at": "2026-09-23T11:39:45Z",
+ "generated_at": "2026-09-23T12:45:46Z",
+ "checked_at": "2026-09-23T12:45:46Z",
  "window_hours": 24,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 118,
-  "public_posts": 96,
-  "outlet_posts": 22,
+  "posts_analyzed": 309,
+  "public_posts": 219,
+  "outlet_posts": 90,
   "reactions_posts": 0,
-  "unique_posts": 118,
-  "sources_ok": 5,
-  "sources_total": 5,
+  "unique_posts": 300,
+  "sources_ok": 32,
+  "sources_total": 32,
   "platforms": {
-   "telegram": 22,
-   "youtube": 86,
+   "telegram": 68,
+   "news": 22,
+   "youtube": 143,
+   "reddit": 57,
    "x": 10
+  },
+  "languages": {
+   "ar": 201,
+   "en": 96,
+   "ku": 2,
+   "other": 1
   }
  },
  "overall": {
-  "sentiment": 0.2,
-  "mood": "Diplomatic",
-  "mood_ar": "دبلوماسي",
-  "public_sentiment": -0.3,
+  "sentiment": 0.35,
+  "mood": "Optimistic",
+  "mood_ar": "متفائل",
+  "public_sentiment": -0.15,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "Outlets emphasize diplomatic engagement at the UN, business normalization, and infrastructure projects. Public discourse is heavily polarized around the President's Gaza and Palestine statements, with sharp divisions between supporters who praise his rhetoric and critics who view his engagement with Israeli journalists and measured language as compromising. Some commenters express skepticism about economic improvements and governance, while others defend the administration. Broader discourse also touches on territorial disputes and sectarian concerns.",
-  "brief_ar": "تركز المنصات الإعلامية على الانخراط الدبلوماسي في الأمم المتحدة والتطبيع الاقتصادي والمشاريع البنية التحتية. الحوار العام منقسم بشدة حول تصريحات الرئيس بشأن غزة وفلسطين، مع انقسام حاد بين المؤيدين الذين يثنون على خطابه والمنتقدين الذين يرون تفاعله مع الصحفيين الإسرائيليين ولغته المعتدلة كتنازل. يعرب بعض المعلقين عن تشكك في التحسن الاقتصادي والحوكمة، بينما يدافع آخرون عن الإدارة. يتطرق الحوار الأوسع أيضاً إلى النزاعات الإقليمية والمخاوف الطائفية."
+  "brief": "Outlets are heavily focused on President al-Sharaa's UN activities, international diplomacy, and economic partnerships with Lebanon and the Gulf, presenting Syria's stabilization in positive terms. Public reactions show deep division: some praise the president's statements on Gaza and his withdrawal pledge, while others attack him for perceived normalization with Israel, complain about economic hardship, or criticize security force expansion. Significant distrust emerges around security operations and past crimes at military facilities.",
+  "brief_ar": "تركز المنافذ الإعلامية بشكل كبير على أنشطة الرئيس الشرع في الأمم المتحدة والدبلوماسية الدولية والشراكات الاقتصادية مع لبنان والخليج، وتقدم استقرار سوريا بصيغة إيجابية. تظهر ردود الفعل العامة انقساماً عميقاً: البعض يشيد بتصريحات الرئيس حول غزة وتعهده بالانسحاب، بينما يهاجمه آخرون لما يرونه تطبيعاً مع إسرائيل، أو يشتكون من الصعوبات الاقتصادية، أو ينتقدون توسع أجهزة الأمن. يظهر عدم ثقة كبير حول العمليات الأمنية والجرائم السابقة في المنشآت العسكرية."
  },
  "narratives": [
   {
-   "id": "presidential-gaza-rhetoric-and-israel-engagement",
-   "title": "Presidential Statements on Gaza and Israeli Engagement Spark Polarized Public Debate",
-   "title_ar": "تصريحات الرئيس حول غزة والتفاعل مع إسرائيل تشعل نقاشاً عاماً منقسماً",
-   "summary": "The President made statements criticizing Israeli actions in Gaza and critiquing Israel's path, while also engaging directly with Israeli journalists at the UN. Public reaction is sharply divided: some praise him as principled and intelligent, while others accuse him of normalizing relations, using weak language, or prioritizing Israeli interests. Critics also point out inconsistencies, such as not similarly addressing Turkish occupation.",
-   "summary_ar": "أدلى الرئيس بتصريحات انتقد فيها الإجراءات الإسرائيلية في غزة وانتقد مسار إسرائيل، بينما تفاعل مباشرة مع صحفيين إسرائيليين في الأمم المتحدة. رد الفعل العام منقسم بشدة: يثني البعض عليه باعتباره مبدئياً وذكياً، بينما يتهمه آخرون بتطبيع العلاقات أو استخدام لغة ضعيفة أو إعطاء الأولوية للمصالح الإسرائيلية. كما يشير النقاد إلى عدم الاتساق، مثل عدم معالجة الاحتلال التركي بنفس الطريقة.",
-   "public_reaction": "Commenters divide sharply between strong supporters who view the President's statements as principled and intelligent, and harsh critics who see engagement with Israeli journalists as normalization and claim his rhetoric falls short of matching the gravity of Palestinian suffering. Some demand stronger language and action, while others mock the criticism or defend the President's diplomatic approach. A few commenters fact-check his claims about casualties.",
-   "public_reaction_ar": "ينقسم المعلقون بشكل حاد بين مؤيدين قويين يرون تصريحات الرئيس مبدئية وذكية، وناقدين قاسيين يرون تفاعله مع الصحفيين الإسرائيليين تطبيعاً ويؤكدون أن خطابه لا يرقى إلى جسامة معاناة الفلسطينيين. يطالب البعض بلغة وإجراءات أقوى، بينما يسخر آخرون من الانتقادات أو يدافعون عن النهج الدبلوماسي للرئيس. يقوم عدد قليل من المعلقين بالتحقق من صحة ادعاءته بشأن الخسائر.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.4,
+   "id": "unga-diplomatic-engagement",
+   "title": "President Al-Sharaa's UN General Assembly Diplomacy and International Engagement",
+   "title_ar": "دبلوماسية الرئيس الشرع في الجمعية العامة للأمم المتحدة والانخراط الدولي",
+   "summary": "Outlets extensively cover President al-Sharaa's participation in UNGA 81, including bilateral and multilateral meetings with US President Trump, Ukrainian President Zelenskyy, Turkish, Saudi, Iraqi, and other leaders. Coverage emphasizes Syria's return to international recognition, economic partnerships, and positions on regional issues including Gaza, the Golan, and foreign military presence.",
+   "summary_ar": "تغطي المنافذ بكثافة مشاركة الرئيس الشرع في الجمعية العامة للأمم المتحدة (UNGA 81)، بما في ذلك اجتماعاته الثنائية والمتعددة الأطراف مع الرئيس الأميركي ترامب والرئيس الأوكراني زيلينسكي والقادة الأتراك والسعوديين والعراقيين وغيرهم. تركز التغطية على عودة سوريا للاعتراف الدولي والشراكات الاقتصادية والمواقف حول قضايا إقليمية بما فيها غزة والجولان والوجود العسكري الأجنبي.",
+   "public_reaction": "Public response is mixed. Some commenters celebrate the president's wit in the Trump meeting and his statements on Gaza as standing up to Israel, while others question his normalization with Israel and criticize him for talking rather than acting. A smaller group expresses concern about being monitored or express skepticism about diplomatic achievements.",
+   "public_reaction_ar": "الاستجابة العامة مختلطة. يحتفل بعض المعلقين بذكاء الرئيس في اللقاء مع ترامب وتصريحاته حول غزة باعتبارها موقفاً ضد إسرائيل، بينما يقول آخرون إنه يطبّع مع إسرائيل وينتقدونه لأنه يتحدث بدلاً من العمل. مجموعة أصغر تعبّر عن القلق من المراقبة أو تشكك في الإنجازات الدبلوماسية.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.05,
    "emotions": [
-    "anger",
-    "concern",
-    "approval",
-    "doubt"
+    "pride",
+    "skepticism",
+    "concern"
    ],
    "emotions_ar": [
-    "غضب",
-    "قلق",
-    "استحسان",
-    "شك"
+    "فخر",
+    "شك",
+    "قلق"
    ],
    "framings": [
-    "Presidential principled stance vs. pragmatic diplomacy",
-    "Normalization concerns vs. measured engagement strategy",
-    "Insufficient Palestinian advocacy vs. balancing regional security",
-    "Inconsistent approach to territorial disputes"
+    "international recognition and return to the world stage",
+    "pragmatic diplomacy vs. expectations of confrontation",
+    "Syria's economic partnerships and investment opportunities",
+    "normalization concerns vs. defense of sovereignty"
    ],
    "framings_ar": [
-    "موقف رئاسي مبدئي مقابل الدبلوماسية العملية",
-    "مخاوف التطبيع مقابل استراتيجية الانخراط المقاسة",
-    "الدعوة الناقصة للفلسطينيين مقابل موازنة الأمن الإقليمي",
-    "نهج غير متسق تجاه النزاعات الإقليمية"
+    "الاعتراف الدولي والعودة إلى المسرح العالمي",
+    "دبلوماسية براغماتية مقابل توقعات المواجهة",
+    "الشراكات الاقتصادية السورية وفرص الاستثمار",
+    "مخاوف التطبيع مقابل الدفاع عن السيادة"
    ],
    "flags": [
-    "Recurring talking points about normalization and weak stance (multiple identical accusations)",
-    "Some extreme rhetoric blaming all Israelis and conflating civilians with military",
-    "Factual disputes about casualty figures with limited resolution"
+    "Some commenters spread unverified claims about secret agreements or hidden Israeli deals",
+    "Coordinated dismissal of president's statements as 'normalization' across multiple Arabic comments"
    ],
    "flags_ar": [
-    "نقاط حديث متكررة حول التطبيع والموقف الضعيف (اتهامات متطابقة متعددة)",
-    "بعض الخطاب المتطرف الذي يلوم جميع الإسرائيليين ويخلط بين المدنيين والعسكريين",
-    "نزاعات حقائقية حول أرقام الخسائر مع حل محدود"
+    "ينشر بعض المعلقين ادعاءات لم يتم التحقق منها حول اتفاقيات سرية أو صفقات إسرائيلية مخفية",
+    "رفض منسق لتصريحات الرئيس باعتبارها 'تطبيعاً' عبر تعليقات عربية متعددة"
    ],
-   "volume": 47,
-   "public_volume": 47,
-   "share": 0.398,
-   "engagement": 196,
+   "volume": 78,
+   "public_volume": 49,
+   "share": 0.252,
+   "engagement": 51283,
    "platforms": {
-    "youtube": 47
+    "telegram": 24,
+    "news": 5,
+    "youtube": 49
+   },
+   "languages": {
+    "ar": 69,
+    "en": 9
+   },
+   "sources": [
+    "YouTube comments",
+    "Anadolu Agency - Turkish state news agency (AR)",
+    "Syrian Presidency - official",
+    "Asharq News - Saudi-owned",
+    "Kurdistan24 Arabic - Kurdistan Region outlet",
+    "Google News - Syria (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Syrian Presidency - official",
+     "url": "https://t.me/SyPresidency/2732",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al Arabiya - Saudi-owned",
+     "url": "https://t.me/Alarabiya/165891",
+     "platform": "telegram"
+    },
+    {
+     "source": "Anadolu Agency - Turkish state news agency (AR)",
+     "url": "https://t.me/aa_arabic/168576",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "miscellaneous-civil-and-infrastructure",
+   "title": "Airports, Flights, Education Recruitment, and Everyday Life Updates",
+   "title_ar": "تحديثات عن المطارات والرحلات والتوظيف التعليمي وجوانب الحياة اليومية",
+   "summary": "Outlets report on the first direct flight from Vienna, Mezzeh Airport rehabilitation plans, university application procedures, and hiring for 18,000 education posts. Public comments on these topics are brief, often practical (asking about internet speeds, taxi prices, oud shopping), or joking about BMW drivers and Syrian infrastructure needs.",
+   "summary_ar": "تقدم المنافذ تقارير عن أول رحلة مباشرة من فيينا وخطط إعادة تأهيل مطار المزة وإجراءات التقديم الجامعي والتوظيف لـ 18,000 منصب تعليمي. التعليقات العامة حول هذه المواضيع موجزة، غالباً عملية (تسأل عن سرعات الإنترنت وأسعار سيارات الأجرة وتسوق العود)، أو تسخر من سائقي BMW واحتياجات البنية التحتية السورية.",
+   "public_reaction": "Public reaction is minimal and practical. Some commenters ask practical questions about internet options, transportation, and services. Others make light jokes about infrastructure, politics, or lifestyle. Very few engage deeply with the substantive issues; the tone is conversational rather than political.",
+   "public_reaction_ar": "ردود الفعل العامة ضئيلة وعملية. يطرح بعض المعلقين أسئلة عملية حول خيارات الإنترنت والمواصلات والخدمات. يسخر آخرون بخفة من البنية التحتية والسياسة أو نمط الحياة. قلة جداً يشاركون بعمق في القضايا الموضوعية؛ النبرة محادثة بدلاً من كونها سياسية.",
+   "sentiment": 0.25,
+   "public_sentiment": -0.05,
+   "emotions": [
+    "practicality",
+    "humor",
+    "casual interest"
+   ],
+   "emotions_ar": [
+    "عملية",
+    "فكاهة",
+    "اهتمام عابر"
+   ],
+   "framings": [
+    "economic normalization and international connectivity",
+    "infrastructure modernization",
+    "education sector expansion",
+    "everyday life quality improvements"
+   ],
+   "framings_ar": [
+    "التطبيع الاقتصادي والربط الدولي",
+    "تحديث البنية التحتية",
+    "توسع القطاع التعليمي",
+    "تحسينات جودة الحياة اليومية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 76,
+   "public_volume": 63,
+   "share": 0.246,
+   "engagement": 1851,
+   "platforms": {
+    "telegram": 9,
+    "news": 4,
+    "reddit": 49,
+    "x": 1,
+    "youtube": 5
+   },
+   "languages": {
+    "ar": 22,
+    "en": 46
+   },
+   "sources": [
+    "Reddit r/syria comments",
+    "YouTube comments",
+    "Al-Ikhbariya Syria - state TV",
+    "North Press Agency (EN)",
+    "Zaman al-Wasl - opposition-origin",
+    "Halab Today TV - opposition-origin, Aleppo"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/140962",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/232320",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93090",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "armed-conflict-and-clan-violence",
+   "title": "Family and Clan Armed Clashes in Rural Aleppo Spark Calls for Disarmament",
+   "title_ar": "اشتباكات عائلية وقبلية مسلحة في ريف حلب توقد مطالب بنزع السلاح",
+   "summary": "Outlets report on deaths from armed clashes between families in Dir Hafir, eastern rural Aleppo. Public comments call for the state to enforce disarmament, end tribal violence, and establish rule of law. Some commenters blame the previous regime for fragmenting society; others note this is an ongoing problem requiring security sector reform.",
+   "summary_ar": "تقدم المنافذ تقارير عن وفيات من اشتباكات مسلحة بين عائلات في دير حافر بريف حلب الشرقي. ينادي المعلقون العامون الدولة بفرض نزع السلاح، وإنهاء العنف القبلي، وإقامة حكم القانون. يلوم البعض النظام السابق لتفتيته المجتمع؛ البعض الآخر يلاحظ أن هذه مشكلة مستمرة تتطلب إصلاح قطاع الأمن.",
+   "public_reaction": "Public sentiment is frustrated and urgent. Commenters demand the state take action: disarm the population, prosecute offenders, and prevent future incidents. Some express weary resignation that violence persists. A few make cynical comments about the futility of state action. Religious expressions of grief are common.",
+   "public_reaction_ar": "المشاعر العامة محبَطة وملحّة. يطالب المعلقون الدولة بالعمل: نزع سلاح السكان، ومحاكمة المذنبين، ومنع الحوادث المستقبلية. البعض يعبر عن استسلام متعب لاستمرار العنف. قلة يسخرون من عدم جدوى الإجراء الحكومي. التعابير الدينية للحزن شائعة.",
+   "sentiment": 0.25,
+   "public_sentiment": -0.55,
+   "emotions": [
+    "concern",
+    "frustration",
+    "urgency",
+    "grief",
+    "resignation"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "إحباط",
+    "إلحاح",
+    "حزن",
+    "استسلام"
+   ],
+   "framings": [
+    "state capacity to enforce law and order",
+    "tribal/family honor culture vs. state law",
+    "weapons proliferation post-conflict",
+    "security sector reform necessity",
+    "regime responsibility for social fragmentation"
+   ],
+   "framings_ar": [
+    "قدرة الدولة على فرض القانون والنظام",
+    "ثقافة الشرف القبلي/العائلي مقابل القانون",
+    "انتشار الأسلحة بعد الصراع",
+    "ضرورة إصلاح قطاع الأمن",
+    "مسؤولية النظام عن تفتت المجتمع"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 20,
+   "public_volume": 20,
+   "share": 0.065,
+   "engagement": 18,
+   "platforms": {
+    "youtube": 20
+   },
+   "languages": {
+    "ar": 20
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=geL1CPZLi_k",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "kurdish-language-and-rights-recognition",
+   "title": "Syrian President's Statements on Kurdish Language Rights and Regional Relations",
+   "title_ar": "تصريحات الرئيس السوري بشأن حقوق اللغة الكردية والعلاقات الإقليمية",
+   "summary": "Outlets report the president's statements recognizing Kurdish rights and pledging to allocate Kurdish language curriculum hours. Kurdish-language outlets frame this positively as progress. Kurdish public comments and Turkish-language comments on Kurdish affairs show skepticism: some Kurds question whether pledges will be implemented, while Turkish-language comments include both support and claims that implementation is not occurring.",
+   "summary_ar": "تقدم المنافذ تصريحات الرئيس بالاعتراف بحقوق الأكراد والتعهد بتخصيص ساعات درسية للغة الكردية. تؤطر المنافذ الكردية اللغة هذا بإيجابية كتقدم. التعليقات الكردية العامة والتعليقات باللغة التركية حول الشؤون الكردية تظهر شكاً: بعض الأكراد يتساءلون عما إذا كانت التعهدات ستُنفذ، بينما تشمل التعليقات باللغة التركية دعماً وادعاءات بعدم التنفيذ.",
+   "public_reaction": "Kurdish public reaction is cautious and skeptical. Some Kurds welcome the statements but express doubt about implementation. Turkish commenters are divided: some praise the president, others dismiss the statements as empty promises or claim implementation is not happening. The broader Kurdish audience remains unconvinced about state intentions.",
+   "public_reaction_ar": "ردود الفعل الكردية العامة حذرة وشكوك. يرحب بعض الأكراد بالتصريحات لكن يعبرون عن شك في التنفيذ. المعلقون الأتراك منقسمون: يمدح البعض الرئيس، والبعض الآخر يرفض التصريحات كوعود فارغة أو يدعي عدم تنفيذها. الجمهور الكردي الأوسع لا يزال غير مقتنع بنوايا الدولة.",
+   "sentiment": 0.35,
+   "public_sentiment": -0.1,
+   "emotions": [
+    "cautious optimism",
+    "skepticism",
+    "doubt about implementation"
+   ],
+   "emotions_ar": [
+    "تفاؤل حذر",
+    "شك",
+    "تردد حول التنفيذ"
+   ],
+   "framings": [
+    "recognition of minority rights as state-building",
+    "Kurdish autonomy vs. central control",
+    "curriculum implementation as indicator of commitment",
+    "SDF integration and federal structure debates",
+    "Turkish interest in Syrian Kurdish affairs"
+   ],
+   "framings_ar": [
+    "الاعتراف بحقوق الأقليات كبناء دولة",
+    "الاستقلالية الكردية مقابل السيطرة المركزية",
+    "تنفيذ المنهج كمؤشر على الالتزام",
+    "نقاشات دمج وحدات الحماية وتنظيم فيدرالي",
+    "الاهتمام التركي بالشؤون الكردية السورية"
+   ],
+   "flags": [
+    "Turkish commenters using Kurdish affairs as proxy for Syria policy criticism"
+   ],
+   "flags_ar": [
+    "المعلقون الأتراك يستخدمون الشؤون الكردية كبديل لانتقاد سياسة سوريا"
+   ],
+   "volume": 11,
+   "public_volume": 8,
+   "share": 0.036,
+   "engagement": 512,
+   "platforms": {
+    "telegram": 3,
+    "youtube": 7
+   },
+   "languages": {
+    "ar": 2,
+    "en": 6,
+    "other": 1,
+    "ku": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Rudaw Arabic - Kurdistan Region outlet",
+    "Kurdistan24 English"
+   ],
+   "examples": [
+    {
+     "source": "Rudaw Arabic - Kurdistan Region outlet",
+     "url": "https://t.me/RudawArabic/120697",
+     "platform": "telegram"
+    },
+    {
+     "source": "Kurdistan24 English",
+     "url": "https://t.me/kurdistan24english/14916",
+     "platform": "telegram"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=vpiDIjhhx7s",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "past-atrocities-and-accountability-fears",
+   "title": "Concerns Over Past Crimes at Military Facilities and Mezzeh Airport Redevelopment",
+   "title_ar": "مخاوف من الجرائم السابقة في المنشآت العسكرية وإعادة تطوير مطار المزة",
+   "summary": "Multiple public comments express concern about the rehabilitation of Mezzeh Airport and other military facilities, raising questions about evidence preservation, past crimes, and accountability. Commenters worry that development projects may destroy evidence of torture, executions, and mass graves. Some call for international oversight and formal investigations before any redevelopment.",
+   "summary_ar": "ينشر عدد من التعليقات العامة قلقاً بشأن إعادة تأهيل مطار المزة والمنشآت العسكرية الأخرى، مع طرح أسئلة حول الحفاظ على الأدلة والجرائم السابقة والمساءلة. يقلق المعلقون من أن مشاريع التطوير قد تدمّر أدلة على التعذيب والإعدامات والمقابر الجماعية. يطالب البعض بالإشراف الدولي والتحقيقات الرسمية قبل أي إعادة تطوير.",
+   "public_reaction": "Public reaction is characterized by grave concern and distrust. Commenters invoke specific details of past atrocities (torture centers, mass graves) and express fear that economic development will erase evidence. Some suggest the government is deliberately rushing to destroy crime scenes. Others argue that military facilities across Syria likely contain evidence and should be preserved pending investigation.",
+   "public_reaction_ar": "تتسم الاستجابة العامة بقلق شديد وعدم ثقة. يستحضر المعلقون تفاصيل محددة من الفظائع السابقة (مراكز التعذيب والمقابر الجماعية) ويعبرون عن خوف من أن التطوير الاقتصادي سيمحو الأدلة. يقترح البعض أن الحكومة تتسابق بقصد لتدمير مسرح الجرائم. يجادل آخرون بأن المنشآت العسكرية عبر سوريا قد تحتوي على أدلة ويجب الحفاظ عليها في انتظار التحقيق.",
+   "sentiment": 0.2,
+   "public_sentiment": -0.7,
+   "emotions": [
+    "fear",
+    "anger",
+    "distrust",
+    "grave concern"
+   ],
+   "emotions_ar": [
+    "خوف",
+    "غضب",
+    "عدم ثقة",
+    "قلق شديد"
+   ],
+   "framings": [
+    "preservation of evidence vs. economic development",
+    "accountability and transitional justice",
+    "government complicity in erasure of crimes",
+    "international oversight necessity",
+    "broad allegations across security sector"
+   ],
+   "framings_ar": [
+    "الحفاظ على الأدلة مقابل التطوير الاقتصادي",
+    "المساءلة والعدالة الانتقالية",
+    "التواطؤ الحكومي في محو الجرائم",
+    "ضرورة الإشراف الدولي",
+    "اتهامات واسعة عبر قطاع الأمن"
+   ],
+   "flags": [
+    "Multiple unverified claims about specific mass graves and torture methods at specific facilities",
+    "Coordinated narrative suggesting government intent to destroy evidence"
+   ],
+   "flags_ar": [
+    "عدة ادعاءات لم يتم التحقق منها حول مقابر جماعية محددة وطرق تعذيب في منشآت معينة",
+    "سرد منسق يشير إلى نية حكومية لتدمير الأدلة"
+   ],
+   "volume": 10,
+   "public_volume": 10,
+   "share": 0.032,
+   "engagement": 6,
+   "platforms": {
+    "youtube": 10
+   },
+   "languages": {
+    "ar": 10
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=Ic-DBZcMlgA",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "economic-recovery-and-international-business",
+   "title": "Economic Partnership and Business Normalization with Lebanon and Gulf States",
+   "title_ar": "الشراكات الاقتصادية والتطبيع التجاري مع لبنان ودول الخليج",
+   "summary": "Outlets report on the Syrian-Lebanese investment forum, Syrian-Saudi-Turkish trilateral meetings, and growing business delegations expressing interest in establishing banks and investing in infrastructure. State coverage emphasizes economic revival, airport modernization, and restored correspondent banking relationships.",
+   "summary_ar": "تقدم المنافذ تقارير عن منتدى الاستثمار السوري اللبناني والاجتماعات الثلاثية السورية السعودية التركية وتزايد وفود الأعمال التي تعبّر عن اهتمامها بإنشاء بنوك والاستثمار في البنية التحتية. تركز التغطية الحكومية على الانتعاش الاقتصادي وتحديث المطارات واستعادة علاقات المراسلة البنكية.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.55,
+   "public_sentiment": null,
+   "emotions": [
+    "optimism",
+    "pride in revival"
+   ],
+   "emotions_ar": [
+    "تفاؤل",
+    "فخر بالانبعاث"
+   ],
+   "framings": [
+    "moving from geography-based relations to will-based partnership",
+    "economic integration as regional stability model",
+    "investment as confidence in Syria's future",
+    "reconstruction and development opportunities"
+   ],
+   "framings_ar": [
+    "الانتقال من العلاقات القائمة على الجغرافيا إلى شراكة قائمة على الإرادة",
+    "التكامل الاقتصادي كنموذج استقرار إقليمي",
+    "الاستثمار كثقة بمستقبل سوريا",
+    "فرص إعادة البناء والتطوير"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 9,
+   "public_volume": 0,
+   "share": 0.029,
+   "engagement": 1397,
+   "platforms": {
+    "telegram": 8,
+    "news": 1
+   },
+   "languages": {
+    "ar": 5,
+    "en": 4
+   },
+   "sources": [
+    "SANA - state news agency (EN)",
+    "Shaam News Network - opposition-origin",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Levant24 - Syria news (EN)",
+    "Enab Baladi - independent (AR)",
+    "Enab Baladi - independent (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/140963",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/232319",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93091",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "presidential-withdrawal-commitment",
+   "title": "President's Pledge to Step Down if Syria Reaches Safety Generates Mixed Hope and Skepticism",
+   "title_ar": "تعهد الرئيس بالانسحاب إذا وصلت سوريا إلى بر الأمان يولد آمالاً مختلطة وشكوكاً",
+   "summary": "Outlets report on statements in which the president pledges to withdraw from politics once Syria achieves safety and stability. Public response is divided: supporters see this as integrity and a sign of genuine commitment to state-building rather than personal power; skeptics question whether withdrawal will ever happen, or argue that the president should remain regardless because Syria needs strong leadership.",
+   "summary_ar": "تقدم المنافذ تصريحات يتعهد فيها الرئيس بالانسحاب من السياسة بمجرد تحقيق سوريا الأمن والاستقرار. الاستجابة العامة منقسمة: يرى المؤيدون هذا كدلالة على النزاهة والالتزام الحقيقي ببناء الدولة وليس السلطة الشخصية؛ المتشككون يتساءلون عما إذا كان الانسحاب سيحدث، أو يجادلون بأن الرئيس يجب أن يبقى بغض النظر لأن سوريا تحتاج قيادة قوية.",
+   "public_reaction": "Public reactions show both profound support and deep skepticism. Supporters post emotional comments expressing hope and trust, using religious language ('May God protect you'). Skeptics argue withdrawal will never happen, or that the condition 'Syria reaches safety' is indefinite. Some joke about eternal presidency. A minority argues the president should not withdraw because Syria needs continuity.",
+   "public_reaction_ar": "ردود الفعل العامة تظهر دعماً عميقاً وشكوكاً عميقة. ينشر المؤيدون تعليقات عاطفية تعبر عن الأمل والثقة، باستخدام لغة دينية ('حفظك الله'). المتشككون يجادلون بأن الانسحاب لن يحدث أبداً، أو أن الشرط 'وصول سوريا لبر الأمان' غير محدد. البعض يسخر من الرئاسة الأبدية. أقلية يجادلون بأن الرئيس يجب ألا ينسحب لأن سوريا تحتاج استمراراً.",
+   "sentiment": 0.35,
+   "public_sentiment": 0.25,
+   "emotions": [
+    "hope",
+    "skepticism",
+    "trust",
+    "doubt",
+    "humor"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "شك",
+    "ثقة",
+    "تردد",
+    "فكاهة"
+   ],
+   "framings": [
+    "personal integrity and non-dynastic leadership",
+    "commitment to state-building over personal power",
+    "conditional safety as indefinite postponement",
+    "Syria's need for strong leadership continuity",
+    "revolution leader vs. president role distinction"
+   ],
+   "framings_ar": [
+    "النزاهة الشخصية والقيادة غير الدينية",
+    "الالتزام ببناء الدولة على السلطة الشخصية",
+    "الأمان المشروط كتأجيل غير محدد",
+    "احتياج سوريا لاستمرارية القيادة القوية",
+    "التمييز بين دور قائد الثورة والرئيس"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 8,
+   "public_volume": 8,
+   "share": 0.026,
+   "engagement": 49,
+   "platforms": {
+    "youtube": 8
+   },
+   "languages": {
+    "ar": 8
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=-j9XPhDlk04",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "security-force-expansion-and-institutional-control",
+   "title": "Military Police and Security Services Expansion Across Syria",
+   "title_ar": "توسع الشرطة العسكرية وأجهزة الأمن عبر سوريا",
+   "summary": "Outlets report on the graduation of the first female police academy cohort, opening of military police branches in multiple governorates including Hasaka, and recruitment drives for security personnel. Coverage frames these as modernization and gender inclusion steps, part of state-building.",
+   "summary_ar": "تقدم المنافذ تقارير عن تخريج أول دفعة من أكاديمية الشرطة النسائية، وافتتاح فروع للشرطة العسكرية في محافظات متعددة بما فيها الحسكة، وحملات توظيف لموظفي الأمن. تؤطر التغطية هذه الخطوات باعتبارها حداثة وإدراج نسائي، كجزء من بناء الدولة.",
+   "public_reaction": "Public response is cautious to negative. Some commenters celebrate women's inclusion in security, but many express concern about security force presence, particularly in Hasaka, where commenters note these forces represent state consolidation in autonomous administration areas. Some make dark jokes about security overreach.",
+   "public_reaction_ar": "الاستجابة العامة حذرة إلى سلبية. يحتفل بعض المعلقين بإدراج النساء في الأمن، لكن كثيرين يعبرون عن قلق من وجود قوات الأمن، خاصة في الحسكة، حيث يشير المعلقون إلى أن هذه القوات تمثل توحيد الدولة في مناطق الإدارة الذاتية. البعض يسخرون من تجاوزات الأمن.",
+   "sentiment": 0.4,
+   "public_sentiment": -0.25,
+   "emotions": [
+    "celebration of modernization",
+    "anxiety about control",
+    "concern about autonomy"
+   ],
+   "emotions_ar": [
+    "الاحتفال بالحداثة",
+    "قلق من السيطرة",
+    "قلق بشأن الاستقلالية"
+   ],
+   "framings": [
+    "institutional development and gender equality",
+    "state presence as security and stability",
+    "Kurdish area perspective: state consolidation as loss of autonomy",
+    "modernization of security apparatus"
+   ],
+   "framings_ar": [
+    "التطور المؤسسي والمساواة بين الجنسين",
+    "الوجود الحكومي كأمان واستقرار",
+    "المنظور الكردي: توحيد الدولة فقدان الاستقلالية",
+    "تحديث أجهزة الأمن"
+   ],
+   "flags": [
+    "Kurdish commenters signal concern about state security forces in autonomous areas (Hasaka/Qamishli) without explicitly stating sovereignty disputes"
+   ],
+   "flags_ar": [
+    "يشير المعلقون الأكراد إلى قلق من قوات الأمن الحكومية في المناطق المستقلة (الحسكة/قامشلي) دون التصريح الصريح بنزاعات السيادة"
+   ],
+   "volume": 7,
+   "public_volume": 3,
+   "share": 0.023,
+   "engagement": 40714,
+   "platforms": {
+    "telegram": 4,
+    "youtube": 3
+   },
+   "languages": {
+    "ar": 7
+   },
+   "sources": [
+    "Syrian Ministry of Interior - official",
+    "YouTube comments",
+    "Kurdistan24 Arabic - Kurdistan Region outlet"
+   ],
+   "examples": [
+    {
+     "source": "Syrian Ministry of Interior - official",
+     "url": "https://t.me/syrianmoi/31504",
+     "platform": "telegram"
+    },
+    {
+     "source": "Kurdistan24 Arabic - Kurdistan Region outlet",
+     "url": "https://t.me/k24Arabic/74433",
+     "platform": "telegram"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=wF9iSM1IRFQ",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "gaza-and-israel-rhetoric-tensions",
+   "title": "Public Debate Over President's Statements on Gaza, Israel, and Palestinian Rights",
+   "title_ar": "النقاش العام حول تصريحات الرئيس بشأن غزة وإسرائيل والحقوق الفلسطينية",
+   "summary": "Multiple public posts and comments react to videos and reports of the president's statements on Gaza, including his response to an Israeli journalist. Public opinion splits sharply: some praise the president's criticism of Israel and support for Palestine, while others attack him for calling Israelis 'innocent' or for perceived softness toward Israel. Significant portions of comments demand stronger, unambiguous anti-Israel positions.",
+   "summary_ar": "ينشر عدد من المشاركات العامة والتعليقات ردود أفعال على مقاطع فيديو وتقارير عن تصريحات الرئيس حول غزة، بما في ذلك رده على صحفي إسرائيلي. ينقسم الرأي العام بحدة: يشيد البعض بانتقاد الرئيس لإسرائيل ودعمه لفلسطين، بينما يهاجمه آخرون لأنه وصف الإسرائيليين بـ'الأبرياء' أو للين المتصور تجاه إسرائيل. أجزاء كبيرة من التعليقات تطالب بمواقف أقوى وأكثر وضوحاً ضد إسرائيل.",
+   "public_reaction": "Public sentiment is deeply divided. Supporters frame the president's comments as intelligent diplomacy and principled stands on Palestine. Critics accuse him of normalization, softness, or even collaboration with Israel. A recurring theme is frustration that words are not matched by action (reclamation of the Golan, military response). Some commenters invoke religious framing, others use nationalist or anti-Zionist language.",
+   "public_reaction_ar": "المشاعر العامة منقسمة بعمق. يؤطر المؤيدون تصريحات الرئيس على أنها دبلوماسية ذكية ومواقف مبدئية حول فلسطين. يتهمه النقاد بالتطبيع أو اللين أو حتى التعاون مع إسرائيل. موضوع متكرر هو الإحباط من أن الكلمات لا تقابلها أعمال (استرجاع الجولان، رد عسكري). يستخدم بعض المعلقين إطاراً دينياً، بينما يستخدم آخرون لغة قومية أو معادية للصهيونية.",
+   "sentiment": 0.25,
+   "public_sentiment": -0.35,
+   "emotions": [
+    "anger at perceived softness",
+    "defensive pride in president",
+    "frustration at gap between words and action",
+    "religious conviction"
+   ],
+   "emotions_ar": [
+    "غضب من الليونة المتصورة",
+    "فخر دفاعي بالرئيس",
+    "إحباط من الفجوة بين الكلام والعمل",
+    "قناعة دينية"
+   ],
+   "framings": [
+    "diplomatic pragmatism vs. principled resistance",
+    "president's wit and intelligence in international forums",
+    "normalization concerns and territorial concessions",
+    "religious and nationalist expectations of leadership",
+    "75 years of occupation and resistance narrative"
+   ],
+   "framings_ar": [
+    "براغماتية دبلوماسية مقابل المقاومة المبدئية",
+    "ذكاء الرئيس وفطنته في المنتديات الدولية",
+    "مخاوف التطبيع والتنازلات الإقليمية",
+    "توقعات دينية وقومية من القيادة",
+    "سرد 75 سنة من الاحتلال والمقاومة"
+   ],
+   "flags": [
+    "Unverified claim that president said Israelis are 'innocent' spreading as shorthand for normalization accusations",
+    "Coordinated religious/nationalist framing across multiple comments demanding 'no innocent Zionists' position"
+   ],
+   "flags_ar": [
+    "انتشار ادعاء لم يتم التحقق منه بأن الرئيس قال إن الإسرائيليين 'أبرياء' كاختصار لاتهامات التطبيع",
+    "إطار ديني/قومي منسق عبر تعليقات متعددة يطالب بموقف 'لا أبرياء صهاينة'"
+   ],
+   "volume": 6,
+   "public_volume": 6,
+   "share": 0.019,
+   "engagement": 7,
+   "platforms": {
+    "youtube": 6
+   },
+   "languages": {
+    "ar": 6
    },
    "sources": [
     "YouTube comments"
@@ -93,456 +672,7 @@
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "presidential-withdrawal-pledge-and-legitimacy",
-   "title": "President's Pledge to Withdraw from Power If Syria Reaches Safety Generates Mixed Public Response",
-   "title_ar": "تعهد الرئيس بالانسحاب من السلطة إذا وصلت سوريا إلى بر الأمان يولد استجابة عامة متباينة",
-   "summary": "The President stated he will withdraw from political life once Syria reaches safety, framing this as service with an end date. Public response ranges from emotional support and religious blessings to skepticism about whether Syria can ever be truly safe, doubts about his sincerity, and arguments that he should remain indefinitely. Some view the statement as noble; others see it as performance or unnecessary self-imposed constraints.",
-   "summary_ar": "ذكر الرئيس أنه سينسحب من الحياة السياسية بمجرد وصول سوريا إلى بر الأمان، مما يؤطر ذلك كخدمة لها نهاية محددة. تتراوح ردود الفعل العامة بين الدعم العاطفي والبركات الدينية والتشكك في ما إذا كانت سوريا يمكن أن تصل إلى السلامة الحقيقية، والشكوك حول صدقه، والحجج بأنه يجب أن يبقى إلى الأبد. يرى البعض البيان نبيلاً؛ يراه آخرون أداء أو تقييداً ذاتياً غير ضروري.",
-   "public_reaction": "Commenters express fervent support with religious phrases and emotional attachment, praising his leadership as historic and noble. Others joke about the timeline or argue he should never leave, rejecting the idea that Syria can be 'safe.' Some express conditional support or skepticism about his actual commitment to the pledge. A few invoke Islamic governance ideals.",
-   "public_reaction_ar": "يعبر المعلقون عن دعم متحمس بعبارات دينية وارتباط عاطفي، يثنون على قيادته كتاريخية ونبيلة. يسخر آخرون من الجدول الزمني أو يجادلون بأنه لا يجب أن يغادر أبداً، رافضين فكرة أن تكون سوريا 'آمنة'. يعرب البعض عن دعم مشروط أو تشكك في التزامه الفعلي بالوعد. يستحضر عدد قليل مثالاً لنظام الحكم الإسلامي.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.2,
-   "emotions": [
-    "hope",
-    "devotion",
-    "skepticism",
-    "humor"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "تفاني",
-    "تشكك",
-    "فكاهة"
-   ],
-   "framings": [
-    "Temporary stewardship with honor and exit strategy",
-    "Impossible utopian condition vs. genuine commitment to democracy",
-    "Visionary leadership vs. performance for international audience",
-    "Concern about power vacuum and succession"
-   ],
-   "framings_ar": [
-    "ولاية مؤقتة بشرف واستراتيجية خروج",
-    "حالة يوتوبية مستحيلة مقابل التزام حقيقي بالديمقراطية",
-    "قيادة رؤية مقابل أداء للجمهور الدولي",
-    "القلق بشأن فراغ السلطة والخلافة"
-   ],
-   "flags": [
-    "Excessive, almost cult-like praise with flowery religious language (p76 especially hyperbolic)",
-    "Some comments suggest system-level changes (monarchy, permanent rule) inconsistent with stated democratic ideals"
-   ],
-   "flags_ar": [
-    "مدح مفرط وشبه طائفي باستخدام لغة دينية زخرفية (p76 مبالغ فيه بشكل خاص)",
-    "تشير بعض التعليقات إلى تغييرات على مستوى النظام (ملكية، حكم دائم) غير متسقة مع المثاليات الديمقراطية المعلنة"
-   ],
-   "volume": 20,
-   "public_volume": 19,
-   "share": 0.169,
-   "engagement": 277,
-   "platforms": {
-    "telegram": 1,
-    "youtube": 19
-   },
-   "sources": [
-    "YouTube comments",
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78178",
-     "platform": "telegram"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=-j9XPhDlk04",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "criticism-of-analysts-and-opposition-voices",
-   "title": "Public Backlash Against Opposition Figures and Critical Analysts",
-   "title_ar": "رد فعل عام قاسي ضد شخصيات المعارضة والمحللين الناقدين",
-   "summary": "A YouTube video featuring analyst and opposition figure Omar Rahmon discussing alleged coordination with the President on ammunition depot explosions and factional suppression triggers sharp public division. Supporters praise Rahmon as credible and courageous; opponents dismiss him as a liar, opportunist seeking relevance, or worse. Commenters debate the credibility of his claims and his motives.",
-   "summary_ar": "يثير فيديو على YouTube يظهر المحلل وشخصية المعارضة عمر رحمون وهو يناقش التنسيق المزعوم مع الرئيس بشأن انفجارات مستودعات الذخيرة وقمع الفصائل انقساماً حاداً في الجمهور. يثني المؤيدون على رحمون باعتباره موثوقاً وشجاعاً؛ ينقد الخصوم بأنه كاذب أو متطفل يسعى للصلة أو أسوأ. يناقش المعلقون مصداقية ادعاءاته ودوافعه.",
-   "public_reaction": "Commenters split between those who defend Rahmon as a credible independent voice exposing regime abuses and those who mock him as desperate for attention, call him a liar, or express contempt. Some suggest his claims contradict observed events or question his credibility entirely. Harsh insults and calls for accountability appear on both sides.",
-   "public_reaction_ar": "ينقسم المعلقون بين أولئك الذين يدافعون عن رحمون باعتباره صوتاً مستقلاً موثوقاً يكشف عن انتهاكات النظام وأولئك الذين يسخرون منه باعتباره يائساً للاهتمام أو يسميه كاذباً أو يعبرون عن الازدراء. يشير البعض إلى أن ادعاءاته تتناقض مع الأحداث الملحوظة أو يشككون في مصداقيته بالكامل. تظهر إهانات حادة ودعوات للمساءلة على كلا الجانبين.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.4,
-   "emotions": [
-    "contempt",
-    "skepticism",
-    "anger",
-    "defense"
-   ],
-   "emotions_ar": [
-    "ازدراء",
-    "تشكك",
-    "غضب",
-    "دفاع"
-   ],
-   "framings": [
-    "Credible independent accountability voice vs. opposition opportunism",
-    "Regime crimes and suppression vs. conspiracy theory",
-    "Journalistic responsibility vs. sensationalism"
-   ],
-   "framings_ar": [
-    "صوت المساءلة المستقل الموثوق مقابل فرصة العارضين السياسيين",
-    "جرائم النظام والقمع مقابل نظرية المؤامرة",
-    "المسؤولية الصحفية مقابل الإثارة"
-   ],
-   "flags": [
-    "Polarized character attacks with no nuance",
-    "Some comments suggest political enemies are being targeted for elimination or violence (p105, p113 hint at unresolved disappearances or extrajudicial action)"
-   ],
-   "flags_ar": [
-    "هجمات شخصية مستقطبة بدون تدرج",
-    "تشير بعض التعليقات إلى أن الأعداء السياسيين يتم استهدافهم للقضاء عليهم أو العنف (p105 و p113 تلمحان إلى اختفاءات أو إجراءات غير قضائية لم يتم حلها)"
-   ],
-   "volume": 10,
-   "public_volume": 10,
-   "share": 0.085,
-   "engagement": 19,
-   "platforms": {
-    "youtube": 10
-   },
-   "sources": [
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=n6xHlnDMZFg",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "economic-recovery-and-infrastructure-investment",
-   "title": "Business Normalization and Infrastructure Projects Signal Economic Revival",
-   "title_ar": "تطبيع الأعمال والمشاريع البنية التحتية تشير إلى الانتعاش الاقتصادي",
-   "summary": "Outlets highlight international business engagement, including BMW's return to Syria, major highway rehabilitation contracts with Kuwait, airport conversion projects, and displaced family support initiatives. These projects are framed as signs of normalization and economic opening.",
-   "summary_ar": "تسليط الأضواء على الانخراط التجاري الدولي، بما في ذلك عودة بي إم دبليو إلى سوريا، وعقود إعادة تأهيل الطرق الرئيسية مع الكويت، ومشاريع تحويل المطارات، ومبادرات دعم الأسر النازحة. يتم تأطير هذه المشاريع كعلامات على التطبيع والانفتاح الاقتصادي.",
-   "public_reaction": "One commenter with high engagement questions the reality of economic improvement, noting that everything has become expensive since the transition, suggesting skepticism about the narrative despite official optimism.",
-   "public_reaction_ar": "يطرح معلق واحد ذو مشاركة عالية أسئلة حول واقع التحسن الاقتصادي، مشيراً إلى أن كل شيء أصبح مكلفاً منذ الانتقال، مما يشير إلى تشكك في السرد بغض النظر عن التفاؤل الرسمي.",
-   "sentiment": 0.5,
-   "public_sentiment": -0.3,
-   "emotions": [
-    "optimism",
-    "skepticism"
-   ],
-   "emotions_ar": [
-    "تفاؤل",
-    "تشكك"
-   ],
-   "framings": [
-    "International business confidence signals",
-    "Integration into global supply chains",
-    "Post-war reconstruction momentum",
-    "Affordability concerns and cost of living"
-   ],
-   "framings_ar": [
-    "إشارات ثقة الأعمال الدولية",
-    "الاندماج في سلاسل التوريد العالمية",
-    "زخم إعادة البناء بعد الحرب",
-    "مخاوف القدرة على التحمل وتكلفة المعيشة"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 7,
-   "public_volume": 2,
-   "share": 0.059,
-   "engagement": 141,
-   "platforms": {
-    "telegram": 5,
-    "x": 1,
-    "youtube": 1
-   },
-   "sources": [
-    "SANA - state news agency (EN)",
-    "Enab Baladi - independent (EN)",
-    "X posts",
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78185",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6752",
-     "platform": "telegram"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=n6xHlnDMZFg",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "miscellaneous-economic-and-cultural-discourse",
-   "title": "Economic Hardship, Education Programs, and Cultural Heritage",
-   "title_ar": "الصعوبات الاقتصادية والبرامج التعليمية والتراث الثقافي",
-   "summary": "Scattered posts discuss education initiatives (academic pathway programs), cultural heritage (Golan arts forum), agricultural sector modernization (olive standards), and general economic concerns. These reflect ongoing state efforts to rebuild institutions and a public concerned with cost of living.",
-   "summary_ar": "تناقش منشورات متفرقة مبادرات تعليمية (برامج المسارات الأكاديمية)، والتراث الثقافي (منتدى فنون الجولان)، وتحديث القطاع الزراعي (معايير الزيتون)، والمخاوف الاقتصادية العامة. تعكس هذه جهود الدولة المستمرة لإعادة بناء المؤسسات وقلق الجمهور بشأن تكلفة المعيشة.",
-   "public_reaction": "Minimal engagement; one commenter expresses skepticism about cost of living improvements despite government programs. Another posts supportive comments about heritage preservation.",
-   "public_reaction_ar": "انخراط ضئيل؛ يعبر معلق واحد عن تشكك في تحسن مستويات المعيشة رغم البرامج الحكومية. آخر ينشر تعليقات داعمة حول الحفاظ على التراث.",
-   "sentiment": 0.2,
-   "public_sentiment": -0.1,
-   "emotions": [
-    "institutional optimism",
-    "economic anxiety"
-   ],
-   "emotions_ar": [
-    "تفاؤل مؤسسي",
-    "قلق اقتصادي"
-   ],
-   "framings": [
-    "State capacity building and institutional normalization",
-    "Economic recovery through institutional development",
-    "Cost of living vs. government optimism"
-   ],
-   "framings_ar": [
-    "بناء القدرة الحكومية والتطبيع المؤسسي",
-    "التعافي الاقتصادي من خلال التنمية المؤسسية",
-    "تكلفة المعيشة مقابل التفاؤل الحكومي"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 7,
-   "public_volume": 7,
-   "share": 0.059,
-   "engagement": 28,
-   "platforms": {
-    "x": 5,
-    "youtube": 2
-   },
-   "sources": [
-    "X posts",
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=HUGGqPAfyAk",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "institutional-expansion-and-security-consolidation",
-   "title": "Military Police and Security Services Expansion Across Governorates",
-   "title_ar": "توسع الشرطة العسكرية وأجهزة الأمن عبر المحافظات",
-   "summary": "State media reports the opening of military police branches and security apparatus expansion in Hasakah and other governorates. One outlet calls for civil peace and reduced polarization in Hasakah specifically. Public comments celebrate the arrival of security infrastructure, with minimal critical reaction.",
-   "summary_ar": "تقارير وسائل الإعلام الحكومية عن افتتاح فروع الشرطة العسكرية وتوسع الأجهزة الأمنية في الحسكة وحواضر أخرى. تدعو إحدى المنصات الإعلامية إلى السلام الأهلي والتقليل من الاستقطاب في الحسكة خاصة. يحتفل المعلقون العامون بوصول البنية التحتية الأمنية، مع رد فعل ناقد ضئيل.",
-   "public_reaction": "Commenters express support for security expansion, celebrating the integration of these institutions into governorates. One commenter notes that many recruits came from Kurdish-affiliated armed groups (Red Battalions), and another highlights the expansion but with implicit concern about assimilation of non-state actors. Minimal critique.",
-   "public_reaction_ar": "يعبر المعلقون عن دعم توسع الأمن، يحتفلون بدمج هذه المؤسسات في المحافظات. يشير معلق واحد إلى أن العديد من المجندين جاءوا من المجموعات المسلحة المنتسبة للأكراد (الكتائب الحمراء)، وآخر يسلط الضوء على التوسع لكن مع قلق ضمني حول استيعاب الجهات الفاعلة غير الحكومية. نقد ضئيل.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.2,
-   "emotions": [
-    "support",
-    "concern"
-   ],
-   "emotions_ar": [
-    "دعم",
-    "قلق"
-   ],
-   "framings": [
-    "Security consolidation and state capacity building",
-    "Integration of armed groups into formal structures",
-    "Territorial administrative control"
-   ],
-   "framings_ar": [
-    "تعزيز الأمن وبناء القدرة الحكومية",
-    "دمج المجموعات المسلحة في الهياكل الرسمية",
-    "السيطرة الإدارية الإقليمية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 5,
-   "public_volume": 4,
-   "share": 0.042,
-   "engagement": 16,
-   "platforms": {
-    "telegram": 1,
-    "youtube": 4
-   },
-   "sources": [
-    "YouTube comments",
-    "Enab Baladi - independent (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6751",
-     "platform": "telegram"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=wF9iSM1IRFQ",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "territorial-disputes-and-golan-sovereignty",
-   "title": "Golan Heights and Turkish Occupation Comparisons Dominate Territorial Debate",
-   "title_ar": "مقارنات مرتفعات الجولان والاحتلال التركي تهيمن على النقاش الإقليمي",
-   "summary": "The President's statement questioning why Palestinians deserve land more than Americans get a state led to public debate over Syrian territorial integrity. Commenters focus on three issues: Israeli control of Golan Heights, Turkish occupation of Iskenderun/Hatay, and historical claims about Syria's legitimacy. Critics argue the President applies different standards to different occupations and neglects Turkish-held territory.",
-   "summary_ar": "أدى تصريح الرئيس الذي يطرح تساؤلات حول سبب استحقاق الفلسطينيين للأرض أكثر من حصول الأمريكيين على دولة إلى نقاش عام حول السلامة الإقليمية السورية. يركز المعلقون على ثلاث قضايا: السيطرة الإسرائيلية على مرتفعات الجولان، والاحتلال التركي للإسكندرونة/هاتاي، والمطالبات التاريخية حول شرعية سوريا. يجادل النقاد بأن الرئيس يطبق معايير مختلفة على الاحتلالات المختلفة ويتجاهل الأراضي التي تحتلها تركيا.",
-   "public_reaction": "Commenters express frustration and skepticism, arguing that the President's logic should equally apply to Turkish occupation of Iskenderun and pointing out that military force, not diplomacy, has historically recovered occupied territories (e.g., Sinai). Some claim the President is surrendering Syrian interests and prioritizing Palestinian causes over Syrian sovereignty.",
-   "public_reaction_ar": "يعرب المعلقون عن الإحباط والتشكك، محتجين بأن منطق الرئيس يجب أن ينطبق بالتساوي على الاحتلال التركي للإسكندرونة ويشيرون إلى أن القوة العسكرية، وليس الدبلوماسية، استعادت تاريخياً الأراضي المحتلة (مثل سيناء). يزعم البعض أن الرئيس يستسلم للمصالح السورية ويعطي الأولوية للقضايا الفلسطينية على السيادة السورية.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.5,
-   "emotions": [
-    "frustration",
-    "anger",
-    "skepticism"
-   ],
-   "emotions_ar": [
-    "إحباط",
-    "غضب",
-    "تشكك"
-   ],
-   "framings": [
-    "Asymmetric application of sovereignty principles",
-    "Military vs. diplomatic solutions to occupation",
-    "Palestinian cause vs. Syrian territorial interests",
-    "Historical definitions of Syrian identity and borders"
-   ],
-   "framings_ar": [
-    "التطبيق غير المتماثل لمبادئ السيادة",
-    "الحلول العسكرية مقابل الحلول الدبلوماسية للاحتلال",
-    "القضية الفلسطينية مقابل المصالح الإقليمية السورية",
-    "التعريفات التاريخية للهوية السورية والحدود"
-   ],
-   "flags": [
-    "Competing claims about historical territorial definitions and national identity",
-    "Some comments suggest contested sovereignty claims (p26, p32 argue Syria is artificial construct and Levant is 'real' center)"
-   ],
-   "flags_ar": [
-    "مطالبات متنافسة حول التعريفات الإقليمية التاريخية والهوية الوطنية",
-    "تشير بعض التعليقات إلى مطالبات السيادة المتنازع عليها (p26 و p32 يجادلان بأن سوريا كيان صناعي والبلاد الشامية هي 'المركز الحقيقي')"
-   ],
-   "volume": 4,
-   "public_volume": 4,
-   "share": 0.034,
-   "engagement": 2,
-   "platforms": {
-    "x": 2,
-    "youtube": 2
-   },
-   "sources": [
-    "X posts",
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=IzhKlK0G35k",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "international-diplomatic-engagement-and-support",
-   "title": "UN General Assembly Participation and International Recognition of Syrian Sovereignty",
-   "title_ar": "المشاركة في الجمعية العامة للأمم المتحدة والاعتراف الدولي بالسيادة السورية",
-   "summary": "Outlets report the President's active diplomacy at the UN, including meetings with Saudi, Turkish, and other regional officials, and affirm international support for Syrian sovereignty from France and other powers. These posts emphasize Syria's re-integration into international affairs and broad consensus on restoring state unity.",
-   "summary_ar": "تقارير المنصات الإعلامية عن الدبلوماسية النشطة للرئيس في الأمم المتحدة، بما في ذلك لقاءات مع المسؤولين السعوديين والأتراك وغيرهم من المسؤولين الإقليميين، وتؤكد الدعم الدولي للسيادة السورية من فرنسا وقوى أخرى. تؤكد هذه المنشورات إعادة اندماج سوريا في الشؤون الدولية والإجماع الواسع على استعادة وحدة الدولة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.4,
-   "public_sentiment": null,
-   "emotions": [
-    "diplomatic pride"
-   ],
-   "emotions_ar": [
-    "فخر دبلوماسي"
-   ],
-   "framings": [
-    "International recognition and normalization of Syria's role",
-    "Regional consensus on sovereignty and territorial integrity",
-    "Multilateral support for reconstruction"
-   ],
-   "framings_ar": [
-    "الاعتراف الدولي وتطبيع دور سوريا",
-    "إجماع إقليمي حول السيادة والسلامة الإقليمية",
-    "دعم متعدد الأطراف لإعادة البناء"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 3,
-   "public_volume": 0,
-   "share": 0.025,
-   "engagement": 72,
-   "platforms": {
-    "telegram": 3
-   },
-   "sources": [
-    "SANA - state news agency (EN)",
-    "Enab Baladi - independent (EN)"
-   ],
-   "examples": [
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78192",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6754",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-23T11:39:45Z"
-  },
-  {
-   "id": "casualty-of-ammunition-depot-explosions",
-   "title": "Death of Senior Defense Ministry Official in Ammunition Depot Explosion",
-   "title_ar": "وفاة مسؤول كبير بوزارة الدفاع في انفجار مستودع ذخيرة",
-   "summary": "An X post reports the death of a high-ranking Defense Ministry official in ammunition depot explosions near Aleppo. The official was described as Iraqi-born and previously with a militant faction (Hayat Tahrir al-Sham). No public reaction visible.",
-   "summary_ar": "تقرير منشور على X عن وفاة مسؤول رفيع المستوى بوزارة الدفاع في انفجارات مستودع ذخيرة بالقرب من حلب. وصف المسؤول بأنه من أصول عراقية وكان سابقاً مع فصيل مسلح (هيئة تحرير الشام). لا يوجد رد فعل عام ظاهر.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.0,
-   "public_sentiment": null,
-   "emotions": [],
-   "emotions_ar": [],
-   "framings": [
-    "Factional integration and institutional consolidation",
-    "Ongoing security incidents"
-   ],
-   "framings_ar": [
-    "التكامل الفصائلي والتوطيد المؤسسي",
-    "حوادث أمنية مستمرة"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 1,
-   "public_volume": 1,
-   "share": 0.008,
-   "engagement": 16,
-   "platforms": {
-    "x": 1
-   },
-   "sources": [
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-23T11:39:45Z"
+   "first_seen": "2026-09-23T12:45:46Z"
   }
  ],
  "sources": [
@@ -550,15 +680,197 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 17,
-   "recent": 17
+   "fetched": 20,
+   "recent": 20
+  },
+  {
+   "name": "Syrian Presidency - official",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 6,
+   "recent": 6
+  },
+  {
+   "name": "Al-Ikhbariya Syria - state TV",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 8,
+   "recent": 8
+  },
+  {
+   "name": "Syrian Ministry of Interior - official",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 5,
+   "recent": 3
+  },
+  {
+   "name": "Enab Baladi - independent (AR)",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 19
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
+   "recent": 6
+  },
+  {
+   "name": "Halab Today TV - opposition-origin, Aleppo",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 20
+  },
+  {
+   "name": "Shaam News Network - opposition-origin",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 13,
+   "recent": 13
+  },
+  {
+   "name": "Levant24 - Syria news (EN)",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 19,
+   "recent": 19
+  },
+  {
+   "name": "ANHA (Hawar) - north-east administration news agency (AR)",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 14,
+   "recent": 14
+  },
+  {
+   "name": "North Press Agency - Qamishli-based (AR)",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 16,
+   "recent": 16
+  },
+  {
+   "name": "North Press Agency (EN)",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 14,
+   "recent": 9
+  },
+  {
+   "name": "SDF media center - official",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 0
+  },
+  {
+   "name": "Rudaw Arabic - Kurdistan Region outlet",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 19,
+   "recent": 7
+  },
+  {
+   "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 4
+  },
+  {
+   "name": "Kurdistan24 English",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 7
+  },
+  {
+   "name": "Al Jazeera - Qatar-based",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 1
+  },
+  {
+   "name": "Al Arabiya - Saudi-owned",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 1
+  },
+  {
+   "name": "Asharq News - Saudi-owned",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 3
+  },
+  {
+   "name": "Al Mayadeen - Beirut-based",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
+   "recent": 0
+  },
+  {
+   "name": "Anadolu Agency - Turkish state news agency (AR)",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 20,
    "recent": 5
+  },
+  {
+   "name": "TRT Arabi - Turkish public broadcaster",
+   "platform": "telegram",
+   "ok": true,
+   "fetched": 14,
+   "recent": 0
+  },
+  {
+   "name": "Google News - Syria (AR)",
+   "platform": "news",
+   "ok": true,
+   "fetched": 60,
+   "recent": 41
+  },
+  {
+   "name": "Google News - Syria (EN)",
+   "platform": "news",
+   "ok": true,
+   "fetched": 60,
+   "recent": 26
+  },
+  {
+   "name": "SANA website - state news agency (AR)",
+   "platform": "news",
+   "ok": true,
+   "fetched": 10,
+   "recent": 10
+  },
+  {
+   "name": "Syria TV - opposition-origin",
+   "platform": "news",
+   "ok": true,
+   "fetched": 60,
+   "recent": 45
+  },
+  {
+   "name": "Zaman al-Wasl - opposition-origin",
+   "platform": "news",
+   "ok": true,
+   "fetched": 60,
+   "recent": 22
+  },
+  {
+   "name": "Sky News Arabia - UAE-based",
+   "platform": "news",
+   "ok": true,
+   "fetched": 60,
+   "recent": 2
   },
   {
    "name": "BBC Arabic",
@@ -571,8 +883,15 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 94,
-   "recent": 94
+   "fetched": 186,
+   "recent": 186
+  },
+  {
+   "name": "Reddit r/syria comments",
+   "platform": "reddit",
+   "ok": true,
+   "fetched": 100,
+   "recent": 57
   },
   {
    "name": "X posts",
@@ -584,8 +903,35 @@
  ],
  "source_names_ar": {
   "SANA - state news agency (EN)": "سانا - وكالة الأنباء الرسمية (إنجليزي)",
+  "Syrian Presidency - official": "رئاسة الجمهورية العربية السورية - رسمي",
+  "Al-Ikhbariya Syria - state TV": "الإخبارية السورية - تلفزيون رسمي",
+  "Syrian Ministry of Interior - official": "وزارة الداخلية السورية - رسمي",
+  "Enab Baladi - independent (AR)": "عنب بلدي - مستقلة",
   "Enab Baladi - independent (EN)": "عنب بلدي - مستقلة (إنجليزي)",
-  "BBC Arabic": "بي بي سي عربي"
+  "Halab Today TV - opposition-origin, Aleppo": "قناة حلب اليوم - معارضة سابقاً، حلب",
+  "Shaam News Network - opposition-origin": "شبكة شام الإخبارية - معارضة سابقاً",
+  "Levant24 - Syria news (EN)": "ليفانت 24 - أخبار سوريا (إنجليزي)",
+  "ANHA (Hawar) - north-east administration news agency (AR)": "وكالة أنباء هاوار - الإدارة الذاتية (عربي)",
+  "North Press Agency - Qamishli-based (AR)": "نورث برس - مقرها القامشلي",
+  "North Press Agency (EN)": "نورث برس (إنجليزي)",
+  "SDF media center - official": "المركز الإعلامي لقوات سوريا الديمقراطية - رسمي",
+  "Rudaw Arabic - Kurdistan Region outlet": "رووداو عربية - إقليم كردستان",
+  "Kurdistan24 Arabic - Kurdistan Region outlet": "كوردستان 24 عربية - إقليم كردستان",
+  "Kurdistan24 English": "كوردستان 24 (إنجليزي)",
+  "Al Jazeera - Qatar-based": "الجزيرة - مقرها قطر",
+  "Al Arabiya - Saudi-owned": "العربية - مملوكة سعودياً",
+  "Asharq News - Saudi-owned": "الشرق للأخبار - مملوكة سعودياً",
+  "Al Mayadeen - Beirut-based": "الميادين - مقرها بيروت",
+  "Anadolu Agency - Turkish state news agency (AR)": "وكالة الأناضول - وكالة تركية رسمية",
+  "TRT Arabi - Turkish public broadcaster": "تي آر تي عربي - الإذاعة والتلفزيون التركي",
+  "Google News - Syria (AR)": "أخبار جوجل - سوريا",
+  "Google News - Syria (EN)": "أخبار جوجل - سوريا (إنجليزي)",
+  "SANA website - state news agency (AR)": "موقع سانا - وكالة الأنباء الرسمية",
+  "Syria TV - opposition-origin": "تلفزيون سوريا - معارض سابقاً",
+  "Zaman al-Wasl - opposition-origin": "زمان الوصل - معارضة سابقاً",
+  "Sky News Arabia - UAE-based": "سكاي نيوز عربية - مقرها الإمارات",
+  "BBC Arabic": "بي بي سي عربي",
+  "Reddit r/syria comments": "تعليقات ريديت r/syria"
  },
- "cost_usd": 0.0665
+ "cost_usd": 0.0954
 }
