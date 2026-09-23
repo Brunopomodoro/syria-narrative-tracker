@@ -3,16 +3,16 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-23T20:23:45Z",
- "checked_at": "2026-09-23T20:23:45Z",
+ "generated_at": "2026-09-23T23:43:16Z",
+ "checked_at": "2026-09-23T23:43:16Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
-  "posts_analyzed": 303,
+  "posts_analyzed": 304,
   "public_posts": 213,
-  "outlet_posts": 90,
+  "outlet_posts": 91,
   "reactions_posts": 0,
   "unique_posts": 300,
   "sources_ok": 32,
@@ -20,83 +20,88 @@
   "platforms": {
    "news": 27,
    "telegram": 63,
-   "youtube": 186,
-   "reddit": 14,
-   "x": 10
+   "x": 9,
+   "reddit": 24,
+   "youtube": 177
   },
   "languages": {
-   "ar": 214,
-   "en": 82,
+   "ar": 207,
+   "en": 90,
    "other": 2,
-   "ku": 2
+   "ku": 1
   }
  },
  "overall": {
-  "sentiment": 0.2,
+  "sentiment": 0.15,
   "mood": "Diplomatic",
   "mood_ar": "دبلوماسي",
-  "public_sentiment": 0.45,
+  "public_sentiment": -0.25,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "Syrian state media and outlets heavily covered President al-Sharaa's UN General Assembly attendance, his meetings with international leaders, and his statements on the Golan Heights and October 7. Public reaction splits sharply: many Syrians express pride and support for his confrontational stance toward Israel, with prayers and religious expressions of solidarity, but significant voices express skepticism about his rhetorical strength versus actual policy, doubts about withdrawal promises, and anger at territorial concessions. Kurdish-language commenters reject Syrian government positions on Kurdish rights, while Turkish and some English-language audiences debate Syria's military alignments and foreign policy.",
-  "brief_ar": "غطت وسائل الإعلام الحكومية والمحسوبة على الدولة بكثافة حضور الرئيس الشرع للجمعية العامة للأمم المتحدة واجتماعاته مع قادة دوليين وتصريحاته بشأن الجولان وأحداث السابع من أكتوبر. انقسمت ردود الفعل العامة بشكل حاد: يعبر كثير من السوريين عن فخر وتأييد لموقفه المواجه تجاه إسرائيل مع دعوات وتعبيرات دينية عن التضامن، لكن أصوات معارضة تشعر بالشك حول قوة خطابه مقابل السياسة الفعلية وتشكك في وعود الانسحاب وتغضب من التنازلات الإقليمية. يرفض المعلقون الناطقون بالكردية مواقف الحكومة السورية بشأن الحقوق الكردية، بينما يناقش الجمهور التركي وبعض الأصوات الناطقة بالإنجليزية التحالفات العسكرية السورية والسياسة الخارجية."
+  "brief": "State media and international outlets emphasize President al-Sharaa's intensive UN diplomacy, reconstruction efforts, and firm rhetoric on the Golan Heights, projecting international engagement and recovery momentum. Public reaction is sharply divided: many Syrians praise al-Sharaa's confidence and statements on Palestinian issues, but significant minorities express deep skepticism about his actual capacity to recover occupied territory, criticize his accommodation of foreign military presences, and view his rhetoric as performative. Trust deficits run high, particularly among those who recall earlier unfulfilled promises.",
+  "brief_ar": "تركز وسائل الإعلام الرسمية والمنصات الدولية على الدبلوماسية المكثفة للرئيس الشرع في الأمم المتحدة وجهود إعادة الإعمار والخطاب الحازم حول الجولان، مما يعكس زخماً في الانخراط الدولي والتعافي. تفاعل الجمهور منقسم بشدة: يمدح كثيرون ثقة الشرع وتصريحاته حول القضايا الفلسطينية، لكن أقليات كبيرة تعبر عن شك عميق حول قدرته الفعلية على استرجاع الأراضي المحتلة، وتنتقد استيعابه للوجود العسكري الأجنبي، وترى خطابه استعراضياً. نقص الثقة عميق، خاصة بين من يتذكرون وعوداً سابقة لم تتحقق."
  },
  "narratives": [
   {
    "id": "golan-heights-israel-rhetoric",
-   "title": "Golan Heights Sovereignty and Israeli Escalation at the UN",
-   "title_ar": "السيادة على الجولان والمواجهة الإسرائيلية في الأمم المتحدة",
-   "summary": "President al-Sharaa declared at the UN General Assembly that the Golan will remain Syrian territory and denounced Israeli violations, citing 500+ air raids, 1,200+ incursions, and 300+ detention cases since Syria's liberation. Israeli Defense Minister Katz responded by asserting eternal Israeli sovereignty over the Golan and ruling out withdrawal from Mount Hermon and the security zone. State media and opposition outlets amplified both positions.",
-   "summary_ar": "أعلن الرئيس الشرع في الجمعية العامة للأمم المتحدة أن الجولان سيبقى أرضاً سورية وندد بالانتهاكات الإسرائيلية، محتجاً بأكثر من 500 غارة جوية و1200 توغل و300 حالة احتجاز منذ تحرير سوريا. رد وزير الدفاع الإسرائيلي كاتس بتأكيده السيادة الإسرائيلية الأبدية على الجولان ورفضه الانسحاب من جبل الشيخ والمنطقة الأمنية. وسائل إعلام حكومية ومعارضة نقلت كلا الموقفين.",
-   "public_reaction": "Syrians strongly supported al-Sharaa's stance with religious expressions and calls for liberation, but many questioned whether rhetoric alone without military action would recover the territory. Some commenters expressed cynicism about international law's effectiveness and referenced the 'law of the jungle' as governing international relations. A minority raised concerns about civilian populations (Druze) in the Golan and feasibility of displacement.",
-   "public_reaction_ar": "أيد السوريون بقوة موقف الشرع بتعبيرات دينية ودعوات للتحرير، لكن الكثيرين شككوا فيما إذا كان الخطاب وحده بدون عمل عسكري سيسترجع الأراضي. عبر معلقون كثر عن سخط من فعالية القانون الدولي وأشاروا إلى 'قانون الغاب' كمسيطر على العلاقات الدولية. أثار عدد قليل مخاوف بشأن السكان المدنيين (الدروز) في الجولان وإمكانية التهجير.",
+   "title": "Golan Heights Assertion and Israeli Response at UN",
+   "title_ar": "تأكيد الجولان والرد الإسرائيلي في الأمم المتحدة",
+   "summary": "President al-Sharaa declared at the UN that the Golan Heights will remain Syrian territory and all annexation measures are void, citing UNSC Resolution 497. Israeli Defence Minister Katz responded immediately that the Golan will remain under Israeli sovereignty forever and Israel will not withdraw from Mount Hermon or the security zone. State media and international outlets frame this as al-Sharaa's diplomatic assertion of sovereignty; public reactions split between those applauding the rhetoric and those doubting its practical efficacy.",
+   "summary_ar": "أعلن الرئيس الشرع في الأمم المتحدة أن الجولان ستبقى أرضاً سورية وأن جميع إجراءات الضم باطلة، مستشهداً بقرار مجلس الأمن 497. رد وزير الدفاع الإسرائيلي كاتس فوراً بأن الجولان ستبقى تحت السيادة الإسرائيلية للأبد ولن تنسحب إسرائيل من جبل الشيخ أو المنطقة الأمنية. تؤطر وسائل الإعلام الرسمية والمنصات الدولية هذا كتأكيد دبلوماسي للسيادة؛ تفاعلات الجمهور منقسمة بين من يصفق للخطاب ومن يشكك في فعاليته العملية.",
+   "public_reaction": "Strong polarization: admirers praise bold rhetoric and link Golan to Palestinian resistance; skeptics mock the gap between words and military reality, noting Israeli forces remain entrenched 25km from Damascus and questioning whether speech substitutes for actual recovery capability.",
+   "public_reaction_ar": "استقطاب قوي: معجبون يمدحون الخطاب الجريء ويربطون الجولان بالمقاومة الفلسطينية؛ متشككون يسخرون من الفجوة بين الأقوال والواقع العسكري، ويشيرون إلى أن القوات الإسرائيلية لا تزال متمركزة على بعد 25 كم من دمشق ويتساءلون عما إذا كان الخطاب يحل محل القدرة الفعلية على الاسترجاع.",
    "sentiment": 0.3,
-   "public_sentiment": 0.35,
+   "public_sentiment": -0.1,
    "emotions": [
     "defiance",
-    "frustration",
-    "doubt"
+    "pride",
+    "doubt",
+    "sarcasm"
    ],
    "emotions_ar": [
-    "تحدٍ",
-    "إحباط",
-    "شك"
+    "تحد",
+    "فخر",
+    "شك",
+    "سخرية"
    ],
    "framings": [
-    "state media: al-Sharaa's UN speech as firm assertion of Syrian sovereignty",
-    "Israeli media: Katz's response framing permanent Israeli control",
-    "opposition outlets: coverage of both positions without editorial stance",
-    "public: mixture of nationalist pride and realpolitik skepticism"
+    "State outlets: legal affirmation of Syrian sovereignty, diplomatic offensive, UN platform for national assertion",
+    "Opposition outlets: critical documentation of Israeli military positions and Syrian military asymmetry",
+    "Public: mixture of nationalist satisfaction with assertive language and cynicism about capacity to enforce claims"
    ],
    "framings_ar": [
-    "الإعلام الحكومي: خطاب الشرع في الأمم المتحدة كتأكيد راسخ للسيادة السورية",
-    "الإعلام الإسرائيلي: رد كاتس يطر السيطرة الإسرائيلية الدائمة",
-    "وسائل المعارضة: تغطية الموقفين دون موقف تحريري",
-    "الجمهور: خليط من الفخر القومي والشك في الواقع السياسي"
+    "الوسائل الرسمية: تأكيد قانوني للسيادة السورية، هجوم دبلوماسي، منصة أممية لتأكيد الموقف الوطني",
+    "وسائل المعارضة: توثيق نقدي للمواقع العسكرية الإسرائيلية وعدم التوازن العسكري السوري",
+    "الجمهور: مزيج من الرضا القومي بلغة حازمة وتشاؤم بشأن القدرة على فرض المطالب"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 49,
-   "public_volume": 34,
-   "share": 0.162,
-   "engagement": 1761,
+   "flags": [
+    "Repeated public assumption (at least 8+ comments) that rhetoric is performative cover for secret surrender deals with Israel or US; no evidence presented"
+   ],
+   "flags_ar": [
+    "افتراض عام متكرر (ثمانية تعليقات على الأقل أو أكثر) بأن الخطاب غطاء استعراضي لصفقات استسلام سرية مع إسرائيل أو الولايات المتحدة؛ لا تقدم أدلة"
+   ],
+   "volume": 65,
+   "public_volume": 56,
+   "share": 0.214,
+   "engagement": 1897,
    "platforms": {
-    "news": 5,
-    "telegram": 10,
-    "youtube": 31,
-    "reddit": 3
+    "news": 3,
+    "telegram": 6,
+    "youtube": 47,
+    "reddit": 7,
+    "x": 2
    },
    "languages": {
-    "ar": 43,
-    "en": 6
+    "ar": 58,
+    "en": 7
    },
    "sources": [
     "YouTube comments",
     "Reddit r/syria comments",
-    "North Press Agency (EN)",
-    "Kurdistan24 Arabic - Kurdistan Region outlet",
     "TRT Arabi - Turkish public broadcaster",
-    "BBC Arabic"
+    "X posts",
+    "BBC Arabic",
+    "North Press Agency - Qamishli-based (AR)"
    ],
    "examples": [
     {
@@ -110,57 +115,136 @@
      "platform": "telegram"
     },
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45635",
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/103620",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-09-23T13:25:58Z"
   },
   {
-   "id": "october-7-gaza-debate",
-   "title": "Debate Over October 7 and Israeli-Palestinian Conflict in al-Sharaa's Response",
-   "title_ar": "جدل حول السابع من أكتوبر والنزاع الإسرائيلي الفلسطيني في رد الشرع",
-   "summary": "At the UN, an Israeli journalist asked al-Sharaa how Syria could condemn October 7 while defending Palestinian resistance. Al-Sharaa responded by contextualizing October 7 as a reaction to decades of Palestinian occupation, noting Israel's destruction of Gaza and killing of ~70,000 people, and distinguishing between resistance to occupation and terrorism. State media and opposition outlets covered his response; public reaction split between those praising his clarity and those demanding stronger language calling the October 7 response a legitimate resistance act rather than defense.",
-   "summary_ar": "في الأمم المتحدة، سأل صحفي إسرائيلي الشرع كيف يمكن لسوريا إدانة السابع من أكتوبر بينما تدافع عن المقاومة الفلسطينية. رد الشرع بسياق السابع من أكتوبر كردة فعل على عقود من الاحتلال الفلسطيني، مشيراً إلى تدمير إسرائيل لغزة وقتل حوالي 70 ألف شخص، وميز بين المقاومة للاحتلال والإرهاب. غطت وسائل الإعلام الحكومية والمعارضة رده؛ انقسمت ردود الفعل العامة بين من مدح وضوحه ومن طالب بلغة أقوى تسمي رد السابع من أكتوبر مقاومة شرعية بدلاً من الدفاع.",
-   "public_reaction": "Public split into multiple camps: (1) supporters praising his balanced response and willingness to explain Palestinian grievances; (2) critics arguing he should have called October 7 a legitimate resistance act, not merely 'understandable'; (3) those questioning whether words alone matter given Israeli military actions; (4) commenters interpreting his nuanced language as political necessity and diplomatic constraint.",
-   "public_reaction_ar": "انقسم الجمهور إلى عدة معسكرات: (1) مؤيدون يمدحون رده المتوازن وإرادته شرح المظالم الفلسطينية؛ (2) منتقدون يحتجون بأنه كان يجب أن يسمي السابع من أكتوبر مقاومة شرعية وليس مجرد 'مفهوم'؛ (3) من يتساءلون ما إذا كان الكلام وحده مهماً في ضوء الإجراءات العسكرية الإسرائيلية؛ (4) معلقون يفسرون لغته الدقيقة كضرورة سياسية وقيد دبلوماسي.",
-   "sentiment": 0.1,
-   "public_sentiment": 0.0,
+   "id": "refugee-return-and-camps-transition",
+   "title": "Transition from Camps to Return and Reintegration: Government Targets and International Support",
+   "title_ar": "الانتقال من المخيمات إلى العودة وإعادة الدمج: الأهداف الحكومية والدعم الدولي",
+   "summary": "State media and international partners (IOM, UNDP, UNHCR) report progress on transitioning displaced Syrians from camps to sustainable return. Officials claim goal to end camps by end of 2026, cite 57% willingness to return, and highlight infrastructure and service gaps as main barriers. UN officials praise coordination and recovery momentum. Public comments on reconstruction videos show gratitude for visible improvements in southern Damascus suburbs but also complaints about unequal development and ongoing administrative dysfunction.",
+   "summary_ar": "تقر وسائل الإعلام الرسمية والشركاء الدوليون (المنظمة الدولية للهجرة، برنامج الأمم المتحدة الإنمائي، مفوضية الأمم المتحدة) بالتقدم في نقل النازحين السوريين من المخيمات إلى العودة المستدامة. يؤكد المسؤولون على الهدف من إنهاء المخيمات بنهاية 2026، ويستشهدون بـ 57% من الرغبة في العودة، وينسبون الفجوات الرئيسية إلى البنية التحتية والخدمات. مسؤولو الأمم المتحدة يثنون على التنسيق وزخم التعافي. التعليقات العامة على مقاطع إعادة الإعمار تظهر امتنان للتحسينات المرئية في ضواحي جنوب دمشق لكن أيضاً شكاوى حول عدم المساواة في التنمية والخلل الإداري المستمر.",
+   "public_reaction": "Mixed: gratitude for visible repairs and reconstruction in southern suburbs; complaints about unequal distribution, administrative failure, and persistent informal settlements; some notes of concern about displacement of informal communities for formal development.",
+   "public_reaction_ar": "متنوع: امتنان للإصلاحات المرئية وإعادة الإعمار في الضواحي الجنوبية؛ شكاوى حول التوزيع غير المتكافئ والفشل الإداري والمستوطنات غير الرسمية المستمرة؛ بعض ملاحظات القلق حول النزوح القسري للمجتمعات غير الرسمية من أجل التنمية الرسمية.",
+   "sentiment": 0.25,
+   "public_sentiment": 0.05,
    "emotions": [
-    "ambivalence",
+    "cautious hope",
+    "gratitude",
     "frustration",
-    "debate"
+    "skepticism"
    ],
    "emotions_ar": [
-    "تردد",
+    "أمل حذر",
+    "امتنان",
     "إحباط",
-    "جدل"
+    "شك"
    ],
    "framings": [
-    "state media: al-Sharaa's response as measured and contextual",
-    "opposition outlets: coverage of exchange without strong editorial position",
-    "public critics: framing as inadequate capitulation to international pressure",
-    "public supporters: framing as pragmatic diplomacy under constraint"
+    "State/international: progress narrative, coordination success, humanitarian recovery as development investment",
+    "Public: mixed appreciation for visible work with concerns about equity, speed, and sustainability; some cite gaps in services (water, sanitation, schools) as ongoing barriers"
    ],
    "framings_ar": [
-    "الإعلام الحكومي: رد الشرع كمقاس وسياقي",
-    "وسائل المعارضة: تغطية التبادل دون موقف تحريري قوي",
-    "نقاد عامون: تأطيره كاستسلام غير كافٍ للضغط الدولي",
-    "مؤيدو عامون: تأطيره كدبلوماسية براغماتية تحت القيد"
+    "الرسمي/الدولي: سرد التقدم، نجاح التنسيق، التعافي الإنساني كاستثمار تنموي",
+    "الجمهور: تقدير مختلط للعمل المرئي مع مخاوف حول الإنصاف والسرعة والاستدامة؛ يستشهد البعض بفجوات في الخدمات (المياه والصرف الصحي والمدارس) كعوائق مستمرة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 43,
-   "public_volume": 43,
-   "share": 0.142,
-   "engagement": 399,
+   "volume": 28,
+   "public_volume": 17,
+   "share": 0.092,
+   "engagement": 874,
    "platforms": {
-    "youtube": 43
+    "telegram": 9,
+    "news": 2,
+    "x": 1,
+    "youtube": 14
    },
    "languages": {
-    "ar": 42,
-    "en": 1
+    "ar": 20,
+    "en": 5,
+    "other": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Al-Ikhbariya Syria - state TV",
+    "SANA - state news agency (EN)",
+    "SANA website - state news agency (AR)",
+    "Enab Baladi - independent (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/232469",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78247",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6760",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-23T23:43:16Z"
+  },
+  {
+   "id": "october-7-gaza-debate",
+   "title": "October 7, Gaza, and Debate Over al-Sharaa's Framing of Palestinian Resistance",
+   "title_ar": "السابع من أكتوبر وغزة والنقاش حول تأطير الشرع للمقاومة الفلسطينية",
+   "summary": "When asked by an Israeli journalist about October 7, al-Sharaa contextualized it as response to occupation and noted Israel's disproportionate retaliation (70,000+ killed in Gaza, 500 airstrikes on Syria). Public reactions split sharply: supporters view this as principled acknowledgment of Palestinian rights and Israeli aggression; critics fault him for not unequivocally calling deaths 'martyrdom' and for implying equivalence rather than complete condemnation of Israel. Some interpret his language choices as pragmatic (constrained by diplomatic pressures), others as moral failure.",
+   "summary_ar": "عندما سُأل من صحفي إسرائيلي عن السابع من أكتوبر، وضع الشرع السياق كرد على الاحتلال وأشار إلى الانتقام غير المتناسب من إسرائيل (أكثر من 70 ألف قتيل في غزة، 500 غارة جوية على سوريا). ردود الفعل العام منقسمة بشدة: يرى المؤيدون هذا كاعتراف مبدئي بحقوق الفلسطينيين والعدوان الإسرائيلي؛ ينتقده النقاد لعدم استدعائه وفيات 'الشهادة' بشكل صريح ولتضمنه تكافؤ بدلاً من الإدانة الكاملة لإسرائيل. يفسر البعض خياراته اللغوية كواقعية (مقيدة بالضغوط الدبلوماسية)، والآخرون كإخفاق أخلاقي.",
+   "public_reaction": "Highly polarized: supporters praise his acknowledgment of Palestinian suffering and Israeli responsibility; critics argue he should have been unambiguous in calling attacks on Israeli civilians 'legitimate resistance' and accuse him of moral relativism or international pressure capitulation. Some express relief that he at least addressed the topic; others see it as insufficient or evasive.",
+   "public_reaction_ar": "منقسم للغاية: يمدح المؤيدون اعترافه بمعاناة الفلسطينيين والمسؤولية الإسرائيلية؛ يجادل النقاد بأنه كان يجب أن يكون واضحاً في استدعاء الهجمات على المدنيين الإسرائيليين 'مقاومة شرعية' ويتهمونه بالنسبية الأخلاقية أو الاستسلام لضغط دولي. يعبر البعض عن ارتياح لأنه تناول الموضوع على الأقل؛ يراه آخرون غير كافٍ أو غامض.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.15,
+   "emotions": [
+    "moral debate",
+    "frustration",
+    "partial approval",
+    "doubt about sincerity"
+   ],
+   "emotions_ar": [
+    "نقاش أخلاقي",
+    "إحباط",
+    "موافقة جزئية",
+    "شك في الصدق"
+   ],
+   "framings": [
+    "State narrative: contextualization of Palestinian resistance within cycle of occupation and retaliation; acknowledgment of civilian toll",
+    "Palestinian-solidarity framing: insufficient; should be full-throated support for resistance",
+    "Pragmatist framing: constrained diplomacy; he said what he could given international audience",
+    "Skeptic framing: rehearsed language that masks unwillingness to challenge Israel"
+   ],
+   "framings_ar": [
+    "السرد الرسمي: تأطير المقاومة الفلسطينية في إطار دورة الاحتلال والانتقام؛ الاعتراف بالخسائر المدنية",
+    "تأطير التضامن الفلسطيني: غير كافٍ؛ يجب أن يكون دعماً واضحاً للمقاومة",
+    "تأطير البراغماتي: دبلوماسية مقيدة؛ قال ما استطاع في ضوء الجمهور الدولي",
+    "تأطير الشكاك: لغة مرتجلة تخفي عدم الرغبة في تحدي إسرائيل"
+   ],
+   "flags": [
+    "Multiple comments (p185, p203, p209, p213, p217, p226, p237, p238, p239, p246) questioning al-Sharaa's framing of Palestinian resistance and suggesting he is constrained or compromised; no coordination evident but reflects widespread distrust about leadership's genuine commitment to Palestinian cause"
+   ],
+   "flags_ar": [
+    "تعليقات متعددة (p185, p203, p209, p213, p217, p226, p237, p238, p239, p246) تشكك في تأطير الشرع للمقاومة الفلسطينية وتشير إلى أنه مقيد أو معرض للخطر؛ لا يوجد تنسيق واضح لكن يعكس عدم ثقة واسع الانتشار حول التزام القيادة الحقيقي بالقضية الفلسطينية"
+   ],
+   "volume": 27,
+   "public_volume": 27,
+   "share": 0.089,
+   "engagement": 118,
+   "platforms": {
+    "youtube": 27
+   },
+   "languages": {
+    "ar": 27
    },
    "sources": [
     "YouTube comments"
@@ -168,264 +252,60 @@
    "examples": [
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=10lQZW223fA",
+     "url": "https://www.youtube.com/watch?v=nbiUgmcRWyQ",
      "platform": "youtube"
     }
    ],
    "first_seen": "2026-09-23T17:02:12Z"
-  },
-  {
-   "id": "womens-security-forces-expansion",
-   "title": "Women's Police Institute Graduation and Gender Integration in Security Forces",
-   "title_ar": "تخريج معهد الشرطة النسائية والتكامل بين الجنسين في قوات الأمن",
-   "summary": "Syria's Ministry of Interior held a graduation ceremony for the first cohort of the Women's Police Institute in Tel (south Damascus), with 150 women completing 6-month military and police training. The President's wife attended the ceremony. State media portrayed this as a modernization and inclusivity milestone; outlets reported on the training curriculum and integration into Interior Ministry.",
-   "summary_ar": "نظمت وزارة الداخلية السورية حفل تخريج الدفعة الأولى من معهد الشرطة النسائية في التل (جنوب دمشق)، حيث أكملت 150 امرأة تدريباً عسكرياً وشرطياً لمدة ستة أشهر. حضرت زوجة الرئيس الحفل. صورت وسائل الإعلام الحكومية هذا كمنعطف تحديث وشمول؛ نقلت المنافذ عن المناهج التدريبية والتكامل في وزارة الداخلية.",
-   "public_reaction": "Mixed public response: many Syrians praised the initiative with religious expressions and national pride ('thank God for freedom'). However, some commenters mocked the training quality and professionalism, comparing the women police to film scenes. Turkish-language commenters made dismissive remarks. Some Arabic-language critics questioned the performance and suggested more rigorous ongoing training. Supporters countered with defenses of the women's competence and references to historical female fighters.",
-   "public_reaction_ar": "ردود فعل عامة مختلطة: أشاد كثير من السوريين بالمبادرة بتعبيرات دينية وفخر وطني ('الحمد لله على الحرية'). لكن بعض المعلقين سخروا من جودة التدريب والاحترافية، مقارنين شرطة النساء بمشاهد الأفلام. أدلى معلقون ناطقون بالتركية بملاحظات استخفافية. طعن بعض النقاد العرب في الأداء واقترحوا تدريباً دائماً أكثر صرامة. رد المؤيدون بالدفاع عن كفاءة النساء والإشارة إلى المقاتلات التاريخيات.",
-   "sentiment": 0.5,
-   "public_sentiment": 0.3,
-   "emotions": [
-    "pride",
-    "skepticism",
-    "mockery"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "تشكك",
-    "سخرية"
-   ],
-   "framings": [
-    "state media: modernization and gender inclusion narrative",
-    "public supporters: national pride and women empowerment",
-    "public critics: concerns about professional standards and capability"
-   ],
-   "framings_ar": [
-    "الإعلام الحكومي: سرد التحديث والإدراج بين الجنسين",
-    "المؤيدون العامون: الفخر الوطني وتمكين المرأة",
-    "النقاد العامون: مخاوف بشأن المعايير المهنية والقدرات"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 32,
-   "public_volume": 29,
-   "share": 0.106,
-   "engagement": 25447,
-   "platforms": {
-    "telegram": 2,
-    "news": 1,
-    "x": 1,
-    "reddit": 1,
-    "youtube": 27
-   },
-   "languages": {
-    "ar": 25,
-    "en": 7
-   },
-   "sources": [
-    "YouTube comments",
-    "Syrian Ministry of Interior - official",
-    "Sky News Arabia - UAE-based",
-    "X posts",
-    "Reddit r/syria comments"
-   ],
-   "examples": [
-    {
-     "source": "Syrian Ministry of Interior - official",
-     "url": "https://t.me/syrianmoi/31514",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sky News Arabia - UAE-based",
-     "url": "https://www.skynewsarabia.com/middle-east/1894021-%D9%84%D9%84%D9%85%D8%B1%D8%A9-%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%AA%D8%AE%D8%B1%D8%AC-%D8%AF%D9%81%D8%B9%D8%A9-%D9%85%D8%B9%D9%87%D8%AF-%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9-%D8%A7%D9%84%D9%86%D8%B3%D8%A7%D8%A6%D9%8A%D8%A9",
-     "platform": "news"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=oAF-Xx4ofnA",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T17:02:12Z"
-  },
-  {
-   "id": "unga-diplomatic-engagement",
-   "title": "President al-Sharaa's Diplomatic Offensive and International Recognition",
-   "title_ar": "الهجوم الدبلوماسي للرئيس الشرع والاعتراف الدولي",
-   "summary": "At the UN General Assembly, President al-Sharaa held multiple high-level meetings with European leaders (Costa, von der Leyen), Dutch PM, Pakistani PM, UN Secretary-General Guterres, Russian Foreign Minister Lavrov, and Croatian Foreign Minister. State media portrayed these as evidence of Syria's international rehabilitation and diplomatic acceptance. Discussions focused on EU-Syria relations, reconstruction, bilateral cooperation, and regional issues.",
-   "summary_ar": "في الجمعية العامة للأمم المتحدة، عقد الرئيس الشرع عدة لقاءات رفيعة المستوى مع قادة أوروبيين (كوستا، فون دير لاين)، رئيس الوزراء الهولندي والباكستاني، الأمين العام للأمم المتحدة غوتيريش، وزير الخارجية الروسي لافروف، ووزير الخارجية الكرواتي. صورت الإعلام الحكومي هذه اللقاءات كدليل على إعادة التأهيل الدولي لسوريا والقبول الدبلوماسي. ركزت النقاشات على العلاقات الأوروبية السورية وإعادة الإعمار والتعاون الثنائي والقضايا الإقليمية.",
-   "public_reaction": "Limited direct public commentary on these diplomatic meetings. Online reactions focused instead on al-Sharaa's stance on Israel and Palestine rather than on diplomatic gains. Some posts noted improved Syrian-EU ties as a positive development, but engagement was subdued compared to reactions on security and territorial issues.",
-   "public_reaction_ar": "تعليقات عامة محدودة مباشرة على هذه اللقاءات الدبلوماسية. ركزت ردود الفعل على الإنترنت بدلاً من ذلك على موقف الشرع بشأن إسرائيل وفلسطين بدلاً من المكاسب الدبلوماسية. لاحظ بعض المشاركات تحسن العلاقات السورية الأوروبية كتطور إيجابي، لكن الاهتمام كان مكتوماً مقارنة بردود الفعل على القضايا الأمنية والإقليمية.",
-   "sentiment": 0.4,
-   "public_sentiment": null,
-   "emotions": [
-    "optimism",
-    "diplomatic confidence"
-   ],
-   "emotions_ar": [
-    "تفاؤل",
-    "ثقة دبلوماسية"
-   ],
-   "framings": [
-    "state media: high-level meetings as proof of Syria's rehabilitation",
-    "opposition outlets: selective coverage of meetings with focus on reconstruction support"
-   ],
-   "framings_ar": [
-    "الإعلام الحكومي: اللقاءات رفيعة المستوى كدليل على تأهيل سوريا",
-    "وسائل المعارضة: تغطية انتقائية للقاءات مع التركيز على دعم إعادة الإعمار"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 21,
-   "public_volume": 1,
-   "share": 0.069,
-   "engagement": 37472,
-   "platforms": {
-    "telegram": 19,
-    "news": 1,
-    "x": 1
-   },
-   "languages": {
-    "ar": 16,
-    "en": 5
-   },
-   "sources": [
-    "Syrian Presidency - official",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "Shaam News Network - opposition-origin",
-    "SANA - state news agency (EN)",
-    "Al-Ikhbariya Syria - state TV",
-    "Levant24 - Syria news (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Syrian Presidency - official",
-     "url": "https://t.me/SyPresidency/2755",
-     "platform": "telegram"
-    },
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/140987",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/232423",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-23T12:45:46Z"
-  },
-  {
-   "id": "presidential-withdrawal-commitment",
-   "title": "President's Repeated Promise to Withdraw Once Syria Reaches Safety",
-   "title_ar": "وعد الرئيس المتكرر بالانسحاب عندما تصل سوريا للأمان",
-   "summary": "In a video statement, President al-Sharaa reiterated his promise to step down once Syria reaches full safety and stability ('barat al-aman'). He framed his role as temporary and crisis-response, saying the Syrian people should 'raise their heads' because Syria has recovered, though 'the road ahead is still long.' Outlets amplified this statement; public responses ranged from devotion to skepticism about whether 'safety' would ever be declared or whether he would actually withdraw.",
-   "summary_ar": "كرر الرئيس الشرع في بيان فيديو وعده بالاستقالة عندما تصل سوريا للأمان والاستقرار التام ('بر الأمان'). أطر دوره كمؤقت واستجابة أزمة، قائلاً إن الشعب السوري يجب أن 'يرفع رؤوسه' لأن سوريا تعافت، مع أن 'الطريق أمامنا لا يزال طويلاً'. وسائل الإعلام نقلت هذا البيان؛ تراوحت ردود الفعل العامة بين التكريس والتشكك فيما إذا ستُعلن 'الأمان' أو ما إذا كان سينسحب فعلاً.",
-   "public_reaction": "Polarized response: enthusiastic supporters expressed faith in his commitment and saw the statement as proof of his integrity and selflessness. Critics and skeptics questioned the sincerity, with comments like 'he will never acknowledge safety has been reached' and 'he will say conditions are not met.' Some offered darkly humorous comments ('temporary president for fifty years'). Religious supporters offered prayers for his protection and success.",
-   "public_reaction_ar": "استجابة استقطابية: عبر المؤيدون المتحمسون عن إيمانهم بالتزامه ورأوا البيان كدليل على نزاهته وإخلاصه. شكك النقاد والمشككون في الصدق، بتعليقات مثل 'لن يعترف أبداً بأن الأمان تحقق' و'سيقول الظروف لم تستوفِ'. قدم البعض تعليقات فكاهية سوداء ('رئيس مؤقت لخمسين سنة'). عرض المؤيدون الدينيون دعاءات لحمايته ونجاحه.",
-   "sentiment": 0.2,
-   "public_sentiment": 0.15,
-   "emotions": [
-    "devotion",
-    "skepticism",
-    "dark humor"
-   ],
-   "emotions_ar": [
-    "تكريس",
-    "تشكك",
-    "فكاهة سوداء"
-   ],
-   "framings": [
-    "state media: proof of democratic commitment and temporary leadership",
-    "public devotees: sign of integrity and selfless service",
-    "public skeptics: rhetorical cover for indefinite rule"
-   ],
-   "framings_ar": [
-    "الإعلام الحكومي: دليل على الالتزام الديمقراطي والقيادة المؤقتة",
-    "المكرسون العامون: علامة على النزاهة والخدمة الخالصة",
-    "المشككون العامون: غطاء بلاغي للحكم غير المحدود"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 17,
-   "public_volume": 16,
-   "share": 0.056,
-   "engagement": 3390,
-   "platforms": {
-    "telegram": 1,
-    "youtube": 16
-   },
-   "languages": {
-    "ar": 17
-   },
-   "sources": [
-    "YouTube comments",
-    "Halab Today TV - opposition-origin, Aleppo"
-   ],
-   "examples": [
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/140986",
-     "platform": "telegram"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=-j9XPhDlk04",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-23T12:45:46Z"
   },
   {
    "id": "kurdish-language-and-rights-recognition",
-   "title": "Kurdish Language Rights and SDF Integration Claims vs. Ground Reality",
-   "title_ar": "حقوق اللغة الكردية ومطالبات دمج قوات سوريا الديمقراطية مقابل الواقع على الأرض",
-   "summary": "At a UNGA side event, a Kurdish-led dialogue forum in Hasaka (northeast Syria) emphasized that three school periods of Kurdish instruction do not meet the demand for official language status. ANHA (north-east administration agency) reported the forum's call for upgrading Kurdish from 'national' to 'official' language. Meanwhile, al-Sharaa told Kurdish24 that Damascus has good ties with the KRG and other Kurdish groups, describing relations as 'early stage' but promising to develop them. Turkish-language YouTube videos featured al-Sharaa's statements on Kurdish education, drawing skeptical Turkish comments.",
-   "summary_ar": "في حدث جانبي بالجمعية العامة، أكدت منتدى حوار بقيادة كردية في الحسكة (شمال شرق سوريا) أن ثلاث حصص مدرسية للتعليم الكردي لا تفي بمطلب الاعتراف باللغة الرسمية. أفادت وكالة أنباء حوار بدعوة المنتدى لترقية الكردية من لغة 'وطنية' إلى 'رسمية'. في الوقت نفسه، أخبر الشرع كردستان24 أن دمشق لديها علاقات جيدة مع حكومة إقليم كردستان والمجموعات الكردية الأخرى، واصفاً العلاقات بأنها 'مرحلة مبكرة' لكن واعداً بتطويرها. ظهرت فيديوهات يوتيوب ناطقة بالتركية تعليقات الشرع على التعليم الكردي، جاذبة تعليقات تركية متشككة.",
-   "public_reaction": "Kurdish-language commenters rejected the Syrian government position, expressing that three school periods are insufficient and demanding official language status, federal autonomy, and true minority rights. Turkish-language commenters disputed al-Sharaa's statements about Kurdish education, with some accusing him of lying or being forced into the statement. Some Turkish viewers criticized Syria's position on Turkish military presence in Syria as hypocritical given al-Sharaa's remarks about respecting sovereignty. English-language Kurdish activists posted slogans rejecting Damascus's authority.",
-   "public_reaction_ar": "رفض معلقون ناطقون بالكردية موقف الحكومة السورية، معبرين عن أن ثلاث حصص مدرسية غير كافية وطالبين باللغة الرسمية والحكم الذاتي الفيدرالي والحقوق الأقلية الحقيقية. طعن معلقون ناطقون بالتركية في تصريحات الشرع عن التعليم الكردي، متهمين إياه بالكذب أو الإجبار على التصريح. انتقد بعض المشاهدين الأتراك موقف سوريا من الوجود العسكري التركي بأنه منافق في ضوء ملاحظات الشرع حول احترام السيادة. نشر نشطاء أكراد ناطقون بالإنجليزية شعارات رافضة لسلطة دمشق.",
-   "sentiment": -0.1,
+   "title": "Kurdish Language Rights and SDF Integration: Rhetoric vs. Ground Reality",
+   "title_ar": "حقوق اللغة الكردية وتكامل قوات سوريا الديمقراطية: الخطاب مقابل الواقع الميداني",
+   "summary": "North-east administration/ANHA and some state sources cite al-Sharaa statements promising Kurdish language recognition and education in Kurdish. Kurdish-language social media commentary challenges this: activists argue three school periods do not constitute official recognition, and cite government failure to implement promised reforms. Brett McGurk (US former official) discusses SDF integration as 'difficult' challenge. Public Kurdish reaction expresses skepticism about government sincerity and points to gap between promises and implementation.",
+   "summary_ar": "تستشهد الإدارة الشمالية الشرقية/وكالة أنباء هاوار وبعض المصادر الرسمية بتصريحات الشرع تعد بالاعتراف باللغة الكردية والتعليم باللغة الكردية. التعليق على وسائل التواصل الاجتماعي باللغة الكردية يطعن في هذا: يجادل النشطاء بأن ثلاث فترات دراسية لا تشكل اعترافاً رسمياً، ويستشهدون بفشل الحكومة في تنفيذ الإصلاحات الموعودة. يناقش بريت ماكغورك (مسؤول أمريكي سابق) تكامل قوات سوريا الديمقراطية باعتباره تحدياً 'صعباً'. رد الفعل العام الكردي يعبر عن التشكك في حسن نية الحكومة ويشير إلى الفجوة بين الوعود والتنفيذ.",
+   "public_reaction": "Kurdish-language commentators express deep skepticism: promises of Kurdish language rights remain unfulfilled; three school periods insufficient; SDF integration promised but not materialized. Arab-language public shows minimal engagement with Kurdish rights issues, suggesting low priority or awareness among Arab Syrians.",
+   "public_reaction_ar": "معقبون باللغة الكردية يعبرون عن تشكك عميق: تبقى وعود حقوق اللغة الكردية غير محققة؛ ثلاث فترات دراسية غير كافية؛ تكامل قوات سوريا الديمقراطية موعود لكن لم يتجسد. الجمهور الناطق بالعربية يظهر انخراط بسيط مع قضايا الحقوق الكردية، مما يشير إلى أولوية منخفضة أو وعي بين السوريين العرب.",
+   "sentiment": 0.1,
    "public_sentiment": -0.4,
    "emotions": [
-    "rejection",
     "skepticism",
-    "defiance"
+    "demand for implementation",
+    "distrust"
    ],
    "emotions_ar": [
-    "رفض",
     "تشكك",
-    "تحدٍ"
+    "طلب التنفيذ",
+    "عدم ثقة"
    ],
    "framings": [
-    "SDF/Kurdish activists: insufficient language rights despite al-Sharaa's claims",
-    "Turkish audience: skepticism about al-Sharaa's sincerity on Kurdish education",
-    "Syrian state media: al-Sharaa's statements as proof of good ties with Kurdish groups",
-    "north-east administration (ANHA): forum's call for official language status as legitimate demand"
+    "State/administration: Kurdish language recognition as policy commitment, education provisions announced",
+    "Kurdish activists: gap between rhetoric and implementation; three hours per week insufficient; SDF still marginalized",
+    "US official: integration as technical/political challenge requiring time and will"
    ],
    "framings_ar": [
-    "قوات سوريا الديمقراطية والنشطاء الأكراد: حقوق لغة غير كافية رغم مطالبات الشرع",
-    "الجمهور التركي: تشكك في صدق الشرع بشأن التعليم الكردي",
-    "وسائل الإعلام الحكومية السورية: تصريحات الشرع كدليل على علاقات جيدة مع الأكراد",
-    "إدارة الشمال الشرقي (حوار): دعوة المنتدى للغة رسمية كمطلب شرعي"
+    "الدولة/الإدارة: الاعتراف باللغة الكردية كالتزام سياسي، تم الإعلان عن أحكام التعليم",
+    "النشطاء الكرد: الفجوة بين الخطاب والتنفيذ؛ ثلاث ساعات أسبوعياً غير كافية؛ قوات سوريا الديمقراطية لا تزال مهمشة",
+    "المسؤول الأمريكي: التكامل كتحدٍ تقني/سياسي يتطلب الوقت والإرادة"
    ],
    "flags": [
-    "Kurdish groups challenging official narrative on language rights"
+    "Multiple posts (p78, p148, p158, p166, p170, p172, p177, p194, p249, p260, p280, p290, p291, p292, p295) in Kurdish and Turkish-language commentary expressing consistent distrust of Syrian government pledges on Kurdish rights; suggests ongoing disconnect between official promises and ground reality"
    ],
    "flags_ar": [
-    "مجموعات كردية تطعن في السرد الرسمي حول حقوق اللغة"
+    "تعليقات متعددة (p78, p148, p158, p166, p170, p172, p177, p194, p249, p260, p280, p290, p291, p292, p295) في التعليق باللغات الكردية والتركية تعبر عن عدم ثقة متسق في تعهدات الحكومة السورية حول الحقوق الكردية؛ يشير إلى قطع متواصل بين الوعود الرسمية والواقع الميداني"
    ],
-   "volume": 15,
-   "public_volume": 11,
-   "share": 0.05,
-   "engagement": 177,
+   "volume": 19,
+   "public_volume": 16,
+   "share": 0.062,
+   "engagement": 183,
    "platforms": {
-    "telegram": 4,
-    "youtube": 11
+    "telegram": 3,
+    "youtube": 16
    },
    "languages": {
-    "en": 12,
-    "ar": 1,
-    "ku": 2
+    "en": 16,
+    "ar": 2,
+    "ku": 1
    },
    "sources": [
     "YouTube comments",
@@ -440,7 +320,7 @@
     },
     {
      "source": "Kurdistan24 English",
-     "url": "https://t.me/kurdistan24english/14914",
+     "url": "https://t.me/kurdistan24english/14916",
      "platform": "telegram"
     },
     {
@@ -452,112 +332,181 @@
    "first_seen": "2026-09-23T12:45:46Z"
   },
   {
-   "id": "economic-and-transport-infrastructure",
-   "title": "Infrastructure and Transport Projects: Border Crossings, Airports, and Regional Logistics",
-   "title_ar": "البنية التحتية ومشاريع النقل: معابر الحدود والمطارات واللوجستيات الإقليمية",
-   "summary": "State media reported on infrastructure development: expansion and rehabilitation of Nassib border crossing with Jordan to improve commercial transit; work beginning on Qamishli-Nusaybin border crossing with Turkey for passenger and trade facilitation; and completion of CargoSyr 2026 transport and logistics expo with 4,500 visitors and 75 entities from 7 countries. These were framed as part of Syria's post-conflict economic recovery and regional integration.",
-   "summary_ar": "ذكرت وسائل الإعلام الحكومية تطورات البنية التحتية: توسيع وتأهيل معبر نصيب الحدودي مع الأردن لتحسين العبور التجاري؛ بدء العمل على معبر القامشلي-نصيبين الحدودي مع تركيا لتسهيل السفر والتجارة؛ واختتام معرض كارغوسير 2026 للنقل واللوجستيات بـ4500 زائر و75 كياناً من 7 دول. أطرت هذه كجزء من التعافي الاقتصادي ما بعد الصراع والتكامل الإقليمي لسوريا.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.5,
-   "public_sentiment": null,
-   "emotions": [
-    "pragmatic optimism"
-   ],
-   "emotions_ar": [
-    "تفاؤل براغماتي"
-   ],
-   "framings": [
-    "state media: infrastructure as cornerstone of economic recovery and regional reintegration"
-   ],
-   "framings_ar": [
-    "الإعلام الحكومي: البنية التحتية كحجر الأساس للتعافي الاقتصادي وإعادة التكامل الإقليمي"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 8,
-   "public_volume": 0,
-   "share": 0.026,
-   "engagement": 818,
-   "platforms": {
-    "news": 2,
-    "telegram": 6
-   },
-   "languages": {
-    "ar": 5,
-    "en": 3
-   },
-   "sources": [
-    "SANA website - state news agency (AR)",
-    "Enab Baladi - independent (EN)",
-    "Al-Ikhbariya Syria - state TV",
-    "Shaam News Network - opposition-origin",
-    "North Press Agency (EN)",
-    "Enab Baladi - independent (AR)"
-   ],
-   "examples": [
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/232428",
-     "platform": "telegram"
-    },
-    {
-     "source": "Shaam News Network - opposition-origin",
-     "url": "https://t.me/ShaamNetwork/103613",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93100",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-23T17:02:12Z"
-  },
-  {
-   "id": "security-operations-and-crime",
-   "title": "Anti-Terrorism, Drug Trafficking, and Public Security Operations",
-   "title_ar": "مكافحة الإرهاب والاتجار بالمخدرات وعمليات الأمن العام",
-   "summary": "State media reported arrests of murder suspects in Aleppo, ongoing Israeli military operations claiming discovery and destruction of weapons in southern Syria, and traffic fatalities on international routes. SANA reported a medical campaign ('Bridges of Recovery 15') providing free specialist healthcare in Aleppo. Reports on armed clashes near livestock markets in Hama also appeared. Media framing emphasized law enforcement effectiveness and security restoration.",
-   "summary_ar": "ذكرت وسائل الإعلام الحكومية اعتقالات مشتبه بهم بجرائم قتل في حلب، واستمرار العمليات العسكرية الإسرائيلية مدعية اكتشاف وتدمير أسلحة في جنوب سوريا، ووفيات في حوادث مرور على الطرق الدولية. أفادت سانا بحملة طبية ('جسور التعافي 15') توفر رعاية صحية متخصصة مجانية في حلب. ظهرت تقارير عن اشتباكات مسلحة بالقرب من أسواق الثروة الحيوانية في حماة أيضاً. أكد الإعلام على فعالية إنفاذ القانون واستعادة الأمن.",
+   "id": "un-diplomatic-offensive-2026",
+   "title": "President al-Sharaa's Intensive UN Diplomatic Engagement and International Recognition",
+   "title_ar": "الهجوم الدبلوماسي المكثف للرئيس الشرع في الأمم المتحدة والاعتراف الدولي",
+   "summary": "Al-Sharaa conducted dozens of bilateral meetings at the UN General Assembly, meeting leaders from Europe (Costa, von der Leyen, Jetten, Costa), Arab states (Lebanon, Saudi Arabia, Arab League Secretary-General), Pakistan, Ukraine, Netherlands, and others. UN officials praised Syria's recovery efforts and humanitarian progress. State and international media frame this as successful diplomatic rehabilitation and normalization. Public silence or limited engagement with these meetings suggests low salience among ordinary Syrians compared to Golan/Israeli rhetoric.",
+   "summary_ar": "أجرى الشرع عشرات الاجتماعات الثنائية في الجمعية العامة للأمم المتحدة، التقى قادة من أوروبا (كوستا، فون دير لاين، يتن، كوستا)، والدول العربية (لبنان، السعودية، أمين جامعة الدول العربية)، وباكستان، وأوكرانيا، وهولندا، وغيرهم. مسؤولو الأمم المتحدة أشادوا بجهود سوريا في التعافي والتقدم الإنساني. وسائل الإعلام الرسمية والدولية تؤطر هذا كإعادة تأهيل دبلوماسي ناجح وتطبيع. الصمت العام أو الانخراط المحدود من السوريين العاديين في هذه الاجتماعات يشير إلى أهمية منخفضة مقارنة بخطاب الجولان والإسرائيلي.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": 0.4,
    "public_sentiment": null,
    "emotions": [
-    "law enforcement narrative",
-    "civilian concern"
+    "optimism",
+    "professional engagement"
    ],
    "emotions_ar": [
-    "سرد إنفاذ القانون",
-    "قلق مدني"
+    "تفاؤل",
+    "انخراط مهني"
    ],
    "framings": [
-    "state media: security operations as demonstration of state effectiveness",
-    "public concern: civilian safety risks from weapons depots and explosions"
+    "State media: success of diplomatic strategy, evidence of re-entry into international community, bilateral relationship building",
+    "International outlets: Syria's recovery narrative, humanitarian progress, reconstruction partnerships",
+    "Public: inattention (limited posts); where present, scepticism about whether diplomatic gains translate to material improvement"
    ],
    "framings_ar": [
-    "الإعلام الحكومي: عمليات الأمن كعرض لفعالية الدولة",
-    "المخاوف العامة: مخاطر السلامة المدنية من مخازن الأسلحة والانفجارات"
+    "وسائل الإعلام الرسمية: نجاح الاستراتيجية الدبلوماسية، دليل على العودة للمجتمع الدولي، بناء العلاقات الثنائية",
+    "المنصات الدولية: سرد التعافي السوري والتقدم الإنساني وشراكات إعادة الإعمار",
+    "الجمهور: عدم الانتباه (تعليقات محدودة)؛ حيث يكون موجوداً، تشكك حول ما إذا كانت المكاسب الدبلوماسية تترجم إلى تحسن مادي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 6,
+   "volume": 18,
    "public_volume": 0,
-   "share": 0.02,
-   "engagement": 519,
+   "share": 0.059,
+   "engagement": 41091,
    "platforms": {
-    "news": 2,
-    "telegram": 4
+    "telegram": 17,
+    "news": 1
    },
    "languages": {
-    "ar": 6
+    "en": 6,
+    "ar": 12
    },
    "sources": [
-    "SANA website - state news agency (AR)",
+    "Syrian Presidency - official",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Levant24 - Syria news (EN)",
+    "Kurdistan24 English",
+    "SANA - state news agency (EN)",
+    "Asharq News - Saudi-owned"
+   ],
+   "examples": [
+    {
+     "source": "Syrian Presidency - official",
+     "url": "https://t.me/SyPresidency/2763",
+     "platform": "telegram"
+    },
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/140987",
+     "platform": "telegram"
+    },
+    {
+     "source": "Anadolu Agency - Turkish state news agency (AR)",
+     "url": "https://t.me/aa_arabic/168640",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-23T23:43:16Z"
+  },
+  {
+   "id": "withdrawal-promise-and-credibility-gap",
+   "title": "Al-Sharaa's Promise to Withdraw from Power When Syria 'Reaches Safety': Trust Deficit and Parallels to Past Rhetoric",
+   "title_ar": "وعد الشرع بالانسحاب من السلطة عندما تصل سوريا إلى 'بر الأمان': عجز الثقة والتشابهات مع الخطاب السابق",
+   "summary": "Al-Sharaa reiterated his commitment to step down once Syria reaches 'safety' and stability. Public responses are deeply skeptical, with many drawing parallels to similar promises by Bashar al-Assad and Anwar Sadat, expressing doubt that 'safety' will ever be declared or that withdrawal will actually occur. Some defend him as facing intense pressure; others mock the vagueness of 'safety' and suggest it is a cover for indefinite rule.",
+   "summary_ar": "أعاد الشرع تأكيد التزامه بالانسحاب من السلطة عندما تصل سوريا إلى 'بر الأمان' والاستقرار. ردود الفعل العام عميقة في التشكك، مع كثيرين يستحضرون موازيات لوعود مماثلة من بشار الأسد وأنور السادات، معبرين عن الشك في أن 'السلامة' ستُعلن قط أو أن الانسحاب سيحدث فعلاً. يدافع البعض عنه كشخص يواجه ضغوط مكثفة؛ والآخرون يسخرون من غموض 'السلامة' ويقترحون أنها غطاء للحكم غير المحدود.",
+   "public_reaction": "High skepticism bordering on mockery. Many cite historical precedent (Assad's promises, Egyptian leaders' eternal postponements of democracy). Some offer charitable reading ('he faces pressure'); others interpret this as rhetorical cover for indefinite power-holding. Overall tone: mistrust of leadership's sincerity.",
+   "public_reaction_ar": "شك عالي يقترب من السخرية. يستشهد كثيرون بسابقة تاريخية (وعود الأسد، تأجيلات الزعماء المصريين الأبدية للديمقراطية). يقدم البعض قراءة خيرة ('يواجه ضغوط')؛ والآخرون يفسرون هذا كغطاء بلاغي للحكم غير المحدود. النبرة الكلية: عدم ثقة في صدق القيادة.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.45,
+   "emotions": [
+    "historical doubt",
+    "mockery",
+    "weariness",
+    "cynicism"
+   ],
+   "emotions_ar": [
+    "شك تاريخي",
+    "سخرية",
+    "إرهاق",
+    "عدم تصديق"
+   ],
+   "framings": [
+    "State narrative: principled commitment to temporary leadership, exit clause as proof of good faith",
+    "Public skeptic: hollow promise echoing unfulfilled commitments by predecessors; 'safety' is indefinite and unreachable",
+    "Sympathetic reading: genuine intent constrained by geopolitical necessity and pressure"
+   ],
+   "framings_ar": [
+    "السرد الرسمي: التزام مبدئي بالقيادة المؤقتة، بند الخروج كدليل على حسن النية",
+    "الشكاك العام: وعد أجوف يردد التزامات غير المحققة من السلف؛ 'السلامة' غير محددة وبعيدة المنال",
+    "قراءة متعاطفة: نية حقيقية مقيدة بالضرورة الجيوسياسية والضغط"
+   ],
+   "flags": [
+    "Multiple posts (p150, p173, p175, p187, p196, p275, p287, p289) expressing almost identical framing—comparing al-Sharaa to Assad or Sadat and mocking the 'when Syria reaches safety' clause as indefinite cover for permanent rule. No exact copy-paste but reflects widespread cultural memory of broken promises and cynicism about leadership sincerity."
+   ],
+   "flags_ar": [
+    "تعليقات متعددة (p150, p173, p175, p187, p196, p275, p287, p289) تعبر عن تأطير متطابق تقريباً - تقارن الشرع بالأسد أو السادات وتسخر من بند 'عندما تصل سوريا إلى السلامة' باعتباره غطاء غير محدد للحكم الدائم. لا نسخ كلمة بكلمة تماماً لكن يعكس ذاكرة ثقافية واسعة الانتشار للوعود المنكوثة والعدم تصديق حول صدق القيادة."
+   ],
+   "volume": 12,
+   "public_volume": 12,
+   "share": 0.039,
+   "engagement": 84,
+   "platforms": {
+    "youtube": 12
+   },
+   "languages": {
+    "ar": 12
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=-j9XPhDlk04",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-23T23:43:16Z"
+  },
+  {
+   "id": "security-operations-and-crime",
+   "title": "Security Operations, Crime Prevention, and Public Safety Announcements",
+   "title_ar": "العمليات الأمنية ومنع الجريمة وإعلانات السلامة العامة",
+   "summary": "State security outlets report routine arrests and anti-crime operations (murders in Aleppo, armed clashes in Hama). Independent outlets (Enab Baladi) and opposition sources cite armed violence incidents. Public comments on reconstruction videos show background concern about informal settlements and unpoliced areas but limited engagement with security announcements themselves.",
+   "summary_ar": "تقر مخافر الأمن الرسمية عن اعتقالات روتينية وعمليات مكافحة الجريمة (جرائم قتل في حلب، اشتباكات مسلحة في حماة). تستشهد المصادر المستقلة (عنب بلدي) والمصادر المعارضة بحوادث العنف المسلح. تظهر التعليقات العامة على مقاطع إعادة الإعمار قلقاً خلفياً حول المستوطنات غير الرسمية والمناطق غير المراقبة لكن انخراط محدود مع الإعلانات الأمنية نفسها.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.1,
+   "public_sentiment": null,
+   "emotions": [
+    "routine reporting",
+    "background concern"
+   ],
+   "emotions_ar": [
+    "إعلام روتيني",
+    "قلق خلفي"
+   ],
+   "framings": [
+    "State outlets: crime control success, swift police response",
+    "Public (incidental): concern about underlying disorder, informal areas, administrative gaps"
+   ],
+   "framings_ar": [
+    "الوسائل الرسمية: نجاح مكافحة الجريمة والاستجابة الشرطية السريعة",
+    "الجمهور (عرضي): قلق حول الاضطراب الكامن والمناطق غير الرسمية والفجوات الإدارية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 9,
+   "public_volume": 0,
+   "share": 0.03,
+   "engagement": 1017,
+   "platforms": {
+    "news": 1,
+    "telegram": 8
+   },
+   "languages": {
+    "ar": 8,
+    "en": 1
+   },
+   "sources": [
+    "Shaam News Network - opposition-origin",
     "North Press Agency - Qamishli-based (AR)",
+    "Syria TV - opposition-origin",
+    "ANHA (Hawar) - north-east administration news agency (AR)",
     "Asharq News - Saudi-owned",
-    "Enab Baladi - independent (AR)"
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
@@ -566,63 +515,124 @@
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/83608",
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/103619",
      "platform": "telegram"
     },
     {
-     "source": "Asharq News - Saudi-owned",
-     "url": "https://t.me/asharqnews/35726",
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83608",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-09-23T17:02:12Z"
   },
   {
-   "id": "russian-military-agreement",
-   "title": "Syria-Russia Military Agreement: Base Consolidation and Strategic Realignment",
-   "title_ar": "الاتفاق العسكري السوري-الروسي: تعزيز القواعد وإعادة التوازن الاستراتيجي",
-   "summary": "State media reported that President al-Sharaa announced an agreement with Russia reducing Russian military presence in Syria to two bases and converting them into Syrian army training facilities. Al-Sharaa emphasized Syria's goal of eliminating all foreign military bases and reframing the Russian presence as advisory/training rather than occupational. Russian Foreign Minister Lavrov met with Syrian Foreign Minister al-Shaibani at the UN to discuss bilateral relations and regional issues.",
-   "summary_ar": "أفادت وسائل الإعلام الحكومية أن الرئيس الشرع أعلن اتفاقاً مع روسيا يقلل الوجود العسكري الروسي في سوريا إلى قاعدتين وتحويلهما إلى منشآت تدريب للجيش السوري. أكد الشرع هدف سوريا من إزالة جميع القواعد العسكرية الأجنبية وإعادة تأطير الوجود الروسي كاستشاري/تدريبي بدلاً من احتلالي. اجتمع وزير الخارجية الروسي لافروف مع وزير الخارجية السوري الشيباني في الأمم المتحدة لمناقشة العلاقات الثنائية والقضايا الإقليمية.",
+   "id": "womens-security-forces-expansion",
+   "title": "Women Police Institute Graduation and Gender Integration in Security Forces",
+   "title_ar": "تخريج معهد الشرطة النسائية والتكامل الجنساني في قوات الأمن",
+   "summary": "State media reports first graduation of Women's Police Institute with 150 graduates; President's wife attended ceremony. Framed as institutional reform and modernization. No public commentary detected, suggesting either low salience or minimal engagement with security sector announcements among ordinary Syrians.",
+   "summary_ar": "تقر وسائل الإعلام الرسمية عن تخريج معهد الشرطة النسائية الأول مع 150 خريجة؛ حضرت زوجة الرئيس الحفل. يُؤطر كإصلاح مؤسسي وحداثة. لم يتم رصد تعليق عام، مما يشير إلى إما أهمية منخفضة أو انخراط بسيط مع الإعلانات الأمنية بين السوريين العاديين.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.4,
+   "sentiment": 0.3,
    "public_sentiment": null,
    "emotions": [
-    "strategic pragmatism"
+    "institutional modernization"
    ],
    "emotions_ar": [
-    "براغماتية استراتيجية"
+    "حداثة مؤسسية"
    ],
    "framings": [
-    "state media: agreement as proof of Syrian sovereignty restoration and Russian deference",
-    "Russian media: emphasis on continued cooperation and mutual benefit"
+    "State narrative: gender inclusion, professionalization, institutional capacity-building"
    ],
    "framings_ar": [
-    "الإعلام الحكومي: الاتفاق كدليل على استعادة السيادة السورية واحترام روسي",
-    "وسائل الإعلام الروسية: التركيز على التعاون المستمر والمنفعة المتبادلة"
+    "السرد الرسمي: الشمول الجنساني والاحترافية وبناء القدرات المؤسسية"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 2,
+   "volume": 4,
    "public_volume": 0,
-   "share": 0.007,
-   "engagement": 100,
+   "share": 0.013,
+   "engagement": 27600,
    "platforms": {
-    "news": 1,
-    "telegram": 1
+    "telegram": 2,
+    "news": 2
+   },
+   "languages": {
+    "ar": 4
+   },
+   "sources": [
+    "Syrian Ministry of Interior - official",
+    "Google News - Syria (AR)",
+    "Sky News Arabia - UAE-based"
+   ],
+   "examples": [
+    {
+     "source": "Syrian Ministry of Interior - official",
+     "url": "https://t.me/syrianmoi/31514",
+     "platform": "telegram"
+    },
+    {
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcmFGQS1kT0M4TFNabEpvVllYRzRBOG1nYWJoajd3RFZnWnJPN0xYU2xMYVVYTFYzVHlIZEY2c0hpNWdtbHZNLW1BazJPeWpFTFR6MG1nSDlUV2J6WDdIcGZYTE15M040bjFuSEJpMnZoVjJsLWw2VUtrX1gwX0FaOGRFOW5KTDNXMXRTcXBZOWNhN3lYcEM5NlZOMEpvVlctc3c?oc=5",
+     "platform": "news"
+    },
+    {
+     "source": "Sky News Arabia - UAE-based",
+     "url": "https://www.skynewsarabia.com/middle-east/1894021-%D9%84%D9%84%D9%85%D8%B1%D8%A9-%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%AA%D8%AE%D8%B1%D8%AC-%D8%AF%D9%81%D8%B9%D8%A9-%D9%85%D8%B9%D9%87%D8%AF-%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9-%D8%A7%D9%84%D9%86%D8%B3%D8%A7%D8%A6%D9%8A%D8%A9",
+     "platform": "news"
+    }
+   ],
+   "first_seen": "2026-09-23T17:02:12Z"
+  },
+  {
+   "id": "russian-military-agreement",
+   "title": "Syria-Russia Military Agreement: Consolidation or Reduction of Russian Military Presence?",
+   "title_ar": "الاتفاق العسكري السوري-الروسي: توطيد أم تقليل الوجود العسكري الروسي؟",
+   "summary": "State media announces al-Sharaa disclosed an agreement with Russia to reduce its military presence to two bases and convert them to Syrian military training bases, claiming this aligns with Syria's goal of removing all foreign military bases. This announcement is vague on specifics and timeline. Public skeptics cite this as evidence that al-Sharaa is maintaining foreign military presence rather than actually removing it, contrasting it with earlier rhetoric about sovereignty.",
+   "summary_ar": "تعلن وسائل الإعلام الرسمية أن الشرع أفصح عن اتفاق مع روسيا لتقليل وجودها العسكري إلى قاعدتين وتحويلهما إلى قاعدتي تدريب عسكري سوري، مدعياً أن هذا يتوافق مع هدف سوريا إزالة جميع القواعد العسكرية الأجنبية. هذا الإعلان غامض في التفاصيل والجدول الزمني. يستشهد الشكاك العام بهذا كدليل على أن الشرع يحافظ على الوجود العسكري الأجنبي بدلاً من إزالته فعلاً، على عكس الخطاب السابق حول السيادة.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.2,
+   "public_sentiment": null,
+   "emotions": [
+    "ambivalence",
+    "skepticism about sovereignty"
+   ],
+   "emotions_ar": [
+    "غموض",
+    "تشكك حول السيادة"
+   ],
+   "framings": [
+    "State narrative: agreement as reduction and conversion to training role, framed as step toward sovereignty restoration",
+    "Skeptic reading: continuation of Russian military presence under different label; contradiction with 'foreign base removal' rhetoric"
+   ],
+   "framings_ar": [
+    "السرد الرسمي: الاتفاق كتقليل وتحويل لدور التدريب، يُؤطر كخطوة نحو استعادة السيادة",
+    "قراءة الشكاك: استمرار الوجود العسكري الروسي تحت تسمية مختلفة؛ تناقض مع خطاب 'إزالة القواعد الأجنبية'"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 3,
+   "public_volume": 0,
+   "share": 0.01,
+   "engagement": 80,
+   "platforms": {
+    "telegram": 1,
+    "news": 1
    },
    "languages": {
     "ar": 2
    },
    "sources": [
-    "Sky News Arabia - UAE-based",
-    "ANHA (Hawar) - north-east administration news agency (AR)"
+    "Asharq News - Saudi-owned",
+    "Sky News Arabia - UAE-based"
    ],
    "examples": [
     {
-     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/80414",
+     "source": "Asharq News - Saudi-owned",
+     "url": "https://t.me/asharqnews/35730",
      "platform": "telegram"
     },
     {
@@ -639,22 +649,22 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 18
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Syrian Presidency - official",
    "platform": "telegram",
    "ok": true,
-   "fetched": 7,
-   "recent": 7
+   "fetched": 5,
+   "recent": 5
   },
   {
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
-   "recent": 12
+   "fetched": 15,
+   "recent": 15
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -668,14 +678,14 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 17
+   "recent": 16
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 6
+   "recent": 7
   },
   {
    "name": "Halab Today TV - opposition-origin, Aleppo",
@@ -730,7 +740,7 @@
    "name": "Rudaw Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
+   "fetched": 15,
    "recent": 0
   },
   {
@@ -759,7 +769,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Asharq News - Saudi-owned",
@@ -779,8 +789,8 @@
    "name": "Anadolu Agency - Turkish state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
-   "recent": 2
+   "fetched": 19,
+   "recent": 3
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
@@ -794,14 +804,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 46
+   "recent": 45
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 35
+   "recent": 33
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -842,15 +852,15 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 224,
-   "recent": 224
+   "fetched": 235,
+   "recent": 235
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 14
+   "recent": 24
   },
   {
    "name": "X posts",
@@ -892,5 +902,5 @@
   "BBC Arabic": "بي بي سي عربي",
   "Reddit r/syria comments": "تعليقات ريديت r/syria"
  },
- "cost_usd": 0.0974
+ "cost_usd": 0.1004
 }
