@@ -36,6 +36,7 @@ from bs4 import BeautifulSoup
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+SNAPSHOTS = DATA / "snapshots"
 UTC = dt.timezone.utc
 NOW = dt.datetime.now(UTC)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; SyriaNarrativeTracker/1.0)"}
@@ -630,6 +631,12 @@ def source_names_ar(cfg: dict) -> dict:
     return out
 
 
+def snapshot_of(latest: dict) -> dict:
+    """The parts of one update the website needs to show a past hour in full."""
+    return {k: latest[k] for k in ("format", "generated_at", "window_hours", "stats", "overall",
+                                   "narratives", "source_names_ar") if k in latest}
+
+
 def build_narratives(result: dict, sample: list, known_first_seen: dict) -> list:
     by_pid = {p["pid"]: p for p in sample}
     total = sum(p["copies"] for p in sample) or 1
@@ -790,8 +797,15 @@ def main() -> int:
         "cost_usd": cost,
     }
 
+    # the full analysis of this hour, loaded by the website when someone opens a past hour
+    snap_name = NOW.strftime("%Y%m%dT%H%MZ") + ".json"
+    SNAPSHOTS.mkdir(parents=True, exist_ok=True)
+    (SNAPSHOTS / snap_name).write_text(json.dumps(snapshot_of(latest), ensure_ascii=False, separators=(",", ":")),
+                                      encoding="utf-8")
+
     history.append({
         "time": iso(NOW),
+        "snapshot": snap_name,
         "sentiment": headline,
         "mood": overall["public_mood"] or overall["mood"],
         "mood_ar": overall["public_mood_ar"] or overall["mood_ar"],
@@ -802,6 +816,11 @@ def main() -> int:
     })
     cutoff = NOW - dt.timedelta(hours=int(cfg.get("history_hours", 336)))
     history = [h for h in history if (parse_iso(h["time"]) or NOW) >= cutoff]
+
+    keep = {h.get("snapshot") for h in history}
+    for f in SNAPSHOTS.glob("*.json"):
+        if f.name not in keep:
+            f.unlink()   # older than history_hours
 
     alive = {n["id"] for h in history for n in h["narratives"]}
     state = {"last_ids": sorted(p["id"] for p in sample),
