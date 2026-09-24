@@ -3,117 +3,114 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-24T10:03:06Z",
- "checked_at": "2026-09-24T10:03:06Z",
+ "generated_at": "2026-09-24T15:08:13Z",
+ "checked_at": "2026-09-24T15:08:13Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-haiku-4-5-20251001",
  "stats": {
   "posts_analyzed": 304,
-  "public_posts": 214,
-  "outlet_posts": 90,
+  "public_posts": 205,
+  "outlet_posts": 99,
   "reactions_posts": 0,
   "unique_posts": 300,
   "sources_ok": 32,
   "sources_total": 32,
   "platforms": {
-   "news": 29,
-   "telegram": 61,
+   "telegram": 68,
+   "news": 30,
+   "youtube": 173,
    "x": 10,
-   "youtube": 186,
-   "reddit": 14
+   "reddit": 19
   },
   "languages": {
-   "ar": 223,
-   "en": 76,
+   "ar": 247,
+   "en": 51,
+   "ku": 1,
    "other": 1
   }
  },
  "overall": {
-  "sentiment": 0.4,
-  "mood": "Cautiously optimistic",
-  "mood_ar": "متفائل بحذر",
+  "sentiment": 0.1,
+  "mood": "Cautious",
+  "mood_ar": "حذر",
   "public_sentiment": 0.35,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "Outlets present Syria's UN diplomatic engagement, economic initiatives with Arab and Western partners, gender integration in security forces, and assertions on the Golan Heights as positive developments. Public reaction is strongly divided: many express pride in Sharaa's UN address and Golan rhetoric, celebrate women police graduates, and note reconstruction progress, but significant minorities voice skepticism about Syria's weakness against Israel, doubts about leader credibility, criticism of women in security roles, concerns about economic hardship, and frustration with ongoing instability in southern regions.",
-  "brief_ar": "تركز وسائل الإعلام على الانخراط الدبلوماسي لسوريا في الأمم المتحدة والمبادرات الاقتصادية مع الشركاء العرب والغربيين والتكامل الجنسي في قوات الأمن والتأكيدات بشأن الجولان كتطورات إيجابية. ردود الفعل العامة منقسمة بشدة: يعبر الكثيرون عن الفخر بخطاب شرع في الأمم المتحدة وخطاب الجولان ويحتفلون بخريجات الشرطة النسائية ويلاحظون التقدم في إعادة البناء، لكن أقليات كبيرة تعبر عن الشك حول ضعف سوريا ضد إسرائيل والشكوك حول مصداقية القيادة والنقد الموجه للنساء في أدوار الأمن والقلق من الشدة الاقتصادية والإحباط من عدم الاستقرار المستمر في المناطق الجنوبية."
+  "brief": "Outlets report on Syrian government initiatives (UN diplomacy, police training, airline certification, reconstruction) alongside incidents of explosions, Israeli military actions, and economic developments. Public reaction divides sharply: many express pride in the president's UN speech on the Golan Heights and institutional reforms, while others mock him, express skepticism about sovereignty claims, or spread unverified claims about foreign military presence. Some commenters dismiss political content entirely as theater, preferring practical economic and personal development discussions.",
+  "brief_ar": "تغطي المنابر الحكومية والمعارضة مبادرات الحكومة (الدبلوماسية بالأمم المتحدة، تخرج الشرطة النسائية، شهادات الطيران، إعادة البناء) بجانب حوادث انفجارات والعمليات العسكرية الإسرائيلية والتطورات الاقتصادية. ينقسم رد الفعل العام بشدة: يعبر كثيرون عن فخرهم بخطاب الرئيس بالأمم المتحدة حول الجولان والإصلاحات المؤسسية، بينما يسخر آخرون منه أو يشككون في مطالب السيادة أو ينشرون معلومات غير موثقة عن الوجود العسكري الأجنبي. يفضل بعض المعلقين تجاهل المحتوى السياسي كليًا واستبداله بالنقاشات العملية حول التنمية الاقتصادية والشخصية."
  },
  "narratives": [
   {
    "id": "golan-heights-israel-rhetoric",
    "title": "Golan Heights Assertion and Israeli Response at UN",
-   "title_ar": "تأكيد الجولان والرد الإسرائيلي في الأمم المتحدة",
-   "summary": "President al-Sharaa declared at the UN that the Golan Heights will remain Syrian territory and that all Israeli annexation measures are null, citing 500 air raids and over 1,200 Israeli incursions since Syria's liberation. Israeli Foreign Minister Katz responded by asserting Israeli sovereignty over the Golan and rejecting any withdrawal. The rhetoric reflects ongoing territorial disputes and military tensions in the south.",
-   "summary_ar": "أعلن الرئيس الشرع في الأمم المتحدة أن الجولان سيظل أرضاً سورية وأن جميع إجراءات الضم الإسرائيلية باطلة، مستشهداً بـ 500 غارة جوية وأكثر من 1,200 توغل إسرائيلي منذ تحرير سوريا. رد وزير الخارجية الإسرائيلي كاتس بالتأكيد على السيادة الإسرائيلية على الجولان ورفض أي انسحاب. يعكس الخطاب النزاعات الإقليمية المستمرة والتوترات العسكرية في الجنوب.",
-   "public_reaction": "Supporters celebrate Sharaa's firm stance and view it as defending Syrian rights, while critics argue Syria is too weak militarily to enforce territorial claims and doubt the president's ability to deliver results. Some worry continued Israeli incursions and airstrikes pose real security risks that rhetoric alone cannot address.",
-   "public_reaction_ar": "يحتفل المؤيدون بموقف شرع الحازم وينظرون إليه كدفاع عن الحقوق السورية، بينما ينتقده آخرون بحجة أن سوريا ضعيفة جداً عسكرياً لفرض المطالبات الإقليمية ويشكون في قدرة الرئيس على تحقيق النتائج. يقلق البعض من أن التوغلات الإسرائيلية والغارات الجوية المستمرة تشكل مخاطر أمنية حقيقية لا يمكن للخطاب وحده أن يعالجها.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.2,
+   "title_ar": "مطالبة سوريا بالجولان ورد إسرائيل في الأمم المتحدة",
+   "summary": "Al-Sharaa delivered a UN speech asserting that the Golan Heights are Syrian territory and that all annexation measures are null, comparing Israel's claims to Trump owning New Jersey. Israeli FM Katz immediately countered, declaring Israel will keep the Golan 'forever'. Outlets covered the exchange; public reaction split between pride in the assertion and skepticism about its practical effect.",
+   "summary_ar": "ألقى الشرع خطابًا بالأمم المتحدة أكد فيه أن الجولان أرض سورية وأن جميع إجراءات الضم باطلة، وشبّه مطالب إسرائيل بملكية ترامب لنيوجيرسي. ردت وزيرة الخارجية الإسرائيلية كاتس فورًا، معلنة أن إسرائيل ستحتفظ بالجولان \"للأبد\". غطت المنابر التبادل؛ انقسم رد الفعل العام بين الفخر بالتأكيد والشك في تأثيره العملي.",
+   "public_reaction": "Supporters hailed al-Sharaa as 'the bravest leader to pass through Syria' and expressed pride that he voiced what 'every Arab and Muslim holds in their heart.' Critics questioned whether rhetoric matches action, with some sarcastically suggesting the speech is mere theater while actual military occupation continues. A few commenters noted the irony of celebrating words while land remains occupied.",
+   "public_reaction_ar": "أشاد الداعمون بالشرع بصفته \"أشجع رئيس مر على سوريا\" وأعربوا عن فخرهم بأنه عبّر عما \"يحمله كل عربي ومسلم في قلبه\". شكك النقاد في ما إذا كان الخطاب يطابق الأفعال، حيث اقترح البعض بسخرية أن الخطاب مجرد عرض بينما الاحتلال العسكري الفعلي مستمر. لاحظ عدد من المعلقين التناقض بين الاحتفاء بالكلمات وبقاء الأرض محتلة.",
+   "sentiment": 0.25,
+   "public_sentiment": 0.1,
    "emotions": [
-    "Pride",
-    "Defiance",
-    "Skepticism",
-    "Anxiety"
+    "pride",
+    "skepticism",
+    "sarcasm"
    ],
    "emotions_ar": [
     "فخر",
-    "تحدي",
     "شك",
-    "قلق"
+    "سخرية"
    ],
    "framings": [
-    "Asserting sovereignty and delegitimizing Israeli claims",
-    "Documenting Israeli violations and military incursions",
-    "Reframing as political necessity in international arena",
-    "Highlighting Syria's military vulnerability and diplomatic options"
+    "state media: assertive sovereignty claim, diplomatic recovery",
+    "opposition outlets: Sharaa reasserting Syrian rights after exile",
+    "public: split between genuine pride and cynicism about practical impact"
    ],
    "framings_ar": [
-    "التأكيد على السيادة وإلغاء شرعية المطالبات الإسرائيلية",
-    "توثيق الانتهاكات الإسرائيلية والتوغلات العسكرية",
-    "إعادة صياغة كضرورة سياسية في الساحة الدولية",
-    "إبراز ضعف سوريا العسكري والخيارات الدبلوماسية"
+    "الإعلام الحكومي: مطالبة سيادية حازمة، استعادة دبلوماسية",
+    "منابر المعارضة: الشرع يعيد تأكيد الحقوق السورية بعد النفي",
+    "العام: انقسام بين الفخر الحقيقي والسخرية من الأثر العملي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 51,
-   "public_volume": 47,
-   "share": 0.168,
-   "engagement": 1388,
+   "volume": 53,
+   "public_volume": 41,
+   "share": 0.174,
+   "engagement": 2968,
    "platforms": {
-    "telegram": 3,
-    "news": 1,
-    "x": 1,
-    "reddit": 1,
-    "youtube": 45
+    "telegram": 6,
+    "news": 6,
+    "youtube": 34,
+    "reddit": 2,
+    "x": 5
    },
    "languages": {
     "ar": 47,
-    "en": 4
+    "en": 6
    },
    "sources": [
     "YouTube comments",
-    "TRT Arabi - Turkish public broadcaster",
-    "Enab Baladi - independent (AR)",
-    "North Press Agency (EN)",
-    "Sky News Arabia - UAE-based",
-    "X posts"
+    "X posts",
+    "Google News - Syria (EN)",
+    "Reddit r/syria comments",
+    "Al Jazeera - Qatar-based",
+    "Halab Today TV - opposition-origin, Aleppo"
    ],
    "examples": [
     {
-     "source": "TRT Arabi - Turkish public broadcaster",
-     "url": "https://t.me/TRTArabi/46079",
+     "source": "Al Mayadeen - Beirut-based",
+     "url": "https://t.me/almayadeen/397932",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93099",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141018",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency (EN)",
-     "url": "https://t.me/npasyria/34797",
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/232607",
      "platform": "telegram"
     }
    ],
@@ -122,65 +119,51 @@
   {
    "id": "womens-security-forces-expansion",
    "title": "Women Police Institute Graduation and Gender Integration in Security Forces",
-   "title_ar": "تخريج معهد الشرطة النسائية والتكامل الجنسي في قوات الأمن",
-   "summary": "The Syrian Interior Ministry held a graduation ceremony for the first cohort of the Women Police Institute, with 150 trainees completing a six-month program. President Sharaa's wife attended the event. Outlets frame this as a landmark achievement in women's participation in security and state-building. The event included a military display by the graduates.",
-   "summary_ar": "أقامت وزارة الداخلية السورية حفل تخرج الدورة الأولى من معهد الشرطة النسائية، حيث أكملت 150 متدربة برنامج استغرق ستة أشهر. حضرت زوجة الرئيس الشرع الحدث. تؤطر وسائل الإعلام هذا كإنجاز تاريخي في مشاركة النساء في الأمن وبناء الدولة. تضمن الحدث عرضاً عسكرياً من قبل الخريجات.",
-   "public_reaction": "Strong positive sentiment among many commenters who view women police graduates as a source of national pride and symbol of Syria's modernization. However, a notable minority criticizes the initiative on religious grounds, questions the necessity of militarizing women, or mocks the military display as unconvincing. Some express concern about women bearing arms rather than focusing on other national priorities.",
-   "public_reaction_ar": "مشاعر إيجابية قوية بين الكثيرين الذين ينظرون إلى خريجات الشرطة النسائية كمصدر فخر وطني ورمز لحداثة سوريا. غير أن أقلية ملحوظة تنتقد المبادرة على أسس دينية وتطرح تساؤلات حول ضرورة تسليح النساء أو تسخر من العرض العسكري باعتباره غير مقنع. يعبر البعض عن القلق بشأن حمل النساء للأسلحة بدلاً من التركيز على أولويات وطنية أخرى.",
-   "sentiment": 0.65,
-   "public_sentiment": 0.35,
+   "title_ar": "تخرج أول دفعة من معهد الشرطة النسائية والتكامل بين الجنسين في القوات الأمنية",
+   "summary": "Interior Ministry announced the graduation of the first cohort of 150 female police officers from the Women's Police Institute after six months of training. State media and opposition outlets covered the event positively as an institutional milestone. Public reaction was predominantly supportive, with commenters from Syria and the wider Arab region expressing pride in women's roles in security.",
+   "summary_ar": "أعلنت وزارة الداخلية تخرج أول دفعة من 150 منتسبة شرطة من معهد الشرطة النسائية بعد ستة أشهر من التدريب. غطت الإعلام الحكومي والمعارضة الحدث بإيجابية كإنجاز مؤسسي. كان رد الفعل العام داعمًا في الغالب، معبرًا المعلقون من سوريا والمنطقة العربية الأوسع عن فخرهم بدور المرأة في الأمن.",
+   "public_reaction": "Commenters celebrated the milestone, with supporters from Yemen, Saudi Arabia, and other Arab countries expressing solidarity. Reactions focused on national pride and the symbolism of female empowerment in post-conflict institution-building. Few critical voices appeared in this subset of comments.",
+   "public_reaction_ar": "احتفل المعلقون بالإنجاز، مع معبرات من اليمن والمملكة العربية السعودية ودول عربية أخرى عن التضامن. ركزت التفاعلات على فخر وطني ورمزية تمكين المرأة في بناء المؤسسات في فترة ما بعد الصراع. ظهرت أصوات انتقادية قليلة في هذه المجموعة من التعليقات.",
+   "sentiment": 0.7,
+   "public_sentiment": 0.65,
    "emotions": [
-    "Pride",
-    "Celebration",
-    "Concern",
-    "Religious objection",
-    "Mockery"
+    "pride",
+    "hope",
+    "celebration"
    ],
    "emotions_ar": [
     "فخر",
-    "احتفال",
-    "قلق",
-    "اعتراض ديني",
-    "سخرية"
+    "أمل",
+    "احتفال"
    ],
    "framings": [
-    "Women's empowerment and gender equality in state institutions",
-    "Modern institution-building and professionalization",
-    "Concern over militarization of women and departure from tradition",
-    "Skepticism about symbolic gestures without material security gains"
+    "state media: institutional reform, women's integration, national security modernization",
+    "opposition outlets: milestone in post-Assad governance",
+    "public: celebration of female empowerment, regional solidarity"
    ],
    "framings_ar": [
-    "تمكين المرأة والمساواة الجنسية في المؤسسات الحكومية",
-    "بناء المؤسسات الحديثة والمهنية",
-    "القلق من تسليح النساء والانحراف عن التقليد",
-    "الشك في الإيماءات الرمزية بدون مكاسب أمنية جوهرية"
+    "الإعلام الحكومي: إصلاح مؤسسي، تكامل المرأة، تحديث الأمن الوطني",
+    "منابر المعارضة: مرحلة حاسمة في الحكم ما بعد الأسد",
+    "العام: احتفال بتمكين المرأة، التضامن الإقليمي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 41,
-   "public_volume": 39,
-   "share": 0.135,
-   "engagement": 14584,
+   "volume": 27,
+   "public_volume": 26,
+   "share": 0.089,
+   "engagement": 200,
    "platforms": {
-    "telegram": 1,
     "news": 1,
-    "youtube": 36
+    "youtube": 26
    },
    "languages": {
-    "ar": 37,
-    "other": 1
+    "ar": 27
    },
    "sources": [
     "YouTube comments",
-    "Syrian Ministry of Interior - official",
     "Sky News Arabia - UAE-based"
    ],
    "examples": [
-    {
-     "source": "Syrian Ministry of Interior - official",
-     "url": "https://t.me/syrianmoi/31515",
-     "platform": "telegram"
-    },
     {
      "source": "Sky News Arabia - UAE-based",
      "url": "https://www.skynewsarabia.com/middle-east/1894021-%D9%84%D9%84%D9%85%D8%B1%D8%A9-%D8%A7%D9%84%D8%A3%D9%88%D9%84%D9%89-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%AA%D8%AE%D8%B1%D8%AC-%D8%AF%D9%81%D8%B9%D8%A9-%D9%85%D8%B9%D9%87%D8%AF-%D8%A7%D9%84%D8%B4%D8%B1%D8%B7%D8%A9-%D8%A7%D9%84%D9%86%D8%B3%D8%A7%D8%A6%D9%8A%D8%A9",
@@ -195,409 +178,48 @@
    "first_seen": "2026-09-23T17:02:12Z"
   },
   {
-   "id": "reconstruction-and-urban-recovery",
-   "title": "Reconstruction Efforts and Urban Recovery in South Damascus and Regional Areas",
-   "title_ar": "جهود إعادة البناء والتعافي الحضري في جنوب دمشق والمناطق الإقليمية",
-   "summary": "Outlets and public posts document reconstruction in southern Damascus neighborhoods (Yalda, Babila, Eqraba), road maintenance projects, and expanded housing supply plans targeting 2 million units by 2035. Videos show the return of normal life and commercial activity. Local authorities are working on infrastructure improvements, electricity supply stabilization, and municipal services in various regions.",
-   "summary_ar": "توثق وسائل الإعلام والمنشورات العامة إعادة البناء في أحياء جنوب دمشق (يلدا، ببيلا، عقربا)، ومشاريع صيانة الطرق، وخطط توسيع الإمداد السكني بهدف 2 مليون وحدة بحلول 2035. تُظهر الفيديوهات عودة الحياة العادية والنشاط التجاري. تعمل السلطات المحلية على تحسينات البنية التحتية واستقرار الإمداد الكهربائي والخدمات البلدية في مناطق مختلفة.",
-   "public_reaction": "Positive sentiment dominates among commenters documenting reconstruction. Viewers express relief and hope at seeing neighborhoods return to normalcy, though some criticize administrative neglect, haphazard urban planning, and lack of coordination between Damascus municipality and suburban areas. Others note housing shortages and high prices remain barriers.",
-   "public_reaction_ar": "المشاعر الإيجابية تسيطر بين المعلقين الذين يوثقون إعادة البناء. يعبر المشاهدون عن الارتياح والأمل عند رؤية الأحياء تعود إلى الطبيعية، لكن البعض ينتقد الإهمال الإداري والتخطيط الحضري العشوائي وعدم التنسيق بين بلدية دمشق والمناطق الضاحية. يلاحظ آخرون أن نقص الإسكان والأسعار المرتفعة تبقى عقبات.",
-   "sentiment": 0.55,
-   "public_sentiment": 0.5,
+   "id": "diaspora-and-cultural-commentary",
+   "title": "Diaspora Engagement, Cultural Reactions, and Entertainment News",
+   "title_ar": "انخراط الشتات والتعليقات الثقافية وأخبار الترفيه",
+   "summary": "Public comments included diaspora members from Yemen, Saudi Arabia, Libya, Italy, and Jordan expressing pride in Syrian recovery and solidarity with the homeland. Separate thread of comments debated why singer Asala Nasri left Syria shortly after a concert, with speculation about personal reasons. Food and tourism videos attracted light engagement. Entertainment gossip was distinct from political discourse.",
+   "summary_ar": "شملت التعليقات العامة أعضاء شتات من اليمن والمملكة العربية السعودية وليبيا وإيطاليا والأردن يعبرون عن فخرهم بالتعافي السوري والتضامن مع الوطن. نقاش منفصل معلقين حول سبب مغادرة المغنية أصالة نصري سوريا بعد فترة وجيزة من حفل، مع تخمينات حول أسباب شخصية. جذبت مقاطع الطعام والسياحة انخراطًا خفيفًا. كانت الثرثرة الترفيهية منفصلة عن الخطاب السياسي.",
+   "public_reaction": "Diaspora commenters expressed nostalgic pride and support ('from Yemen and expatriate in Turin, Italy'). Entertainment gossip was mostly mocking and lighthearted, with commenters dismissing it as false rumor-mongering. No sectarian or inflammatory rhetoric in this subset.",
+   "public_reaction_ar": "عبّر معلقو الشتات عن فخر حنين وتأييد ('من اليمن وغريب في تورينو، إيطاليا'). كانت الثرثرة الترفيهية في الغالب سخرية وخفيفة، مع عدم تصديق المعلقين للشائعات الكاذبة. لا خطاب طائفي أو التهابي في هذه المجموعة.",
+   "sentiment": 0.35,
+   "public_sentiment": 0.3,
    "emotions": [
-    "Hope",
-    "Relief",
-    "Cautious optimism",
-    "Frustration with bureaucracy"
+    "nostalgia",
+    "solidarity",
+    "lighthearted mockery",
+    "dismissal"
    ],
    "emotions_ar": [
-    "أمل",
-    "ارتياح",
-    "تفاؤل حذر",
-    "إحباط من البيروقراطية"
+    "حنين",
+    "تضامن",
+    "سخرية خفيفة",
+    "تجاهل"
    ],
    "framings": [
-    "Visible signs of recovery and return to normalcy",
-    "Large-scale housing and infrastructure development",
-    "Administrative inefficiency and uncoordinated planning",
-    "Progress constrained by resource and governance limits"
+    "diaspora: emotional reconnection, national pride",
+    "entertainment gossip: rumor and speculation, often denied"
    ],
    "framings_ar": [
-    "علامات مرئية للتعافي والعودة إلى الطبيعية",
-    "تطوير واسع النطاق للإسكان والبنية التحتية",
-    "عدم الكفاءة الإدارية والتخطيط غير المنسق",
-    "التقدم المقيد بحدود الموارد والحكم"
+    "الشتات: إعادة الاتصال العاطفي، الفخر الوطني",
+    "ثرثرة ترفيهية: شائعة وتخمين، غالبًا ما يُنكر"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 27,
-   "public_volume": 18,
-   "share": 0.089,
-   "engagement": 4971,
+   "volume": 26,
+   "public_volume": 26,
+   "share": 0.086,
+   "engagement": 44,
    "platforms": {
-    "telegram": 6,
-    "news": 3,
-    "youtube": 18
+    "youtube": 25
    },
    "languages": {
-    "ar": 26,
-    "en": 1
-   },
-   "sources": [
-    "YouTube comments",
-    "Al-Ikhbariya Syria - state TV",
-    "Syria TV - opposition-origin",
-    "SANA - state news agency (EN)",
-    "Google News - Syria (AR)",
-    "SANA website - state news agency (AR)"
-   ],
-   "examples": [
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141003",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/232553",
-     "platform": "telegram"
-    },
-    {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/83619",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-24T04:53:55Z"
-  },
-  {
-   "id": "un-diplomatic-offensive-2026",
-   "title": "President al-Sharaa's Intensive UN Diplomatic Engagement and International Recognition",
-   "title_ar": "الانخراط الدبلوماسي المكثف للرئيس الشرع في الأمم المتحدة والاعتراف الدولي",
-   "summary": "At the 81st UN General Assembly, President Sharaa highlighted Syria's recovery efforts, met with leaders from Kuwait, Lebanon, and Arab League, and held discussions with U.S. companies on investment. Outlets frame this as a success for Syria's international standing and economic reintegration. The Ministry of Interior also celebrated the first graduation of the Women Police Institute as a sign of institutional development.",
-   "summary_ar": "في الدورة الـ 81 للجمعية العامة للأمم المتحدة، سلط الرئيس الشرع الضوء على جهود سوريا في التعافي، والتقى برؤساء من الكويت ولبنان وجامعة الدول العربية، وأجرى مناقشات مع شركات أمريكية حول الاستثمار. تؤطر وسائل الإعلام هذا كنجاح للموقف الدولي لسوريا وإعادة دمجها الاقتصادي. احتفلت وزارة الداخلية أيضاً بأول تخرج لمعهد الشرطة النسائية كدلالة على التطور المؤسسي.",
-   "public_reaction": "Many commenters praise Sharaa's diplomatic representation and articulate Syrian positions well, viewing UN engagement positively. However, some question whether diplomatic words translate to actual protection or economic benefit when Syria remains militarily weak and economically struggling. Others express sectarian pride in Sunni representation at UN.",
-   "public_reaction_ar": "يثني الكثيرون على تمثيل الشرع الدبلوماسي وصياغة المواقف السورية بشكل جيد، وينظرون للانخراط في الأمم المتحدة بشكل إيجابي. غير أن البعض يتساءل عما إذا كانت الكلمات الدبلوماسية تترجم إلى حماية فعلية أو فائدة اقتصادية عندما تبقى سوريا ضعيفة عسكرياً وتكافح اقتصادياً. يعبر آخرون عن فخر طائفي بالتمثيل السني في الأمم المتحدة.",
-   "sentiment": 0.6,
-   "public_sentiment": 0.4,
-   "emotions": [
-    "Pride",
-    "Hope",
-    "Skepticism",
-    "Cautious optimism"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "أمل",
-    "شك",
-    "تفاؤل حذر"
-   ],
-   "framings": [
-    "Syria's return to international legitimacy and Arab fold",
-    "Economic opportunity and investment potential",
-    "Institutional recovery and state-building",
-    "Political theater without material security gains"
-   ],
-   "framings_ar": [
-    "عودة سوريا إلى الشرعية الدولية والحضن العربي",
-    "الفرص الاقتصادية والإمكانات الاستثمارية",
-    "التعافي المؤسسي وبناء الدولة",
-    "مسرح سياسي بدون مكاسب أمنية جوهرية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 22,
-   "public_volume": 10,
-   "share": 0.072,
-   "engagement": 44957,
-   "platforms": {
-    "news": 3,
-    "telegram": 9,
-    "youtube": 10
-   },
-   "languages": {
-    "ar": 19,
-    "en": 3
-   },
-   "sources": [
-    "YouTube comments",
-    "Syrian Presidency - official",
-    "Levant24 - Syria news (EN)",
-    "Syria TV - opposition-origin",
-    "Anadolu Agency - Turkish state news agency (AR)",
-    "Enab Baladi - independent (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Syrian Presidency - official",
-     "url": "https://t.me/SyPresidency/2772",
-     "platform": "telegram"
-    },
-    {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45641",
-     "platform": "telegram"
-    },
-    {
-     "source": "Anadolu Agency - Turkish state news agency (AR)",
-     "url": "https://t.me/aa_arabic/168706",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-23T23:43:16Z"
-  },
-  {
-   "id": "economic-hardship-and-employment-concerns",
-   "title": "Economic Hardship and Youth Employment Crisis",
-   "title_ar": "الشدة الاقتصادية وأزمة البطالة الشبابية",
-   "summary": "Public posts reveal widespread concern about Syria's economic conditions: low wages (~$600 with government), limited job opportunities in IT and engineering sectors, currency depreciation (Syrian pound at 136-137.50 to the dollar), and lack of career advancement. Youth question whether education and employment prospects justify staying in Syria, with many considering emigration. Commenters note the gap between official development narratives and lived economic realities.",
-   "summary_ar": "تكشف المنشورات العامة عن قلق واسع بشأن الظروف الاقتصادية في سوريا: أجور منخفضة (~600 دولار مع الحكومة)، فرص عمل محدودة في قطاعي تكنولوجيا المعلومات والهندسة، انخفاض قيمة العملة (الليرة السورية بـ 136-137.50 مقابل الدولار)، وعدم وجود فرص للتقدم الوظيفي. يتساءل الشباب عما إذا كانت آفاق التعليم والتوظيف تبرر البقاء في سوريا، مع أن الكثيرين يفكرون في الهجرة. يلاحظ المعلقون الفجوة بين السرديات التنموية الرسمية والواقع الاقتصادي المعاش.",
-   "public_reaction": "Substantial negative public sentiment regarding economic conditions. Multiple commenters express frustration, resignation, and concern about youth futures. Some acknowledge economic recovery is ongoing but express doubt about timeline and real benefit distribution. Few optimists view conditions as temporarily difficult but improving.",
-   "public_reaction_ar": "مشاعر عامة سلبية كبيرة بخصوص الظروف الاقتصادية. يعبر معلقون عديدون عن الإحباط والاستسلام والقلق بشأن مستقبل الشباب. يعترف البعض بأن التعافي الاقتصادي جارٍ لكن يعبرون عن الشك حول الجدول الزمني والتوزيع الحقيقي للفوائد. قليل من المتفائلين يعتبرون الظروف صعبة مؤقتاً لكن تتحسن.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.55,
-   "emotions": [
-    "Frustration",
-    "Resignation",
-    "Anxiety",
-    "Hopelessness about future"
-   ],
-   "emotions_ar": [
-    "إحباط",
-    "استسلام",
-    "قلق",
-    "اليأس من المستقبل"
-   ],
-   "framings": [
-    "Unemployment and underemployment crisis",
-    "Wage stagnation and cost of living pressure",
-    "Brain drain and emigration as survival strategy",
-    "Gap between political recovery narrative and economic reality"
-   ],
-   "framings_ar": [
-    "أزمة البطالة والعمل الناقص",
-    "توقف الأجور والضغط على تكلفة المعيشة",
-    "هروب الأدمغة والهجرة كاستراتيجية بقاء",
-    "الفجوة بين سرد التعافي السياسي والواقع الاقتصادي"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 8,
-   "public_volume": 8,
-   "share": 0.026,
-   "engagement": 1,
-   "platforms": {
-    "reddit": 7,
-    "x": 1
-   },
-   "languages": {
-    "ar": 7,
-    "en": 1
-   },
-   "sources": [
-    "Reddit r/syria comments",
-    "X posts"
-   ],
-   "examples": [],
-   "first_seen": "2026-09-24T10:03:06Z"
-  },
-  {
-   "id": "mine-clearance-and-southern-instability",
-   "title": "Mine Clearance Operations and Ongoing Southern Border Instability",
-   "title_ar": "عمليات إزالة الألغام وعدم الاستقرار المستمر على حدود الجنوب",
-   "summary": "State media reports on mine-clearing operations in western Tal Abyad (Raqqa countryside), with 3 soldiers injured during the work. Israeli forces conducted incursions and attacks on herders in southern Quneitra and Daraa, opening fire and launching RPG rounds. North Press reports multiple Israeli entries via military vehicles into agricultural areas. These reports illustrate ongoing security pressures in the south despite political rhetoric about sovereignty.",
-   "summary_ar": "تقارير وسائل الإعلام الرسمية عن عمليات إزالة الألغام في تل أبيض الغربي (ريف الرقة)، مع إصابة 3 جنود خلال العمل. أجرت القوات الإسرائيلية توغلات وهجمات على الرعاة في القنيطرة الجنوبية والدرعا، وأطلقت النار وأطلقت قنابل آر بي جي. تقارير شمال برس عن دخول إسرائيلي متعدد عبر المركبات العسكرية إلى مناطق زراعية. توضح هذه التقارير الضغوط الأمنية المستمرة في الجنوب رغم الخطاب السياسي حول السيادة.",
-   "public_reaction": "Public discourse on these security incidents is minimal in the sample. The few references suggest awareness of ongoing Israeli incursions but limited organized public response or debate beyond outlet reporting.",
-   "public_reaction_ar": "الخطاب العام بشأن هذه الحوادث الأمنية محدود جداً في العينة. تشير الإشارات القليلة إلى الوعي بالتوغلات الإسرائيلية المستمرة لكن استجابة عامة منظمة محدودة أو نقاش تجاوز التقارير الإعلامية.",
-   "sentiment": -0.2,
-   "public_sentiment": 0.0,
-   "emotions": [
-    "Concern",
-    "Resignation",
-    "Frustration"
-   ],
-   "emotions_ar": [
-    "قلق",
-    "استسلام",
-    "إحباط"
-   ],
-   "framings": [
-    "Ongoing mine threat as civilian and military hazard",
-    "Israeli incursions as persistent violation of sovereignty",
-    "Practical security challenges amid political assertions"
-   ],
-   "framings_ar": [
-    "تهديد الألغام المستمر كمخاطر مدنية وعسكرية",
-    "التوغلات الإسرائيلية كانتهاك مستمر للسيادة",
-    "تحديات الأمن العملي وسط التأكيدات السياسية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 7,
-   "public_volume": 1,
-   "share": 0.023,
-   "engagement": 5508,
-   "platforms": {
-    "telegram": 6,
-    "x": 1
-   },
-   "languages": {
-    "ar": 5,
-    "en": 2
-   },
-   "sources": [
-    "Al-Ikhbariya Syria - state TV",
-    "Levant24 - Syria news (EN)",
-    "North Press Agency (EN)",
-    "Al Mayadeen - Beirut-based",
-    "North Press Agency - Qamishli-based (AR)",
-    "ANHA (Hawar) - north-east administration news agency (AR)"
-   ],
-   "examples": [
-    {
-     "source": "Al Mayadeen - Beirut-based",
-     "url": "https://t.me/almayadeen/397873",
-     "platform": "telegram"
-    },
-    {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/83622",
-     "platform": "telegram"
-    },
-    {
-     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/80465",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-24T10:03:06Z"
-  },
-  {
-   "id": "antiquities-recovery",
-   "title": "Recovery of Stolen Syrian Antiquities from United States",
-   "title_ar": "استرجاع الآثار السورية المسروقة من الولايات المتحدة",
-   "summary": "U.S. authorities returned 36 pieces of antiquities worth over $5 million to Syria, including artifacts trafficked from Palmyra and a stone funerary sculpture weighing 450+ kg. Items were seized from New York's Metropolitan Museum of Art and private collectors as part of efforts to combat illicit antiquities trafficking. Ceremonies were held in New York during the UN General Assembly.",
-   "summary_ar": "أعادت السلطات الأمريكية 36 قطعة أثرية بقيمة أكثر من 5 ملايين دولار إلى سوريا، بما فيها آثار تم تهريبها من تدمر وتمثال جنائزي حجري يزن أكثر من 450 كغ. تم مصادرة العناصر من متحف مترو بوليتان للفنون في نيويورك ومن مجمعين خاصين كجزء من جهود مكافحة الاتجار غير المشروع بالآثار. تم إقامة مراسم في نيويورك خلال الجمعية العامة للأمم المتحدة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.7,
-   "public_sentiment": null,
-   "emotions": [
-    "Pride",
-    "Satisfaction",
-    "Cultural vindication"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "رضا",
-    "تحقيق ثقافي"
-   ],
-   "framings": [
-    "Restoration of Syrian cultural heritage",
-    "International cooperation against antiquities trafficking",
-    "Palmyra's recovery and Syria's civilizational legacy",
-    "U.S.-Syria cultural diplomacy"
-   ],
-   "framings_ar": [
-    "استعادة التراث الثقافي السوري",
-    "التعاون الدولي ضد الاتجار بالآثار",
-    "تعافي تدمر والإرث الحضاري السوري",
-    "الدبلوماسية الثقافية الأمريكية السورية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 7,
-   "public_volume": 0,
-   "share": 0.023,
-   "engagement": 999,
-   "platforms": {
-    "telegram": 5,
-    "news": 2
-   },
-   "languages": {
-    "ar": 5,
-    "en": 2
-   },
-   "sources": [
-    "Enab Baladi - independent (AR)",
-    "Al Arabiya - Saudi-owned",
-    "TRT Arabi - Turkish public broadcaster",
-    "Kurdistan24 English",
-    "Zaman al-Wasl - opposition-origin",
-    "North Press Agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Al Arabiya - Saudi-owned",
-     "url": "https://t.me/Alarabiya/165967",
-     "platform": "telegram"
-    },
-    {
-     "source": "TRT Arabi - Turkish public broadcaster",
-     "url": "https://t.me/TRTArabi/46097",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93102",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-09-24T10:03:06Z"
-  },
-  {
-   "id": "kurdish-language-and-rights-recognition",
-   "title": "Kurdish Language Rights and Education: Rhetoric vs. Implementation Concerns",
-   "title_ar": "حقوق اللغة الكردية والتعليم: الخطاب مقابل القلق من التنفيذ",
-   "summary": "President Sharaa stated that Kurds' rights have been recognized and education will be in Kurdish. Kurdish-language and Turkish-language posts on social media show mixed reactions: some Kurds welcome the rhetoric but express skepticism about actual implementation; Turkish commenters question whether the statement means security compromises or Turkish influence; some commenters note systemic constraints preventing full educational transition.",
-   "summary_ar": "أعلن الرئيس الشرع أن حقوق الأكراد تم الاعتراف بها والتعليم سيكون باللغة الكردية. تُظهر المنشورات بالكردية والتركية على وسائل التواصل الاجتماعي ردود فعل مختلطة: يرحب بعض الأكراد بالخطاب لكن يعبرون عن الشك في التنفيذ الفعلي؛ يتساءل معلقون أتراك عما إذا كان البيان يعني تنازلات أمنية أو تأثير تركي؛ يلاحظ بعض المعلقين القيود النظامية التي تمنع الانتقال التعليمي الكامل.",
-   "public_reaction": "Kurdish audience shows cautious skepticism: welcoming rights recognition but doubting rapid implementation given historical marginalization. Turkish commenters divide between those viewing it as diplomatic language and those concerned about security implications. Cross-community framing differs significantly on what language rights mean for regional stability.",
-   "public_reaction_ar": "الجمهور الكردي يبدي شكاً حذراً: يرحب بالاعتراف بالحقوق لكن يشك في التنفيذ السريع نظراً للتهميش التاريخي. ينقسم المعلقون الأتراك بين من يعتبره لغة دبلوماسية وبين من يقلق من الآثار الأمنية. يختلف الإطار عبر المجتمع بشكل كبير حول ما تعنيه حقوق اللغة لاستقرار المنطقة.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.2,
-   "emotions": [
-    "Cautious hope",
-    "Skepticism",
-    "Suspicion across communities",
-    "Historical distrust"
-   ],
-   "emotions_ar": [
-    "أمل حذر",
-    "شك",
-    "ريبة عابرة للمجتمعات",
-    "عدم ثقة تاريخي"
-   ],
-   "framings": [
-    "Recognition of Kurdish rights and cultural inclusion",
-    "Skepticism about implementation capacity and political will",
-    "Turkish security concerns and sovereignty questions",
-    "Long-standing marginalization requiring sustained action"
-   ],
-   "framings_ar": [
-    "الاعتراف بحقوق الأكراد والإدراج الثقافي",
-    "الشك في القدرة على التنفيذ والإرادة السياسية",
-    "المخاوف الأمنية التركية وقضايا السيادة",
-    "التهميش طويل الأمد الذي يتطلب إجراء مستدام"
-   ],
-   "flags": [
-    "Cross-community framing on same statements",
-    "Kurdish and Turkish posts describe same policy announcements differently",
-    "Turkish commenters cite unverified claims about U.S. influence"
-   ],
-   "flags_ar": [
-    "إطار عابر للمجتمع حول نفس البيانات",
-    "المنشورات الكردية والتركية تصف نفس إعلانات السياسة بشكل مختلف",
-    "المعلقون الأتراك يستشهدون بادعاءات غير موثقة حول التأثير الأمريكي"
-   ],
-   "volume": 7,
-   "public_volume": 7,
-   "share": 0.023,
-   "engagement": 1,
-   "platforms": {
-    "youtube": 7
-   },
-   "languages": {
-    "en": 7
+    "ar": 23,
+    "en": 1,
+    "other": 1
    },
    "sources": [
     "YouTube comments"
@@ -605,52 +227,442 @@
    "examples": [
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=D71RwURAj9A",
+     "url": "https://www.youtube.com/watch?v=1t4yEDBg7JE",
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-23T12:45:46Z"
+   "first_seen": "2026-09-24T15:08:13Z"
   },
   {
-   "id": "lebanese-syrian-economic-forum",
-   "title": "Lebanese-Syrian Economic Forum and Bilateral Partnership Expansion",
-   "title_ar": "المنتدى الاقتصادي اللبناني السوري وتوسيع الشراكة الثنائية",
-   "summary": "Syrian investment officials participated in the 2026 Lebanese-Syrian Economic Forum in Beirut, with the Syrian investment board discussing reconstruction financing and economic cooperation. Outlets also report on Jordanian banks seeking investment opportunities in Syria and progress on financial integration (SWIFT, Moneygramm). Separately, Lebanon has introduced new entry requirements for Syrian nationals.",
-   "summary_ar": "شارك مسؤولون استثمار سوريون في المنتدى الاقتصادي اللبناني السوري 2026 في بيروت، حيث ناقشت الهيئة الاستثمارية السورية تمويل إعادة البناء والتعاون الاقتصادي. تفيد وسائل الإعلام أيضاً عن سعي البنوك الأردنية لفرص الاستثمار في سوريا والتقدم على التكامل المالي (سويفت، موني غرام). بشكل منفصل، قدمت لبنان متطلبات دخول جديدة للمواطنين السوريين.",
+   "id": "reconstruction-and-urban-recovery",
+   "title": "Housing Shortage Plan, Infrastructure Development, and Urban Recovery",
+   "title_ar": "خطة معالجة الأزمة السكنية والتطوير البنيوي واستعادة المدن",
+   "summary": "Government outlined a plan to process 2 million housing units by 2035 to address the 1.9 million unit shortfall. Outlets reported infrastructure projects in Adra industrial zone, bridge assessments in Raqqa, and road rehabilitation with neighboring countries. Opposition and independent outlets framed these as post-conflict recovery; state media emphasized state-led initiatives. Public comments focused on property prices in specific neighborhoods and skepticism about implementation.",
+   "summary_ar": "أوضحت الحكومة خطة معالجة مليوني وحدة سكنية بحلول 2035 لتوجيه الفجوة البالغة 1.9 مليون وحدة. غطت المنابر مشاريع بنية تحتية بمنطقة عدرا الصناعية، تقييمات الجسور بالرقة، وتأهيل الطرق مع دول الجوار. أطرت المنابر المعارضة والمستقلة هذه بمثابة استعادة ما بعد الصراع؛ أكد الإعلام الحكومي على المبادرات بقيادة الدولة. ركزت التعليقات العامة على أسعار الممتلكات في أحياء محددة والتشكك حول التنفيذ.",
+   "public_reaction": "Commenters ask for specific price information on properties in south Damascus neighborhoods and express concern about informal settlements and municipal coordination. Limited enthusiasm for macro reconstruction plans; focus remains on individual housing affordability and neighborhood conditions.",
+   "public_reaction_ar": "يطلب المعلقون معلومات محددة عن أسعار الممتلكات في أحياء جنوب دمشق ويعبرون عن القلق حول المستوطنات غير الرسمية والتنسيق البلدي. حماس محدود للخطط الإعمارية الكبرى؛ يبقى التركيز على القدرة الفردية على تحمل تكاليف الإسكان وحالة الأحياء.",
+   "sentiment": 0.2,
+   "public_sentiment": 0.0,
+   "emotions": [
+    "cautious interest",
+    "skepticism",
+    "practical concern"
+   ],
+   "emotions_ar": [
+    "اهتمام حذر",
+    "تشكك",
+    "قلق عملي"
+   ],
+   "framings": [
+    "government outlets: ambitious post-conflict recovery, housing targets",
+    "opposition/independent: reconstruction efforts addressing war damage",
+    "public: localized housing costs, infrastructure quality concerns"
+   ],
+   "framings_ar": [
+    "منابر الحكومة: استعادة طموحة ما بعد الصراع، أهداف الإسكان",
+    "المعارضة والمستقلة: جهود إعمار توجه أضرار الحرب",
+    "العام: تكاليف الإسكان المحلية، مخاوف من جودة البنية التحتية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 17,
+   "public_volume": 12,
+   "share": 0.056,
+   "engagement": 466,
+   "platforms": {
+    "telegram": 3,
+    "news": 2,
+    "youtube": 12
+   },
+   "languages": {
+    "ar": 17
+   },
+   "sources": [
+    "YouTube comments",
+    "SANA website - state news agency (AR)",
+    "Al-Ikhbariya Syria - state TV",
+    "Shaam News Network - opposition-origin",
+    "Enab Baladi - independent (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93107",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/232608",
+     "platform": "telegram"
+    },
+    {
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/103690",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-24T04:53:55Z"
+  },
+  {
+   "id": "economic-and-market-volatility",
+   "title": "Currency Fluctuations, Price Inflation, and Economic Concerns",
+   "title_ar": "تقلبات العملة والتضخم السعري والمخاوف الاقتصادية",
+   "summary": "Outlets reported on Syrian lira fluctuations against the dollar and foreign currencies, rising chicken prices in Raqqa (from 30,000 to 40,000 lira per kilo), and IMF-led tax system reviews. Opposition outlets framed economic challenges; state media presented IMF cooperation neutrally. Public comments on economic topics focused on personal livelihood struggles, with limited engagement in larger policy discussions.",
+   "summary_ar": "غطت المنابر تقلبات الليرة السورية مقابل الدولار والعملات الأجنبية، وارتفاع أسعار الفروج بالرقة (من 30 ألف إلى 40 ألف ليرة للكيلو)، ومراجعات صندوق النقد الدولي للنظام الضريبي. أطرت المنابر المعارضة التحديات الاقتصادية؛ عرض الإعلام الحكومي التعاون مع صندوق النقد الدولي بشكل محايد. ركزت التعليقات العامة حول المواضيع الاقتصادية على صراعات الرزق الشخصي، مع انخراط محدود في المناقشات السياسية الأوسع.",
+   "public_reaction": "Most economic comments focus on personal job prospects and whether IT careers offer viability in Syria, with pessimism about future opportunities. Few commenters engage with macro-level policy; instead, they discuss individual employment strategies and emigration. Some reference AI-driven job losses globally.",
+   "public_reaction_ar": "معظم التعليقات الاقتصادية تركز على آفاق الوظائف الشخصية وما إذا كانت مهن تكنولوجيا المعلومات توفر جدوى في سوريا، مع تشاؤم حول الفرص المستقبلية. عدد قليل من المعلقين ينخرطون في سياسة المستوى الكلي؛ بدلاً من ذلك، يناقشون استراتيجيات التوظيف الفردية والهجرة. يشير البعض إلى فقدان الوظائف التي يقودها الذكاء الاصطناعي عالميًا.",
+   "sentiment": -0.35,
+   "public_sentiment": -0.4,
+   "emotions": [
+    "anxiety",
+    "pessimism",
+    "resignation"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "تشاؤم",
+    "استسلام"
+   ],
+   "framings": [
+    "opposition outlets: economic hardship, currency instability",
+    "state media: neutral reporting of IMF cooperation",
+    "public: personal survival strategies, skepticism about career prospects in Syria"
+   ],
+   "framings_ar": [
+    "منابر المعارضة: الضائقة الاقتصادية، عدم استقرار العملة",
+    "الإعلام الحكومي: إبلاغ محايد عن التعاون مع صندوق النقد الدولي",
+    "العام: استراتيجيات البقاء الشخصية، التشكك حول آفاق العمل في سوريا"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 14,
+   "public_volume": 11,
+   "share": 0.046,
+   "engagement": 204,
+   "platforms": {
+    "telegram": 3,
+    "reddit": 11
+   },
+   "languages": {
+    "ar": 12,
+    "en": 2
+   },
+   "sources": [
+    "Reddit r/syria comments",
+    "Shaam News Network - opposition-origin",
+    "SANA - state news agency (EN)",
+    "North Press Agency - Qamishli-based (AR)"
+   ],
+   "examples": [
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83625",
+     "platform": "telegram"
+    },
+    {
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/103691",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78294",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-24T15:08:13Z"
+  },
+  {
+   "id": "natural-disasters-and-safety",
+   "title": "Earthquake Tremors and Public Safety Reactions",
+   "title_ar": "هزات زلزالية وردود الفعل الأمنية العامة",
+   "summary": "A 5.4-magnitude earthquake struck south-east Turkey and northern/eastern Syria on Thursday with no reported deaths or injuries. Citizens in Qamishli evacuated to the streets. Public reaction was widespread, with prayers for safety and reassurance that tremors were felt but manageable. Limited technical reporting on earthquake causes or preparedness.",
+   "summary_ar": "ضرب زلزال بقوة 5.4 درجة جنوب شرق تركيا وشمال وشرق سوريا يوم الخميس دون تسجيل وفيات أو إصابات. أخلى المواطنون في القامشلي إلى الشارع. كان رد الفعل العام واسعًا، مع صلوات للسلامة وطمأنينة بأن الهزات شعر بها لكنها يمكن السيطرة عليها. إبلاغ تقني محدود عن أسباب الزلازل أو الاستعداد.",
+   "public_reaction": "Commenters prayed for safety ('May God protect us') and shared personal experiences of feeling the tremors. Tone was calm and reassuring, with some lightness ('we danced a little'). No panic or blame-shifting observed.",
+   "public_reaction_ar": "صلّى المعلقون للسلامة ('اللهم احفظنا') وشاركوا تجارب شخصية بالشعور بالهزات. كان الأسلوب هادئًا وطمأنينة، مع بعض الخفة ('رقصنا شوي'). لم يُلاحظ هلع أو نقل اللوم.",
+   "sentiment": 0.1,
+   "public_sentiment": 0.25,
+   "emotions": [
+    "relief",
+    "solidarity",
+    "pragmatism"
+   ],
+   "emotions_ar": [
+    "ارتياح",
+    "تضامن",
+    "براغماتية"
+   ],
+   "framings": [
+    "international outlets: natural disaster reporting, magnitude and location",
+    "public: personal safety, community reassurance, prayer"
+   ],
+   "framings_ar": [
+    "المنابر الدولية: إبلاغ الكوارث الطبيعية، القوة والموقع",
+    "العام: السلامة الشخصية، طمأنينة المجتمع، الصلاة"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 14,
+   "public_volume": 12,
+   "share": 0.046,
+   "engagement": 359,
+   "platforms": {
+    "news": 1,
+    "telegram": 1,
+    "youtube": 11
+   },
+   "languages": {
+    "ar": 12,
+    "en": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Sky News Arabia - UAE-based",
+    "Levant24 - Syria news (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/45645",
+     "platform": "telegram"
+    },
+    {
+     "source": "Sky News Arabia - UAE-based",
+     "url": "https://www.skynewsarabia.com/middle-east/1894184-%D8%B2%D9%84%D8%B2%D8%A7%D9%84-%D8%A8%D9%82%D9%88%D8%A9-5-4-%D8%AF%D8%B1%D8%AC%D8%A7%D8%AA-%D9%8A%D8%B6%D8%B1%D8%A8-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D9%88%D8%AA%D8%B1%D9%83%D9%8A%D8%A7",
+     "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=LC1zg8NepdQ",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-24T15:08:13Z"
+  },
+  {
+   "id": "accidents-and-safety-incidents",
+   "title": "Traffic and Industrial Accidents Reported Across Syria",
+   "title_ar": "حوادث المرور والحوادث الصناعية المبلغ عنها عبر سوريا",
+   "summary": "Outlets reported several fatal and injurious accidents: two deaths and a woman injured in a car flip on the Homs-Damascus highway; one death and four injuries in an explosion at an auto repair shop in Nawa, Daraa; one death and five injuries in an explosion at a car repair shop and cleaning materials factory in Nawa; and one worker dead and others injured in a mosque ceiling collapse during construction in Deir ez-Zor. Reports varied slightly in casualty counts depending on source. Public reaction was muted; few comments on safety incidents.",
+   "summary_ar": "أفادت المنابر عن عدة حوادث قاتلة وإصابات: وفاتان وإصابة امرأة في انقلاب سيارة على طريق حمص-دمشق الدولي؛ وفاة واحدة وأربع إصابات في انفجار بمحل تصليح سيارات بنوى بدرعا؛ وفاة واحدة وخمس إصابات في انفجار بمحل تصليح سيارات ومعمل تصنيع مواد تنظيف بنوى؛ ووفاة عامل واحد وإصابة آخرين في انهيار سقف مسجد أثناء البناء بدير الزور. تختلفت التقارير قليلاً في أرقام الضحايا حسب المصدر. كان رد الفعل العام خافتًا؛ تعليقات قليلة على حوادث السلامة.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.5,
+   "sentiment": -0.1,
    "public_sentiment": null,
    "emotions": [
-    "Cautious optimism",
-    "Indifference",
-    "Skepticism",
-    "Economic anxiety"
+    "neutral reporting",
+    "absence of public engagement"
+   ],
+   "emotions_ar": [
+    "إبلاغ محايد",
+    "غياب الانخراط العام"
+   ],
+   "framings": [
+    "outlet reporting: factual casualty and location information"
+   ],
+   "framings_ar": [
+    "إبلاغ المنابع: معلومات واقعية عن الضحايا والموقع"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 14,
+   "public_volume": 0,
+   "share": 0.046,
+   "engagement": 8869,
+   "platforms": {
+    "telegram": 11,
+    "news": 2
+   },
+   "languages": {
+    "en": 2,
+    "ar": 11
+   },
+   "sources": [
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Rudaw Arabic - Kurdistan Region outlet",
+    "North Press Agency (EN)",
+    "Asharq News - Saudi-owned",
+    "North Press Agency - Qamishli-based (AR)",
+    "Syria TV - opposition-origin"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141013",
+     "platform": "telegram"
+    },
+    {
+     "source": "Rudaw Arabic - Kurdistan Region outlet",
+     "url": "https://t.me/RudawArabic/120763",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83633",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-24T15:08:13Z"
+  },
+  {
+   "id": "political-skepticism-and-sarcasm",
+   "title": "Public Mockery of Political Figures and Cynicism About Governance",
+   "title_ar": "السخرية العامة من الشخصيات السياسية والتشاؤم حول الحكم",
+   "summary": "Multiple comments sarcastically mocked the Sharaa-Trump 'New Jersey for Golan' exchange, with some claiming he is not credible or that the speech is mere theater. Commenters also questioned whether Sharaa genuinely represents the Syrian people or merely performs for international audiences. Some vented frustration at comparisons between the current government and the previous Assad regime. Skeptical comments were diverse in origin (Syria-based, diaspora, regional).",
+   "summary_ar": "سخرت تعليقات متعددة من تبادل الشرع-ترامب \"نيوجيرسي مقابل الجولان\"، مع ادعاء البعض بأنه غير موثوق أو أن الخطاب مجرد عرض. شكك المعلقون أيضًا ما إذا كان الشرع يمثل حقًا الشعب السوري أم يقدم عرضًا للجماهير الدولية. عبّر البعض عن إحباط من المقارنات بين الحكومة الحالية والنظام الأسدي السابق. كانت التعليقات المتشككة متنوعة في الأصل (سوريا الأساسية، الشتات، إقليمي).",
+   "public_reaction": "Commenters express deep skepticism about political theater, with some distinguishing between 'what is said' and 'what is done.' Others question the legitimacy of international engagement when the Golan remains occupied. A few compare current leadership unfavorably to the Assad era, claiming Sharaa is dependent on foreign actors.",
+   "public_reaction_ar": "يعبر المعلقون عن تشكك عميق حول العرض السياسي، مع تمييز البعض بين 'ما يُقال' و'ما يُفعل'. يشكك آخرون في شرعية الانخراط الدولي عندما يبقى الجولان محتلاً. يقارن عدد قليل القيادة الحالية بعدم ملاءمة لحقبة الأسد، معتبرين أن الشرع يعتمد على الجهات الأجنبية.",
+   "sentiment": -0.45,
+   "public_sentiment": -0.5,
+   "emotions": [
+    "sarcasm",
+    "contempt",
+    "cynicism",
+    "frustration"
+   ],
+   "emotions_ar": [
+    "سخرية",
+    "استخفاف",
+    "تشاؤم",
+    "إحباط"
+   ],
+   "framings": [
+    "public: political theater, insincerity, dependence on foreign powers"
+   ],
+   "framings_ar": [
+    "العام: عرض سياسي، عدم صدق، الاعتماد على القوى الأجنبية"
+   ],
+   "flags": [
+    "sarcastic praise embedded in contemptuous framing ('so brave', 'so leadership'); difficult to parse as genuine or mocking"
+   ],
+   "flags_ar": [
+    "مدح ساخر مدمج في إطار استخفافي ('شجاع جدًا'، 'قيادة جدًا')؛ من الصعب تحليله كصادق أم سخري"
+   ],
+   "volume": 12,
+   "public_volume": 12,
+   "share": 0.039,
+   "engagement": 93,
+   "platforms": {
+    "youtube": 12
+   },
+   "languages": {
+    "ar": 12
+   },
+   "sources": [
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=1t4yEDBg7JE",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-24T15:08:13Z"
+  },
+  {
+   "id": "un-diplomatic-offensive-2026",
+   "title": "President al-Sharaa's Intensive UN Diplomatic Engagement and International Recognition",
+   "title_ar": "الجهود الدبلوماسية المكثفة للرئيس الشرع بالأمم المتحدة والاعتراف الدولي",
+   "summary": "Al-Sharaa conducted multiple bilateral meetings at the UN General Assembly with leaders from Kuwait, Lebanon, Egypt, and the US Chamber of Commerce, discussing economic partnerships, investment, and regional stability. State media and opposition outlets framed this as Syria's return to the international stage and normalization of relations. Public reaction was muted on diplomatic content specifically, with focus instead on the Golan rhetor rhetoric.",
+   "summary_ar": "أجرى الشرع عدة لقاءات ثنائية بالجمعية العامة للأمم المتحدة مع قيادات من الكويت ولبنان ومصر وغرفة التجارة الأمريكية، بحثت الشراكات الاقتصادية والاستثمار والاستقرار الإقليمي. أطرت الإعلام الحكومي والمعارضة هذا كعودة سوريا إلى المسرح الدولي وتطبيع العلاقات. كان رد الفعل العام خافتًا بشأن المحتوى الدبلوماسي تحديدًا، مع التركيز بدلاً من ذلك على الخطاب حول الجولان.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.4,
+   "public_sentiment": null,
+   "emotions": [
+    "cautious optimism",
+    "indifference"
    ],
    "emotions_ar": [
     "تفاؤل حذر",
-    "لامبالاة",
-    "شك",
-    "قلق اقتصادي"
+    "لامبالاة"
    ],
    "framings": [
-    "Regional economic integration and reconstruction financing",
-    "Foreign investor confidence returning to Syria",
-    "Financial system normalization and SWIFT connectivity",
-    "Elite deals while ordinary Syrians struggle economically"
+    "state media: Syria's international recovery, investment opportunities, regional leadership",
+    "opposition outlets: normalization and diplomatic engagement",
+    "public: largely absent from discussion; focus remains on territorial sovereignty rhetoric"
    ],
    "framings_ar": [
-    "التكامل الاقتصادي الإقليمي وتمويل إعادة البناء",
-    "عودة ثقة المستثمرين الأجانب إلى سوريا",
-    "تطبيع النظام المالي والاتصال بنظام سويفت",
-    "صفقات نخبوية بينما يكافح السوريون العاديون اقتصادياً"
+    "الإعلام الحكومي: التعافي الدولي لسوريا، فرص الاستثمار، الريادة الإقليمية",
+    "منابر المعارضة: التطبيع والانخراط الدبلوماسي",
+    "العام: غائب إلى حد كبير عن النقاش؛ يبقى التركيز على خطاب السيادة الإقليمية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 10,
+   "public_volume": 0,
+   "share": 0.033,
+   "engagement": 54712,
+   "platforms": {
+    "telegram": 8,
+    "news": 2
+   },
+   "languages": {
+    "en": 4,
+    "ar": 6
+   },
+   "sources": [
+    "Syrian Presidency - official",
+    "Levant24 - Syria news (EN)",
+    "Enab Baladi - independent (EN)",
+    "Google News - Syria (AR)",
+    "Google News - Syria (EN)",
+    "Halab Today TV - opposition-origin, Aleppo"
+   ],
+   "examples": [
+    {
+     "source": "Syrian Presidency - official",
+     "url": "https://t.me/SyPresidency/2784",
+     "platform": "telegram"
+    },
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141015",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/45646",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-23T23:43:16Z"
+  },
+  {
+   "id": "antiquities-recovery",
+   "title": "Recovery of Stolen Syrian Antiquities from United States",
+   "title_ar": "استعادة الآثار السورية المسروقة من الولايات المتحدة",
+   "summary": "US authorities returned 36 antiquities worth $5 million to Syria, including a stone sculpture trafficked from Palmyra and seized from the Metropolitan Museum of Art and private collectors. State media and international outlets framed this as US-Syria cooperation and 'new chapter' in relations. US UN ambassador called it a sign of Syria's responsible partnership. Public reaction was positive but minimal.",
+   "summary_ar": "أعادت السلطات الأمريكية 36 قطعة أثرية بقيمة 5 ملايين دولار إلى سوريا، بما فيها تمثال حجري مهرب من تدمر ومصادر من متحف متروبوليتان للفنون والمجمعين الخواص. أطر الإعلام الحكومي والمنابر الدولية هذا بمثابة تعاون أمريكي-سوري و\"فصل جديد\" في العلاقات. دعا سفير الولايات المتحدة بالأمم المتحدة إليه علامة على شراكة سوريا المسؤولة. كان رد الفعل العام إيجابيًا لكن محدودًا.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.6,
+   "public_sentiment": null,
+   "emotions": [
+    "pride",
+    "cultural restoration"
+   ],
+   "emotions_ar": [
+    "فخر",
+    "استعادة ثقافية"
+   ],
+   "framings": [
+    "state media: US-Syria partnership, cultural diplomacy",
+    "international outlets: return of war-looted heritage",
+    "public: celebration of cultural recovery (minimal engagement)"
+   ],
+   "framings_ar": [
+    "الإعلام الحكومي: الشراكة الأمريكية-السورية، الدبلوماسية الثقافية",
+    "المنابر الدولية: عودة التراث المنهوب بالحرب",
+    "العام: احتفال باستعادة ثقافية (انخراط محدود جدًا)"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 3,
    "public_volume": 0,
    "share": 0.01,
-   "engagement": 1164,
+   "engagement": 1255,
    "platforms": {
     "telegram": 3
    },
@@ -659,98 +671,209 @@
     "en": 1
    },
    "sources": [
-    "Shaam News Network - opposition-origin",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "Enab Baladi - independent (EN)"
+    "TRT Arabi - Turkish public broadcaster",
+    "Kurdistan24 English",
+    "Al-Ikhbariya Syria - state TV"
    ],
    "examples": [
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141005",
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/232606",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6759",
+     "source": "TRT Arabi - Turkish public broadcaster",
+     "url": "https://t.me/TRTArabi/46097",
      "platform": "telegram"
     },
     {
-     "source": "Shaam News Network - opposition-origin",
-     "url": "https://t.me/ShaamNetwork/103644",
+     "source": "Kurdistan24 English",
+     "url": "https://t.me/kurdistan24english/14935",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-24T04:53:55Z"
+   "first_seen": "2026-09-24T10:03:06Z"
   },
   {
-   "id": "refugee-return-and-camps-transition",
-   "title": "Refugee Return and Camp Closure: Government Targets and International Support",
-   "title_ar": "عودة اللاجئين وإغلاق المخيمات: أهداف الحكومة والدعم الدولي",
-   "summary": "UN and outlet reports indicate Syria aims to eliminate the need for camps before displaced populations return home. Nearly 100,000 people received cash assistance for return and reintegration in 2026, though funding shortages left tens of thousands of eligible families waiting. Government targets 2 million housing units and infrastructure as part of 'Syria Without Camps' initiative. Projects are underway in Aleppo and other regions to support transition.",
-   "summary_ar": "تشير تقارير الأمم المتحدة ووسائل الإعلام إلى أن سوريا تهدف إلى القضاء على الحاجة للمخيمات قبل عودة السكان النازحين. تلقى ما يقرب من 100,000 شخص مساعدات نقدية للعودة وإعادة الاندماج في 2026، رغم أن نقص التمويل ترك عشرات الآلاف من الأسر المؤهلة في انتظار. تستهدف الحكومة مليوني وحدة إسكان وبنية تحتية كجزء من مبادرة 'سوريا بلا مخيمات'. مشاريع قيد التنفيذ في حلب ومناطق أخرى لدعم الانتقال.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.4,
-   "public_sentiment": null,
+   "id": "regional-security-and-foreign-military-presence",
+   "title": "Regional Instability, Foreign Military Presence, and Border Concerns",
+   "title_ar": "عدم الاستقرار الإقليمي والوجود العسكري الأجنبي والمخاوف الحدودية",
+   "summary": "Public posts alleged unauthorized foreign military presence in Syria: claims of Israeli bases in the Syrian desert east of Iraq, Iranian military activity, and unidentified drone activity near the Tanf border. A separate post noted ongoing mine-clearance operations in Tal Abyad. State outlets reported on mine removal; public comments echoed suspicions of foreign military encroachment but offered no verification. Kurdish outlets reported on Turkish military base withdrawal from Iraq.",
+   "summary_ar": "ادعت المنشورات العامة وجود عسكري أجنبي غير مصرح به في سوريا: مطالبات بقواعد إسرائيلية في الصحراء السورية شرق العراق، والنشاط العسكري الإيراني، والنشاط بدون طيار غير محدد بالقرب من حدود التنف. لاحظ منشور منفصل عمليات إزالة الألغام المستمرة في تل أبيض. أفادت المنابع الحكومية عن إزالة الألغام؛ رددت التعليقات العامة الشكوك حول الزحف العسكري الأجنبي لكنها لم تقدم تحقيقًا. أفادت منابع كردية عن سحب القاعدة العسكرية التركية من العراق.",
+   "public_reaction": "Commenters alleged unauthorized foreign military presence (Israeli bases, Iranian militias, drone activity) without verification. Tone was conspiratorial but not panicked. Some noted the irony of Sharaa's sovereignty claims while foreign forces operate in the south.",
+   "public_reaction_ar": "ادعى المعلقون وجود عسكري أجنبي غير مصرح به (قواعس إسرائيلية، ميليشيات إيرانية، نشاط بدون طيار) دون تحقق. كان الأسلوب مؤامرة لكن بدون هلع. لاحظ البعض السخرية من مطالبات الشرع بالسيادة بينما تعمل قوات أجنبية في الجنوب.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.35,
    "emotions": [
-    "Cautious hope",
-    "Concern over funding",
-    "Indifference"
+    "suspicion",
+    "anxiety",
+    "skepticism about sovereignty"
    ],
    "emotions_ar": [
-    "أمل حذر",
-    "قلق من التمويل",
-    "لامبالاة"
+    "شك",
+    "قلق",
+    "تشكك حول السيادة"
    ],
    "framings": [
-    "Housing and infrastructure as prerequisite for return",
-    "'Syria Without Camps' as long-term transition goal",
-    "International funding gaps and shortfalls",
-    "Reintegration support and livelihood restoration"
+    "public: unverified claims of foreign military presence",
+    "outlets: mine clearance operations (factual)",
+    "regional analysis: ongoing foreign military footprints"
    ],
    "framings_ar": [
-    "الإسكان والبنية التحتية كشرط أساسي للعودة",
-    "'سوريا بلا مخيمات' كهدف انتقال طويل الأجل",
-    "فجوات التمويل الدولي والنقص",
-    "دعم إعادة الاندماج واستعادة سبل العيش"
+    "العام: مطالبات غير موثقة بالوجود العسكري الأجنبي",
+    "المنابع: عمليات إزالة الألغام (واقعية)",
+    "التحليل الإقليمي: الآثار العسكرية الأجنبية المستمرة"
+   ],
+   "flags": [
+    "unverified claims of Israeli military bases in Syrian desert; Iranian militia presence; unidentified drones - no official confirmation provided"
+   ],
+   "flags_ar": [
+    "مطالبات غير موثقة بالقواعس العسكرية الإسرائيلية في الصحراء السورية؛ وجود ميليشيات إيرانية؛ طائرات بدون طيار غير محددة - لم يتم تقديم تأكيد رسمي"
+   ],
+   "volume": 3,
+   "public_volume": 1,
+   "share": 0.01,
+   "engagement": 124,
+   "platforms": {
+    "telegram": 2,
+    "x": 1
+   },
+   "languages": {
+    "ar": 2,
+    "en": 1
+   },
+   "sources": [
+    "North Press Agency - Qamishli-based (AR)",
+    "North Press Agency (EN)",
+    "X posts"
+   ],
+   "examples": [
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83627",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency (EN)",
+     "url": "https://t.me/npasyria/34805",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-24T15:08:13Z"
+  },
+  {
+   "id": "kurdish-language-and-rights-recognition",
+   "title": "Kurdish Language Rights and Education: Student Advocacy for Expanded Classes",
+   "title_ar": "حقوق اللغة الكردية والتعليم: دعوات الطلاب لتوسيع الفصول",
+   "summary": "ANHA (north-east administration news agency) reported that students and parents in Karkah Laki and surrounding areas demanded continuation of Kurdish language education and expansion of Kurdish teaching hours. The report noted they were protesting education ministry decisions to reduce Kurdish class hours. Public reaction in Kurdish was limited but affirmed the demand for language rights.",
+   "summary_ar": "أفادت وكالة أنباء هاوار (وكالة إعلامية للإدارة الذاتية بالشمال الشرقي) بأن الطلاب والآباء في كركي لكي والمناطق المحيطة طالبوا بمتابعة تعليم اللغة الكردية وتوسيع ساعات التدريس الكردي. لاحظت التقرير احتجاجًا على قرارات وزارة التعليم بتقليل ساعات الدروس الكردية. كان رد الفعل العام بالكردية محدودًا لكنه أكد الطلب على حقوق اللغة.",
+   "public_reaction": "Kurdish-language commenter affirmed the students' demand for Kurdish language preservation and expanded instruction. The tone was supportive of minority language rights.",
+   "public_reaction_ar": "أكد معلق باللغة الكردية طلب الطلاب بالحفاظ على اللغة الكردية والتعليم الموسع. كان الأسلوب داعمًا لحقوق اللغات الأقلية.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.5,
+   "emotions": [
+    "advocacy",
+    "cultural assertion"
+   ],
+   "emotions_ar": [
+    "دعوة",
+    "تأكيد ثقافي"
+   ],
+   "framings": [
+    "north-east administration outlet: student protest against language policy reduction",
+    "public (Kurdish): affirmation of language rights and educational access"
+   ],
+   "framings_ar": [
+    "منفذ الإدارة الذاتية بالشمال الشرقي: احتجاج الطلاب على تقليل سياسة اللغة",
+    "العام (الكردي): تأكيد حقوق اللغة والوصول التعليمي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 3,
-   "public_volume": 0,
-   "share": 0.01,
-   "engagement": 369,
+   "volume": 2,
+   "public_volume": 1,
+   "share": 0.007,
+   "engagement": 116,
    "platforms": {
-    "news": 1,
-    "telegram": 2
+    "telegram": 1,
+    "youtube": 1
    },
    "languages": {
-    "en": 2,
-    "ar": 1
+    "ar": 1,
+    "en": 1
    },
    "sources": [
-    "Google News - Syria (EN)",
-    "Enab Baladi - independent (EN)",
-    "Enab Baladi - independent (AR)"
+    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "YouTube comments"
    ],
    "examples": [
     {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93100",
+     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
+     "url": "https://t.me/HawarNews/80500",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6760",
-     "platform": "telegram"
-    },
-    {
-     "source": "Google News - Syria (EN)",
-     "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNZlIzWmszMGhySjMwR1FER3JEM2t0NzlGUk9tdlp3cWxYUnBha3lKX3ExMTdXZWxmRFNoN1pGRVNQazVBOXpHVUNhU0Z0anNzUWtZZy00dWo5T3BLdlNLVlRid2JfeEtxTkc5UG5ETF9jWVVWSmNrcnFKR1NJdXhMTlFJSXJXNTIydl96NVQtNzdTaGVacEc3SWV1bFdjcDBxcXlUTEFuMXhCWGhIRGNIZUd0Yzc3a2ZpWVNINE9xRUlMNWtCZHhZ?oc=5",
-     "platform": "news"
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=M9rEPdT-pq4",
+     "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-23T23:43:16Z"
+   "first_seen": "2026-09-23T12:45:46Z"
+  },
+  {
+   "id": "sectarian-and-minority-concerns",
+   "title": "Sectarian Dynamics and Religious Minority Advocacy",
+   "title_ar": "الديناميات الطائفية والدعوة من أجل الأقليات الدينية",
+   "summary": "A post on X reported protests outside the UN in New York in support of protecting religious minorities in Syria, naming Alawites, Christians, Druze, and other groups. Another comment expressed suspicion about government transfers of ISIS fighters to certain regions and historical Alawite marginalization. Limited public engagement on minority issues; most sectarian discussion was historical or comparative rather than current.",
+   "summary_ar": "أفادت منشور على X تظاهرات خارج الأمم المتحدة في نيويورك دعمًا لحماية الأقليات الدينية في سوريا، مسميًا العلويين والمسيحيين والدروز وفئات أخرى. أعرب تعليق آخر عن الشك بشأن تحويلات الحكومة لمقاتلي داعش إلى مناطق معينة والتهميش التاريخي العلوي. انخراط عام محدود بقضايا الأقليات؛ كان معظم النقاش الطائفي تاريخيًا أو مقارنًا وليس حاليًا.",
+   "public_reaction": "One commenter raised historical concerns about sectarian demographics and Alawite governance under Assad, contrasting it with broader claims of national unity. Limited engagement suggests low public concern or caution about discussing sectarian issues openly.",
+   "public_reaction_ar": "أثار معلق واحد مخاوف تاريخية حول الديمغرافيا الطائفية والحكم العلوي تحت الأسد، متناقضًا مع مطالبات أوسع بالوحدة الوطنية. يشير الانخراط المحدود إلى قلق عام قليل أو حذر من مناقشة القضايا الطائفية بصراحة.",
+   "sentiment": -0.2,
+   "public_sentiment": -0.15,
+   "emotions": [
+    "caution",
+    "historical grievance",
+    "advocacy for protection"
+   ],
+   "emotions_ar": [
+    "حذر",
+    "شكوى تاريخية",
+    "دعوة للحماية"
+   ],
+   "framings": [
+    "public: religious minority protection, historical sectarian inequities"
+   ],
+   "framings_ar": [
+    "العام: حماية الأقليات الدينية، عدم المساواة الطائفية التاريخية"
+   ],
+   "flags": [
+    "limited public engagement on sectarian topics suggests either general acceptance or reluctance to discuss openly"
+   ],
+   "flags_ar": [
+    "الانخراط العام المحدود بالمواضيع الطائفية يشير إلى قبول عام أو تردد في المناقشة الصريحة"
+   ],
+   "volume": 2,
+   "public_volume": 2,
+   "share": 0.007,
+   "engagement": 3,
+   "platforms": {
+    "x": 1,
+    "youtube": 1
+   },
+   "languages": {
+    "ar": 2
+   },
+   "sources": [
+    "X posts",
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=d1yXvabCGIg",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-24T15:08:13Z"
   }
  ],
  "sources": [
@@ -772,14 +895,14 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 11,
-   "recent": 11
+   "fetched": 14,
+   "recent": 14
   },
   {
    "name": "Syrian Ministry of Interior - official",
    "platform": "telegram",
    "ok": true,
-   "fetched": 3,
+   "fetched": 4,
    "recent": 1
   },
   {
@@ -787,28 +910,28 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 14
+   "recent": 15
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 6
+   "recent": 3
   },
   {
    "name": "Halab Today TV - opposition-origin, Aleppo",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
-   "recent": 20
+   "fetched": 18,
+   "recent": 18
   },
   {
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
-   "recent": 20
+   "fetched": 16,
+   "recent": 16
   },
   {
    "name": "Levant24 - Syria news (EN)",
@@ -821,22 +944,22 @@
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
-   "recent": 12
+   "fetched": 10,
+   "recent": 10
   },
   {
    "name": "North Press Agency - Qamishli-based (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
-   "recent": 14
+   "fetched": 7,
+   "recent": 7
   },
   {
    "name": "North Press Agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 10
+   "fetched": 8,
+   "recent": 7
   },
   {
    "name": "SDF media center - official",
@@ -849,21 +972,21 @@
    "name": "Rudaw Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 17,
-   "recent": 2
+   "fetched": 13,
+   "recent": 4
   },
   {
    "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 1
+   "fetched": 12,
+   "recent": 2
   },
   {
    "name": "Kurdistan24 English",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
+   "fetched": 19,
    "recent": 1
   },
   {
@@ -871,56 +994,56 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Al Arabiya - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 1
   },
   {
    "name": "Asharq News - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 2
   },
   {
    "name": "Al Mayadeen - Beirut-based",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 1
   },
   {
    "name": "Anadolu Agency - Turkish state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 16,
+   "fetched": 20,
    "recent": 1
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
-   "recent": 2
+   "fetched": 16,
+   "recent": 1
   },
   {
    "name": "Google News - Syria (AR)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 45
+   "recent": 39
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 31
+   "recent": 22
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -934,14 +1057,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 47
+   "recent": 45
   },
   {
    "name": "Zaman al-Wasl - opposition-origin",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 19
+   "recent": 20
   },
   {
    "name": "Sky News Arabia - UAE-based",
@@ -961,15 +1084,15 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 267,
-   "recent": 267
+   "fetched": 181,
+   "recent": 181
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 14
+   "recent": 19
   },
   {
    "name": "X posts",
@@ -1011,5 +1134,5 @@
   "BBC Arabic": "بي بي سي عربي",
   "Reddit r/syria comments": "تعليقات ريديت r/syria"
  },
- "cost_usd": 0.0952
+ "cost_usd": 0.1099
 }
