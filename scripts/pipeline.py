@@ -344,13 +344,15 @@ def collect_telegram_api(cfg: dict, channels: list, since: dt.datetime) -> tuple
     per_post = int(cfg.get("comments_per_post", 25))
     per_group = int(cfg.get("messages_per_group", 80))
     out, status = [], []
-    with TelegramClient(StringSession(session), int(api_id), api_hash) as client:
+    # flood_sleep_threshold: wait out short Telegram rate limits, give up on long ones (the source is retried next hour)
+    with TelegramClient(StringSession(session), int(api_id), api_hash, flood_sleep_threshold=30) as client:
         for ch in channels:
             name = str(ch["name"]).lstrip("@").strip()
             label = ch.get("label") or name
             got = 0
             try:
-                for msg in client.iter_messages(name, limit=posts_per):
+                peer = client.get_input_entity(name)   # looked up once, reused for the posts and their comments
+                for msg in client.iter_messages(peer, limit=posts_per):
                     if msg.date < since:
                         break
                     rx = _reactions(msg)
@@ -359,7 +361,7 @@ def collect_telegram_api(cfg: dict, channels: list, since: dt.datetime) -> tuple
                     if not (msg.replies and msg.replies.comments and msg.replies.replies):
                         continue
                     parent = clean_text(msg.message or "")[:140]
-                    for c in client.iter_messages(name, reply_to=msg.id, limit=per_post):
+                    for c in client.iter_messages(peer, reply_to=msg.id, limit=per_post):
                         if c.message and c.date >= since:
                             out.append(post(f"tgc:{name}/{msg.id}/{c.id}", "telegram_comments",
                                             f"Comments on {label}", c.message, c.date,
@@ -416,7 +418,9 @@ def collect_all(cfg: dict) -> tuple[list, list]:
     if yt.get("enabled"):
         jobs.append(("YouTube comments", "youtube", lambda: collect_youtube(yt, since)))
     bs = cfg.get("bluesky") or {}
-    if bs.get("enabled"):
+    if bs.get("enabled") and not (secret("BLUESKY_HANDLE") and secret("BLUESKY_APP_PASSWORD")):
+        log("  skip  bluesky   no Bluesky login yet (GUIDE.md, extra A3)")
+    elif bs.get("enabled"):
         jobs.append(("Bluesky posts", "bluesky", lambda: collect_bluesky(bs, since)))
     rd = cfg.get("reddit") or {}
     if rd.get("enabled"):
@@ -441,7 +445,9 @@ def collect_all(cfg: dict) -> tuple[list, list]:
         time.sleep(3 if platform == "reddit" else 0.5)   # Reddit rate-limits quick repeat requests
 
     tga = cfg.get("telegram_api") or {}
-    if tga.get("enabled"):
+    if tga.get("enabled") and not all(secret(k) for k in ("TELEGRAM_API_ID", "TELEGRAM_API_HASH", "TELEGRAM_SESSION")):
+        log("  skip  Telegram comments: no Telegram login yet (GUIDE.md, extra A2)")
+    elif tga.get("enabled"):
         comment_channels = [c for c in channels if c.get("comments", True)]
         try:
             got, st = collect_telegram_api(tga, comment_channels, since)
@@ -635,6 +641,8 @@ def source_names_ar(cfg: dict) -> dict:
         label = item.get("label") or item.get("name") or item.get("url")
         if label and item.get("label_ar"):
             out[str(label)] = str(item["label_ar"])
+            out[f"Comments on {label}"] = f"تعليقات على {item['label_ar']}"   # rows added by the Telegram connection
+            out[f"Group: {label}"] = f"مجموعة: {item['label_ar']}"
     return out
 
 

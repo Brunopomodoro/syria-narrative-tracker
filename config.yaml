@@ -291,7 +291,7 @@ youtube:
 # 4) Telegram connection - comments under channel posts, emoji reactions,
 #    and public group chats. Free; needs a one-time login (GUIDE.md, extra A2).
 telegram_api:
-  enabled: false
+  enabled: true             # starts working once the three Telegram secrets are added
   posts_per_channel: 8      # recent posts per channel to read comments from
   comments_per_post: 25
   messages_per_group: 80
@@ -332,9 +332,10 @@ reddit:
       max_posts: 25         # at most this many per run, so Reddit does not outweigh bigger sources
 
 # 7) Bluesky - free. Needs a free Bluesky account and an "app password"
-#    (GUIDE.md, extra A3); without one, Bluesky usually refuses GitHub's servers.
+#    (GUIDE.md, extra A3); without one, Bluesky usually refuses GitHub's servers,
+#    so it is skipped until the secrets exist.
 bluesky:
-  enabled: false
+  enabled: true             # starts working once the two Bluesky secrets are added
   search_terms: ["سوريا", "Syria", "Rojava", "Sûriyê"]
   posts_per_term: 50
   filter: true
