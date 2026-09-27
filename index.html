@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>Syria Narrative Tracker</title>
-<meta name="description" content="Hourly overview of what people in Syrian online discussion are talking about, and how they are reacting. Arabic and English.">
+<meta name="description" content="What is being said about Syria online: public posts in Arabic, Kurdish and English grouped into stories, with how people and outlets are reacting. Arabic and English.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
@@ -56,6 +56,8 @@
   .lang[lang="ar"] { font-family: var(--ar-sans); }
   .lang[lang="en"] { font-family: "IBM Plex Sans", sans-serif; }
   .stale { color: var(--neg); }
+  .intro { max-width: 64ch; margin: 6px 0 30px; color: var(--muted); font-size: 1rem; line-height: 1.65; }
+  html[lang="ar"] .intro { line-height: 1.85; }
 
   /* hero */
   .hero { padding: 52px 0 56px; border-top: 1px solid var(--rule); }
@@ -237,6 +239,7 @@
       <button class="lang" id="lang-btn"></button>
     </nav>
   </header>
+  <p class="intro" id="intro">Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true. Individual users are never named, quoted or linked.</p>
   <main id="app"></main>
   <footer id="footer"></footer>
 </div>
@@ -245,7 +248,8 @@
 /* =================== words =================== */
 const T = {
   en: {
-    title: "Syria Narrative Tracker", about: "About", switchTo: "العربية", switchLang: "ar",
+    title: "Syria Narrative Tracker", about: "About",
+    intro: "Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true. Individual users are never named, quoted or linked.", switchTo: "العربية", switchLang: "ar",
     loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
     nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
     outletsMeanwhile: "Outlets meanwhile:",
@@ -295,7 +299,8 @@ const T = {
     locale: "en-GB"
   },
   ar: {
-    title: "متتبّع السرديات السورية", about: "حول الموقع", switchTo: "English", switchLang: "en",
+    title: "متتبّع السرديات السورية", about: "حول الموقع",
+    intro: "يتابع متتبّع السرديات السورية ما يُقال عن سوريا على الإنترنت، ويتجدّد تلقائياً على مدار اليوم. يقرأ منشورات عامة بالعربية والكردية والإنجليزية من قنوات تيليغرام والمواقع الإخبارية ويوتيوب وريديت وإكس، ويستخدم الذكاء الاصطناعي لتجميعها في قصص ووصف تفاعل الناس ووسائل الإعلام معها. يعرض الموقع ما يُقال، لا ما هو صحيح. ولا نذكر أسماء المستخدمين ولا نقتبس كلامهم ولا نضع روابط لمنشوراتهم.", switchTo: "English", switchLang: "en",
     loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
     nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
     outletsMeanwhile: "أما وسائل الإعلام:",
@@ -411,6 +416,7 @@ function applyLang() {
   $("#site-title").textContent = title;
   document.title = title;
   $("#about-link").textContent = t.about;
+  $("#intro").textContent = t.intro;
   const b = $("#lang-btn");
   b.textContent = t.switchTo;
   b.setAttribute("lang", t.switchLang);
