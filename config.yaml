@@ -320,7 +320,7 @@ x_twitter:
 # 6) Reddit - free, no key. Reads the newest comments in a subreddit
 #    (type: comments) or its newest posts (type: posts).
 #    Reddit limits how often GitHub's servers may ask, so keep this list short:
-#    each extra subreddit may sometimes show "Not working right now" for an hour.
+#    each extra subreddit may sometimes fail for an hour (see the run log).
 reddit:
   enabled: true
   feeds:
