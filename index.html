@@ -56,6 +56,17 @@
   .lang[lang="ar"] { font-family: var(--ar-sans); }
   .lang[lang="en"] { font-family: "IBM Plex Sans", sans-serif; }
   .stale { color: var(--neg); }
+  .tabs { display: inline-flex; gap: 18px; }
+  .tab { text-decoration: none; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+  .tab:hover { color: var(--ink); }
+  .tab { white-space: nowrap; }
+  @media (max-width: 560px) {
+    .top nav { width: 100%; flex-wrap: wrap; justify-content: space-between; row-gap: 10px; }
+    #updated { flex-basis: 100%; order: 3; }
+  }
+  .tab[aria-current] { color: var(--ink); border-bottom-color: var(--brass); }
+  .about-page h2 { margin-bottom: 22px; }
+  .about-page .langs { margin: 0 0 22px; }
   .intro { max-width: 64ch; margin: 6px 0 30px; color: var(--muted); font-size: 1rem; line-height: 1.65; }
   html[lang="ar"] .intro { line-height: 1.85; }
 
@@ -121,7 +132,7 @@
   .t { display: flex; gap: 12px; align-items: baseline; min-width: 0; }
   .chev { flex: none; width: 16px; color: var(--faint); transition: transform .3s var(--ease); font-size: .8rem; display: inline-block; }
   html[dir="rtl"] .chev { transform: rotate(180deg); }
-  .story.open .chev, html[dir="rtl"] .story.open .chev, details[open] > summary .chev, html[dir="rtl"] details[open] > summary .chev { transform: rotate(90deg); }
+  .story.open .chev, html[dir="rtl"] .story.open .chev { transform: rotate(90deg); }
   .t-text { min-width: 0; }
   .t-main { font-size: 1.2rem; line-height: 1.35; display: block; }
   .t-alt { font-size: .88rem; color: var(--muted); display: block; margin-top: 2px; }
@@ -192,10 +203,6 @@
   .hour li span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
 
   /* about */
-  details.about summary { cursor: pointer; list-style: none; font-family: var(--display); font-weight: 600; font-size: 1.3rem; display: flex; gap: 12px; align-items: baseline; }
-  details.about summary::-webkit-details-marker { display: none; }
-  details.about summary .chev { font-family: var(--sans); }
-  .about-body { padding-top: 24px; padding-inline-start: 28px; }
   .method { columns: 2 300px; column-gap: 44px; margin-bottom: 28px; }
   .method p { margin: 0 0 14px; break-inside: avoid; color: var(--muted); font-size: .95rem; }
   .method strong { color: var(--ink); font-weight: 500; }
@@ -235,7 +242,7 @@
     <h1 id="site-title">Syria Narrative Tracker</h1>
     <nav>
       <span id="updated" aria-live="polite"></span>
-      <a href="#about" id="about-link">About</a>
+      <span class="tabs"><a href="#" id="home-link" class="tab"></a><a href="#about" id="about-link" class="tab"></a></span>
       <button class="lang" id="lang-btn"></button>
     </nav>
   </header>
@@ -248,7 +255,7 @@
 /* =================== words =================== */
 const T = {
   en: {
-    title: "Syria Narrative Tracker", about: "About",
+    title: "Syria Narrative Tracker", about: "About", home: "Tracker",
     intro: "Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true.", switchTo: "العربية", switchLang: "ar",
     loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
     nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
@@ -282,7 +289,7 @@ const T = {
     noSnapshot: "The full analysis of this hour was not saved.",
     aboutTitle: "About this tracker and its sources",
     method: [
-      ["Every hour", "an automated job collects recent public posts in Arabic, Kurdish and English, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
+      ["Throughout the day,", "an automated job collects recent public posts in Arabic, Kurdish and English, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
       ["People and outlets are kept apart.", "Outlets are channels and news sites. People are comments under posts and videos, messages in public group chats, posts by individuals, and emoji reactions."],
       ["Tone is not truth.", "A story appearing here means people are saying it, not that it is accurate."],
       ["This is not all Syrians.", "Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen."],
@@ -299,7 +306,7 @@ const T = {
     locale: "en-GB"
   },
   ar: {
-    title: "متتبّع السرديات السورية", about: "حول الموقع",
+    title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع",
     intro: "يتابع متتبّع السرديات السورية ما يُقال عن سوريا على الإنترنت، ويتجدّد تلقائياً على مدار اليوم. يقرأ منشورات عامة بالعربية والكردية والإنجليزية من قنوات تيليغرام والمواقع الإخبارية ويوتيوب وريديت وإكس، ويستخدم الذكاء الاصطناعي لتجميعها في قصص ووصف تفاعل الناس ووسائل الإعلام معها. يعرض الموقع ما يُقال، لا ما هو صحيح.", switchTo: "English", switchLang: "en",
     loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
     nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
@@ -333,7 +340,7 @@ const T = {
     noSnapshot: "لم يُحفظ التحليل الكامل لهذه الساعة.",
     aboutTitle: "حول هذا المتتبّع ومصادره",
     method: [
-      ["كل ساعة", "تجمع مهمة آلية أحدث المنشورات العامة بالعربية والكردية والإنجليزية، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
+      ["على مدار اليوم،", "تجمع مهمة آلية أحدث المنشورات العامة بالعربية والكردية والإنجليزية، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
       ["نفصل بين الناس ووسائل الإعلام.", "وسائل الإعلام هي القنوات والمواقع الإخبارية. أما الناس فهم التعليقات تحت المنشورات والفيديوهات، ورسائل المجموعات العامة، ومنشورات الأفراد، والتفاعلات بالرموز التعبيرية."],
       ["النبرة ليست حقيقة.", "ظهور قصة هنا يعني أن الناس يتداولونها، لا أنها صحيحة."],
       ["هذا ليس صوت كل السوريين.", "النقاش على الإنترنت يُبرز أكثر من يملكون اتصالاً جيداً، ومجتمعات المغتربين، ووسائل الإعلام، ويتأثر باختيار المصادر."],
@@ -416,7 +423,12 @@ function applyLang() {
   $("#site-title").textContent = title;
   document.title = title;
   $("#about-link").textContent = t.about;
+  $("#home-link").textContent = t.home;
+  const about = state.view === "about";
+  $(about ? "#about-link" : "#home-link").setAttribute("aria-current", "page");
+  $(about ? "#home-link" : "#about-link").removeAttribute("aria-current");
   $("#intro").textContent = t.intro;
+  $("#intro").hidden = about;
   const b = $("#lang-btn");
   b.textContent = t.switchTo;
   b.setAttribute("lang", t.switchLang);
@@ -808,18 +820,14 @@ function aboutHTML() {
   const rows = (D.sources || []).map(s => `<tr><td dir="auto">${esc(srcName(s.name))}</td><td>${t.types[s.platform] || esc(s.platform)}</td><td>${
     s.ok ? t.working(num(s.recent ?? s.fetched)) : `<span class="bad" title="${esc(s.error || "")}">${t.notWorking}</span>`}</td></tr>`).join("");
   const lg = (D.stats || {}).languages || {}, lgTotal = Object.values(lg).reduce((a, b) => a + b, 0);
-  const langs = lgTotal ? `<p class="sub">${t.langsLine} ${Object.entries(lg).sort((a, b) => b[1] - a[1])
+  const langs = lgTotal ? `<p class="sub">${t.langsLine} ${Object.entries(lg).filter(([, v]) => v / lgTotal >= 0.005).sort((a, b) => b[1] - a[1])
     .map(([k, v]) => `${t.langs[k] || esc(k)} ${pctText(v / lgTotal)}`).join(rtl() ? "، " : ", ")}</p>` : "";
   return `
-  <section id="about">
-    <details class="about">
-      <summary><span class="chev" aria-hidden="true">▶</span>${t.aboutTitle}</summary>
-      <div class="about-body">
-        <div class="method">${t.method.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
-        ${langs}
-        ${rows ? `<table><thead><tr><th>${t.source}</th><th>${t.type}</th><th>${t.status}</th></tr></thead><tbody>${rows}</tbody></table>` : ""}
-      </div>
-    </details>
+  <section id="about" class="about-page" aria-labelledby="h-about">
+    <h2 id="h-about">${t.aboutTitle}</h2>
+    <div class="method">${t.method.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
+    ${langs ? langs.replace('class="sub"', 'class="sub langs"') : ""}
+    ${rows ? `<table><thead><tr><th>${t.source}</th><th>${t.type}</th><th>${t.status}</th></tr></thead><tbody>${rows}</tbody></table>` : ""}
   </section>`;
 }
 
@@ -848,13 +856,12 @@ function render() {
   const checked = D.checked_at || D.generated_at;
   const stale = Date.now() - new Date(checked) > 3 * 3600000;
   $("#updated").innerHTML = stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
-  const aboutOpen = $("details.about")?.open;
+  if (state.view === "about") { $("#app").innerHTML = aboutHTML(); return; }
   usedFallback = false;
   const typing = document.activeElement?.id === "q", caret = typing ? document.activeElement.selectionStart : 0;
-  let html = heroHTML() + searchHTML() + storiesHTML() + weekHTML() + aboutHTML();
+  let html = heroHTML() + searchHTML() + storiesHTML() + weekHTML();
   if (usedFallback && t.fallback) html = html.replace("<!--notice-->", `<p class="notice">${t.fallback}</p>`);
   $("#app").innerHTML = html;
-  if (aboutOpen) $("details.about").open = true;
   bind();
   bindSearch();
   if (typing) { const q = $("#q"); q.focus(); try { q.setSelectionRange(caret, caret); } catch (e) {} }
@@ -914,7 +921,7 @@ function renderEmpty(sources) {
   const t = L();
   $("#updated").textContent = "";
   $("#app").innerHTML = `<div class="empty"><h2>${t.emptyTitle}</h2><p>${t.emptyBody}</p><p class="sub">${t.emptySub}</p></div>`;
-  if (sources && sources.length) { state.latest = { ...(state.latest || {}), sources }; $("#app").insertAdjacentHTML("beforeend", aboutHTML()); $("details.about").open = true; }
+  if (sources && sources.length) { state.latest = { ...(state.latest || {}), sources }; $("#app").insertAdjacentHTML("beforeend", aboutHTML()); }
 }
 
 $("#lang-btn").addEventListener("click", () => {
@@ -938,6 +945,14 @@ async function load() {
   state.latest = latest; state.history = history;
   render();
 }
+state.view = location.hash === "#about" ? "about" : "home";
+window.addEventListener("hashchange", () => {
+  const v = location.hash === "#about" ? "about" : "home";
+  if (v === state.view) return;
+  state.view = v;
+  state.latest?.generated_at ? render() : renderEmpty(state.latest?.sources);
+  window.scrollTo(0, 0);
+});
 state.lang = null;
 try { const q0 = new URL(location.href).searchParams.get("q"); if (q0) { state.search.q = q0; loadSearchData(); } } catch (e) {}
 $("#updated").textContent = "…";
