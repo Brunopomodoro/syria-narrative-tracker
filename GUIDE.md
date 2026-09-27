@@ -311,7 +311,7 @@ In `.github/workflows/update.yml`, change `"17 * * * *"` to `"17 */2 * * *"` for
 | A source says "no public preview" | The channel name is wrong, or the channel is private or has web preview turned off. |
 | Website shows "404" | Wait a few minutes after step 7, and check the repository is Public. |
 | Website shows "No results yet" | Run the workflow (step 6) and check it finished with a green check. |
-| Website says updates may have stopped | Open the Actions tab and look at the latest runs. GitHub can pause hourly schedules; if it emailed you that the workflow was disabled, re-enable it on the Actions tab. |
+| Website says updates may have stopped | This appears when the last update is more than 8 hours old. Open the Actions tab and look at the latest runs. GitHub can pause hourly schedules; if it emailed you that the workflow was disabled, re-enable it on the Actions tab. |
 
 Hourly runs can start a few minutes late when GitHub is busy. That's normal.
 
