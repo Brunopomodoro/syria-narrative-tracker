@@ -172,7 +172,7 @@ Bookmark it. The page also refreshes itself every 10 minutes.
 
    Use `filter: true` for general channels that post about many countries; the tracker then keeps only posts that mention one of the `keywords`.
 3. Click **Commit changes**, then run the workflow manually (step 6) to test.
-4. The **Sources in this update** table at the bottom of the website shows which sources work.
+4. To see which sources work, open the **Actions** tab, click the latest run, then **Collect and analyze**. Each source has a line starting with `ok` or `FAIL` (with the reason).
 
 **Spacing matters** in `config.yaml`: use spaces, never tabs, and line things up exactly like the existing entries.
 
@@ -278,7 +278,7 @@ Good to know: the X search picks up everyone writing in Arabic about Syria, not 
 
 Both are small next to Telegram and YouTube, and lean English-speaking and diaspora, so treat them as one extra window rather than a picture of Syria.
 
-**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria. Reddit sometimes briefly limits requests from GitHub's servers. When that happens the source shows "Not working right now" for that hour and recovers on its own.
+**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria. Reddit sometimes briefly limits requests from GitHub's servers. When that happens its line in the run log says `FAIL` for that hour, and it recovers on its own.
 
 **Bluesky** needs a free account, because Bluesky usually refuses searches from GitHub's servers without one:
 
@@ -308,7 +308,7 @@ In `.github/workflows/update.yml`, change `"17 * * * *"` to `"17 */2 * * *"` for
 | Run fails with `not_found_error` mentioning a model | The `model` line in `config.yaml` has a typo. |
 | Run fails at "Save results" with `Permission denied` | Settings → Actions → General → Workflow permissions → choose **Read and write permissions** → Save. Run again. |
 | Run fails with a `yaml` error | `config.yaml` has a spacing mistake. Compare your edit with the entries around it. |
-| A source says "no public preview" | The channel name is wrong, or the channel is private or has web preview turned off. |
+| A source's line in the run log says "no public preview" | The channel name is wrong, or the channel is private or has web preview turned off. |
 | Website shows "404" | Wait a few minutes after step 7, and check the repository is Public. |
 | Website shows "No results yet" | Run the workflow (step 6) and check it finished with a green check. |
 | Website says updates may have stopped | This appears when the last update is more than 8 hours old. Open the Actions tab and look at the latest runs. GitHub can pause hourly schedules; if it emailed you that the workflow was disabled, re-enable it on the Actions tab. |
