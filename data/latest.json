@@ -3,176 +3,95 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-09-28T09:35:55Z",
- "checked_at": "2026-09-28T09:35:55Z",
+ "generated_at": "2026-09-28T10:29:40Z",
+ "checked_at": "2026-09-28T10:29:40Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "posts_analyzed": 407,
+  "posts_analyzed": 408,
   "public_posts": 287,
-  "outlet_posts": 120,
+  "outlet_posts": 121,
   "reactions_posts": 0,
   "unique_posts": 400,
   "sources_ok": 36,
-  "sources_total": 36,
+  "sources_total": 37,
   "platforms": {
-   "news": 42,
-   "telegram": 78,
-   "youtube": 252,
-   "reddit": 19,
-   "x": 9
+   "telegram": 77,
+   "news": 43,
+   "x": 10,
+   "youtube": 163,
+   "bluesky": 91,
+   "reddit": 16
   },
   "languages": {
-   "ar": 294,
-   "en": 106
+   "en": 141,
+   "ar": 256,
+   "ku": 3
   }
  },
  "overall": {
-  "sentiment": 0.15,
-  "mood": "Cautiously optimistic",
-  "mood_ar": "متفائل بحذر",
-  "public_sentiment": 0.05,
-  "public_mood": "Mixed",
-  "public_mood_ar": "متباين",
-  "brief": "Public discourse this period was dominated by the Syria-Jordan friendly football match, which produced warm cross-border solidarity despite a mediocre game, and by continued economic hardship narratives around wages, fuel prices and returning displaced families. Outlets emphasized state achievements (ISIS cell dismantling, diplomatic outreach, infrastructure rehabilitation) with generally positive framing, while public commenters showed more skepticism on governance issues like property expropriation and weak institutions, alongside religious expressions of weary hope. Kurdish-language voices continued to express distrust toward Damascus over integration and cultural rights, while diaspora comments (Turkish, English) reacted to unrelated regional issues like the Iraq withdrawal and Kurdish rights.",
-  "brief_ar": "تصدرت النقاشات العامة في هذه الفترة مباراة الود بين سوريا والأردن التي أظهرت تضامناً عابراً للحدود رغم مستوى المباراة المتواضع، إلى جانب استمرار موضوعات الضغط الاقتصادي المتعلقة بالأجور وأسعار المحروقات وقوافل عودة النازحين. ركزت وسائل الإعلام على إنجازات الدولة كتفكيك خلية داعش والتواصل الدبلوماسي وإعادة تأهيل البنية التحتية بنغمة إيجابية عموماً، بينما أظهر الجمهور تشكيكاً أكبر في قضايا الحوكمة كالاستملاك وضعف المؤسسات، مع تعبيرات دينية تنبض بالأمل المتعب. استمرت الأصوات الكردية بالتعبير عن عدم الثقة تجاه دمشق بشأن الاندماج والحقوق الثقافية، بينما تفاعل جمهور الشتات (تركي وإنكليزي) مع قضايا إقليمية أخرى كانسحاب القوات من العراق وحقوق الكرد.», "
+  "sentiment": 0.05,
+  "mood": "Cautious",
+  "mood_ar": "حذر",
+  "public_sentiment": -0.15,
+  "public_mood": "Weary",
+  "public_mood_ar": "مُنهَك",
+  "brief": "Coverage centered on new government austerity measures, returns of displaced families, an ISIS cell dismantling, fuel transit to Iraq amid Hormuz tensions, and the Muslim Brotherhood's future. Public reaction ranged from weary complaints about wages and prices to religious and nationalist commentary on Egypt's FM remarks and the Qudsiya land dispute. Kurdish-language voices continued to stress language and education rights and doubts over integration, contrasting with official framing of unity and progress. Sport (Syria-Jordan draw) and everyday religious content offered rare positive, unifying moments.",
+  "brief_ar": "تركزت التغطية على إجراءات تقشف حكومية جديدة، وعودة عائلات نازحة، وتفكيك خلية داعش، ونقل البنزين إلى العراق وسط توترات هرمز، ومستقبل جماعة الإخوان المسلمين. تراوح رد فعل الجمهور بين شكوى منهكة من الرواتب والأسعار وتعليقات دينية ووطنية على تصريحات وزير خارجية مصر ونزاع أراضي قدسيا. واصلت الأصوات الكردية التركيز على حقوق اللغة والتعليم والشكوك حول الاندماج، في تباين مع الخطاب الرسمي عن الوحدة والتقدم. وشكلت مباراة سوريا والأردن الودية ومحتوى ديني يومي لحظات نادرة من الإيجابية والتوحد."
  },
  "narratives": [
   {
-   "id": "syrian-jordan-football-match-regional-solidarity",
-   "key": "2026-09-28-syrian-jordan-football-match-regional-solidarity",
-   "theme": "society",
-   "title": "Syria-Jordan Friendly Draws Warm Cross-Border Solidarity",
-   "title_ar": "مباراة الود بين سوريا والأردن تثير تضامناً عابراً للحدود",
-   "summary": "A friendly football match between Syria and Jordan ended 1-1, generating extensive public commentary praising brotherly ties between the two countries despite criticism of poor broadcast quality and team performance. Aggregator outlets reported the result neutrally.",
-   "summary_ar": "انتهت مباراة ودية بين سوريا والأردن بالتعادل 1-1، مما أثار موجة واسعة من التعليقات التي تمجّد العلاقات الأخوية بين البلدين رغم الانتقادات لسوء جودة البث ومستوى اللعب. غطت وكالات التجميع النتيجة بشكل حيادي.",
-   "public_reaction": "Overwhelmingly warm and celebratory comments from both Syrians and Jordanians expressing brotherhood, mixed with technical criticism of poor camera and broadcast quality and debate over specific players and refereeing decisions.",
-   "public_reaction_ar": "تعليقات حماسية ودافئة من السوريين والأردنيين تعبر عن الأخوة، إلى جانب انتقادات تقنية لسوء جودة الكاميرا والبث وجدل حول أداء لاعبين معينين وقرارات التحكيم.",
-   "sentiment": 0.1,
-   "public_sentiment": 0.35,
-   "outlet_tone": {
-    "aggregator": 0.0
-   },
+   "id": "egypt-syria-relations-fm-remarks",
+   "key": "2026-09-28-egypt-syria-relations-fm-remarks",
+   "theme": "international",
+   "title": "Egyptian FM Remarks on Syria Spark Nationalist Backlash",
+   "title_ar": "تصريحات وزير خارجية مصر عن سوريا تثير رد فعل وطني",
+   "summary": "Egyptian Foreign Minister Badr Abdelatty's comments describing improving ties with Syria and raising issues like foreign fighters drew a large wave of Arabic YouTube comments, many defensive of Syrian sovereignty and critical of Egypt's political system.",
+   "summary_ar": "أثارت تصريحات وزير الخارجية المصري بدر عبد العاطي حول تحسن العلاقات مع سوريا وإثارته قضايا مثل المقاتلين الأجانب موجة كبيرة من التعليقات العربية على يوتيوب، دافع كثير منها عن سيادة سوريا وانتقد النظام السياسي المصري.",
+   "public_reaction": "Strongly negative and defensive public reaction, mocking Egypt's own governance record, asserting Syrian sovereignty, with some pro-Sisi vs anti-Sisi splits and sarcasm.",
+   "public_reaction_ar": "رد فعل جماهيري سلبي ودفاعي بقوة، يسخر من سجل الحكم في مصر نفسها، ويؤكد على سيادة سوريا، مع انقسامات بين مؤيدين ومعارضين للسيسي وسخرية واسعة.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.3,
+   "outlet_tone": {},
    "public_tone": {
-    "ar": 0.35
+    "ar": -0.3
    },
    "emotions": [
-    "pride",
-    "solidarity",
-    "amusement"
+    "defiance",
+    "mockery",
+    "pride"
    ],
    "emotions_ar": [
-    "فخر",
-    "تضامن",
-    "تهكم خفيف"
+    "تحدٍ",
+    "سخرية",
+    "فخر"
    ],
    "framings": [
-    "Brotherhood between Levant nations",
-    "Sports as unifying symbol",
-    "Technical/broadcast complaints"
+    "Sovereignty-defense framing",
+    "Anti-Egyptian-government mockery",
+    "Pan-Islamic solidarity framing"
    ],
    "framings_ar": [
-    "الأخوة بين دول الشام",
-    "الرياضة كرمز للوحدة",
-    "شكاوى تقنية حول البث"
+    "إطار الدفاع عن السيادة",
+    "سخرية من الحكومة المصرية",
+    "إطار التضامن الإسلامي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 118,
-   "public_volume": 117,
-   "share": 0.29,
-   "engagement": 277,
+   "volume": 35,
+   "public_volume": 35,
+   "share": 0.086,
+   "engagement": 67,
    "platforms": {
-    "news": 1,
-    "youtube": 115
+    "youtube": 35
    },
    "languages": {
-    "ar": 115,
-    "en": 1
+    "ar": 35
    },
    "public_languages": {
-    "ar": 114,
-    "en": 1
-   },
-   "kinds": {
-    "aggregator": 1
-   },
-   "sources": [
-    "YouTube comments",
-    "Google News - Syria (AR)"
-   ],
-   "examples": [
-    {
-     "source": "Google News - Syria (AR)",
-     "url": "https://news.google.com/rss/articles/CBMihgNBVV95cUxPZnhhNXFfOWhHTDZRalhDSFc2Snpzd0VWVExGY1JiTFozdHlvUUZVT1lKQjF4ampDcHF4eW11NEJORDRtRmViak9GYWZEQ3Z5eG1KT1VRNkEzRFJvMXZOWUpqQlJwWVZZZlptM1d2ZjlaM3BaeVZsZGlVSV9qT2Q4N0g3dHg2U2ItalZHOVBRSS1uOVc4b3N5QnJPZGdWZVBvM1Z6MXVIeUlNS0lOYlJMaDd4NUlwZU56Vy0xOVcySTQ3Z2NEYVlIWlFhMG9NV2tGZ0FWTnI2angyaVpFWkZBald5LWhicXZOQjhsTlBjVDZfREU0ckpCZXI0T3I4YkRzX0NGYlZWamJhWnBfZzZpWjNPdGp1WmhPaWZuQ3BLOXh2RTFmeWJxQXMtMF9uWXMxc1NzTjlTckt4QzRLNUdXUzZCYjVaNUtZenFjUDRrd05LOVdCbUJlMzZrb0VnUTdxTmR3V0xZUGhITnRoQWF4akxxNHdIVFRxeGo0RER2a3FYZ1lTNGc?oc=5",
-     "platform": "news"
-    },
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=uZSmg1BWhlM",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-09-28T06:56:27Z"
-  },
-  {
-   "id": "qudsaya-expropriation-dispute",
-   "key": "2026-09-28-qudsaya-expropriation-dispute",
-   "theme": "governance",
-   "title": "Qudsaya Land Expropriation Dispute and Interior Ministry Dialogue",
-   "title_ar": "نزاع استملاك الأراضي في قدسيا وحوار وزارة الداخلية",
-   "summary": "A televised dialogue between an Interior Ministry official and Qudsaya residents over expropriated land generated a heavy wave of public comment, some praising the government's engagement and others accusing officials of corruption or defending the old regime's practices as equally unjust.",
-   "summary_ar": "أثار حوار تلفزيوني بين مسؤول في وزارة الداخلية وأهالي قدسيا حول استملاك الأراضي موجة كبيرة من التعليقات العامة، بين من يثني على تفاعل الحكومة ومن يتهم المسؤولين بالفساد أو يشبّه الممارسات الجديدة بممارسات النظام السابق الظالمة.",
-   "public_reaction": "Deeply divided public reaction: many express strong loyalty and gratitude toward the new government and its handling of the dispute, while a vocal minority accuses officials of repeating old regime injustices or mocks the dialogue as theater; some accuse critics of being regime remnants stirring division.",
-   "public_reaction_ar": "ردود الجمهور منقسمة بشدة: يعبر كثيرون عن ولاء وامتنان قوي للحكومة الجديدة وتعاملها مع النزاع، بينما تتهم فئة صاخبة المسؤولين بتكرار مظالم النظام القديم أو تسخر من الحوار كمسرحية؛ ويتهم بعضهم المنتقدين بأنهم من فلول النظام يحاولون بث الفرقة.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.05,
-   "outlet_tone": {},
-   "public_tone": {
-    "ar": -0.05
-   },
-   "emotions": [
-    "divided",
-    "hope",
-    "suspicion",
-    "anger"
-   ],
-   "emotions_ar": [
-    "انقسام",
-    "أمل",
-    "شك",
-    "غضب"
-   ],
-   "framings": [
-    "Government as responsive and just",
-    "Government as repeating old-regime abuses",
-    "Critics framed as regime remnants"
-   ],
-   "framings_ar": [
-    "الحكومة مستجيبة وعادلة",
-    "الحكومة تكرر تجاوزات النظام القديم",
-    "المنتقدون يوصفون بأنهم فلول"
-   ],
-   "flags": [
-    "Accusations of coordinated 'fulul' agitation without evidence"
-   ],
-   "flags_ar": [
-    "اتهامات بتحريك فلول منظم دون دليل"
-   ],
-   "volume": 31,
-   "public_volume": 31,
-   "share": 0.076,
-   "engagement": 15,
-   "platforms": {
-    "youtube": 31
-   },
-   "languages": {
-    "ar": 31
-   },
-   "public_languages": {
-    "ar": 31
+    "ar": 35
    },
    "kinds": {},
    "sources": [
@@ -181,167 +100,168 @@
    "examples": [
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=cO7ib1kdnBo",
+     "url": "https://www.youtube.com/watch?v=f7W2-SXhHW0",
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-09-28T09:35:55Z"
+   "first_seen": "2026-09-28T10:29:40Z"
   },
   {
-   "id": "economic-hardship-wages-cost-of-living",
-   "key": "2026-09-27-economic-hardship-wages-cost-of-living",
-   "theme": "economy",
-   "title": "Economic Hardship: Low Wages, High Cost of Living, and Fuel Price Pressures",
-   "title_ar": "الضغط الاقتصادي: تدني الأجور وارتفاع تكاليف المعيشة وأسعار المحروقات",
-   "summary": "Kurdish outlets report that minimum family living costs in Syria reached 13.1 million lira in September while minimum wage covers less than 10% of needs; rising fuel prices in Raqqa are squeezing residents ahead of winter. Government announced spending-control measures citing regional pressures on energy costs.",
-   "summary_ar": "أفادت وسائل إعلام كردية أن الحد الأدنى لتكاليف معيشة الأسرة في سوريا بلغ 13.1 مليون ليرة في أيلول بينما لا يغطي الحد الأدنى للأجور سوى أقل من 10% من الاحتياجات؛ وترتفع أسعار المحروقات في الرقة مما يزيد الضغط على السكان قبل الشتاء. أعلنت الحكومة إجراءات لضبط الإنفاق العام مبررة ذلك بالضغوط الإقليمية على تكاليف الطاقة.",
-   "public_reaction": "Public commenters express exhaustion and weary prayers ('الله يفرجها') over stagnant wages versus rising prices, with some directly appealing for teacher salary improvements; sentiment is largely resigned frustration rather than active anger.",
-   "public_reaction_ar": "يعبر المعلقون عن التعب ودعوات متعبة مثل 'الله يفرجها' بشأن ثبات الأجور مقابل ارتفاع الأسعار، مع مناشدات مباشرة لتحسين رواتب المعلمين؛ والمزاج العام أقرب إلى الإحباط المستسلم من الغضب الفعّال.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.35,
+   "id": "qudsaya-expropriation-dispute",
+   "key": "2026-09-28-qudsaya-expropriation-dispute",
+   "theme": "governance",
+   "title": "Qudsaya Land Expropriation Dispute and Interior Ministry Dialogue",
+   "title_ar": "نزاع استملاك أراضي قدسيا وحوار وزارة الداخلية",
+   "summary": "Ongoing dispute over land expropriated in Qudsaya for real estate projects (Abyat Hills, Sham View) continues, with Housing Ministry considering reopening in-kind compensation applications and Interior Ministry officials holding public dialogue with residents.",
+   "summary_ar": "يستمر الجدل حول استملاك أراضي قدسيا لصالح مشاريع عقارية (أبيات هيلز، شام فيو)، مع نظر وزارة الإسكان في إعادة فتح التقديم على البدل العيني وعقد وزارة الداخلية حواراً علنياً مع الأهالي.",
+   "public_reaction": "Reactions are deeply divided: many express strong support and trust in the government/security response, while others accuse authorities of favoring investors and betraying residents' rights, with some invoking sectarian/'fulul' framing.",
+   "public_reaction_ar": "الآراء منقسمة بشدة: يعبر كثيرون عن دعم وثقة قوية في استجابة الحكومة والأمن، بينما يتهم آخرون السلطات بمحاباة المستثمرين وخيانة حقوق الأهالي، مع توظيف بعضهم لخطاب طائفي أو اتهامات بـ'الفلول'.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.1,
    "outlet_tone": {
-    "official": 0.0,
-    "independent": -0.1,
-    "kurdish": -0.3
+    "independent": -0.1
    },
    "public_tone": {
-    "ar": -0.35
+    "ar": -0.1
    },
    "emotions": [
-    "exhaustion",
-    "weary hope",
-    "frustration"
+    "anger",
+    "distrust",
+    "loyalty"
    ],
    "emotions_ar": [
-    "إعياء",
-    "أمل متعب",
-    "إحباط"
+    "غضب",
+    "انعدام ثقة",
+    "ولاء"
    ],
    "framings": [
-    "Kurdish outlets frame as structural crisis for NE region",
-    "State frames as response to regional pressures",
-    "Public frames as personal survival struggle"
+    "Rights-based framing of dispossession",
+    "State loyalist framing of order and reconciliation",
+    "Accusation of fulul manipulation"
    ],
    "framings_ar": [
-    "الإعلام الكردي يصور الأمر كأزمة بنيوية للمنطقة الشمالية الشرقية",
-    "الدولة تصور الإجراءات كردة فعل على الضغوط الإقليمية",
-    "الجمهور يصوره كصراع شخصي للبقاء"
+    "إطار حقوقي حول نزع الملكية",
+    "إطار موالٍ للدولة حول النظام والمصالحة",
+    "اتهامات بتلاعب الفلول"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 14,
-   "public_volume": 7,
-   "share": 0.034,
-   "engagement": 3001,
+   "flags": [
+    "Accusations of political manipulation without evidence"
+   ],
+   "flags_ar": [
+    "اتهامات بتلاعب سياسي دون دليل"
+   ],
+   "volume": 34,
+   "public_volume": 30,
+   "share": 0.083,
+   "engagement": 487,
    "platforms": {
-    "telegram": 7,
-    "youtube": 7
+    "telegram": 2,
+    "news": 2,
+    "youtube": 30
    },
    "languages": {
-    "ar": 13,
-    "en": 1
+    "en": 1,
+    "ar": 33
    },
    "public_languages": {
-    "ar": 7
+    "ar": 30
    },
    "kinds": {
-    "independent": 3,
-    "official": 1,
-    "kurdish": 3
+    "independent": 4
    },
    "sources": [
     "YouTube comments",
-    "Enab Baladi - independent (AR)",
-    "Al-Ikhbariya Syria - state TV",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
-    "North Press Agency (EN)"
+    "Syria TV - opposition-origin",
+    "Enab Baladi - independent (EN)",
+    "Enab Baladi - independent (AR)"
    ],
    "examples": [
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141133",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/233110",
-     "platform": "telegram"
-    },
-    {
      "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93147",
+     "url": "https://t.me/enabbaladi/93144",
      "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6770",
+     "platform": "telegram"
+    },
+    {
+     "source": "Syria TV - opposition-origin",
+     "url": "https://www.syria.tv/%D9%85%D9%86-%D8%A5%D8%B9%D8%A7%D8%AF%D8%A9-%D8%A7%D9%84%D8%A5%D8%B9%D9%85%D8%A7%D8%B1-%D8%A5%D9%84%D9%89-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%85%D9%84%D8%A7%D9%83-%D8%AC%D8%AF%D9%84-%D8%AD%D9%82%D9%88%D9%82%D9%8A-%D9%8A%D8%B5%D9%84-%D8%A5%D9%84%D9%89-%D9%85%D8%AC%D9%84%D8%B3-%D8%A7%D9%84%D8%B4%D8%B9%D8%A8-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%8A",
+     "platform": "news"
     }
    ],
-   "first_seen": "2026-09-27T18:25:55Z"
+   "first_seen": "2026-09-28T09:35:55Z"
   },
   {
    "id": "kurdish-autonomy-education-language-rights-tensions",
    "key": "2026-09-28-kurdish-autonomy-education-language-rights-tensions",
    "theme": "northeast-kurdish",
    "title": "Kurdish Rights, Rojava University Recognition, and Integration Distrust",
-   "title_ar": "الحقوق الكردية والاعتراف بجامعة روج آفا وتوجس من الاندماج",
-   "summary": "Kurdish-language outlets and public voices discuss Damascus's stance on integrating northeast institutions, including refusal to recognize Rojava University's Kurdish specificity, alongside broader concerns about Kurdish language rights and past land dispossession under the 'Arab Belt' policy.",
-   "summary_ar": "تناولت وسائل إعلام كردية وأصوات عامة موقف دمشق من دمج مؤسسات الشمال الشرقي، بما فيها رفض الاعتراف بخصوصية جامعة روج آفا الكردية، إلى جانب مخاوف أوسع بشأن حقوق اللغة الكردية ونزع الملكية السابق تحت سياسة 'الحزام العربي'.",
-   "public_reaction": "Kurdish-language commenters express distrust and frustration toward Damascus, arguing integration on Damascus's terms erases Kurdish specificity, while some call for halting cooperation altogether; English-language Kurdish diaspora comments show solidarity and calls for rights.",
-   "public_reaction_ar": "يعبر المعلقون بالكردية عن عدم الثقة والإحباط تجاه دمشق، بحجة أن الاندماج بشروط دمشق يمحو الخصوصية الكردية، بينما يدعو بعضهم لإيقاف التعاون كلياً؛ وتُظهر تعليقات الشتات الكردي بالإنكليزية تضامناً ودعوات للحقوق.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.4,
+   "title_ar": "الحقوق الكردية واعتراف جامعة روج آفا والشكوك حول الاندماج",
+   "summary": "Kurdish outlets and public voices continued reporting on student protests over limits on Kurdish-language teaching hours, Rojava University's statement rejecting centralization and demanding academic autonomy and mother-tongue education, and uncertainty over integration talks with Damascus, including lawyers' syndicate merger discussions in Hasakah.",
+   "summary_ar": "واصلت الوسائل الكردية والجمهور تغطية احتجاجات طلابية على تحديد ساعات تدريس اللغة الكردية، وبيان جامعة روج آفا الرافض للمركزية والمطالب بالاستقلالية الأكاديمية والتعليم بالغة الأم، واستمرار الغموض حول محادثات الاندماج مع دمشق، بما في ذلك نقاشات دمج نقابة المحامين في الحسكة.",
+   "public_reaction": "Kurdish-language and English posts express concern and skepticism about integration undermining Rojava's gains and language rights, contrasting with official/state narratives of unity; some English posts frame it as 'the end of Rojava'.",
+   "public_reaction_ar": "تعبر المنشورات بالكردية والإنجليزية عن قلق وشكوك من أن يقوض الاندماج مكتسبات روج آفا وحقوق اللغة، في تباين مع السرديات الرسمية عن الوحدة؛ وتصف بعض المنشورات الإنجليزية الوضع بـ'نهاية روج آفا'.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.3,
    "outlet_tone": {
-    "kurdish": -0.2
+    "kurdish": 0.0
    },
    "public_tone": {
-    "ar": -0.5,
-    "en": -0.1
+    "ku": -0.2,
+    "en": -0.3
    },
    "emotions": [
     "distrust",
-    "resentment",
-    "solidarity"
+    "pride",
+    "anxiety"
    ],
    "emotions_ar": [
-    "عدم ثقة",
-    "استياء",
-    "تضامن"
+    "انعدام ثقة",
+    "فخر",
+    "قلق"
    ],
    "framings": [
-    "Kurdish rights erosion under integration",
-    "Historic dispossession grievance",
-    "Diaspora solidarity"
+    "Kurdish rights framing of ongoing marginalization",
+    "Uncertain-future framing of integration",
+    "Nostalgic/pride framing of Rojava achievements"
    ],
    "framings_ar": [
-    "تراجع الحقوق الكردية في ظل الاندماج",
-    "مظالم نزع الملكية التاريخية",
-    "تضامن الشتات"
+    "إطار الحقوق الكردية حول التهميش المستمر",
+    "إطار مستقبل غامض للاندماج",
+    "إطار نوستالجي/فخر بإنجازات روج آفا"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 11,
-   "public_volume": 8,
-   "share": 0.027,
-   "engagement": 1222,
+   "volume": 20,
+   "public_volume": 16,
+   "share": 0.049,
+   "engagement": 900,
    "platforms": {
-    "telegram": 3,
-    "reddit": 3,
-    "youtube": 5
+    "telegram": 4,
+    "bluesky": 13,
+    "youtube": 1
    },
    "languages": {
     "ar": 5,
-    "en": 6
+    "ku": 1,
+    "en": 12
    },
    "public_languages": {
-    "en": 6,
-    "ar": 2
+    "ku": 1,
+    "en": 12,
+    "ar": 1
    },
    "kinds": {
-    "kurdish": 3
+    "kurdish": 4
    },
    "sources": [
-    "YouTube comments",
-    "Reddit r/Kurdistan comments",
+    "Bluesky posts",
+    "ANHA (Hawar) - north-east administration news agency (AR)",
     "Rudaw Arabic - Kurdistan Region outlet",
-    "ANHA (Hawar) - north-east administration news agency (AR)"
+    "YouTube comments"
    ],
    "examples": [
     {
@@ -356,143 +276,257 @@
     },
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=zlEzkmwYU9c",
+     "url": "https://www.youtube.com/watch?v=3FXsFS75Sro",
      "platform": "youtube"
     }
    ],
    "first_seen": "2026-09-28T06:56:27Z"
   },
   {
-   "id": "mosque-shoe-theft-and-adana-killing",
-   "key": "2026-09-28-mosque-shoe-theft-and-adana-killing",
-   "theme": "society",
-   "title": "Mosque Shoe Theft and Adana Killing of Syrian Youth Spark Mixed Reactions",
-   "title_ar": "سرقة أحذية من مسجد ومقتل شاب سوري في أضنة يثيران ردوداً متباينة",
-   "summary": "A viral video of a mosque shoe theft in Damascus drew mixed reactions ranging from mockery to concern about mental illness, while the killing of Syrian youth Taha al-Homsi in Adana, Turkey over a traffic dispute renewed public anger about racism and violence against Syrians in Turkey.",
-   "summary_ar": "أثار فيديو منتشر لسرقة أحذية من مسجد في دمشق ردوداً متباينة بين السخرية والقلق من مرض نفسي، بينما جدد مقتل الشاب السوري طه الحمصي في أضنة التركية على خلفية نزاع مروري الغضب العام من العنصرية والعنف ضد السوريين في تركيا.",
-   "public_reaction": "Reactions to the shoe theft ranged from calls for mercy toward a possibly mentally ill man to mockery; reactions to the Adana killing show anger at Turkish racism, with some questioning why Syrians stay in Turkey given improved conditions at home.",
-   "public_reaction_ar": "تراوحت ردود الفعل على سرقة الأحذية بين الدعوة للرحمة بشخص يُحتمل أنه مريض نفسياً والسخرية منه؛ وأظهرت الردود على مقتل الشاب في أضنة غضباً من العنصرية التركية، مع تساؤل بعضهم عن سبب بقاء السوريين في تركيا مع تحسن الأوضاع في بلدهم.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.3,
-   "outlet_tone": {},
+   "id": "iraq-us-syria-fuel-hormuz-geopolitics",
+   "key": "2026-09-28-iraq-us-syria-fuel-hormuz-geopolitics",
+   "theme": "international",
+   "title": "Fuel Transit to Iraq Amid Hormuz Tensions and US Withdrawal from Iraq",
+   "title_ar": "نقل الوقود إلى العراق وسط توترات هرمز والانسحاب الأميركي منه",
+   "summary": "Syria began transporting imported gasoline to Iraq through Baniyas port as an alternative corridor amid disruptions in the Strait of Hormuz following US-Iran tensions; separately, Iraq announced complete US troop withdrawal.",
+   "summary_ar": "بدأت سوريا نقل شحنات بنزين مستوردة إلى العراق عبر ميناء بانياس كمسار بديل وسط اضطراب الملاحة في مضيق هرمز إثر التوترات الأميركية الإيرانية، بينما أعلن العراق اكتمال انسحاب القوات الأميركية.",
+   "public_reaction": "Public reaction is largely informational/neutral, with some framing it as Syria gaining strategic relevance, and others linking it to wider regional war anxieties over Iran-US tensions.",
+   "public_reaction_ar": "رد الفعل الجماهيري إخباري ومحايد في معظمه، مع تأطير البعض له كاكتساب سوريا أهمية استراتيجية، وربط آخرين له بالقلق الإقليمي الأوسع من التوتر الأميركي الإيراني.",
+   "sentiment": 0.1,
+   "public_sentiment": 0.0,
+   "outlet_tone": {
+    "official": 0.2,
+    "independent": 0.1,
+    "kurdish": 0.1,
+    "regional": 0.1,
+    "aggregator": 0.1
+   },
    "public_tone": {
-    "ar": -0.3
+    "ar": 0.0,
+    "en": 0.0
    },
    "emotions": [
-    "anger",
-    "pity",
-    "mockery"
+    "curiosity",
+    "concern"
    ],
    "emotions_ar": [
-    "غضب",
-    "شفقة",
-    "سخرية"
+    "فضول",
+    "قلق"
    ],
    "framings": [
-    "Individual crime as mental illness",
-    "Anti-Syrian racism in Turkey narrative"
+    "Strategic opportunity framing",
+    "Regional war spillover concern"
    ],
    "framings_ar": [
-    "الجريمة الفردية كمرض نفسي",
-    "سرد العنصرية ضد السوريين في تركيا"
+    "إطار الفرصة الاستراتيجية",
+    "قلق من امتداد الحرب الإقليمية"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 11,
-   "public_volume": 11,
-   "share": 0.027,
-   "engagement": 8,
+   "volume": 20,
+   "public_volume": 6,
+   "share": 0.049,
+   "engagement": 4954,
    "platforms": {
-    "youtube": 11
+    "news": 5,
+    "telegram": 9,
+    "bluesky": 6
    },
    "languages": {
-    "ar": 11
+    "ar": 12,
+    "en": 8
    },
    "public_languages": {
-    "ar": 11
+    "ar": 3,
+    "en": 3
    },
-   "kinds": {},
+   "kinds": {
+    "regional": 1,
+    "kurdish": 6,
+    "official": 2,
+    "aggregator": 3,
+    "independent": 2
+   },
    "sources": [
-    "YouTube comments"
+    "Bluesky posts",
+    "North Press Agency (EN)",
+    "North Press Agency - Qamishli-based (AR)",
+    "Google News - Syria (AR)",
+    "Sky News Arabia - UAE-based",
+    "Al-Ikhbariya Syria - state TV"
    ],
    "examples": [
     {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=HeUBewydMMU",
-     "platform": "youtube"
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141130",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/233115",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83704",
+     "platform": "telegram"
     }
    ],
-   "first_seen": "2026-09-28T08:41:35Z"
+   "first_seen": "2026-09-28T10:29:40Z"
   },
   {
-   "id": "voluntary-return-convoys-idps",
-   "key": "2026-09-28-voluntary-return-convoys-idps",
-   "theme": "refugees",
-   "title": "Voluntary Return Convoy of 308 Displaced Families",
-   "title_ar": "قافلة عودة طوعية تضم 308 عائلات نازحة",
-   "summary": "State and independent outlets reported a convoy of 308 displaced families returning from camps to villages in Idlib, Hama, Homs, Damascus countryside and Aleppo, part of a broader UN-tracked wave of over 1.38 million people leaving camps since late 2024.",
-   "summary_ar": "أفادت وسائل إعلام رسمية ومستقلة بانطلاق قافلة تضم 308 عائلات نازحة من المخيمات إلى قراها في إدلب وحماة وحمص وريف دمشق وحلب، في إطار موجة أوسع رصدتها الأمم المتحدة لأكثر من 1.38 مليون نازح غادروا المخيمات منذ أواخر 2024.",
-   "public_reaction": "Public reactions on social media were largely celebratory, thanking God and praising the government for the returns, though some skeptics on YouTube questioned government sincerity on related property/compensation issues.",
-   "public_reaction_ar": "كانت ردود الجمهور على وسائل التواصل احتفالية غالباً مع شكر الله والثناء على الحكومة، رغم أن بعض المتشككين على يوتيوب شككوا في نيّة الحكومة بشأن قضايا التعويض والملكية المرتبطة.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.4,
+   "id": "economic-hardship-wages-cost-of-living",
+   "key": "2026-09-27-economic-hardship-wages-cost-of-living",
+   "theme": "economy",
+   "title": "Government Austerity Measures Amid Rising Costs",
+   "title_ar": "إجراءات تقشف حكومية وسط ارتفاع التكاليف",
+   "summary": "The Presidency approved a package of public spending rationalization measures proposed by the Finance Ministry, citing energy and transport cost pressures; officials say salaries and essential services will be protected. Outlets also covered rising fuel prices squeezing Raqqa markets and ongoing wage complaints.",
+   "summary_ar": "وافقت الرئاسة على حزمة إجراءات لترشيد الإنفاق العام اقترحتها وزارة المالية بسبب ضغوط تكاليف الطاقة والنقل، مع تأكيد المسؤولين أن الرواتب والخدمات الأساسية ستبقى محمية. كما غطت الوسائل ارتفاع أسعار الوقود الذي يضغط على أسواق الرقة واستمرار الشكاوى من الرواتب.",
+   "public_reaction": "Public commenters express fatigue and skepticism about wages versus prices, with some weary prayers for relief ('الله يفرجها') and others questioning whether austerity will touch salaries.",
+   "public_reaction_ar": "يعبر المعلقون عن إرهاق وشكوك حول التوازن بين الرواتب والأسعار، مع دعوات متعبة مثل 'الله يفرجها' وتساؤلات حول ما إذا كان التقشف سيطال الرواتب.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.5,
    "outlet_tone": {
-    "official": 0.3,
-    "independent": 0.25,
-    "kurdish": 0.2
+    "official": 0.1,
+    "independent": -0.1,
+    "kurdish": -0.2
    },
    "public_tone": {
-    "ar": 0.45
+    "ar": -0.5
    },
    "emotions": [
-    "hope",
-    "relief",
-    "gratitude"
+    "fatigue",
+    "worry",
+    "weary hope"
    ],
    "emotions_ar": [
-    "أمل",
-    "ارتياح",
-    "امتنان"
+    "إرهاق",
+    "قلق",
+    "أمل متعب"
    ],
    "framings": [
-    "State success narrative",
-    "Humanitarian recovery framing"
+    "Official framing as fiscal discipline",
+    "Independent media framing as burden on citizens",
+    "Kurdish outlets framing as squeezing northeast residents"
    ],
    "framings_ar": [
-    "سرد نجاح الدولة",
-    "التأطير الإنساني للتعافي"
+    "الإطار الرسمي كضبط مالي",
+    "إطار الإعلام المستقل كعبء على المواطنين",
+    "إطار الإعلام الكردي كضغط على سكان الشمال الشرقي"
    ],
-   "flags": [
-    "Coordinated near-identical celebratory posts across X accounts"
-   ],
-   "flags_ar": [
-    "منشورات احتفالية متشابهة منسقة عبر حسابات إكس"
-   ],
-   "volume": 10,
-   "public_volume": 6,
-   "share": 0.025,
-   "engagement": 3637,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 13,
+   "public_volume": 5,
+   "share": 0.032,
+   "engagement": 4585,
    "platforms": {
-    "telegram": 4,
-    "x": 5
+    "telegram": 5,
+    "news": 2,
+    "youtube": 5
    },
    "languages": {
-    "ar": 7,
-    "en": 2
+    "en": 2,
+    "ar": 10
    },
    "public_languages": {
     "ar": 5
    },
    "kinds": {
-    "independent": 1,
-    "official": 2,
+    "kurdish": 3,
+    "independent": 3,
+    "official": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "North Press Agency (EN)",
+    "Syria TV - opposition-origin",
+    "Zaman al-Wasl - opposition-origin",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "North Press Agency - Qamishli-based (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141133",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/233110",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83707",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-09-27T18:25:55Z"
+  },
+  {
+   "id": "voluntary-return-convoys-idps",
+   "key": "2026-09-28-voluntary-return-convoys-idps",
+   "theme": "refugees",
+   "title": "Voluntary Return Convoys for Displaced Families",
+   "title_ar": "قوافل عودة طوعية للعائلات النازحة",
+   "summary": "Multiple convoys of displaced families (308, 65, 263) left camps for their home provinces under the 'Syria without camps' initiative, coordinated with UNHCR and Red Crescent, while OCHA reports over 1.38 million displaced people have left camps since late 2024.",
+   "summary_ar": "غادرت عدة قوافل من العائلات النازحة (308، 65، 263 عائلة) المخيمات إلى محافظاتها الأصلية ضمن مبادرة 'سوريا بلا مخيمات' بالتنسيق مع المفوضية والهلال الأحمر، فيما أفادت أوتشا بأن أكثر من 1.38 مليون نازح غادروا المخيمات منذ أواخر 2024.",
+   "public_reaction": "Public posts largely repost official announcements approvingly, though some express concern about pressure on receiving communities and services.",
+   "public_reaction_ar": "أعادت منشورات الجمهور نشر البيانات الرسمية بشكل إيجابي غالباً، مع مخاوف من بعضهم حول الضغط على المجتمعات المستقبلة والخدمات.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.2,
+   "outlet_tone": {
+    "official": 0.4,
+    "independent": 0.2,
+    "kurdish": 0.2
+   },
+   "public_tone": {
+    "ar": 0.2
+   },
+   "emotions": [
+    "relief",
+    "hope"
+   ],
+   "emotions_ar": [
+    "ارتياح",
+    "أمل"
+   ],
+   "framings": [
+    "Official achievement narrative",
+    "Humanitarian pressure narrative"
+   ],
+   "framings_ar": [
+    "سردية إنجاز رسمي",
+    "سردية ضغط إنساني"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 11,
+   "public_volume": 5,
+   "share": 0.027,
+   "engagement": 4848,
+   "platforms": {
+    "telegram": 6,
+    "x": 5
+   },
+   "languages": {
+    "en": 3,
+    "ar": 8
+   },
+   "public_languages": {
+    "ar": 5
+   },
+   "kinds": {
+    "official": 3,
+    "independent": 2,
     "kurdish": 1
    },
    "sources": [
     "X posts",
+    "SANA - state news agency (EN)",
     "Halab Today TV - opposition-origin, Aleppo",
     "Al-Ikhbariya Syria - state TV",
-    "SANA - state news agency (EN)",
     "North Press Agency (EN)"
    ],
    "examples": [
@@ -503,7 +537,7 @@
     },
     {
      "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/233102",
+     "url": "https://t.me/AlekhbariahSY/233117",
      "platform": "telegram"
     },
     {
@@ -515,76 +549,149 @@
    "first_seen": "2026-09-28T08:24:55Z"
   },
   {
+   "id": "syrian-jordan-football-match-regional-solidarity",
+   "key": "2026-09-28-syrian-jordan-football-match-regional-solidarity",
+   "theme": "society",
+   "title": "Syria-Jordan Friendly Draws Warm Cross-Border Solidarity",
+   "title_ar": "مباراة سوريا والأردن الودية تحظى بتضامن إقليمي دافئ",
+   "summary": "Syria's national football team drew 1-1 with Jordan in a friendly in Amman ahead of the Asian Cup, generating positive coverage and public comment celebrating shared 'Bilad al-Sham' identity.",
+   "summary_ar": "تعادل المنتخب السوري مع الأردن 1-1 في مباراة ودية بعمّان استعداداً لكأس آسيا، ما ولّد تغطية إيجابية وتعليقات جماهيرية احتفت بالهوية المشتركة لبلاد الشام.",
+   "public_reaction": "Mostly positive and light-hearted, with some criticism of pitch/broadcast quality and mild disappointment over missed opportunities.",
+   "public_reaction_ar": "إيجابية وخفيفة في معظمها، مع بعض الانتقاد لجودة الملعب والبث واستياء خفيف من الفرص الضائعة.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.3,
+   "outlet_tone": {
+    "aggregator": 0.2
+   },
+   "public_tone": {
+    "ar": 0.3
+   },
+   "emotions": [
+    "joy",
+    "unity"
+   ],
+   "emotions_ar": [
+    "فرح",
+    "وحدة"
+   ],
+   "framings": [
+    "Regional brotherhood framing",
+    "Sports performance critique"
+   ],
+   "framings_ar": [
+    "إطار الأخوة الإقليمية",
+    "نقد الأداء الرياضي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 11,
+   "public_volume": 10,
+   "share": 0.027,
+   "engagement": 3,
+   "platforms": {
+    "news": 1,
+    "bluesky": 3,
+    "youtube": 7
+   },
+   "languages": {
+    "ar": 11
+   },
+   "public_languages": {
+    "ar": 10
+   },
+   "kinds": {
+    "aggregator": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Bluesky posts",
+    "Google News - Syria (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMihgNBVV95cUxPZnhhNXFfOWhHTDZRalhDSFc2Snpzd0VWVExGY1JiTFozdHlvUUZVT1lKQjF4ampDcHF4eW11NEJORDRtRmViak9GYWZEQ3Z5eG1KT1VRNkEzRFJvMXZOWUpqQlJwWVZZZlptM1d2ZjlaM3BaeVZsZGlVSV9qT2Q4N0g3dHg2U2ItalZHOVBRSS1uOVc4b3N5QnJPZGdWZVBvM1Z6MXVIeUlNS0lOYlJMaDd4NUlwZU56Vy0xOVcySTQ3Z2NEYVlIWlFhMG9NV2tGZ0FWTnI2angyaVpFWkZBald5LWhicXZOQjhsTlBjVDZfREU0ckpCZXI0T3I4YkRzX0NGYlZWamJhWnBfZzZpWjNPdGp1WmhPaWZuQ3BLOXh2RTFmeWJxQXMtMF9uWXMxc1NzTjlTckt4QzRLNUdXUzZCYjVaNUtZenFjUDRrd05LOVdCbUJlMzZrb0VnUTdxTmR3V0xZUGhITnRoQWF4akxxNHdIVFRxeGo0RER2a3FYZ1lTNGc?oc=5",
+     "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=DT_NKGNztTI",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-09-28T06:56:27Z"
+  },
+  {
    "id": "security-operations-isis-cell-dismantling",
    "key": "2026-09-28-security-operations-isis-cell-dismantling",
    "theme": "security",
    "title": "Security Forces Dismantle ISIS Cell Across Multiple Provinces",
-   "title_ar": "قوى الأمن تفكك خلية داعشية تنشط في عدة محافظات",
-   "summary": "Syrian internal security forces announced dismantling an ISIS cell active in Raqqa, Aleppo, Idlib and Homs involved in kidnappings, bombings and assassinations, arresting several leaders and members with explosives seized.",
-   "summary_ar": "أعلنت قوى الأمن الداخلي السوري تفكيك خلية تابعة لتنظيم داعش نشطت في الرقة وحلب وإدلب وحمص وتورطت في عمليات خطف وتفخيخ واغتيالات، مع توقيف عدد من قادتها وعناصرها وضبط متفجرات.",
-   "public_reaction": "Public reaction on X largely echoed official framing approvingly, though one YouTube comment mocked security institution integrity sarcastically comparing Syrian police unfavorably to European standards.",
-   "public_reaction_ar": "تفاعل الجمهور على إكس بشكل عام مع السرد الرسمي بالموافقة، بينما سخر أحد المعلقين على يوتيوب من نزاهة المؤسسة الأمنية مقارناً الشرطة السورية بالمعايير الأوروبية بشكل تهكمي.",
-   "sentiment": 0.2,
-   "public_sentiment": 0.05,
+   "title_ar": "قوى الأمن تفكك خلية داعش في عدة محافظات",
+   "summary": "Syrian Internal Security Forces and General Intelligence announced dismantling an ISIS cell active from Raqqa to Aleppo, Idlib and Homs, involved in kidnappings, bombings and assassinations, with four leaders arrested.",
+   "summary_ar": "أعلنت قوى الأمن الداخلي والاستخبارات العامة السورية تفكيك خلية داعش نشطت من الرقة إلى حلب وإدلب وحمص، متورطة في عمليات خطف وتفجير واغتيال، مع توقيف أربعة من قادتها.",
+   "public_reaction": "Public reaction is largely approving and reposting the security success, with some expressing broader anxiety about lingering ISIS threats.",
+   "public_reaction_ar": "رد الفعل الجماهيري كان مؤيداً في معظمه وأعاد نشر الإنجاز الأمني، مع تعبير البعض عن قلق أوسع من استمرار تهديد داعش.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.2,
    "outlet_tone": {
     "independent": 0.2,
-    "kurdish": 0.15,
+    "kurdish": 0.2,
     "regional": 0.2,
-    "aggregator": 0.15
+    "aggregator": 0.1
    },
    "public_tone": {
-    "ar": 0.05
+    "ar": 0.2,
+    "en": 0.1
    },
    "emotions": [
     "reassurance",
-    "vigilance",
-    "skepticism"
+    "vigilance"
    ],
    "emotions_ar": [
-    "طمأنة",
-    "حذر",
-    "تشكك"
+    "اطمئنان",
+    "يقظة"
    ],
    "framings": [
-    "State security success",
-    "Ongoing ISIS threat narrative"
+    "Official security success narrative",
+    "Analytical framing on evolving ISIS tactics"
    ],
    "framings_ar": [
-    "نجاح أمني للدولة",
-    "سرد استمرار تهديد داعش"
+    "سردية النجاح الأمني الرسمي",
+    "إطار تحليلي حول تكتيكات داعش المتغيرة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 8,
-   "public_volume": 2,
-   "share": 0.02,
-   "engagement": 556,
+   "volume": 10,
+   "public_volume": 4,
+   "share": 0.025,
+   "engagement": 641,
    "platforms": {
     "news": 3,
     "telegram": 3,
-    "x": 1,
-    "youtube": 1
+    "x": 3,
+    "bluesky": 1
    },
    "languages": {
-    "ar": 7,
-    "en": 1
+    "ar": 8,
+    "en": 2
    },
    "public_languages": {
-    "ar": 2
+    "ar": 3,
+    "en": 1
    },
    "kinds": {
     "regional": 1,
-    "aggregator": 2,
     "kurdish": 2,
-    "independent": 1
+    "independent": 1,
+    "aggregator": 2
    },
    "sources": [
+    "X posts",
     "Google News - Syria (AR)",
     "Sky News Arabia - UAE-based",
     "North Press Agency - Qamishli-based (AR)",
     "Enab Baladi - independent (AR)",
-    "North Press Agency (EN)",
-    "X posts"
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
@@ -610,64 +717,71 @@
    "key": "2026-09-28-muslim-brotherhood-future-debate",
    "theme": "governance",
    "title": "Debate Over Muslim Brotherhood's Future and Role in Syrian Politics",
-   "title_ar": "سجال حول مستقبل جماعة الإخوان المسلمين ودورها في السياسة السورية",
-   "summary": "The Muslim Brotherhood's Shura Council statement affirming it will remain an independent national organization and contest elections has sparked debate among writers and journalists about whether it should dissolve, with critics demanding it withdraw members from state institutions.",
-   "summary_ar": "أثار بيان مجلس شورى جماعة الإخوان المسلمين الذي أكد استمرارها كتنظيم وطني مستقل ونيتها خوض الانتخابات سجالاً بين الكتاب والصحفيين حول ضرورة حلها، مع مطالبة منتقدين بسحب أعضائها من مؤسسات الدولة.",
+   "title_ar": "جدل حول مستقبل جماعة الإخوان المسلمين ودورها في السياسة السورية",
+   "summary": "The Muslim Brotherhood's Shura Council affirmed it will remain an independent national group, rejecting dissolution calls made by presidential media adviser Zaidan, and demanded a referendum on the constitution, sparking debate among analysts about the group's political future.",
+   "summary_ar": "أكد مجلس شورى جماعة الإخوان المسلمين استمرارها كجماعة وطنية مستقلة القرار، رافضة دعوات الحل التي أطلقها المستشار الإعلامي للرئاسة زيدان، وطالبت باستفتاء على الدستور، ما أثار جدلاً بين الباحثين حول مستقبلها السياسي.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": -0.05,
+   "sentiment": 0.0,
    "public_sentiment": null,
    "outlet_tone": {
-    "independent": -0.05
+    "independent": 0.0,
+    "aggregator": 0.0
    },
    "public_tone": {},
    "emotions": [
-    "debate",
-    "concern"
+    "uncertainty"
    ],
    "emotions_ar": [
-    "جدل",
-    "قلق"
+    "عدم يقين"
    ],
    "framings": [
-    "Political party regulation debate",
-    "Independence claims questioned"
+    "Rights-to-political-participation framing",
+    "Debate over party-state relations"
    ],
    "framings_ar": [
-    "جدل تنظيم الحياة السياسية",
-    "التشكيك بمزاعم الاستقلالية"
+    "إطار الحق في المشاركة السياسية",
+    "جدل حول علاقة الأحزاب بالدولة"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 5,
    "public_volume": 0,
    "share": 0.012,
-   "engagement": 826,
+   "engagement": 866,
    "platforms": {
-    "telegram": 5
+    "news": 1,
+    "telegram": 4
    },
    "languages": {
-    "ar": 4,
-    "en": 1
+    "en": 2,
+    "ar": 3
    },
    "public_languages": {},
    "kinds": {
-    "independent": 5
+    "aggregator": 1,
+    "independent": 4
    },
    "sources": [
     "Shaam News Network - opposition-origin",
+    "Google News - Syria (EN)",
     "Levant24 - Syria news (EN)"
    ],
    "examples": [
     {
      "source": "Shaam News Network - opposition-origin",
-     "url": "https://t.me/ShaamNetwork/103964",
+     "url": "https://t.me/ShaamNetwork/103965",
      "platform": "telegram"
     },
     {
      "source": "Levant24 - Syria news (EN)",
      "url": "https://t.me/Levant24/45692",
      "platform": "telegram"
+    },
+    {
+     "source": "Google News - Syria (EN)",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNdG5IVUdFc2tRc0xwQTkyblh5MmRWQmtPVTNWRS1GNGJjUzRScEcxZERaMnB5WDdsbjFxeUp5VTNhTEhoMUtPQndQX3c4QlJvTHp5RjVMdzBIRFp2MEc1bHNjaWFPdlJJbzM5VGVZenhnVGZWRUpQcENQTGxRVW8zVTZzLXpIUk9ISmdzelZqX2VMZ2ZEektWVkM0eU9CUzloazFlbENuUUJNeGlLcjFqOWpVNnB0cjJlNnpBTA?oc=5",
+     "platform": "news"
     }
    ],
    "first_seen": "2026-09-28T09:35:55Z"
@@ -754,8 +868,8 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 10,
-   "recent": 10
+   "fetched": 8,
+   "recent": 8
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -769,7 +883,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 9
+   "recent": 8
   },
   {
    "name": "Enab Baladi - independent (EN)",
@@ -789,8 +903,8 @@
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
-   "recent": 12
+   "fetched": 13,
+   "recent": 13
   },
   {
    "name": "Levant24 - Syria news (EN)",
@@ -803,15 +917,15 @@
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 13
+   "fetched": 3,
+   "recent": 3
   },
   {
    "name": "North Press Agency - Qamishli-based (AR)",
    "platform": "telegram",
    "ok": true,
    "fetched": 14,
-   "recent": 14
+   "recent": 13
   },
   {
    "name": "North Press Agency (EN)",
@@ -831,7 +945,7 @@
    "name": "Rudaw Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 15,
+   "fetched": 17,
    "recent": 2
   },
   {
@@ -909,14 +1023,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 44
+   "recent": 41
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 33
+   "recent": 31
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -930,14 +1044,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 56
+   "recent": 58
   },
   {
    "name": "Zaman al-Wasl - opposition-origin",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 16
+   "recent": 17
   },
   {
    "name": "Sky News Arabia - UAE-based",
@@ -964,8 +1078,15 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 527,
-   "recent": 527
+   "fetched": 514,
+   "recent": 514
+  },
+  {
+   "name": "Bluesky posts",
+   "platform": "bluesky",
+   "ok": true,
+   "fetched": 128,
+   "recent": 91
   },
   {
    "name": "Reddit r/syria comments",
@@ -977,9 +1098,10 @@
   {
    "name": "Reddit r/Kurdistan comments",
    "platform": "reddit",
-   "ok": true,
-   "fetched": 15,
-   "recent": 3
+   "ok": false,
+   "fetched": 0,
+   "error": "Reddit rate limit reached - it will try again next hour",
+   "recent": 0
   },
   {
    "name": "X posts",
@@ -1098,5 +1220,5 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.2099
+ "cost_usd": 0.2082
 }
