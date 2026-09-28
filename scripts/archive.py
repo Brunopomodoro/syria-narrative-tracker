@@ -62,8 +62,8 @@ def theme_catalog(cfg: dict) -> list:
     out = []
     for t in cfg.get("themes") or []:
         if t.get("id"):
-            out.append({"id": str(t["id"]), "label": str(t.get("label", t["id"])),
-                        "label_ar": str(t.get("label_ar", "")), "about": str(t.get("about", ""))})
+            out.append({"id": str(t["id"]), "label": str(t.get("label", t["id"])), "label_ar": str(t.get("label_ar", "")),
+                        "about": str(t.get("about", "")), "about_ar": str(t.get("about_ar", ""))})
     if not any(t["id"] == "other" for t in out):
         out.append({"id": "other", "label": "Other", "label_ar": "أخرى", "about": "Anything that fits no theme above."})
     return out
