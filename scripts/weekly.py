@@ -158,7 +158,11 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
     text = "".join(b.text for b in resp.content if b.type == "text")
     d = json.loads(text)
     keys = {e["key"] for e in s["top_stories"]}
-    d["highlights"] = [h for h in d.get("highlights") or [] if h.get("key") in keys][:6]
+    highlights, used = [], set()   # only stories of the week, each once
+    for h in d.get("highlights") or []:
+        if h.get("key") in keys and h["key"] not in used:
+            used.add(h["key"]); highlights.append(h)
+    d["highlights"] = highlights[:6]
     digest = {"week": week, "from": s["from"], "to": s["to"], "generated_at": dt.datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
               "model": model, "title": d["title"], "title_ar": d["title_ar"], "paragraphs": d["paragraphs"], "paragraphs_ar": d["paragraphs_ar"],
               "highlights": d["highlights"], "watch": d["watch"], "watch_ar": d["watch_ar"],
