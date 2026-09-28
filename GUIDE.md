@@ -278,7 +278,7 @@ Good to know: the X search picks up everyone writing in Arabic about Syria, not 
 
 Both are small next to Telegram and YouTube, and lean English-speaking and diaspora, so treat them as one extra window rather than a picture of Syria.
 
-**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria and the Syria threads of r/Kurdistan (r/syriancivilwar refuses requests from GitHub's servers). Reddit sometimes briefly limits requests from GitHub's servers. When that happens its line in the run log says `FAIL` for that hour, and it recovers on its own. Keep the list short for that reason.
+**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria and the Syria threads of r/Kurdistan (read together in one request, because Reddit allows GitHub's servers about one request a minute; r/syriancivilwar refuses them entirely). Reddit sometimes briefly limits requests from GitHub's servers. When that happens its line in the run log says `FAIL` for that hour, and it recovers on its own. Keep the list short for that reason.
 
 **Bluesky** needs a free account, because Bluesky usually refuses searches from GitHub's servers without one:
 

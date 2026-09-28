@@ -410,23 +410,39 @@ def collect_bluesky(cfg: dict, since: dt.datetime) -> list:
     return out
 
 
-def collect_reddit(feed: dict) -> list:
-    """New posts or comments in a subreddit, read from its public RSS feed. Individuals are never linked."""
-    sub = str(feed["subreddit"]).strip().removeprefix("r/")
-    kind = "comments" if feed.get("type", "comments") == "comments" else "new"
-    label = feed.get("label") or f"Reddit r/{sub}"
+REDDIT_CACHE: dict = {}      # one combined request per run for all communities (Reddit allows one request a minute from GitHub)
+REDDIT_SUBS: dict = {"comments": [], "new": []}
+
+
+def _reddit_fetch(kind: str) -> list:
+    """The combined feed of every configured community of this type (r/a+b+c), fetched once per run."""
+    if kind in REDDIT_CACHE:
+        return REDDIT_CACHE[kind]
+    subs = REDDIT_SUBS.get(kind) or []
+    r = None
     for attempt in (1, 2, 3):
-        r = requests.get(f"https://www.reddit.com/r/{sub}/{kind}/.rss?limit=100", timeout=25,
-                         headers={"User-Agent": "python:syria-narrative-tracker:v1.1 (public research dashboard)"})
+        r = requests.get(f"https://www.reddit.com/r/{'+'.join(subs)}/{kind}/.rss?limit=100", timeout=25,
+                         headers={"User-Agent": "python:syria-narrative-tracker:v1.2 (public research dashboard)"})
         if r.status_code != 429:
             break
-        time.sleep(5 * attempt)  # Reddit asks for a pause between requests
+        time.sleep(20 * attempt)  # Reddit asks for a pause between requests
     if r.status_code == 429:
         raise RuntimeError("Reddit rate limit reached - it will try again next hour")
     r.raise_for_status()
-    parsed = feedparser.parse(r.content)
+    REDDIT_CACHE[kind] = feedparser.parse(r.content).entries
+    return REDDIT_CACHE[kind]
+
+
+def collect_reddit(feed: dict) -> list:
+    """New posts or comments in a subreddit, read from Reddit's public RSS. Individuals are never linked."""
+    sub = str(feed["subreddit"]).strip().removeprefix("r/")
+    kind = "comments" if feed.get("type", "comments") == "comments" else "new"
+    label = feed.get("label") or f"Reddit r/{sub}"
     out = []
-    for e in parsed.entries:
+    for e in _reddit_fetch(kind):
+        link = e.get("link", "")
+        if f"/r/{sub}/".lower() not in link.lower():
+            continue   # an entry from one of the other communities in the combined feed
         body = e.get("content", [{}])[0].get("value", "") or e.get("summary", "")
         body = BeautifulSoup(body, "html.parser").get_text(" ", strip=True)
         body = re.sub(r"submitted by\s+/u/\S+.*$", "", body).strip()   # footer Reddit adds to posts
@@ -437,7 +453,7 @@ def collect_reddit(feed: dict) -> list:
         else:
             context, text = "", f"{title}. {body}"
         tt = e.get("updated_parsed") or e.get("published_parsed")
-        out.append(post("rd:" + hashlib.sha1((e.get("id") or e.get("link", "")).encode()).hexdigest()[:16],
+        out.append(post("rd:" + hashlib.sha1((e.get("id") or link).encode()).hexdigest()[:16],
                         "reddit", label, text, dt.datetime(*tt[:6], tzinfo=UTC) if tt else None, 0, "", False,
                         feed.get("filter", False), "public", context))
     out.sort(key=lambda p: p["time"] or NOW, reverse=True)
@@ -550,6 +566,8 @@ def collect_all(cfg: dict) -> tuple[list, list]:
     rd = cfg.get("reddit") or {}
     if rd.get("enabled"):
         for fd in rd.get("feeds") or []:
+            REDDIT_SUBS["comments" if fd.get("type", "comments") == "comments" else "new"].append(str(fd["subreddit"]).strip().removeprefix("r/"))
+        for fd in rd.get("feeds") or []:
             label = fd.get("label") or f"Reddit r/{str(fd['subreddit']).removeprefix('r/')}"
             jobs.append((label, "reddit", lambda fd={**fd, "label": label}: collect_reddit(fd)))
     xc = cfg.get("x_twitter") or {}
@@ -577,7 +595,7 @@ def collect_all(cfg: dict) -> tuple[list, list]:
             status.append({"name": name, "platform": platform, "ok": False, "fetched": 0,
                            "error": str(e)[:160]})
             log(f"  FAIL  {platform:9} {name}: {e}")
-        time.sleep(8 if platform == "reddit" else 0.5)   # Reddit rate-limits quick repeat requests
+        time.sleep(0.5)
 
     tga = cfg.get("telegram_api") or {}
     if tga.get("enabled") and not all(secret(k) for k in ("TELEGRAM_API_ID", "TELEGRAM_API_HASH", "TELEGRAM_SESSION")):
