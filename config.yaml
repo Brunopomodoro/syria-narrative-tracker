@@ -35,7 +35,7 @@ default_language: "en"
 # Cost control. These two numbers decide most of your monthly bill.
 #   max_posts: the most posts sent to Claude per run
 #   max_chars_per_post: long posts are cut to this length
-max_posts: 300
+max_posts: 400
 max_chars_per_post: 400
 
 # Share of the analysis reserved for ordinary people's voices (comments, groups)
@@ -136,6 +136,9 @@ method_changelog:
   - date: 2026-09-28
     note: "Fixed theme categories added to every story; tone by language and by source type; permanent archive and downloads; model switched to Claude Sonnet 5. Themes for earlier stories were assigned afterwards from their titles and summaries."
     note_ar: "إضافة فئات موضوعية ثابتة لكل قصة؛ النبرة حسب اللغة وحسب نوع المصدر؛ أرشيف دائم وملفات للتنزيل؛ الانتقال إلى نموذج Claude Sonnet 5. صُنّفت القصص السابقة لاحقاً اعتماداً على عناوينها وملخصاتها."
+  - date: 2026-09-29
+    note: "More public voices: comments under the newest videos of selected YouTube channels, more videos and comments per search, the Syria threads of r/Kurdistan, and connectors for Threads keyword search and Instagram hashtag posts (active once their tokens exist). Up to 400 posts per run."
+    note_ar: "مزيد من أصوات الناس: تعليقات على أحدث فيديوهات قنوات يوتيوب مختارة، وفيديوهات وتعليقات أكثر لكل بحث، ومنشورات سوريا في مجتمع ريديت r/Kurdistan، وموصّلان لبحث ثريدز بالكلمات ومنشورات إنستغرام حسب الوسم (يعملان بعد إضافة رموز الوصول). حتى 400 منشور في كل تحديث."
 
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
@@ -334,6 +337,17 @@ telegram_channels:
     label_ar: "تي آر تي عربي - الإذاعة والتلفزيون التركي"
     filter: true
     kind: regional
+  # --- Local and community outlets (cities, the south, the coast, the north-east, minorities)
+  - name: suwayda_24
+    label: "Suwayda 24 - local, Druze south"
+    label_ar: "السويداء 24 - محلية، الجنوب الدرزي"
+    filter: false
+    kind: independent
+  - name: athrpress
+    label: "Athr Press - Damascus-based"
+    label_ar: "أثر برس - مقرها دمشق"
+    filter: false
+    kind: independent
 
 # 2) News websites through RSS - free, no key needed. Adds news context.
 #    Google News search feeds collect Syria stories from hundreds of outlets.
@@ -373,6 +387,11 @@ rss_feeds:
     label_ar: "بي بي سي عربي"
     filter: true
     kind: regional
+  - url: https://syriadirect.org/feed/
+    label: "Syria Direct - independent (EN/AR)"
+    label_ar: "سوريا على طول - مستقلة"
+    filter: false
+    kind: independent
 
 # ===== PUBLIC VOICES =====
 
@@ -385,8 +404,27 @@ rss_feeds:
 youtube:
   enabled: true
   search_terms: ["سوريا|السوريين|دمشق|حلب", "الشارع السوري", "Rojava|Sûriye|Qamişlo|Kobanê|Efrîn"]
-  videos_per_term: 8
-  comments_per_video: 30
+  videos_per_term: 15         # a search costs the same 100 units whether it returns 8 or 15 videos
+  comments_per_video: 50      # 1 unit per video, whatever the number
+  # Comments under the newest videos of these channels: 2 units per channel plus 1 per video,
+  # so channels are almost free. "handle" is the part after youtube.com/@ .
+  videos_per_channel: 6
+  channels:
+    - handle: "@syria_tv"
+      label: "Syria TV"
+      label_ar: "تلفزيون سوريا"
+    - handle: "@EnabBaladi"
+      label: "Enab Baladi"
+      label_ar: "عنب بلدي"
+    - handle: "@HalabTodayTV"
+      label: "Halab Today TV"
+      label_ar: "قناة حلب اليوم"
+    - handle: "@ronahitv"
+      label: "Ronahi TV (Kurdish)"
+      label_ar: "قناة روناهي (كردية)"
+    - handle: "@aljazeera"
+      label: "Al Jazeera Arabic"
+      label_ar: "الجزيرة"
 
 # 4) Telegram connection - comments under channel posts, emoji reactions,
 #    and public group chats. Free; needs a one-time login (GUIDE.md, extra A2).
@@ -430,6 +468,12 @@ reddit:
       label_ar: "تعليقات ريديت r/syria"
       filter: true          # keep comments that (or whose post) mention Syria
       max_posts: 25         # at most this many per run, so Reddit does not outweigh bigger sources
+    - subreddit: Kurdistan
+      type: comments
+      label: "Reddit r/Kurdistan comments"
+      label_ar: "تعليقات ريديت r/Kurdistan"
+      filter: true          # only threads about Syria and Rojava
+      max_posts: 15
 
 # 7) Bluesky - free. Needs a free Bluesky account and an "app password"
 #    (GUIDE.md, extra A3); without one, Bluesky usually refuses GitHub's servers,
@@ -438,4 +482,25 @@ bluesky:
   enabled: true             # starts working once the two Bluesky secrets are added
   search_terms: ["سوريا", "Syria", "Rojava", "Sûriyê"]
   posts_per_term: 50
+  filter: true
+
+# 8) Threads (Meta) - free. Public posts found by keyword through Meta's Threads API.
+#    Needs a Meta developer app approved for keyword search and the
+#    THREADS_ACCESS_TOKEN secret (GUIDE.md, extra A4). The token lasts 60 days.
+#    Meta allows about 2,200 searches a day; each term below is one search per run.
+threads:
+  enabled: true             # starts working once the Threads token is added
+  search_terms: ["سوريا", "السوريين", "دمشق", "Syria", "Rojava"]
+  posts_per_term: 50
+  filter: true
+
+# 9) Instagram (Meta) - free. Captions of recent public posts under each hashtag,
+#    through the official hashtag search (at most 30 different hashtags a week).
+#    Needs an Instagram business or creator account, a Meta developer app and the
+#    INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_USER_ID secrets (GUIDE.md, extra A5).
+#    Comments are not available through this route, only what people post.
+instagram:
+  enabled: true             # starts working once the Instagram secrets are added
+  hashtags: ["سوريا", "سوريا_الجديدة", "دمشق", "حلب", "syria", "rojava"]
+  posts_per_hashtag: 50
   filter: true

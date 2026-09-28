@@ -2,7 +2,7 @@
 
 A website that updates itself every hour with the main narratives in public Syrian online discussion, and the tone around each one.
 
-It reads Arabic, Kurdish and English posts from about 30 sources: Telegram channels (official, independent, opposition-origin, Kurdish-run and regional outlets), news sites, YouTube comments, Reddit, X and, optionally, Telegram comments and Bluesky.
+It reads Arabic, Kurdish and English posts from about 50 sources: Telegram channels (official, independent, opposition-origin, Kurdish-run, local, minority-community and regional outlets), news sites, YouTube comments (by search and under selected channels), Reddit, X and, optionally, Telegram comments and groups, Bluesky, Threads and Instagram hashtag posts.
 
 - `index.html` is the website (Tracker, Trends, Data and About pages); `stories/` and `weekly/` hold the generated story pages and weekly digests; `feed.xml` and `feed-ar.xml` are the digest feeds
 - `config.yaml` holds your settings and sources (the only file you normally edit)

@@ -392,6 +392,20 @@ def source_catalog(cfg: dict) -> list:
     if yt.get("enabled"):
         out.append({"label": "YouTube comments", "label_ar": "تعليقات يوتيوب", "kind": "public", "platform": "youtube",
                     "ref": "", "detail": f"comments on recent videos found by searching: {', '.join(yt.get('search_terms') or [])}"})
+        for ch in yt.get("channels") or []:
+            handle = str(ch.get("handle") or ch.get("name") or "").strip()
+            label = ch.get("label") or handle
+            out.append({"label": f"YouTube comments on {label}", "label_ar": (f"تعليقات يوتيوب على {ch['label_ar']}" if ch.get("label_ar") else ""),
+                        "kind": "public", "platform": "youtube", "ref": f"https://www.youtube.com/{handle if handle.startswith('@') else '@' + handle}",
+                        "detail": "comments under the channel's newest videos"})
+    th = cfg.get("threads") or {}
+    if th.get("enabled"):
+        out.append({"label": "Threads posts", "label_ar": "منشورات ثريدز", "kind": "public", "platform": "threads", "ref": "",
+                    "detail": f"recent public posts matching: {', '.join(th.get('search_terms') or [])} (Meta's Threads API keyword search, once the token is added)"})
+    ig = cfg.get("instagram") or {}
+    if ig.get("enabled"):
+        out.append({"label": "Instagram posts", "label_ar": "منشورات إنستغرام", "kind": "public", "platform": "instagram", "ref": "",
+                    "detail": f"captions of recent public posts under: {', '.join('#' + str(t).lstrip('#') for t in ig.get('hashtags') or [])} (Instagram hashtag search, once the token is added)"})
     rd = cfg.get("reddit") or {}
     for fd in (rd.get("feeds") or []) if rd.get("enabled") else []:
         out.append({"label": fd.get("label") or f"Reddit r/{fd['subreddit']}", "label_ar": fd.get("label_ar", ""), "kind": "public",

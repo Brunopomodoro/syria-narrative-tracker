@@ -13,12 +13,12 @@ Behind it, GitHub runs a small program every hour that collects public posts, as
 | Part | Cost |
 |---|---|
 | GitHub (runs the hourly job, hosts the website) | Free for public repositories |
-| Telegram channels, news RSS feeds, Bluesky and Reddit | Free |
+| Telegram channels, news RSS feeds, Bluesky, Threads, Instagram hashtags and Reddit | Free |
 | Claude API (the analysis) | Pay per use, see below |
 | YouTube comments (optional) | Free within Google's daily quota |
 | X / Twitter (optional) | About $0.005 per post read (roughly $36/month at default settings) |
 
-Claude cost depends on how many posts you analyze and which model reads them. With the default settings (up to 300 posts per run) and the default model `claude-sonnet-5`, a run costs about 15 to 20 US cents. GitHub currently runs the update every 3 to 6 hours, so that is roughly $1 a day, about $35 a month; if it ran every hour it would be about $130 a month. Two ways to spend less: switch `model` in `config.yaml` to `claude-haiku-4-5-20251001` (about half the cost, a less careful reading of dialect and sarcasm), or lower `max_posts` (for example to 150). Runs are skipped (free) when nothing new was posted, and every run prints its exact cost in the log. The weekly digest adds one call a week, a few cents.
+Claude cost depends on how many posts you analyze and which model reads them. With the default settings (up to 400 posts per run) and the default model `claude-sonnet-5`, a run costs about 20 to 25 US cents. GitHub currently runs the update every 3 to 6 hours, so that is roughly $1.50 a day, about $45 a month; if it ran every hour (extra E below) it would be about $170 a month. Two ways to spend less: switch `model` in `config.yaml` to `claude-haiku-4-5-20251001` (about half the cost, a less careful reading of dialect and sarcasm), or lower `max_posts` (for example to 150). Runs are skipped (free) when nothing new was posted, and every run prints its exact cost in the log. The weekly digest adds one call a week, a few cents.
 
 ---
 
@@ -193,7 +193,7 @@ The starter sources are outlets: what channels and news sites publish. To hear o
 7. In `config.yaml`, under `youtube:`, change `enabled: false` to `enabled: true`. Commit.
 8. Run the workflow manually (step 6) and check the log for `ok    youtube`.
 
-The default settings use about half of Google's free daily allowance. No billing account is needed.
+The default settings use most of Google's free daily allowance when the job runs every hour: each search term costs 100 units per run, while the `channels:` list under `youtube:` (comments under the newest videos of selected outlets' channels) costs only 2 units per channel plus 1 per video. So add channels freely, but keep search terms to three. No billing account is needed.
 
 ### A2. Add Telegram comments, reactions and groups (free, 20 minutes)
 
@@ -278,7 +278,7 @@ Good to know: the X search picks up everyone writing in Arabic about Syria, not 
 
 Both are small next to Telegram and YouTube, and lean English-speaking and diaspora, so treat them as one extra window rather than a picture of Syria.
 
-**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria. Reddit sometimes briefly limits requests from GitHub's servers. When that happens its line in the run log says `FAIL` for that hour, and it recovers on its own.
+**Reddit** needs no key and is already on: the tracker reads the newest comments in r/syria and the Syria threads of r/Kurdistan (r/syriancivilwar refuses requests from GitHub's servers). Reddit sometimes briefly limits requests from GitHub's servers. When that happens its line in the run log says `FAIL` for that hour, and it recovers on its own. Keep the list short for that reason.
 
 **Bluesky** needs a free account, because Bluesky usually refuses searches from GitHub's servers without one:
 
@@ -286,6 +286,52 @@ Both are small next to Telegram and YouTube, and lean English-speaking and diasp
 2. Go to **Settings → Privacy and security → App passwords → Add App Password**. Name it `narrative-tracker` and copy the password it shows.
 3. Add two secrets in GitHub (same way as step 5): `BLUESKY_HANDLE` (for example `yourname.bsky.social`) and `BLUESKY_APP_PASSWORD`.
 4. In `config.yaml`, under `bluesky:`, change `enabled: false` to `enabled: true`. Commit and run the workflow.
+
+### A4. Add Threads posts (free, about an hour plus Meta's review)
+
+Threads is the one Meta platform whose public posts you can search yourself. Meta's Threads API has a keyword search that returns recent public posts for a word, in Arabic too, for apps that Meta has approved.
+
+1. You need a Threads account for the tracker (any account; it never posts). Sign in at **https://developers.facebook.com** with the Facebook or Instagram login attached to it, and click **My Apps → Create App**.
+2. Choose the **Threads** use case (Meta calls it "Access the Threads API"), name the app `narrative-tracker` and create it.
+3. In the app, open **Use cases → Threads API → Customize** and add the permissions `threads_basic` and `threads_keyword_search`.
+4. Under **App roles → Roles**, add your Threads account as a **Threads tester**, then accept the invitation in the Threads app under **Settings → Account → Website permissions**.
+5. Open **Tools → Graph API Explorer** (or the "User Token Generator" on the Threads use case page), choose your app, tick both permissions and generate a token. Exchange it for a long-lived token, which lasts 60 days: open in a browser
+   `https://graph.threads.net/access_token?grant_type=th_exchange_token&client_secret=APP_SECRET&access_token=SHORT_TOKEN`
+   (the app secret is under **App settings → Basic**). Copy the `access_token` from the answer.
+6. In GitHub, add a secret named `THREADS_ACCESS_TOKEN` with that token (same way as step 5).
+7. Submit the app for **App review** with the `threads_keyword_search` permission. Describe the use plainly, for example: *"Non-commercial research dashboard that summarizes public discussion about Syria in aggregate. Posts are analyzed as a batch by a language model; no individual users are displayed, profiled or linked, and post text is not republished."* Until Meta approves, the run log says `FAIL threads ... not approved for this app yet`; afterwards it says `ok    threads`.
+
+The token expires after 60 days. Repeat step 5 and replace the secret when the log says the token was rejected. Meta allows about 2,200 searches a day; the five default search terms use at most 120 a day.
+
+### A5. Add Instagram hashtag posts (free, needs a business account)
+
+Instagram gives outsiders no comments and no timeline, but its official **hashtag search** returns the captions of recent public posts under a hashtag, up to 30 different hashtags a week. It is the only legitimate window into Instagram without an institutional agreement.
+
+1. Turn the tracker's Instagram account into a **professional** account (**Settings → Account type and tools → Switch to professional account**, choose Business or Creator) and connect it to a Facebook Page (any page you own).
+2. At **https://developers.facebook.com** create an app (or reuse the one from A4) with the **Instagram** use case and the **Instagram API with Facebook login**. Add the permissions `instagram_basic` and `pages_read_engagement`.
+3. In **Tools → Graph API Explorer**, select the app, tick those permissions, and generate a token. Then find your Instagram user id: call `GET /me/accounts` and, for your page, `GET /PAGE_ID?fields=instagram_business_account`. The number in the answer is the **user id**.
+4. Exchange the token for a long-lived one (60 days): `https://graph.facebook.com/v21.0/oauth/access_token?grant_type=fb_exchange_token&client_id=APP_ID&client_secret=APP_SECRET&fb_exchange_token=SHORT_TOKEN`.
+5. Add two GitHub secrets: `INSTAGRAM_ACCESS_TOKEN` and `INSTAGRAM_USER_ID`.
+6. Hashtag search works while the app is in development mode for the app's own testers, so the run log should show `ok    instagram` right away. To keep it working for the long term, submit the app for review with the `instagram_basic` permission and the "hashtag search" feature.
+
+The hashtags are listed under `instagram:` in `config.yaml`. Meta counts unique hashtags per rolling week, so keep the list under 30.
+
+### E. Reliable hourly updates
+
+GitHub runs scheduled jobs late or skips them when its servers are busy, which is why the tracker updates every three to six hours rather than every hour. A free external timer fixes that:
+
+1. In GitHub, open **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**. Give it access to this repository only, with the permission **Actions: Read and write**, and an expiry of a year. Copy the token.
+2. At **https://cron-job.org** (free) create a job that runs every hour and sends `POST https://api.github.com/repos/YOUR_USER/YOUR_REPO/actions/workflows/update.yml/dispatches` with the headers `Authorization: Bearer YOUR_TOKEN`, `Accept: application/vnd.github+json`, and the body `{"ref":"main"}`.
+
+The scheduled job inside GitHub can stay as it is; the concurrency setting makes sure two updates never run at the same time. Hourly runs multiply the Claude cost accordingly (see "What it costs").
+
+### F. Facebook and TikTok: the institutional route
+
+Facebook comments and TikTok are the biggest missing voices, and neither can be read by a project like this on its own. Meta's **Content Library** (https://developers.facebook.com/docs/content-library-and-api/) gives access to public Facebook and Instagram posts, pages, groups and comments to researchers at academic and non-profit institutions, through an application handled by ICPSR at the University of Michigan. TikTok's **Research API** (https://developers.tiktok.com/products/research-api/) gives public videos and comments to academic researchers in the US, UK and EU. Both require an institutional affiliation, and Meta's data must be analysed inside its own secure environment, so only aggregate results (for example daily volume by keyword) could be exported to this site. A partnership with a university or think tank unlocks both. Scraping Facebook or Instagram through third-party services breaks Meta's terms and is not used here.
+
+### G. Testing your sources
+
+**Actions → Maintenance → Run workflow → test-sources** collects from every source without analysing or saving anything, and the log shows an `ok` or `FAIL` line for each. Run it after editing the source lists in `config.yaml`.
 
 ### C. Languages
 
