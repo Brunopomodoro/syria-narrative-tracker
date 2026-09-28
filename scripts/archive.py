@@ -421,6 +421,8 @@ def write_methodology(cfg: dict, prompt: str, format_version: int) -> dict:
         "updated": dt.datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "format": format_version,
         "model": cfg.get("model"),
+        "doi": str(cfg.get("doi") or ""),
+        "site_url": str(cfg.get("site_url") or ""),
         "sampling": {"window_hours": cfg.get("window_hours", 24), "max_posts": cfg.get("max_posts", 150),
                      "public_share": cfg.get("public_share", 0.7), "max_chars_per_post": cfg.get("max_chars_per_post", 400),
                      "history_hours": cfg.get("history_hours", 336), "headline_days": cfg.get("headline_days", 7)},

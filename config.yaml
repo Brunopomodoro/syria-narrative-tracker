@@ -8,6 +8,17 @@
 site_title: "Syria Narrative Tracker"
 site_title_ar: "متتبّع السرديات السورية"
 
+# The public address of the website, used in links, feeds, the sitemap and citations.
+site_url: "https://www.syrianpulse.org"
+
+# A DOI for the dataset, once you have one from Zenodo (GUIDE.md, "Citing the tracker").
+# Shown in the citation box on the website. Leave empty until then.
+doi: ""
+
+# A written weekly digest (English and Arabic) after every completed week, with its
+# own pages and RSS feed. One Claude call a week, a few cents.
+weekly_digest: true
+
 # How far back to look on every run, in hours. 24 = "the last day".
 window_hours: 24
 
