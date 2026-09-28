@@ -21,21 +21,18 @@ BATCH = 40
 
 def classify(client, model: str, themes: list, items: list) -> dict:
     """items: [(n, title, summary)] -> {n: theme_id}"""
+    ids = [t["id"] for t in themes]
     theme_lines = "\n".join(f"- {t['id']}: {t['label']}. {t['about']}" for t in themes)
     lines = "\n".join(f"[{n}] {title}\n    {summary[:300]}" for n, title, summary in items)
     msg = (f"File each story under exactly one theme. Themes (id: what belongs there):\n{theme_lines}\n\n"
-           f"Stories:\n{lines}\n\nReply with ONLY a JSON object mapping each story number to a theme id, "
-           f"for example {{\"1\": \"economy\", \"2\": \"other\"}}.")
-    resp = client.messages.create(model=model, max_tokens=4000, messages=[{"role": "user", "content": msg}])
+           f"Stories:\n{lines}\n\nReturn one item per story number.")
+    schema = {"type": "object", "additionalProperties": False, "required": ["items"], "properties": {"items": {
+        "type": "array", "items": {"type": "object", "additionalProperties": False, "required": ["n", "theme"],
+                                   "properties": {"n": {"type": "integer"}, "theme": {"type": "string", "enum": ids}}}}}}
+    resp = client.messages.create(model=model, max_tokens=8000, messages=[{"role": "user", "content": msg}],
+                                  output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}})
     text = "".join(b.text for b in resp.content if b.type == "text")
-    ids = {t["id"] for t in themes}
-    out = {}
-    for k, v in P.extract_json(text).items():
-        try:
-            out[int(k)] = str(v).strip().lower() if str(v).strip().lower() in ids else "other"
-        except ValueError:
-            continue
-    return out
+    return {int(it["n"]): it["theme"] for it in P.extract_json(text).get("items", []) if it.get("theme") in ids}
 
 
 def main() -> int:
