@@ -18,7 +18,7 @@ Behind it, GitHub runs a small program every hour that collects public posts, as
 | YouTube comments (optional) | Free within Google's daily quota |
 | X / Twitter (optional) | About $0.005 per post read (roughly $36/month at default settings) |
 
-Claude cost depends on how many posts you analyze. With the default settings (up to 300 posts per run) and the default model `claude-haiku-4-5-20251001`, a busy hour costs roughly 4 to 10 US cents, which works out to about $40–75 a month if every hour is busy. Lower `max_posts` in `config.yaml` (for example to 150) to roughly halve that. With only a few sources it will be much less, and runs are skipped (free) when nothing new was posted. If you later want a more nuanced reading of dialect and sarcasm, switch the model to `claude-sonnet-5` in `config.yaml`; it costs about twice as much. Every run prints its exact cost in the log, so you can watch it.
+Claude cost depends on how many posts you analyze and which model reads them. With the default settings (up to 300 posts per run) and the default model `claude-sonnet-5`, a run costs about 15 to 20 US cents. GitHub currently runs the update every 3 to 6 hours, so that is roughly $1 a day, about $35 a month; if it ran every hour it would be about $130 a month. Two ways to spend less: switch `model` in `config.yaml` to `claude-haiku-4-5-20251001` (about half the cost, a less careful reading of dialect and sarcasm), or lower `max_posts` (for example to 150). Runs are skipped (free) when nothing new was posted, and every run prints its exact cost in the log. The weekly digest adds one call a week, a few cents.
 
 ---
 
@@ -289,13 +289,74 @@ Both are small next to Telegram and YouTube, and lean English-speaking and diasp
 
 ### C. Languages
 
-Posts are read in Arabic, Kurdish (Kurmanji and Sorani) and English. Each post's language is detected automatically, and the "About" section of the website shows the language mix of every update. Kurdish coverage comes from Kurdish-run outlets (ANHA, North Press, Rudaw, Kurdistan24), the Kurdish YouTube and Bluesky search terms, and Kurdish words in the X search. If you care most about Kurdish voices, consider switching `model` to `claude-sonnet-5`: it reads Kurmanji more reliably than Haiku.
+Posts are read in Arabic, Kurdish (Kurmanji and Sorani) and English. Each post's language is detected automatically, and the "About" section of the website shows the language mix of every update. Kurdish coverage comes from Kurdish-run outlets (ANHA, North Press, Rudaw, Kurdistan24), the Kurdish YouTube and Bluesky search terms, and Kurdish words in the X search. The default model, `claude-sonnet-5`, reads Kurmanji more reliably than Haiku.
 
 The website is fully bilingual. Everything is written in both English and Arabic, and visitors switch with the button at the top right; the site remembers their choice. To make the site open in Arabic by default, set `default_language: "ar"` in `config.yaml`. You can also link straight to either version by adding `?lang=ar` or `?lang=en` to your site address.
 
 ### D. Update less often to save money
 
 In `.github/workflows/update.yml`, change `"17 * * * *"` to `"17 */2 * * *"` for every 2 hours, or `"17 */3 * * *"` for every 3 hours.
+
+---
+
+## For research use
+
+Everything below is already switched on. This section explains what exists and the few things only you can do.
+
+### The Trends and Data pages
+
+- **Trends** shows how the discussion moved over time: the share and tone of each of the 12 fixed themes, people against outlets, the tone by language of the people posting and by kind of outlet, and markers for events. Add events under `events:` in `config.yaml` (date and a label in both languages); they appear on the charts after the next run. Every chart has a **Table** button.
+- **Data** lets anyone download a date range as CSV or JSON, lists the monthly files and the daily archive, documents every column, and states the licence (CC BY 4.0, see `LICENSE-DATA.md`) with a ready citation.
+- **About** now carries the full methodology: sampling, the model, the exact instructions given to it, the themes, the sources, the limitations, and a changelog. When you change sources, the model, sampling settings or the instructions, add a line under `method_changelog:` in `config.yaml` so the record stays complete.
+
+### Themes
+
+The 12 themes live under `themes:` in `config.yaml`, each with a description that tells the analysis what belongs where. You can reword labels and descriptions freely. Avoid changing an `id` or adding and removing themes casually: the trend charts and downloads compare themes across months by id, so a change breaks the continuity. If you do change them, run the **rebuild-index-and-exports** maintenance job afterwards.
+
+### Story pages, weekly digests and feeds
+
+- Every story has a permanent page in both languages (`stories/en/…`, `stories/ar/…`; the "Permanent page" link under each story on the tracker), with its full latest analysis and every update it appeared in. Cite those pages rather than the front page when you refer to a specific story.
+- After every completed week the tracker writes a **weekly digest** in English and Arabic (`weekly/en/…`, `weekly/ar/…`), with the week's theme table. The digests are listed at the bottom of the Trends page and published as RSS feeds (`feed.xml`, `feed-ar.xml`), which newsletter tools and feed readers can follow. Turn this off with `weekly_digest: false` in `config.yaml`.
+
+### Maintenance jobs
+
+Open **Actions → Maintenance → Run workflow** and pick a task:
+
+| Task | What it does | Cost |
+|---|---|---|
+| rebuild-index-and-exports | Recompute the per-day index, the monthly downloads and the methodology file from the archive. Run after editing themes, events or the changelog. | free |
+| rebuild-pages | Rebuild every story page, listing, feed and the sitemap. Run after changing how pages look. | free |
+| backfill-themes | Give a theme to archived stories that have none. | a few cents |
+| backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
+| backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
+
+### Citing the tracker and getting a DOI
+
+The website's Data page shows a ready citation and BibTeX, and the repository has a `CITATION.cff` file that GitHub turns into a **Cite this repository** button. Put your own name in `CITATION.cff` and `.zenodo.json` if you want to be cited as the author.
+
+For a DOI that journals accept, use Zenodo (free, run by CERN):
+
+1. Go to **https://zenodo.org**, sign in with GitHub, and open **GitHub** in your account menu.
+2. Switch on the toggle next to `syria-narrative-tracker`.
+3. In GitHub, open **Releases → Create a new release**. Tag: `v2026.09`, title: `Dataset, September 2026`. Publish it.
+4. Zenodo archives that release within a few minutes and shows its DOI (like `10.5281/zenodo.1234567`) and a "concept DOI" that always points to the latest version.
+5. Put the concept DOI in `config.yaml` (`doi: "10.5281/zenodo.1234567"`). After the next run it appears in the citation box on the website.
+
+Make a new release every month or two; each one becomes a new versioned snapshot under the same concept DOI.
+
+### Validation study: how accurate are the labels?
+
+Researchers will ask how well the generated themes and tones match human judgement. The tools for a validation study are built in; the human part takes two Arabic (and ideally Kurdish) readers a few days.
+
+1. **Draw the sample.** Open **Actions → Maintenance → Run workflow**, pick **validation-sample** and enter the sample size (300 is enough for a first study). The job runs a normal update and additionally builds a private file with a sample of the posts it analysed, each with the tracker's story-level theme and tone, and empty columns for two coders. It is uploaded as a workflow artifact (open the finished run and download `validation-sample`), never committed to the repository, and it is deleted from GitHub after 30 days. The sample contains post texts, so keep it private and delete it after the study.
+2. **Code it.** Each coder fills in `coder1_theme` / `coder1_tone` (or `coder2_…`) for every row without seeing the tracker's columns (hide them in the spreadsheet). Themes are the ids from the `codebook.csv` in the same download; tones run from −1 to +1 (−1, −0.5, 0, 0.5 or 1 is fine).
+3. **Compare.** On a computer with Python installed, run `python scripts/validation_compare.py coded-sample.csv --note "Coded by two Syrian researchers in October 2026."` It prints the agreement (share of matching themes and Cohen's κ; tone correlation, mean error and agreement on direction, per coder and between the coders) and writes `data/validation.json`. Commit that file; the numbers appear in the Accuracy section of the About page.
+
+Repeat the study after any major change to the model or the instructions, so the published accuracy matches what is running.
+
+### Search engines
+
+The site has a sitemap, link previews and a crawlable copy of the current analysis. To be found sooner, register it with **Google Search Console** (https://search.google.com/search-console) and **Bing Webmaster Tools**, verify by adding the DNS record they show, and submit `https://www.syrianpulse.org/sitemap.xml`. Both also show which searches bring readers.
 
 ---
 

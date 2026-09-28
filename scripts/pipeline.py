@@ -36,6 +36,8 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import archive  # noqa: E402  (permanent archive, downloads and methodology files; scripts/archive.py)
+import pages  # noqa: E402    (story pages, weekly pages, feeds, sitemap, the crawlable block in index.html)
+import weekly  # noqa: E402   (the weekly digest)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -806,12 +808,67 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
     return out
 
 
+# ----------------------------------------------------------------- validation study sample
+
+def write_validation_sample(cfg: dict, sample: list, result: dict, narratives: list, n: int) -> None:
+    """A private CSV of analysed posts with the tracker's story-level labels and empty coder columns
+    (validation/sample-<date>.csv, plus codebook.csv). Never committed: the folder is in .gitignore and the
+    Maintenance workflow uploads it as an artifact. Stratified by voice and language, so every group is represented."""
+    import csv
+    import random
+    by_pid = {p["pid"]: p for p in sample}
+    label = {}
+    for n_ in narratives:
+        for raw in (x for x in (result.get("narratives") or []) if x.get("id") and n_["id"].startswith(str(x.get("id")).strip().lower()[:60])):
+            for pid in raw.get("post_ids") or []:
+                if pid in by_pid and pid not in label:
+                    label[pid] = n_
+    groups: dict = defaultdict(list)
+    for p in sample:
+        groups[(p["voice"], p.get("lang", "other"))].append(p)
+    rng = random.Random(iso(NOW))
+    n = max(1, min(n, len(sample)))
+    chosen = []
+    for key, members in sorted(groups.items()):
+        take = max(1, round(n * len(members) / len(sample)))
+        chosen += rng.sample(members, min(take, len(members)))
+    chosen = chosen[:n]
+    rng.shuffle(chosen)
+    folder = ROOT / "validation"
+    folder.mkdir(parents=True, exist_ok=True)
+    cols = ["row_id", "voice", "platform", "language", "source_kind", "text", "tracker_story_key", "tracker_story_title", "tracker_theme",
+            "tracker_tone", "coder1_theme", "coder1_tone", "coder1_notes", "coder2_theme", "coder2_tone", "coder2_notes"]
+    with open(folder / f"sample-{NOW.strftime('%Y-%m-%d')}.csv", "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=cols, lineterminator="\n")
+        w.writeheader()
+        for i, p in enumerate(chosen, 1):
+            s = label.get(p["pid"])
+            tone = "" if not s else (s["public_sentiment"] if p["voice"] == "public" and s["public_sentiment"] is not None else s["sentiment"])
+            w.writerow({"row_id": i, "voice": p["voice"], "platform": p["platform"], "language": p.get("lang", "other"),
+                        "source_kind": p.get("kind", "") if p["voice"] == "outlet" else "", "text": p["text"][:400],
+                        "tracker_story_key": s["key"] if s else "", "tracker_story_title": s["title"] if s else "",
+                        "tracker_theme": s["theme"] if s else "other", "tracker_tone": tone})
+    with open(folder / "codebook.csv", "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(["theme_id", "label", "what belongs there"])
+        for t in archive.theme_catalog(cfg):
+            w.writerow([t["id"], t["label"], t["about"]])
+        w.writerow([])
+        w.writerow(["tone", "meaning", ""])
+        for v, m in [("-1", "strongly negative: anger, fear, grief, contempt"), ("-0.5", "leaning negative"), ("0", "neutral or mixed"),
+                     ("0.5", "leaning positive"), ("1", "strongly positive: hope, pride, celebration")]:
+            w.writerow([v, m, ""])
+    log(f"Validation sample: {len(chosen)} posts written to validation/ (not committed)")
+
+
 # ----------------------------------------------------------------- main
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--validation-sample", type=int, default=0, metavar="N",
+                    help="also write a private sample of N analysed posts with the tracker's labels, for a validation study (validation/)")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -877,6 +934,8 @@ def main() -> int:
     first_seen = state.get("first_seen", {})
     themes = archive.theme_catalog(cfg)
     narratives = build_narratives(result, sample, first_seen, [t["id"] for t in themes])
+    if args.validation_sample:
+        write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
     for n in narratives:
         first_seen.setdefault(n["id"], n["first_seen"])
     ov = result.get("overall") or {}
@@ -959,13 +1018,24 @@ def main() -> int:
 
     alive = {n["id"] for h in history for n in h["narratives"]}
     state = {"last_ids": sorted(seen_key(p["id"]) for p in sample),
-             "first_seen": {k: v for k, v in first_seen.items() if k in alive}}
+             "first_seen": {k: v for k, v in first_seen.items() if k in alive},
+             "weekly_attempts": state.get("weekly_attempts") or {}}
 
     save_json(latest_path, latest)
     save_json(history_path, history)
     compact_json(DATA / "stories.json", build_story_index(history))
     save_json(state_path, state)
-    log(f"Saved {len(narratives)} narratives. Done.")
+    log(f"Saved {len(narratives)} narratives.")
+
+    # the weekly digest (when a week has just ended) and the static pages; neither may fail the run
+    if weekly.maybe_generate(cfg, state, log):
+        save_json(state_path, state)
+    try:
+        pages.publish(cfg, latest)
+        log(f"Pages: {len(narratives)} story pages, listings, feeds and sitemap written.")
+    except Exception as e:  # noqa: BLE001
+        log(f"  WARN  pages not written: {e}")
+    log("Done.")
     return 0
 
 
