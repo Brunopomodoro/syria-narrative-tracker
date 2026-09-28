@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import pathlib
 import sys
 
@@ -146,7 +147,10 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
     if not s:
         log(f"  weekly {week}: fewer than {MIN_DAYS} days of data, skipped")
         return None
-    client = anthropic.Anthropic(api_key=__import__("os").environ.get("ANTHROPIC_API_KEY", ""))
+    key = os.environ.get("ANTHROPIC_API_KEY", "").strip()   # stripped, as pipeline.secret() does: a secret saved with a trailing newline breaks the request
+    if not key:
+        raise RuntimeError("ANTHROPIC_API_KEY secret is missing")
+    client = anthropic.Anthropic(api_key=key)
     model = cfg.get("model", "claude-sonnet-5")
     resp = client.messages.create(model=model, max_tokens=8000, system=DIGEST_PROMPT,
                                   messages=[{"role": "user", "content": build_message(cfg, s)}],
