@@ -39,6 +39,7 @@ W = {   # the words on the static pages
            "updates": "updates", "update1": "update", "story": "Story", "theme": "Theme", "emotions": "Emotions", "listing": "Stories", "listingSub": "Every story the tracker has followed in the last 30 days, by the day it was last seen. Older stories are in the downloads on the Data page.",
            "allStories": "All recent stories", "digest": "Weekly digest", "digests": "Weekly digests", "week": "Week", "highlights": "The week's stories", "watchNext": "What to watch",
            "themeTable": "Themes this week", "dailyTone": "Tone by day", "stories": "Stories", "posts": "Posts analysed", "vsLast": "vs last week",
+           "postsNote": "Each update analyses a sample of up to {n} posts from the previous {h} hours, so one post can be counted in several updates. Compare days with each other rather than reading the figures as numbers of posts.",
            "note": "Written automatically by an AI model from the week's public posts. It describes what was said, not what is true.",
            "storyNote": "Analysis generated automatically by an AI model from public posts. It describes what is being said, not what is true. Individuals are never named, quoted or linked.",
            "tone": ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
@@ -51,6 +52,7 @@ W = {   # the words on the static pages
            "updates": "تحديثاً", "update1": "تحديث واحد", "story": "قصة", "theme": "الموضوع", "emotions": "المشاعر", "listing": "القصص", "listingSub": "كل قصة تابعها المتتبّع خلال آخر ٣٠ يوماً، حسب يوم آخر ظهور لها. القصص الأقدم في ملفات التنزيل على صفحة البيانات.",
            "allStories": "كل القصص الحديثة", "digest": "الملخص الأسبوعي", "digests": "الملخصات الأسبوعية", "week": "الأسبوع", "highlights": "قصص الأسبوع", "watchNext": "ما يجب متابعته",
            "themeTable": "مواضيع هذا الأسبوع", "dailyTone": "النبرة حسب اليوم", "stories": "القصص", "posts": "المنشورات المحلَّلة", "vsLast": "مقارنة بالأسبوع الماضي",
+           "postsNote": "يحلّل كل تحديث عيّنة تصل إلى {n} منشور من الساعات الـ{h} السابقة، لذا قد يُحتسب المنشور الواحد في أكثر من تحديث. قارن الأيام ببعضها بدلاً من قراءة الأرقام كأعداد منشورات.",
            "note": "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الأسبوع العامة، ويصف ما قيل لا ما هو صحيح.",
            "storyNote": "تحليل مولَّد تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات عامة، يصف ما يُقال لا ما هو صحيح. لا يُذكر الأفراد ولا يُقتبس كلامهم ولا تُربط منشوراتهم.",
            "tone": ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
@@ -382,6 +384,7 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
         rows = "".join(f"<tr><td class=\"n\">{esc(fmt_date(x['date'], lang))}</td><td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
         parts.append(f"<h2>{w['dailyTone']}</h2><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+        parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
     parts.append(f"<p class=\"sub\">{esc(w['note'])}</p>")
     return "\n".join(parts)
 
