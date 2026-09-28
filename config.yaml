@@ -338,13 +338,33 @@ telegram_channels:
     filter: true
     kind: regional
   # --- Local and community outlets (cities, the south, the coast, the north-east, minorities)
-  - name: deirezzor24
-    label: "Deir Ezzor 24 - local, east"
+  - name: DeirEzzor24news
+    label: "[DeirEzzor24news] Deir Ezzor 24 - local, east"
     label_ar: "دير الزور 24 - محلية، الشرق"
     filter: false
     kind: independent
-  - name: suwayda24
-    label: "Suwayda 24 - local, Druze south"
+  - name: deir_ezzor_24
+    label: "[deir_ezzor_24] Deir Ezzor 24 - local, east"
+    label_ar: "دير الزور 24 - محلية، الشرق"
+    filter: false
+    kind: independent
+  - name: deirezzor24net
+    label: "[deirezzor24net] Deir Ezzor 24 - local, east"
+    label_ar: "دير الزور 24 - محلية، الشرق"
+    filter: false
+    kind: independent
+  - name: Suwayda24news
+    label: "[Suwayda24news] Suwayda 24 - local, Druze south"
+    label_ar: "السويداء 24 - محلية، الجنوب الدرزي"
+    filter: false
+    kind: independent
+  - name: suwayda_24
+    label: "[suwayda_24] Suwayda 24 - local, Druze south"
+    label_ar: "السويداء 24 - محلية، الجنوب الدرزي"
+    filter: false
+    kind: independent
+  - name: alsuwayda24
+    label: "[alsuwayda24] Suwayda 24 - local, Druze south"
     label_ar: "السويداء 24 - محلية، الجنوب الدرزي"
     filter: false
     kind: independent
@@ -353,23 +373,58 @@ telegram_channels:
     label_ar: "أثر برس - مقرها دمشق"
     filter: false
     kind: independent
-  - name: qasioun_news
-    label: "Qasioun News Agency - local, north"
+  - name: QasiounNews
+    label: "[QasiounNews] Qasioun News Agency - local, north"
     label_ar: "وكالة قاسيون للأنباء - محلية، الشمال"
     filter: false
     kind: independent
-  - name: syriacpress
-    label: "SyriacPress - Syriac and Assyrian community"
+  - name: qasioun
+    label: "[qasioun] Qasioun News Agency - local, north"
+    label_ar: "وكالة قاسيون للأنباء - محلية، الشمال"
+    filter: false
+    kind: independent
+  - name: qasiounnews
+    label: "[qasiounnews] Qasioun News Agency - local, north"
+    label_ar: "وكالة قاسيون للأنباء - محلية، الشمال"
+    filter: false
+    kind: independent
+  - name: SyriacPressNews
+    label: "[SyriacPressNews] SyriacPress - Syriac and Assyrian community"
     label_ar: "سرياك برس - الجماعة السريانية الآشورية"
     filter: false
     kind: independent
-  - name: ronahitv
-    label: "Ronahi TV - Kurdish, north-east (KU)"
+  - name: syriac_press
+    label: "[syriac_press] SyriacPress - Syriac and Assyrian community"
+    label_ar: "سرياك برس - الجماعة السريانية الآشورية"
+    filter: false
+    kind: independent
+  - name: RonahiTV_official
+    label: "[RonahiTV_official] Ronahi TV - Kurdish, north-east (KU)"
     label_ar: "قناة روناهي - كردية، الشمال الشرقي"
     filter: false
     kind: kurdish
-  - name: yekitimedia
-    label: "Yekiti Media - Kurdish party outlet (AR)"
+  - name: ronahi_tv
+    label: "[ronahi_tv] Ronahi TV - Kurdish, north-east (KU)"
+    label_ar: "قناة روناهي - كردية، الشمال الشرقي"
+    filter: false
+    kind: kurdish
+  - name: RonahiTv
+    label: "[RonahiTv] Ronahi TV - Kurdish, north-east (KU)"
+    label_ar: "قناة روناهي - كردية، الشمال الشرقي"
+    filter: false
+    kind: kurdish
+  - name: YekitiMedia
+    label: "[YekitiMedia] Yekiti Media - Kurdish party outlet (AR)"
+    label_ar: "يكيتي ميديا - حزب كردي"
+    filter: false
+    kind: kurdish
+  - name: yekiti_media
+    label: "[yekiti_media] Yekiti Media - Kurdish party outlet (AR)"
+    label_ar: "يكيتي ميديا - حزب كردي"
+    filter: false
+    kind: kurdish
+  - name: yekitimedia_ar
+    label: "[yekitimedia_ar] Yekiti Media - Kurdish party outlet (AR)"
     label_ar: "يكيتي ميديا - حزب كردي"
     filter: false
     kind: kurdish
@@ -422,7 +477,7 @@ rss_feeds:
     label_ar: "سوريا على طول - مستقلة"
     filter: false
     kind: independent
-  - url: https://deirezzor24.net/feed/
+  - url: https://deirezzor24.net/?feed=rss2
     label: "Deir Ezzor 24 website - local, east"
     label_ar: "موقع دير الزور 24 - محلية، الشرق"
     filter: false
@@ -442,7 +497,7 @@ rss_feeds:
     label_ar: "موقع يكيتي ميديا - حزب كردي"
     filter: false
     kind: kurdish
-  - url: https://www.rudaw.net/kurmanci/rss
+  - url: https://www.rudaw.net/rss/kurmanci
     label: "Rudaw Kurmanji - Kurdistan Region outlet (KU)"
     label_ar: "رووداو كرمانجي - إقليم كردستان (كردي)"
     filter: true
@@ -465,29 +520,59 @@ youtube:
   # so channels are almost free. "handle" is the part after youtube.com/@ .
   videos_per_channel: 6
   channels:
-    - handle: "@alikhbariah"
-      label: "Al-Ikhbariya Syria"
+    - handle: "@alikhbariahsy"
+      label: "[@alikhbariahsy] Al-Ikhbariya Syria"
       label_ar: "الإخبارية السورية"
-    - handle: "@syriatv"
-      label: "Syria TV"
+    - handle: "@IkhbariyaSyria"
+      label: "[@IkhbariyaSyria] Al-Ikhbariya Syria"
+      label_ar: "الإخبارية السورية"
+    - handle: "@alikhbariah_sy"
+      label: "[@alikhbariah_sy] Al-Ikhbariya Syria"
+      label_ar: "الإخبارية السورية"
+    - handle: "@syriatvnews"
+      label: "[@syriatvnews] Syria TV"
+      label_ar: "تلفزيون سوريا"
+    - handle: "@SyriaTVChannel"
+      label: "[@SyriaTVChannel] Syria TV"
+      label_ar: "تلفزيون سوريا"
+    - handle: "@syria_tv"
+      label: "[@syria_tv] Syria TV"
+      label_ar: "تلفزيون سوريا"
+    - handle: "@Syriatv1"
+      label: "[@Syriatv1] Syria TV"
       label_ar: "تلفزيون سوريا"
     - handle: "@EnabBaladi"
       label: "Enab Baladi"
       label_ar: "عنب بلدي"
-    - handle: "@OrientNews"
-      label: "Orient News"
+    - handle: "@OrientNewsChannel"
+      label: "[@OrientNewsChannel] Orient News"
+      label_ar: "أورينت نيوز"
+    - handle: "@orienttv"
+      label: "[@orienttv] Orient News"
+      label_ar: "أورينت نيوز"
+    - handle: "@orientnewsar"
+      label: "[@orientnewsar] Orient News"
       label_ar: "أورينت نيوز"
     - handle: "@HalabTodayTV"
       label: "Halab Today TV"
       label_ar: "قناة حلب اليوم"
-    - handle: "@RudawArabic"
-      label: "Rudaw Arabic"
+    - handle: "@rudawarabic1"
+      label: "[@rudawarabic1] Rudaw Arabic"
+      label_ar: "رووداو عربية"
+    - handle: "@RudawArabicTV"
+      label: "[@RudawArabicTV] Rudaw Arabic"
+      label_ar: "رووداو عربية"
+    - handle: "@rudaw_arabic"
+      label: "[@rudaw_arabic] Rudaw Arabic"
       label_ar: "رووداو عربية"
     - handle: "@ronahitv"
       label: "Ronahi TV (Kurdish)"
       label_ar: "قناة روناهي (كردية)"
-    - handle: "@AlJazeeraChannel"
-      label: "Al Jazeera"
+    - handle: "@aljazeera"
+      label: "[@aljazeera] Al Jazeera"
+      label_ar: "الجزيرة"
+    - handle: "@AlJazeeraArabic"
+      label: "[@AlJazeeraArabic] Al Jazeera"
       label_ar: "الجزيرة"
 
 # 4) Telegram connection - comments under channel posts, emoji reactions,
