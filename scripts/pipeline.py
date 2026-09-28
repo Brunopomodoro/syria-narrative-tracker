@@ -577,7 +577,7 @@ def collect_all(cfg: dict) -> tuple[list, list]:
             status.append({"name": name, "platform": platform, "ok": False, "fetched": 0,
                            "error": str(e)[:160]})
             log(f"  FAIL  {platform:9} {name}: {e}")
-        time.sleep(12 if platform == "reddit" else 0.5)   # Reddit rate-limits quick repeat requests
+        time.sleep(8 if platform == "reddit" else 0.5)   # Reddit rate-limits quick repeat requests
 
     tga = cfg.get("telegram_api") or {}
     if tga.get("enabled") and not all(secret(k) for k in ("TELEGRAM_API_ID", "TELEGRAM_API_HASH", "TELEGRAM_SESSION")):
