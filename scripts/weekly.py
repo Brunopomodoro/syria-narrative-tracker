@@ -104,6 +104,7 @@ You receive the week's numbers and the stories the tracker followed. Write:
 - "paragraphs": 3 to 5 short paragraphs: what dominated the discussion and how it moved; where people's reactions and outlet coverage differed; where communities or languages framed things differently; what was new or faded. Use the numbers when they matter (shares, tones, changes from the week before), sparingly.
 - "highlights": 3 to 6 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
 - "watch": 2 to 4 short points on what to watch next week, grounded in the stories, not speculation.
+Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare days or weeks with each other; never present them as numbers of posts or of people.
 Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation)."""
 
 
@@ -119,7 +120,7 @@ def digest_schema() -> dict:
 def build_message(cfg: dict, s: dict) -> str:
     def tone(v):
         return "n/a" if v is None else f"{v:+.2f}"
-    lines = [f"Week {s['week']}: {s['from']} to {s['to']}. {s['runs']} updates, {s['posts']} posts analysed.",
+    lines = [f"Week {s['week']}: {s['from']} to {s['to']}. {s['runs']} updates, {s['posts']} post analyses (see the note on volume figures).",
              f"Average tone: people {tone(s['public_sentiment'])} (previous week {tone(s['prev_public_sentiment'])}), outlets {tone(s['outlet_sentiment'])}.", ""]
     if s["events"]:
         lines += ["Events this week: " + "; ".join(f"{e['date']}: {e['label']}" for e in s["events"]), ""]
@@ -127,7 +128,7 @@ def build_message(cfg: dict, s: dict) -> str:
     for r in s["themes"]:
         ch = "n/a" if r.get("change") is None else f"{r['change'] * 100:+.0f} pts"
         lines.append(f"- {pages.theme_label(cfg, r['theme'], 'en')}: {r['share'] * 100:.0f}%, {ch}, people {tone(r['public_sentiment'])}, outlets {tone(r['outlet_sentiment'])}, {r['stories']} stories")
-    lines += ["", "Tone by day (people / outlets / posts):"]
+    lines += ["", "Tone by day (people / outlets / post analyses):"]
     lines += [f"- {d['date']}: {tone(d['public_sentiment'])} / {tone(d['outlet_sentiment'])} / {d['posts']}" for d in s["days"]]
     lines += ["", "Stories, most discussed first (key | theme | appeared in N updates | people tone | outlet tone):"]
     for e in s["top_stories"]:
