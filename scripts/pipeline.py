@@ -192,15 +192,34 @@ def collect_rss(feed: dict) -> list:
 
 # ----------------------------------------------------------------- collectors: public voices
 
+def _youtube_comments(key: str, vid: str, vtitle: str, n: int, source: str) -> list:
+    """Top comments under one video (1 quota unit). Empty when comments are off."""
+    c = requests.get("https://www.googleapis.com/youtube/v3/commentThreads", timeout=25, params={
+        "part": "snippet", "videoId": vid, "order": "relevance", "textFormat": "plainText",
+        "maxResults": max(1, min(100, int(n))), "key": key})
+    if c.status_code != 200:
+        return []
+    out = []
+    for th in c.json().get("items", []):
+        sn = th["snippet"]["topLevelComment"]["snippet"]
+        out.append(post("yt:" + th["id"], "youtube", source, sn.get("textOriginal") or sn.get("textDisplay", ""),
+                        parse_iso(sn.get("publishedAt", "")), sn.get("likeCount", 0),
+                        f"https://www.youtube.com/watch?v={vid}", True, False, "public", f"video: {vtitle}"))
+    return out
+
+
 def collect_youtube(cfg: dict, since: dt.datetime) -> list:
+    """Comments under recent videos found by search (100 quota units per term) and, when "channels" is set,
+    under the newest videos of those channels (2 units per channel plus 1 per video)."""
     key = secret("YOUTUBE_API_KEY")
     if not key:
         raise RuntimeError("YOUTUBE_API_KEY secret is missing")
     out, seen_videos = [], set()
+    per_video = int(cfg.get("comments_per_video", 20))
     for term in cfg.get("search_terms", []):
         s = requests.get("https://www.googleapis.com/youtube/v3/search", timeout=25, params={
             "part": "snippet", "q": term, "type": "video", "order": "relevance",
-            "publishedAfter": iso(since), "maxResults": cfg.get("videos_per_term", 4), "key": key})
+            "publishedAfter": iso(since), "maxResults": max(1, min(50, int(cfg.get("videos_per_term", 4)))), "key": key})
         if s.status_code == 403:
             raise RuntimeError("YouTube refused the key (check the key, or the daily quota is used up)")
         s.raise_for_status()
@@ -209,19 +228,120 @@ def collect_youtube(cfg: dict, since: dt.datetime) -> list:
             if vid in seen_videos:
                 continue
             seen_videos.add(vid)
-            vtitle = clean_text(item["snippet"].get("title", ""))[:140]
-            c = requests.get("https://www.googleapis.com/youtube/v3/commentThreads", timeout=25, params={
-                "part": "snippet", "videoId": vid, "order": "relevance", "textFormat": "plainText",
-                "maxResults": cfg.get("comments_per_video", 20), "key": key})
-            if c.status_code != 200:
-                continue  # comments turned off on this video
-            for th in c.json().get("items", []):
-                sn = th["snippet"]["topLevelComment"]["snippet"]
-                out.append(post("yt:" + th["id"], "youtube", "YouTube comments",
-                                sn.get("textOriginal") or sn.get("textDisplay", ""),
-                                parse_iso(sn.get("publishedAt", "")), sn.get("likeCount", 0),
-                                f"https://www.youtube.com/watch?v={vid}", True, False,
-                                "public", f"video: {vtitle}"))
+            out += _youtube_comments(key, vid, clean_text(item["snippet"].get("title", ""))[:140], per_video, "YouTube comments")
+    for ch in cfg.get("channels") or []:
+        handle = str(ch.get("handle") or ch.get("name") or "").strip()
+        label = ch.get("label") or handle
+        if not handle:
+            continue
+        try:
+            r = requests.get("https://www.googleapis.com/youtube/v3/channels", timeout=25,
+                             params={"part": "contentDetails", "forHandle": handle.lstrip("@"), "key": key})
+            r.raise_for_status()
+            items = r.json().get("items") or []
+            if not items:
+                raise RuntimeError("no channel with this handle")
+            uploads = items[0]["contentDetails"]["relatedPlaylists"]["uploads"]
+            r = requests.get("https://www.googleapis.com/youtube/v3/playlistItems", timeout=25,
+                             params={"part": "snippet", "playlistId": uploads,
+                                     "maxResults": max(1, min(20, int(cfg.get("videos_per_channel", 6)))), "key": key})
+            r.raise_for_status()
+            got = 0
+            for item in r.json().get("items") or []:
+                sn = item["snippet"]
+                vid = (sn.get("resourceId") or {}).get("videoId")
+                when = parse_iso(sn.get("publishedAt", ""))
+                if not vid or vid in seen_videos or (when and when < since):
+                    continue
+                seen_videos.add(vid)
+                cm = _youtube_comments(key, vid, clean_text(sn.get("title", ""))[:140], per_video, f"YouTube comments on {label}")
+                out += cm
+                got += len(cm)
+            log(f"        YouTube channel {label}: {got} comments")
+        except Exception as e:  # noqa: BLE001 - one channel must not stop the others
+            log(f"        YouTube channel {label}: FAIL {str(e)[:120]}")
+    return out
+
+
+def collect_threads(cfg: dict, since: dt.datetime) -> list:
+    """Recent public Threads posts matching each search term, through Meta's Threads API keyword search.
+    Needs the THREADS_ACCESS_TOKEN secret (GUIDE.md, extra A4). Individuals are never linked."""
+    token = secret("THREADS_ACCESS_TOKEN")
+    if not token:
+        raise RuntimeError("THREADS_ACCESS_TOKEN secret is missing")
+    out, seen = [], set()
+    for term in cfg.get("search_terms", []):
+        r = requests.get("https://graph.threads.net/v1.0/keyword_search", timeout=25, headers=HEADERS, params={
+            "q": term, "search_type": "RECENT", "fields": "id,text,timestamp",
+            "limit": max(1, min(100, int(cfg.get("posts_per_term", 50)))), "access_token": token})
+        if r.status_code in (400, 401, 403):
+            err = (r.json().get("error") or {}) if r.headers.get("content-type", "").startswith("application/json") else {}
+            code, msg = err.get("code"), (err.get("message") or r.text)[:150]
+            if code == 190:
+                raise RuntimeError("Threads rejected the token (expired or wrong) - renew THREADS_ACCESS_TOKEN (GUIDE.md, extra A4)")
+            if code in (10, 200) or "permission" in msg.lower():
+                raise RuntimeError(f"Threads keyword search is not approved for this app yet (GUIDE.md, extra A4): {msg}")
+            raise RuntimeError(f"Threads refused the request ({r.status_code}): {msg}")
+        if r.status_code == 429:
+            raise RuntimeError("Threads rate limit reached - it will try again next hour")
+        r.raise_for_status()
+        for x in r.json().get("data", []):
+            if x.get("id") in seen or not x.get("text"):
+                continue
+            seen.add(x["id"])
+            when = parse_iso(x.get("timestamp", ""))
+            if when and when < since:
+                continue
+            out.append(post("th:" + hashlib.sha1(str(x["id"]).encode()).hexdigest()[:16], "threads", "Threads posts",
+                            x["text"], when, 0, "", False, cfg.get("filter", True), "public"))
+        time.sleep(1)
+    return out
+
+
+def collect_instagram(cfg: dict, since: dt.datetime) -> list:
+    """Captions of recent public Instagram posts under each hashtag, through the official Instagram Graph API
+    hashtag search (30 hashtags per week). Needs the INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_USER_ID secrets
+    (GUIDE.md, extra A5). Individuals are never linked."""
+    token, user = secret("INSTAGRAM_ACCESS_TOKEN"), secret("INSTAGRAM_USER_ID")
+    if not (token and user):
+        raise RuntimeError("INSTAGRAM_ACCESS_TOKEN or INSTAGRAM_USER_ID secret is missing")
+    base = "https://graph.facebook.com/v21.0"
+
+    def fail(r):
+        err = (r.json().get("error") or {}) if r.headers.get("content-type", "").startswith("application/json") else {}
+        code, msg = err.get("code"), (err.get("message") or r.text)[:150]
+        if code == 190:
+            return RuntimeError("Instagram rejected the token (expired or wrong) - renew INSTAGRAM_ACCESS_TOKEN (GUIDE.md, extra A5)")
+        if code in (10, 200) or "permission" in msg.lower():
+            return RuntimeError(f"Instagram hashtag search is not approved for this app yet (GUIDE.md, extra A5): {msg}")
+        return RuntimeError(f"Instagram refused the request ({r.status_code}): {msg}")
+
+    out, seen = [], set()
+    for tag in cfg.get("hashtags", [])[:30]:
+        tag = str(tag).lstrip("#").strip()
+        r = requests.get(f"{base}/ig_hashtag_search", timeout=25, headers=HEADERS,
+                         params={"user_id": user, "q": tag, "access_token": token})
+        if r.status_code != 200:
+            raise fail(r)
+        ids = [x.get("id") for x in r.json().get("data", []) if x.get("id")]
+        if not ids:
+            continue
+        r = requests.get(f"{base}/{ids[0]}/recent_media", timeout=25, headers=HEADERS, params={
+            "user_id": user, "fields": "id,caption,timestamp,like_count,comments_count",
+            "limit": max(1, min(50, int(cfg.get("posts_per_hashtag", 50)))), "access_token": token})
+        if r.status_code != 200:
+            raise fail(r)
+        for x in r.json().get("data", []):
+            if x.get("id") in seen or not x.get("caption"):
+                continue
+            seen.add(x["id"])
+            when = parse_iso(x.get("timestamp", ""))
+            if when and when < since:
+                continue
+            out.append(post("ig:" + hashlib.sha1(str(x["id"]).encode()).hexdigest()[:16], "instagram", "Instagram posts",
+                            x["caption"], when, int(x.get("like_count") or 0) + int(x.get("comments_count") or 0), "", False,
+                            cfg.get("filter", True), "public", f"hashtag: #{tag}"))
+        time.sleep(1)
     return out
 
 
@@ -435,6 +555,16 @@ def collect_all(cfg: dict) -> tuple[list, list]:
     xc = cfg.get("x_twitter") or {}
     if xc.get("enabled"):
         jobs.append(("X posts", "x", lambda: collect_x(xc)))
+    th = cfg.get("threads") or {}
+    if th.get("enabled") and not secret("THREADS_ACCESS_TOKEN"):
+        log("  skip  threads   no Threads token yet (GUIDE.md, extra A4)")
+    elif th.get("enabled"):
+        jobs.append(("Threads posts", "threads", lambda: collect_threads(th, since)))
+    ig = cfg.get("instagram") or {}
+    if ig.get("enabled") and not (secret("INSTAGRAM_ACCESS_TOKEN") and secret("INSTAGRAM_USER_ID")):
+        log("  skip  instagram no Instagram token yet (GUIDE.md, extra A5)")
+    elif ig.get("enabled"):
+        jobs.append(("Instagram posts", "instagram", lambda: collect_instagram(ig, since)))
 
     posts, status = [], []
     for name, platform, fn in jobs:
@@ -686,6 +816,10 @@ def source_names_ar(cfg: dict) -> dict:
             out[str(label)] = str(item["label_ar"])
             out[f"Comments on {label}"] = f"تعليقات على {item['label_ar']}"   # rows added by the Telegram connection
             out[f"Group: {label}"] = f"مجموعة: {item['label_ar']}"
+    for ch in (cfg.get("youtube") or {}).get("channels") or []:
+        label = ch.get("label") or ch.get("handle") or ch.get("name")
+        if label and ch.get("label_ar"):
+            out[f"YouTube comments on {label}"] = f"تعليقات يوتيوب على {ch['label_ar']}"
     return out
 
 
@@ -886,7 +1020,7 @@ def main() -> int:
         p["pid"] = f"p{i}"
     counts = Counter(p["source"] for p in posts)
     for s in status:
-        s["recent"] = counts.get(s["name"], 0) if s["platform"] in ("telegram", "news", "reddit", "bluesky") else s.get("fetched", 0)
+        s["recent"] = counts.get(s["name"], 0) if s["platform"] in ("telegram", "news", "reddit", "bluesky", "threads", "instagram") else s.get("fetched", 0)
     n_pub = sum(1 for p in sample if p["voice"] == "public")
     log(f"Collected {len(raw)} items -> {len(posts)} recent & relevant -> {len(sample)} sent to analysis "
         f"({len(sample) - n_pub} outlet, {n_pub} public)")
