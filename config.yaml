@@ -12,10 +12,10 @@ site_title_ar: "متتبّع السرديات السورية"
 window_hours: 24
 
 # Which Claude model does the analysis:
-#   claude-haiku-4-5-20251001  -> lowest cost, fast (current setting)
-#   claude-sonnet-5            -> about twice the cost, more nuanced reading
-#                                 of dialect, sarcasm and competing framings
-model: "claude-haiku-4-5-20251001"
+#   claude-sonnet-5            -> more careful reading of dialect, sarcasm and
+#                                 competing framings (current setting)
+#   claude-haiku-4-5-20251001  -> about half the cost, less nuanced
+model: "claude-sonnet-5"
 
 # The language the website opens in: "en" (English) or "ar" (Arabic).
 # Everything is written in both; visitors switch with the button at the top.
@@ -35,7 +35,84 @@ public_share: 0.7
 history_hours: 336
 
 # Days of outlet headlines kept for the website's search box.
+# (The archive under data/archive keeps everything permanently.)
 headline_days: 7
+
+# -------------------------------------------------------------
+#  THEMES
+#  Every story is also filed under exactly one of these fixed themes, so
+#  the trend views and downloads can compare like with like over months.
+#  "about" tells the analysis what belongs where. Keep "other" last.
+#  Changing ids breaks continuity in the trends; changing labels is safe.
+# -------------------------------------------------------------
+themes:
+  - id: economy
+    label: "Economy and services"
+    label_ar: "الاقتصاد والخدمات"
+    about: "Cost of living, prices, wages, the currency, fuel, electricity, water, reconstruction, jobs, trade and investment deals, banking."
+  - id: security
+    label: "Security and violence"
+    label_ar: "الأمن والعنف"
+    about: "Clashes, attacks, assassinations, explosions, ISIS, weapons, checkpoints, disarmament, operations by the army and security forces, crime."
+  - id: northeast-kurdish
+    label: "North-east and the Kurdish question"
+    label_ar: "الشمال الشرقي والمسألة الكردية"
+    about: "The SDF, the Autonomous Administration, integration talks with Damascus, Kurdish rights and language, Turkey's role in the north, Hasakah, Raqqa, Kobani, Afrin."
+  - id: suwayda-druze
+    label: "Suwayda and the Druze"
+    label_ar: "السويداء والدروز"
+    about: "Events in Suwayda province and the Druze community, including Israel's involvement there."
+  - id: coast-alawite
+    label: "Coast and Alawite communities"
+    label_ar: "الساحل والعلويون"
+    about: "Latakia, Tartus and the Homs countryside; violence, fears and grievances affecting Alawites."
+  - id: justice
+    label: "Transitional justice"
+    label_ar: "العدالة الانتقالية"
+    about: "Detainees, the disappeared, mass graves, accountability for Assad-era crimes, amnesty, revenge, the fate of former regime figures."
+  - id: governance
+    label: "Governance and the new state"
+    label_ar: "الحكم والدولة الجديدة"
+    about: "The presidency, government and ministries, the constitution, elections, laws and decrees, appointments, corruption, freedoms, civil society, the media."
+  - id: israel-south
+    label: "Israel and the south"
+    label_ar: "إسرائيل والجنوب"
+    about: "Israeli strikes and incursions, Quneitra, Daraa, the Golan, talks with Israel, Gaza and Palestine as they relate to Syria."
+  - id: international
+    label: "International relations"
+    label_ar: "العلاقات الدولية"
+    about: "Sanctions, the US, Turkey, the Gulf states, Iran, Russia, Europe, the UN, foreign visits and diplomacy, Lebanon and Jordan."
+  - id: refugees
+    label: "Refugees and return"
+    label_ar: "اللاجئون والعودة"
+    about: "Returns from Turkey, Lebanon, Jordan and Europe, deportations, displaced people inside Syria, housing and property."
+  - id: society
+    label: "Society and daily life"
+    label_ar: "المجتمع والحياة اليومية"
+    about: "Religion and religious authority, women, education, health, sport, culture, sectarian discourse in general, weather and disasters."
+  - id: other
+    label: "Other"
+    label_ar: "أخرى"
+    about: "Anything that fits no theme above."
+
+# Events drawn as markers on the trend charts. Add your own; keep the date format.
+events:
+  - date: 2026-09-23
+    label: "President al-Sharaa addresses the UN General Assembly"
+    label_ar: "الرئيس الشرع يخاطب الجمعية العامة للأمم المتحدة"
+
+# What changed in the method, shown on the Methodology page. Add a line whenever
+# you change sources, the model, sampling settings or the analysis instructions.
+method_changelog:
+  - date: 2026-09-11
+    note: "Tracker started: 2 Telegram channels, 1 news feed, YouTube comments and X; Claude Haiku 4.5; up to 150 posts per run."
+    note_ar: "انطلاق المتتبّع: قناتا تيليغرام وخلاصة إخبارية واحدة وتعليقات يوتيوب ومنشورات X؛ نموذج Claude Haiku 4.5؛ حتى 150 منشوراً في كل تحديث."
+  - date: 2026-09-23
+    note: "Sources widened to 22 Telegram channels and 7 news feeds (official, independent, Kurdish-run, regional); Reddit r/syria added; Kurdish keywords and per-post language detection; up to 300 posts per run; the full analysis of every run is kept."
+    note_ar: "توسيع المصادر إلى 22 قناة تيليغرام و7 خلاصات إخبارية (رسمية ومستقلة وكردية وإقليمية)؛ إضافة ريديت r/syria؛ كلمات مفتاحية كردية وتحديد لغة كل منشور؛ حتى 300 منشور في كل تحديث؛ حفظ التحليل الكامل لكل تحديث."
+  - date: 2026-09-28
+    note: "Fixed theme categories added to every story; tone by language and by source type; permanent archive and downloads; model switched to Claude Sonnet 5. Themes for earlier stories were assigned afterwards from their titles and summaries."
+    note_ar: "إضافة فئات موضوعية ثابتة لكل قصة؛ النبرة حسب اللغة وحسب نوع المصدر؛ أرشيف دائم وملفات للتنزيل؛ الانتقال إلى نموذج Claude Sonnet 5. صُنّفت القصص السابقة لاحقاً اعتماداً على عناوينها وملخصاتها."
 
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
