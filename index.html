@@ -1230,11 +1230,11 @@ function trendsHTML() {
     </div>
     ${covered}
   </section>
-  ${sec("what", t.whatTitle, t.whatSub, body("what", "themebars"))}
   ${sec("themes", t.themeTrendTitle, t.themeTrendSub, body("themes", "multiples"))}
   ${sec("gap", t.gapTitle, t.gapSub, body("gap", "chart") + `<div id="l-gap"></div>`)}
   ${sec("lang", t.langTitle, t.langSub, body("lang", "multiples"))}
   ${sec("kind", t.kindTitle, t.kindSub, body("kind", "multiples"))}
+  ${sec("what", t.whatTitle, t.whatSub, body("what", "themebars"))}
   ${weeklyHTML()}`;
 }
 function weeklyHTML() {
