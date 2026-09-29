@@ -407,6 +407,7 @@ const T = {
     hint: "This update is based on news outlets only. People's reactions will appear here as comment sources are added.",
     fallback: "",
     stories: "Stories", storiesSub: (n, h) => `${n} ${n === "1" ? "story" : "stories"} in the last ${h} hours. Open one to read more.`,
+    coverage: (p) => `Together they cover ${p} of the posts analysed; the rest fit no clear story, so the percentages do not add up to 100%.`,
     sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
     people: "People", outlets: "Outlets", negative: "Negative", neutral: "Neutral", positive: "Positive",
     noStories: "No clear stories in this update.",
@@ -523,6 +524,7 @@ const T = {
     hint: "يعتمد هذا التحديث على وسائل الإعلام فقط، وستظهر تفاعلات الناس هنا عند إضافة مصادر التعليقات.",
     fallback: "بعض النصوص في هذا التحديث متوفرة بالإنجليزية فقط، وستظهر بالعربية مع التحديث القادم.",
     stories: "القصص", storiesSub: (n, h) => `عدد القصص خلال آخر ${h} ساعة: ${n}. افتح أي قصة لمعرفة المزيد.`,
+    coverage: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فلا تنتمي إلى قصة واضحة، ولذلك لا يبلغ مجموع النسب ١٠٠٪.`,
     sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
     people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
     noStories: "لا توجد قصص واضحة في هذا التحديث.",
@@ -827,7 +829,7 @@ function storiesHTML() {
   return `
   <section aria-labelledby="h-stories">
     <div class="sec-head">
-      <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}</p></div>
+      <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}${nars.length ? " " + t.coverage(pctText(Math.min(1, nars.reduce((a, n) => a + (n.share || 0), 0)))) : ""}</p></div>
       <div class="seg" role="group" aria-label="${t.sortLabel}">${btn("share", t.mostDiscussed)}${btn("negative", t.mostNegative)}${btn("gap", t.biggestGap)}</div>
     </div>
     ${nars.length ? `
