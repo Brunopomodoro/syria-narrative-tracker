@@ -118,7 +118,10 @@
   .tbl-btn[aria-pressed="true"], .tbl-btn:hover { color: var(--ink); border-color: var(--ink); }
   .themebars { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) minmax(150px, 260px); gap: 10px 20px; align-items: center; }
   .themebars .lbl-t { font-size: .92rem; }
-  .themebars .bar { position: relative; height: 12px; background: var(--wash); border-radius: 0 4px 4px 0; overflow: visible; }
+  .themebars .lbl-t.on { font-weight: 600; color: var(--brass); }
+  .multiples.one { grid-template-columns: minmax(0, 1fr); }
+  .filters #theme-hint { margin: 0; font-size: .82rem; }
+  .themebars .bar { position: relative; height: 12px; background: var(--wash); border-radius: 0 4px 4px 0; overflow: visible; margin-inline-end: 48px; }   /* room for the label after the longest bar */
   html[dir="rtl"] .themebars .bar { border-radius: 4px 0 0 4px; }
   .themebars .bar i { position: absolute; inset-inline-start: 0; top: 0; height: 100%; background: var(--brass); border-radius: 0 4px 4px 0; opacity: .85; }
   html[dir="rtl"] .themebars .bar i { border-radius: 4px 0 0 4px; }
@@ -428,6 +431,8 @@ const T = {
     /* trends */
     trendsTitle: "Trends", trendsSub: "How the discussion has moved over time, by theme, by community and by kind of outlet.",
     period: "Period", periods: { 30: "30 days", 90: "90 days", 365: "A year", 0: "All" }, themeSel: "Theme", allThemes: "All themes",
+    themeHint: "Choosing a theme focuses every chart below on it.", themeOnly: (n) => `Only ${n} over the period; the strip shows the tone of people's reactions each day.`,
+    themeSince: "Tone by language and by kind of outlet is recorded per theme from 28 September 2026, so earlier days show no line here.",
     tableBtn: "Table", chartBtn: "Chart", loadingTrends: "Loading the archive…", noTrends: "The archive is empty so far.",
     daysCovered: (n, a, b) => `${n} days, ${a} to ${b}.`,
     whatTitle: "What people talk about", whatSub: "Share of the discussion and tone per theme over the period. Bars show the average share of posts; dots show the tone of people (filled) and outlets (ring).",
@@ -541,6 +546,8 @@ const T = {
     kinds: { "": "كل المصادر", official: "رسمية", independent: "مستقلة ومعارضة سابقاً", kurdish: "كردية", regional: "إقليمية", aggregator: "مجمّعات أخبار" },
     trendsTitle: "الاتجاهات", trendsSub: "كيف تحرّك النقاش مع الوقت، حسب الموضوع والمجتمع ونوع وسيلة الإعلام.",
     period: "الفترة", periods: { 30: "٣٠ يوماً", 90: "٩٠ يوماً", 365: "سنة", 0: "الكل" }, themeSel: "الموضوع", allThemes: "كل المواضيع",
+    themeHint: "اختيار موضوع يركّز كل الرسوم أدناه عليه.", themeOnly: (n) => `موضوع ${n} فقط خلال الفترة؛ الشريط يبيّن نبرة تفاعل الناس في كل يوم.`,
+    themeSince: "تُسجَّل النبرة حسب اللغة وحسب نوع وسيلة الإعلام لكل موضوع منذ ٢٨ أيلول ٢٠٢٦، لذا لا يظهر خط للأيام السابقة هنا.",
     tableBtn: "جدول", chartBtn: "رسم", loadingTrends: "جارٍ تحميل الأرشيف…", noTrends: "الأرشيف فارغ حتى الآن.",
     daysCovered: (n, a, b) => `عدد الأيام ${n}، من ${a} إلى ${b}.`,
     whatTitle: "ما الذي يتحدث عنه الناس", whatSub: "حصة كل موضوع من النقاش ونبرته خلال الفترة. الأشرطة تبيّن متوسط حصة المنشورات، والنقاط تبيّن نبرة الناس (ممتلئة) ووسائل الإعلام (حلقة).",
@@ -1219,6 +1226,7 @@ function trendsHTML() {
     <div class="filters">
       <span class="seg" role="group" aria-label="${t.period}">${["30", "90", "365", "0"].map(seg).join("")}</span>
       ${sel}
+      <span class="sub" id="theme-hint">${t.themeHint}</span>
     </div>
     ${covered}
   </section>
@@ -1266,7 +1274,13 @@ function drawTrends() {
   const days = periodDays();
   if (!days.length) return;
   const themes = (idx.themes || []).map(x => x.id), pct = (v) => pctText(v), tone = (v) => has(v) ? signed(v) : "";
-  const th = S.theme;
+  const th = S.theme && themes.includes(S.theme) ? S.theme : "";
+  // the chosen theme is named in every section heading, so the focus is visible without scrolling back up
+  const focus = (id, title) => { const h = $(`#h-${id}`); if (h) h.textContent = th ? `${title}: ${themeLabel(th)}` : title; };
+  focus("themes", t.themeTrendTitle); focus("gap", t.gapTitle); focus("lang", t.langTitle); focus("kind", t.kindTitle);
+  const subOf = (id, text) => { const p = $(`#h-${id}`)?.nextElementSibling; if (p) p.textContent = text; };
+  subOf("themes", th ? t.themeOnly(themeLabel(th)) : t.themeTrendSub);
+  subOf("lang", th ? `${t.langSub} ${t.themeSince}` : t.langSub); subOf("kind", th ? `${t.kindSub} ${t.themeSince}` : t.kindSub);
 
   // 1. what people talk about: mean share per theme over the period, and the people/outlet tone
   const what = themes.map(id => {
@@ -1282,7 +1296,7 @@ function drawTrends() {
       box.textContent = "";
       const max = Math.max(0.05, ...what.map(x => x.share));
       for (const x of what) {
-        box.appendChild(el("div", "lbl-t", themeLabel(x.id)));
+        box.appendChild(el("div", "lbl-t" + (th === x.id ? " on" : ""), themeLabel(x.id)));
         const bar = el("div", "bar"), fill = el("i"), lbl = el("span", "", pct(x.share));
         fill.style.width = (x.share / max * 100) + "%";
         lbl.style.insetInlineStart = `calc(${x.share / max * 100}% + 8px)`;
@@ -1298,10 +1312,10 @@ function drawTrends() {
   // 2. themes over time: small multiples on one shared scale, with the tone strip
   box = $("#c-themes");
   if (box) {
-    const active = themes.filter(id => days.some(d => d.themes[id]));
+    const active = th ? [th] : themes.filter(id => days.some(d => d.themes[id]));
     if (S.tables.has("themes")) dataTable(box, [t.dateCol, ...active.map(themeLabel)], days.map(d => [fmtDay(d.date), ...active.map(id => pct(d.themes[id]?.share || 0))]));
     else {
-      box.className = "multiples"; box.textContent = "";
+      box.className = th ? "multiples one" : "multiples"; box.textContent = "";
       const max = Math.max(0.1, ...days.flatMap(d => active.map(id => d.themes[id]?.share || 0)));
       for (const id of active) {
         const m = el("div", "m"), h3 = el("h3", "", themeLabel(id)), vals = days.map(d => d.themes[id]?.share ?? 0);
@@ -1314,7 +1328,7 @@ function drawTrends() {
         for (const d of days) { const i = el("i"); const v = d.themes[id] ? toneOf(d.themes[id]) : null; if (has(v)) i.style.background = toneColor(v); i.title = `${fmtDay(d.date)}: ${has(v) ? signed(v) : "–"}`; strip.appendChild(i); }
         m.appendChild(strip);
         box.appendChild(m);
-        lineChart(c, { days, height: 84, compact: true, range: [0, max], ticks: [0, max], fmtY: pct, label: themeLabel(id),
+        lineChart(c, { days, height: th ? 200 : 84, compact: !th, range: [0, max], ticks: [0, max], fmtY: pct, label: themeLabel(id),
                        series: [{ values: vals, cls: "focus", area: true, label: t.shareLbl, endLabel: false }],
                        extraRows: (i) => { const r = days[i].themes[id]; return r ? [{ cls: "tone", color: has(toneOf(r)) ? toneColor(toneOf(r)) : "transparent", value: tone(toneOf(r)), label: t.people }, { value: num(r.stories), label: t.stories }] : []; } });
       }
@@ -1325,7 +1339,8 @@ function drawTrends() {
   box = $("#c-gap");
   const evs = (idx.events || []).filter(e => e.date >= days[0].date && e.date <= days[days.length - 1].date);
   if (box) {
-    const pub = days.map(d => d.public_sentiment ?? null), out = days.map(d => d.outlet_sentiment ?? null);
+    const pub = days.map(d => (th ? d.themes[th]?.public_sentiment : d.public_sentiment) ?? null),
+          out = days.map(d => (th ? d.themes[th]?.outlet_sentiment : d.outlet_sentiment) ?? null);
     const legend = $("#l-gap");
     legend.textContent = "";
     if (S.tables.has("gap")) dataTable(box, [t.dateCol, t.people, t.outlets], days.map((d, i) => [fmtDay(d.date), tone(pub[i]), tone(out[i])]));
