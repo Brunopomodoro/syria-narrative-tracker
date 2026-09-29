@@ -35,6 +35,8 @@ MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "Au
 W = {   # the words on the static pages
     "en": {"tracker": "Tracker", "trends": "Trends", "data": "Data", "about": "About", "switch": "العربية",
            "people": "People", "outlets": "Outlets", "reacting": "How people are reacting", "framed": "How it's framed", "watch": "Watch for:",
+           "sigTitle": "Signs of coordination:", "sigLevels": {"none": "none", "low": "weak", "medium": "moderate", "high": "strong"},
+           "sigNote": "Measured signals, not proof: real breaking news, popular slogans and a few devoted commenters produce them too. The About page explains each one.",
            "where": "Sources", "overtime": "Over time", "update": "Update", "share": "Share of discussion", "firstSeen": "First seen", "lastSeen": "Last seen",
            "updates": "updates", "update1": "update", "story": "Story", "theme": "Theme", "emotions": "Emotions", "listing": "Stories", "listingSub": "Every story the tracker has followed in the last 30 days, by the day it was last seen. Older stories are in the downloads on the Data page.",
            "allStories": "All recent stories", "digest": "Weekly digest", "digests": "Weekly digests", "week": "Week", "highlights": "The week's stories", "watchNext": "What to watch",
@@ -48,6 +50,8 @@ W = {   # the words on the static pages
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in"},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
            "people": "الناس", "outlets": "وسائل الإعلام", "reacting": "كيف يتفاعل الناس", "framed": "كيف تُقدَّم القصة", "watch": "انتبه إلى:",
+           "sigTitle": "مؤشرات التنسيق:", "sigLevels": {"none": "لا شيء", "low": "ضعيفة", "medium": "متوسطة", "high": "قوية"},
+           "sigNote": "مؤشرات مقيسة لا أدلة: الأخبار العاجلة الحقيقية والشعارات الشائعة وقلة من المعلّقين المتحمسين تنتجها أيضاً. تشرح صفحة «حول» كل مؤشر.",
            "where": "المصادر", "overtime": "مع الوقت", "update": "التحديث", "share": "الحصة من النقاش", "firstSeen": "أول ظهور", "lastSeen": "آخر ظهور",
            "updates": "تحديثاً", "update1": "تحديث واحد", "story": "قصة", "theme": "الموضوع", "emotions": "المشاعر", "listing": "القصص", "listingSub": "كل قصة تابعها المتتبّع خلال آخر ٣٠ يوماً، حسب يوم آخر ظهور لها. القصص الأقدم في ملفات التنزيل على صفحة البيانات.",
            "allStories": "كل القصص الحديثة", "digest": "الملخص الأسبوعي", "digests": "الملخصات الأسبوعية", "week": "الأسبوع", "highlights": "قصص الأسبوع", "watchNext": "ما يجب متابعته",
@@ -78,6 +82,7 @@ h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:34px 0 10
 .tone i.o{background:transparent;border:1.5px solid var(--ink)}.tone b{color:var(--ink);font-weight:500}
 .reaction{border-inline-start:3px solid var(--neu);padding:6px 16px;margin:0 0 18px}.reaction p{margin:0}
 ul{padding-inline-start:20px}li{margin-bottom:6px}.flag{color:var(--brass);font-size:.95rem}
+.signals{margin:14px 0 18px;padding:10px 14px;border-inline-start:3px solid var(--faint);background:var(--wash);border-radius:0 6px 6px 0;font-size:.92rem}html[dir="rtl"] .signals{border-radius:6px 0 0 6px}.signals.medium{border-color:var(--brass)}.signals.high{border-color:var(--neg)}.signals p{margin:0}.signals ul{margin:6px 0 0}.signals .sub{margin-top:8px;font-size:.82rem}
 .tw{overflow-x:auto;max-width:100%;margin:6px 0 18px}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:start;padding:7px 12px 7px 0;border-bottom:1px solid var(--rule);vertical-align:top}th{color:var(--muted);font-weight:500}
 td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative;height:10px;background:var(--wash);border-radius:3px;min-width:80px}.bar i{position:absolute;inset-inline-start:0;top:0;height:100%;background:var(--brass);border-radius:3px;opacity:.85}
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
@@ -269,6 +274,28 @@ def story_runs(key: str, first_day: str, last_day: str, cache: dict) -> list:
     return out
 
 
+def signal_value(i: dict, lang: str) -> str:
+    """One signal's value in words (the same phrasing as the website)."""
+    v, n = i.get("value"), i.get("n")
+    if isinstance(v, float) and v.is_integer():
+        v = int(v)
+    if lang == "ar":
+        return {"copies": f"{pct(v, lang)} من {num(n, lang)} منشوراً للناس تكرار حرفي",
+                "near_copies": f"{pct(v, lang)} من {num(n, lang)} نصاً مميزاً شبه متطابقة",
+                "burst": f"احتوت الساعة الأكثر نشاطاً على {num(v, lang)} أضعاف المتوسط الساعي ({num(n, lang)} منشوراً)",
+                "burst_no_news": "لم تغطِّ أي وسيلة إعلام على القائمة القصة في تلك الساعة",
+                "synchrony": f"ظهر {num(v, lang)} نصوص على منصات عدة خلال ساعة",
+                "concentration": f"كتب أعلى ٥٪ من المعلّقين {pct(v, lang)} من {num(n, lang)} تعليقاً",
+                "regularity": f"تتفاوت الفواصل بين التعليقات بنسبة {pct(v, lang)} فقط ({num(n, lang)} تعليقاً)"}.get(i.get("id"), str(v))
+    return {"copies": f"{pct(v, lang)} of {num(n, lang)} public posts are exact repeats",
+            "near_copies": f"{pct(v, lang)} of {num(n, lang)} distinct texts are near-identical",
+            "burst": f"the busiest hour held {v}× the hourly average ({num(n, lang)} posts)",
+            "burst_no_news": "no outlet on the list covered the story in that hour",
+            "synchrony": f"{num(v, lang)} texts appeared on several platforms within an hour",
+            "concentration": f"the top 5% of commenters wrote {pct(v, lang)} of {num(n, lang)} comments",
+            "regularity": f"comment intervals vary by only {pct(v, lang)} ({num(n, lang)} comments)"}.get(i.get("id"), str(v))
+
+
 def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
     w = W[lang]
     key = n.get("key") or archive.story_key(n)
@@ -292,6 +319,12 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
     flags = t(n, "flags", lang) or []
     if flags:
         parts.append(f"<p class=\"flag\">{w['watch']} {esc(('؛ ' if lang == 'ar' else '; ').join(flags))}</p>")
+    sig = n.get("signals") or {}
+    if sig.get("items"):
+        import signals as SIG
+        cat = {c["id"]: c for c in SIG.CATALOG}
+        rows = "".join(f"<li><b>{esc(cat[i['id']]['label_ar' if lang == 'ar' else 'label'] if i['id'] in cat else i['id'])}</b> {esc(signal_value(i, lang))}</li>" for i in sig["items"])
+        parts.append(f"<div class=\"signals {esc(sig.get('level', ''))}\"><p><b>{w['sigTitle']} {w['sigLevels'].get(sig.get('level'), '')}</b></p><ul>{rows}</ul><p class=\"sub\">{esc(w['sigNote'])}</p></div>")
     names = n.get("sources") or []
     links = [e for e in (n.get("examples") or []) if str(e.get("url", "")).startswith("https://")]
     if names or links:

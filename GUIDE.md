@@ -390,6 +390,12 @@ For a DOI that journals accept, use Zenodo (free, run by CERN):
 
 Make a new release every month or two; each one becomes a new versioned snapshot under the same concept DOI.
 
+### Coordination signals
+
+Every story carries measurable signs that its public reaction may be organised rather than spontaneous, computed by `scripts/signals.py` from the posts assigned to the story in that update: copy-paste posting, near-identical posts, a sudden burst, a burst with no outlet coverage in that hour, the same text on several platforms within an hour, a few commenters writing most comments, and regular timing. Each triggered signal is shown under the story with its value, a level (weak, moderate, strong) and its innocent explanation, and the values are in the `stories.csv` downloads (`signal_level`, `signal_count`, `signals`). The About page's "Coordination signals" section documents each one.
+
+Two rules of reading them: they are signals, not proof, since real breaking news, popular slogans and a few devoted commenters produce them too; and they never say who is behind anything. Nobody is identified: commenter concentration is counted from one-way hashes that exist only in memory during the update. The signals get far more informative once Telegram comments are connected (extra A2), which is where most organised activity in the Syrian space happens.
+
 ### Validation study: how accurate are the labels?
 
 Researchers will ask how well the generated themes and tones match human judgement. The tools for a validation study are built in; the human part takes two Arabic (and ideally Kurdish) readers a few days.

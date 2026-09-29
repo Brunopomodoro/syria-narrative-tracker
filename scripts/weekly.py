@@ -79,7 +79,7 @@ def week_stats(cfg: dict, week: str) -> dict | None:
                 e.update({"title": n.get("title", ""), "title_ar": n.get("title_ar", ""), "theme": n.get("theme", "other"),
                           "summary": n.get("summary", ""), "public_reaction": n.get("public_reaction", ""),
                           "public_sentiment": n.get("public_sentiment"), "sentiment": n.get("sentiment"),
-                          "framings": n.get("framings", []), "flags": n.get("flags", [])})
+                          "framings": n.get("framings", []), "flags": n.get("flags", []), "signals": n.get("signals")})
                 e["runs"] += 1
                 e["volume"] += int(n.get("volume") or 0)
                 e["max_share"] = max(e["max_share"], float(n.get("share") or 0))
@@ -105,6 +105,7 @@ You receive the week's numbers and the stories the tracker followed. Write:
 - "highlights": 3 to 6 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
 - "watch": 2 to 4 short points on what to watch next week, grounded in the stories, not speculation.
 Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare days or weeks with each other; never present them as numbers of posts or of people.
+Some stories carry "Coordination signals": measured signs (copy-paste, near-identical posts, bursts, the same text on several platforms, few commenters writing most comments, regular timing) that the reaction may be organised. Mention them in the paragraphs or "watch" as signs to look into, never as proof of a campaign, and never guess who is behind them.
 Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation)."""
 
 
@@ -138,6 +139,9 @@ def build_message(cfg: dict, s: dict) -> str:
             lines.append(f"    Reaction: {e['public_reaction'][:300]}")
         if e.get("flags"):
             lines.append(f"    Flags: {'; '.join(e['flags'])[:200]}")
+        sig = e.get("signals") or {}
+        if sig.get("items"):
+            lines.append(f"    Coordination signals ({sig.get('level')}): " + ", ".join(f"{i['id']}={i['value']}" for i in sig["items"]))
     return "\n".join(lines)
 
 

@@ -38,6 +38,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import archive  # noqa: E402  (permanent archive, downloads and methodology files; scripts/archive.py)
 import pages  # noqa: E402    (story pages, weekly pages, feeds, sitemap, the crawlable block in index.html)
 import weekly  # noqa: E402   (the weekly digest)
+import signals  # noqa: E402  (coordination signals per story)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -138,10 +139,16 @@ def detect_lang(text: str) -> str:
 
 
 def post(pid, platform, source, text, when, engagement=0, url="", linkable=True, filt=False,
-         voice="outlet", context=""):
+         voice="outlet", context="", who=""):
     return {"id": pid, "platform": platform, "source": source, "text": text, "time": when,
             "engagement": int(engagement or 0), "url": url, "linkable": linkable, "filter": filt,
-            "voice": voice, "context": context}
+            "voice": voice, "context": context, "who": who}
+
+
+def who_hash(author) -> str:
+    """A one-way fingerprint of a commenter, used only in memory to count how concentrated a story's
+    comments are (scripts/signals.py). Never written to any file."""
+    return hashlib.sha256(("snt-who|" + str(author)).encode()).hexdigest()[:16] if author else ""
 
 
 # ----------------------------------------------------------------- collectors: outlets
@@ -204,7 +211,8 @@ def _youtube_comments(key: str, vid: str, vtitle: str, n: int, source: str) -> l
         sn = th["snippet"]["topLevelComment"]["snippet"]
         out.append(post("yt:" + th["id"], "youtube", source, sn.get("textOriginal") or sn.get("textDisplay", ""),
                         parse_iso(sn.get("publishedAt", "")), sn.get("likeCount", 0),
-                        f"https://www.youtube.com/watch?v={vid}", True, False, "public", f"video: {vtitle}"))
+                        f"https://www.youtube.com/watch?v={vid}", True, False, "public", f"video: {vtitle}",
+                        who_hash((sn.get("authorChannelId") or {}).get("value"))))
     return out
 
 
@@ -405,7 +413,7 @@ def collect_bluesky(cfg: dict, since: dt.datetime) -> list:
             eng = x.get("likeCount", 0) + x.get("repostCount", 0) + x.get("replyCount", 0)
             out.append(post("bsky:" + hashlib.sha1(x["uri"].encode()).hexdigest()[:16], "bluesky", "Bluesky posts",
                             rec.get("text", ""), parse_iso(rec.get("createdAt", "")), eng, "", False,
-                            cfg.get("filter", True), "public"))
+                            cfg.get("filter", True), "public", "", who_hash((x.get("author") or {}).get("did"))))
         time.sleep(1)
     return out
 
@@ -447,6 +455,7 @@ def collect_reddit(feed: dict) -> list:
         body = BeautifulSoup(body, "html.parser").get_text(" ", strip=True)
         body = re.sub(r"submitted by\s+/u/\S+.*$", "", body).strip()   # footer Reddit adds to posts
         title = e.get("title", "")
+        author = re.match(r"^/u/(\S+) on ", title)
         if kind == "comments":
             context = "post: " + re.sub(r"^/u/\S+ on ", "", title)[:140]
             text = body
@@ -455,7 +464,7 @@ def collect_reddit(feed: dict) -> list:
         tt = e.get("updated_parsed") or e.get("published_parsed")
         out.append(post("rd:" + hashlib.sha1((e.get("id") or link).encode()).hexdigest()[:16],
                         "reddit", label, text, dt.datetime(*tt[:6], tzinfo=UTC) if tt else None, 0, "", False,
-                        feed.get("filter", False), "public", context))
+                        feed.get("filter", False), "public", context, who_hash(author.group(1) if author else "")))
     out.sort(key=lambda p: p["time"] or NOW, reverse=True)
     return out[:int(feed.get("max_posts", 25))]  # a small forum should not outweigh bigger sources
 
@@ -507,7 +516,7 @@ def collect_telegram_api(cfg: dict, channels: list, since: dt.datetime) -> tuple
                             out.append(post(f"tgc:{name}/{msg.id}/{c.id}", "telegram_comments",
                                             f"Comments on {label}", c.message, c.date,
                                             sum(n for _, n in _reactions(c)), "", False, False,
-                                            "public", f"post: {parent}"))
+                                            "public", f"post: {parent}", who_hash(getattr(c, "sender_id", None))))
                             got += 1
                 status.append({"name": f"Comments on {label}", "platform": "telegram_comments",
                                "ok": True, "fetched": got})
@@ -528,7 +537,7 @@ def collect_telegram_api(cfg: dict, channels: list, since: dt.datetime) -> tuple
                     if m.message:
                         out.append(post(f"tgg:{name}/{m.id}", "telegram_groups", f"Group: {label}",
                                         m.message, m.date, sum(n for _, n in _reactions(m)), "",
-                                        False, g.get("filter", False), "public"))
+                                        False, g.get("filter", False), "public", "", who_hash(getattr(m, "sender_id", None))))
                         got += 1
                 status.append({"name": f"Group: {label}", "platform": "telegram_groups", "ok": True, "fetched": got})
                 log(f"  ok    group     {label}: {got} messages")
@@ -687,7 +696,7 @@ Rules:
 - "outlet_tone": the tone of coverage for each outlet TYPE (official, independent, kurdish, regional, aggregator) that has posts in the narrative; null for types with no posts in it. "public_tone": the tone of PUBLIC voices for each language (ar, ku, en) that has public posts in the narrative; null for languages with none. Both use the same -1 to +1 scale.
 - "public_reaction": 1-2 sentences on how ordinary people are reacting: agreement, anger, jokes, doubt, divisions between groups. Empty string if there are no public voices for it.
 - framings: how different kinds of sources frame the story, in short phrases.
-- flags: signs of coordinated copy-paste messaging (the "copies" note helps; many identical short comments like prayers or slogans are normal), sectarian incitement, or unverified claims spreading. Empty list if none.
+- flags: signs of coordinated copy-paste messaging (the "copies" note helps; many identical short comments like prayers or slogans are normal), comments that ignore the post they reply to and push an unrelated message, sectarian incitement, or unverified claims spreading. Empty list if none.
 - "mood" and "public_mood" name a FEELING in one or two words, with a capital first letter (for example Hopeful, Anxious, Angry, Weary, Divided, Mocking, Grieving, Relieved). Never a topic or description like "Development-focused".
 - Never name or describe private individuals. Public officials and organizations may be named. Paraphrase; never quote a private person's words.
 - Read Kurdish posts as carefully as Arabic ones. Kurdish, Arab, Druze, Alawite, Christian and other communities often frame the same event differently (for example the SDF, the autonomous administration or Kurdish rights in the north-east); when a narrative is framed differently in different languages or communities, say so in "framings" and "public_reaction". Never merge Kurdish-language reactions into the Arabic ones as if they were the same audience.
@@ -977,6 +986,7 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
             "sources": [s for s, _ in Counter(p["source"] for p in ps).most_common(6)],
             "examples": examples,
             "first_seen": first_seen,
+            "post_pids": ids,                             # used by signals.attach, then removed
         })
     out.sort(key=lambda n: n["volume"], reverse=True)
     return out
@@ -1108,6 +1118,7 @@ def main() -> int:
     first_seen = state.get("first_seen", {})
     themes = archive.theme_catalog(cfg)
     narratives = build_narratives(result, sample, first_seen, [t["id"] for t in themes])
+    signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
     if args.validation_sample:
         write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
     for n in narratives:
@@ -1138,6 +1149,8 @@ def main() -> int:
         "headline_days": cfg.get("headline_days", 7),
         "model": cfg.get("model"),
         "stats": {
+            "collected": len(raw),                      # everything the sources returned
+            "relevant": sum(p["copies"] for p in posts),   # recent, on topic, before the sampling cap
             "posts_analyzed": sum(p["copies"] for p in sample),
             "public_posts": sum(p["copies"] for p in sample if p["voice"] == "public"),
             "outlet_posts": sum(p["copies"] for p in sample if p["voice"] != "public"),
@@ -1151,6 +1164,7 @@ def main() -> int:
         "overall": overall,
         "narratives": narratives,
         "themes": [{k: t[k] for k in ("id", "label", "label_ar")} for t in themes],
+        "signal_catalog": [{k: s[k] for k in ("id", "label", "label_ar")} for s in signals.CATALOG],
         "sources": status,
         "source_names_ar": source_names_ar(cfg),
         "cost_usd": cost,
