@@ -246,6 +246,7 @@ RUN_COLS = ["run_time", "posts_analyzed", "public_posts", "outlet_posts", "uniqu
 STORY_COLS = ["run_time", "story_key", "story_id", "theme", "title", "title_ar", "share", "volume", "public_volume",
               "outlet_sentiment", "public_sentiment", "emotions", "framings", "flags", "sources", "platforms", "languages",
               *[f"public_tone_{l}" for l in LANGS], *[f"outlet_tone_{k}" for k in KIND_IDS],
+              "signal_level", "signal_count", "signals",
               "first_seen", "summary", "summary_ar", "public_reaction", "public_reaction_ar"]
 THEME_COLS = ["run_time", "theme", "stories", "share", "volume", "public_volume", "public_sentiment", "outlet_sentiment",
               *[f"public_tone_{l}" for l in LANGS], *[f"outlet_tone_{k}" for k in KIND_IDS]]
@@ -297,6 +298,8 @@ def month_rows(month: str, theme_ids: list) -> dict:
                        "outlet_sentiment": n.get("sentiment"), "public_sentiment": n.get("public_sentiment"),
                        "emotions": _join(n.get("emotions")), "framings": _join(n.get("framings")), "flags": _join(n.get("flags")),
                        "sources": _join(n.get("sources")), "platforms": _kv(n.get("platforms")), "languages": _kv(n.get("languages")),
+                       "signal_level": (n.get("signals") or {}).get("level", ""), "signal_count": (n.get("signals") or {}).get("score", ""),
+                       "signals": "; ".join(f"{i['id']}={i['value']}" for i in (n.get("signals") or {}).get("items") or []),
                        "first_seen": n.get("first_seen"), "summary": n.get("summary"), "summary_ar": n.get("summary_ar"),
                        "public_reaction": n.get("public_reaction"), "public_reaction_ar": n.get("public_reaction_ar")}
                 for l in LANGS:
@@ -445,6 +448,7 @@ def write_methodology(cfg: dict, prompt: str, format_version: int) -> dict:
         "kinds": KINDS,
         "sources": source_catalog(cfg),
         "prompt": prompt,
+        "signals": __import__("signals").CATALOG,
         "changelog": [{"date": str(c.get("date"))[:10], "note": str(c.get("note", "")), "note_ar": str(c.get("note_ar", ""))}
                       for c in (cfg.get("method_changelog") or []) if c.get("date")],
         "events": [{"date": str(e.get("date"))[:10], "label": str(e.get("label", "")), "label_ar": str(e.get("label_ar", ""))}

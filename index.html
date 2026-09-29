@@ -119,6 +119,15 @@
   .themebars { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr) minmax(150px, 260px); gap: 10px 20px; align-items: center; }
   .themebars .lbl-t { font-size: .92rem; }
   .themebars .lbl-t.on { font-weight: 600; color: var(--brass); }
+  .signals { margin-top: 14px; padding: 10px 14px; border-inline-start: 3px solid var(--faint); background: var(--wash); border-radius: 0 6px 6px 0; font-size: .9rem; }
+  html[dir="rtl"] .signals { border-radius: 6px 0 0 6px; }
+  .signals.medium { border-color: var(--brass); }
+  .signals.high { border-color: var(--neg); }
+  .signals ul { margin: 6px 0 0; padding-inline-start: 18px; }
+  .signals li { margin: 2px 0; }
+  .signals .sub { margin: 8px 0 0; font-size: .8rem; }
+  .sigcat p { margin: 0 0 12px; }
+  .sigcat .inn { color: var(--muted); font-size: .88rem; }
   .multiples.one { grid-template-columns: minmax(0, 1fr); }
   .filters #theme-hint { margin: 0; font-size: .82rem; }
   .themebars .bar { position: relative; height: 12px; background: var(--wash); border-radius: 0 4px 4px 0; overflow: visible; margin-inline-end: 48px; }   /* room for the label after the longest bar */
@@ -403,6 +412,7 @@ const T = {
     nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
     outletsMeanwhile: "Outlets meanwhile:",
     voices: (p, o, h) => `${p} voices from people and ${o} from outlets, last ${h} hours.`,
+    collected: (c, r) => `Collected ${c} posts, of which ${r} were recent and on topic.`,
     postsFrom: (n, s, h) => `${n} posts from ${s} sources, last ${h} hours.`,
     hint: "This update is based on news outlets only. People's reactions will appear here as comment sources are added.",
     fallback: "",
@@ -413,6 +423,14 @@ const T = {
     noStories: "No clear stories in this update.",
     reacting: "How people are reacting", framed: "How it's framed", watch: "Watch for:",
     last48: "Last 48 updates", voicesLbl: "Voices", where: "Where",
+    sigTitle: "Signs of coordination:", sigLevels: { none: "none", low: "weak", medium: "moderate", high: "strong" }, sigMore: "How these are measured.",
+    sigNote: "Measured signals, not proof: real breaking news, popular slogans and a few devoted commenters produce them too.",
+    sigValue: { copies: (i) => `${pctText(i.value)} of ${num(i.n)} public posts are exact repeats`, near_copies: (i) => `${pctText(i.value)} of ${num(i.n)} distinct texts are near-identical`,
+                burst: (i) => `the busiest hour held ${i.value}× the hourly average (${num(i.n)} posts)`, burst_no_news: () => "no outlet on the list covered the story in that hour",
+                synchrony: (i) => `${num(i.value)} texts appeared on several platforms within an hour`, concentration: (i) => `the top 5% of commenters wrote ${pctText(i.value)} of ${num(i.n)} comments`,
+                regularity: (i) => `comment intervals vary by only ${pctText(i.value)} (${num(i.n)} comments)` },
+    signalsTitle: "Coordination signals", signalsIntro: "Each story carries a list of measurable signs that its public reaction may be organised rather than spontaneous. They are computed from the posts assigned to the story in that update, without identifying anyone: commenter concentration is counted from one-way hashes that exist only during the update. Every signal has innocent explanations, listed with it, so the level is a prompt for a human to look closer, never a verdict. The values are included in the downloads.",
+    sigInnocent: "Innocent explanation:",
     voicesCount: (p, o) => `${p} from people, ${o} from outlets`, postsCount: (n) => `${n} posts`,
     trend: { New: "New", Rising: "Rising", Fading: "Fading", Steady: "Steady", Returning: "Returning" },
     tone: ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
@@ -520,6 +538,7 @@ const T = {
     nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
     outletsMeanwhile: "أما وسائل الإعلام:",
     voices: (p, o, h) => `عدد مشاركات الناس ${p}، ومنشورات وسائل الإعلام ${o}، خلال آخر ${h} ساعة.`,
+    collected: (c, r) => `جُمع ${c} منشوراً، منها ${r} حديثة ومتعلقة بالموضوع.`,
     postsFrom: (n, s, h) => `عدد المنشورات ${n}، من مصادر عددها ${s}، خلال آخر ${h} ساعة.`,
     hint: "يعتمد هذا التحديث على وسائل الإعلام فقط، وستظهر تفاعلات الناس هنا عند إضافة مصادر التعليقات.",
     fallback: "بعض النصوص في هذا التحديث متوفرة بالإنجليزية فقط، وستظهر بالعربية مع التحديث القادم.",
@@ -529,6 +548,14 @@ const T = {
     people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
     noStories: "لا توجد قصص واضحة في هذا التحديث.",
     reacting: "كيف يتفاعل الناس", framed: "كيف تُقدَّم القصة", watch: "انتبه إلى:",
+    sigTitle: "مؤشرات التنسيق:", sigLevels: { none: "لا شيء", low: "ضعيفة", medium: "متوسطة", high: "قوية" }, sigMore: "كيف تُقاس.",
+    sigNote: "مؤشرات مقيسة لا أدلة: الأخبار العاجلة الحقيقية والشعارات الشائعة وقلة من المعلّقين المتحمسين تنتجها أيضاً.",
+    sigValue: { copies: (i) => `${pctText(i.value)} من ${num(i.n)} منشوراً للناس تكرار حرفي`, near_copies: (i) => `${pctText(i.value)} من ${num(i.n)} نصاً مميزاً شبه متطابقة`,
+                burst: (i) => `احتوت الساعة الأكثر نشاطاً على ${num(i.value)} أضعاف المتوسط الساعي (${num(i.n)} منشوراً)`, burst_no_news: () => "لم تغطِّ أي وسيلة إعلام على القائمة القصة في تلك الساعة",
+                synchrony: (i) => `ظهر ${num(i.value)} نصوص على منصات عدة خلال ساعة`, concentration: (i) => `كتب أعلى ٥٪ من المعلّقين ${pctText(i.value)} من ${num(i.n)} تعليقاً`,
+                regularity: (i) => `تتفاوت الفواصل بين التعليقات بنسبة ${pctText(i.value)} فقط (${num(i.n)} تعليقاً)` },
+    signalsTitle: "مؤشرات التنسيق", signalsIntro: "تحمل كل قصة قائمة بعلامات قابلة للقياس على أن تفاعل الجمهور معها قد يكون منظّماً لا عفوياً. تُحسب من المنشورات المنسوبة إلى القصة في ذلك التحديث من دون تحديد هوية أحد: يُحسب تركّز المعلّقين من بصمات أحادية الاتجاه لا توجد إلا أثناء التحديث. لكل مؤشر تفسيرات بريئة مذكورة معه، فالمستوى دعوة للنظر عن قرب لا حكماً. القيم مضمّنة في ملفات التنزيل.",
+    sigInnocent: "تفسير بريء:",
     last48: "آخر ٤٨ تحديثاً", voicesLbl: "الأصوات", where: "المصادر",
     voicesCount: (p, o) => `${p} من الناس، ${o} من وسائل الإعلام`, postsCount: (n) => `عدد المنشورات: ${n}`,
     trend: { New: "جديدة", Rising: "في صعود", Fading: "في تراجع", Steady: "مستقرة", Returning: "عائدة" },
@@ -812,6 +839,7 @@ function detailBody(n, tr) {
         ${reaction ? `<div class="reaction" style="--c:${p !== null ? toneColor(p) : "var(--neu)"}"><span class="lbl">${t.reacting}</span><span dir="auto">${esc(reaction)}</span></div>` : ""}
         ${framings ? `<span class="lbl">${t.framed}</span><ul class="framings">${framings}</ul>` : ""}
         ${flags.length ? `<p class="flag" dir="auto">${t.watch} ${flags.map(esc).join(rtl() ? "؛ " : "; ")}</p>` : ""}
+        ${signalsBlock(n)}
       </div>
       <div class="side">
         <div><span class="lbl">${t.people}</span><b>${toneLabel(p)}</b>${emotions.length ? `<br><span dir="auto">${emotions.map(esc).join(rtl() ? "، " : ", ")}</span>` : ""}</div>
@@ -821,6 +849,17 @@ function detailBody(n, tr) {
         ${links || others.length ? `<div><span class="lbl">${t.where}</span>${links}${others.length ? `<span>${others.map(o => `<bdi>${esc(srcName(o))}</bdi>`).join(rtl() ? "، " : ", ")}</span>` : ""}</div>` : ""}
         ${n.key ? `<div><a href="stories/${state.lang}/${esc(n.key)}.html">${t.permalink}</a></div>` : ""}
       </div>`;
+}
+/* coordination signals: measurable signs that a story's public reaction may be organised (scripts/signals.py) */
+function signalLabel(id) {
+  const c = (state.latest.signal_catalog || []).find(x => x.id === id);
+  return c ? (rtl() && c.label_ar ? c.label_ar : c.label) : id;
+}
+function signalsBlock(n) {
+  const t = L(), s = n.signals;
+  if (!s || !s.items || !s.items.length) return "";
+  const items = s.items.map(i => `<li><b>${esc(signalLabel(i.id))}</b> <span dir="auto">${esc(t.sigValue[i.id] ? t.sigValue[i.id](i) : String(i.value))}</span></li>`).join("");
+  return `<div class="signals ${esc(s.level)}"><span class="lbl">${t.sigTitle} <b>${t.sigLevels[s.level] || s.level}</b></span><ul>${items}</ul><p class="sub">${t.sigNote} <a href="#signals">${t.sigMore}</a></p></div>`;
 }
 function storiesHTML() {
   const t = L(), nars = state.latest.narratives || [], h = num(state.latest.window_hours || 24);
@@ -1394,7 +1433,7 @@ function drawTrends() {
 /* =================== data =================== */
 const COLS_FALLBACK = {
   "runs.csv": ["run_time", "posts_analyzed", "public_posts", "outlet_posts", "unique_posts", "stories", "public_sentiment", "outlet_sentiment", "public_mood", "outlet_mood", "lang_ar", "lang_ku", "lang_en", "lang_other", "model", "cost_usd"],
-  "stories.csv": ["run_time", "story_key", "story_id", "theme", "title", "title_ar", "share", "volume", "public_volume", "outlet_sentiment", "public_sentiment", "emotions", "framings", "flags", "sources", "platforms", "languages", "public_tone_ar", "public_tone_ku", "public_tone_en", "outlet_tone_official", "outlet_tone_independent", "outlet_tone_kurdish", "outlet_tone_regional", "outlet_tone_aggregator", "first_seen", "summary", "summary_ar", "public_reaction", "public_reaction_ar"],
+  "stories.csv": ["run_time", "story_key", "story_id", "theme", "title", "title_ar", "share", "volume", "public_volume", "outlet_sentiment", "public_sentiment", "emotions", "framings", "flags", "sources", "platforms", "languages", "public_tone_ar", "public_tone_ku", "public_tone_en", "outlet_tone_official", "outlet_tone_independent", "outlet_tone_kurdish", "outlet_tone_regional", "outlet_tone_aggregator", "signal_level", "signal_count", "signals", "first_seen", "summary", "summary_ar", "public_reaction", "public_reaction_ar"],
   "themes.csv": ["run_time", "theme", "stories", "share", "volume", "public_volume", "public_sentiment", "outlet_sentiment", "public_tone_ar", "public_tone_ku", "public_tone_en", "outlet_tone_official", "outlet_tone_independent", "outlet_tone_kurdish", "outlet_tone_regional", "outlet_tone_aggregator"],
   "headlines.csv": ["time", "source", "kind", "language", "text", "url"] };
 const LANG_IDS = ["ar", "ku", "en"], KIND_IDS = ["official", "independent", "kurdish", "regional", "aggregator"];
@@ -1414,6 +1453,8 @@ function flattenDay(day, dataset) {   // the same rows as the monthly files (scr
         const row = { run_time: tm, story_key: storyKey(n), story_id: n.id, theme, title: n.title, title_ar: n.title_ar, share: n.share, volume: vol, public_volume: pvol, outlet_sentiment: n.sentiment, public_sentiment: n.public_sentiment, emotions: joinList(n.emotions), framings: joinList(n.framings), flags: joinList(n.flags), sources: joinList(n.sources), platforms: joinMap(n.platforms), languages: joinMap(n.languages), first_seen: n.first_seen, summary: n.summary, summary_ar: n.summary_ar, public_reaction: n.public_reaction, public_reaction_ar: n.public_reaction_ar };
         for (const l of LANG_IDS) row[`public_tone_${l}`] = n.public_tone?.[l];
         for (const k of KIND_IDS) row[`outlet_tone_${k}`] = n.outlet_tone?.[k];
+        row.signal_level = n.signals?.level || ""; row.signal_count = n.signals?.score ?? "";
+        row.signals = (n.signals?.items || []).map(i => `${i.id}=${i.value}`).join("; ");
         rows.push(row);
       } else {
         const p = per[theme] || (per[theme] = { stories: 0, share: 0, volume: 0, public_volume: 0, pub: [], out: [], pt: {}, ot: {} });
@@ -1540,8 +1581,9 @@ function aboutHTML() {
     .map(([k, x]) => `${t.langs[k] || esc(k)} ${pctText(x / lgTotal)}`).join(rtl() ? "، " : ", ")}</p>` : "";
   const loading = `<p class="nodata">${t.loadingMethod}</p>`;
   const themes = m?.themes || D.themes || [];
-  let method = loading, sources = loading, prompt = "", changelog = "", themesHTML = "";
+  let method = loading, sources = loading, prompt = "", changelog = "", themesHTML = "", signalsHTML = loading;
   if (m && !m.missing) {
+    signalsHTML = `<p>${t.signalsIntro}</p><div class="sigcat">${(m.signals || []).map(s => `<p><strong dir="auto">${esc(rtl() && s.label_ar ? s.label_ar : s.label)}</strong> <span class="mono">${esc(s.id)}</span><br><span dir="auto">${esc(rtl() && s.about_ar ? s.about_ar : s.about)}</span>${s.innocent ? `<br><span class="inn" dir="auto">${t.sigInnocent} ${esc(rtl() && s.innocent_ar ? s.innocent_ar : s.innocent)}</span>` : ""}</p>`).join("")}</div>`;
     const sp = m.sampling || {};
     const info = { window_hours: num(sp.window_hours || 24), keywords: num((m.keywords || []).length), max_posts: num(sp.max_posts || 300),
                    public_share: num(Math.round((sp.public_share || 0.7) * 100)), model: m.model || "" };
@@ -1572,6 +1614,8 @@ function aboutHTML() {
     ${themesHTML || loading}
     <h3 id="sources">${t.sourcesTitle}</h3>
     ${sources}
+    <h3 id="signals">${t.signalsTitle}</h3>
+    ${signalsHTML}
     <h3 id="limits">${t.limitsTitle}</h3>
     <div class="method">${t.limits.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
     <h3 id="accuracy">${t.accuracyTitle}</h3>
@@ -1594,7 +1638,8 @@ function heroHTML() {
   const word = pub ? moodIn(o, "public_mood", tone) : moodIn(o, "mood", tone);
   const outletMood = moodIn(o, "mood", o.sentiment);
   const brief = tx(o, "brief");
-  const voices = pub ? t.voices(num(st.public_posts), num(st.outlet_posts), h) : t.postsFrom(num(st.posts_analyzed), num(st.sources_ok), h);
+  const voices = (pub ? t.voices(num(st.public_posts), num(st.outlet_posts), h) : t.postsFrom(num(st.posts_analyzed), num(st.sources_ok), h))
+    + (st.collected ? " " + t.collected(num(st.collected), num(st.relevant || 0)) : "");
   return `
   <div class="hero">
     <!--notice-->
@@ -1731,7 +1776,7 @@ async function loadMethod() {
   state.method = m || { missing: true }; state.validation = v;
   if (state.view === "about") render();
 }
-const ABOUT_ANCHORS = ["method", "themes", "sources", "limits", "accuracy", "prompt", "changelog", "cite"];
+const ABOUT_ANCHORS = ["method", "themes", "sources", "signals", "limits", "accuracy", "prompt", "changelog", "cite"];
 function viewFromHash() {
   const h = location.hash.replace("#", "");
   if (["trends", "data", "about"].includes(h)) return h;
