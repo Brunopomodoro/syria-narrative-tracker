@@ -431,7 +431,7 @@ const T = {
     kinds: { "": "All sources", official: "Official", independent: "Independent & opposition-origin", kurdish: "Kurdish-run", regional: "Regional", aggregator: "News aggregators" },
     /* trends */
     trendsTitle: "Trends", trendsSub: "How the discussion has moved over time, by theme, by community and by kind of outlet.",
-    period: "Period", periods: { 30: "30 days", 90: "90 days", 365: "A year", 0: "All" }, themeSel: "Theme", allThemes: "All themes",
+    period: "Period", periods: { 7: "Week", 30: "30 days", 90: "90 days", 365: "A year", 0: "All" }, themeSel: "Theme", allThemes: "All themes",
     themeHint: "Choosing a theme focuses every chart below on it.", themeOnly: (n) => `Only ${n} over the period; the strip shows the tone of people's reactions each day.`,
     themeSince: "Tone by language and by kind of outlet is recorded per theme from 28 September 2026, so earlier days show no line here.",
     tableBtn: "Table", chartBtn: "Chart", loadingTrends: "Loading the archive…", noTrends: "The archive is empty so far.",
@@ -547,7 +547,7 @@ const T = {
     noHeadlines: "بدأ جمع العناوين الآن، وستظهر هنا بعد التحديث القادم.",
     kinds: { "": "كل المصادر", official: "رسمية", independent: "مستقلة ومعارضة سابقاً", kurdish: "كردية", regional: "إقليمية", aggregator: "مجمّعات أخبار" },
     trendsTitle: "الاتجاهات", trendsSub: "كيف تحرّك النقاش مع الوقت، حسب الموضوع والمجتمع ونوع وسيلة الإعلام.",
-    period: "الفترة", periods: { 30: "٣٠ يوماً", 90: "٩٠ يوماً", 365: "سنة", 0: "الكل" }, themeSel: "الموضوع", allThemes: "كل المواضيع",
+    period: "الفترة", periods: { 7: "أسبوع", 30: "٣٠ يوماً", 90: "٩٠ يوماً", 365: "سنة", 0: "الكل" }, themeSel: "الموضوع", allThemes: "كل المواضيع",
     themeHint: "اختيار موضوع يركّز كل الرسوم أدناه عليه.", themeOnly: (n) => `موضوع ${n} فقط خلال الفترة؛ الشريط يبيّن نبرة تفاعل الناس في كل يوم.`,
     themeSince: "تُسجَّل النبرة حسب اللغة وحسب نوع وسيلة الإعلام لكل موضوع منذ ٢٨ أيلول ٢٠٢٦، لذا لا يظهر خط للأيام السابقة هنا.",
     tableBtn: "جدول", chartBtn: "رسم", loadingTrends: "جارٍ تحميل الأرشيف…", noTrends: "الأرشيف فارغ حتى الآن.",
@@ -1203,7 +1203,7 @@ function lineChart(box, o) {
 function periodDays() {
   const S = state.trends, all = S.index?.days || [];
   if (!S.period) return all;
-  const cutoff = new Date(Date.now() - S.period * 86400000).toISOString().slice(0, 10);
+  const cutoff = new Date(Date.now() - (S.period - 1) * 86400000).toISOString().slice(0, 10);   // today counts as day one
   const got = all.filter(d => d.date >= cutoff);
   return got.length >= 2 ? got : all.slice(-Math.max(2, got.length));
 }
@@ -1226,7 +1226,7 @@ function trendsHTML() {
   <section class="tsec" style="border-top:0;padding-top:24px" aria-labelledby="h-trends">
     <div class="sec-head"><div><h2 id="h-trends" style="font-size:1.7rem">${t.trendsTitle}</h2><p class="sub">${t.trendsSub}</p></div></div>
     <div class="filters">
-      <span class="seg" role="group" aria-label="${t.period}">${["30", "90", "365", "0"].map(seg).join("")}</span>
+      <span class="seg" role="group" aria-label="${t.period}">${["7", "30", "90", "365", "0"].map(seg).join("")}</span>
       ${sel}
       <span class="sub" id="theme-hint">${t.themeHint}</span>
     </div>
