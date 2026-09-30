@@ -469,7 +469,7 @@ reddit:
       type: comments
       label: "Reddit r/syria comments"
       label_ar: "تعليقات ريديت r/syria"
-      filter: true          # keep comments that (or whose post) mention Syria
+      filter: false         # a Syrian community: what it discusses counts even when the post does not name Syria
       max_posts: 25         # at most this many per run, so Reddit does not outweigh bigger sources
     - subreddit: Kurdistan
       type: comments
