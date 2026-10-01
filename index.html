@@ -1581,7 +1581,7 @@ function aboutHTML() {
     .map(([k, x]) => `${t.langs[k] || esc(k)} ${pctText(x / lgTotal)}`).join(rtl() ? "، " : ", ")}</p>` : "";
   const loading = `<p class="nodata">${t.loadingMethod}</p>`;
   const themes = m?.themes || D.themes || [];
-  let method = loading, sources = loading, prompt = "", changelog = "", themesHTML = "", signalsHTML = loading;
+  let method = loading, sources = loading, prompt = "", themesHTML = "", signalsHTML = loading;
   if (m && !m.missing) {
     signalsHTML = `<p>${t.signalsIntro}</p><div class="sigcat">${(m.signals || []).map(s => `<p><strong dir="auto">${esc(rtl() && s.label_ar ? s.label_ar : s.label)}</strong> <span class="mono">${esc(s.id)}</span><br><span dir="auto">${esc(rtl() && s.about_ar ? s.about_ar : s.about)}</span>${s.innocent ? `<br><span class="inn" dir="auto">${t.sigInnocent} ${esc(rtl() && s.innocent_ar ? s.innocent_ar : s.innocent)}</span>` : ""}</p>`).join("")}</div>`;
     const sp = m.sampling || {};
@@ -1596,7 +1596,6 @@ function aboutHTML() {
     }).join("");
     sources = `<div class="tscroll"><table class="cat srcs"><thead><tr><th>${t.colName}</th><th>${t.colKind}</th><th>${t.colPlatform}</th><th>${t.colFilter}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     prompt = `<details><summary>${t.showPrompt}</summary><pre class="prompt" dir="ltr" lang="en">${esc(m.prompt || "")}</pre></details>`;
-    changelog = `<ul class="changelog">${(m.changelog || []).slice().reverse().map(c => `<li><time>${esc(fmtDay(c.date, { day: "numeric", month: "short", year: "numeric" }))}</time><span dir="auto">${esc(rtl() && c.note_ar ? c.note_ar : c.note)}</span></li>`).join("")}</ul>`;
   }
   let accuracy = `<p>${t.accuracyBody}</p>`;
   if (v && v.sample) {
@@ -1620,8 +1619,6 @@ function aboutHTML() {
     <div class="method">${t.limits.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
     <h3 id="accuracy">${t.accuracyTitle}</h3>
     ${accuracy}
-    <h3 id="changelog">${t.changelogTitle}</h3>
-    ${changelog || loading}
     <h3 id="prompt">${t.promptTitle}</h3>
     ${prompt || loading}
     <h3 id="cite">${t.aboutCite}</h3>
@@ -1776,7 +1773,7 @@ async function loadMethod() {
   state.method = m || { missing: true }; state.validation = v;
   if (state.view === "about") render();
 }
-const ABOUT_ANCHORS = ["method", "themes", "sources", "signals", "limits", "accuracy", "prompt", "changelog", "cite"];
+const ABOUT_ANCHORS = ["method", "themes", "sources", "signals", "limits", "accuracy", "prompt", "cite"];
 function viewFromHash() {
   const h = location.hash.replace("#", "");
   if (["trends", "data", "about"].includes(h)) return h;
