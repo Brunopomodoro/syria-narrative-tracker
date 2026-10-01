@@ -1,0 +1,45 @@
+# Shayfak settings. Edited by hand; read by scripts/update_officials.py and scripts/snapshot_trust.py.
+
+# Claude model used to search the news for personnel changes and to structure the findings.
+model: "claude-opus-5-5"
+
+# How far back the news search looks when there is no record of a previous check (days).
+lookback_days: 45
+
+# News outlets the search is told to prefer. Official sources count as "official" for auto-apply.
+official_sources:
+  - sana.sy
+  - presidency.gov.sy
+  - pmo.gov.sy
+  - moi.gov.sy
+  - mofaex.gov.sy
+preferred_sources:
+  - aljazeera.net
+  - syria.tv
+  - enabbaladi.net
+  - reuters.com
+  - apnews.com
+  - bbc.com
+  - al-monitor.com
+  - alwatan.sy
+  - halabtodaytv.net
+
+# A change is applied automatically only when it meets one of these:
+#   - confirmed by Wikidata (an end date on the current position, or a new holder of a tracked position)
+#   - the model rates it "high" confidence AND cites an official source
+#   - the model rates it "high" confidence AND cites at least `min_independent_sources` different outlets
+# Everything else goes to data/pending_changes.json for a human to approve.
+min_independent_sources: 2
+
+# Wikidata items for positions whose holder we track. Add QIDs as you find them on wikidata.org.
+# Example: { qid: Q123456, roleEn: "Minister of Health", grp: gov }
+tracked_positions: []
+
+# Firebase Realtime Database URL (public read on /monthly only). Used by snapshot_trust.py.
+database_url: "https://shayfak-d7a08-default-rtdb.europe-west1.firebasedatabase.app"
+
+# Public site URL, used in generated share pages.
+site_url: "https://shayfak.org"
+
+# Minimum votes before a percentage is shown anywhere (site and exports).
+min_sample: 30

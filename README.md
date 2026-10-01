@@ -37,3 +37,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python scripts/pipeline.py               # full run, writes data/
 python -m http.server                    # then open http://localhost:8000
 ```
+
+## Shayfak (شايفك)
+
+`shayfak/` holds a second site that shares this repository: an accountability directory of the transitional government's officials with a monthly, anonymous trust vote. Its roster is kept up to date by `.github/workflows/shayfak-update.yml`. Setup and the privacy model are in [shayfak/README.md](shayfak/README.md).

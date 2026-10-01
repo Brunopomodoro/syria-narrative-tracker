@@ -1,0 +1,99 @@
+name: Shayfak update
+
+# Keeps shayfak/data in step with the government and exports the monthly trust numbers.
+# - 05:10 UTC daily: personnel check (Wikidata + Claude news search), photos, share pages, trust snapshot.
+# - Changes the rules cannot confirm land in shayfak/data/pending_changes.json and open (or update) an issue.
+
+on:
+  schedule:
+    - cron: "10 5 * * *"
+  workflow_dispatch:
+    inputs:
+      no_ai:
+        description: "Skip the Claude news search (Wikidata, photos and pages only)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: shayfak-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r shayfak/requirements.txt
+
+      - name: Tests
+        run: python -m pytest shayfak/tests -q
+
+      - name: Update officials
+        id: update
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ inputs.no_ai }}" = "true" ]; then
+            python shayfak/scripts/update_officials.py --no-ai
+          else
+            python shayfak/scripts/update_officials.py
+          fi
+
+      - name: Snapshot trust aggregates
+        continue-on-error: true   # the site works without it; a Firebase outage must not block the roster update
+        run: python shayfak/scripts/snapshot_trust.py
+
+      - name: Rebuild share pages with fresh trust numbers
+        run: python shayfak/scripts/update_officials.py --no-ai --no-wikidata --no-photos
+
+      - name: Save results
+        run: |
+          git config user.name "shayfak-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A shayfak
+          if git diff --cached --quiet; then
+            echo "No changes to save."
+          else
+            git commit -m "Shayfak data $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Open or update the review issue for pending changes
+        if: steps.update.outputs.pending != '0' && steps.update.outputs.pending != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'EOF' > body.md
+          import json
+          p = json.load(open("shayfak/data/pending_changes.json"))
+          print("The daily check found personnel changes it could not confirm automatically. Review each one, then run:\n")
+          print("```\npython shayfak/scripts/update_officials.py --approve <id>   # or --reject <id>\n```\n")
+          for c in p["changes"]:
+              print(f"### `{c['id']}` · {c['type']} · {c.get('nameEn')} ({c.get('nameAr')})")
+              print(f"- Role: {c.get('roleEn')} / {c.get('roleAr')}")
+              print(f"- Date: {c.get('date')} · confidence: {c.get('confidence')} · reason queued: {c.get('reason')}")
+              print(f"- {c.get('detail_en')}")
+              for s in c.get("sources", []):
+                  print(f"  - [{s.get('outlet')}: {s.get('title')}]({s.get('url')})")
+              print()
+          EOF
+          existing=$(gh issue list --label shayfak-review --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body-file body.md
+          else
+            gh label create shayfak-review --description "Personnel changes awaiting a human decision" --color D93F0B 2>/dev/null || true
+            gh issue create --title "Shayfak: personnel changes to review" --label shayfak-review --body-file body.md
+          fi
