@@ -138,6 +138,16 @@ function fnError(e){
 
 // ── data loading ──────────────────────────────────────────────────────────────
 async function loadStatic(){
+  // A build can inline the data (window.SHAYFAK_DATA) so the page also works when opened from disk.
+  const inline = window.SHAYFAK_DATA;
+  if(inline && inline.officials){
+    A.officials = inline.officials.officials || []; A.meta = inline.officials.meta || {};
+    A.changelog = Array.isArray(inline.changelog) ? inline.changelog : [];
+    const j = inline.trust;
+    if(j){ for(const [id, a] of Object.entries(j.officials||{})) (A.monthly[Number(id)] ||= {})[j.month] = a;
+      if(j.previous_month) for(const [id, a] of Object.entries(j.previous||{})) (A.monthly[Number(id)] ||= {})[j.previous_month] = a; }
+    return;
+  }
   const r = await fetch(DATA + "officials.json", {cache:"no-cache"});
   const doc = await r.json();
   A.officials = doc.officials || []; A.meta = doc.meta || {};
