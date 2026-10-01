@@ -15,7 +15,9 @@
 html{color-scheme:light}
 body{background:var(--bg);color:var(--ink);min-height:100vh;font-size:16px;line-height:1.65;font-family:var(--fn-en)}
 html[lang="ar"] body{font-family:var(--fn-ar);direction:rtl}
-html[lang="ar"] .hero-title,html[lang="ar"] .pp-name,html[lang="ar"] .hs-n,html[lang="ar"] .trust-n,html[lang="ar"] .idx-n,html[lang="ar"] h2{font-family:var(--fd-ar)}
+html[lang="ar"] .hero-title,html[lang="ar"] .pp-name,html[lang="ar"] h2{font-family:var(--fd-ar)}
+/* numbers keep the Latin face and Western digits in both languages */
+.hs-n,.trust-n,.idx-n,.mv-d,.ap-p,.oc-pct,.tbl td,.chart-wrap svg text{font-family:var(--fn-en);font-variant-numeric:tabular-nums}
 html[lang="en"] .hero-title,html[lang="en"] .pp-name,html[lang="en"] .hs-n,html[lang="en"] .trust-n,html[lang="en"] .idx-n,html[lang="en"] h2{font-family:var(--fd-en)}
 button,select,input,textarea{font-family:inherit;font-size:inherit}
 a{color:var(--accent)}

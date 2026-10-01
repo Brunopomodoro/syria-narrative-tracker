@@ -531,7 +531,7 @@ def write_share_pages(officials: list[dict], cfg: dict, trust: dict | None) -> i
         up, dn = int(t.get("up", 0)), int(t.get("dn", 0))
         n = up + dn
         pct = f"{round(100 * up / n)}% trust · {n} votes this month" if n >= min_sample else "Vote now"
-        pct_ar = f"{round(100 * up / n)}٪ ثقة · {n} صوت هذا الشهر" if n >= min_sample else "صوّت الآن"
+        pct_ar = f"{round(100 * up / n)}% ثقة · {n} صوت هذا الشهر" if n >= min_sample else "صوّت الآن"
         name_ar = f"{o.get('titleAr', '')} {o['nameAr']}".strip()
         name_en = f"{o.get('titleEn', '')} {o['nameEn']}".strip()
         title = f"{name_ar} — شايفك"

@@ -88,7 +88,9 @@ const t = (k) => (TR[lang][k] ?? TR.en[k] ?? k);
 const L = (o, k) => (lang === "ar" ? o[k + "Ar"] : o[k + "En"]) || o[k + "En"] || o[k + "Ar"] || "";
 const N = (o) => { const ttl = lang === "ar" ? o.titleAr : o.titleEn; return (ttl ? ttl + " " : "") + L(o, "name"); };
 const esc = (s) => s == null ? "" : String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
-const num = (n) => Number(n || 0).toLocaleString(lang === "ar" ? "ar-EG" : "en-GB");
+// Western digits in both languages: Arabic month names, but 1, 2, 3 rather than ١ ٢ ٣.
+const LOC = () => (lang === "ar" ? "ar-SY-u-nu-latn" : "en-GB");
+const num = (n) => Number(n || 0).toLocaleString("en-GB");
 
 // ── state ─────────────────────────────────────────────────────────────────────
 const A = {
@@ -111,7 +113,7 @@ window.setState = setState;
 // ── helpers ───────────────────────────────────────────────────────────────────
 const monthKey = (d = new Date()) => `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,"0")}`;
 function prevMonthKey(m){ const [y,mo] = m.split("-").map(Number); const d = new Date(Date.UTC(y, mo-2, 1)); return monthKey(d); }
-function fmtMonth(m){ const [y,mo] = m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,1)).toLocaleDateString(lang==="ar"?"ar-SY":"en-GB",{month:"short",year:"numeric",timeZone:"UTC"}); }
+function fmtMonth(m){ const [y,mo] = m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,1)).toLocaleDateString(LOC(),{month:"short",year:"numeric",timeZone:"UTC"}); }
 function agg(id, m){ return (A.monthly[id] || {})[m || monthKey()] || null; }
 function pctOf(a, part){ if(!a) return null; const s = part ? (a[part] || {}) : a; const up = s.up||0, dn = s.dn||0, n = up+dn; return n >= MIN_SAMPLE ? Math.round(100*up/n) : null; }
 function totalOf(a){ return a ? (a.up||0)+(a.dn||0) : 0; }
@@ -366,7 +368,7 @@ function subCard(s){
   return `<div class="sub-card"><div class="sbadges"><span class="cbadge" style="background:${c[0]};color:${c[1]}">${esc(catL)}</span><span class="sevbadge" style="background:var(--g2);color:var(--g4)">${esc(s.severity)}</span><span class="crebadge" style="background:var(--g2);color:var(--g4)">${esc(s.credibility)}</span></div>
     <div class="sum">${esc(s.summary)}</div>
     ${(s.key_claims||[]).length?`<ul class="claims">${s.key_claims.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>`:""}
-    <div class="smeta">${s.sourceUrl?`<a href="${esc(s.sourceUrl)}" target="_blank" rel="noopener nofollow"><i class="ti ti-link"></i> ${esc(new URL(s.sourceUrl).hostname)}</a>`:""}<span>${s.publishedAt?new Date(s.publishedAt).toLocaleDateString(lang==="ar"?"ar-SY":"en-GB"):""}</span>${s.moderatorNote?`<span>· ${esc(s.moderatorNote)}</span>`:""}</div></div>`;
+    <div class="smeta">${s.sourceUrl?`<a href="${esc(s.sourceUrl)}" target="_blank" rel="noopener nofollow"><i class="ti ti-link"></i> ${esc(new URL(s.sourceUrl).hostname)}</a>`:""}<span>${s.publishedAt?new Date(s.publishedAt).toLocaleDateString(LOC()):""}</span>${s.moderatorNote?`<span>· ${esc(s.moderatorNote)}</span>`:""}</div></div>`;
 }
 function renderTab(o){
   const subs = A.published[o.id]||[];
