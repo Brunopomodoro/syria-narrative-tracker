@@ -156,6 +156,7 @@ exports.submitReport = onCall(callOpts({ secrets: [VOTER_HASH_KEY, ANTHROPIC_API
   const sourceUrl = String(req.data?.sourceUrl || "").trim().slice(0, 500);
   const lang = req.data?.lang === "en" ? "en" : "ar";
   const officialName = String(req.data?.officialName || "").slice(0, 200);
+  const asOfficial = req.data?.asOfficial === true; // a response or correction from the official or their office
   if (text.length < 20) throw new HttpsError("invalid-argument", "Text too short");
   if (text.length > MAX_SUBMISSION_CHARS) throw new HttpsError("invalid-argument", "Text too long");
   if (sourceUrl && !/^https?:\/\//i.test(sourceUrl)) throw new HttpsError("invalid-argument", "Source must be a URL");
@@ -168,7 +169,7 @@ exports.submitReport = onCall(callOpts({ secrets: [VOTER_HASH_KEY, ANTHROPIC_API
   const schema = {
     type: "object",
     properties: {
-      category: { type: "string", enum: ["allegation", "corruption", "promise", "achievement", "statement", "general"] },
+      category: { type: "string", enum: ["allegation", "corruption", "promise", "achievement", "statement", "response", "general"] },
       severity: { type: "string", enum: ["low", "medium", "high", "critical"] },
       credibility: { type: "string", enum: ["unverified", "plausible", "likely", "confirmed"] },
       summary: { type: "string" },
@@ -189,13 +190,15 @@ exports.submitReport = onCall(callOpts({ secrets: [VOTER_HASH_KEY, ANTHROPIC_API
       `You classify public submissions for Shayfak, a Syrian political accountability site. Respond in ${lang === "ar" ? "Arabic" : "English"}. ` +
       "Summarise neutrally in two or three sentences, list the concrete claims, and say whether the text is only an opinion or an insult " +
       "(then category 'general', severity 'low'). 'credibility' describes the evidence given, not the truth of the claim: 'confirmed' only when a " +
-      "named reputable source with a URL is cited. Set needs_source when a factual allegation has no source. Never include names of private individuals in the summary.",
+      "named reputable source with a URL is cited. Set needs_source when a factual allegation has no source. Never include names of private individuals in the summary. " +
+      (asOfficial ? "This text is submitted as a response or correction by the official or their office: use category 'response' and summarise their position faithfully." : ""),
     messages: [{ role: "user", content: `Official: ${officialName}\nSource URL given: ${sourceUrl || "none"}\n\nSubmission:\n${text}` }],
     output_config: { format: { type: "json_schema", schema } },
   });
   if (response.stop_reason === "refusal") throw new HttpsError("failed-precondition", "The text could not be processed.");
   const textBlock = response.content.find((b) => b.type === "text");
   const result = JSON.parse(textBlock.text);
+  if (asOfficial) result.category = "response";
 
   const ref = db().ref(`pending/${officialId}`).push();
   await ref.set({
@@ -203,6 +206,7 @@ exports.submitReport = onCall(callOpts({ secrets: [VOTER_HASH_KEY, ANTHROPIC_API
     sourceUrl: sourceUrl || null,
     rawText: text.slice(0, 2000),
     lang,
+    asOfficial,
     ts: Date.now(),
     by: hash,                    // for rate limiting and abuse review only; never copied to 'published'
   });

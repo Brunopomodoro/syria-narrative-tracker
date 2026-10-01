@@ -132,3 +132,17 @@ def test_real_data_file_is_clean():
         for k in ("bUp", "bDn", "bRSum", "bRCnt", "sbd"):
             assert k not in o, f"seeded count {k} still present on {o['nameEn']}"
         assert o["tenure"] and o["status"] in ("active", "former", "deceased")
+
+
+def test_honorific_defaults():
+    assert uo.honorific("هند قبوات", "وزيرة الشؤون الاجتماعية") == ("f", "السيدة", "Ms.")
+    assert uo.honorific("محمد العلي", "وزير الصحة", "physician, PhD") == ("m", "الدكتور", "Dr.")
+    assert uo.honorific("أحمد خالد", "محافظ حلب", "civil engineer") == ("m", "المهندس", "Eng.")
+    assert uo.honorific("خالد سعيد", "عضو مجلس الشعب") == ("m", "السيد", "Mr.")
+
+
+def test_new_official_gets_title():
+    r = roster()
+    ch = change(type="appointment", nameEn="Nour Hamdan", nameAr="هند حمدان", previous_holder_en="")
+    uo.apply_change(ch, r, "2026-10-01")
+    assert r[-1]["titleEn"] == "Ms." and r[-1]["gender"] == "f"

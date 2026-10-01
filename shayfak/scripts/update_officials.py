@@ -60,6 +60,24 @@ PALETTE = [
 
 CHANGE_TYPES = ("appointment", "resignation", "dismissal", "death", "reshuffle", "restructure")
 
+# First names that mark a woman, for the honorific of a newly added official. Edit titleAr/titleEn in officials.json to correct any.
+FEMALE_FIRST = {"فاطمة", "هند", "سارة", "مريم", "رنا", "ريم", "لينا", "آلاء", "أسماء", "رغد", "ديما", "هبة", "منى", "سمر", "رشا", "ليلى", "زينب",
+                "خديجة", "عائشة", "عبير", "إيمان", "أمل", "غادة", "نسرين", "رهام", "رؤى", "بشرى", "ولاء", "وفاء", "سناء", "هناء", "صفاء", "دعاء",
+                "شيماء", "لمى", "رنيم", "جمانة", "ربى", "بتول", "حنان", "سهام", "ميساء", "سوسن", "نهى", "مها", "منال", "ندى", "نجوى", "رجاء",
+                "سلوى", "نادية", "سميرة", "رانيا", "روان", "لبنى", "هدى", "نورا", "محسنة", "سمية", "لارا", "هيفاء", "فرح", "ريما", "آية", "بيان"}
+
+
+def honorific(name_ar: str, role_ar: str = "", bio: str = "") -> tuple[str, str, str]:
+    """(gender, titleAr, titleEn) for a new official. Doctors and engineers keep their professional title."""
+    first = (name_ar or "").split()[0] if name_ar else ""
+    fem = first in FEMALE_FIRST or "وزيرة" in (role_ar or "") or "عضوة" in (role_ar or "")
+    b = (bio or "").lower()
+    if re.search(r"دكتوراه|phd|ph\.d|physician|طبيب", b):
+        return ("f" if fem else "m", "الدكتورة" if fem else "الدكتور", "Dr.")
+    if re.search(r"مهندس|engineer", b):
+        return ("f" if fem else "m", "المهندسة" if fem else "المهندس", "Eng.")
+    return ("f", "السيدة", "Ms.") if fem else ("m", "السيد", "Mr.")
+
 
 def log(msg: str) -> None:
     print(f"[{dt.datetime.utcnow():%H:%M:%S}] {msg}", flush=True)
@@ -410,8 +428,10 @@ def apply_change(ch: dict, officials: list[dict], today: str) -> dict:
             return entry
         nid = next_id(officials)
         col, bg = PALETTE[nid % len(PALETTE)]
+        gender, title_ar, title_en = honorific(ch.get("nameAr", ""), ch.get("roleAr", ""), ch.get("detail_en", "") + ch.get("detail_ar", ""))
         new = {
             "id": nid, "slug": slugify(ch.get("nameEn", f"official-{nid}")), "grp": group_for_role(ch.get("roleEn", "")), "status": "active",
+            "gender": gender, "titleAr": title_ar, "titleEn": title_en,
             "nameAr": ch.get("nameAr", ""), "nameEn": ch.get("nameEn", ""), "roleAr": ch.get("roleAr", ""), "roleEn": ch.get("roleEn", ""),
             "minAr": "", "minEn": "", "partyAr": "الحكومة الانتقالية", "partyEn": "Transitional Government",
             "since": date[:7], "locAr": "دمشق", "locEn": "Damascus", "wiki": None, "wikidata": None, "photo": None,
@@ -512,8 +532,10 @@ def write_share_pages(officials: list[dict], cfg: dict, trust: dict | None) -> i
         n = up + dn
         pct = f"{round(100 * up / n)}% trust · {n} votes this month" if n >= min_sample else "Vote now"
         pct_ar = f"{round(100 * up / n)}٪ ثقة · {n} صوت هذا الشهر" if n >= min_sample else "صوّت الآن"
-        title = f"{o['nameAr']} — شايفك"
-        desc = f"{o['roleAr']} · {pct_ar} | {o['nameEn']}, {o['roleEn']} · {pct}"
+        name_ar = f"{o.get('titleAr', '')} {o['nameAr']}".strip()
+        name_en = f"{o.get('titleEn', '')} {o['nameEn']}".strip()
+        title = f"{name_ar} — شايفك"
+        desc = f"{o['roleAr']} · {pct_ar} | {name_en}, {o['roleEn']} · {pct}"
         img = o.get("photo") or f"{site}/assets/og-default.png"
         target = f"../#p{o['id']}"
         page = f"""<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">

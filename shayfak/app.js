@@ -19,21 +19,23 @@ const DATA = CFG.dataPath || "data/";
 const TR = {
 en: {
   sn:"Shayfak", sub:"Syria Political Accountability",
-  hero_s:"Every official of the transitional government: who they are, what they promised, what they are accused of. Vote once a month and watch trust move.",
-  h_off:"Officials tracked", h_vt:"Votes this month", h_idx:"Trust index", h_upd:"Roster updated",
+  hero_s:"A public record of Syria's transitional government: who holds each office, what they have committed to, and how public confidence develops month by month.",
+  p1:"Sourced", p1s:"Every entry links to where it came from.", p2:"Neutral", p2s:"We record what is public. We do not judge.", p3:"Open to response", p3s:"Officials and their offices can reply or correct any entry.",
+  reply:"Send a response or correction", reply_s:"If you are the official or speak for their office, send a response. It is published next to the record.", record_note:"Documented questions and concerns, each with its source. Responses from the official are published alongside.", who_public:"Member of the public", who_office:"The official or their office", cResp:"Response",
+  h_off:"Officials tracked", h_vt:"Votes this month", h_idx:"Confidence index", h_upd:"Roster updated",
   si:"Sign in", so:"Sign out", ltog:"العربية", fa:"All", fp:"President", fs:"Security", fg:"Government", fgov:"Governors", fpar:"Parliament", fformer:"Former",
-  sb:"Sort:", sap:"Trust", sr:"Rating", sn2:"Name", search:"Search officials...",
-  tb:"Bio & career", tp:"Promises", ta:"Allegations", tc:"Community", ts:"Trust",
+  sb:"Sort:", sap:"Confidence", sr:"Rating", sn2:"Name", search:"Search officials...",
+  tb:"Bio & career", tp:"Commitments", ta:"Public record", tc:"Community", ts:"Confidence",
   br:"Role", ba:"Affiliation", bsi:"In office since", bl:"Based in", bs:"Biography", bca:"Career", bi:"Issues", bten:"Positions held",
-  pk:"Kept", pp:"In progress", pb:"Not kept", pn:"Pending", pt:"Promises and pledges", ae:"No allegations recorded.",
+  pk:"Delivered", pp:"In progress", pb:"Not delivered", pn:"Pending", pt:"Commitments and pledges", ae:"No documented concerns on record.",
   pcs:"From the community (moderated)", acs:"From the community (moderated)", cn:"Submissions are classified by AI and checked by a moderator before they appear. Submitters are never shown.",
   ce:"No published submissions yet.",
-  trust:"Trust", distrust:"Distrust", votes:"votes", thismonth:"this month", notenough:"Not enough votes yet to show a percentage", needmore:"more needed",
+  trust:"Confidence", distrust:"Not yet", votes:"votes", thismonth:"this month", notenough:"Not enough votes yet to show a percentage", needmore:"more needed",
   yourvote:"Your vote this month", novote:"You have not voted this month.", changeok:"You can change it until the month ends.",
-  sl:"Sign in to vote", rate:"Rate 1 to 5 stars", history:"Trust over time", hist_sub:"Share of trust votes per month. Only months with enough votes are drawn.",
+  sl:"Sign in to vote", rate:"Rate 1 to 5 stars", history:"Confidence over time", hist_sub:"Share of confidence votes per month. Only months with enough votes are drawn.",
   all:"All voters", inside:"Inside Syria", verified:"Verified", table:"Table view", chart:"Chart view", month:"Month",
-  movers_up:"Trust rising", movers_dn:"Trust falling", vs:"vs last month", nomovers:"Comes alive once two months of votes exist.",
-  idx_title:"Government trust index", idx_sub:"All trust votes this month pooled across officials", idx_none:"No votes yet this month",
+  movers_up:"Confidence rising", movers_dn:"Confidence declining", vs:"vs last month", nomovers:"Appears once two months of votes exist.",
+  idx_title:"Public confidence index", idx_sub:"All confidence votes this month, pooled across officials", idx_none:"No votes yet this month",
   sb2:"Submit a report", stl:"Submit a report", si2:"Describe an incident, a promise or a statement, with a link to the source. AI summarises it; a moderator checks it before it is published. Your name is never attached.",
   src_ph:"Source URL (news article, official page, video)", txt_ph:"What happened? Quote the source where you can.", ab:"Analyze and submit", analyzing:"Analyzing...",
   rt:"Submitted for moderation", thanks:"Thank you. Here is how it was classified. It will appear once a moderator approves it.", fn:"See something missing?",
@@ -41,25 +43,27 @@ en: {
   anon:"Your account is never stored with your vote. Votes are saved under a one-way code that cannot be turned back into your account, even by us. Nobody can see how you voted.",
   lc:"Cancel", li:"Signing in...", del:"Delete my account", delq:"Delete your account? Your sign-in and the link to your votes are destroyed. Published counts stay as they are.",
   mod:"Moderation", pending:"Pending submissions", publish:"Publish", reject:"Reject", none_pending:"Nothing waiting.",
-  cAll:"Allegation", cCor:"Corruption", cPro:"Promise", cAch:"Achievement", cSta:"Statement", cGen:"General",
+  cAll:"Concern", cCor:"Integrity concern", cPro:"Promise", cAch:"Achievement", cSta:"Statement", cGen:"General",
   former:"Former", deceased:"Deceased", until:"until", present:"present", changelog:"Change log", data:"Open data", method:"How it works",
   share:"Share", copy:"Copy link", copied:"Link copied", back:"Back",
-  footer:"Roster from official Syrian announcements and Wikidata, checked daily. Votes are anonymous and open data (CC BY 4.0).",
+  footer:"An accountability record, not a verdict. The roster comes from official Syrian announcements and Wikidata and is checked daily. Votes are anonymous and open data (CC BY 4.0).",
   err_generic:"Something went wrong. Try again.", err_rate:"Too many requests. Try again later.", err_short:"Please write at least a sentence.",
   chg:{appointment:"Appointed", resignation:"Left office", dismissal:"Dismissed", death:"Died", reshuffle:"Moved", restructure:"Restructured"},
 },
 ar: {
   sn:"شايفك", sub:"منصة المساءلة السياسية السورية",
-  hero_s:"كل مسؤولي الحكومة الانتقالية: من هم، ماذا وعدوا، وبماذا يُتَّهمون. صوّت مرة كل شهر وراقب كيف تتحرك الثقة.",
+  hero_s:"سجل عام للحكومة الانتقالية السورية: من يشغل كل منصب، بماذا التزم، وكيف تتطور ثقة الناس شهراً بعد شهر.",
+  p1:"موثَّق", p1s:"كل معلومة مرتبطة بمصدرها.", p2:"محايد", p2s:"نسجّل ما هو علني ولا نُصدر أحكاماً.", p3:"مفتوح للرد", p3s:"يمكن للمسؤولين ومكاتبهم الرد على أي معلومة أو تصحيحها.",
+  reply:"أرسل رداً أو تصحيحاً", reply_s:"إن كنت المسؤول أو تتحدث باسم مكتبه، أرسل رداً يُنشر إلى جانب السجل.", record_note:"أسئلة وملاحظات موثقة، لكل منها مصدر. تُنشر ردود المسؤول إلى جانبها.", who_public:"من الجمهور", who_office:"المسؤول أو مكتبه", cResp:"رد",
   h_off:"مسؤول مُتابَع", h_vt:"صوت هذا الشهر", h_idx:"مؤشر الثقة", h_upd:"آخر تحديث للقائمة",
   si:"تسجيل الدخول", so:"تسجيل الخروج", ltog:"English", fa:"الكل", fp:"الرئاسة", fs:"الأمن", fg:"الحكومة", fgov:"المحافظون", fpar:"البرلمان", fformer:"السابقون",
   sb:"ترتيب:", sap:"الثقة", sr:"التقييم", sn2:"الاسم", search:"ابحث عن مسؤول...",
-  tb:"السيرة الذاتية", tp:"الوعود", ta:"الاتهامات", tc:"المجتمع", ts:"الثقة",
+  tb:"السيرة الذاتية", tp:"الالتزامات", ta:"السجل العام", tc:"المجتمع", ts:"الثقة",
   br:"المنصب", ba:"الانتماء", bsi:"في المنصب منذ", bl:"مقر الإقامة", bs:"نبذة تعريفية", bca:"المسيرة المهنية", bi:"القضايا", bten:"المناصب",
-  pk:"منجز", pp:"قيد التنفيذ", pb:"لم يُنجز", pn:"معلق", pt:"الوعود والتعهدات", ae:"لا توجد اتهامات مسجلة.",
+  pk:"منجز", pp:"قيد التنفيذ", pb:"لم يُنجز", pn:"معلق", pt:"الالتزامات والتعهدات", ae:"لا توجد ملاحظات موثقة في السجل.",
   pcs:"من المجتمع (بعد المراجعة)", acs:"من المجتمع (بعد المراجعة)", cn:"تُصنَّف البلاغات بالذكاء الاصطناعي ويراجعها مشرف قبل نشرها. لا يظهر اسم المُبلِّغ أبداً.",
   ce:"لا توجد بلاغات منشورة بعد.",
-  trust:"ثقة", distrust:"عدم ثقة", votes:"صوت", thismonth:"هذا الشهر", notenough:"لا توجد أصوات كافية بعد لعرض نسبة", needmore:"صوت إضافي مطلوب",
+  trust:"ثقة", distrust:"لا ثقة بعد", votes:"صوت", thismonth:"هذا الشهر", notenough:"لا توجد أصوات كافية بعد لعرض نسبة", needmore:"صوت إضافي مطلوب",
   yourvote:"صوتك هذا الشهر", novote:"لم تصوّت هذا الشهر.", changeok:"يمكنك تغييره حتى نهاية الشهر.",
   sl:"سجّل دخولك للتصويت", rate:"قيّم من 1 إلى 5 نجوم", history:"الثقة عبر الزمن", hist_sub:"نسبة أصوات الثقة في كل شهر. تُرسم الأشهر التي فيها أصوات كافية فقط.",
   all:"كل المصوّتين", inside:"داخل سوريا", verified:"موثَّق", table:"عرض جدول", chart:"عرض رسم", month:"الشهر",
@@ -72,16 +76,17 @@ ar: {
   anon:"حسابك لا يُخزَّن مع صوتك أبداً. تُحفظ الأصوات تحت رمز أحادي الاتجاه لا يمكن إعادته إلى حسابك، حتى من قِبلنا. لا أحد يستطيع معرفة كيف صوّت.",
   lc:"إلغاء", li:"جارٍ تسجيل الدخول...", del:"حذف حسابي", delq:"حذف حسابك؟ سيُمحى تسجيل دخولك والرابط بينه وبين أصواتك. تبقى الأعداد المنشورة كما هي.",
   mod:"الإشراف", pending:"بلاغات بانتظار المراجعة", publish:"نشر", reject:"رفض", none_pending:"لا شيء بانتظار المراجعة.",
-  cAll:"اتهام", cCor:"فساد", cPro:"وعد", cAch:"إنجاز", cSta:"تصريح", cGen:"عام",
+  cAll:"ملاحظة", cCor:"شبهة فساد", cPro:"وعد", cAch:"إنجاز", cSta:"تصريح", cGen:"عام",
   former:"سابق", deceased:"متوفى", until:"حتى", present:"الآن", changelog:"سجل التغييرات", data:"بيانات مفتوحة", method:"كيف يعمل",
   share:"مشاركة", copy:"نسخ الرابط", copied:"تم نسخ الرابط", back:"رجوع",
-  footer:"القائمة من الإعلانات السورية الرسمية وويكي بيانات، وتُفحص يومياً. الأصوات مجهولة الهوية وبيانات مفتوحة (CC BY 4.0).",
+  footer:"سجل للمساءلة لا حُكم. القائمة من الإعلانات السورية الرسمية وويكي بيانات وتُفحص يومياً. الأصوات مجهولة الهوية وبيانات مفتوحة (CC BY 4.0).",
   err_generic:"حدث خطأ ما. حاول مجدداً.", err_rate:"طلبات كثيرة. حاول لاحقاً.", err_short:"اكتب جملة واحدة على الأقل.",
   chg:{appointment:"تعيين", resignation:"ترك المنصب", dismissal:"إعفاء", death:"وفاة", reshuffle:"نقل", restructure:"إعادة هيكلة"},
 }};
 let lang = (function(){ try { return localStorage.getItem("sk_lang") || "ar"; } catch { return "ar"; } })();
 const t = (k) => (TR[lang][k] ?? TR.en[k] ?? k);
 const L = (o, k) => (lang === "ar" ? o[k + "Ar"] : o[k + "En"]) || o[k + "En"] || o[k + "Ar"] || "";
+const N = (o) => { const ttl = lang === "ar" ? o.titleAr : o.titleEn; return (ttl ? ttl + " " : "") + L(o, "name"); };
 const esc = (s) => s == null ? "" : String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 const num = (n) => Number(n || 0).toLocaleString(lang === "ar" ? "ar-EG" : "en-GB");
 
@@ -94,7 +99,7 @@ const A = {
   user:null, isMod:false,
   filter:"all", sort:"trust", search:"", viewGrid:false,
   sel:null, tab:"bio", chartTable:false, hStar:0,
-  showAuth:false, authLoading:null, showSubmit:false, stxt:"", surl:"", analyzing:false, result:null, err:null,
+  showAuth:false, authLoading:null, showSubmit:false, asOffice:false, stxt:"", surl:"", analyzing:false, result:null, err:null,
   showMod:false, pendingList:null, showLog:false,
 };
 let fb = { db:null, auth:null, fns:null, ready:false };
@@ -219,7 +224,7 @@ async function doSubmit(){
   if(A.stxt.trim().length < 20){ setState({err:t("err_short")}); return; }
   setState({analyzing:true, err:null, result:null});
   try {
-    const res = await fb.fns.httpsCallable("submitReport")({officialId:o.id, text:A.stxt.trim(), sourceUrl:A.surl.trim(), lang, officialName:`${o.nameEn} / ${o.nameAr} (${o.roleEn})`});
+    const res = await fb.fns.httpsCallable("submitReport")({officialId:o.id, text:A.stxt.trim(), sourceUrl:A.surl.trim(), asOfficial:A.asOffice===true, lang, officialName:`${o.nameEn} / ${o.nameAr} (${o.roleEn})`});
     setState({analyzing:false, result:res.data.analysis, stxt:"", surl:""});
   } catch(e){ setState({analyzing:false, err:fnError(e)}); }
 }
@@ -245,7 +250,7 @@ function shareURL(o){
 }
 function shareText(o){
   const a = agg(o.id); const p = pctOf(a); const n = totalOf(a);
-  const name = L(o,"name"), role = L(o,"role");
+  const name = N(o), role = L(o,"role");
   if(lang==="ar") return p==null ? `${name} (${role}) على شايفك. صوّت هذا الشهر: ${shareURL(o)} #شايفك #سوريا`
                                   : `${name} (${role}): ${p}٪ ثقة من ${n} صوت هذا الشهر على شايفك. صوّت أنت أيضاً: ${shareURL(o)} #شايفك #سوريا`;
   return p==null ? `${name} (${role}) on Shayfak. Vote this month: ${shareURL(o)} #Shayfak #Syria`
@@ -256,7 +261,7 @@ function shareOn(platform, id){
   const url = encodeURIComponent(shareURL(o)), txt = encodeURIComponent(shareText(o));
   const links = { x:`https://x.com/intent/tweet?text=${txt}`, whatsapp:`https://wa.me/?text=${txt}`, telegram:`https://t.me/share/url?url=${url}&text=${txt}`, facebook:`https://www.facebook.com/sharer/sharer.php?u=${url}` };
   if(platform==="copy"){ navigator.clipboard.writeText(shareURL(o)).then(()=>showToast(t("copied"),"ok")).catch(()=>{}); return; }
-  if(platform==="native" && navigator.share){ navigator.share({title:`${t("sn")} — ${L(o,"name")}`, text:shareText(o), url:shareURL(o)}).catch(()=>{}); return; }
+  if(platform==="native" && navigator.share){ navigator.share({title:`${t("sn")} — ${N(o)}`, text:shareText(o), url:shareURL(o)}).catch(()=>{}); return; }
   window.open(links[platform], "_blank", "noopener,width=600,height=500");
 }
 function openOfficial(id){ setState({sel:id, tab:"bio", showSubmit:false, result:null, err:null}); }
@@ -356,8 +361,8 @@ function trustBlock(o, compact){
   </div>${renderTrustChart(o)}`;
 }
 function subCard(s){
-  const CAT = {allegation:["#fee2e2","#991b1b"],corruption:["#fee2e2","#991b1b"],promise:["#fef3c7","#92400e"],achievement:["#dcfce7","#166534"],statement:["#e0f2fe","#075985"],general:["#f5f5f4","#57534e"]};
-  const c = CAT[s.category]||CAT.general; const catL = {allegation:t("cAll"),corruption:t("cCor"),promise:t("cPro"),achievement:t("cAch"),statement:t("cSta"),general:t("cGen")}[s.category]||s.category;
+  const CAT = {allegation:["#f8e9e5","#8a3a28"],corruption:["#f8e9e5","#8a3a28"],promise:["#f8f0de","#7a5308"],achievement:["#e6f3ea","#1f5c38"],statement:["#e3f1f2","#0a3f45"],response:["#e3f1f2","#0a3f45"],general:["#eef0f4","#3b4559"]};
+  const c = CAT[s.category]||CAT.general; const catL = {allegation:t("cAll"),corruption:t("cCor"),promise:t("cPro"),achievement:t("cAch"),statement:t("cSta"),response:t("cResp"),general:t("cGen")}[s.category]||s.category;
   return `<div class="sub-card"><div class="sbadges"><span class="cbadge" style="background:${c[0]};color:${c[1]}">${esc(catL)}</span><span class="sevbadge" style="background:var(--g2);color:var(--g4)">${esc(s.severity)}</span><span class="crebadge" style="background:var(--g2);color:var(--g4)">${esc(s.credibility)}</span></div>
     <div class="sum">${esc(s.summary)}</div>
     ${(s.key_claims||[]).length?`<ul class="claims">${s.key_claims.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>`:""}
@@ -383,10 +388,11 @@ function renderTab(o){
     ${ps.length?`<div class="stitle" style="margin-top:1rem">${t("pcs")}</div>${ps.map(subCard).join("")}`:""}`;
   }
   if(A.tab==="alleg"){
-    const as = subs.filter(s=>s.category==="allegation"||s.category==="corruption");
-    return `${(o.allegs||[]).length?`<div class="stitle">${t("ta")}</div>${o.allegs.map(a=>`<div class="alleg-item"><div class="at">${esc(lang==="ar"?a.ar:a.en)}</div><div class="ad">${esc(lang==="ar"?a.dar:a.den)}</div>${a.src?`<div class="asrc"><i class="ti ti-file-text"></i> ${esc(a.src)}</div>`:""}</div>`).join("")}`:""}
+    const as = subs.filter(s=>s.category==="allegation"||s.category==="corruption"||s.category==="response");
+    return `<div class="ai-note"><i class="ti ti-file-text"></i><span>${t("record_note")}</span></div>${(o.allegs||[]).length?`<div class="stitle">${t("ta")}</div>${o.allegs.map(a=>`<div class="alleg-item"><div class="at">${esc(lang==="ar"?a.ar:a.en)}</div><div class="ad">${esc(lang==="ar"?a.dar:a.den)}</div>${a.src?`<div class="asrc"><i class="ti ti-file-text"></i> ${esc(a.src)}</div>`:""}</div>`).join("")}`:""}
     ${as.length?`<div class="stitle" style="margin-top:.85rem">${t("acs")}</div>${as.map(subCard).join("")}`:""}
-    ${!(o.allegs||[]).length&&!as.length?`<div class="empty"><i class="ti ti-shield-check" style="color:#15803d"></i>${t("ae")}</div>`:""}`;
+    ${!(o.allegs||[]).length&&!as.length?`<div class="empty"><i class="ti ti-shield-check"></i>${t("ae")}</div>`:""}
+    <div class="reply-box"><span>${t("reply_s")}</span><button class="btn" onclick="setState({showSubmit:true,result:null,err:null,asOffice:true})"><i class="ti ti-message-reply"></i> ${t("reply")}</button></div>`;
   }
   if(A.tab==="comm") return `<div class="ai-note"><i class="ti ti-shield-check"></i><span>${t("cn")}</span></div>${subs.length?subs.map(subCard).join(""):`<div class="empty"><i class="ti ti-file-plus"></i>${t("ce")}</div>`}`;
   if(A.tab==="trust") return trustBlock(o,false);
@@ -395,10 +401,11 @@ function renderTab(o){
 function renderSubmit(o){
   const r = A.result;
   return `<div class="sov" onclick="if(event.target.classList.contains('sov'))setState({showSubmit:false})"><div class="smod" style="direction:${lang==='ar'?'rtl':'ltr'};overflow-y:auto">
-    <div class="smhd"><div><div style="font-size:15px;font-weight:600">${t("stl")}</div><div style="font-size:12px;color:var(--g4)">${esc(L(o,"name"))}</div></div><button class="xbtn" onclick="setState({showSubmit:false})"><i class="ti ti-x"></i></button></div>
+    <div class="smhd"><div><div style="font-size:15px;font-weight:600">${t("stl")}</div><div style="font-size:12px;color:var(--g4)">${esc(N(o))}</div></div><button class="xbtn" onclick="setState({showSubmit:false})"><i class="ti ti-x"></i></button></div>
     <div class="smbody">
       <div class="ai-note"><i class="ti ti-info-circle"></i><span>${t("si2")}</span></div>
       ${r ? `<div class="pend"><i class="ti ti-clock"></i> ${t("rt")} — ${t("thanks")}</div>${subCard(r)}<button class="btn" onclick="setState({showSubmit:false,result:null})">${t("lc")}</button>` : `
+      <div class="who"><label class="${A.asOffice?"":"on"}"><input type="radio" name="who" ${A.asOffice?"":"checked"} onchange="setState({asOffice:false})"> ${t("who_public")}</label><label class="${A.asOffice?"on":""}"><input type="radio" name="who" ${A.asOffice?"checked":""} onchange="setState({asOffice:true})"> ${t("who_office")}</label></div>
       <input class="inp" type="url" placeholder="${esc(t("src_ph"))}" value="${esc(A.surl)}" oninput="A.surl=this.value">
       <textarea class="sta" rows="6" placeholder="${esc(t("txt_ph"))}" oninput="A.stxt=this.value">${esc(A.stxt)}</textarea>
       ${A.err?`<div class="err"><i class="ti ti-alert-triangle"></i>${esc(A.err)}</div>`:""}
@@ -422,7 +429,7 @@ function renderMod(){
   return `<div class="aov" onclick="if(event.target.classList.contains('aov'))setState({showMod:false})"><div class="amod" style="max-width:640px;direction:${lang==='ar'?'rtl':'ltr'};max-height:85vh;overflow:auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><strong>${t("pending")}</strong><button class="xbtn" onclick="setState({showMod:false})"><i class="ti ti-x"></i></button></div>
     ${list==null?`<div class="empty"><i class="ti ti-loader-2 spin"></i></div>`:!list.length?`<div class="empty">${t("none_pending")}</div>`:list.map(p=>{ const o=byId(p.officialId); return `<div class="mod-item">
-      <div><strong>${esc(o?L(o,"name"):p.officialId)}</strong> · ${esc(p.category)} · ${esc(p.severity)} · ${esc(p.credibility)}${p.needs_source?' · <span style="color:var(--amber)">needs source</span>':''}</div>
+      <div><strong>${esc(o?N(o):p.officialId)}</strong> · ${esc(p.category)} · ${esc(p.severity)} · ${esc(p.credibility)}${p.needs_source?' · <span style="color:var(--amber)">needs source</span>':''}</div>
       <div style="margin:4px 0">${esc(p.summary)}</div>${p.moderator_note?`<div style="font-size:12px;color:var(--g4)">${esc(p.moderator_note)}</div>`:""}
       ${p.sourceUrl?`<a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener nofollow" style="font-size:12px">${esc(p.sourceUrl)}</a>`:""}
       <div class="raw">${esc(p.rawText)}</div>
@@ -451,7 +458,7 @@ function renderProfile(o){
   const ac = (o.allegs||[]).length + subs.filter(s=>s.category==="allegation"||s.category==="corruption").length;
   const tabs = [["bio",t("tb")],["prom",t("tp")],["alleg",t("ta")+(ac?` <span class="status-badge" style="background:#fee2e2;color:#991b1b">${ac}</span>`:"")],["comm",t("tc")+(subs.length?` <span class="status-badge">${subs.length}</span>`:"")],["trust",t("ts")]];
   document.getElementById("app").innerHTML = `${header(true)}
-<div class="pp-hero"><div class="pp-photo-ring">${pEl(o,108)}</div><div class="pp-name">${esc(L(o,"name"))}</div><div class="pp-role-badge">${esc(L(o,"role"))}${o.status!=="active"?` · ${o.status==="deceased"?t("deceased"):t("former")}`:""}</div>
+<div class="pp-hero"><div class="pp-photo-ring">${pEl(o,108)}</div><div class="pp-name">${esc(N(o))}</div><div class="pp-role-badge">${esc(L(o,"role"))}${o.status!=="active"?` · ${o.status==="deceased"?t("deceased"):t("former")}`:""}</div>
   <div class="share-bar">
     ${navigator.share?`<button class="sh-btn sh-copy" onclick="shareOn('native',${o.id})"><i class="ti ti-share"></i> ${t("share")}</button>`:""}
     <button class="sh-btn sh-x" onclick="shareOn('x',${o.id})"><i class="ti ti-brand-x"></i> X</button>
@@ -472,18 +479,18 @@ function movers(){
   const rows = A.officials.filter(active).map(o => { const a = pctOf(agg(o.id,cur)), b = pctOf(agg(o.id,prev)); return a!=null&&b!=null ? {o, d:a-b, a} : null; }).filter(Boolean);
   if(!rows.length) return "";
   const up = [...rows].sort((x,y)=>y.d-x.d).filter(r=>r.d>0).slice(0,5), dn = [...rows].sort((x,y)=>x.d-y.d).filter(r=>r.d<0).slice(0,5);
-  const row = r => `<div class="mv-row" onclick="openOfficial(${r.o.id})">${pEl(r.o,28)}<span>${esc(L(r.o,"name"))}</span><span class="mv-d ${r.d>0?"mv-up":"mv-dn"}">${r.d>0?"+":""}${r.d} <small style="font-weight:400;color:var(--g4)">(${r.a}%)</small></span></div>`;
+  const row = r => `<div class="mv-row" onclick="openOfficial(${r.o.id})">${pEl(r.o,28)}<span>${esc(N(r.o))}</span><span class="mv-d ${r.d>0?"mv-up":"mv-dn"}">${r.d>0?"+":""}${r.d} <small style="font-weight:400;color:var(--g4)">(${r.a}%)</small></span></div>`;
   return `<div class="movers"><div class="mv"><h3>${t("movers_up")} · ${t("vs")}</h3>${up.length?up.map(row).join(""):`<div class="ns">—</div>`}</div><div class="mv"><h3>${t("movers_dn")} · ${t("vs")}</h3>${dn.length?dn.map(row).join(""):`<div class="ns">—</div>`}</div></div>`;
 }
 function orgChart(list){
   const pres = list.find(o=>o.grp==="president"); const sec = list.filter(o=>o.grp==="security"); const cab = list.filter(o=>o.grp==="gov");
-  const card = (o, cls, sz) => { const p = pctOf(agg(o.id)); const c = acol(p); return `<div class="oc-card ${cls}" onclick="openOfficial(${o.id})">${pEl(o,sz)}<div class="oc-nm">${esc(L(o,"name"))}</div><div class="oc-rl">${esc(L(o,"role"))}</div><div class="oc-aprow"><div class="oc-bar-track"><div class="oc-bar-fill" style="width:${p==null?0:p}%;background:${cls==="oc-pres"?"rgba(255,255,255,.65)":c}"></div></div><span class="oc-pct" style="color:${cls==="oc-pres"?"#fff":c}">${p==null?"—":p+"%"}</span></div></div>`; };
+  const card = (o, cls, sz) => { const p = pctOf(agg(o.id)); const c = acol(p); return `<div class="oc-card ${cls}" onclick="openOfficial(${o.id})">${pEl(o,sz)}<div class="oc-nm">${esc(N(o))}</div><div class="oc-rl">${esc(L(o,"role"))}</div><div class="oc-aprow"><div class="oc-bar-track"><div class="oc-bar-fill" style="width:${p==null?0:p}%;background:${cls==="oc-pres"?"rgba(255,255,255,.65)":c}"></div></div><span class="oc-pct" style="color:${cls==="oc-pres"?"#fff":c}">${p==null?"—":p+"%"}</span></div></div>`; };
   return `<div class="oc-root"><div class="oc-t1">${pres?card(pres,"oc-pres",84):""}</div><div class="oc-divider"><span>${lang==='ar'?'الحقائب السيادية':'Sovereign portfolios'}</span></div><div class="oc-t2">${sec.map(o=>card(o,"oc-sov",58)).join("")}</div><div class="oc-divider"><span>${lang==='ar'?'الوزارات':'Cabinet'}</span></div><div class="oc-t3">${cab.map(o=>card(o,"oc-cab",46)).join("")}</div></div>`;
 }
 function card(o){
   const a = agg(o.id); const p = pctOf(a); const n = totalOf(a); const c = acol(p); const my = A.my[o.id]||{}; const iss = (lang==="ar"?o.issAr:o.issEn)||[];
   return `<div class="pcard" onclick="openOfficial(${o.id})">${pEl(o,68)}
-    <div class="pc-name">${esc(L(o,"name"))}</div><div class="pc-role">${esc(L(o,"role"))}</div>
+    <div class="pc-name">${esc(N(o))}</div><div class="pc-role">${esc(L(o,"role"))}</div>
     <span class="rbadge" style="background:${o.bg};color:${o.col}">${o.grp==="governor"?esc(L(o,"gov")):grpLbl(o)}${o.status!=="active"?` · ${t("former")}`:""}</span>
     <div class="ap-row" style="width:100%"><span class="ap-l">${t("trust")}</span><span class="ap-p" style="color:${c}">${p==null?`<span title="${esc(t("notenough"))}">— · ${num(n)}</span>`:p+"%"}</span></div>
     <div class="ap-bar" style="width:100%"><div class="ap-fill" style="width:${p==null?0:p}%;background:${c}"></div></div>
@@ -508,15 +515,16 @@ function render(){
   const idx = up+dn >= MIN_SAMPLE ? Math.round(100*up/(up+dn)) : null;
   const showOrg = A.filter==="all" && !A.viewGrid && !q;
   document.getElementById("app").innerHTML = `${header(false)}
-<section class="hero"><h1 class="hero-title">${t("sn")}</h1><p class="hero-sub">${t("hero_s")}</p>
+<section class="hero"><div class="hero-in"><h1 class="hero-title">${t("sn")}</h1><p class="hero-sub">${t("hero_s")}</p>
   <div class="hero-stats">
     <div class="hs"><div class="hs-n">${num(A.officials.filter(active).length)}</div><div class="hs-l">${t("h_off")}</div></div>
     <div class="hs"><div class="hs-n">${num(up+dn)}</div><div class="hs-l">${t("h_vt")}</div></div>
     <div class="hs"><div class="hs-n">${idx==null?"—":idx+"%"}</div><div class="hs-l">${t("h_idx")}</div></div>
-    <div class="hs"><div class="hs-n" style="font-size:18px;padding-top:8px">${esc(A.meta.updated||"—")}</div><div class="hs-l">${t("h_upd")} · <a href="#" onclick="event.preventDefault();setState({showLog:true})" style="color:#fff">${t("changelog")}</a></div></div>
+    <div class="hs"><div class="hs-n" style="font-size:18px;padding-top:8px">${esc(A.meta.updated||"—")}</div><div class="hs-l">${t("h_upd")} · <a href="#" onclick="event.preventDefault();setState({showLog:true})">${t("changelog")}</a></div></div>
   </div>
   <div class="hero-note">${fmtMonth(cur)} · ${t("idx_sub")}${idx==null?` · ${t("idx_none")}`:""}</div>
-</section>
+  <div class="principles">${[["p1","file-certificate"],["p2","scale"],["p3","message-reply"]].map(([k,ic])=>`<div class="pr"><i class="ti ti-${ic}"></i><div><strong>${t(k)}</strong>${t(k+"s")}</div></div>`).join("")}</div>
+</div></section>
 <main class="main">
   ${movers()}
   <div class="filters"><span class="fl">${t("sb")}</span>${FILT.map(([id,l])=>`<button class="fb${A.filter===id?" on":""}" onclick="setState({filter:'${id}',viewGrid:false})">${l}</button>`).join("")}
