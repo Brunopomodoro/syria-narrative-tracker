@@ -233,7 +233,7 @@ async function doModerate(officialId, id, action){
 }
 function toggleLang(){
   lang = lang==="ar"?"en":"ar"; try { localStorage.setItem("sk_lang", lang); } catch {}
-  const r = document.getElementById("root"); r.lang = lang; r.dir = lang==="ar"?"rtl":"ltr"; render();
+  document.documentElement.lang = lang; document.documentElement.dir = lang==="ar"?"rtl":"ltr"; render();
 }
 Object.assign(window, {doVote, doRate, doLogin, doLogout, doDeleteAccount, doSubmit, loadPending, doModerate, toggleLang, shareOn, openOfficial});
 
@@ -537,7 +537,7 @@ window.render = render;
 
 // ── boot ──────────────────────────────────────────────────────────────────────
 async function init(){
-  document.getElementById("root").lang = lang; document.getElementById("root").dir = lang==="ar"?"rtl":"ltr";
+  document.documentElement.lang = lang; document.documentElement.dir = lang==="ar"?"rtl":"ltr";
   try { await loadStatic(); } catch(e){ document.getElementById("app").innerHTML = `<div class="empty">Could not load data/officials.json (${esc(e.message)})</div>`; return; }
   A.loaded = true;
   initFirebase();
