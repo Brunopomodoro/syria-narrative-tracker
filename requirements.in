@@ -1,0 +1,10 @@
+# Direct dependencies, with minimum versions. Edit this file, not requirements.txt.
+# requirements.txt is generated from it with exact versions and hashes:
+#   pip-compile --generate-hashes --allow-unsafe requirements.in
+# (run under Python 3.12, the version the workflows use). Dependabot updates both.
+anthropic>=0.40
+requests>=2.31
+beautifulsoup4>=4.12
+feedparser>=6.0
+PyYAML>=6.0
+telethon>=1.36
