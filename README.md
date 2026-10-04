@@ -9,6 +9,14 @@ It reads Arabic, Kurdish and English posts from about 50 sources: Telegram chann
 - `scripts/pipeline.py` collects posts, asks Claude to find narratives, and writes `data/` (including `data/snapshots/`, the full analysis of every hour, which the website opens when you click a past hour), `data/stories.json` and `data/headlines.json` (what the website's search box looks through: stories from the past 14 days and outlet headlines from the past 7 days; posts by individuals are never stored)
 - `.github/workflows/update.yml` runs the pipeline every hour on GitHub Actions
 
+## Security
+
+- **Secrets** live only in the repository's Actions secrets (see GUIDE.md); none are in the code or the git history. `.gitignore` blocks env files, keys and session files.
+- **The page** loads its script from `assets/app.js` and its policy (`<meta>` in `index.html`, `_headers`) allows scripts only from this origin: injected markup cannot run code. Generated story and digest pages allow no scripts at all. All text from posts and from the model is escaped before it reaches a page. After editing `assets/app.js`, bump the `?v=` on its `<script>` tag so browsers fetch the new file.
+- **Headers.** `_headers` adds framing protection, HSTS and the rest. Cloudflare Pages and Netlify apply it automatically. GitHub Pages ignores it; if the site stays on GitHub Pages behind Cloudflare, add the same headers once under Cloudflare, Rules, Transform Rules, Modify Response Header.
+- **Individuals' posts are never published.** The test-sources task logs only source, platform, language and length, never post text, because Actions logs of a public repository are public. The validation-sample task refuses to run unless the repository is private, because its artifact contains excerpts of individuals' posts.
+- **Dependencies.** Dependabot opens a weekly pull request for outdated actions and Python packages.
+
 ## Data files
 
 Everything the tracker produces is in `data/` and can be downloaded or read directly (licence: CC BY 4.0, see the website's Data page):
