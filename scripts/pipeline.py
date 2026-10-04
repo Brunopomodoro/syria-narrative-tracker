@@ -1082,7 +1082,9 @@ def main() -> int:
 
     if args.dry_run:
         for p in sample[:5] + [p for p in sample if p["voice"] == "public"][:5]:
-            log(f"  [{p['voice']}/{p['platform']}] {p['source']}: {p['text'][:100]}")
+            # Source, platform and language only. The post text is deliberately not printed: Actions logs of a
+            # public repository are public, and the tracker promises never to republish individuals' posts.
+            log(f"  [{p['voice']}/{p['platform']}] {p['source']} ({p.get('lang', 'other')}, {len(p['text'])} chars)")
         log("Dry run: nothing sent to Claude, nothing saved.")
         return 0
 

@@ -37,6 +37,12 @@ jobs:
         with:
           fetch-depth: 0        # the archive backfill reads old versions of the results
 
+      - name: Refuse the validation sample on a public repository
+        if: inputs.task == 'validation-sample' && github.event.repository.private != true
+        run: |
+          echo "::error::The validation sample contains excerpts of individuals' posts. On a public repository its artifact is downloadable by any GitHub user. Make the repository private first, or run the sample on your own computer."
+          exit 1
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -69,8 +75,8 @@ jobs:
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
           esac
 
-      - name: Upload the validation sample (private artifact, kept 30 days)
-        if: inputs.task == 'validation-sample'
+      - name: Upload the validation sample (private repositories only; kept 30 days)
+        if: inputs.task == 'validation-sample' && github.event.repository.private == true
         uses: actions/upload-artifact@v4
         with:
           name: validation-sample

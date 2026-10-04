@@ -1,0 +1,1390 @@
+/* =================== words =================== */
+const T = {
+  en: {
+    title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data",
+    intro: "Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true.", switchTo: "العربية", switchLang: "ar",
+    loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
+    nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
+    outletsMeanwhile: "Outlets meanwhile:",
+    voices: (p, o, h) => `${p} voices from people and ${o} from outlets, last ${h} hours.`,
+    collected: (c, r) => `Collected ${c} posts, of which ${r} were recent and on topic.`,
+    postsFrom: (n, s, h) => `${n} posts from ${s} sources, last ${h} hours.`,
+    hint: "This update is based on news outlets only. People's reactions will appear here as comment sources are added.",
+    fallback: "",
+    stories: "Stories", storiesSub: (n, h) => `${n} ${n === "1" ? "story" : "stories"} in the last ${h} hours. Open one to read more.`,
+    coverage: (p) => `Together they cover ${p} of the posts analysed; the rest fit no clear story, so the percentages do not add up to 100%.`,
+    sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
+    people: "People", outlets: "Outlets", negative: "Negative", neutral: "Neutral", positive: "Positive",
+    noStories: "No clear stories in this update.",
+    reacting: "How people are reacting", framed: "How it's framed", watch: "Watch for:",
+    last48: "Last 48 updates", voicesLbl: "Voices", where: "Where",
+    sigTitle: "Signs of coordination:", sigLevels: { none: "none", low: "weak", medium: "moderate", high: "strong" }, sigMore: "How these are measured.",
+    sigNote: "Measured signals, not proof: real breaking news, popular slogans and a few devoted commenters produce them too.",
+    sigValue: { copies: (i) => `${pctText(i.value)} of ${num(i.n)} public posts are exact repeats`, near_copies: (i) => `${pctText(i.value)} of ${num(i.n)} distinct texts are near-identical`,
+                burst: (i) => `the busiest hour held ${i.value}× the hourly average (${num(i.n)} posts)`, burst_no_news: () => "no outlet on the list covered the story in that hour",
+                synchrony: (i) => `${num(i.value)} texts appeared on several platforms within an hour`, concentration: (i) => `the top 5% of commenters wrote ${pctText(i.value)} of ${num(i.n)} comments`,
+                regularity: (i) => `comment intervals vary by only ${pctText(i.value)} (${num(i.n)} comments)` },
+    signalsTitle: "Coordination signals", signalsIntro: "Each story carries a list of measurable signs that its public reaction may be organised rather than spontaneous. They are computed from the posts assigned to the story in that update, without identifying anyone: commenter concentration is counted from one-way hashes that exist only during the update. Every signal has innocent explanations, listed with it, so the level is a prompt for a human to look closer, never a verdict. The values are included in the downloads.",
+    sigInnocent: "Innocent explanation:",
+    voicesCount: (p, o) => `${p} from people, ${o} from outlets`, postsCount: (n) => `${n} posts`,
+    trend: { New: "New", Rising: "Rising", Fading: "Fading", Steady: "Steady", Returning: "Returning" },
+    tone: ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
+    week: "The past week", twoWeeks: "The past two weeks", weekSub: "Each square is one hour, in Damascus time, colored by how people felt.",
+    mosaicLabel: "Hourly mood. Use the arrow keys to move between hours.",
+    chooseHour: "Choose an hour", chooseHourSub: "Click a square, or use the arrow keys.",
+    hourStories: "Open a story to read its analysis from that hour.",
+    search: "Search", searchSub: (d, h) => `Stories from the past ${d} days and outlet headlines from the past ${h} days.`,
+    searchPh: "Search a keyword, e.g. electricity, قسد, Rojava", searchLabel: "Search stories and headlines",
+    searchLoading: "Loading…", searchShort: "Type at least 2 letters.",
+    searchCount: (s, h, q) => `${s} ${s === "1" ? "story" : "stories"} and ${h} ${h === "1" ? "headline" : "headlines"} mention “${q}”.`,
+    sStories: "Stories", sHeadlines: "Headlines from outlets", noMatch: "Nothing found.",
+    seen: (a, b, n) => `Seen ${a === b ? a : `${a} – ${b}`} · ${n} ${n === "1" ? "hour" : "hours"}`,
+    perDay: "Matching headlines per day", showMore: "Show more",
+    noHeadlines: "Headlines are collected from now on; they will appear here after the next hourly update.",
+    kinds: { "": "All sources", official: "Official", independent: "Independent & opposition-origin", kurdish: "Kurdish-run", regional: "Regional", aggregator: "News aggregators" },
+    /* trends */
+    trendsTitle: "Trends", trendsSub: "How the discussion has moved over time, by theme, by community and by kind of outlet.",
+    period: "Period", periods: { 7: "Week", 30: "30 days", 90: "90 days", 365: "A year", 0: "All" }, themeSel: "Theme", allThemes: "All themes",
+    themeHint: "Choosing a theme focuses every chart below on it.", themeOnly: (n) => `Only ${n} over the period; the strip shows the tone of people's reactions each day.`,
+    themeSince: "Tone by language and by kind of outlet is recorded per theme from 28 September 2026, so earlier days show no line here.",
+    tableBtn: "Table", chartBtn: "Chart", loadingTrends: "Loading the archive…", noTrends: "The archive is empty so far.",
+    daysCovered: (n, a, b) => `${n} days, ${a} to ${b}.`,
+    whatTitle: "What people talk about", whatSub: "Share of the discussion and tone per theme over the period. Bars show the average share of posts; dots show the tone of people (filled) and outlets (ring).",
+    themeTrendTitle: "Themes over time", themeTrendSub: "Share of the discussion per day; the strip below each chart shows the tone of people's reactions that day.",
+    gapTitle: "People and outlets", gapSub: "Average tone of people's reactions and of outlet coverage, per day. The shaded band is the gap between them.",
+    langTitle: "By language of the people posting", langSub: "Tone of public reactions in each language, against all public reactions (grey).",
+    kindTitle: "By kind of outlet", kindSub: "Tone of coverage by each kind of outlet, against all outlets (grey). Available from 28 September 2026.",
+    notEnough: "Not enough data yet.", people: "People", outlets: "Outlets", allPublic: "All people", allOutlets: "All outlets", share: "Share", stories: "Stories",
+    eventsLbl: "Events", shareLbl: "share of discussion", dateCol: "Date", valueCol: "Value",
+    weeklyTitle: "Weekly digests", weeklySub: "A written summary of each week, with the week's theme table. Also available as an RSS feed.", allDigests: "All digests", feed: "RSS feed", permalink: "Permanent page",
+    /* data */
+    dataTitle: "Data", dataSub: "Everything the tracker produces can be downloaded and reused. Licence: CC BY 4.0 (free to use with attribution). Posts by individuals are never stored: the data holds analyses and outlet headlines only.",
+    dlTitle: "Download a date range", dlSub: "Built in your browser from the daily archive files; identical to the monthly files below.",
+    dataset: "Dataset", datasets: { stories: "Stories (one row per story per run)", runs: "Runs (one row per update)", themes: "Themes (one row per theme per run)", headlines: "Outlet headlines" },
+    from: "From", to: "To", format: "Format", download: "Download", fetching: (n) => `Fetching ${n} days…`, dlDone: (r) => `Ready: ${r} rows.`, dlNone: "No data in that range.", dlErr: "Download failed. Try a shorter range.",
+    filesTitle: "Monthly files", filesSub: "Stable addresses, one folder per month. The current month is refreshed on every update; earlier months do not change.",
+    file: "File", rows: "Rows", size: "Size", month: "Month", dailyTitle: "Daily archive (JSON)", dailySub: "One file per day with every run in full and that day's outlet headlines.",
+    apiTitle: "Read the data directly", apiSub: "All files are plain JSON or CSV over HTTPS and can be fetched from scripts and notebooks (cross-origin requests are allowed).",
+    api: [
+      ["data/latest.json", "The current analysis: overall mood, every story with its full text in both languages, sources and their status."],
+      ["data/history.json", "The last 14 days, one entry per run: tone, and each story's share and tone."],
+      ["data/archive/index.json", "One summary per day, permanent: volume and tone overall, per theme, per language and per kind of outlet; the events list."],
+      ["data/archive/YYYY-MM-DD.json", "Every run of that day in full, plus that day's outlet headlines."],
+      ["data/exports/index.json", "The list of monthly files with row counts, sizes and column names."],
+      ["data/methodology.json", "Sources, themes, sampling settings, model, the exact analysis instructions and the method changelog."]],
+    colsTitle: "Columns", colsSub: "Tones run from −1 (anger, fear, grief) to +1 (hope, pride, celebration); 0 is neutral. Empty cells mean the value does not apply (for example no public posts in the story).",
+    columns: {
+      run_time: "Time of the update (UTC)", posts_analyzed: "Posts in the analysis, counting copies", public_posts: "Of which from people", outlet_posts: "Of which from outlets", unique_posts: "Distinct posts", stories: "Number of stories found",
+      public_sentiment: "Tone of people's reactions", outlet_sentiment: "Tone of outlet coverage", public_mood: "People's mood in a word", outlet_mood: "Outlets' mood in a word",
+      lang_ar: "Posts in Arabic", lang_ku: "Posts in Kurdish", lang_en: "Posts in English", lang_other: "Posts in other languages", model: "Model used", cost_usd: "Estimated cost of the run (USD)",
+      story_key: "Permanent story name: first-seen day + id", story_id: "Story id (reused while the story continues)", theme: "Theme id (see Methodology)", title: "Title", title_ar: "Title in Arabic",
+      share: "Share of the run's posts", volume: "Posts in the story, counting copies", public_volume: "Of which from people", emotions: "Emotions named by the analysis", framings: "How different sources frame it", flags: "Warning signs (coordination, incitement, unverified claims)",
+      sources: "Main sources", platforms: "Posts per platform", languages: "Posts per language", first_seen: "When the story first appeared", summary: "Summary", summary_ar: "Summary in Arabic", public_reaction: "How people are reacting", public_reaction_ar: "The same in Arabic",
+      public_tone_ar: "Tone of Arabic-language reactions", public_tone_ku: "Tone of Kurdish-language reactions", public_tone_en: "Tone of English-language reactions",
+      outlet_tone_official: "Tone of official outlets", outlet_tone_independent: "Tone of independent and opposition-origin outlets", outlet_tone_kurdish: "Tone of Kurdish-run outlets", outlet_tone_regional: "Tone of regional outlets", outlet_tone_aggregator: "Tone of news aggregators",
+      time: "Publication time (UTC)", source: "Outlet", kind: "Kind of outlet", language: "Language", text: "Headline or opening text", url: "Link" },
+    citeTitle: "Licence and citation", citeSub: "The data and the text on this site are published under the Creative Commons Attribution 4.0 licence (CC BY 4.0). Cite the tracker and the retrieval date, because the analysis is updated continuously.",
+    citeCopy: "Copy", copied: "Copied", retrieved: "retrieved",
+    /* about additions */
+    methodTitle: "Methodology", sourcesTitle: "Sources", limitsTitle: "Limitations", accuracyTitle: "Accuracy", promptTitle: "The exact instructions given to the model",
+    changelogTitle: "Changes to the method", themesTitle: "Themes", aboutCite: "How to cite", loadingMethod: "Loading…", showPrompt: "Show the instructions",
+    methodSteps: (m) => [
+      ["Collection.", `Every update reads the sources listed below: the public page of each Telegram channel, each news feed, comments on recent YouTube videos found by search and on the newest videos of selected channels, the newest comments in Syria-related Reddit communities, the most-engaged recent posts on X, and, when connected, Bluesky posts, Threads posts, Instagram hashtag posts, and Telegram comments, reactions and group chats. Only posts from the last ${m.window_hours} hours are kept, and sources that cover many countries are filtered with a list of ${m.keywords} Syria-related words in Arabic, Kurdish and English.`],
+      ["Cleaning.", "Links are removed and @handles replaced before anything is analysed or stored. Identical texts are merged and counted, which is how repeated slogans and copy-paste campaigns become visible. Each post's language is detected from its script and vocabulary: Arabic, Kurdish (Kurmanji in Latin script or Sorani), or English."],
+      ["Sampling.", `At most ${m.max_posts} posts go to the analysis per update: ${m.public_share}% of the places are reserved for people's voices and the rest for outlets, and within each group posts are taken in turn from every source, most recent first, so that no single source dominates. The sample is therefore balanced across sources, not proportional to how much each source posts.`],
+      ["Analysis.", `The sample is sent to ${m.model} with the instructions shown at the bottom of this page. The model groups posts into stories, files each under one of the fixed themes, scores the tone of outlet coverage and of public reactions from −1 to +1, names emotions, framings and warning signs, and writes every text in English and Arabic. Where a story contains posts from several kinds of outlet or public posts in several languages, tone is also scored per kind and per language. A story that continues from the previous update keeps its id, so it can be followed over time.`],
+      ["Checks.", "The model's answer is validated: unknown themes become \"other\", tones are held to the scale, per-group tones are kept only for groups with posts in the story, and each post counts towards at most one story. An update where nothing new was collected is skipped. Every text is generated, and the site says so."],
+      ["What is stored.", "The analysis of every update, per-day aggregates, and outlet headlines, permanently. Individuals' posts, comments and identifiers are not stored; the fingerprints used to notice that nothing new was posted are one-way hashes."]],
+    limits: [
+      ["Not a survey.", "The posts are a sample of what is public online, capped per update and balanced across sources. Shares and tones describe that sample, not Syrians as a whole, and small themes rest on few posts."],
+      ["Sources are chosen by hand.", "The picture depends on which channels and feeds are on the list. The list is published below and every change is logged."],
+      ["Labels are generated.", "Themes, tones and summaries come from a language model reading the posts. It can misread sarcasm, dialect and context, and it scores tone at the level of a story, not of each post. See Accuracy for how this is checked."],
+      ["Coverage is uneven.", "Kurdish-language posts are few. Facebook and TikTok cannot be read at all: Meta and TikTok open their public data only to researchers at approved institutions, and this tracker has no such access. Instagram is reached only through hashtag captions and Threads only through keyword search, and both, like Telegram comments, appear only once their connection is on. Updates run several times a day, not exactly every hour."],
+      ["Tone is not truth.", "A story appearing here means it is being said, not that it is accurate, and a positive tone can surround a false claim."]],
+    accuracyBody: "How well do the generated labels match human judgement? A validation study compares the tracker's story-level themes and tones with independent human coding of a sample of posts. Results will appear here once it has been run; the procedure is described in the setup guide.",
+    accuracyHave: (v) => `A validation study on ${v.sample} posts (${v.date}) compared the tracker's labels with ${v.coders} human coders.`,
+    accStats: { theme_agreement: "Theme agreement", theme_kappa: "Theme agreement (Cohen's κ)", sentiment_correlation: "Tone correlation", sentiment_sign_agreement: "Agreement on tone direction", sentiment_mae: "Mean tone error" },
+    colName: "Name", colKind: "Kind", colPlatform: "Where", colFilter: "Syria filter", yes: "yes", no: "no",
+    platforms: { telegram: "Telegram channel", news: "News feed", youtube: "YouTube", reddit: "Reddit", x: "X", bluesky: "Bluesky", threads: "Threads", instagram: "Instagram", telegram_comments: "Telegram", telegram_groups: "Telegram group" },
+    kindsLong: { official: "Official and state", independent: "Independent and opposition-origin", kurdish: "Kurdish-run and north-east", regional: "Regional", aggregator: "News aggregator", public: "People's voices" }, loadingHour: "Loading this hour's analysis…",
+    noSnapshot: "The full analysis of this hour was not saved.",
+    aboutTitle: "About this tracker",
+    method: [
+      ["Throughout the day,", "an automated job collects recent public posts in Arabic, Kurdish and English, removes duplicates and off-topic items, and asks an AI model to group them into stories and describe their tone."],
+      ["People and outlets are kept apart.", "Outlets are channels and news sites. People are comments under posts and videos, messages in public group chats, posts by individuals, and emoji reactions."],
+      ["Tone is not truth.", "A story appearing here means people are saying it, not that it is accurate."],
+      ["This is not all Syrians.", "Online discussion over-represents people with good connectivity, diaspora communities and media outlets, and depends on which sources are chosen."],
+      ["Privacy.", "Only aggregate patterns are shown. Individual users are never named, quoted or profiled, and posts by private people are not linked."],
+      ["AI can misread", "sarcasm, dialect and context. Treat tone as a rough indicator and read the linked examples."]],
+    source: "Source", type: "Type", status: "Status", working: (n) => `Working, ${n} recent`, notWorking: "Not working right now",
+    types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
+    langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
+    langsLine: "Languages in this update:",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
+    emptyTitle: "No results yet",
+    emptyBody: "The first update will appear here within the hour.",
+    emptySub: "This page checks for new results every 10 minutes.",
+    locale: "en-GB"
+  },
+  ar: {
+    title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات",
+    intro: "يتابع متتبّع السرديات السورية ما يُقال عن سوريا على الإنترنت، ويتجدّد تلقائياً على مدار اليوم. يقرأ منشورات عامة بالعربية والكردية والإنجليزية من قنوات تيليغرام والمواقع الإخبارية ويوتيوب وريديت وإكس، ويستخدم الذكاء الاصطناعي لتجميعها في قصص ووصف تفاعل الناس ووسائل الإعلام معها. يعرض الموقع ما يُقال، لا ما هو صحيح.", switchTo: "English", switchLang: "en",
+    loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
+    nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
+    outletsMeanwhile: "أما وسائل الإعلام:",
+    voices: (p, o, h) => `عدد مشاركات الناس ${p}، ومنشورات وسائل الإعلام ${o}، خلال آخر ${h} ساعة.`,
+    collected: (c, r) => `جُمع ${c} منشوراً، منها ${r} حديثة ومتعلقة بالموضوع.`,
+    postsFrom: (n, s, h) => `عدد المنشورات ${n}، من مصادر عددها ${s}، خلال آخر ${h} ساعة.`,
+    hint: "يعتمد هذا التحديث على وسائل الإعلام فقط، وستظهر تفاعلات الناس هنا عند إضافة مصادر التعليقات.",
+    fallback: "بعض النصوص في هذا التحديث متوفرة بالإنجليزية فقط، وستظهر بالعربية مع التحديث القادم.",
+    stories: "القصص", storiesSub: (n, h) => `عدد القصص خلال آخر ${h} ساعة: ${n}. افتح أي قصة لمعرفة المزيد.`,
+    coverage: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فلا تنتمي إلى قصة واضحة، ولذلك لا يبلغ مجموع النسب ١٠٠٪.`,
+    sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
+    people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
+    noStories: "لا توجد قصص واضحة في هذا التحديث.",
+    reacting: "كيف يتفاعل الناس", framed: "كيف تُقدَّم القصة", watch: "انتبه إلى:",
+    sigTitle: "مؤشرات التنسيق:", sigLevels: { none: "لا شيء", low: "ضعيفة", medium: "متوسطة", high: "قوية" }, sigMore: "كيف تُقاس.",
+    sigNote: "مؤشرات مقيسة لا أدلة: الأخبار العاجلة الحقيقية والشعارات الشائعة وقلة من المعلّقين المتحمسين تنتجها أيضاً.",
+    sigValue: { copies: (i) => `${pctText(i.value)} من ${num(i.n)} منشوراً للناس تكرار حرفي`, near_copies: (i) => `${pctText(i.value)} من ${num(i.n)} نصاً مميزاً شبه متطابقة`,
+                burst: (i) => `احتوت الساعة الأكثر نشاطاً على ${num(i.value)} أضعاف المتوسط الساعي (${num(i.n)} منشوراً)`, burst_no_news: () => "لم تغطِّ أي وسيلة إعلام على القائمة القصة في تلك الساعة",
+                synchrony: (i) => `ظهر ${num(i.value)} نصوص على منصات عدة خلال ساعة`, concentration: (i) => `كتب أعلى ٥٪ من المعلّقين ${pctText(i.value)} من ${num(i.n)} تعليقاً`,
+                regularity: (i) => `تتفاوت الفواصل بين التعليقات بنسبة ${pctText(i.value)} فقط (${num(i.n)} تعليقاً)` },
+    signalsTitle: "مؤشرات التنسيق", signalsIntro: "تحمل كل قصة قائمة بعلامات قابلة للقياس على أن تفاعل الجمهور معها قد يكون منظّماً لا عفوياً. تُحسب من المنشورات المنسوبة إلى القصة في ذلك التحديث من دون تحديد هوية أحد: يُحسب تركّز المعلّقين من بصمات أحادية الاتجاه لا توجد إلا أثناء التحديث. لكل مؤشر تفسيرات بريئة مذكورة معه، فالمستوى دعوة للنظر عن قرب لا حكماً. القيم مضمّنة في ملفات التنزيل.",
+    sigInnocent: "تفسير بريء:",
+    last48: "آخر ٤٨ تحديثاً", voicesLbl: "الأصوات", where: "المصادر",
+    voicesCount: (p, o) => `${p} من الناس، ${o} من وسائل الإعلام`, postsCount: (n) => `عدد المنشورات: ${n}`,
+    trend: { New: "جديدة", Rising: "في صعود", Fading: "في تراجع", Steady: "مستقرة", Returning: "عائدة" },
+    tone: ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
+    week: "الأسبوع الماضي", twoWeeks: "الأسبوعان الماضيان", weekSub: "كل مربع يمثّل ساعة واحدة بتوقيت دمشق، ولونه يعكس شعور الناس.",
+    mosaicLabel: "المزاج ساعة بساعة. استخدم مفاتيح الأسهم للتنقل بين الساعات.",
+    chooseHour: "اختر ساعة", chooseHourSub: "انقر على أي مربع، أو استخدم مفاتيح الأسهم.",
+    hourStories: "افتح أي قصة لقراءة تحليلها في تلك الساعة.",
+    search: "البحث", searchSub: (d, h) => `القصص خلال آخر ${d} يوماً، وعناوين وسائل الإعلام خلال آخر ${h} أيام.`,
+    searchPh: "ابحث عن كلمة، مثل: الكهرباء، قسد، Rojava", searchLabel: "ابحث في القصص والعناوين",
+    searchLoading: "جارٍ التحميل…", searchShort: "اكتب حرفين على الأقل.",
+    searchCount: (s, h, q) => `عدد القصص التي تذكر «${q}»: ${s}، وعدد العناوين: ${h}.`,
+    sStories: "القصص", sHeadlines: "عناوين وسائل الإعلام", noMatch: "لا توجد نتائج.",
+    seen: (a, b, n) => `ظهرت ${a === b ? a : `${a} – ${b}`} · عدد الساعات: ${n}`,
+    perDay: "العناوين المطابقة في كل يوم", showMore: "عرض المزيد",
+    noHeadlines: "بدأ جمع العناوين الآن، وستظهر هنا بعد التحديث القادم.",
+    kinds: { "": "كل المصادر", official: "رسمية", independent: "مستقلة ومعارضة سابقاً", kurdish: "كردية", regional: "إقليمية", aggregator: "مجمّعات أخبار" },
+    trendsTitle: "الاتجاهات", trendsSub: "كيف تحرّك النقاش مع الوقت، حسب الموضوع والمجتمع ونوع وسيلة الإعلام.",
+    period: "الفترة", periods: { 7: "أسبوع", 30: "٣٠ يوماً", 90: "٩٠ يوماً", 365: "سنة", 0: "الكل" }, themeSel: "الموضوع", allThemes: "كل المواضيع",
+    themeHint: "اختيار موضوع يركّز كل الرسوم أدناه عليه.", themeOnly: (n) => `موضوع ${n} فقط خلال الفترة؛ الشريط يبيّن نبرة تفاعل الناس في كل يوم.`,
+    themeSince: "تُسجَّل النبرة حسب اللغة وحسب نوع وسيلة الإعلام لكل موضوع منذ ٢٨ أيلول ٢٠٢٦، لذا لا يظهر خط للأيام السابقة هنا.",
+    tableBtn: "جدول", chartBtn: "رسم", loadingTrends: "جارٍ تحميل الأرشيف…", noTrends: "الأرشيف فارغ حتى الآن.",
+    daysCovered: (n, a, b) => `عدد الأيام ${n}، من ${a} إلى ${b}.`,
+    whatTitle: "ما الذي يتحدث عنه الناس", whatSub: "حصة كل موضوع من النقاش ونبرته خلال الفترة. الأشرطة تبيّن متوسط حصة المنشورات، والنقاط تبيّن نبرة الناس (ممتلئة) ووسائل الإعلام (حلقة).",
+    themeTrendTitle: "المواضيع مع الوقت", themeTrendSub: "حصة كل موضوع من النقاش في كل يوم؛ الشريط تحت كل رسم يبيّن نبرة تفاعل الناس في ذلك اليوم.",
+    gapTitle: "الناس ووسائل الإعلام", gapSub: "متوسط نبرة تفاعل الناس ونبرة تغطية وسائل الإعلام في كل يوم. المساحة المظلّلة هي الفجوة بينهما.",
+    langTitle: "حسب لغة الناس", langSub: "نبرة تفاعل الناس بكل لغة، مقارنةً بكل التفاعلات (بالرمادي).",
+    kindTitle: "حسب نوع وسيلة الإعلام", kindSub: "نبرة تغطية كل نوع من وسائل الإعلام، مقارنةً بكل وسائل الإعلام (بالرمادي). متوفر منذ ٢٨ أيلول ٢٠٢٦.",
+    notEnough: "لا تكفي البيانات بعد.", people: "الناس", outlets: "وسائل الإعلام", allPublic: "كل الناس", allOutlets: "كل وسائل الإعلام", share: "الحصة", stories: "القصص",
+    eventsLbl: "الأحداث", shareLbl: "الحصة من النقاش", dateCol: "التاريخ", valueCol: "القيمة",
+    weeklyTitle: "الملخصات الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. متوفر أيضاً كخلاصة RSS.", allDigests: "كل الملخصات", feed: "خلاصة RSS", permalink: "صفحة دائمة",
+    dataTitle: "البيانات", dataSub: "كل ما ينتجه المتتبّع يمكن تنزيله وإعادة استخدامه. الرخصة: CC BY 4.0 (الاستخدام حر مع ذكر المصدر). لا تُحفظ منشورات الأفراد أبداً؛ تحتوي البيانات على التحليلات وعناوين وسائل الإعلام فقط.",
+    dlTitle: "تنزيل فترة زمنية", dlSub: "يُبنى الملف في متصفحك من ملفات الأرشيف اليومية، وهو مطابق للملفات الشهرية أدناه.",
+    dataset: "مجموعة البيانات", datasets: { stories: "القصص (صف لكل قصة في كل تحديث)", runs: "التحديثات (صف لكل تحديث)", themes: "المواضيع (صف لكل موضوع في كل تحديث)", headlines: "عناوين وسائل الإعلام" },
+    from: "من", to: "إلى", format: "الصيغة", download: "تنزيل", fetching: (n) => `جارٍ جلب ${n} يوماً…`, dlDone: (r) => `جاهز: ${r} صفاً.`, dlNone: "لا بيانات في هذه الفترة.", dlErr: "تعذّر التنزيل. جرّب فترة أقصر.",
+    filesTitle: "الملفات الشهرية", filesSub: "عناوين ثابتة، مجلد لكل شهر. يتجدد الشهر الحالي مع كل تحديث، ولا تتغير الأشهر السابقة.",
+    file: "الملف", rows: "الصفوف", size: "الحجم", month: "الشهر", dailyTitle: "الأرشيف اليومي (JSON)", dailySub: "ملف لكل يوم يحتوي على كل تحديثات ذلك اليوم كاملة وعناوين وسائل الإعلام فيه.",
+    apiTitle: "قراءة البيانات مباشرة", apiSub: "كل الملفات JSON أو CSV عبر HTTPS ويمكن جلبها من البرامج والدفاتر البرمجية (الطلبات من نطاقات أخرى مسموحة).",
+    api: [
+      ["data/latest.json", "التحليل الحالي: المزاج العام، وكل قصة بنصها الكامل باللغتين، والمصادر وحالتها."],
+      ["data/history.json", "آخر ١٤ يوماً، مدخل لكل تحديث: النبرة، وحصة كل قصة ونبرتها."],
+      ["data/archive/index.json", "ملخص لكل يوم، دائم: الحجم والنبرة إجمالاً وحسب الموضوع واللغة ونوع وسيلة الإعلام؛ وقائمة الأحداث."],
+      ["data/archive/YYYY-MM-DD.json", "كل تحديثات ذلك اليوم كاملة، مع عناوين وسائل الإعلام فيه."],
+      ["data/exports/index.json", "قائمة الملفات الشهرية مع عدد الصفوف والأحجام وأسماء الأعمدة."],
+      ["data/methodology.json", "المصادر والمواضيع وإعدادات العيّنة والنموذج والتعليمات الدقيقة للتحليل وسجل تغييرات المنهجية."]],
+    colsTitle: "الأعمدة", colsSub: "تتراوح النبرة من −١ (غضب، خوف، حزن) إلى +١ (أمل، فخر، احتفال)؛ الصفر محايد. الخلايا الفارغة تعني أن القيمة لا تنطبق (مثلاً لا منشورات من الناس في القصة).",
+    columns: {
+      run_time: "وقت التحديث (بالتوقيت العالمي)", posts_analyzed: "المنشورات في التحليل مع النسخ المكررة", public_posts: "منها من الناس", outlet_posts: "منها من وسائل الإعلام", unique_posts: "المنشورات المتمايزة", stories: "عدد القصص",
+      public_sentiment: "نبرة تفاعل الناس", outlet_sentiment: "نبرة تغطية وسائل الإعلام", public_mood: "مزاج الناس بكلمة", outlet_mood: "مزاج وسائل الإعلام بكلمة",
+      lang_ar: "منشورات بالعربية", lang_ku: "منشورات بالكردية", lang_en: "منشورات بالإنجليزية", lang_other: "منشورات بلغات أخرى", model: "النموذج المستخدم", cost_usd: "الكلفة التقديرية للتحديث (دولار)",
+      story_key: "الاسم الدائم للقصة: يوم ظهورها الأول + معرّفها", story_id: "معرّف القصة (يُعاد استخدامه ما دامت القصة مستمرة)", theme: "معرّف الموضوع (انظر المنهجية)", title: "العنوان", title_ar: "العنوان بالعربية",
+      share: "الحصة من منشورات التحديث", volume: "منشورات القصة مع النسخ المكررة", public_volume: "منها من الناس", emotions: "المشاعر التي سمّاها التحليل", framings: "كيف تُقدّم المصادر المختلفة القصة", flags: "علامات تحذير (تنسيق، تحريض، ادعاءات غير موثقة)",
+      sources: "المصادر الرئيسية", platforms: "المنشورات حسب المنصة", languages: "المنشورات حسب اللغة", first_seen: "أول ظهور للقصة", summary: "الملخص", summary_ar: "الملخص بالعربية", public_reaction: "كيف يتفاعل الناس", public_reaction_ar: "الشيء نفسه بالعربية",
+      public_tone_ar: "نبرة التفاعلات بالعربية", public_tone_ku: "نبرة التفاعلات بالكردية", public_tone_en: "نبرة التفاعلات بالإنجليزية",
+      outlet_tone_official: "نبرة الوسائل الرسمية", outlet_tone_independent: "نبرة الوسائل المستقلة والمعارضة سابقاً", outlet_tone_kurdish: "نبرة الوسائل الكردية", outlet_tone_regional: "نبرة الوسائل الإقليمية", outlet_tone_aggregator: "نبرة مجمّعات الأخبار",
+      time: "وقت النشر (بالتوقيت العالمي)", source: "وسيلة الإعلام", kind: "نوع وسيلة الإعلام", language: "اللغة", text: "العنوان أو مطلع النص", url: "الرابط" },
+    citeTitle: "الرخصة والاستشهاد", citeSub: "تُنشر البيانات والنصوص في هذا الموقع برخصة المشاع الإبداعي نَسب المُصنَّف 4.0 (CC BY 4.0). اذكر المتتبّع وتاريخ الاسترجاع، لأن التحليل يتجدد باستمرار.",
+    citeCopy: "نسخ", copied: "تم النسخ", retrieved: "استُرجع في",
+    methodTitle: "المنهجية", sourcesTitle: "المصادر", limitsTitle: "حدود المنهج", accuracyTitle: "الدقة", promptTitle: "التعليمات الدقيقة المعطاة للنموذج",
+    changelogTitle: "تغييرات المنهجية", themesTitle: "المواضيع", aboutCite: "كيفية الاستشهاد", loadingMethod: "جارٍ التحميل…", showPrompt: "اعرض التعليمات",
+    methodSteps: (m) => [
+      ["الجمع.", `يقرأ كل تحديث المصادر المذكورة أدناه: الصفحة العامة لكل قناة تيليغرام، وكل خلاصة إخبارية، والتعليقات على فيديوهات يوتيوب الحديثة التي يجدها البحث وعلى أحدث فيديوهات قنوات مختارة، وأحدث التعليقات في مجتمعات ريديت المتعلقة بسوريا، وأكثر منشورات X الحديثة تفاعلاً، وعند الربط منشورات بلوسكاي وثريدز ومنشورات إنستغرام حسب الوسم وتعليقات تيليغرام وتفاعلاته ومجموعاته. تُحفظ فقط منشورات آخر ${m.window_hours} ساعة، وتُرشَّح المصادر التي تغطي بلداناً كثيرة بقائمة من ${m.keywords} كلمة متعلقة بسوريا بالعربية والكردية والإنجليزية.`],
+      ["التنظيف.", "تُحذف الروابط وتُستبدل أسماء المستخدمين قبل أي تحليل أو حفظ. تُدمج النصوص المتطابقة وتُعدّ، وهكذا تظهر الشعارات المكررة وحملات النسخ واللصق. تُحدَّد لغة كل منشور من حروفه ومفرداته: العربية أو الكردية (الكرمانجية بالحروف اللاتينية أو السورانية) أو الإنجليزية."],
+      ["العيّنة.", `يذهب إلى التحليل ${m.max_posts} منشوراً على الأكثر في كل تحديث: ${m.public_share}٪ من الأماكن محجوزة لأصوات الناس والباقي لوسائل الإعلام، وضمن كل مجموعة تؤخذ المنشورات بالتناوب من كل مصدر، الأحدث أولاً، حتى لا يهيمن مصدر واحد. العيّنة إذن متوازنة بين المصادر، لا متناسبة مع غزارة نشر كل مصدر.`],
+      ["التحليل.", `تُرسل العيّنة إلى ${m.model} مع التعليمات المعروضة في أسفل هذه الصفحة. يجمّع النموذج المنشورات في قصص، ويصنّف كل قصة تحت موضوع ثابت واحد، ويقيس نبرة تغطية وسائل الإعلام ونبرة تفاعل الناس من −١ إلى +١، ويسمّي المشاعر والتأطيرات وعلامات التحذير، ويكتب كل نص بالإنجليزية والعربية. وحين تضم القصة منشورات من أنواع عدة من وسائل الإعلام أو منشورات من الناس بلغات عدة، تُقاس النبرة أيضاً حسب النوع وحسب اللغة. تحتفظ القصة المستمرة من التحديث السابق بمعرّفها، فيمكن تتبّعها مع الوقت.`],
+      ["التحقق.", "يُتحقق من إجابة النموذج: تصبح المواضيع غير المعروفة «أخرى»، وتُحصر النبرات ضمن المقياس، وتُحفظ نبرات المجموعات فقط للمجموعات التي لها منشورات في القصة، ويُحسب كل منشور في قصة واحدة على الأكثر. ويُتخطى التحديث الذي لم يجمع شيئاً جديداً. كل النصوص مولَّدة، والموقع يقول ذلك."],
+      ["ما يُحفظ.", "تحليل كل تحديث، والمجاميع اليومية، وعناوين وسائل الإعلام، بشكل دائم. لا تُحفظ منشورات الأفراد وتعليقاتهم ومعرّفاتهم؛ والبصمات المستخدمة لملاحظة أن لا جديد نُشر هي تجزئات أحادية الاتجاه."]],
+    limits: [
+      ["ليس استطلاع رأي.", "المنشورات عيّنة مما هو علني على الإنترنت، محدودة في كل تحديث ومتوازنة بين المصادر. الحصص والنبرات تصف هذه العيّنة لا السوريين جميعاً، والمواضيع الصغيرة تستند إلى منشورات قليلة."],
+      ["المصادر مختارة يدوياً.", "تتوقف الصورة على القنوات والخلاصات الموجودة في القائمة. القائمة منشورة أدناه وكل تغيير فيها مسجَّل."],
+      ["التصنيفات مولَّدة.", "المواضيع والنبرات والملخصات يكتبها نموذج لغوي يقرأ المنشورات. قد يخطئ في فهم السخرية واللهجة والسياق، ويقيس النبرة على مستوى القصة لا كل منشور. انظر «الدقة» لمعرفة كيف يُتحقق من ذلك."],
+      ["التغطية غير متساوية.", "المنشورات بالكردية قليلة. لا يمكن قراءة فيسبوك وتيك توك إطلاقاً: تتيح ميتا وتيك توك بياناتهما العامة للباحثين في مؤسسات معتمدة فقط، وليس لهذا المتتبّع مثل هذا الوصول. ولا يُقرأ إنستغرام إلا عبر نصوص المنشورات تحت الوسوم، وثريدز إلا عبر البحث بالكلمات، ولا يظهر أيٌّ منهما، مثل تعليقات تيليغرام، إلا بعد تفعيل ربطه. تجري التحديثات عدة مرات في اليوم، لا كل ساعة بالضبط."],
+      ["النبرة ليست حقيقة.", "ظهور قصة هنا يعني أنها تُقال، لا أنها صحيحة، وقد تحيط نبرة إيجابية بادعاء كاذب."]],
+    accuracyBody: "إلى أي حد تطابق التصنيفات المولَّدة حكم البشر؟ تقارن دراسة تحقق مواضيع المتتبّع ونبراته على مستوى القصة بترميز بشري مستقل لعيّنة من المنشورات. ستظهر النتائج هنا بعد إجرائها؛ والإجراء موصوف في دليل الإعداد.",
+    accuracyHave: (v) => `قارنت دراسة تحقق على ${v.sample} منشوراً (${v.date}) تصنيفات المتتبّع بترميز ${v.coders} مرمّزين بشريين.`,
+    accStats: { theme_agreement: "التوافق في الموضوع", theme_kappa: "التوافق في الموضوع (كابا كوهين)", sentiment_correlation: "ارتباط النبرة", sentiment_sign_agreement: "التوافق في اتجاه النبرة", sentiment_mae: "متوسط خطأ النبرة" },
+    colName: "الاسم", colKind: "النوع", colPlatform: "المكان", colFilter: "ترشيح سوريا", yes: "نعم", no: "لا",
+    platforms: { telegram: "قناة تيليغرام", news: "خلاصة إخبارية", youtube: "يوتيوب", reddit: "ريديت", x: "X", bluesky: "بلوسكاي", threads: "ثريدز", instagram: "إنستغرام", telegram_comments: "تيليغرام", telegram_groups: "مجموعة تيليغرام" },
+    kindsLong: { official: "رسمية وحكومية", independent: "مستقلة ومعارضة سابقاً", kurdish: "كردية وشمال شرق سوريا", regional: "إقليمية", aggregator: "مجمّع أخبار", public: "أصوات الناس" }, loadingHour: "جارٍ تحميل تحليل هذه الساعة…",
+    noSnapshot: "لم يُحفظ التحليل الكامل لهذه الساعة.",
+    aboutTitle: "حول هذا المتتبّع",
+    method: [
+      ["على مدار اليوم،", "تجمع مهمة آلية أحدث المنشورات العامة بالعربية والكردية والإنجليزية، وتحذف المكرر وغير المتعلق بسوريا، ثم تطلب من نموذج ذكاء اصطناعي تجميعها في قصص ووصف نبرتها."],
+      ["نفصل بين الناس ووسائل الإعلام.", "وسائل الإعلام هي القنوات والمواقع الإخبارية. أما الناس فهم التعليقات تحت المنشورات والفيديوهات، ورسائل المجموعات العامة، ومنشورات الأفراد، والتفاعلات بالرموز التعبيرية."],
+      ["النبرة ليست حقيقة.", "ظهور قصة هنا يعني أن الناس يتداولونها، لا أنها صحيحة."],
+      ["هذا ليس صوت كل السوريين.", "النقاش على الإنترنت يُبرز أكثر من يملكون اتصالاً جيداً، ومجتمعات المغتربين، ووسائل الإعلام، ويتأثر باختيار المصادر."],
+      ["الخصوصية.", "لا نعرض إلا الأنماط العامة. لا نذكر أسماء المستخدمين ولا نقتبس كلامهم ولا ننشئ ملفات عنهم، ولا نضع روابط لمنشورات الأفراد."],
+      ["قد يخطئ الذكاء الاصطناعي", "في فهم السخرية واللهجة والسياق. تعامل مع النبرة كمؤشر تقريبي، واقرأ الأمثلة المرفقة."]],
+    source: "المصدر", type: "النوع", status: "الحالة", working: (n) => `يعمل، المنشورات الحديثة: ${n}`, notWorking: "لا يعمل حالياً",
+    types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
+    langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
+    langsLine: "لغات المنشورات في هذا التحديث:",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
+    emptyTitle: "لا نتائج بعد",
+    emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
+    emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
+    locale: "ar-SY"
+  }
+};
+
+/* =================== state & helpers =================== */
+const TZ = "Asia/Damascus";
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
+const has = (v) => v !== null && v !== undefined && v !== "";
+const state = { latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true, lang: null,
+  snaps: new Map(), hourOpen: new Set(),
+  search: { q: "", kind: "", data: null, loading: false, open: new Set(), shown: 30 },
+  trends: { index: null, loading: false, period: 90, theme: "", tables: new Set() },
+  dataPage: { exports: null, loading: false, dataset: "stories", format: "csv", from: "", to: "", busy: false, status: "" },
+  method: null, validation: null, weekly: null };   // snaps: saved analyses of past hours, loaded when an hour is opened
+const L = () => T[state.lang];
+const rtl = () => state.lang === "ar";
+const cap = (s) => { s = String(s || "").trim(); return s ? s[0].toUpperCase() + s.slice(1) : s; };
+const num = (n) => Number(n || 0).toLocaleString(L().locale);
+const pctText = (v) => Math.round((v || 0) * 100).toLocaleString(L().locale) + (rtl() ? "٪" : "%");
+
+/* pick the right-language version of a field; if it is missing, fall back to the other language and remember it */
+let usedFallback = false;
+const filled = (v) => has(v) && (!Array.isArray(v) || v.length > 0);
+function tx(obj, field) {
+  if (!obj) return "";
+  const ar = obj[field + "_ar"], en = obj[field];
+  if (rtl()) {
+    if (filled(ar)) return ar;
+    if (filled(en)) { usedFallback = true; return en; }
+    return Array.isArray(en) ? [] : "";
+  }
+  return filled(en) ? en : (filled(ar) ? ar : (Array.isArray(ar) ? [] : ""));
+}
+function titleMain(n) {
+  if (!rtl()) return n.title || n.title_ar;
+  if (!n.title_ar && n.title) usedFallback = true;
+  return n.title_ar || n.title;
+}
+/* mood words are never mixed across languages: if missing, use the translated tone label */
+function moodIn(obj, field, tone) {
+  const v = rtl() ? obj?.[field + "_ar"] : obj?.[field];
+  return cap(v) || toneLabel(tone);
+}
+function srcName(name) {
+  name = String(name || "");
+  if (!rtl()) return name;
+  const map = state.latest?.source_names_ar || {};
+  if (map[name]) return map[name];
+  let m;
+  if ((m = name.match(/^Comments on (.+)$/))) return "تعليقات على " + srcName(m[1]);
+  if ((m = name.match(/^Group: (.+)$/))) return "مجموعة: " + srcName(m[1]);
+  return { "YouTube comments": "تعليقات يوتيوب", "X posts": "منشورات X", "X search": "منشورات X",
+           "Telegram connection": "الاتصال بتيليغرام" }[name] || name;
+}
+const titleAlt = (n) => rtl() ? (n.title_ar ? n.title : "") : (n.title ? n.title_ar : "");
+
+function pickLang(latest) {
+  const url = new URLSearchParams(location.search).get("lang");
+  if (url === "ar" || url === "en") return url;
+  try { const s = localStorage.getItem("snt-lang"); if (s === "ar" || s === "en") return s; } catch (e) {}
+  return latest?.default_language === "ar" ? "ar" : "en";
+}
+function applyLang() {
+  const t = L();
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = rtl() ? "rtl" : "ltr";
+  const title = (rtl() ? state.latest?.site_title_ar : state.latest?.site_title) || t.title;
+  $("#site-title").textContent = title;
+  document.title = title;
+  for (const [id, word] of [["home", t.home], ["trends", t.trends], ["data", t.data], ["about", t.about]]) {
+    const a = $(`#${id}-link`);
+    a.textContent = word;
+    if (state.view === id) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  }
+  $("#intro").textContent = t.intro;
+  $("#intro").hidden = state.view !== "home";
+  const b = $("#lang-btn");
+  b.textContent = t.switchTo;
+  b.setAttribute("lang", t.switchLang);
+  b.setAttribute("aria-label", t.switchLang === "ar" ? "اعرض الموقع بالعربية" : "Show the site in English");
+  $("#footer").textContent = t.footer;
+}
+
+/* tone */
+const cssv = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const rgb = (h) => { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); };
+const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+function toneColor(s) {
+  s = Math.max(-1, Math.min(1, Number(s) || 0));
+  const c = s < 0 ? mix(rgb(cssv("--neu")), rgb(cssv("--neg")), -s) : mix(rgb(cssv("--neu")), rgb(cssv("--pos")), s);
+  return `rgb(${c.join(",")})`;
+}
+function toneLabel(s) {
+  const w = L().tone;
+  if (!has(s)) return w[5];
+  return s <= -0.5 ? w[0] : s <= -0.15 ? w[1] : s < 0.15 ? w[2] : s < 0.5 ? w[3] : w[4];
+}
+/* -1..1 -> position in %, mirrored in Arabic so "negative" sits at the reading start */
+const pos = (v) => { const p = (Number(v) + 1) * 50; return rtl() ? 100 - p : p; };
+const peopleTone = (n) => has(n.public_sentiment) ? n.public_sentiment : null;
+
+/* time */
+function ago(iso) {
+  const rtf = new Intl.RelativeTimeFormat(L().locale, { numeric: "auto" });
+  const m = Math.round((new Date(iso) - Date.now()) / 60000);
+  if (Math.abs(m) < 60) return rtf.format(m, "minute");
+  const h = Math.round(m / 60);
+  return Math.abs(h) < 48 ? rtf.format(h, "hour") : rtf.format(Math.round(h / 24), "day");
+}
+const fmt = (iso, o) => new Intl.DateTimeFormat(L().locale, { timeZone: TZ, ...o }).format(new Date(iso));
+function hourKey(iso) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit",
+    day: "2-digit", hour: "2-digit", hourCycle: "h23" }).formatToParts(new Date(iso)).map(x => [x.type, x.value]));
+  return { day: `${p.year}-${p.month}-${p.day}`, hour: Number(p.hour) };
+}
+const hh = (h) => rtl() ? (String(h).padStart(2, "0") + ":00").replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]) : String(h).padStart(2, "0") + ":00";
+
+/* =================== stories =================== */
+function trend(n) {
+  if (Date.now() - new Date(n.first_seen) < 2.5 * 3600000) return "New";
+  const past = state.history.slice(-13, -1).map(x => (x.narratives || []).find(y => y.id === n.id)?.share || 0);
+  if (!past.length) return "New";
+  const avg = past.reduce((a, b) => a + b, 0) / past.length;
+  if (avg === 0) return "Returning";
+  const r = n.share / avg;
+  return r > 1.3 ? "Rising" : r < 0.7 ? "Fading" : "Steady";
+}
+function sparkline(id) {
+  const pts = state.history.slice(-48).map(x => (x.narratives || []).find(y => y.id === id)?.volume || 0);
+  if (pts.filter(v => v > 0).length < 2) return "";
+  const max = Math.max(...pts, 1);
+  const line = pts.map((v, i) => `${(i / (pts.length - 1)) * 100},${32 - (v / max) * 29}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true"><polygon class="area" points="0,34 ${line} 100,34"/><polyline points="${line}"/></svg>`;
+}
+function dumbbell(n) {
+  const p = peopleTone(n), o = Number(n.sentiment) || 0, t = L();
+  const po = pos(o);
+  let h = `<div class="db" role="img" aria-label="${esc(t.people)}: ${esc(toneLabel(p))}. ${esc(t.outlets)}: ${esc(toneLabel(o))}."><span class="zero"></span>`;
+  if (p !== null) {
+    const pp = pos(p);
+    h += `<span class="gap" style="left:${Math.min(pp, po)}%;width:${Math.abs(pp - po)}%"></span>`;
+    h += `<span class="o" style="left:${po}%"></span><span class="p" style="left:${pp}%;--c:${toneColor(p)}"></span>`;
+  } else h += `<span class="o" style="left:${po}%"></span>`;
+  return h + `</div>`;
+}
+const gapOf = (n) => peopleTone(n) === null ? -1 : Math.abs(peopleTone(n) - n.sentiment);
+function sorted(list) {
+  const a = [...list];
+  if (state.sort === "negative") a.sort((x, y) => (peopleTone(x) ?? x.sentiment) - (peopleTone(y) ?? y.sentiment));
+  else if (state.sort === "gap") a.sort((x, y) => gapOf(y) - gapOf(x));
+  else a.sort((x, y) => y.share - x.share);
+  return a;
+}
+function storyHTML(n) {
+  const t = L(), tr = trend(n), open = state.open.has(n.id);
+  const alt = titleAlt(n);
+  const mainCls = rtl() ? "ar-title" : "en-title", altCls = rtl() ? "en-title" : "ar-title";
+  return `
+  <article class="story${open ? " open" : ""}" data-id="${esc(n.id)}">
+    <button class="row" aria-expanded="${open}" aria-controls="d-${esc(n.id)}">
+      <span class="t"><span class="chev" aria-hidden="true">▶</span>
+        <span class="t-text"><span class="t-main ${mainCls}" dir="auto">${esc(titleMain(n))}${tr === "New" || tr === "Rising" ? `<span class="badge">${t.trend[tr]}</span>` : ""}</span>
+        ${alt ? `<span class="t-alt ${altCls}" lang="${rtl() ? "en" : "ar"}" dir="${rtl() ? "ltr" : "rtl"}">${esc(alt)}</span>` : ""}</span></span>
+      <span class="share">${pctText(n.share)}</span>
+      ${dumbbell(n)}
+    </button>
+    <div class="detail" id="d-${esc(n.id)}"><div><div class="detail-in">${detailBody(n, tr)}</div></div></div>
+  </article>`;
+}
+/* the analysis inside a story; tr (trend) is null for past hours, which have no "last 48 updates" view */
+function detailBody(n, tr) {
+  const t = L(), p = peopleTone(n);
+  const framings = (tx(n, "framings") || []).map(f => `<li dir="auto">${esc(f)}</li>`).join("");
+  const flags = tx(n, "flags") || [];
+  const emotions = tx(n, "emotions") || [];
+  const reaction = tx(n, "public_reaction");
+  const links = (n.examples || []).filter(e => safeUrl(e.url)).map(e => `<a href="${esc(e.url)}" target="_blank" rel="noopener" dir="auto">${esc(srcName(e.source))}</a>`).join("");
+  const others = (n.sources || []).filter(s => !(n.examples || []).some(e => e.source === s));
+  const voices = has(n.public_volume) ? t.voicesCount(num(n.public_volume), num(n.volume - n.public_volume)) : t.postsCount(num(n.volume));
+  return `
+      <div>
+        <p dir="auto">${esc(tx(n, "summary"))}</p>
+        ${reaction ? `<div class="reaction" style="--c:${p !== null ? toneColor(p) : "var(--neu)"}"><span class="lbl">${t.reacting}</span><span dir="auto">${esc(reaction)}</span></div>` : ""}
+        ${framings ? `<span class="lbl">${t.framed}</span><ul class="framings">${framings}</ul>` : ""}
+        ${flags.length ? `<p class="flag" dir="auto">${t.watch} ${flags.map(esc).join(rtl() ? "؛ " : "; ")}</p>` : ""}
+        ${signalsBlock(n)}
+      </div>
+      <div class="side">
+        <div><span class="lbl">${t.people}</span><b>${toneLabel(p)}</b>${emotions.length ? `<br><span dir="auto">${emotions.map(esc).join(rtl() ? "، " : ", ")}</span>` : ""}</div>
+        <div><span class="lbl">${t.outlets}</span><b>${toneLabel(n.sentiment)}</b></div>
+        ${tr ? `<div><span class="lbl">${t.last48}</span><b>${t.trend[tr]}</b>${sparkline(n.id)}</div>` : ""}
+        <div><span class="lbl">${t.voicesLbl}</span>${voices}</div>
+        ${links || others.length ? `<div><span class="lbl">${t.where}</span>${links}${others.length ? `<span>${others.map(o => `<bdi>${esc(srcName(o))}</bdi>`).join(rtl() ? "، " : ", ")}</span>` : ""}</div>` : ""}
+        ${n.key ? `<div><a href="stories/${state.lang}/${esc(n.key)}.html">${t.permalink}</a></div>` : ""}
+      </div>`;
+}
+/* coordination signals: measurable signs that a story's public reaction may be organised (scripts/signals.py) */
+function signalLabel(id) {
+  const c = (state.latest.signal_catalog || []).find(x => x.id === id);
+  return c ? (rtl() && c.label_ar ? c.label_ar : c.label) : id;
+}
+function signalsBlock(n) {
+  const t = L(), s = n.signals;
+  if (!s || !s.items || !s.items.length) return "";
+  const items = s.items.map(i => `<li><b>${esc(signalLabel(i.id))}</b> <span dir="auto">${esc(t.sigValue[i.id] ? t.sigValue[i.id](i) : String(i.value))}</span></li>`).join("");
+  return `<div class="signals ${esc(s.level)}"><span class="lbl">${t.sigTitle} <b>${t.sigLevels[s.level] || s.level}</b></span><ul>${items}</ul><p class="sub">${t.sigNote} <a href="#signals">${t.sigMore}</a></p></div>`;
+}
+function storiesHTML() {
+  const t = L(), nars = state.latest.narratives || [], h = num(state.latest.window_hours || 24);
+  const btn = (k, label) => `<button data-sort="${k}" aria-pressed="${state.sort === k}">${label}</button>`;
+  const scale = [t.negative, t.neutral, t.positive];   // the grid flows right-to-left in Arabic, matching the mirrored chart
+  return `
+  <section aria-labelledby="h-stories">
+    <div class="sec-head">
+      <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}${nars.length ? " " + t.coverage(pctText(Math.min(1, nars.reduce((a, n) => a + (n.share || 0), 0)))) : ""}</p></div>
+      <div class="seg" role="group" aria-label="${t.sortLabel}">${btn("share", t.mostDiscussed)}${btn("negative", t.mostNegative)}${btn("gap", t.biggestGap)}</div>
+    </div>
+    ${nars.length ? `
+    <div class="axis-head" aria-hidden="true">
+      <span class="key"><span><i class="k-dot"></i>${t.people}</span><span><i class="k-ring"></i>${t.outlets}</span></span>
+      <span class="scale">${scale.map(s => `<span>${s}</span>`).join("")}</span>
+    </div>
+    <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>` : `<p>${t.noStories}</p>`}
+  </section>`;
+}
+
+/* =================== week =================== */
+function weekData() {
+  const byHour = new Map();
+  for (const h of state.history) { const k = hourKey(h.time); byHour.set(`${k.day}|${k.hour}`, h); }
+  const span = state.history.length > 24 * 7 ? 14 : 7;
+  const days = Array.from({ length: span }, (_, i) => {
+    const d = new Date(Date.now() - i * 86400000).toISOString();
+    return { key: hourKey(d).day, label: fmt(d, { weekday: "short" }) };
+  });
+  const cells = [];
+  days.forEach((d) => { for (let h = 0; h < 24; h++) cells.push({ h, day: d, e: byHour.get(`${d.key}|${h}`) || null }); });
+  return { days, cells };
+}
+function hourPanel(c) {
+  const t = L();
+  if (!c || !c.e) return `<div class="hour"><h3>${t.chooseHour}</h3><p class="sub">${t.chooseHourSub}</p></div>`;
+  const e = c.e, snap = e.snapshot ? state.snaps.get(e.snapshot) : null;
+  const mood = moodIn(e, "mood", e.sentiment);
+  const head = `<h3>${fmt(e.time, { weekday: "long", day: "numeric", month: "long" })}${rtl() ? "، " : ", "}${hh(c.h)}</h3>
+    <p class="hmood"><i style="background:${toneColor(e.sentiment)}"></i><span dir="auto">${esc(mood)}</span></p>`;
+  if (snap && snap !== "error") {
+    const brief = tx(snap.overall || {}, "brief");
+    const list = [...(snap.narratives || [])].sort((a, b) => b.share - a.share);
+    return `<div class="hour" aria-live="polite">${head}
+      ${brief ? `<p class="hbrief" dir="auto">${esc(brief)}</p>` : ""}
+      ${list.length ? `<p class="sub">${t.hourStories}</p>${list.map(n => pastStoryHTML(n, e.snapshot)).join("")}` : `<p>${t.noStories}</p>`}
+    </div>`;
+  }
+  const top = [...(e.narratives || [])].sort((a, b) => b.share - a.share);
+  const note = !e.snapshot || snap === "error" ? t.noSnapshot : t.loadingHour;
+  return `<div class="hour" aria-live="polite">${head}
+    ${top.length ? `<ol>${top.map(n => `<li><span dir="auto">${esc(titleMain(n))}</span><span>${pctText(n.share)}</span></li>`).join("")}</ol>` : ""}
+    <p class="sub">${note}</p>
+  </div>`;
+}
+function pastStoryHTML(n, snapName) {
+  const key = `${snapName}|${n.id}`, open = state.hourOpen.has(key), did = `h-${esc(snapName.replace(/\W/g, ""))}-${esc(n.id)}`;
+  return `
+  <article class="story hstory${open ? " open" : ""}" data-key="${esc(key)}">
+    <button class="hrow" aria-expanded="${open}" aria-controls="${did}">
+      <span class="t"><span class="chev" aria-hidden="true">▶</span><span class="t-main" dir="auto">${esc(titleMain(n))}</span></span>
+      <span class="share">${pctText(n.share)}</span>
+    </button>
+    <div class="detail" id="${did}"><div><div class="detail-in">${dumbbell(n)}${detailBody(n, null)}</div></div></div>
+  </article>`;
+}
+/* fetch the saved analysis of a past hour once, then redraw the panel if that hour is still selected */
+async function loadSnapshot(c) {
+  const name = c?.e?.snapshot;
+  if (!name || state.snaps.has(name)) return;
+  state.snaps.set(name, null);
+  try { state.snaps.set(name, await getJSON(`data/snapshots/${name}`)); }
+  catch (err) { state.snaps.set(name, "error"); }
+  const { cells } = weekData();
+  if (cells[state.sel]?.e?.snapshot === name && $("#hour")) $("#hour").innerHTML = hourPanel(cells[state.sel]);
+}
+function weekHTML() {
+  const t = L(), { days, cells } = weekData();
+  if (state.sel === null || !cells[state.sel]?.e) {
+    const today = cells.filter(c => c.e && c.day.key === days[0].key);
+    const target = today.length ? today[today.length - 1] : cells.find(c => c.e);
+    state.sel = target ? cells.indexOf(target) : -1;
+  }
+  let g = `<span></span>` + Array.from({ length: 24 }, (_, h) => `<span class="hr">${h % 6 === 0 ? (rtl() ? String(h).padStart(2, "0").replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]) : String(h).padStart(2, "0")) : ""}</span>`).join("");
+  cells.forEach((c, i) => {
+    if (c.h === 0) g += `<span class="day">${esc(c.day.label)}</span>`;
+    g += c.e ? `<span class="tile on${i === state.sel ? " sel" : ""}" data-i="${i}" style="background:${toneColor(c.e.sentiment)}" title="${esc(c.day.label)} ${hh(c.h)}"></span>` : `<span class="tile"></span>`;
+  });
+  return `
+  <section aria-labelledby="h-week">
+    <div class="sec-head"><div><h2 id="h-week">${days.length === 14 ? t.twoWeeks : t.week}</h2><p class="sub">${t.weekSub}</p></div></div>
+    <div class="week">
+      <div>
+        <div class="mosaic" id="mosaic" tabindex="0" role="group" aria-label="${t.mosaicLabel}">${g}</div>
+        <div class="legend"><span>${t.negative}</span><i></i><span>${t.positive}</span></div>
+      </div>
+      <div id="hour">${hourPanel(cells[state.sel])}</div>
+    </div>
+  </section>`;
+}
+
+/* =================== search =================== */
+/* Arabic-aware matching: ignores diacritics and tatweel, treats أ/إ/آ/ا, ة/ه, ى/ي, ؤ/و, ئ/ي as the same,
+   and ignores case and Latin accents (Sûriye = suriye). norm() keeps a map back to the original text for highlighting. */
+const AR_MAP = { "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ة": "ه", "ى": "ي", "ؤ": "و", "ئ": "ي" };
+function normChar(ch) {
+  if (/[\u064B-\u065F\u0670\u0640]/.test(ch)) return "";          // Arabic diacritics and tatweel
+  ch = AR_MAP[ch] || ch;
+  return ch.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+function norm(text) {
+  let out = "", map = [];
+  const chars = Array.from(String(text || ""));
+  let pos = 0;
+  for (const ch of chars) {
+    const n = normChar(ch);
+    for (const c of n) { out += c; map.push(pos); }
+    pos += ch.length;
+  }
+  map.push(pos);
+  return { out, map };
+}
+const normQ = (q) => norm(q).out.replace(/\s+/g, " ").trim();
+/* names written several ways: typing any one finds the others (Arabic, English and Kurdish spellings, acronyms) */
+const ALIASES = [
+  ["قسد", "قوات سوريا الديمقراطية", "syrian democratic forces", "sdf", "qsd"],
+  ["هيئة تحرير الشام", "تحرير الشام", "hayat tahrir al-sham", "tahrir al-sham"],
+  ["داعش", "تنظيم الدولة", "islamic state", "isis"],
+  ["الإدارة الذاتية", "autonomous administration", "aanes", "rêveberiya xweser"],
+  ["الشرع", "al-sharaa", "sharaa", "al-shara"],
+  ["سوريا", "سورية", "syria", "sûriye", "suriye"],
+  ["القامشلي", "qamishli", "qamishlo", "qamişlo"],
+  ["كوباني", "عين العرب", "kobani", "kobanê"],
+  ["عفرين", "afrin", "efrîn"],
+  ["الحسكة", "hasakah", "hasaka", "hesekê", "heseke"],
+  ["الرقة", "raqqa", "reqa"],
+  ["دير الزور", "deir ez-zor", "deir ezzor", "deir al-zour"],
+  ["منبج", "manbij", "minbic"],
+  ["السويداء", "suwayda", "sweida", "as-suwayda"],
+  ["اللاذقية", "latakia", "lattakia"],
+  ["إدلب", "idlib"], ["حلب", "aleppo", "heleb"], ["دمشق", "damascus"], ["حمص", "homs"], ["درعا", "daraa", "deraa"],
+  ["الأكراد", "الكرد", "kurds", "kurdish", "kurd"],
+].map(g => g.map(normQ));
+/* each query word becomes a list of alternatives; a text matches when every word matches one of its alternatives */
+function terms(q) {
+  let rest = normQ(q);
+  const groups = [];
+  for (const g of ALIASES) for (const a of g) {             // multi-word names first, so "دير الزور" stays one term
+    if (a.includes(" ") && (" " + rest + " ").includes(" " + a + " ")) { groups.push(g); rest = (" " + rest + " ").replace(" " + a + " ", " ").trim(); }
+  }
+  for (const w of rest.split(" ").filter(Boolean)) groups.push(ALIASES.find(g => g.includes(w)) || [w]);
+  return groups;
+}
+const hit = (text, ts) => ts.every(g => g.some(a => text.includes(a)));
+function highlight(text, ts) {
+  const src = String(text || ""), { out, map } = norm(src), ranges = [];
+  for (const t of ts.flat()) { let i = out.indexOf(t); while (i >= 0) { ranges.push([map[i], map[i + t.length]]); i = out.indexOf(t, i + t.length); } }
+  if (!ranges.length) return esc(src);
+  ranges.sort((a, b) => a[0] - b[0]);
+  let h = "", last = 0;
+  for (const [a, b] of ranges) { if (a < last) continue; h += esc(src.slice(last, a)) + "<mark>" + esc(src.slice(a, b)) + "</mark>"; last = b; }
+  return h + esc(src.slice(last));
+}
+function storyText(n) {
+  const f = ["title", "summary", "public_reaction"].flatMap(k => [n[k], n[k + "_ar"]]);
+  return [...f, ...(n.framings || []), ...(n.framings_ar || []), ...(n.flags || []), ...(n.flags_ar || [])].join(" \n ");
+}
+async function loadSearchData() {
+  const S = state.search;
+  if (S.data || S.loading) return;
+  S.loading = true;
+  const [stories, heads] = await Promise.all([
+    getJSON("data/stories.json").catch(() => []), getJSON("data/headlines.json").catch(() => null)]);
+  S.data = { stories: stories.map(n => ({ n, text: norm(storyText(n)).out })),
+             heads: heads ? heads.map(h => ({ h, text: norm(h.x + " " + h.s).out })) : null };
+  S.loading = false;
+  renderResults();
+}
+function searchHTML() {
+  const t = L(), S = state.search, D = state.latest;
+  const days = num(Math.round((D.history_hours || 336) / 24)), hdays = num(D.headline_days || 7);
+  return `
+  <section aria-labelledby="h-search" id="search">
+    <div class="sec-head"><div><h2 id="h-search">${t.search}</h2><p class="sub">${t.searchSub(days, hdays)}</p></div></div>
+    <div class="search-box" role="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" dir="auto" autocomplete="off" spellcheck="false" placeholder="${esc(t.searchPh)}" aria-label="${esc(t.searchLabel)}" value="${esc(S.q)}">
+    </div>
+    <div id="results" aria-live="polite">${resultsHTML()}</div>
+  </section>`;
+}
+function dayBars(heads) {
+  const t = L(), counts = new Map(), days = [];
+  for (let i = 6; i >= 0; i--) { const d = new Date(Date.now() - i * 86400000).toISOString(); days.push({ key: hourKey(d).day, label: fmt(d, { weekday: "short" }) }); }
+  for (const { h } of heads) { const k = hourKey(h.t).day; counts.set(k, (counts.get(k) || 0) + 1); }
+  const max = Math.max(1, ...days.map(d => counts.get(d.key) || 0));
+  return `<p class="s-meta" style="margin-top:18px">${t.perDay}</p><div class="days" style="height:86px" aria-hidden="true">${days.map(d => {
+    const c = counts.get(d.key) || 0;
+    return `<div><span>${c ? num(c) : ""}</span><b style="height:${Math.round((c / max) * 44)}px"></b><span>${esc(d.label)}</span></div>`; }).join("")}</div>`;
+}
+function resultsHTML() {
+  const t = L(), S = state.search, q = S.q.trim();
+  if (!q) return "";
+  if (!S.data) return `<p class="s-status">${t.searchLoading}</p>`;
+  const ts = terms(q);
+  if (!ts.length || normQ(q).length < 2) return `<p class="s-status">${t.searchShort}</p>`;
+  const stories = S.data.stories.filter(x => hit(x.text, ts)).map(x => x.n);
+  const allHeads = S.data.heads ? S.data.heads.filter(x => hit(x.text, ts)) : [];
+  const heads = S.kind ? allHeads.filter(x => x.h.k === S.kind) : allHeads;
+  const kinds = [...new Set(allHeads.map(x => x.h.k).filter(Boolean))];
+  const chip = (k) => `<button data-kind="${k}" aria-pressed="${S.kind === k}">${t.kinds[k] || esc(k)}</button>`;
+  const d = (iso) => fmt(iso, { day: "numeric", month: "short" });
+  const storyList = stories.slice(0, 40).map(n => {
+    const key = `s|${n.id}`, open = S.open.has(key), hrs = n.hours || [], tone = hrs.length ? hrs[hrs.length - 1][2] : n.sentiment;
+    return `
+    <article class="story hstory${open ? " open" : ""}" data-key="${esc(key)}">
+      <button class="hrow" aria-expanded="${open}">
+        <span class="t"><span class="chev" aria-hidden="true">▶</span><span><span class="t-main" dir="auto">${highlight(titleMain(n), ts)}</span>
+        <span class="s-meta"><i style="background:${toneColor(tone)}"></i>${t.seen(d(hrs[0]?.[0] || n.last_seen), d(n.last_seen), num(hrs.length))}</span></span></span>
+      </button>
+      <div class="detail"><div><div class="detail-in">${dumbbell(n)}${detailBody(n, null)}</div></div></div>
+    </article>`; }).join("");
+  const headList = heads.slice(0, S.shown).map(({ h }) => {
+    const body = highlight(h.x.length > 240 ? h.x.slice(0, 240) + "…" : h.x, ts);
+    return `<li><span dir="auto">${safeUrl(h.u) ? `<a href="${esc(h.u)}" target="_blank" rel="noopener">${body}</a>` : body}</span>
+      <span class="s-meta"><bdi>${esc(srcName(h.s))}</bdi> · ${ago(h.t)}</span></li>`; }).join("");
+  return `
+    <p class="s-status">${t.searchCount(num(stories.length), num(allHeads.length), esc(q))}</p>
+    ${allHeads.length ? dayBars(allHeads) : ""}
+    <div class="s-cols">
+      <div><h3>${t.sStories}</h3>${storyList || `<p class="sub">${t.noMatch}</p>`}</div>
+      <div><h3>${t.sHeadlines}</h3>
+        ${kinds.length > 1 ? `<div class="seg kinds" role="group">${chip("")}${kinds.map(chip).join("")}</div>` : ""}
+        ${S.data.heads === null ? `<p class="sub">${t.noHeadlines}</p>` : headList ? `<ul class="hl">${headList}</ul>` : `<p class="sub">${t.noMatch}</p>`}
+        ${heads.length > S.shown ? `<button class="more" data-more>${t.showMore}</button>` : ""}
+      </div>
+    </div>`;
+}
+function renderResults() { const r = $("#results"); if (r) r.innerHTML = resultsHTML(); }
+function bindSearch() {
+  const input = $("#q");
+  if (!input) return;
+  let timer;
+  const run = () => {
+    const S = state.search;
+    S.q = input.value; S.shown = 30;
+    try {
+      const u = new URL(location.href);
+      S.q.trim() ? u.searchParams.set("q", S.q.trim()) : u.searchParams.delete("q");
+      history.replaceState(null, "", u);
+    } catch (e) {}
+    S.data ? renderResults() : (renderResults(), loadSearchData());
+  };
+  input.addEventListener("focus", loadSearchData);
+  input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(run, 180); });
+  input.addEventListener("keydown", (e) => { if (e.key === "Escape") { input.value = ""; run(); } });
+  $("#results").addEventListener("click", (e) => {
+    const S = state.search, k = e.target.closest("[data-kind]"), more = e.target.closest("[data-more]"), row = e.target.closest(".hrow");
+    if (k) { S.kind = k.dataset.kind; S.shown = 30; renderResults(); }
+    else if (more) { S.shown += 30; renderResults(); }
+    else if (row) {
+      const art = row.closest(".hstory"), key = art.dataset.key, open = !art.classList.contains("open");
+      art.classList.toggle("open", open); row.setAttribute("aria-expanded", open);
+      open ? S.open.add(key) : S.open.delete(key);
+    }
+  });
+}
+
+/* =================== shared bits for the trends, data and about pages =================== */
+const NS = "http://www.w3.org/2000/svg";
+const sv = (tag, attrs = {}, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; };
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+const fmtDay = (d, o = { day: "numeric", month: "short" }) => fmt(d + "T12:00:00Z", o);   // midday: the date never shifts when shown in Damascus time
+const signed = (v) => Number(v).toLocaleString(L().locale, { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: "exceptZero" });
+const themeLabel = (id) => { const th = (state.trends.index?.themes || state.latest?.themes || []).find(x => x.id === id); return th ? (rtl() && th.label_ar ? th.label_ar : th.label) : id; };
+const kindLabel = (id) => L().kindsLong[id] || L().kinds[id] || id;
+const langLabel = (id) => L().langs[id] || id;
+const wmean = (pairs) => { let s = 0, w = 0; for (const [v, k] of pairs) if (has(v) && k) { s += v * k; w += k; } return w ? s / w : null; };
+const toneOf = (d) => has(d.public_sentiment) ? d.public_sentiment : d.outlet_sentiment;
+
+/* tooltip: one element, filled with textContent (labels are data, never markup) */
+function showTip(x, y, title, rows) {
+  const tip = $("#tip");
+  tip.textContent = "";
+  tip.appendChild(el("b", "", title));
+  for (const r of rows) {
+    const row = el("div", "r");
+    const key = el("i", r.cls || "");
+    if (r.color) key.style.background = r.color;
+    row.appendChild(key);
+    row.appendChild(el("strong", "", r.value));
+    row.appendChild(el("span", "", r.label));
+    tip.appendChild(row);
+  }
+  tip.hidden = false;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.max(8, Math.min(x + 14, innerWidth - w - 8)) + "px";
+  tip.style.top = (y + 16 + h > innerHeight ? y - h - 12 : y + 16) + "px";
+}
+const hideTip = () => { $("#tip").hidden = true; };
+
+/* a line chart on a day axis: several series, optional band between the first two, optional event markers */
+function lineChart(box, o) {
+  const days = o.days, n = days.length, w = Math.max(240, box.clientWidth || 600), h = o.height || 220;
+  const pad = { l: o.compact ? 26 : 34, r: o.compact ? 30 : 44, t: 12, b: 22 };
+  const min = o.range ? o.range[0] : -1, max = o.range ? o.range[1] : 1;
+  const x = (i) => n > 1 ? pad.l + i * (w - pad.l - pad.r) / (n - 1) : (pad.l + w - pad.r) / 2;
+  const y = (v) => pad.t + (1 - (v - min) / (max - min)) * (h - pad.t - pad.b);
+  const svg = sv("svg", { viewBox: `0 0 ${w} ${h}`, width: w, height: h, role: "img", "aria-label": o.label || "" });
+  const ticks = o.ticks || [-1, -0.5, 0, 0.5, 1];
+  for (const v of ticks) {
+    if (v < min || v > max) continue;
+    svg.appendChild(sv("line", { x1: pad.l, x2: w - pad.r, y1: y(v), y2: y(v), class: v === 0 && min < 0 ? "zero" : "grid" }));
+    if (!o.compact || v === 0 || v === max || v === min) svg.appendChild(sv("text", { x: pad.l - 6, y: y(v) + 4, "text-anchor": "end", class: "axis" }, o.fmtY ? o.fmtY(v) : signed(v)));
+  }
+  const step = Math.max(1, Math.ceil(n / (o.compact ? 3 : 6)));
+  for (let i = 0; i < n; i += step) svg.appendChild(sv("text", { x: x(i), y: h - 6, "text-anchor": i === 0 ? "start" : "middle", class: "axis" }, fmtDay(days[i].date)));
+  const path = (vals) => { let d = "", on = false; vals.forEach((v, i) => { if (!has(v)) { on = false; return; } d += `${on ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`; on = true; }); return d; };
+  if (o.band && o.series.length >= 2) {   // the gap between the first two series
+    const a = o.series[0].values, b = o.series[1].values;
+    let d = "", seg = [];
+    const flush = () => { if (seg.length > 1) { d += "M" + seg.map(i => `${x(i).toFixed(1)},${y(a[i]).toFixed(1)}`).join("L") + "L" + seg.slice().reverse().map(i => `${x(i).toFixed(1)},${y(b[i]).toFixed(1)}`).join("L") + "Z"; } seg = []; };
+    for (let i = 0; i < n; i++) { if (has(a[i]) && has(b[i])) seg.push(i); else flush(); }
+    flush();
+    if (d) svg.appendChild(sv("path", { d, class: "gap" }));
+  }
+  for (const s of o.series) {
+    if (s.area) {   // a wash under a single series, down to the baseline
+      const idx = s.values.map((v, i) => has(v) ? i : -1).filter(i => i >= 0);
+      if (idx.length > 1) svg.appendChild(sv("path", { d: path(s.values) + `L${x(idx[idx.length - 1]).toFixed(1)},${y(min).toFixed(1)}L${x(idx[0]).toFixed(1)},${y(min).toFixed(1)}Z`, class: "wash" }));
+    }
+    svg.appendChild(sv("path", { d: path(s.values), class: "ln " + (s.cls || "") }));
+  }
+  (o.events || []).forEach((ev, k) => {   // vertical hairlines with a numbered marker; the list under the chart names them
+    const i = days.findIndex(d => d.date === ev.date);
+    if (i < 0) return;
+    svg.appendChild(sv("line", { x1: x(i), x2: x(i), y1: pad.t, y2: h - pad.b, class: "ev" }));
+    svg.appendChild(sv("circle", { cx: x(i), cy: pad.t - 2, r: 8, class: "evn" }));
+    svg.appendChild(sv("text", { x: x(i), y: pad.t + 1.5, class: "evt" }, String(k + 1)));
+  });
+  for (const s of o.series) {   // end markers, and the value at the end for the series that matter
+    let last = -1;
+    s.values.forEach((v, i) => { if (has(v)) last = i; });
+    if (last < 0) continue;
+    const c = sv("circle", { cx: x(last), cy: y(s.values[last]), class: "end " + (s.cls || "") });
+    svg.appendChild(c);
+    if (s.endLabel !== false) svg.appendChild(sv("text", { x: x(last) + 8, y: y(s.values[last]) + 4, class: "endlbl" }, o.fmtY ? o.fmtY(s.values[last]) : signed(s.values[last])));
+  }
+  const xh = sv("line", { x1: 0, x2: 0, y1: pad.t, y2: h - pad.b, class: "xh", visibility: "hidden" });
+  svg.appendChild(xh);
+  const hit = sv("rect", { x: pad.l - 8, y: 0, width: w - pad.l - pad.r + 16, height: h, class: "hit", tabindex: 0 });
+  svg.appendChild(hit);
+  let cur = -1;
+  const focus = (i, cx, cy) => {
+    cur = i;
+    xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
+    const rows = o.series.filter(s => has(s.values[i])).map(s => ({ cls: s.cls, value: o.fmtY ? o.fmtY(s.values[i]) : signed(s.values[i]), label: s.label }));
+    for (const r of (o.extraRows ? o.extraRows(i) : [])) rows.push(r);
+    showTip(cx, cy, fmtDay(days[i].date, { weekday: "short", day: "numeric", month: "short", year: "numeric" }), rows);
+  };
+  hit.addEventListener("pointermove", (e) => {
+    const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * w / r.width;
+    const i = Math.max(0, Math.min(n - 1, Math.round((px - pad.l) / ((w - pad.l - pad.r) / Math.max(1, n - 1)))));
+    focus(i, e.clientX, e.clientY);
+  });
+  hit.addEventListener("pointerleave", () => { xh.setAttribute("visibility", "hidden"); hideTip(); });
+  hit.addEventListener("keydown", (e) => {
+    const d = { ArrowRight: 1, ArrowLeft: -1, Home: -n, End: n }[e.key];
+    if (d === undefined) return;
+    e.preventDefault();
+    const i = Math.max(0, Math.min(n - 1, (cur < 0 ? n - 1 : cur) + d)), r = svg.getBoundingClientRect();
+    focus(i, r.left + x(i) * r.width / w, r.top + r.height / 2);
+  });
+  hit.addEventListener("blur", () => { xh.setAttribute("visibility", "hidden"); hideTip(); });
+  box.textContent = "";
+  box.appendChild(svg);
+}
+
+/* =================== trends =================== */
+function periodDays() {
+  const S = state.trends, all = S.index?.days || [];
+  if (!S.period) return all;
+  const cutoff = new Date(Date.now() - (S.period - 1) * 86400000).toISOString().slice(0, 10);   // today counts as day one
+  const got = all.filter(d => d.date >= cutoff);
+  return got.length >= 2 ? got : all.slice(-Math.max(2, got.length));
+}
+function trendsHTML() {
+  const t = L(), S = state.trends, idx = S.index;
+  const seg = (k) => `<button data-period="${k}" aria-pressed="${S.period === Number(k)}">${t.periods[k]}</button>`;
+  const themes = idx?.themes || state.latest?.themes || [];
+  const sel = `<label>${t.themeSel} <select class="sel" id="theme-sel"><option value="">${t.allThemes}</option>${themes.filter(x => x.id !== "other").map(x => `<option value="${esc(x.id)}"${S.theme === x.id ? " selected" : ""}>${esc(rtl() && x.label_ar ? x.label_ar : x.label)}</option>`).join("")}</select></label>`;
+  const days = idx ? periodDays() : [];
+  const covered = days.length ? `<p class="sub">${t.daysCovered(num(days.length), fmtDay(days[0].date), fmtDay(days[days.length - 1].date))}</p>` : "";
+  const sec = (id, title, sub, body) => `
+  <section class="tsec" data-sec="${id}" aria-labelledby="h-${id}">
+    <div class="sec-head"><div><h2 id="h-${id}">${title}</h2><p class="sub">${sub}</p></div>
+      <button class="tbl-btn" data-table="${id}" aria-pressed="${S.tables.has(id)}">${t.tableBtn}</button></div>
+    ${body}
+  </section>`;
+  const wait = `<p class="nodata">${idx ? t.noTrends : t.loadingTrends}</p>`;
+  const body = (id, cls) => idx && days.length ? `<div id="c-${id}" class="${cls}"></div>` : wait;
+  return `
+  <section class="tsec" style="border-top:0;padding-top:24px" aria-labelledby="h-trends">
+    <div class="sec-head"><div><h2 id="h-trends" style="font-size:1.7rem">${t.trendsTitle}</h2><p class="sub">${t.trendsSub}</p></div></div>
+    <div class="filters">
+      <span class="seg" role="group" aria-label="${t.period}">${["7", "30", "90", "365", "0"].map(seg).join("")}</span>
+      ${sel}
+      <span class="sub" id="theme-hint">${t.themeHint}</span>
+    </div>
+    ${covered}
+  </section>
+  ${sec("themes", t.themeTrendTitle, t.themeTrendSub, body("themes", "multiples"))}
+  ${sec("gap", t.gapTitle, t.gapSub, body("gap", "chart") + `<div id="l-gap"></div>`)}
+  ${sec("lang", t.langTitle, t.langSub, body("lang", "multiples"))}
+  ${sec("kind", t.kindTitle, t.kindSub, body("kind", "multiples"))}
+  ${sec("what", t.whatTitle, t.whatSub, body("what", "themebars"))}
+  ${weeklyHTML()}`;
+}
+function weeklyHTML() {
+  const t = L(), list = (state.weekly || []).slice().reverse(), lang = state.lang;
+  if (!list.length) return "";
+  const items = list.slice(0, 8).map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
+    return `<li><a href="weekly/${lang}/${esc(d.week)}.html" dir="auto">${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</a>
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))}</span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+  return `
+  <section class="tsec" aria-labelledby="h-weekly">
+    <div class="sec-head"><div><h2 id="h-weekly">${t.weeklyTitle}</h2><p class="sub">${t.weeklySub}</p></div>
+      <span class="chart-legend"><a href="weekly/${lang}/index.html">${t.allDigests}</a><a href="${rtl() ? "feed-ar.xml" : "feed.xml"}">${t.feed}</a></span></div>
+    <ul class="hl">${items}</ul>
+  </section>`;
+}
+function bindTrends() {
+  document.querySelectorAll("[data-period]").forEach(b => b.addEventListener("click", () => { state.trends.period = Number(b.dataset.period); render(); }));
+  $("#theme-sel")?.addEventListener("change", (e) => { state.trends.theme = e.target.value; drawTrends(); });
+  document.querySelectorAll("[data-table]").forEach(b => b.addEventListener("click", () => {
+    const S = state.trends, id = b.dataset.table;
+    S.tables.has(id) ? S.tables.delete(id) : S.tables.add(id);
+    render();
+  }));
+}
+function dataTable(box, head, rows) {   // the table twin of a chart: every value reachable without hovering
+  const wrap = el("div", "datatable-wrap"), table = el("table", "datatable"), thead = el("thead"), tr = el("tr");
+  head.forEach(h => tr.appendChild(el("th", "", h)));
+  thead.appendChild(tr); table.appendChild(thead);
+  const tb = el("tbody");
+  for (const r of rows) { const row = el("tr"); r.forEach((c, i) => { const td = el("td", "", c); if (i === 0) td.dir = "auto"; row.appendChild(td); }); tb.appendChild(row); }
+  table.appendChild(tb); wrap.appendChild(table);
+  box.className = ""; box.textContent = ""; box.appendChild(wrap);
+}
+function drawTrends() {
+  const t = L(), S = state.trends, idx = S.index;
+  if (!idx || state.view !== "trends") return;
+  const days = periodDays();
+  if (!days.length) return;
+  const themes = (idx.themes || []).map(x => x.id), pct = (v) => pctText(v), tone = (v) => has(v) ? signed(v) : "";
+  const th = S.theme && themes.includes(S.theme) ? S.theme : "";
+  // the chosen theme is named in every section heading, so the focus is visible without scrolling back up
+  const focus = (id, title) => { const h = $(`#h-${id}`); if (h) h.textContent = th ? `${title}: ${themeLabel(th)}` : title; };
+  focus("themes", t.themeTrendTitle); focus("gap", t.gapTitle); focus("lang", t.langTitle); focus("kind", t.kindTitle);
+  const subOf = (id, text) => { const p = $(`#h-${id}`)?.nextElementSibling; if (p) p.textContent = text; };
+  subOf("themes", th ? t.themeOnly(themeLabel(th)) : t.themeTrendSub);
+  subOf("lang", th ? `${t.langSub} ${t.themeSince}` : t.langSub); subOf("kind", th ? `${t.kindSub} ${t.themeSince}` : t.kindSub);
+
+  // 1. what people talk about: mean share per theme over the period, and the people/outlet tone
+  const what = themes.map(id => {
+    const rows = days.map(d => d.themes[id]).filter(Boolean);
+    return { id, share: days.reduce((a, d) => a + (d.themes[id]?.share || 0), 0) / days.length,
+             pub: wmean(rows.map(r => [r.public_sentiment, r.public_volume])), out: wmean(rows.map(r => [r.outlet_sentiment, r.volume - r.public_volume])),
+             stories: rows.reduce((a, r) => a + (r.stories || 0), 0) };
+  }).filter(x => x.share > 0 || x.stories).sort((a, b) => b.share - a.share);
+  let box = $("#c-what");
+  if (box) {
+    if (S.tables.has("what")) dataTable(box, [t.themeSel, t.share, t.people, t.outlets, t.stories], what.map(x => [themeLabel(x.id), pct(x.share), tone(x.pub), tone(x.out), num(x.stories)]));
+    else {
+      box.textContent = "";
+      const max = Math.max(0.05, ...what.map(x => x.share));
+      for (const x of what) {
+        box.appendChild(el("div", "lbl-t" + (th === x.id ? " on" : ""), themeLabel(x.id)));
+        const bar = el("div", "bar"), fill = el("i"), lbl = el("span", "", pct(x.share));
+        fill.style.width = (x.share / max * 100) + "%";
+        lbl.style.insetInlineStart = `calc(${x.share / max * 100}% + 8px)`;
+        bar.appendChild(fill); bar.appendChild(lbl);
+        box.appendChild(bar);
+        const db = el("div");
+        db.innerHTML = has(x.pub) || has(x.out) ? dumbbell({ public_sentiment: x.pub, sentiment: has(x.out) ? x.out : 0 }) : `<span class="none">${t.notEnough}</span>`;
+        box.appendChild(db.firstElementChild || db);
+      }
+    }
+  }
+
+  // 2. themes over time: small multiples on one shared scale, with the tone strip
+  box = $("#c-themes");
+  if (box) {
+    const active = th ? [th] : themes.filter(id => days.some(d => d.themes[id]));
+    if (S.tables.has("themes")) dataTable(box, [t.dateCol, ...active.map(themeLabel)], days.map(d => [fmtDay(d.date), ...active.map(id => pct(d.themes[id]?.share || 0))]));
+    else {
+      box.className = th ? "multiples one" : "multiples"; box.textContent = "";
+      const max = Math.max(0.1, ...days.flatMap(d => active.map(id => d.themes[id]?.share || 0)));
+      for (const id of active) {
+        const m = el("div", "m"), h3 = el("h3", "", themeLabel(id)), vals = days.map(d => d.themes[id]?.share ?? 0);
+        h3.appendChild(el("span", "", pct(vals[vals.length - 1])));
+        m.appendChild(h3);
+        const c = el("div", "chart");
+        m.appendChild(c);
+        const strip = el("div", "strip");
+        strip.style.gridTemplateColumns = `repeat(${days.length}, minmax(0, 1fr))`;
+        for (const d of days) { const i = el("i"); const v = d.themes[id] ? toneOf(d.themes[id]) : null; if (has(v)) i.style.background = toneColor(v); i.title = `${fmtDay(d.date)}: ${has(v) ? signed(v) : "–"}`; strip.appendChild(i); }
+        m.appendChild(strip);
+        box.appendChild(m);
+        lineChart(c, { days, height: th ? 200 : 84, compact: !th, range: [0, max], ticks: [0, max], fmtY: pct, label: themeLabel(id),
+                       series: [{ values: vals, cls: "focus", area: true, label: t.shareLbl, endLabel: false }],
+                       extraRows: (i) => { const r = days[i].themes[id]; return r ? [{ cls: "tone", color: has(toneOf(r)) ? toneColor(toneOf(r)) : "transparent", value: tone(toneOf(r)), label: t.people }, { value: num(r.stories), label: t.stories }] : []; } });
+      }
+    }
+  }
+
+  // 3. people vs outlets, with event markers
+  box = $("#c-gap");
+  const evs = (idx.events || []).filter(e => e.date >= days[0].date && e.date <= days[days.length - 1].date);
+  if (box) {
+    const pub = days.map(d => (th ? d.themes[th]?.public_sentiment : d.public_sentiment) ?? null),
+          out = days.map(d => (th ? d.themes[th]?.outlet_sentiment : d.outlet_sentiment) ?? null);
+    const legend = $("#l-gap");
+    legend.textContent = "";
+    if (S.tables.has("gap")) dataTable(box, [t.dateCol, t.people, t.outlets], days.map((d, i) => [fmtDay(d.date), tone(pub[i]), tone(out[i])]));
+    else {
+      box.className = "chart";
+      lineChart(box, { days, height: 240, label: t.gapTitle, band: true, events: evs,
+                       series: [{ values: pub, cls: "people", label: t.people }, { values: out, cls: "outlets", label: t.outlets }] });
+      const lg = el("div", "chart-legend");
+      for (const [cls, word] of [["people", t.people], ["outlets", t.outlets]]) { const s = el("span"); s.appendChild(el("i", "k-line " + cls)); s.appendChild(el("span", "", word)); lg.appendChild(s); }
+      legend.appendChild(lg);
+    }
+    if (evs.length) {
+      const ul = el("ul", "events");
+      evs.forEach((e, k) => { const li = el("li"); li.appendChild(el("i", "", String(k + 1))); li.appendChild(el("span", "", `${fmtDay(e.date)}: ${rtl() && e.label_ar ? e.label_ar : e.label}`)); ul.appendChild(li); });
+      legend.appendChild(ul);
+    }
+  }
+
+  // 4 and 5. by language of the people posting, and by kind of outlet: each group against the whole
+  const groups = [
+    { id: "lang", box: $("#c-lang"), keys: (idx.languages || []).map(x => x.id), label: langLabel, all: t.allPublic,
+      val: (d, k) => th ? d.themes[th]?.public_tone?.[k] : d.public_tone?.[k], ctx: (d) => th ? d.themes[th]?.public_sentiment : d.public_sentiment },
+    { id: "kind", box: $("#c-kind"), keys: (idx.kinds || []).map(x => x.id), label: kindLabel, all: t.allOutlets,
+      val: (d, k) => th ? d.themes[th]?.outlet_tone?.[k] : d.outlet_tone?.[k], ctx: (d) => th ? d.themes[th]?.outlet_sentiment : d.outlet_sentiment }];
+  for (const g of groups) {
+    if (!g.box) continue;
+    const series = g.keys.map(k => ({ k, values: days.map(d => { const v = g.val(d, k); return has(v) ? v : null; }) }));
+    const ctx = days.map(d => { const v = g.ctx(d); return has(v) ? v : null; });
+    if (S.tables.has(g.id)) { dataTable(g.box, [t.dateCol, ...g.keys.map(g.label), g.all], days.map((d, i) => [fmtDay(d.date), ...series.map(s => tone(s.values[i])), tone(ctx[i])])); continue; }
+    g.box.className = "multiples"; g.box.textContent = "";
+    for (const s of series) {
+      const m = el("div", "m"), h3 = el("h3", "", g.label(s.k)), pts = s.values.filter(has);
+      m.appendChild(h3);
+      if (pts.length < 2) { m.appendChild(el("p", "sub", t.notEnough)); g.box.appendChild(m); continue; }
+      h3.appendChild(el("span", "", signed(pts[pts.length - 1])));
+      const c = el("div", "chart");
+      m.appendChild(c);
+      g.box.appendChild(m);
+      lineChart(c, { days, height: 96, compact: true, ticks: [-1, 0, 1], label: g.label(s.k),
+                     series: [{ values: s.values, cls: "focus", label: g.label(s.k) }, { values: ctx, cls: "ctx", label: g.all, endLabel: false }] });
+    }
+    const lg = el("div", "chart-legend");
+    for (const [cls, word] of [["focus", th ? themeLabel(th) : g.id === "lang" ? t.people : t.outlets], ["ctx", g.all]]) { const s = el("span"); s.appendChild(el("i", "k-line " + cls)); s.appendChild(el("span", "", word)); lg.appendChild(s); }
+    g.box.appendChild(lg);
+    lg.style.gridColumn = "1 / -1";
+  }
+}
+
+/* =================== data =================== */
+const COLS_FALLBACK = {
+  "runs.csv": ["run_time", "posts_analyzed", "public_posts", "outlet_posts", "unique_posts", "stories", "public_sentiment", "outlet_sentiment", "public_mood", "outlet_mood", "lang_ar", "lang_ku", "lang_en", "lang_other", "model", "cost_usd"],
+  "stories.csv": ["run_time", "story_key", "story_id", "theme", "title", "title_ar", "share", "volume", "public_volume", "outlet_sentiment", "public_sentiment", "emotions", "framings", "flags", "sources", "platforms", "languages", "public_tone_ar", "public_tone_ku", "public_tone_en", "outlet_tone_official", "outlet_tone_independent", "outlet_tone_kurdish", "outlet_tone_regional", "outlet_tone_aggregator", "signal_level", "signal_count", "signals", "first_seen", "summary", "summary_ar", "public_reaction", "public_reaction_ar"],
+  "themes.csv": ["run_time", "theme", "stories", "share", "volume", "public_volume", "public_sentiment", "outlet_sentiment", "public_tone_ar", "public_tone_ku", "public_tone_en", "outlet_tone_official", "outlet_tone_independent", "outlet_tone_kurdish", "outlet_tone_regional", "outlet_tone_aggregator"],
+  "headlines.csv": ["time", "source", "kind", "language", "text", "url"] };
+const LANG_IDS = ["ar", "ku", "en"], KIND_IDS = ["official", "independent", "kurdish", "regional", "aggregator"];
+const joinList = (v) => Array.isArray(v) ? v.join("; ") : "";
+const joinMap = (m) => Object.entries(m || {}).sort().map(([k, v]) => `${k}=${v}`).join("; ");
+const storyKey = (n) => n.key || `${String(n.first_seen || "").slice(0, 10)}-${n.id}`;
+function flattenDay(day, dataset) {   // the same rows as the monthly files (scripts/archive.py)
+  const rows = [];
+  if (dataset === "headlines") return (day.headlines || []).map(h => ({ time: h.t, source: h.s, kind: h.k, language: h.l, text: h.x, url: h.u }));
+  for (const r of day.runs || []) {
+    const st = r.stats || {}, ov = r.overall || {}, tm = r.generated_at, langs = st.languages || {};
+    if (dataset === "runs") { rows.push({ run_time: tm, posts_analyzed: st.posts_analyzed, public_posts: st.public_posts, outlet_posts: st.outlet_posts, unique_posts: st.unique_posts, stories: (r.narratives || []).length, public_sentiment: ov.public_sentiment, outlet_sentiment: ov.sentiment, public_mood: ov.public_mood, outlet_mood: ov.mood, lang_ar: langs.ar || 0, lang_ku: langs.ku || 0, lang_en: langs.en || 0, lang_other: langs.other || 0, model: r.model, cost_usd: r.cost_usd }); continue; }
+    const per = {};
+    for (const n of r.narratives || []) {
+      const theme = n.theme || "other", vol = n.volume || 0, pvol = n.public_volume || 0;
+      if (dataset === "stories") {
+        const row = { run_time: tm, story_key: storyKey(n), story_id: n.id, theme, title: n.title, title_ar: n.title_ar, share: n.share, volume: vol, public_volume: pvol, outlet_sentiment: n.sentiment, public_sentiment: n.public_sentiment, emotions: joinList(n.emotions), framings: joinList(n.framings), flags: joinList(n.flags), sources: joinList(n.sources), platforms: joinMap(n.platforms), languages: joinMap(n.languages), first_seen: n.first_seen, summary: n.summary, summary_ar: n.summary_ar, public_reaction: n.public_reaction, public_reaction_ar: n.public_reaction_ar };
+        for (const l of LANG_IDS) row[`public_tone_${l}`] = n.public_tone?.[l];
+        for (const k of KIND_IDS) row[`outlet_tone_${k}`] = n.outlet_tone?.[k];
+        row.signal_level = n.signals?.level || ""; row.signal_count = n.signals?.score ?? "";
+        row.signals = (n.signals?.items || []).map(i => `${i.id}=${i.value}`).join("; ");
+        rows.push(row);
+      } else {
+        const p = per[theme] || (per[theme] = { stories: 0, share: 0, volume: 0, public_volume: 0, pub: [], out: [], pt: {}, ot: {} });
+        p.stories++; p.share += n.share || 0; p.volume += vol; p.public_volume += pvol;
+        p.pub.push([n.public_sentiment, pvol]); p.out.push([n.sentiment, vol - pvol]);
+        for (const [l, v] of Object.entries(n.public_tone || {})) (p.pt[l] = p.pt[l] || []).push([v, (n.public_languages || n.languages || {})[l] || 0]);
+        for (const [k, v] of Object.entries(n.outlet_tone || {})) (p.ot[k] = p.ot[k] || []).push([v, (n.kinds || {})[k] || 0]);
+      }
+    }
+    if (dataset === "themes") for (const [theme, p] of Object.entries(per)) {
+      const row = { run_time: tm, theme, stories: p.stories, share: Math.round(p.share * 1000) / 1000, volume: p.volume, public_volume: p.public_volume, public_sentiment: r3(wmean(p.pub)), outlet_sentiment: r3(wmean(p.out)) };
+      for (const l of LANG_IDS) row[`public_tone_${l}`] = r3(wmean(p.pt[l] || []));
+      for (const k of KIND_IDS) row[`outlet_tone_${k}`] = r3(wmean(p.ot[k] || []));
+      rows.push(row);
+    }
+  }
+  return rows;
+}
+const r3 = (v) => has(v) ? Math.round(v * 1000) / 1000 : null;
+function toCSV(rows, cols) {
+  const cell = (v) => { if (!has(v)) return ""; const s = String(v); return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+  return "﻿" + cols.join(",") + "\n" + rows.map(r => cols.map(c => cell(r[c])).join(",")).join("\n") + "\n";
+}
+function citeHTML() {
+  const t = L(), today = new Date().toISOString().slice(0, 10), year = today.slice(0, 4), url = "https://www.syrianpulse.org/";
+  const doi = state.method?.doi ? ` https://doi.org/${state.method.doi}` : "";
+  const text = `Syria Narrative Tracker (${year}). Syria Narrative Tracker: what is being said about Syria online [dataset and website]. ${url} (${t.retrieved} ${today})${doi}`;
+  const bib = `@misc{syrianarrativetracker${year},\n  title  = {Syria Narrative Tracker: what is being said about Syria online},\n  author = {{Syria Narrative Tracker}},\n  year   = {${year}},\n  url    = {${url}},\n  note   = {Dataset and website. Retrieved ${today}.}${doi ? `,\n  doi    = {${state.method.doi}}` : ""}\n}`;
+  return `<div class="cite"><p dir="ltr" lang="en" data-cite="text">${esc(text)}</p><pre data-cite="bib">${esc(bib)}</pre>
+    <button class="copy" data-copy="text">${t.citeCopy}</button> <button class="copy" data-copy="bib">${t.citeCopy} BibTeX</button></div>`;
+}
+function bindCopy() {
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+    const src = document.querySelector(`[data-cite="${b.dataset.copy}"]`);
+    try { await navigator.clipboard.writeText(src.textContent); const old = b.textContent; b.textContent = L().copied; setTimeout(() => { b.textContent = old; }, 1500); } catch (e) {}
+  }));
+}
+function dataHTML() {
+  const t = L(), S = state.dataPage, idx = state.trends.index, ex = S.exports;
+  const first = idx?.first_day || "", last = idx?.last_day || "";
+  if (!S.from && first) { const d = new Date(last + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 29); S.from = d.toISOString().slice(0, 10) < first ? first : d.toISOString().slice(0, 10); S.to = last; }
+  const size = (b) => b > 1e6 ? (b / 1e6).toLocaleString(L().locale, { maximumFractionDigits: 1 }) + " MB" : Math.round(b / 1024).toLocaleString(L().locale) + " KB";
+  const months = (ex?.months || []).slice().reverse();
+  const files = months.length ? `<div class="tscroll"><table class="files months"><thead><tr><th>${t.month}</th><th>${t.file}</th><th>${t.rows}</th><th>${t.size}</th></tr></thead><tbody>${
+    months.flatMap(m => m.files.map((f, i) => `<tr>${i === 0 ? `<td rowspan="${m.files.length}">${esc(m.month)}</td>` : ""}<td><a class="mono" href="${esc(f.path)}" download>${esc(f.name)}</a></td><td>${has(f.rows) ? num(f.rows) : ""}</td><td>${size(f.bytes)}</td></tr>`)).join("")}</tbody></table></div>` : `<p class="nodata">${ex ? t.noTrends : t.loadingTrends}</p>`;
+  const daysList = (ex?.days || []).slice().reverse();
+  const daily = daysList.length ? `<details><summary>${t.dailyTitle} (${num(daysList.length)})</summary><p class="sub">${t.dailySub}</p><ul class="chips">${daysList.map(d => `<li><a class="mono" href="${esc(d.path)}">${esc(d.date)}</a></li>`).join("")}</ul></details>` : "";
+  const cols = ex?.columns || COLS_FALLBACK;
+  const colTables = ["stories.csv", "runs.csv", "themes.csv", "headlines.csv"].map(f => `<details><summary class="mono">${f}</summary><table class="cols"><tbody>${(cols[f] || COLS_FALLBACK[f]).map(c => `<tr><td class="mono">${esc(c)}</td><td>${esc(t.columns[c] || "")}</td></tr>`).join("")}</tbody></table></details>`).join("");
+  return `
+  <section class="tsec" style="border-top:0;padding-top:24px" aria-labelledby="h-data">
+    <div class="sec-head"><div><h2 id="h-data" style="font-size:1.7rem">${t.dataTitle}</h2><p class="sub">${t.dataSub}</p></div></div>
+  </section>
+  <section class="tsec" id="download" aria-labelledby="h-dl">
+    <div class="sec-head"><div><h2 id="h-dl">${t.dlTitle}</h2><p class="sub">${t.dlSub}</p></div></div>
+    <div class="dl">
+      <label>${t.dataset}<select class="sel" id="dl-set">${Object.entries(t.datasets).map(([k, v]) => `<option value="${k}"${S.dataset === k ? " selected" : ""}>${v}</option>`).join("")}</select></label>
+      <label>${t.from}<input type="date" id="dl-from" value="${esc(S.from)}" min="${esc(first)}" max="${esc(last)}"></label>
+      <label>${t.to}<input type="date" id="dl-to" value="${esc(S.to)}" min="${esc(first)}" max="${esc(last)}"></label>
+      <label>${t.format}<span class="seg" role="group"><button data-fmt="csv" aria-pressed="${S.format === "csv"}">CSV</button><button data-fmt="json" aria-pressed="${S.format === "json"}">JSON</button></span></label>
+      <button class="btn" id="dl-go"${idx ? "" : " disabled"}>${t.download}</button>
+    </div>
+    <p class="dl-status" id="dl-status" aria-live="polite">${esc(S.status)}</p>
+  </section>
+  <section class="tsec" id="files" aria-labelledby="h-files">
+    <div class="sec-head"><div><h2 id="h-files">${t.filesTitle}</h2><p class="sub">${t.filesSub}</p></div></div>
+    ${files}${daily}
+  </section>
+  <section class="tsec" id="api" aria-labelledby="h-api">
+    <div class="sec-head"><div><h2 id="h-api">${t.apiTitle}</h2><p class="sub">${t.apiSub}</p></div></div>
+    <div class="tscroll"><table class="files"><tbody>${t.api.map(([path, d]) => `<tr><td><a class="mono" href="${esc(path.includes("YYYY") ? "data/archive/" : path)}">${esc(path)}</a></td><td>${esc(d)}</td></tr>`).join("")}</tbody></table></div>
+  </section>
+  <section class="tsec" id="columns" aria-labelledby="h-cols">
+    <div class="sec-head"><div><h2 id="h-cols">${t.colsTitle}</h2><p class="sub">${t.colsSub}</p></div></div>
+    ${colTables}
+  </section>
+  <section class="tsec" id="licence" aria-labelledby="h-cite">
+    <div class="sec-head"><div><h2 id="h-cite">${t.citeTitle}</h2><p class="sub">${t.citeSub}</p></div></div>
+    ${citeHTML()}
+  </section>`;
+}
+function bindData() {
+  const S = state.dataPage;
+  $("#dl-set")?.addEventListener("change", (e) => { S.dataset = e.target.value; });
+  $("#dl-from")?.addEventListener("change", (e) => { S.from = e.target.value; });
+  $("#dl-to")?.addEventListener("change", (e) => { S.to = e.target.value; });
+  document.querySelectorAll("[data-fmt]").forEach(b => b.addEventListener("click", () => { S.format = b.dataset.fmt; document.querySelectorAll("[data-fmt]").forEach(x => x.setAttribute("aria-pressed", x === b)); }));
+  $("#dl-go")?.addEventListener("click", downloadRange);
+  bindCopy();
+}
+async function downloadRange() {
+  const t = L(), S = state.dataPage, idx = state.trends.index, btn = $("#dl-go"), status = $("#dl-status");
+  if (!idx || S.busy) return;
+  const from = S.from || idx.first_day, to = S.to || idx.last_day;
+  const days = idx.days.filter(d => d.date >= from && d.date <= to && (S.dataset === "headlines" ? d.headlines : d.runs));
+  if (!days.length) { status.textContent = t.dlNone; return; }
+  S.busy = true; btn.disabled = true; status.textContent = t.fetching(num(days.length));
+  try {
+    const rows = [];
+    for (let i = 0; i < days.length; i += 8) {   // a few files at a time, so a long range does not flood the connection
+      const chunk = await Promise.all(days.slice(i, i + 8).map(d => getJSONCached(`data/archive/${d.date}.json`)));
+      for (const day of chunk) rows.push(...flattenDay(day, S.dataset));
+    }
+    const cols = (S.exports?.columns || COLS_FALLBACK)[`${S.dataset}.csv`] || COLS_FALLBACK[`${S.dataset}.csv`];
+    const csv = S.format === "csv";
+    const blob = new Blob([csv ? toCSV(rows, cols) : JSON.stringify(rows)], { type: csv ? "text/csv;charset=utf-8" : "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `syria-narrative-tracker-${S.dataset}-${from}-to-${to}.${csv ? "csv" : "json"}`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+    status.textContent = t.dlDone(num(rows.length));
+  } catch (e) {
+    status.textContent = t.dlErr;
+  }
+  S.busy = false; btn.disabled = false;
+}
+
+/* =================== about =================== */
+function aboutHTML() {
+  const t = L(), D = state.latest || {}, m = state.method, v = state.validation;
+  const lg = (D.stats || {}).languages || {}, lgTotal = Object.values(lg).reduce((a, b) => a + b, 0);
+  const langs = lgTotal ? `<p class="sub langs">${t.langsLine} ${Object.entries(lg).filter(([, x]) => x / lgTotal >= 0.005).sort((a, b) => b[1] - a[1])
+    .map(([k, x]) => `${t.langs[k] || esc(k)} ${pctText(x / lgTotal)}`).join(rtl() ? "، " : ", ")}</p>` : "";
+  const loading = `<p class="nodata">${t.loadingMethod}</p>`;
+  const themes = m?.themes || D.themes || [];
+  let method = loading, sources = loading, prompt = "", themesHTML = "", signalsHTML = loading;
+  if (m && !m.missing) {
+    signalsHTML = `<p>${t.signalsIntro}</p><div class="sigcat">${(m.signals || []).map(s => `<p><strong dir="auto">${esc(rtl() && s.label_ar ? s.label_ar : s.label)}</strong> <span class="mono">${esc(s.id)}</span><br><span dir="auto">${esc(rtl() && s.about_ar ? s.about_ar : s.about)}</span>${s.innocent ? `<br><span class="inn" dir="auto">${t.sigInnocent} ${esc(rtl() && s.innocent_ar ? s.innocent_ar : s.innocent)}</span>` : ""}</p>`).join("")}</div>`;
+    const sp = m.sampling || {};
+    const info = { window_hours: num(sp.window_hours || 24), keywords: num((m.keywords || []).length), max_posts: num(sp.max_posts || 300),
+                   public_share: num(Math.round((sp.public_share || 0.7) * 100)), model: m.model || "" };
+    method = `<ol>${t.methodSteps(info).map(([a, b]) => `<li><strong>${a}</strong> ${b}</li>`).join("")}</ol>`;
+    themesHTML = `<div class="tscroll"><table class="cat"><tbody>${themes.map(x => `<tr><td dir="auto"><strong>${esc(rtl() && x.label_ar ? x.label_ar : x.label)}</strong><br><span class="mono">${esc(x.id)}</span></td><td dir="auto">${esc(rtl() && x.about_ar ? x.about_ar : x.about || "")}</td></tr>`).join("")}</tbody></table></div>`;
+    const rows = (m.sources || []).map(s => {
+      const name = rtl() && s.label_ar ? s.label_ar : s.label;
+      const link = safeUrl(s.ref) ? `<a href="${esc(s.ref)}" target="_blank" rel="noopener" dir="auto">${esc(name)}</a>` : `<span dir="auto">${esc(name)}</span>`;
+      return `<tr><td>${link}${s.detail ? `<br><span class="sub" style="font-size:.82rem">${esc(s.detail)}</span>` : ""}</td><td>${esc(kindLabel(s.kind))}</td><td>${esc(t.platforms[s.platform] || s.platform)}</td><td>${s.filter === undefined ? "" : s.filter ? t.yes : t.no}</td></tr>`;
+    }).join("");
+    sources = `<div class="tscroll"><table class="cat srcs"><thead><tr><th>${t.colName}</th><th>${t.colKind}</th><th>${t.colPlatform}</th><th>${t.colFilter}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    prompt = `<details><summary>${t.showPrompt}</summary><pre class="prompt" dir="ltr" lang="en">${esc(m.prompt || "")}</pre></details>`;
+  }
+  let accuracy = `<p>${t.accuracyBody}</p>`;
+  if (v && v.sample) {
+    const stats = Object.entries(t.accStats).filter(([k]) => has(v[k])).map(([k, label]) => `<div class="stat"><b>${esc(typeof v[k] === "number" ? (k.includes("agreement") ? pctText(v[k]) : v[k].toLocaleString(L().locale, { maximumFractionDigits: 2 })) : v[k])}</b><span>${label}</span></div>`).join("");
+    accuracy = `<p>${t.accuracyHave({ sample: num(v.sample), date: fmtDay(v.date, { day: "numeric", month: "long", year: "numeric" }), coders: num(v.coders || 2) })}</p><div>${stats}</div>${v.note ? `<p class="sub">${esc(rtl() && v.note_ar ? v.note_ar : v.note)}</p>` : ""}`;
+  }
+  return `
+  <section id="about" class="about-page" aria-labelledby="h-about">
+    <h2 id="h-about">${t.aboutTitle}</h2>
+    <div class="method">${t.method.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
+    ${langs}
+    <h3 id="method">${t.methodTitle}</h3>
+    ${method}
+    <h3 id="themes">${t.themesTitle}</h3>
+    ${themesHTML || loading}
+    <h3 id="sources">${t.sourcesTitle}</h3>
+    ${sources}
+    <h3 id="signals">${t.signalsTitle}</h3>
+    ${signalsHTML}
+    <h3 id="limits">${t.limitsTitle}</h3>
+    <div class="method">${t.limits.map(([a, b]) => `<p><strong>${a}</strong> ${b}</p>`).join("")}</div>
+    <h3 id="accuracy">${t.accuracyTitle}</h3>
+    ${accuracy}
+    <h3 id="prompt">${t.promptTitle}</h3>
+    ${prompt || loading}
+    <h3 id="cite">${t.aboutCite}</h3>
+    ${citeHTML()}
+  </section>`;
+}
+function bindAbout() { bindCopy(); }
+
+/* =================== page =================== */
+function heroHTML() {
+  const t = L(), D = state.latest, o = D.overall || {}, st = D.stats || {}, h = num(D.window_hours || 24);
+  const pub = has(o.public_sentiment) && (st.public_posts || 0) > 0;
+  const tone = pub ? o.public_sentiment : o.sentiment;
+  const word = pub ? moodIn(o, "public_mood", tone) : moodIn(o, "mood", tone);
+  const outletMood = moodIn(o, "mood", o.sentiment);
+  const brief = tx(o, "brief");
+  const voices = (pub ? t.voices(num(st.public_posts), num(st.outlet_posts), h) : t.postsFrom(num(st.posts_analyzed), num(st.sources_ok), h))
+    + (st.collected ? " " + t.collected(num(st.collected), num(st.relevant || 0)) : "");
+  return `
+  <div class="hero">
+    <!--notice-->
+    <p class="eyebrow">${pub ? t.nowPeople : t.nowOutlets}</p>
+    <p class="mood" dir="auto" style="--tone:${toneColor(tone)}">${esc(word)}</p>
+    ${brief ? `<p class="brief" dir="auto">${esc(brief)}</p>` : ""}
+    <p class="meta">${pub && outletMood ? `<i style="background:${toneColor(o.sentiment)}"></i>${t.outletsMeanwhile} <span dir="auto">${esc(outletMood)}</span>. ` : ""}${voices}</p>
+    ${pub ? "" : `<p class="hint">${t.hint}</p>`}
+  </div>`;
+}
+function render() {
+  applyLang();
+  const t = L(), D = state.latest || {};
+  const checked = D.checked_at || D.generated_at;
+  const stale = checked && Date.now() - new Date(checked) > 8 * 3600000;   // GitHub often runs the "hourly" job only every 3–6 hours
+  $("#updated").innerHTML = !checked ? "" : stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
+  if (state.view === "about") { $("#app").innerHTML = aboutHTML(); bindAbout(); loadMethod(); return; }
+  if (state.view === "trends") { $("#app").innerHTML = trendsHTML(); bindTrends(); drawTrends(); loadIndex(); return; }
+  if (state.view === "data") { $("#app").innerHTML = dataHTML(); bindData(); loadIndex(); loadExports(); return; }
+  usedFallback = false;
+  const typing = document.activeElement?.id === "q", caret = typing ? document.activeElement.selectionStart : 0;
+  let html = heroHTML() + searchHTML() + storiesHTML() + weekHTML();
+  if (usedFallback && t.fallback) html = html.replace("<!--notice-->", `<p class="notice">${t.fallback}</p>`);
+  $("#app").innerHTML = html;
+  bind();
+  bindSearch();
+  if (typing) { const q = $("#q"); q.focus(); try { q.setSelectionRange(caret, caret); } catch (e) {} }
+  if (state.first) {
+    state.first = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => $("#stories")?.classList.remove("pending")));
+  }
+}
+function bind() {
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+    state.sort = b.dataset.sort;
+    $("#stories").innerHTML = sorted(state.latest.narratives || []).map(storyHTML).join("");
+    document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    bindRows();
+  }));
+  bindRows();
+  const mosaic = $("#mosaic");
+  if (!mosaic) return;
+  const { cells } = weekData();
+  const select = (i) => {
+    if (i < 0 || i >= cells.length || !cells[i].e) return false;
+    state.sel = i;
+    mosaic.querySelectorAll(".tile.sel").forEach(x => x.classList.remove("sel"));
+    mosaic.querySelector(`[data-i="${i}"]`)?.classList.add("sel");
+    $("#hour").innerHTML = hourPanel(cells[i]);
+    loadSnapshot(cells[i]);
+    return true;
+  };
+  loadSnapshot(cells[state.sel]);
+  $("#hour").addEventListener("click", (e) => {
+    const r = e.target.closest(".hrow");
+    if (!r) return;
+    const art = r.closest(".hstory"), key = art.dataset.key, open = !art.classList.contains("open");
+    art.classList.toggle("open", open);
+    r.setAttribute("aria-expanded", open);
+    open ? state.hourOpen.add(key) : state.hourOpen.delete(key);
+  });
+  mosaic.addEventListener("click", (e) => { const x = e.target.closest(".tile.on"); if (x) select(Number(x.dataset.i)); });
+  mosaic.addEventListener("keydown", (e) => {
+    let step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 24, ArrowUp: -24 }[e.key];
+    if (!step) return;
+    if (rtl() && Math.abs(step) === 1) step = -step;      // the grid is mirrored in Arabic
+    e.preventDefault();
+    for (let i = state.sel + step; i >= 0 && i < cells.length; i += step) if (select(i)) break;
+  });
+}
+function bindRows() {
+  document.querySelectorAll(".story .row").forEach(r => r.addEventListener("click", () => {
+    const art = r.closest(".story"), id = art.dataset.id, open = !art.classList.contains("open");
+    art.classList.toggle("open", open);
+    r.setAttribute("aria-expanded", open);
+    open ? state.open.add(id) : state.open.delete(id);
+  }));
+}
+function renderEmpty(sources) {
+  applyLang();
+  const t = L();
+  $("#updated").textContent = "";
+  $("#app").innerHTML = `<div class="empty"><h2>${t.emptyTitle}</h2><p>${t.emptyBody}</p><p class="sub">${t.emptySub}</p></div>`;
+  if (sources && sources.length) { state.latest = { ...(state.latest || {}), sources }; $("#app").insertAdjacentHTML("beforeend", aboutHTML()); }
+}
+
+$("#lang-btn").addEventListener("click", () => {
+  state.lang = L().switchLang;
+  try { localStorage.setItem("snt-lang", state.lang); } catch (e) {}
+  showView();
+});
+
+async function getJSON(path) {
+  const r = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+async function load() {
+  let latest = null;
+  try { latest = await getJSON("data/latest.json"); } catch (e) {}
+  if (!state.lang) state.lang = pickLang(latest);
+  if (!latest || !latest.generated_at) { state.latest = latest; return showView(); }
+  let history = [];
+  try { history = await getJSON("data/history.json"); } catch (e) {}
+  state.latest = latest; state.history = history;
+  render();
+}
+async function getJSONCached(path) {   // for files that never change once written (past days' archives)
+  const r = await fetch(path);
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+async function loadIndex() {
+  const S = state.trends;
+  if (S.index || S.loading) return;
+  S.loading = true;
+  [S.index, state.weekly] = await Promise.all([
+    getJSON("data/archive/index.json").catch(() => ({ days: [], themes: [], kinds: [], languages: [], events: [] })),
+    getJSON("data/weekly/index.json").catch(() => [])]);
+  S.loading = false;
+  if (state.view === "trends" || state.view === "data") render();
+}
+async function loadExports() {
+  const S = state.dataPage;
+  if (S.exports || S.loading) return;
+  S.loading = true;
+  S.exports = await getJSON("data/exports/index.json").catch(() => ({ months: [], days: [], columns: {} }));
+  S.loading = false;
+  if (state.view === "data") render();
+}
+async function loadMethod() {
+  if (state.method) return;
+  const [m, v] = await Promise.all([getJSON("data/methodology.json").catch(() => null), getJSON("data/validation.json").catch(() => null)]);
+  state.method = m || { missing: true }; state.validation = v;
+  if (state.view === "about") render();
+}
+const ABOUT_ANCHORS = ["method", "themes", "sources", "signals", "limits", "accuracy", "prompt", "cite"];
+function viewFromHash() {
+  const h = location.hash.replace("#", "");
+  if (["trends", "data", "about"].includes(h)) return h;
+  return ABOUT_ANCHORS.includes(h) ? "about" : "home";
+}
+const showView = () => { state.view === "home" && !state.latest?.generated_at ? renderEmpty(state.latest?.sources) : render(); };
+state.view = viewFromHash();
+window.addEventListener("hashchange", () => {
+  const v = viewFromHash(), anchor = location.hash.replace("#", "");
+  if (v !== state.view) { state.view = v; showView(); window.scrollTo(0, 0); }
+  if (v === "about" && ABOUT_ANCHORS.includes(anchor)) document.getElementById(anchor)?.scrollIntoView();
+});
+let resizeTimer;
+window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (state.view === "trends") drawTrends(); }, 150); });
+state.lang = null;
+try { const q0 = new URL(location.href).searchParams.get("q"); if (q0) { state.search.q = q0; loadSearchData(); } } catch (e) {}
+$("#updated").textContent = "…";
+load();
+setInterval(load, 10 * 60 * 1000);
