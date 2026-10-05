@@ -3,33 +3,33 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-10-04T21:28:08Z",
- "checked_at": "2026-10-04T21:28:08Z",
+ "generated_at": "2026-10-05T00:57:02Z",
+ "checked_at": "2026-10-05T00:57:02Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1394,
-  "relevant": 903,
-  "posts_analyzed": 414,
-  "public_posts": 294,
+  "collected": 1530,
+  "relevant": 1064,
+  "posts_analyzed": 413,
+  "public_posts": 293,
   "outlet_posts": 120,
   "reactions_posts": 0,
   "unique_posts": 400,
   "sources_ok": 36,
   "sources_total": 37,
   "platforms": {
-   "telegram": 85,
    "news": 35,
-   "youtube": 128,
-   "bluesky": 121,
-   "x": 8,
-   "reddit": 23
+   "telegram": 85,
+   "youtube": 126,
+   "x": 10,
+   "bluesky": 118,
+   "reddit": 26
   },
   "languages": {
-   "en": 181,
-   "ar": 217,
+   "ar": 248,
+   "en": 150,
    "ku": 2
   }
  },
@@ -37,11 +37,11 @@
   "sentiment": -0.15,
   "mood": "Tense",
   "mood_ar": "متوتر",
-  "public_sentiment": -0.2,
+  "public_sentiment": -0.35,
   "public_mood": "Anxious",
   "public_mood_ar": "قلق",
-  "brief": "Coverage is dominated by Israel's resumption of excavation on the 'Sufa 53' line in Quneitra, drawing near-uniform condemnation from Syrian, Arab and regional outlets, alongside continued incursions and shelling in Daraa. Public reaction mixes anger at Israeli actions with frustration that the Syrian state appears unable to respond. Domestic stories include the arrest of a notorious pro-Assad militia deputy (widely celebrated), debates over Kurdish-language education in the north-east, electricity protests, and a viral moment of a minister walking without an entourage that split commenters between praise and mockery of broader corruption. A Media Line/Reuters report (denied by Damascus and Ankara) of secret Syria-Hezbollah talks also circulated, adding to public skepticism about government transparency.",
-  "brief_ar": "تتصدر التغطية استئناف إسرائيل أعمال الحفر على ما يسمى 'خط سوفا 53' في القنيطرة، وسط إدانات شبه موحدة من الجهات الرسمية السورية والعربية والإقليمية، إلى جانب استمرار التوغلات والقصف في درعا. ويمزج رد الفعل الشعبي بين الغضب من الأفعال الإسرائيلية والإحباط من عجز الدولة السورية عن الرد. وتشمل القصص المحلية اعتقال نائب ميليشيا موالية للأسد (احتفى به كثيرون)، والجدل حول التعليم باللغة الكردية في الشمال الشرقي، واحتجاجات على الكهرباء، وظهور وزير الاتصالات سيرا على الأقدام دون مرافقين، ما انقسم حوله المعلقون بين الإشادة والسخرية من الفساد العام. كما تداول البعض تقريرا (نفته دمشق وأنقرة) عن محادثات سرية بين سوريا وحزب الله، ما عزز الشك الشعبي في شفافية الحكومة.'"
+  "brief": "The dominant story is Israel's expansion of the 'Sufa 53' line in Quneitra and incursions into southern Syria, drawing near-unanimous outlet condemnation and widespread public anger and mockery of the Syrian state's inability to respond. Other threads include the arrest of a pro-Assad militia figure, debate over calling al-Sharaa a 'transitional president', viral reaction to a minister walking without security, Kurdish-language education rights, and continuing economic hardship. Public commentary is more sarcastic and distrustful than official messaging, which stays procedural and self-congratulatory.",
+  "brief_ar": "تتصدر المشهد قصة توسّع إسرائيل في خط 'سوفا 53' بريف القنيطرة وتوغلاتها في جنوب سوريا، وسط إدانات شبه إجماعية من وسائل الإعلام وغضب وسخرية شعبية واسعة من عجز الدولة السورية عن الرد. من القصص الأخرى: اعتقال قيادي في ميليشيا موالية للأسد سابقاً، الجدل حول وصف الشرع بـ'الرئيس الانتقالي'، التفاعل مع ظهور وزير الاتصالات يمشي دون مرافقة، الجدل حول حقوق التعليم باللغة الكردية، واستمرار الضغوط المعيشية. التعليقات الشعبية أكثر سخرية وتشككاً من الخطاب الرسمي الذي يبقى إجرائياً ومتفائلاً بذاته."
  },
  "narratives": [
   {
@@ -49,82 +49,83 @@
    "key": "2026-10-01-israel-south",
    "theme": "israel-south",
    "title": "Israeli Sufa 53 Excavation Expands in Quneitra Amid Incursions and Shelling",
-   "title_ar": "توسع إسرائيلي في مشروع سوفا 53 بالقنيطرة وسط توغلات وقصف",
-   "summary": "Israeli forces resumed large-scale excavation near al-Asha village in southern Quneitra on the 'Sufa 53' line, entered al-Asbah village under drone cover, and shelled areas in western Daraa. Syrian state media and the Foreign Ministry condemned the moves as a breach of the 1974 disengagement agreement, and Kuwait, Qatar and Jordan issued condemnations; UNDOF coordination was also reported.",
-   "summary_ar": "استأنفت القوات الإسرائيلية أعمال تجريف واسعة قرب قرية العشة بريف القنيطرة الجنوبي ضمن ما يسمى 'خط سوفا 53'، وتوغلت في قرية الأصبح بغطاء مسيّرات، وقصفت مناطق في ريف درعا الغربي. وأدانت وزارة الخارجية السورية والإعلام الرسمي هذه الأعمال باعتبارها خرقا لاتفاقية فصل القوات لعام 1974، كما أدانتها الكويت وقطر والأردن، فيما جرى تنسيق مع قوات الأندوف.",
-   "public_reaction": "Arabic-speaking commenters express anger and helplessness, asking where the Syrian army and state are while Israel digs trenches inside Syrian territory; English-language posts on Bluesky highlight drone surveillance of journalists as sinister, while some Turkish commenters call for Ankara to intervene.",
-   "public_reaction_ar": "يعبر المعلقون الناطقون بالعربية عن غضب وشعور بالعجز متسائلين أين الجيش والدولة السورية بينما تحفر إسرائيل خنادق داخل الأراضي السورية، بينما تسلط منشورات بلوسكاي الإنجليزية الضوء على مراقبة الصحفيين بالمسيّرات كأمر مقلق، ويطالب بعض المعلقين الأتراك بتدخل أنقرة.",
+   "title_ar": "توسّع حفر خط سوفا 53 الإسرائيلي في القنيطرة وسط توغلات وقصف",
+   "summary": "Israeli forces resumed large-scale excavation and fortification work near al-Asha village in southern Quneitra on the Sufa 53 line, entered al-Asbah village, raided homes, fired flares that sparked a fire and blocked civil defense from reaching it, and killed a man described as a suspected infiltrator near a military post. Syria's Foreign Ministry and Arab states including Qatar, Jordan and Kuwait condemned the actions as violations of the 1974 disengagement agreement.",
+   "summary_ar": "استأنفت القوات الإسرائيلية أعمال حفر وتحصين واسعة قرب قرية العشة في ريف القنيطرة الجنوبي ضمن خط سوفا 53، ودخلت قرية الأصبح ودهمت منازل، وأطلقت قنابل مضيئة تسبّبت بحريق ومنعت الدفاع المدني من الوصول إليه، وقتلت شخصاً وصفته بالمشتبه بمحاولته التسلل لموقع عسكري. وأدانت وزارة الخارجية السورية ودول عربية منها قطر والأردن والكويت هذه الأعمال باعتبارها خرقاً لاتفاقية فصل القوات لعام 1974.",
+   "public_reaction": "Arabic-speaking publics express anger and mockery of the Syrian state's passivity, with some questioning why no military response occurs; English-language posts largely repost wire reports or criticize Israeli occupation, while some pro-Israel voices defend the killing as routine security.",
+   "public_reaction_ar": "يعبّر الجمهور الناطق بالعربية عن غضب وسخرية من سلبية الدولة السورية، وبعضهم يتساءل عن غياب أي رد عسكري؛ أما المحتوى الإنجليزي فغالباً ما يعيد نشر تقارير الوكالات أو ينتقد الاحتلال، بينما يدافع بعض المؤيدين لإسرائيل عن العملية باعتبارها إجراءً أمنياً روتينياً.",
    "sentiment": -0.5,
-   "public_sentiment": -0.5,
+   "public_sentiment": -0.55,
    "outlet_tone": {
     "official": -0.6,
     "independent": -0.5,
-    "kurdish": -0.4,
-    "regional": -0.4,
-    "aggregator": -0.3
+    "kurdish": -0.5,
+    "regional": -0.3,
+    "aggregator": -0.1
    },
    "public_tone": {
-    "ar": -0.5,
-    "en": -0.4
+    "ar": -0.6,
+    "en": -0.3
    },
    "emotions": [
     "anger",
-    "fear",
-    "helplessness"
+    "frustration",
+    "alarm"
    ],
    "emotions_ar": [
     "غضب",
-    "خوف",
-    "عجز"
+    "إحباط",
+    "قلق"
    ],
    "framings": [
-    "Violation of sovereignty and 1974 agreement",
-    "Arab/regional solidarity condemnations",
-    "Journalist safety concerns"
+    "Violation of sovereignty and international law",
+    "Routine Israeli security operation",
+    "Failure of Syrian state to respond"
    ],
    "framings_ar": [
-    "انتهاك للسيادة واتفاقية 1974",
-    "تضامن عربي وإقليمي بالإدانة",
-    "مخاوف على سلامة الصحفيين"
+    "انتهاك للسيادة والقانون الدولي",
+    "عملية أمنية إسرائيلية روتينية",
+    "عجز الدولة السورية عن الرد"
    ],
    "flags": [
-    "Repeated near-identical condemnation statements across outlets"
+    "Near-identical condemnation statements repeated across outlets"
    ],
    "flags_ar": [
-    "بيانات إدانة شبه متطابقة عبر عدة جهات"
+    "بيانات إدانة شبه متطابقة متكررة عبر وسائل الإعلام"
    ],
-   "volume": 60,
-   "public_volume": 21,
-   "share": 0.145,
-   "engagement": 37833,
+   "volume": 92,
+   "public_volume": 42,
+   "share": 0.223,
+   "engagement": 89388,
    "platforms": {
-    "telegram": 29,
-    "news": 10,
-    "bluesky": 19,
-    "youtube": 1
+    "news": 20,
+    "telegram": 30,
+    "bluesky": 36,
+    "x": 2,
+    "youtube": 2
    },
    "languages": {
-    "ar": 32,
-    "en": 27
+    "ar": 47,
+    "en": 43
    },
    "public_languages": {
-    "en": 14,
-    "ar": 6
+    "ar": 14,
+    "en": 26
    },
    "kinds": {
-    "official": 6,
-    "aggregator": 7,
-    "regional": 6,
-    "independent": 12,
-    "kurdish": 8
+    "aggregator": 15,
+    "regional": 11,
+    "independent": 14,
+    "kurdish": 6,
+    "official": 4
    },
    "sources": [
     "Bluesky posts",
-    "Levant24 - Syria news (EN)",
-    "Al-Ikhbariya Syria - state TV",
     "Google News - Syria (AR)",
-    "Shaam News Network - opposition-origin",
-    "Sky News Arabia - UAE-based"
+    "Google News - Syria (EN)",
+    "Levant24 - Syria news (EN)",
+    "Sky News Arabia - UAE-based",
+    "Shaam News Network - opposition-origin"
    ],
    "examples": [
     {
@@ -139,7 +140,7 @@
     },
     {
      "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141347",
+     "url": "https://t.me/HalabTodayTV/141353",
      "platform": "telegram"
     }
    ],
@@ -151,63 +152,137 @@
    }
   },
   {
-   "id": "minister-walking-viral",
-   "key": "2026-10-04-minister-walking-viral",
-   "theme": "governance",
-   "title": "Communications Minister Seen Walking Unescorted Sparks Debate",
-   "title_ar": "ظهور وزير الاتصالات سيرا على الأقدام دون مرافقين يثير جدلاً",
-   "summary": "A video of Communications Minister Abdul Salam Haykal walking in the street without an entourage went viral, prompting mixed public reactions ranging from praise for modesty to mockery of the spectacle and broader complaints about other officials' privilege and corruption.",
-   "summary_ar": "انتشر فيديو لوزير الاتصالات عبد السلام هيكل وهو يمشي في الشارع دون مرافقين، ما أثار ردود فعل متباينة بين الإشادة بتواضعه والسخرية من تحويل الأمر لقصة، إلى جانب شكاوى أوسع من امتيازات وفساد مسؤولين آخرين.",
-   "public_reaction": "Reactions split between commenters praising the minister as a model of humility contrasted with corrupt officials, and others mocking the media frenzy over something so trivial, with many using the moment to vent about economic hardship and demand all officials behave similarly.",
-   "public_reaction_ar": "انقسمت الردود بين من أشاد بالوزير كنموذج للتواضع مقارنة بمسؤولين فاسدين، ومن سخر من الضجة الإعلامية حول أمر بسيط، واستغل كثيرون اللحظة للتعبير عن غضبهم من الغلاء والمطالبة بأن يحذو كل المسؤولين حذوه.",
+   "id": "hasakah-rally-debate",
+   "key": "2026-10-05-hasakah-rally-debate",
+   "theme": "northeast-kurdish",
+   "title": "Debate Over Hasakah Street Movement and Kurdish Flag Burning Incident",
+   "title_ar": "جدل حول حراك الشارع في الحسكة وحادثة حرق العلم الكردي",
+   "summary": "A program discussing how the state read recent street mobilization in Hasakah drew extensive comment, including disputed claims about a flag burned during protests, debate over SDF integration, detainee releases, and accusations of bias in coverage.",
+   "summary_ar": "أثار برنامج يناقش كيفية قراءة الدولة لحراك الشارع الأخير في الحسكة تعليقات واسعة، بينها ادعاءات متنازع عليها حول علم أُحرق خلال الاحتجاجات، وجدل حول دمج قسد، والإفراج عن المعتقلين، واتهامات بالتحيز في التغطية.",
+   "public_reaction": "Public reaction is deeply divided along communal lines: some Arab commenters accuse SDF/Kurdish factions of separatism and corruption, others defend Kurdish rights and demand fair integration, while some question the accuracy of the flag-burning claim itself.",
+   "public_reaction_ar": "ينقسم الجمهور بشدة على أسس مجتمعية: يتهم بعض المعلقين العرب فصائل قسد/الكردية بالانفصالية والفساد، بينما يدافع آخرون عن الحقوق الكردية ويطالبون بدمج عادل، فيما يشكك البعض بصحة ادعاء حرق العلم أصلاً.",
    "sentiment": 0.0,
-   "public_sentiment": 0.0,
+   "public_sentiment": -0.3,
    "outlet_tone": {},
    "public_tone": {
-    "ar": 0.0
+    "ar": -0.3,
+    "en": -0.1
    },
    "emotions": [
-    "mockery",
-    "admiration",
-    "frustration"
+    "anger",
+    "distrust",
+    "division"
    ],
    "emotions_ar": [
-    "سخرية",
-    "إعجاب",
-    "إحباط"
+    "غضب",
+    "تشكك",
+    "انقسام"
    ],
    "framings": [
-    "Humility vs privilege narrative",
-    "Media overreaction mockery",
-    "Broader corruption grievances"
+    "Separatism and foreign backing accusation",
+    "Kurdish rights and fair integration demand",
+    "Dispute over factual accuracy of coverage"
    ],
    "framings_ar": [
-    "سرد التواضع مقابل الامتياز",
-    "سخرية من المبالغة الإعلامية",
-    "شكاوى أوسع من الفساد"
+    "اتهامات بالانفصالية والدعم الخارجي",
+    "مطالبة بالحقوق الكردية والدمج العادل",
+    "نزاع حول دقة التغطية الإعلامية"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "Unverified claim about flag identity disputed by commenters",
+    "Comments diverting to unrelated sectarian/political grievances"
+   ],
+   "flags_ar": [
+    "ادعاء غير مؤكد حول هوية العلم محل نزاع بين المعلقين",
+    "تعليقات تنحرف نحو مظالم سياسية وطائفية غير متعلقة"
+   ],
    "volume": 33,
    "public_volume": 33,
    "share": 0.08,
-   "engagement": 23,
+   "engagement": 13,
    "platforms": {
-    "youtube": 32,
-    "bluesky": 1
+    "youtube": 30
    },
    "languages": {
-    "ar": 32,
+    "ar": 29,
     "en": 1
    },
    "public_languages": {
-    "ar": 32,
+    "ar": 29,
     "en": 1
    },
    "kinds": {},
    "sources": [
-    "YouTube comments",
-    "Bluesky posts"
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=ItamRTXYmCQ",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-10-05T00:57:02Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "minister-walking-viral",
+   "key": "2026-10-04-minister-walking-viral",
+   "theme": "governance",
+   "title": "Communications Minister Seen Walking Unescorted Sparks Debate",
+   "title_ar": "ظهور وزير الاتصالات يمشي دون مرافقة يثير جدلاً",
+   "summary": "A video of Communications Minister Abdul Salam Haykal walking in the street without security detail went viral, prompting comparisons with other ministers and broader debate about official perks versus public hardship.",
+   "summary_ar": "انتشر فيديو لوزير الاتصالات عبد السلام هيكل وهو يمشي في الشارع دون مرافقة أمنية، ما أثار مقارنات مع وزراء آخرين ونقاشاً أوسع حول امتيازات المسؤولين مقابل معاناة المواطنين.",
+   "public_reaction": "Reactions are mixed: many praise the minister as humble and call on others to follow suit, while others mock the gesture as theater, demand real improvements like cheaper fuel and internet, and some attack other ministers by name.",
+   "public_reaction_ar": "ردود الفعل متباينة: كثيرون يمتدحون الوزير بتواضعه ويطالبون غيره بالاقتداء به، بينما يسخر آخرون من المشهد باعتباره مسرحية ويطالبون بتحسينات حقيقية كخفض أسعار الوقود والإنترنت، ويهاجم بعضهم وزراء آخرين بالاسم.",
+   "sentiment": 0.0,
+   "public_sentiment": 0.05,
+   "outlet_tone": {},
+   "public_tone": {
+    "ar": 0.05
+   },
+   "emotions": [
+    "amusement",
+    "cynicism",
+    "approval"
+   ],
+   "emotions_ar": [
+    "تسلية",
+    "سخرية",
+    "استحسان"
+   ],
+   "framings": [
+    "Humble official as model",
+    "Performative PR stunt",
+    "Comparison with corrupt/absent ministers"
+   ],
+   "framings_ar": [
+    "مسؤول متواضع كقدوة",
+    "استعراض إعلامي مصطنع",
+    "مقارنة مع وزراء فاسدين أو غائبين"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 30,
+   "public_volume": 30,
+   "share": 0.073,
+   "engagement": 12,
+   "platforms": {
+    "youtube": 30
+   },
+   "languages": {
+    "ar": 30
+   },
+   "public_languages": {
+    "ar": 30
+   },
+   "kinds": {},
+   "sources": [
+    "YouTube comments"
    ],
    "examples": [
     {
@@ -228,55 +303,51 @@
    "key": "2026-10-04-transitional-president-debate",
    "theme": "governance",
    "title": "Debate Over the 'Transitional President' Label for al-Sharaa",
-   "title_ar": "جدل حول مصطلح 'الرئيس الانتقالي' لأحمد الشرع",
-   "summary": "A video discussing why the term 'transitional president' stirs controversy in Syria sparked wide public debate, with supporters affirming loyalty to Ahmad al-Sharaa and critics questioning the legitimacy and duration of his rule without elections.",
-   "summary_ar": "أثار فيديو يناقش سبب إثارة مصطلح 'الرئيس الانتقالي' للجدل في سوريا نقاشاً عاماً واسعاً، بين مؤيدين يؤكدون ولاءهم لأحمد الشرع ومنتقدين يشككون في شرعية ومدة حكمه دون انتخابات.",
-   "public_reaction": "Comments range from strong declared support and vows to vote for al-Sharaa repeatedly, to sarcastic dismissals calling him merely a transitional figure who seized power by force, reflecting deep division over his legitimacy.",
-   "public_reaction_ar": "تتراوح التعليقات بين دعم قوي معلن ووعود بالتصويت له مرارا، وبين سخرية ترفض اعتباره سوى شخصية انتقالية وصلت للسلطة بالقوة، ما يعكس انقساما عميقا حول شرعيته.",
+   "title_ar": "الجدل حول وصف الشرع بـ'الرئيس الانتقالي'",
+   "summary": "A video discussing why the term 'transitional president' sparks controversy in Syria drew heavy comment traffic, with debate over whether al-Sharaa should be seen as legitimate, temporary, or effectively permanent.",
+   "summary_ar": "أثار فيديو يناقش سبب إثارة مصطلح 'الرئيس الانتقالي' جدلاً تفاعلاً كثيفاً، وسط نقاش حول ما إذا كان يجب اعتبار الشرع شرعياً، مؤقتاً، أو فعلياً دائماً.",
+   "public_reaction": "Commenters are sharply divided: some mock the label as cover for indefinite rule and demand real elections, others defend it as constitutionally accurate, and some express loyalist enthusiasm bordering on personality-cult language.",
+   "public_reaction_ar": "تنقسم التعليقات بشدة: بعضها يسخر من المصطلح كغطاء لحكم غير محدد المدة ويطالب بانتخابات حقيقية، وبعضها يدافع عنه كوصف دستوري دقيق، وبعضها يعبر عن حماسة موالية أقرب لخطاب عبادة الشخصية.",
    "sentiment": 0.0,
-   "public_sentiment": 0.0,
+   "public_sentiment": -0.1,
    "outlet_tone": {},
    "public_tone": {
-    "ar": 0.0
+    "ar": -0.1
    },
    "emotions": [
-    "divided",
-    "pride",
-    "skepticism"
+    "division",
+    "cynicism",
+    "hope"
    ],
    "emotions_ar": [
     "انقسام",
-    "فخر",
-    "شك"
+    "سخرية",
+    "أمل"
    ],
    "framings": [
-    "Legitimacy through election vs force",
-    "Personality loyalty narrative",
-    "Satirical dismissal"
+    "Demand for democratic elections",
+    "Defense of constitutional transition",
+    "Mockery of permanence under new label"
    ],
    "framings_ar": [
-    "الشرعية عبر الانتخاب مقابل القوة",
-    "سرد الولاء الشخصي",
-    "رفض ساخر"
+    "مطالبة بانتخابات ديمقراطية",
+    "دفاع عن المرحلة الانتقالية الدستورية",
+    "سخرية من استمرار الحكم تحت مسمى جديد"
    ],
-   "flags": [
-    "Repeated near-identical pro-Sharaa slogans suggesting coordinated messaging"
-   ],
-   "flags_ar": [
-    "شعارات مؤيدة للشرع متكررة بشكل شبه متطابق تشير لتنسيق محتمل"
-   ],
-   "volume": 19,
-   "public_volume": 19,
-   "share": 0.046,
-   "engagement": 11,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 18,
+   "public_volume": 18,
+   "share": 0.044,
+   "engagement": 9,
    "platforms": {
-    "youtube": 16
+    "youtube": 18
    },
    "languages": {
-    "ar": 16
+    "ar": 18
    },
    "public_languages": {
-    "ar": 16
+    "ar": 18
    },
    "kinds": {},
    "sources": [
@@ -301,79 +372,71 @@
    "key": "2026-10-04-tarabulsi-arrest",
    "theme": "justice",
    "title": "Arrest of Jamal Tarabulsi, Deputy to Pro-Assad Militia Leader",
-   "title_ar": "اعتقال جمال طرابلسي نائب زعيم ميليشيا موالية للأسد",
-   "summary": "Syria's Internal Security Forces arrested Jamal Tarabulsi, deputy to Ali Kayali (Mihrac Ural), leader of the pro-Assad 'Syrian Resistance' militia, over alleged participation in the 2013 Bayda and Baniyas massacres and fighting in Hama, Idlib and Aleppo countryside.",
-   "summary_ar": "ألقت قوى الأمن الداخلي القبض على جمال طرابلسي، نائب علي كيالي (معراج أورال) زعيم ميليشيا 'المقاومة السورية' الموالية للأسد، بتهمة المشاركة في مجزرتي البيضا وبانياس عام 2013 ومعارك في ريف حماة وإدلب وحلب.",
-   "public_reaction": "Public commenters largely celebrate the arrest, calling for harsh punishment and justice for the Baniyas and Bayda massacres, with some mocking jokes about the detainee; a few note it as overdue accountability.",
-   "public_reaction_ar": "رحب معظم المعلقين بالاعتقال مطالبين بأشد العقوبات وتحقيق العدالة لضحايا مجزرتي بانياس والبيضا، مع بعض التعليقات الساخرة، ووصفه آخرون بأنه محاسبة متأخرة.",
+   "title_ar": "اعتقال جمال طرابلسي نائب قيادي الميليشيا الموالية للأسد",
+   "summary": "Syria's Internal Security Forces arrested Jamal Tarabulsi, deputy to Mihrac Ural (Ali Kayali), leader of the pro-Assad 'Syrian Resistance' militia linked to the 2013 Bayda and Baniyas massacres. Outlets detail his role in fighting across Hama, Idlib and Aleppo during the uprising.",
+   "summary_ar": "ألقت قوى الأمن الداخلي القبض على جمال طرابلسي، نائب محرّاك أورال (علي كيالي) زعيم ميليشيا 'المقاومة السورية' الموالية للأسد والمرتبطة بمجزرتي البيضا وبانياس عام 2013. وتورد وسائل الإعلام تفاصيل مشاركته في القتال بريف حماة وإدلب وحلب خلال سنوات الثورة.",
+   "public_reaction": "Commenters from Baniyas and elsewhere express satisfaction and calls for harsh punishment, seeing the arrest as overdue justice for 2013 massacres.",
+   "public_reaction_ar": "يعبّر معلقون من بانياس وغيرها عن ارتياح ومطالبة بأقسى العقوبات، معتبرين الاعتقال عدالة طال انتظارها عن مجازر 2013.",
    "sentiment": 0.1,
-   "public_sentiment": 0.3,
+   "public_sentiment": 0.5,
    "outlet_tone": {
     "independent": 0.1
    },
    "public_tone": {
-    "ar": 0.3,
-    "en": 0.2
+    "ar": 0.55,
+    "en": 0.1
    },
    "emotions": [
     "satisfaction",
-    "anger at past crimes",
-    "relief"
+    "vindication"
    ],
    "emotions_ar": [
-    "رضا",
-    "غضب من جرائم الماضي",
-    "ارتياح"
+    "ارتياح",
+    "شماتة"
    ],
    "framings": [
-    "Transitional justice and accountability",
-    "Mockery of detained militia figure"
+    "Overdue accountability for Assad-era crimes",
+    "Security forces as justice-bringers"
    ],
    "framings_ar": [
-    "العدالة الانتقالية والمحاسبة",
-    "سخرية من عنصر الميليشيا المعتقل"
+    "عدالة متأخرة عن جرائم عهد الأسد",
+    "قوى الأمن كمحققة للعدالة"
    ],
-   "flags": [
-    "Near-identical text copied across outlets and public posts"
-   ],
-   "flags_ar": [
-    "نص شبه متطابق متكرر بين القنوات والمنشورات العامة"
-   ],
-   "volume": 18,
-   "public_volume": 14,
-   "share": 0.043,
-   "engagement": 7111,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 9,
+   "public_volume": 6,
+   "share": 0.022,
+   "engagement": 3149,
    "platforms": {
     "news": 1,
-    "telegram": 3,
-    "x": 4,
-    "reddit": 5,
-    "youtube": 1,
-    "bluesky": 1
+    "telegram": 2,
+    "youtube": 4,
+    "bluesky": 2
    },
    "languages": {
-    "ar": 11,
-    "en": 4
-   },
-   "public_languages": {
-    "ar": 8,
+    "ar": 6,
     "en": 3
    },
+   "public_languages": {
+    "ar": 4,
+    "en": 2
+   },
    "kinds": {
-    "independent": 4
+    "independent": 3
    },
    "sources": [
-    "Reddit r/syria comments",
-    "X posts",
-    "Halab Today TV - opposition-origin, Aleppo",
+    "YouTube comments",
+    "Bluesky posts",
     "Syria TV - opposition-origin",
     "Levant24 - Syria news (EN)",
-    "YouTube comments"
+    "Halab Today TV - opposition-origin, Aleppo",
+    "YouTube comments on Halab Today TV"
    ],
    "examples": [
     {
      "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141348",
+     "url": "https://t.me/HalabTodayTV/141351",
      "platform": "telegram"
     },
     {
@@ -399,85 +462,70 @@
    "key": "2026-10-04-northeast-kurdish",
    "theme": "northeast-kurdish",
    "title": "Kurdish Language Education Rights Debate Continues",
-   "title_ar": "استمرار الجدل حول حق التعليم باللغة الكردية",
-   "summary": "The Kurdish Language Foundation and Ministry of Education announced completion of Kurdish-language school guides for grades 1-8, while Kurdish civil groups and students in Qamishli demand full mother-tongue curriculum rather than limited hours, and freedom committees call for guaranteed linguistic rights.",
-   "summary_ar": "أعلنت مؤسسة اللغة الكردية ووزارة التربية إنجاز أدلة الأنشطة المدرسية باللغة الكردية لصفوف 1-8، بينما يطالب طلاب وجهات مدنية كردية في القامشلي بمنهاج كامل باللغة الأم بدلاً من زيادة الحصص فقط، وتدعو لجان الدفاع عن الحريات لضمان الحقوق اللغوية.",
-   "public_reaction": "Kurdish-language commenters express frustration that proposals only add hours rather than guarantee full mother-tongue curriculum, framing it as a rights issue tied to the autonomous administration's legacy; some Arabic commenters frame Kurdish political/administrative influence in the northeast negatively.",
-   "public_reaction_ar": "يعبر المعلقون بالكردية عن إحباط من اقتصار المقترحات على زيادة الحصص دون ضمان منهاج كامل باللغة الأم، ويرون القضية متصلة بحقوق مرتبطة بإرث الإدارة الذاتية، بينما يؤطر بعض المعلقين العرب النفوذ الكردي الإداري في الشمال الشرقي بشكل سلبي.",
+   "title_ar": "استمرار الجدل حول حقوق التعليم باللغة الكردية",
+   "summary": "The Kurdish Language Foundation and Syria's Ministry of Education announced completion of Kurdish-language school activity guides for grades 1-8, while Kurdish students in Qamishli and villages in Hama countryside press for full curricula in Kurdish rather than added hours, and a Kurdish rights federation asserts the right to mother-tongue education.",
+   "summary_ar": "أعلنت مؤسسة اللغة الكردية ووزارة التربية السورية إنجاز أدلة الأنشطة المدرسية باللغة الكردية لصفوف من الأول حتى الثامن، بينما يطالب طلاب كرد في القامشلي وقرى بريف حماة بمنهاج كامل باللغة الكردية بدلاً من إضافة حصص، وتؤكد جهة حقوقية كردية حق التعليم باللغة الأم.",
+   "public_reaction": "Kurdish-language public voices demand full mother-tongue curricula rather than token additions and frame this as part of a broader rights struggle; Arabic-language commenters elsewhere voice suspicion of separatism tied to the north-east more broadly.",
+   "public_reaction_ar": "يطالب متحدثون بالكردية بمنهاج كامل باللغة الأم بدلاً من إضافات رمزية، ويصوّرون ذلك جزءاً من نضال حقوقي أوسع؛ بينما يعبّر بعض المعلقين بالعربية في سياقات أخرى عن شكوك بنزعات انفصالية مرتبطة بالشمال الشرقي عموماً.",
    "sentiment": 0.1,
-   "public_sentiment": -0.1,
+   "public_sentiment": 0.1,
    "outlet_tone": {
-    "kurdish": 0.2,
-    "aggregator": 0.1
+    "kurdish": 0.3
    },
    "public_tone": {
-    "ar": -0.3,
-    "ku": -0.1,
-    "en": 0.0
+    "ku": 0.2,
+    "en": 0.1
    },
    "emotions": [
-    "frustration",
+    "determination",
     "pride",
-    "distrust"
+    "frustration"
    ],
    "emotions_ar": [
-    "إحباط",
+    "إصرار",
     "فخر",
-    "ريبة"
+    "إحباط"
    ],
    "framings": [
-    "Kurdish rights to mother-tongue education",
-    "Integration and loyalty suspicion from Arab commenters",
-    "Administrative legacy disputes"
+    "Mother-tongue education as a rights issue",
+    "Incremental state concession seen as insufficient"
    ],
    "framings_ar": [
-    "حق الأكراد بالتعليم بلغتهم الأم",
-    "شكوك عربية حول الولاء والاندماج",
-    "نزاعات حول الإرث الإداري"
+    "التعليم باللغة الأم كقضية حقوقية",
+    "تنازل حكومي تدريجي يُعتبر غير كافٍ"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 16,
-   "public_volume": 10,
-   "share": 0.039,
-   "engagement": 501,
+   "volume": 8,
+   "public_volume": 5,
+   "share": 0.019,
+   "engagement": 333,
    "platforms": {
-    "telegram": 5,
-    "news": 1,
-    "youtube": 4,
-    "bluesky": 6
+    "telegram": 3,
+    "bluesky": 5
    },
    "languages": {
-    "en": 5,
-    "ar": 9,
+    "en": 3,
+    "ar": 3,
     "ku": 2
    },
    "public_languages": {
-    "ar": 5,
-    "en": 3,
-    "ku": 2
+    "ku": 2,
+    "ar": 1,
+    "en": 2
    },
    "kinds": {
-    "kurdish": 5,
-    "aggregator": 1
+    "kurdish": 3
    },
    "sources": [
     "Bluesky posts",
-    "YouTube comments",
     "North Press Agency - Qamishli-based (AR)",
-    "North Press Agency (EN)",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
-    "Google News - Syria (EN)"
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
      "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/83862",
-     "platform": "telegram"
-    },
-    {
-     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/81416",
+     "url": "https://t.me/npa_syria/83863",
      "platform": "telegram"
     },
     {
@@ -494,75 +542,93 @@
    }
   },
   {
-   "id": "electricity-protests",
-   "key": "2026-10-04-electricity-protests",
-   "theme": "economy",
-   "title": "Protests Over Electricity and Unpaid Dues in Aleppo, Hasakah, Suwayda",
-   "title_ar": "احتجاجات على الكهرباء والمستحقات في حلب والحسكة والسويداء",
-   "summary": "Reports and public complaints describe ongoing protests over electricity shortages and unpaid dues in Aleppo, Hasakah and Suwayda, with Reddit discussions also pointing to high electricity costs rather than rationing as the core issue limiting EV adoption.",
-   "summary_ar": "تشير تقارير وشكاوى عامة إلى احتجاجات مستمرة بسبب نقص الكهرباء وتأخر المستحقات في حلب والحسكة والسويداء، بينما تشير نقاشات على ريديت إلى أن كلفة الكهرباء المرتفعة وليس التقنين هي جوهر المشكلة التي تحد من انتشار السيارات الكهربائية.",
-   "public_reaction": "Commenters express exhaustion over rising prices and demand government accountability for corruption affecting basic living costs, with some citing a $110 million oil company embezzlement scandal as evidence of systemic failure.",
-   "public_reaction_ar": "يعبر المعلقون عن إنهاك من ارتفاع الأسعار ويطالبون بمحاسبة الحكومة على الفساد الذي يطال تكاليف المعيشة الأساسية، ويستشهد البعض بفضيحة اختلاس 110 ملايين دولار في شركة النفط كدليل على فشل منظومي.",
+   "id": "suwayda-druze-tensions",
+   "key": "2026-10-02-suwayda-druze-tensions",
+   "theme": "suwayda-druze",
+   "title": "Suwayda Governance Disputes and Economic Hardship",
+   "title_ar": "نزاعات الحوكمة في السويداء والضائقة الاقتصادية",
+   "summary": "The National Guard closed Hibran's municipal office after a new council was appointed following resident demands for elections, while reports describe Suwayda facing crises of displacement, fuel, food, education and politics; separately a farmer was wounded by a landmine in the countryside.",
+   "summary_ar": "أغلق 'الحرس الوطني' بلدية حبران بعد تعيين مجلس جديد إثر مطالبة الأهالي بإجراء انتخابات، فيما تصف تقارير السويداء بأنها تواجه أزمات نزوح ووقود وغذاء وتعليم وسياسة؛ كما أُصيب مزارع بانفجار لغم في ريف المحافظة.",
+   "public_reaction": "Public posts frame governance moves in Suwayda with concern over local autonomy and note the accumulation of hardships facing the province, alongside a defensive post rebutting claims about security personnel and Druze women in an unrelated viral video.",
+   "public_reaction_ar": "تُظهر المنشورات العامة قلقاً حيال الاستقلالية المحلية في السويداء وتشير إلى تراكم المصاعب التي تواجه المحافظة، إلى جانب منشور دفاعي يفنّد ادعاءات حول عناصر أمن ونساء من الدروز في فيديو منتشر غير مرتبط مباشرة.",
    "sentiment": -0.2,
-   "public_sentiment": -0.5,
-   "outlet_tone": {},
+   "public_sentiment": -0.3,
+   "outlet_tone": {
+    "independent": -0.2,
+    "kurdish": -0.1
+   },
    "public_tone": {
-    "ar": -0.5,
-    "en": -0.1
+    "ar": -0.3
    },
    "emotions": [
-    "anger",
-    "exhaustion",
-    "distrust"
+    "concern",
+    "grievance"
    ],
    "emotions_ar": [
-    "غضب",
-    "إنهاك",
-    "انعدام ثقة"
+    "قلق",
+    "تظلم"
    ],
    "framings": [
-    "Corruption vs mismanagement debate",
-    "Cost of living crisis",
-    "Infrastructure failure"
+    "Local governance dispute",
+    "Accumulation of crises in Suwayda",
+    "Disinformation rebuttal"
    ],
    "framings_ar": [
-    "جدل حول الفساد وسوء الإدارة",
-    "أزمة غلاء المعيشة",
-    "فشل البنية التحتية"
+    "نزاع حوكمة محلي",
+    "تراكم أزمات السويداء",
+    "تفنيد معلومات مضللة"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 13,
-   "public_volume": 13,
-   "share": 0.031,
-   "engagement": 0,
+   "flags": [
+    "Unverified claim rebutted by a public poster regarding video of security personnel and Druze women"
+   ],
+   "flags_ar": [
+    "ادعاء غير مؤكد يفنّده أحد المنشورات العامة بخصوص فيديو عناصر أمن ونساء درزيات"
+   ],
+   "volume": 6,
+   "public_volume": 3,
+   "share": 0.015,
+   "engagement": 486,
    "platforms": {
-    "bluesky": 1,
-    "youtube": 5,
-    "reddit": 7
+    "telegram": 3,
+    "bluesky": 2,
+    "x": 1
    },
    "languages": {
-    "ar": 6,
-    "en": 7
+    "en": 1,
+    "ar": 5
    },
    "public_languages": {
-    "ar": 6,
-    "en": 7
+    "ar": 3
    },
-   "kinds": {},
+   "kinds": {
+    "independent": 2,
+    "kurdish": 1
+   },
    "sources": [
-    "Reddit r/syria comments",
-    "YouTube comments",
-    "Bluesky posts"
+    "Bluesky posts",
+    "Enab Baladi - independent (EN)",
+    "Enab Baladi - independent (AR)",
+    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "X posts"
    ],
    "examples": [
     {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=8F9jgvCIBy4",
-     "platform": "youtube"
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93252",
+     "platform": "telegram"
+    },
+    {
+     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
+     "url": "https://t.me/HawarNews/81404",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (EN)",
+     "url": "https://t.me/Enabbaladi_en/6790",
+     "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-04T17:36:06Z",
+   "first_seen": "2026-10-02T18:26:14Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -570,91 +636,60 @@
    }
   },
   {
-   "id": "syria-hezbollah-secret-talks",
-   "key": "2026-10-01-syria-hezbollah-secret-talks",
-   "theme": "international",
-   "title": "Report of Secret Syria-Hezbollah Talks via Turkish Mediation Denied",
-   "title_ar": "نفي تقرير عن محادثات سرية بين سوريا وحزب الله بوساطة تركية",
-   "summary": "Reports citing Reuters and The Media Line described secret talks between Syrian officials and Hezbollah in Turkey, which Damascus and Ankara denied; commentary links the reported outreach to economic collapse and weakening US-Arab backing for Syria's new leadership.",
-   "summary_ar": "تحدثت تقارير استندت إلى رويترز والميديا لاين عن محادثات سرية بين مسؤولين سوريين وحزب الله في تركيا، نفتها دمشق وأنقرة؛ وتربط بعض التحليلات هذا التواصل المزعوم بتداعيات الانهيار الاقتصادي وتراجع الدعم الأمريكي والعربي للقيادة السورية الجديدة.",
-   "public_reaction": "Public commentary on this is limited but skeptical, with some framing it as evidence of Syria's weakening position and desperate search for leverage amid economic strain.",
-   "public_reaction_ar": "التعليقات العامة محدودة لكنها متشككة، ويرى البعض فيها دليلاً على ضعف موقف سوريا وسعيها اليائس لأوراق ضغط وسط الضغط الاقتصادي.",
+   "id": "economy-coffee-fuel",
+   "key": "2026-10-05-economy-coffee-fuel",
+   "theme": "economy",
+   "title": "Everyday Cost-of-Living Pressures Persist",
+   "title_ar": "استمرار ضغوط غلاء المعيشة اليومية",
+   "summary": "Separate reports and comments touch on rising coffee prices amid import costs, parliament member salary disclosures, and public frustration over fuel and living costs tied to broader economic strain.",
+   "summary_ar": "تتطرق تقارير وتعليقات منفصلة إلى ارتفاع أسعار القهوة بسبب كلفة الاستيراد، والكشف عن رواتب أعضاء مجلس الشعب، واستياء عام من أسعار الوقود وتكاليف المعيشة ضمن الضغط الاقتصادي الأوسع.",
+   "public_reaction": "Public commenters express fatigue and anger over prices, question official salary disclosures as insufficient transparency, and link ministerial 'humility' gestures mockingly to demands for cheaper fuel.",
+   "public_reaction_ar": "يعبّر المعلقون عن إنهاك وغضب من الأسعار، ويشككون في كفاية الشفافية حول رواتب المسؤولين، ويربطون بسخرية بين مظاهر 'التواضع' الوزارية والمطالبة بخفض أسعار الوقود.",
    "sentiment": -0.1,
-   "public_sentiment": -0.2,
-   "outlet_tone": {
-    "regional": -0.1,
-    "aggregator": -0.1
-   },
+   "public_sentiment": -0.4,
+   "outlet_tone": {},
    "public_tone": {
-    "en": -0.2
+    "ar": -0.4
    },
    "emotions": [
-    "skepticism",
-    "uncertainty"
+    "frustration",
+    "weariness"
    ],
    "emotions_ar": [
-    "شك",
-    "عدم يقين"
+    "إحباط",
+    "إنهاك"
    ],
    "framings": [
-    "Denial vs leaked report credibility",
-    "Economic desperation narrative"
+    "Cost of living squeeze",
+    "Distrust of official transparency on pay"
    ],
    "framings_ar": [
-    "مصداقية النفي مقابل التقرير المسرب",
-    "سرد اليأس الاقتصادي"
+    "ضغط غلاء المعيشة",
+    "تشكك في شفافية الرواتب الرسمية"
    ],
-   "flags": [
-    "Unverified claim circulating despite official denial"
-   ],
-   "flags_ar": [
-    "ادعاء غير مؤكد يتداول رغم النفي الرسمي"
-   ],
-   "volume": 5,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 2,
    "public_volume": 2,
-   "share": 0.012,
-   "engagement": 340,
+   "share": 0.005,
+   "engagement": 0,
    "platforms": {
-    "news": 1,
-    "telegram": 2,
-    "bluesky": 2
+    "x": 1,
+    "bluesky": 1
    },
    "languages": {
-    "en": 3,
     "ar": 2
    },
    "public_languages": {
-    "en": 2
+    "ar": 2
    },
-   "kinds": {
-    "aggregator": 1,
-    "regional": 1,
-    "independent": 1
-   },
+   "kinds": {},
    "sources": [
-    "Bluesky posts",
-    "Google News - Syria (EN)",
-    "Asharq News - Saudi-owned",
-    "Enab Baladi - independent (AR)"
+    "X posts",
+    "Bluesky posts"
    ],
-   "examples": [
-    {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93255",
-     "platform": "telegram"
-    },
-    {
-     "source": "Asharq News - Saudi-owned",
-     "url": "https://t.me/asharqnews/36448",
-     "platform": "telegram"
-    },
-    {
-     "source": "Google News - Syria (EN)",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORk9xdDlONmJuVE13QkdCYTJzRWxfMDAwd2NuQ3ZPLTRSZmI4ZmpwTGlBekQtWUVaTW1RY1o4STVGekppVFhnemZvUWJLZUdKVGwtcTJ2R1ZKUUtsUno0ZlVPb3o5TC1LLUlubWxwdGdGTWNTYlMyNDM2eEh2aFdLRGk5Z2pfVHY4TU1YMHV0SlMyRmhqaHAyaEd0NFJQTnFJdUJMeXFJWllsRHRWczJhVC13?oc=5",
-     "platform": "news"
-    }
-   ],
-   "first_seen": "2026-10-01T13:18:54Z",
+   "examples": [],
+   "first_seen": "2026-10-05T00:57:02Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -780,8 +815,8 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 16,
-   "recent": 16
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -795,7 +830,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 12
+   "recent": 11
   },
   {
    "name": "Enab Baladi - independent (EN)",
@@ -879,28 +914,28 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "Al Arabiya - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Asharq News - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al Mayadeen - Beirut-based",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 3
   },
   {
    "name": "Anadolu Agency - Turkish state news agency (AR)",
@@ -913,7 +948,7 @@
    "name": "TRT Arabi - Turkish public broadcaster",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
+   "fetched": 20,
    "recent": 0
   },
   {
@@ -935,14 +970,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 38
+   "recent": 44
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 30
+   "recent": 33
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -956,7 +991,7 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 49
+   "recent": 47
   },
   {
    "name": "Zaman al-Wasl - opposition-origin",
@@ -971,7 +1006,7 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 3
+   "recent": 5
   },
   {
    "name": "BBC Arabic",
@@ -991,22 +1026,22 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 456,
-   "recent": 456
+   "fetched": 572,
+   "recent": 572
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 212,
-   "recent": 164
+   "fetched": 227,
+   "recent": 185
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 22
+   "recent": 25
   },
   {
    "name": "Reddit r/Kurdistan comments",
@@ -1132,5 +1167,5 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.2066
+ "cost_usd": 0.212
 }
