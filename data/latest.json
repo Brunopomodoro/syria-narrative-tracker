@@ -3,18 +3,18 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-10-07T16:30:47Z",
- "checked_at": "2026-10-07T16:30:47Z",
+ "generated_at": "2026-10-07T21:59:43Z",
+ "checked_at": "2026-10-07T21:59:43Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1414,
-  "relevant": 880,
-  "posts_analyzed": 413,
-  "public_posts": 291,
-  "outlet_posts": 122,
+  "collected": 1347,
+  "relevant": 860,
+  "posts_analyzed": 406,
+  "public_posts": 286,
+  "outlet_posts": 120,
   "reactions_posts": 0,
   "unique_posts": 400,
   "sources_ok": 36,
@@ -22,282 +22,229 @@
   "platforms": {
    "news": 35,
    "telegram": 85,
-   "bluesky": 123,
-   "x": 10,
-   "reddit": 21,
-   "youtube": 126
+   "bluesky": 118,
+   "youtube": 129,
+   "x": 9,
+   "reddit": 24
   },
   "languages": {
-   "ar": 218,
-   "en": 178,
-   "ku": 4
+   "ar": 242,
+   "en": 155,
+   "ku": 3
   }
  },
  "overall": {
   "sentiment": 0.05,
-  "mood": "Mixed",
-  "mood_ar": "متباين",
-  "public_sentiment": -0.15,
-  "public_mood": "Weary",
-  "public_mood_ar": "متعب",
-  "brief": "Outlets focused on al-Sharaa's Riyadh visit, the new Iraq-Syria oil transit corridor, and routine governance/education announcements, projecting cautious optimism. Public conversation was dominated by continued mockery of the transport minister's water-cup test, anger over a deadly road crash on the Damascus-Homs highway, deep anxiety over Israeli incursions in Quneitra and Daraa, and polarized reactions to a pro-Israel demonstration in Suwayda on the October 7 anniversary. Kurdish-language audiences focused on SDF-Damascus integration talks, Kobani/Afrin education rights, and alleged delays in returns to Sere Kaniye, showing distinct concerns from Arabic-speaking publics. Speculation about Syria joining the Yemen war drew skepticism and pushback from both Syrian and Yemeni commenters.",
-  "brief_ar": "ركزت وسائل الإعلام على زيارة الشرع إلى الرياض، وممر نقل النفط العراقي الجديد عبر سوريا، وإعلانات حكومية وتعليمية روتينية، بنبرة متفائلة حذرة. أما النقاش العام فسيطرت عليه السخرية المستمرة من اختبار وزير النقل بكوب الماء، والغضب من حادث سير مميت على أوتوستراد دمشق-حمص، وقلق عميق من التوغلات الإسرائيلية في القنيطرة ودرعا، وردود فعل منقسمة حول وقفة تضامن مع إسرائيل في السويداء بذكرى 7 أكتوبر. أما الجمهور الناطق بالكردية فركز على محادثات اندماج قسد مع دمشق، وحقوق التعليم بكوباني وعفرين، ومزاعم تأخير عودة النازحين لسري كانيه، ما يعكس اهتمامات مختلفة عن الجمهور الناطق بالعربية. أثارت تكهنات انضمام سوريا لحرب اليمن شكوكاً ورفضاً من معلقين سوريين ويمنيين على حد سواء.'"
+  "mood": "Cautious",
+  "mood_ar": "حذر",
+  "public_sentiment": -0.25,
+  "public_mood": "Divided",
+  "public_mood_ar": "منقسم",
+  "brief": "The dominant story was reporting that Syria is weighing sending troops to Saudi Arabia against the Houthis, which dominated outlet coverage and sparked a huge, largely angry and mocking public reaction fearing Syrians becoming 'mercenaries' while Israel still occupies southern Syria. Outlets also covered al-Sharaa's Riyadh visit and UAE call, oil pipeline sabotage in Hasakah, smuggling clashes on the Lebanese border, and the new advanced-technology education decree, mostly in neutral-to-positive official tones. Public discourse diverged sharply by audience: Arabic commenters were angry and sarcastic about the Yemen deployment and Israeli incursions, Kurdish-language posts focused on north-east integration and returns disputes, and English-language posts debated geopolitics and Israeli politics with more analytical detachment.",
+  "brief_ar": "كانت القصة الأبرز هي التقارير عن دراسة سوريا إرسال قوات إلى السعودية لمحاربة الحوثيين، وهو ما تصدر التغطية الإعلامية وأثار ردة فعل شعبية واسعة وغاضبة وساخرة تخشى تحول السوريين إلى 'مرتزقة' بينما لا تزال إسرائيل تحتل جنوب سوريا. كما غطت وسائل الإعلام زيارة الشرع للرياض واتصاله مع الإمارات، وتخريب خط نفط في الحسكة، واشتباكات تهريب على الحدود اللبنانية، ومرسوم المسار التعليمي التكنولوجي الجديد، بنبرة رسمية محايدة إلى إيجابية في الغالب. أما النقاش الشعبي فقد تباين بشدة حسب الجمهور: المعلقون بالعربية كانوا غاضبين وساخرين من نشر القوات في اليمن والتوغلات الإسرائيلية، بينما ركزت المنشورات الكردية على الاندماج في الشمال الشرقي ونزاع العودة، في حين ناقش المعلقون بالإنجليزية الجغرافيا السياسية والسياسة الإسرائيلية بنبرة تحليلية أكثر تجرداً."
  },
  "narratives": [
   {
-   "id": "transport-minister-road-tour",
-   "key": "2026-10-07-transport-minister-road-tour",
-   "theme": "governance",
-   "title": "Transport Minister's Viral Water-Cup Road Quality Test",
-   "title_ar": "اختبار وزير النقل لجودة الطريق بكوب الماء يتصدر التفاعل",
-   "summary": "A video of Syria's transport minister testing the smoothness of the new Damascus airport road using a glass of water placed on the dashboard went viral, prompting both praise and ridicule online. Outlets covered it as a human-interest story about infrastructure improvement.",
-   "summary_ar": "انتشر فيديو لوزير النقل السوري وهو يختبر استواء طريق مطار دمشق الجديد بوضع كوب ماء على لوحة القيادة، فانتشر بين الإشادة والسخرية. غطته وسائل الإعلام كقصة إنسانية عن تحسين البنية التحتية.",
-   "public_reaction": "Reactions were sharply divided: many mocked the method as unscientific and a PR stunt while ignoring neglected roads elsewhere, others praised the minister's hands-on approach and prayed for Syria's progress.",
-   "public_reaction_ar": "انقسمت الردود بشكل حاد: سخر كثيرون من الطريقة باعتبارها غير علمية ومجرد استعراض إعلامي يتجاهل إهمال الطرقات في مناطق أخرى، بينما أشاد آخرون بأسلوب الوزير العملي ودعوا للبلاد بالتوفيق.",
-   "sentiment": 0.3,
-   "public_sentiment": -0.1,
+   "id": "yemen-troops-deployment",
+   "key": "2026-10-07-yemen-troops-deployment",
+   "theme": "international",
+   "title": "Reports Syria May Send Troops to Yemen Alongside Saudi Arabia",
+   "title_ar": "تقارير عن احتمال إرسال سوريا قوات إلى اليمن إلى جانب السعودية",
+   "summary": "Multiple outlets (Reuters, Axios) reported Syria is considering military assistance to Saudi Arabia against the Houthis, possibly deploying 10,000-20,000 troops, following al-Sharaa's Riyadh visit. Syria's Ministry of Information denied joining the war outright, saying its policy is based on stability not new fronts.",
+   "summary_ar": "نقلت وكالات مثل رويترز وأكسيوس أن سوريا تدرس تقديم مساعدة عسكرية للسعودية ضد الحوثيين، مع احتمال نشر ما بين 10 و20 ألف جندي، عقب زيارة الشرع للرياض. نفت وزارة الإعلام السورية الانضمام إلى الحرب، مؤكدة أن سياستها تقوم على الاستقرار لا فتح جبهات جديدة.",
+   "public_reaction": "Massive, overwhelmingly negative public reaction across Arabic-language comments calling it exploitation of Syrian blood, mercenary work, or hypocrisy given ongoing Israeli occupation of southern Syria; a smaller segment expressed religious solidarity with Saudi Arabia and willingness to help.",
+   "public_reaction_ar": "ردة فعل شعبية ضخمة وسلبية في معظمها بين المعلقين بالعربية، واصفين الأمر باستغلال دماء السوريين أو العمل كمرتزقة أو نفاقاً في ظل استمرار الاحتلال الإسرائيلي لجنوب سوريا، بينما عبّر جزء أصغر عن تضامن ديني مع السعودية واستعداد للمساعدة.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.5,
    "outlet_tone": {
-    "kurdish": 0.3
+    "official": 0.1,
+    "independent": 0.0,
+    "kurdish": 0.0,
+    "regional": 0.0,
+    "aggregator": 0.0
    },
    "public_tone": {
-    "ar": -0.1,
-    "en": 0.1
+    "ar": -0.5,
+    "en": -0.1
    },
    "emotions": [
-    "amusement",
+    "anger",
+    "fear",
     "mockery",
-    "hope"
+    "suspicion"
    ],
    "emotions_ar": [
-    "تسلية",
+    "غضب",
+    "خوف",
     "سخرية",
-    "أمل"
+    "ريبة"
    ],
    "framings": [
-    "Human-interest infrastructure story",
-    "Mockery of unscientific methodology vs inequitable road investment",
-    "Symbol of government effort"
+    "official framing as regional solidarity not new fronts",
+    "public framing as exploitation and mercenarism",
+    "contrast drawn with Israeli occupation of Syrian south",
+    "religious/sectarian framing of Sunni-Houthi conflict"
    ],
    "framings_ar": [
-    "قصة إنسانية عن البنية التحتية",
-    "سخرية من منهجية غير علمية مقابل عدم المساواة في الاستثمار بالطرق",
-    "رمز لجهد الحكومة"
+    "التأطير الرسمي كتضامن إقليمي لا فتح جبهات",
+    "التأطير الشعبي كاستغلال ومرتزقة",
+    "مقارنة مع استمرار الاحتلال الإسرائيلي للجنوب السوري",
+    "تأطير طائفي ديني للصراع السني الحوثي"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 23,
-   "public_volume": 22,
-   "share": 0.056,
-   "engagement": 75,
+   "flags": [
+    "unverified troop numbers circulating widely",
+    "sectarian framing in some comments"
+   ],
+   "flags_ar": [
+    "أرقام غير مؤكدة عن عدد القوات تنتشر بكثرة",
+    "تأطير طائفي في بعض التعليقات"
+   ],
+   "volume": 167,
+   "public_volume": 143,
+   "share": 0.411,
+   "engagement": 11313,
    "platforms": {
-    "telegram": 1,
-    "reddit": 1,
-    "youtube": 19,
-    "bluesky": 1
+    "news": 11,
+    "telegram": 13,
+    "bluesky": 23,
+    "youtube": 107,
+    "reddit": 7,
+    "x": 3
    },
    "languages": {
-    "ar": 20,
-    "en": 2
+    "en": 54,
+    "ar": 110
    },
    "public_languages": {
-    "en": 2,
-    "ar": 19
+    "en": 45,
+    "ar": 95
    },
    "kinds": {
-    "kurdish": 1
+    "aggregator": 9,
+    "regional": 3,
+    "independent": 4,
+    "kurdish": 7,
+    "official": 1
    },
    "sources": [
     "YouTube comments",
-    "Kurdistan24 Arabic - Kurdistan Region outlet",
+    "Bluesky posts",
     "Reddit r/syria comments",
-    "Bluesky posts"
+    "Google News - Syria (EN)",
+    "Google News - Syria (AR)",
+    "North Press Agency - Qamishli-based (AR)"
    ],
    "examples": [
     {
-     "source": "Kurdistan24 Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/k24Arabic/75522",
+     "source": "Al Mayadeen - Beirut-based",
+     "url": "https://t.me/almayadeen/400350",
      "platform": "telegram"
     },
     {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=R2QFSYBg6f0",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-10-07T08:41:37Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "traffic-accident-damascus-homs",
-   "key": "2026-10-07-traffic-accident-damascus-homs",
-   "theme": "society",
-   "title": "Deadly Traffic Accident on Damascus-Homs Highway Sparks Road Safety Anger",
-   "title_ar": "حادث سير مميت على أوتوستراد دمشق-حمص يثير الغضب بشأن سلامة الطرق",
-   "summary": "A video of a traffic accident on the Damascus-Homs highway circulated widely, drawing a large volume of public comments blaming reckless driving, weak enforcement, and poor road conditions.",
-   "summary_ar": "انتشر فيديو لحادث سير على أوتوستراد دمشق-حمص على نطاق واسع، وجذب كمّاً كبيراً من التعليقات التي حمّلت القيادة المتهورة وضعف إنفاذ القانون وسوء حالة الطرق المسؤولية.",
-   "public_reaction": "Commenters overwhelmingly expressed grief and anger, mixing religious invocations for mercy with sharp criticism of reckless drivers, weak traffic enforcement, and fuel tanker trucks, with some blaming the government directly.",
-   "public_reaction_ar": "عبّر المعلقون بشكل غالب عن حزن وغضب، مزجوا بين الدعاء بالرحمة والنقد الحاد للسائقين المتهورين وضعف إنفاذ قوانين المرور وصهاريج الوقود، وألقى بعضهم باللوم مباشرة على الحكومة.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.6,
-   "outlet_tone": {},
-   "public_tone": {
-    "ar": -0.6,
-    "en": -0.2
-   },
-   "emotions": [
-    "grief",
-    "anger",
-    "fear"
-   ],
-   "emotions_ar": [
-    "حزن",
-    "غضب",
-    "خوف"
-   ],
-   "framings": [
-    "Reckless driving/lack of enforcement",
-    "Government negligence",
-    "Religious fatalism"
-   ],
-   "framings_ar": [
-    "القيادة المتهورة وضعف الإنفاذ",
-    "إهمال حكومي",
-    "تسليم ديني بالقدر"
-   ],
-   "flags": [
-    "Repeated near-identical religious invocation comments"
-   ],
-   "flags_ar": [
-    "تكرار تعليقات دينية شبه متطابقة"
-   ],
-   "volume": 22,
-   "public_volume": 22,
-   "share": 0.053,
-   "engagement": 18,
-   "platforms": {
-    "youtube": 19
-   },
-   "languages": {
-    "ar": 18,
-    "en": 1
-   },
-   "public_languages": {
-    "ar": 18,
-    "en": 1
-   },
-   "kinds": {},
-   "sources": [
-    "YouTube comments"
-   ],
-   "examples": [
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141461",
+     "platform": "telegram"
+    },
     {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=S-pLOVcuIpU",
-     "platform": "youtube"
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/234656",
+     "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-07T16:30:47Z",
+   "first_seen": "2026-10-07T21:59:43Z",
    "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
+    "level": "low",
+    "score": 1,
+    "items": [
+     {
+      "id": "burst",
+      "value": 5.9,
+      "n": 121
+     }
+    ]
    }
   },
   {
    "id": "sharaa-riyadh-visit",
    "key": "2026-10-06-sharaa-riyadh-visit",
    "theme": "international",
-   "title": "President al-Sharaa Meets Saudi Crown Prince in Riyadh Amid Yemen War Speculation",
-   "title_ar": "الرئيس الشرع يلتقي ولي العهد السعودي في الرياض وسط تكهنات بالانضمام لحرب اليمن",
-   "summary": "President al-Sharaa visited Riyadh to meet Crown Prince Mohammed bin Salman, discussing bilateral ties and reconstruction. Reports citing Asharq News suggested Syria could join the Saudi-led coalition against the Houthis, a claim state media did not confirm.",
-   "summary_ar": "زار الرئيس الشرع الرياض لمقابلة ولي العهد محمد بن سلمان لبحث العلاقات الثنائية وإعادة الإعمار. ونقلت تقارير عن الشرق أن سوريا قد تنضم إلى التحالف السعودي ضد الحوثيين، وهو ما لم تؤكده وسائل الإعلام الرسمية.",
-   "public_reaction": "Public reaction to the Yemen speculation was largely skeptical and critical, with Syrian and Yemeni commenters arguing Syria should focus on reconstruction and the Israeli threat in the south rather than a distant war; the Riyadh visit itself was viewed more favorably.",
-   "public_reaction_ar": "كانت ردود الفعل على تكهنات اليمن متشككة وناقدة إلى حد كبير، إذ رأى معلقون سوريون ويمنيون أن على سوريا التركيز على الإعمار والتهديد الإسرائيلي في الجنوب بدل خوض حرب بعيدة، بينما نُظر إلى الزيارة نفسها بإيجابية أكبر.",
-   "sentiment": 0.2,
+   "title": "President al-Sharaa Meets Saudi Crown Prince, Calls UAE President",
+   "title_ar": "الرئيس الشرع يلتقي ولي العهد السعودي ويتصل بالرئيس الإماراتي",
+   "summary": "Al-Sharaa held talks with Saudi Crown Prince Mohammed bin Salman in Riyadh and then a phone call with UAE President Mohamed bin Zayed, discussing bilateral relations, economic cooperation and regional developments.",
+   "summary_ar": "عقد الشرع محادثات مع ولي العهد السعودي محمد بن سلمان في الرياض، ثم أجرى اتصالاً هاتفياً مع رئيس الإمارات محمد بن زايد لبحث العلاقات الثنائية والتعاون الاقتصادي والتطورات الإقليمية.",
+   "public_reaction": "Limited direct public reaction beyond the Yemen controversy; some skepticism about Gulf influence over Syrian policy and al-Sharaa's independence.",
+   "public_reaction_ar": "ردة فعل شعبية مباشرة محدودة بعيداً عن الجدل حول اليمن، مع بعض التشكيك في نفوذ الخليج على السياسة السورية واستقلالية الشرع.",
+   "sentiment": 0.3,
    "public_sentiment": -0.1,
    "outlet_tone": {
-    "independent": 0.1,
-    "kurdish": 0.2
+    "official": 0.4,
+    "independent": 0.3,
+    "regional": 0.3
    },
    "public_tone": {
-    "ar": -0.1,
-    "en": 0.0
+    "ar": -0.1
    },
    "emotions": [
     "hope",
-    "skepticism",
-    "concern"
+    "skepticism"
    ],
    "emotions_ar": [
     "أمل",
-    "شك",
-    "قلق"
+    "تشكك"
    ],
    "framings": [
-    "Diplomatic success narrative",
-    "Concern over costly foreign entanglement",
-    "Priority should be domestic/southern security"
+    "official framing as diplomatic success and regional partnership",
+    "skeptical framing of dependency on Gulf"
    ],
    "framings_ar": [
-    "سرد النجاح الدبلوماسي",
-    "قلق من التورط الخارجي المكلف",
-    "الأولوية يجب أن تكون للأمن الداخلي والجنوبي"
+    "تأطير رسمي كنجاح دبلوماسي وشراكة إقليمية",
+    "تأطير متشكك للاعتماد على الخليج"
    ],
-   "flags": [
-    "Unverified claim (Yemen participation) spreading widely"
-   ],
-   "flags_ar": [
-    "انتشار ادعاء غير مؤكد (المشاركة في اليمن)"
-   ],
-   "volume": 21,
-   "public_volume": 18,
-   "share": 0.051,
-   "engagement": 221,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 11,
+   "public_volume": 1,
+   "share": 0.027,
+   "engagement": 12666,
    "platforms": {
-    "telegram": 3,
-    "x": 1,
-    "bluesky": 5,
-    "youtube": 3,
-    "reddit": 5
+    "telegram": 9,
+    "news": 1,
+    "x": 1
    },
    "languages": {
-    "en": 10,
-    "ar": 7
+    "ar": 8,
+    "en": 3
    },
    "public_languages": {
-    "ar": 7,
-    "en": 7
+    "ar": 1
    },
    "kinds": {
-    "independent": 2,
-    "kurdish": 1
+    "independent": 6,
+    "regional": 2,
+    "official": 2
    },
    "sources": [
-    "Bluesky posts",
-    "Reddit r/syria comments",
-    "YouTube comments",
-    "Enab Baladi - independent (EN)",
+    "Halab Today TV - opposition-origin, Aleppo",
     "Levant24 - Syria news (EN)",
-    "North Press Agency (EN)"
+    "Shaam News Network - opposition-origin",
+    "Anadolu Agency - Turkish state news agency (AR)",
+    "Syrian Presidency - official",
+    "Syria TV - opposition-origin"
    ],
    "examples": [
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45855",
+     "source": "Syrian Presidency - official",
+     "url": "https://t.me/SyPresidency/2811",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency (EN)",
-     "url": "https://t.me/npasyria/34972",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141457",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (EN)",
-     "url": "https://t.me/Enabbaladi_en/6794",
+     "source": "Anadolu Agency - Turkish state news agency (AR)",
+     "url": "https://t.me/aa_arabic/169906",
      "platform": "telegram"
     }
    ],
@@ -309,91 +256,94 @@
    }
   },
   {
-   "id": "northeast-kurdish",
-   "key": "2026-10-04-northeast-kurdish",
-   "theme": "northeast-kurdish",
-   "title": "North-East Developments: SDF Integration, Kurdish Education Rights, and Returns Dispute",
-   "title_ar": "تطورات الشمال الشرقي: اندماج قسد وحقوق التعليم الكردي والخلاف حول العودة",
-   "summary": "Mazloum Abdi discussed internal security force integration with Damascus in Hasakah; students in Afrin protested for continued Kurdish-language education; a DEM Party delegation visited Rojava; and Kurdish outlets reported Damascus delaying returns of displaced people to Sere Kaniye/Ras al-Ain.",
-   "summary_ar": "بحث مظلوم عبدي مع دمشق اندماج قوى الأمن الداخلي في الحسكة، فيما احتج طلاب عفرين للاستمرار بالتعليم باللغة الكردية، وزار وفد من حزب DEM روج آفا، وأفادت وسائل إعلام كردية بتأخير دمشق عودة النازحين إلى سري كانيه/رأس العين.",
-   "public_reaction": "Kurdish-language public voices expressed concern over education rights, solidarity with Rojava universities, and frustration over delayed returns and perceived discrimination, framing issues distinctly from Arabic-speaking audiences who largely ignored these stories.",
-   "public_reaction_ar": "عبّر الجمهور الناطق بالكردية عن قلق بشأن حقوق التعليم، وتضامن مع جامعات روج آفا، وإحباط من تأخير العودة والتمييز المتصور، بأطر مختلفة تماماً عن الجمهور الناطق بالعربية الذي تجاهل هذه القصص إلى حد كبير.",
-   "sentiment": 0.0,
+   "id": "hasakah-oil-pipeline-sabotage",
+   "key": "2026-10-07-hasakah-oil-pipeline-sabotage",
+   "theme": "economy",
+   "title": "Fourth Sabotage Attack on Hasakah Oil Pipeline",
+   "title_ar": "رابع اعتداء تخريبي على خط نفط في الحسكة",
+   "summary": "An oil pipeline near Tel Hamis in Hasakah was damaged in what Syrian Petroleum Company called a sabotage attack, the third or fourth such incident in recent weeks; suspects were reportedly arrested quickly.",
+   "summary_ar": "تعرض خط نفط قرب تل حميس في الحسكة لاعتداء وصفته الشركة السورية للبترول بالتخريبي، وهو الحادث الثالث أو الرابع من نوعه خلال أسابيع قليلة؛ وأفادت التقارير بتوقيف المشتبه بهم سريعاً.",
+   "public_reaction": "Minimal direct public commentary found; mostly religious expressions of weary resignation in response to news videos.",
+   "public_reaction_ar": "تعليقات شعبية مباشرة محدودة، ومعظمها عبارات دينية تعبر عن استسلام متعب رداً على مقاطع الأخبار.",
+   "sentiment": -0.2,
    "public_sentiment": -0.2,
    "outlet_tone": {
-    "kurdish": 0.0
+    "independent": -0.1,
+    "kurdish": -0.1,
+    "regional": -0.2,
+    "aggregator": -0.1
    },
    "public_tone": {
-    "ku": -0.1,
-    "en": -0.1
+    "ar": -0.2
    },
    "emotions": [
     "concern",
-    "solidarity",
-    "frustration"
+    "weariness"
    ],
    "emotions_ar": [
     "قلق",
-    "تضامن",
-    "إحباط"
+    "تعب"
    ],
    "framings": [
-    "Integration progress narrative (official/Kurdish outlets)",
-    "Rights and discrimination framing (Kurdish public)",
-    "Delayed justice for displaced Kurds"
+    "repeated sabotage framing",
+    "swift security response framing"
    ],
    "framings_ar": [
-    "سرد تقدم الاندماج (الإعلام الرسمي والكردي)",
-    "إطار الحقوق والتمييز (الجمهور الكردي)",
-    "تأخر إنصاف النازحين الأكراد"
+    "تأطير التخريب المتكرر",
+    "تأطير استجابة أمنية سريعة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 17,
-   "public_volume": 11,
-   "share": 0.041,
-   "engagement": 905,
+   "volume": 11,
+   "public_volume": 3,
+   "share": 0.027,
+   "engagement": 6141,
    "platforms": {
     "telegram": 6,
-    "bluesky": 11
+    "news": 2,
+    "bluesky": 2,
+    "youtube": 1
    },
    "languages": {
     "ar": 7,
-    "en": 7,
-    "ku": 3
+    "en": 4
    },
    "public_languages": {
-    "ar": 2,
-    "ku": 3,
-    "en": 6
+    "en": 2,
+    "ar": 1
    },
    "kinds": {
-    "kurdish": 6
+    "independent": 3,
+    "regional": 1,
+    "aggregator": 1,
+    "kurdish": 3
    },
    "sources": [
     "Bluesky posts",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
-    "Rudaw Arabic - Kurdistan Region outlet",
+    "Enab Baladi - independent (AR)",
+    "Sky News Arabia - UAE-based",
+    "Google News - Syria (EN)",
+    "North Press Agency - Qamishli-based (AR)",
     "North Press Agency (EN)"
    ],
    "examples": [
     {
-     "source": "Rudaw Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/RudawArabic/121647",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141455",
      "platform": "telegram"
     },
     {
-     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/81770",
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/104752",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency (EN)",
-     "url": "https://t.me/npasyria/34975",
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/83939",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-04T13:12:35Z",
+   "first_seen": "2026-10-07T21:59:43Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -401,96 +351,94 @@
    }
   },
   {
-   "id": "iraq-oil-transit-corridor",
-   "key": "2026-10-07-iraq-oil-transit-corridor",
-   "theme": "economy",
-   "title": "Iraq-Syria Crude Oil Transit Corridor to Bypass Hormuz",
-   "title_ar": "ممر نقل النفط العراقي عبر سوريا لتجاوز مضيق هرمز",
-   "summary": "Reports indicate Syria is preparing to let Iraq export crude oil overland via trucks to a Mediterranean port, likely Baniyas, bypassing the Strait of Hormuz; Syria also announced plans to double its own oil output within a year as foreign investors return.",
-   "summary_ar": "تشير التقارير إلى أن سوريا تستعد للسماح للعراق بتصدير النفط الخام براً عبر الشاحنات إلى ميناء متوسطي، يُرجح أنه بانياس، لتجاوز مضيق هرمز، كما أعلنت سوريا خططاً لمضاعفة إنتاجها النفطي خلال عام مع عودة المستثمرين الأجانب.",
-   "public_reaction": "Public reaction was largely informational sharing with some commentary expressing cautious optimism about economic opportunity, alongside skepticism about whether ordinary Syrians would benefit and calls for investment in renewable energy instead.",
-   "public_reaction_ar": "كان رد الفعل العام غالباً مشاركة إخبارية مع بعض التعليقات المتفائلة بحذر بشأن الفرصة الاقتصادية، إلى جانب شكوك حول ما إذا كان السوريون العاديون سيستفيدون ودعوات للاستثمار في الطاقة المتجددة بدلاً من ذلك.",
-   "sentiment": 0.4,
-   "public_sentiment": 0.1,
+   "id": "lebanon-border-smuggling-clash",
+   "key": "2026-10-07-lebanon-border-smuggling-clash",
+   "theme": "security",
+   "title": "Smuggling Clash on Syrian-Lebanese Border Near Yabroud",
+   "title_ar": "اشتباك تهريب على الحدود السورية اللبنانية قرب يبرود",
+   "summary": "Syrian border guards thwarted a smuggling attempt near Yabroud, Damascus countryside, clashing with smugglers who opened fire; one arrest made. Separately, Syrian media denied rumors of a clash between Lebanese and Syrian armies in Jroud Arsal, clarifying it was a smuggler confrontation.",
+   "summary_ar": "أحبط حرس الحدود السوري محاولة تهريب قرب يبرود بريف دمشق، واشتبك مع مهربين فتحوا النار، وتم توقيف أحدهم. في المقابل نفت وسائل إعلام سورية إشاعات عن اشتباك بين الجيشين اللبناني والسوري في جرود عرسال، موضحة أنه مواجهة مع مهربين.",
+   "public_reaction": "Little direct public reaction; mostly neutral sharing of the official denial.",
+   "public_reaction_ar": "ردة فعل شعبية مباشرة قليلة، ومعظمها تداول محايد للنفي الرسمي.",
+   "sentiment": 0.0,
+   "public_sentiment": 0.0,
    "outlet_tone": {
-    "independent": 0.3,
-    "aggregator": 0.4
+    "official": 0.0,
+    "independent": 0.0,
+    "regional": 0.0
    },
    "public_tone": {
-    "en": 0.2
+    "ar": 0.0,
+    "en": 0.0
    },
    "emotions": [
-    "hope",
-    "cautious optimism",
-    "skepticism"
+    "neutral"
    ],
    "emotions_ar": [
-    "أمل",
-    "تفاؤل حذر",
-    "شك"
+    "حياد"
    ],
    "framings": [
-    "Economic opportunity/reconstruction narrative",
-    "Geopolitical realignment away from Hormuz",
-    "Doubt over trickle-down benefits"
+    "official denial of cross-border military clash",
+    "security success framing"
    ],
    "framings_ar": [
-    "سرد الفرصة الاقتصادية وإعادة الإعمار",
-    "إعادة اصطفاف جيوسياسي بعيداً عن هرمز",
-    "شك في وصول الفائدة للمواطن العادي"
+    "نفي رسمي لاشتباك عسكري عبر الحدود",
+    "تأطير نجاح أمني"
    ],
    "flags": [
-    "Multiple near-identical outlet and public reposts of same Bloomberg story"
+    "unverified rumor of army-to-army clash circulated before official denial"
    ],
    "flags_ar": [
-    "تكرار شبه متطابق لنفس خبر بلومبرغ عبر منصات متعددة"
+    "إشاعة غير مؤكدة عن اشتباك بين جيشين تداولت قبل النفي الرسمي"
    ],
-   "volume": 17,
-   "public_volume": 10,
-   "share": 0.041,
-   "engagement": 89,
+   "volume": 10,
+   "public_volume": 3,
+   "share": 0.025,
+   "engagement": 11952,
    "platforms": {
-    "news": 6,
-    "telegram": 1,
-    "bluesky": 8,
-    "reddit": 1
+    "telegram": 6,
+    "news": 1,
+    "bluesky": 3
    },
    "languages": {
-    "en": 13,
-    "ar": 3
+    "ar": 8,
+    "en": 2
    },
    "public_languages": {
-    "en": 9
+    "ar": 2,
+    "en": 1
    },
    "kinds": {
-    "aggregator": 6,
-    "independent": 1
+    "regional": 1,
+    "independent": 5,
+    "official": 1
    },
    "sources": [
     "Bluesky posts",
-    "Google News - Syria (EN)",
-    "Google News - Syria (AR)",
-    "Levant24 - Syria news (EN)",
-    "Reddit r/syria comments"
+    "Shaam News Network - opposition-origin",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Al Arabiya - Saudi-owned",
+    "SANA - state news agency (EN)",
+    "Syria TV - opposition-origin"
    ],
    "examples": [
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45859",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141456",
      "platform": "telegram"
     },
     {
-     "source": "Google News - Syria (EN)",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOalR1ZFhfTjZCY0E3eTJweS1ieDY1T2lIRGJtYlhaRk5sakk3N0lxV2l5UlZ2UF9veUpyUzdWalNfNEdxV1kzTmNkTDQ4REhaNkNvMFJkTk5kZ01yMjF6YkJ6WS1nSEk5R0VHY0haVFhKcm5qWi1GNERXc3NyLVE1YVlkM3dBRWk1RExNM205X19OZGhGUW1LVTNING9pdV9IRkwza1UzV0ZmelEtQmg0R1pJdw?oc=5",
-     "platform": "news"
+     "source": "Al Arabiya - Saudi-owned",
+     "url": "https://t.me/Alarabiya/166941",
+     "platform": "telegram"
     },
     {
-     "source": "Google News - Syria (AR)",
-     "url": "https://news.google.com/rss/articles/CBMipwRBVV95cUxPZjRNczdLLXB5NXFqVm1LZHpmcmxvWUpEMDFJR1FKRVlTbkpKcmNBcHYxYW0yZ2xzTUk3TS1lNXhfaXY5WEh6azJFMDh6bzNyakZYamNyc3lYN09EMzhaTHI0UF83SWVPMUEyVE1Mc1hmRXl1WTZsS0owbnd2TDdzTHRvZk1NVTVvOXZJVGwxR3E0blVMajBKN0VWbEFoUVY2R0laUlhBdVRxVENqWENIVjF5OGNLSC11azRXT2pEdkNRdU43RXltdm5BYU1EVEhrN1gya2h0d1ktVnZXYU5CcERCWnRVOEI0OGZ3X3pwOWcwTGsyLW9laVhtb2pLYnc3YVl5SDdZcy1fRU1ZeC15bGtnNXRnS3VSY0lTdWhFSlFSUThJQmFWSHNCLUYxaGpGWHhPWVlEREFBbWZMR0Y1eHJFMW9BdjFnNmlvbHNjMzhQU05GSTYtU1dPRlZfQWVieU5lV1RwMVd1OFRwVW5zZUFfSTkwRFFfNXZaX0FqdzUwN2xvS2dzMXVCUzk5alJRc0VjUF9IR3ltR3c5ZE1ZcUZSVjBxUGYtRURYWWhGT3NxbzNYaDlaWXZHUzZrdEJ6WkxJejE3MnpJWlhQYkVsU0diVFBYMGcxZVBDaktkMGp3dW41U2gwbFhTd3hnd2hhVlBpWXJqWlRrYk1LeXVieHlSNDZZT0xXZVJnMjQtcDNkSVh4QmdGZURHWnJrZ1RoYWFTWlVKNA?oc=5",
-     "platform": "news"
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/104757",
+     "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-07T16:30:47Z",
+   "first_seen": "2026-10-07T21:59:43Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -501,86 +449,87 @@
    "id": "israel-south",
    "key": "2026-10-01-israel-south",
    "theme": "israel-south",
-   "title": "Israeli Incursions and Detentions in Quneitra and Daraa",
-   "title_ar": "توغلات إسرائيلية واعتقالات في القنيطرة ودرعا",
-   "summary": "Israeli forces raided Jbata al-Khashab in northern Quneitra, shooting and detaining a young man before releasing him, and separately entered Wadi al-Raqad in Daraa to question farmers and restrict access to land. Outlets and residents described a pattern of rising incursions, with one report citing 280 violations recorded in September.",
-   "summary_ar": "داهمت قوات إسرائيلية بلدة جباتا الخشب شمال القنيطرة وأصابت شاباً واعتقلته ثم أفرجت عنه، كما توغلت في وادي الرقاد بدرعا لاستجواب مزارعين ومنع آخرين من الوصول لأراضيهم. وصفت وسائل الإعلام والسكان نمطاً متصاعداً من التوغلات، مع تسجيل 280 خرقاً خلال أيلول وفق أحد التقارير.",
-   "public_reaction": "Public commenters expressed anger and fear over repeated Israeli raids, viewing them as part of a broader pattern of violations against Syrian sovereignty, with some questioning why national attention is on Yemen while the south faces daily incursions.",
-   "public_reaction_ar": "عبّر المعلقون عن غضب وخوف من التوغلات الإسرائيلية المتكررة، معتبرينها جزءاً من نمط أوسع من الانتهاكات ضد السيادة السورية، وتساءل بعضهم عن سبب انشغال الاهتمام الوطني باليمن بينما يواجه الجنوب توغلات يومية.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.5,
+   "title": "Israeli Incursions and Strikes in Quneitra and Southern Syria",
+   "title_ar": "توغلات وغارات إسرائيلية في القنيطرة وجنوب سوريا",
+   "summary": "Israeli forces shelled areas in Quneitra countryside, conducted raids and home searches in Ain Zeiwan village, and detained a young man in northern Quneitra. Outlets and trackers continue documenting near-daily Israeli military activity in southern Syria.",
+   "summary_ar": "قصفت القوات الإسرائيلية مناطق في ريف القنيطرة، ونفذت مداهمات وتفتيش منازل في قرية عين زيوان، واعتقلت شاباً في شمال القنيطرة. تواصل وسائل الإعلام وأدوات الرصد توثيق نشاط عسكري إسرائيلي شبه يومي في جنوب سوريا.",
+   "public_reaction": "Public commenters frequently juxtapose this ongoing occupation against calls for Syria to send troops to Yemen, expressing anger that domestic territory remains occupied while being asked to fight abroad.",
+   "public_reaction_ar": "يقارن المعلقون كثيراً هذا الاحتلال المستمر بالدعوات لإرسال قوات سورية إلى اليمن، معبرين عن غضب من استمرار احتلال الأراضي الداخلية بينما يُطلب منهم القتال في الخارج.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.4,
    "outlet_tone": {
-    "independent": -0.4,
+    "official": -0.3,
+    "independent": -0.2,
     "kurdish": -0.3,
-    "regional": -0.3
+    "regional": -0.2,
+    "aggregator": -0.2
    },
    "public_tone": {
-    "en": -0.4
+    "en": -0.2
    },
    "emotions": [
     "anger",
-    "fear",
-    "resentment"
+    "grievance"
    ],
    "emotions_ar": [
     "غضب",
-    "خوف",
     "استياء"
    ],
    "framings": [
-    "Violation of sovereignty",
-    "Routine occupation abuse pattern",
-    "Comparison with distant foreign conflicts"
+    "occupation and sovereignty violation framing",
+    "contrast with Yemen deployment debate"
    ],
    "framings_ar": [
-    "انتهاك للسيادة",
-    "نمط اعتداء احتلالي روتيني",
-    "مقارنة مع صراعات خارجية بعيدة"
+    "تأطير كانتهاك للسيادة والاحتلال",
+    "مقارنة مع الجدل حول نشر قوات في اليمن"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 10,
+   "volume": 8,
    "public_volume": 2,
-   "share": 0.024,
-   "engagement": 44608,
+   "share": 0.02,
+   "engagement": 4982,
    "platforms": {
-    "telegram": 8,
+    "news": 2,
+    "telegram": 4,
     "bluesky": 2
    },
    "languages": {
-    "ar": 5,
+    "ar": 3,
     "en": 5
    },
    "public_languages": {
     "en": 2
    },
    "kinds": {
+    "aggregator": 2,
+    "official": 1,
     "regional": 1,
-    "kurdish": 3,
-    "independent": 4
+    "independent": 1,
+    "kurdish": 1
    },
    "sources": [
-    "Levant24 - Syria news (EN)",
+    "Google News - Syria (AR)",
     "Bluesky posts",
-    "Al Jazeera - Qatar-based",
-    "North Press Agency (EN)",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "North Press Agency - Qamishli-based (AR)"
+    "SANA - state news agency (EN)",
+    "Al Mayadeen - Beirut-based",
+    "Levant24 - Syria news (EN)",
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
-     "source": "Al Jazeera - Qatar-based",
-     "url": "https://t.me/AjaNews/515803",
+     "source": "Al Mayadeen - Beirut-based",
+     "url": "https://t.me/almayadeen/400363",
      "platform": "telegram"
     },
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141454",
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/45867",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93294",
+     "source": "North Press Agency (EN)",
+     "url": "https://t.me/npasyria/34983",
      "platform": "telegram"
     }
    ],
@@ -592,100 +541,82 @@
    }
   },
   {
-   "id": "suwayda-israel-solidarity-protest",
-   "key": "2026-10-07-suwayda-israel-solidarity-protest",
-   "theme": "suwayda-druze",
-   "title": "Pro-Israel Demonstration in Suwayda on October 7 Anniversary Sparks Division",
-   "title_ar": "وقفة تضامن مع إسرائيل في السويداء بذكرى 7 أكتوبر تثير انقساماً",
-   "summary": "A demonstration reportedly linked to followers of Druze sheikh al-Hijri raised Israeli flags and images of Netanyahu in Suwayda to mark the October 7 anniversary, drawing wide coverage from regional and independent outlets and triggering sectarian commentary online.",
-   "summary_ar": "شهدت السويداء وقفة قيل إنها لأتباع الشيخ الهجري رفعوا خلالها أعلاماً إسرائيلية وصور نتنياهو بمناسبة ذكرى 7 أكتوبر، ما أثار تغطية واسعة من وسائل إعلام إقليمية ومستقلة وتعليقات طائفية حادة على الإنترنت.",
-   "public_reaction": "The demonstration provoked strongly sectarian and divisive public reactions, including hostile comments targeting Druze and Alawite communities as collaborators, alongside calls from other voices for coastal/Druze communities to avoid incitement to violence.",
-   "public_reaction_ar": "أثارت الوقفة ردود فعل طائفية حادة ومنقسمة، بما في ذلك تعليقات عدائية تستهدف الطائفتين الدرزية والعلوية بوصفهما 'عملاء'، إلى جانب دعوات من أصوات أخرى لمجتمعات الساحل والسويداء لتجنب التحريض على العنف.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.5,
+   "id": "northeast-kurdish",
+   "key": "2026-10-04-northeast-kurdish",
+   "theme": "northeast-kurdish",
+   "title": "North-East Developments: SDF Integration, Returns Delays, Security Incidents",
+   "title_ar": "تطورات الشمال الشرقي: اندماج قسد وتأخر العودة وحوادث أمنية",
+   "summary": "Ongoing coverage of SDF integration talks (Mazloum Abdi meeting with internal security forces in Hasakah), DEM Party delegation visiting Rojava, and a Kurdish report accusing Damascus of delaying returns to Ras al-Ain (Serêkaniyê). A bombing attempt against an internal security patrol occurred in Raqqa countryside.",
+   "summary_ar": "تغطية مستمرة لمباحثات اندماج قسد (لقاء مظلوم عبدي مع ضباط الأمن الداخلي في الحسكة)، وزيارة وفد حزب الاتحاد الديمقراطي لروج آفا، وتقرير كردي يتهم دمشق بتأخير عودة النازحين إلى رأس العين. كما وقعت محاولة تفجير استهدفت دورية للأمن الداخلي في ريف الرقة.",
+   "public_reaction": "Kurdish-language public voices express frustration over delayed returns and skepticism about integration progress, distinct from Arabic-language audiences who largely ignore these stories.",
+   "public_reaction_ar": "عبّر المتحدثون بالكردية عن إحباط من تأخر العودة وتشكك في تقدم الاندماج، بخلاف الجمهور العربي الذي يتجاهل هذه القصص إلى حد كبير.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.2,
    "outlet_tone": {
-    "independent": -0.2,
-    "kurdish": -0.1,
-    "aggregator": -0.1
+    "independent": 0.0,
+    "kurdish": 0.0
    },
    "public_tone": {
-    "ar": -0.5
+    "ku": -0.3
    },
    "emotions": [
-    "anger",
-    "contempt",
-    "division"
+    "frustration",
+    "uncertainty"
    ],
    "emotions_ar": [
-    "غضب",
-    "احتقار",
-    "انقسام"
+    "إحباط",
+    "قلق"
    ],
    "framings": [
-    "Sectarian betrayal narrative",
-    "Local political grievance against Damascus",
-    "Regional media spotlight on sectarian fractures"
+    "Kurdish framing as stalled promises and dual administration",
+    "official framing as technical integration progress"
    ],
    "framings_ar": [
-    "سرد الخيانة الطائفية",
-    "مظلمة سياسية محلية ضد دمشق",
-    "تسليط الإعلام الإقليمي الضوء على الانقسامات الطائفية"
+    "تأطير كردي كوعود معلقة وازدواجية إدارية",
+    "تأطير رسمي كتقدم تقني في الاندماج"
    ],
-   "flags": [
-    "Sectarian incitement in public comments",
-    "Copy-paste identical outlet posts across sources"
-   ],
-   "flags_ar": [
-    "تحريض طائفي في التعليقات العامة",
-    "نسخ متطابق لمنشورات إخبارية عبر مصادر متعددة"
-   ],
-   "volume": 9,
-   "public_volume": 2,
-   "share": 0.022,
-   "engagement": 446,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 6,
+   "public_volume": 4,
+   "share": 0.015,
+   "engagement": 358,
    "platforms": {
-    "telegram": 3,
-    "news": 2,
-    "x": 2
+    "telegram": 2,
+    "bluesky": 4
    },
    "languages": {
-    "en": 2,
-    "ar": 5
+    "ar": 3,
+    "ku": 2,
+    "en": 1
    },
    "public_languages": {
-    "ar": 2
+    "ar": 1,
+    "ku": 2,
+    "en": 1
    },
    "kinds": {
-    "kurdish": 2,
-    "aggregator": 2,
+    "kurdish": 1,
     "independent": 1
    },
    "sources": [
-    "X posts",
-    "North Press Agency (EN)",
-    "Google News - Syria (AR)",
-    "Google News - Syria (EN)",
-    "Enab Baladi - independent (AR)",
-    "North Press Agency - Qamishli-based (AR)"
+    "Bluesky posts",
+    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "Enab Baladi - independent (AR)"
    ],
    "examples": [
     {
      "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93293",
+     "url": "https://t.me/enabbaladi/93298",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/83929",
-     "platform": "telegram"
-    },
-    {
-     "source": "North Press Agency (EN)",
-     "url": "https://t.me/npasyria/34976",
+     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
+     "url": "https://t.me/HawarNews/81791",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-07T16:30:47Z",
+   "first_seen": "2026-10-04T13:12:35Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -697,16 +628,15 @@
    "key": "2026-10-07-advanced-tech-education-decree",
    "theme": "governance",
    "title": "President al-Sharaa Issues Decree Establishing National Advanced Technology Education Track",
-   "title_ar": "الرئيس الشرع يصدر مرسوماً بإحداث المسار الوطني للتكنولوجيا المتقدمة",
-   "summary": "President al-Sharaa issued Decree No. 183 establishing a new national advanced technology educational track spanning secondary and university education, aimed at linking education to industry and job market needs.",
-   "summary_ar": "أصدر الرئيس الشرع المرسوم رقم 183 القاضي بإحداث مسار وطني جديد للتكنولوجيا المتقدمة يمتد من المرحلة الثانوية إلى الجامعية، بهدف ربط التعليم باحتياجات الصناعة وسوق العمل.",
-   "public_reaction": "There was limited direct public commentary on this specific decree beyond sharing, with sentiment appearing neutral to mildly positive as part of general reform narratives.",
-   "public_reaction_ar": "كان التعليق العام المباشر على هذا المرسوم محدوداً وغالباً مجرد مشاركة، مع ميل الشعور إلى الحياد أو الإيجابية الخفيفة كجزء من سرديات الإصلاح العامة.",
+   "title_ar": "الرئيس الشرع يصدر مرسوم إحداث المسار الوطني للتكنولوجيا المتقدمة",
+   "summary": "Al-Sharaa issued Decree 183 of 2026 establishing a new advanced technology education track with specialized secondary schools and linked applied colleges across 7 specializations, aimed at making Syria a producer of technology.",
+   "summary_ar": "أصدر الشرع المرسوم 183 لعام 2026 القاضي بإحداث مسار وطني للتكنولوجيا المتقدمة يشمل مدارس ثانوية متخصصة وكليات تطبيقية مرتبطة بها في 7 اختصاصات، بهدف جعل سوريا منتجة للتكنولوجيا.",
+   "public_reaction": "Minimal public commentary found, mostly neutral sharing of the announcement without strong reaction.",
+   "public_reaction_ar": "تعليقات شعبية قليلة، معظمها تداول محايد للإعلان دون ردة فعل قوية.",
    "sentiment": 0.4,
    "public_sentiment": 0.1,
    "outlet_tone": {
-    "official": 0.4,
-    "independent": 0.3
+    "official": 0.5
    },
    "public_tone": {
     "ar": 0.1
@@ -718,150 +648,49 @@
     "أمل"
    ],
    "framings": [
-    "Educational modernization narrative"
+    "official framing as education reform and development milestone"
    ],
    "framings_ar": [
-    "سرد التحديث التعليمي"
+    "تأطير رسمي كإصلاح تعليمي ومنجز تنموي"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 8,
-   "public_volume": 2,
-   "share": 0.019,
-   "engagement": 5547,
+   "volume": 6,
+   "public_volume": 3,
+   "share": 0.015,
+   "engagement": 962,
    "platforms": {
-    "news": 2,
-    "telegram": 4,
-    "bluesky": 2
+    "news": 1,
+    "telegram": 2,
+    "bluesky": 3
    },
    "languages": {
-    "ar": 6,
-    "en": 2
+    "ar": 6
    },
    "public_languages": {
-    "ar": 2
+    "ar": 3
    },
    "kinds": {
-    "official": 3,
-    "independent": 3
+    "official": 3
    },
    "sources": [
     "Bluesky posts",
-    "SANA website - state news agency (AR)",
-    "Syria TV - opposition-origin",
-    "SANA - state news agency (EN)",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "Levant24 - Syria news (EN)"
+    "Al-Ikhbariya Syria - state TV",
+    "SANA website - state news agency (AR)"
    ],
    "examples": [
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141453",
-     "platform": "telegram"
-    },
-    {
      "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/234608",
+     "url": "https://t.me/AlekhbariahSY/234654",
      "platform": "telegram"
     },
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45854",
-     "platform": "telegram"
+     "source": "SANA website - state news agency (AR)",
+     "url": "https://sana.sy/video/2600129/",
+     "platform": "news"
     }
    ],
    "first_seen": "2026-10-07T16:30:47Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "isis-homs-arrest",
-   "key": "2026-10-06-isis-homs-arrest",
-   "theme": "security",
-   "title": "Arrest of Senior ISIS Commander Linked to Homs Mosque Bombing",
-   "title_ar": "اعتقال قيادي داعشي متهم بتفجير مسجد في حمص",
-   "summary": "Syrian Interior Ministry announced the arrest of ISIS commander Khaled Raed Bayrouni ('Abu Hassan Doshka') near Damascus, accused of planning the 2025 Imam Ali Mosque bombing in Homs that killed eight people, along with other sectarian-motivated attacks.",
-   "summary_ar": "أعلنت وزارة الداخلية السورية اعتقال القيادي الداعشي خالد رائد بيروني الملقب 'أبو حسن دوشكا' قرب دمشق، المتهم بالتخطيط لتفجير مسجد الإمام علي في حمص عام 2025 الذي أودى بحياة ثمانية أشخاص، إلى جانب هجمات أخرى ذات دوافع طائفية.",
-   "public_reaction": "Public reaction was largely approving of the arrest, seen as a security success, though some commenters used the opportunity to express broader frustration about security and governance.",
-   "public_reaction_ar": "كان رد الفعل العام إيجابياً إلى حد كبير تجاه الاعتقال، باعتباره إنجازاً أمنياً، رغم أن بعض المعلقين استغلوا المناسبة للتعبير عن إحباط أوسع تجاه الأمن والحكم.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.2,
-   "outlet_tone": {
-    "kurdish": 0.3,
-    "regional": 0.3,
-    "aggregator": 0.2
-   },
-   "public_tone": {
-    "ar": 0.2,
-    "en": 0.3
-   },
-   "emotions": [
-    "relief",
-    "vindication"
-   ],
-   "emotions_ar": [
-    "ارتياح",
-    "شعور بالإنصاف"
-   ],
-   "framings": [
-    "Security success narrative",
-    "Accountability for sectarian violence"
-   ],
-   "framings_ar": [
-    "سرد النجاح الأمني",
-    "محاسبة على العنف الطائفي"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 5,
-   "public_volume": 2,
-   "share": 0.012,
-   "engagement": 42,
-   "platforms": {
-    "news": 2,
-    "telegram": 1,
-    "bluesky": 2
-   },
-   "languages": {
-    "ar": 3,
-    "en": 2
-   },
-   "public_languages": {
-    "ar": 1,
-    "en": 1
-   },
-   "kinds": {
-    "regional": 1,
-    "aggregator": 1,
-    "kurdish": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "Sky News Arabia - UAE-based",
-    "Google News - Syria (AR)",
-    "North Press Agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "North Press Agency (EN)",
-     "url": "https://t.me/npasyria/34971",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sky News Arabia - UAE-based",
-     "url": "https://www.skynewsarabia.com/middle-east/1896744-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D9%82%D8%A8%D8%B6-%D9%82%D9%8A%D8%A7%D8%AF%D9%8A-%D8%A8-%D8%AF%D8%A7%D8%B9%D8%B4-%D9%85%D8%AA%D9%87%D9%85-%D8%A8%D8%AA%D9%81%D8%AC%D9%8A%D8%B1-%D9%85%D8%B3%D8%AC%D8%AF-%D8%AD%D9%85%D8%B5",
-     "platform": "news"
-    },
-    {
-     "source": "Google News - Syria (AR)",
-     "url": "https://news.google.com/rss/articles/CBMiyAVBVV95cUxPTU5vMGdwTUtkYm04YTVmU191LWh5Y0FfMzIyejc5ZllzeWZkN21Mb2RPM19IV0xESmRaQXltVWNOajBXdFNaOGJDenhoaEpPTGRuNmhSdTBDbGxyZGd3Mlc4R2hhaWZxMTE2VGZPREkyenJrQUt5OTVhNjV1SUQ4V1d4cWNWXzJGQU9LanNiRTNIMjVNYWlETEFja3VtSDNXUEtsRUFBWnhadng3aWYtS0dlckEtZktpRGhNVUk3Nm1LLU9sSjAzNXNyRlBnTWl6SEFaS09vaHZDLU9JYkhuTkdxdnpaS0ZwTzZ4YnAzMS1uTHZILUpIYnNaWTBxUklTZkVwdExDZGswMEp3cksyaW1xdzBGWGpSTmFIbGRXM2dCTi1aTy1tb3ZvdU9VQVR1YUtKc3dPd0ozR3JISFFGNjhudVg2M1JsYnV2dDdLRzVqdThhQ2plcl9IRzF6Ukgzb1o4QlcwSEFnTVZTTk1iMktHdVhHMm9PMFlvU2FFdXRFUzA0N3hNYnVNbFQ3UGRjZlhVLTZTRW5xalFCXzJlZkFMdFBGdThkcUdVWXlvaHhsdi0xeXE0eURCMXh3OENmTU9KSmwwamYxc0dnb196dmI0TmhqRm11M1V2OWlGSkZZd0toRzZLWDN1MW5DRjFZMVotX0U1VWhVSklwQURKdlZLRVRQTnRJSXFkWVZRdU43UnV2WjFNeDRwY2NQa3pkUkJFSE81TUdnTjJSdG01bHVsVVRWb2dkeEtZRE9qZmRpUHpwczFUbS1oSDA0ejE0aUFkMTdtci1ja2NlX3ZETlRnTnZFb1p3V1djaXFsajVRVUtjXzlIMXVpT25LYWgxbmZ2R3d2alBSMlNCcnpQU2NqU05BZ0xVbW45ZDV4WnNseHJyQmdnQzdnYy1iMEZ3SVlRMGJ6a3hJR0lMWl95UW1yU2FfeXAt?oc=5",
-     "platform": "news"
-    }
-   ],
-   "first_seen": "2026-10-06T17:12:27Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -873,62 +702,64 @@
    "key": "2026-10-07-alfa-watan-sailors-missing",
    "theme": "international",
    "title": "Syrian Sailors Missing After Cargo Ship Sinks in Black Sea Following Drone Attack",
-   "title_ar": "بحارة سوريون مفقودون بعد غرق سفينة شحن في البحر الأسود إثر هجوم بمسيّرة",
-   "summary": "The cargo ship Alfa Vatan, Togo-flagged and Turkish-owned, sank in the Black Sea off Bulgaria after a reported drone attack, leaving Syrian sailors among the missing crew; Bulgarian authorities later halted the search.",
-   "summary_ar": "غرقت سفينة الشحن 'ألفا وطن' التي ترفع علم توغو وتملكها شركة تركية في البحر الأسود قبالة بلغاريا بعد هجوم مزعوم بطائرة مسيّرة، وكان من بين الطاقم المفقود بحارة سوريون، وأوقفت السلطات البلغارية لاحقاً عملية البحث.",
-   "public_reaction": "Public reaction showed concern and sympathy for the missing sailors, with some noting the broader danger Syrian workers face abroad amid regional conflicts.",
-   "public_reaction_ar": "أظهر رد الفعل العام قلقاً وتعاطفاً مع البحارة المفقودين، مع ملاحظات من البعض حول الخطر الأوسع الذي يواجهه العمال السوريون في الخارج وسط النزاعات الإقليمية.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.3,
+   "title_ar": "بحارة سوريون مفقودون بعد غرق سفينة شحن في البحر الأسود إثر هجوم مسيّر",
+   "summary": "The cargo ship Alfa Watan, Togo-flagged and Turkish-owned, sank in the Black Sea after a drone strike in Bulgaria's exclusive economic zone; six Syrian sailors among the crew are missing and presumed dead after rescue teams found only an overturned lifeboat.",
+   "summary_ar": "غرقت سفينة الشحن ألفا وطن التي تحمل علم توغو وتملكها شركة تركية في البحر الأسود بعد هجوم بطائرة مسيّرة ضمن المنطقة الاقتصادية الخالصة لبلغاريا، وبات ستة بحارة سوريين من الطاقم في عداد المفقودين ويُرجح وفاتهم بعد أن عثرت فرق الإنقاذ على زورق نجاة مقلوب فقط.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": -0.5,
+   "public_sentiment": null,
    "outlet_tone": {
-    "kurdish": -0.3
+    "independent": -0.5,
+    "kurdish": -0.5
    },
-   "public_tone": {
-    "en": -0.3
-   },
+   "public_tone": {},
    "emotions": [
-    "worry",
-    "grief"
+    "grief",
+    "shock"
    ],
    "emotions_ar": [
-    "قلق",
-    "حزن"
+    "حزن",
+    "صدمة"
    ],
    "framings": [
-    "Human cost of regional conflict spillover"
+    "tragedy framing with uncertain fate"
    ],
    "framings_ar": [
-    "الثمن الإنساني لتداعيات النزاع الإقليمي"
+    "تأطير مأساوي مع مصير مجهول"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 3,
-   "public_volume": 1,
+   "public_volume": 0,
    "share": 0.007,
-   "engagement": 91,
+   "engagement": 286,
    "platforms": {
-    "telegram": 2,
-    "bluesky": 1
+    "telegram": 3
    },
    "languages": {
-    "en": 2,
-    "ar": 1
+    "ar": 1,
+    "en": 2
    },
-   "public_languages": {
-    "en": 1
-   },
+   "public_languages": {},
    "kinds": {
-    "kurdish": 2
+    "kurdish": 2,
+    "independent": 1
    },
    "sources": [
-    "North Press Agency (EN)",
     "North Press Agency - Qamishli-based (AR)",
-    "Bluesky posts"
+    "Levant24 - Syria news (EN)",
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
      "source": "North Press Agency - Qamishli-based (AR)",
      "url": "https://t.me/npa_syria/83938",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/45869",
      "platform": "telegram"
     },
     {
@@ -1056,36 +887,36 @@
    "name": "Syrian Presidency - official",
    "platform": "telegram",
    "ok": true,
-   "fetched": 4,
-   "recent": 0
+   "fetched": 5,
+   "recent": 1
   },
   {
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 16,
-   "recent": 16
+   "fetched": 18,
+   "recent": 18
   },
   {
    "name": "Syrian Ministry of Interior - official",
    "platform": "telegram",
    "ok": true,
    "fetched": 6,
-   "recent": 2
+   "recent": 3
   },
   {
    "name": "Enab Baladi - independent (AR)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 16
+   "recent": 17
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 3
+   "recent": 4
   },
   {
    "name": "Halab Today TV - opposition-origin, Aleppo",
@@ -1098,22 +929,22 @@
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
-   "recent": 14
+   "fetched": 18,
+   "recent": 18
   },
   {
    "name": "Levant24 - Syria news (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 16
+   "recent": 20
   },
   {
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 10,
-   "recent": 10
+   "fetched": 13,
+   "recent": 13
   },
   {
    "name": "North Press Agency - Qamishli-based (AR)",
@@ -1126,8 +957,8 @@
    "name": "North Press Agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
-   "recent": 8
+   "fetched": 14,
+   "recent": 11
   },
   {
    "name": "SDF media center - official",
@@ -1141,13 +972,13 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
+   "fetched": 20,
    "recent": 1
   },
   {
@@ -1162,35 +993,35 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al Arabiya - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Asharq News - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 3
   },
   {
    "name": "Al Mayadeen - Beirut-based",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 2
   },
   {
    "name": "Anadolu Agency - Turkish state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
-   "recent": 0
+   "fetched": 11,
+   "recent": 1
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
@@ -1218,14 +1049,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 33
+   "recent": 39
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 10
+   "recent": 12
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1254,7 +1085,7 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 1
+   "recent": 3
   },
   {
    "name": "BBC Arabic",
@@ -1274,22 +1105,22 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 444,
-   "recent": 444
+   "fetched": 365,
+   "recent": 365
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 236,
-   "recent": 178
+   "fetched": 238,
+   "recent": 182
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 21
+   "recent": 24
   },
   {
    "name": "Reddit r/Kurdistan comments",
@@ -1302,8 +1133,8 @@
    "name": "X posts",
    "platform": "x",
    "ok": true,
-   "fetched": 10,
-   "recent": 10
+   "fetched": 9,
+   "recent": 9
   }
  ],
  "source_names_ar": {
@@ -1415,5 +1246,5 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.2263
+ "cost_usd": 0.2058
 }
