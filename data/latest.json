@@ -3,44 +3,45 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-10-06T21:38:57Z",
- "checked_at": "2026-10-06T21:38:57Z",
+ "generated_at": "2026-10-07T01:33:45Z",
+ "checked_at": "2026-10-07T01:33:45Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1349,
-  "relevant": 838,
-  "posts_analyzed": 405,
-  "public_posts": 283,
+  "collected": 1327,
+  "relevant": 810,
+  "posts_analyzed": 408,
+  "public_posts": 286,
   "outlet_posts": 122,
   "reactions_posts": 0,
   "unique_posts": 400,
   "sources_ok": 36,
   "sources_total": 37,
   "platforms": {
-   "news": 34,
-   "telegram": 86,
-   "youtube": 126,
-   "bluesky": 119,
+   "telegram": 84,
+   "news": 36,
+   "youtube": 134,
    "x": 10,
-   "reddit": 25
+   "bluesky": 113,
+   "reddit": 23
   },
   "languages": {
    "ar": 272,
-   "en": 128
+   "en": 127,
+   "other": 1
   }
  },
  "overall": {
-  "sentiment": 0.15,
+  "sentiment": 0.1,
   "mood": "Diplomatic",
   "mood_ar": "دبلوماسي",
-  "public_sentiment": -0.05,
+  "public_sentiment": -0.1,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "Outlets heavily covered President al-Sharaa's Riyadh visit with MBS, the arrest of a senior ISIS commander in Homs, and Israeli shelling in Quneitra/Daraa, alongside economic deals (Eagle Hills, UAE banking MOU) and Syrian Airlines' rebrand. Public reaction was mixed: many welcomed the Saudi ties and investment news hopefully, while others mocked official narratives, voiced fatigue over daily life problems (fuel quality, road repairs, housing disputes), and expressed anger over Assad-era crimes and current security talk shows. Kurdish-language posts highlighted distinct grievances over education policy, Afrin/Kobani student exclusion, and the Rojava/SDF integration process, framed differently from Arabic-language audiences. Discussions of Israel, Gaza, Yemen and the Houthi strikes drew strong international solidarity statements from Damascus alongside angry and sectarian public commentary online.",
-  "brief_ar": "ركزت وسائل الإعلام على زيارة الرئيس الشرع إلى الرياض ولقائه بولي العهد السعودي، واعتقال قيادي بارز في داعش بحمص، والقصف الإسرائيلي في ريف القنيطرة ودرعا، إلى جانب اتفاقيات اقتصادية (إيغل هيلز، مذكرة التعاون المصرفي مع الإمارات) وإطلاق الهوية الجديدة للخطوط الجوية السورية. تباينت ردود الفعل الشعبية: فبينما رحّب كثيرون بالتقارب السعودي وأخبار الاستثمار بأمل حذر، سخر آخرون من الخطاب الرسمي وعبّروا عن إرهاق من مشاكل الحياة اليومية كجودة الوقود وتعبيد الطرق والخلافات على الممتلكات، وغضب من جرائم عهد الأسد ومن برامج الحوار السياسي الحالية. أبرزت المنشورات الكردية مظالم مختلفة حول سياسة التعليم واستبعاد طلاب عفرين وكوباني، وعملية دمج قسد، بأطر مختلفة عن الجمهور الناطق بالعربية. كما أثارت الأحداث المتعلقة بإسرائيل وغزة واليمن وهجمات الحوثيين تصريحات تضامن رسمية قوية من دمشق إلى جانب تعليقات غاضبة وطائفية على الإنترنت."
+  "brief": "Outlet coverage this cycle centers on President al-Sharaa's Riyadh visit with Crown Prince Mohammed bin Salman, the arrest of an ISIS commander linked to the Homs mosque bombing, and continuing Israeli shelling in Quneitra and Daraa. Public reaction is split: many celebrate warming Saudi-Syrian ties and economic deals, while others mock government priorities (the water-cup road test), express anger over red gasoline, and voice sectarian and political divisions over coast-Alawite accountability and the north-east. International Yemen-Houthi/Saudi airport attacks and old Arab-Israeli war anniversaries also drew heavy unrelated public commentary.",
+  "brief_ar": "تتركز تغطية وسائل الإعلام هذا الأسبوع على زيارة الرئيس الشرع للرياض ولقائه ولي العهد السعودي، والقبض على قيادي داعشي مرتبط بتفجير مسجد حمص، واستمرار القصف الإسرائيلي في القنيطرة ودرعا. ردود الفعل الشعبية منقسمة: كثيرون يحتفون بتحسن العلاقات السعودية السورية والصفقات الاقتصادية، بينما يسخر آخرون من أولويات الحكومة (اختبار الطريق بكأس الماء)، ويعبرون عن غضبهم من البنزين الأحمر، ويظهرون انقسامات سياسية وطائفية حول المحاسبة في الساحل والعلويين وملف الشمال الشرقي. كما استقطبت هجمات الحوثيين على مطارات سعودية وذكرى حرب أكتوبر تعليقات شعبية كثيرة غير مرتبطة مباشرة بسوريا."
  },
  "narratives": [
   {
@@ -49,12 +50,12 @@
    "theme": "international",
    "title": "President al-Sharaa Meets Saudi Crown Prince in Riyadh",
    "title_ar": "الرئيس الشرع يلتقي ولي العهد السعودي في الرياض",
-   "summary": "President Ahmad al-Sharaa traveled to Riyadh and met Crown Prince Mohammed bin Salman, with talks covering bilateral relations, investment, reconstruction and regional developments; al-Sharaa invited MBS to visit Syria.",
-   "summary_ar": "سافر الرئيس أحمد الشرع إلى الرياض والتقى ولي العهد الأمير محمد بن سلمان، وتناولت المباحثات العلاقات الثنائية والاستثمار وإعادة الإعمار والتطورات الإقليمية، ووجّه الشرع دعوة لابن سلمان لزيارة سوريا.",
-   "public_reaction": "Many ordinary commenters expressed hope and pride in the growing Saudi-Syrian ties and investment prospects, though some critics mocked the visit as symbolic or questioned whether it serves ordinary Syrians.",
-   "public_reaction_ar": "عبّر كثير من المعلقين عن أمل وفخر بتنامي العلاقات السعودية السورية وآفاق الاستثمار، فيما سخر بعض المنتقدين من الزيارة واعتبروها رمزية أو شككوا في فائدتها للمواطن العادي.",
+   "summary": "State and independent media extensively covered al-Sharaa's official visit to Riyadh, where he met Crown Prince Mohammed bin Salman to discuss bilateral relations, reconstruction, and investment. Outlets across the spectrum framed it as a sign of strengthening Syrian-Saudi ties.",
+   "summary_ar": "غطت وسائل الإعلام الرسمية والمستقلة بشكل واسع زيارة الشرع الرسمية للرياض ولقاءه بولي العهد محمد بن سلمان لبحث العلاقات الثنائية وإعادة الإعمار والاستثمار. وصورت وسائل الإعلام المختلفة الزيارة كعلامة على تعزيز العلاقات السورية السعودية.",
+   "public_reaction": "Many Arabic commenters expressed warmth and prayers for both leaders and hope for Syrian-Saudi brotherhood, though some skeptics question whether al-Sharaa is fulfilling obligations to Western powers and criticize dependency narratives; a few spread unverified claims about Syrian troops joining the Yemen war.",
+   "public_reaction_ar": "عبر كثير من المعلقين العرب عن الحفاوة والدعاء للزعيمين والأمل بالأخوة السورية السعودية، في حين شكك آخرون في وفاء الشرع بالتزاماته تجاه القوى الغربية وانتقدوا خطاب التبعية، كما تداول البعض ادعاءات غير مؤكدة حول انضمام قوات سورية لحرب اليمن.",
    "sentiment": 0.4,
-   "public_sentiment": 0.2,
+   "public_sentiment": 0.1,
    "outlet_tone": {
     "official": 0.5,
     "independent": 0.4,
@@ -63,8 +64,8 @@
     "aggregator": 0.3
    },
    "public_tone": {
-    "ar": 0.2,
-    "en": 0.2
+    "ar": 0.1,
+    "en": 0.0
    },
    "emotions": [
     "hope",
@@ -77,48 +78,54 @@
     "شك"
    ],
    "framings": [
-    "diplomatic breakthrough and reconstruction partnership",
-    "symbolic photo-op with little direct benefit",
-    "economic opening to the Gulf"
+    "Diplomatic breakthrough",
+    "Economic opportunity",
+    "Dependency on foreign powers"
    ],
    "framings_ar": [
-    "اختراق دبلوماسي وشراكة لإعادة الإعمار",
-    "صورة رمزية دون فائدة مباشرة",
-    "انفتاح اقتصادي على الخليج"
+    "اختراق دبلوماسي",
+    "فرصة اقتصادية",
+    "التبعية للقوى الخارجية"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 26,
-   "public_volume": 8,
-   "share": 0.064,
-   "engagement": 20384,
+   "flags": [
+    "Unverified claim about Syrian troops in Yemen war circulating in Persian-language post"
+   ],
+   "flags_ar": [
+    "ادعاء غير مؤكد حول مشاركة قوات سورية في حرب اليمن"
+   ],
+   "volume": 44,
+   "public_volume": 28,
+   "share": 0.108,
+   "engagement": 19823,
    "platforms": {
-    "telegram": 15,
-    "news": 3,
-    "bluesky": 8
+    "news": 6,
+    "telegram": 10,
+    "x": 2,
+    "youtube": 15,
+    "bluesky": 10
    },
    "languages": {
-    "en": 8,
-    "ar": 18
+    "ar": 34,
+    "en": 9
    },
    "public_languages": {
-    "en": 3,
-    "ar": 5
+    "ar": 25,
+    "en": 2
    },
    "kinds": {
+    "aggregator": 5,
     "independent": 7,
-    "aggregator": 2,
-    "regional": 5,
     "kurdish": 2,
-    "official": 2
+    "official": 1,
+    "regional": 1
    },
    "sources": [
+    "YouTube comments",
     "Bluesky posts",
-    "Anadolu Agency - Turkish state news agency (AR)",
-    "Levant24 - Syria news (EN)",
-    "Enab Baladi - independent (EN)",
     "Google News - Syria (EN)",
-    "Enab Baladi - independent (AR)"
+    "Google News - Syria (AR)",
+    "Levant24 - Syria news (EN)",
+    "X posts"
    ],
    "examples": [
     {
@@ -132,8 +139,8 @@
      "platform": "telegram"
     },
     {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/234479",
+     "source": "TRT Arabi - Turkish public broadcaster",
+     "url": "https://t.me/TRTArabi/46319",
      "platform": "telegram"
     }
    ],
@@ -149,77 +156,76 @@
    "key": "2026-10-06-isis-homs-arrest",
    "theme": "security",
    "title": "Arrest of Senior ISIS Commander Linked to Homs Mosque Bombing",
-   "title_ar": "اعتقال قيادي بارز في داعش مرتبط بتفجير مسجد حمص",
-   "summary": "Syrian authorities announced the arrest of 'Abu Hassan Dushka' in Rural Damascus, accused of being ISIS's military commander in Homs and responsible for a 2025 mosque bombing with sectarian overtones.",
-   "summary_ar": "أعلنت السلطات السورية اعتقال 'أبو حسن دوشكا' في ريف دمشق، المتهم بأنه العسكري العام لتنظيم داعش في حمص والمسؤول عن تفجير مسجد عام 2025 بطابع طائفي.",
-   "public_reaction": "Public commenters largely welcomed the arrest as a security success, with some expressing relief, though a few questioned the timing or framing of the announcement.",
-   "public_reaction_ar": "رحّب معظم المعلقين بالاعتقال كنجاح أمني وعبّروا عن ارتياح، بينما شكك البعض في توقيت الإعلان أو طريقة تقديمه.",
-   "sentiment": 0.4,
-   "public_sentiment": 0.3,
+   "title_ar": "القبض على قيادي داعشي بارز متورط في تفجير مسجد حمص",
+   "summary": "Syrian Interior Ministry announced the arrest of Khaled Raed Bayrouni ('Abu Hassan Dushka'), described as ISIS's military commander for Homs province, accused of planning the mosque bombing and other sectarian attacks. Coverage was widespread across official, independent, Kurdish and regional outlets.",
+   "summary_ar": "أعلنت وزارة الداخلية السورية القبض على خالد رائد بيروني الملقب أبو حسن دوشكا، الموصوف بأنه العسكري العام لتنظيم داعش في محافظة حمص، والمتهم بتدبير تفجير المسجد وهجمات طائفية أخرى. وحظي الخبر بتغطية واسعة من وسائل الإعلام الرسمية والمستقلة والكردية والإقليمية.",
+   "public_reaction": "Public reaction is largely approving and relieved, with some in Homs reportedly welcoming the arrest; Kurdish-language outlets note the operation occurred amid integration talks over camps like Roj.",
+   "public_reaction_ar": "ردود الفعل الشعبية إيجابية إلى حد كبير وتعبر عن الارتياح، مع ترحيب أهالي حمص بحسب بعض التقارير، بينما تشير وسائل الإعلام الكردية إلى أن العملية جرت في ظل مفاوضات دمج مخيمات مثل مخيم روج.",
+   "sentiment": 0.5,
+   "public_sentiment": 0.4,
    "outlet_tone": {
-    "official": 0.5,
-    "independent": 0.4,
-    "kurdish": 0.3,
-    "regional": 0.3,
-    "aggregator": 0.2
+    "official": 0.6,
+    "independent": 0.5,
+    "kurdish": 0.4,
+    "regional": 0.5,
+    "aggregator": 0.4
    },
    "public_tone": {
-    "ar": 0.3,
-    "en": 0.2
+    "ar": 0.4,
+    "en": 0.3
    },
    "emotions": [
     "relief",
-    "vigilance"
+    "vindication"
    ],
    "emotions_ar": [
     "ارتياح",
-    "يقظة"
+    "شعور بالإنصاف"
    ],
    "framings": [
-    "counterterrorism success",
-    "ongoing sectarian violence threat"
+    "Security success",
+    "Accountability for sectarian violence",
+    "Ongoing ISIS threat"
    ],
    "framings_ar": [
-    "نجاح في مكافحة الإرهاب",
-    "استمرار خطر العنف الطائفي"
+    "نجاح أمني",
+    "محاسبة على العنف الطائفي",
+    "استمرار خطر داعش"
    ],
-   "flags": [
-    "many near-identical copy-paste official statements across outlets"
-   ],
-   "flags_ar": [
-    "تكرار بيانات رسمية شبه متطابقة عبر وسائل إعلام متعددة"
-   ],
-   "volume": 21,
-   "public_volume": 2,
-   "share": 0.052,
-   "engagement": 27340,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 23,
+   "public_volume": 5,
+   "share": 0.056,
+   "engagement": 30199,
    "platforms": {
-    "news": 7,
+    "news": 6,
     "telegram": 11,
-    "bluesky": 2
+    "x": 1,
+    "bluesky": 4
    },
    "languages": {
-    "ar": 15,
-    "en": 5
+    "ar": 16,
+    "en": 6
    },
    "public_languages": {
-    "ar": 1,
-    "en": 1
+    "ar": 2,
+    "en": 3
    },
    "kinds": {
-    "aggregator": 6,
     "regional": 2,
     "official": 2,
+    "aggregator": 5,
     "independent": 4,
     "kurdish": 4
    },
    "sources": [
     "Google News - Syria (AR)",
-    "North Press Agency - Qamishli-based (AR)",
-    "Google News - Syria (EN)",
-    "Halab Today TV - opposition-origin, Aleppo",
     "Bluesky posts",
-    "Sky News Arabia - UAE-based"
+    "North Press Agency - Qamishli-based (AR)",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Sky News Arabia - UAE-based",
+    "Al Arabiya - Saudi-owned"
    ],
    "examples": [
     {
@@ -246,15 +252,122 @@
    }
   },
   {
+   "id": "israel-south",
+   "key": "2026-10-01-israel-south",
+   "theme": "israel-south",
+   "title": "Israeli Shelling and Incursions in Quneitra and Daraa",
+   "title_ar": "القصف والتوغلات الإسرائيلية في القنيطرة ودرعا",
+   "summary": "Israeli forces shelled agricultural land near Abadeen in Quneitra and Tal al-Ahmar al-Sharqi, and conducted raids with no reported casualties, as part of continuing military activity in southern Syria monitored by independent trackers.",
+   "summary_ar": "قصفت القوات الإسرائيلية أراضي زراعية قرب عابدين في القنيطرة وتل الأحمر الشرقي، ونفذت غارات دون خسائر بشرية مبلغ عنها، في إطار استمرار النشاط العسكري الإسرائيلي في جنوب سوريا الذي ترصده جهات مستقلة.",
+   "public_reaction": "Public commenters express anger and fear over continued Israeli incursions, with some blaming the new government for failing to protect the south and warnings of de facto territorial loss; others view it as part of broader regional conflict.",
+   "public_reaction_ar": "يعبر المعلقون عن غضب وخوف من استمرار التوغلات الإسرائيلية، مع تحميل البعض الحكومة الجديدة مسؤولية الفشل في حماية الجنوب وتحذيرات من خسارة أراض بحكم الأمر الواقع، بينما يرى آخرون الأمر جزءاً من صراع إقليمي أوسع.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.5,
+   "outlet_tone": {
+    "official": -0.3,
+    "independent": -0.3,
+    "kurdish": -0.3,
+    "aggregator": -0.2
+   },
+   "public_tone": {
+    "ar": -0.5,
+    "en": -0.4
+   },
+   "emotions": [
+    "anger",
+    "fear",
+    "helplessness"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "خوف",
+    "عجز"
+   ],
+   "framings": [
+    "Israeli aggression narrative",
+    "Government failure to protect sovereignty",
+    "Part of wider regional escalation"
+   ],
+   "framings_ar": [
+    "سردية العدوان الإسرائيلي",
+    "فشل الحكومة في حماية السيادة",
+    "جزء من تصعيد إقليمي أوسع"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 18,
+   "public_volume": 11,
+   "share": 0.044,
+   "engagement": 5265,
+   "platforms": {
+    "telegram": 3,
+    "news": 3,
+    "youtube": 2,
+    "reddit": 4,
+    "bluesky": 5
+   },
+   "languages": {
+    "ar": 5,
+    "en": 12
+   },
+   "public_languages": {
+    "en": 10,
+    "ar": 1
+   },
+   "kinds": {
+    "kurdish": 1,
+    "aggregator": 2,
+    "official": 1,
+    "independent": 2
+   },
+   "sources": [
+    "Bluesky posts",
+    "Reddit r/syria comments",
+    "YouTube comments",
+    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "Google News - Syria (EN)",
+    "SANA - state news agency (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141429",
+     "platform": "telegram"
+    },
+    {
+     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
+     "url": "https://t.me/HawarNews/81655",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (EN)",
+     "url": "https://t.me/SANANewsEnglish/78877",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-01T19:32:56Z",
+   "signals": {
+    "level": "low",
+    "score": 1,
+    "items": [
+     {
+      "id": "near_copies",
+      "value": 0.36,
+      "n": 11
+     }
+    ]
+   }
+  },
+  {
    "id": "coast-alawite-tartus",
    "key": "2026-10-06-coast-alawite-tartus",
    "theme": "coast-alawite",
    "title": "Security Operations Against Kidnapping Gang in Qardaha and Sectarian Tensions",
    "title_ar": "عمليات أمنية ضد عصابة خطف في القرداحة وتوترات طائفية",
-   "summary": "Internal security forces in Latakia arrested a kidnapping and extortion gang in Qardaha, freeing a hostage, while separately social media discourse continued around Alawite community fears, accusations of past regime crimes, and tensions over accountability and sectarian rhetoric.",
-   "summary_ar": "ألقت قوى الأمن الداخلي في اللاذقية القبض على عصابة خطف وابتزاز في القرداحة وحررت رهينة، بينما استمر النقاش على مواقع التواصل حول مخاوف الطائفة العلوية واتهامات بجرائم النظام السابق وتوترات حول المساءلة والخطاب الطائفي.",
-   "public_reaction": "Public reaction is sharply divided: some celebrate the arrest as justice served, while others engage in angry sectarian exchanges blaming Alawites collectively or defending them against collective blame.",
-   "public_reaction_ar": "تنقسم ردود الفعل الشعبية بشدة: يحتفي البعض بالاعتقال باعتباره تحقيقاً للعدالة، بينما ينخرط آخرون في تراشق طائفي غاضب يحمّل العلويين مسؤولية جماعية أو يدافع عنهم ضد هذا التعميم.",
+   "summary": "Internal Security forces in Latakia announced the arrest of a kidnapping and extortion gang in Qardaha, freeing a hostage. Separately, security forces deployed in Saqilbiya to contain tensions after a brawl, and public discourse continued about Alawite accountability.",
+   "summary_ar": "أعلنت قوى الأمن الداخلي في اللاذقية القبض على عصابة خطف وابتزاز في القرداحة وتحرير أحد المخطوفين. وفي سياق منفصل، انتشر الأمن الداخلي في السقيلبية لاحتواء التوتر بعد مشاجرة، واستمر الجدل العام حول محاسبة العلويين.",
+   "public_reaction": "Some commenters express sectarian anger, with accusations against Alawites collectively for past crimes, while others warn against generalized blame; debate is heated and polarized across videos discussing the coast's future.",
+   "public_reaction_ar": "عبر بعض المعلقين عن غضب طائفي مع اتهامات جماعية للعلويين بجرائم الماضي، بينما حذر آخرون من التعميم، وسط نقاش حاد ومنقسم في مقاطع الفيديو التي تناقش مستقبل الساحل.",
    "sentiment": 0.2,
    "public_sentiment": -0.4,
    "outlet_tone": {
@@ -265,44 +378,43 @@
    },
    "emotions": [
     "anger",
-    "grief",
-    "vindication"
+    "fear",
+    "resentment"
    ],
    "emotions_ar": [
     "غضب",
-    "حزن",
-    "شعور بالإنصاف"
+    "خوف",
+    "استياء"
    ],
    "framings": [
-    "justice against criminal gangs",
-    "collective sectarian blame narratives",
-    "fear of revenge"
+    "Security success story",
+    "Sectarian score-settling narrative",
+    "Collective blame vs individual accountability"
    ],
    "framings_ar": [
-    "عدالة ضد عصابات إجرامية",
-    "خطاب اللوم الطائفي الجماعي",
-    "خوف من الانتقام"
+    "قصة نجاح أمني",
+    "سردية تصفية حسابات طائفية",
+    "اللوم الجماعي مقابل المحاسبة الفردية"
    ],
    "flags": [
-    "sectarian incitement in comments"
+    "Sectarian incitement in comments generalizing blame to an entire community"
    ],
    "flags_ar": [
-    "تحريض طائفي في التعليقات"
+    "تحريض طائفي في التعليقات يعمم اللوم على طائفة كاملة"
    ],
-   "volume": 20,
-   "public_volume": 17,
-   "share": 0.049,
-   "engagement": 4941,
+   "volume": 17,
+   "public_volume": 14,
+   "share": 0.042,
+   "engagement": 5538,
    "platforms": {
     "telegram": 3,
-    "x": 1,
-    "youtube": 16
+    "youtube": 14
    },
    "languages": {
-    "ar": 20
+    "ar": 17
    },
    "public_languages": {
-    "ar": 17
+    "ar": 14
    },
    "kinds": {
     "independent": 3
@@ -310,8 +422,7 @@
    "sources": [
     "YouTube comments",
     "Shaam News Network - opposition-origin",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "X posts"
+    "Halab Today TV - opposition-origin, Aleppo"
    ],
    "examples": [
     {
@@ -338,419 +449,58 @@
    }
   },
   {
-   "id": "eagle-hills-investment",
-   "key": "2026-10-05-eagle-hills-investment",
-   "theme": "economy",
-   "title": "Eagle Hills Investment Deals and Broader Economic Agreements",
-   "title_ar": "اتفاقيات استثمار إيغل هيلز والاتفاقيات الاقتصادية الأوسع",
-   "summary": "Syria signed major investment and banking agreements including Eagle Hills' Damascus and Latakia tourism projects, a UAE-Syria banking MOU, and discussion of an Iraq-Syria oil pipeline, alongside a single-window investment platform launch.",
-   "summary_ar": "وقّعت سوريا اتفاقيات استثمارية ومصرفية كبرى منها مشاريع إيغل هيلز السياحية في دمشق واللاذقية، ومذكرة تفاهم مصرفية مع الإمارات، إلى جانب بحث مشروع خط أنابيب نفط بين العراق وسوريا وإطلاق منصة النافذة الواحدة للاستثمار.",
-   "public_reaction": "Some commenters expressed hope these deals will create jobs for Syrians, while others were skeptical, framing them as foreign capital control over Syrian assets.",
-   "public_reaction_ar": "عبّر بعض المعلقين عن أمل بأن تخلق هذه الاتفاقيات فرص عمل للسوريين، بينما كان آخرون متشككين، معتبرين إياها سيطرة لرأس المال الأجنبي على الأصول السورية.",
-   "sentiment": 0.4,
-   "public_sentiment": 0.1,
-   "outlet_tone": {
-    "official": 0.5,
-    "independent": 0.4,
-    "aggregator": 0.3
-   },
-   "public_tone": {
-    "ar": 0.0,
-    "en": 0.2
-   },
-   "emotions": [
-    "hope",
-    "skepticism"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "شك"
-   ],
-   "framings": [
-    "economic revival and job creation",
-    "foreign capital takeover of Syrian land"
-   ],
-   "framings_ar": [
-    "انتعاش اقتصادي وخلق فرص عمل",
-    "استحواذ رأسمالي أجنبي على الأراضي السورية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 19,
-   "public_volume": 11,
-   "share": 0.047,
-   "engagement": 5502,
-   "platforms": {
-    "news": 4,
-    "telegram": 4,
-    "x": 1,
-    "reddit": 1,
-    "bluesky": 9
-   },
-   "languages": {
-    "ar": 11,
-    "en": 8
-   },
-   "public_languages": {
-    "ar": 7,
-    "en": 4
-   },
-   "kinds": {
-    "independent": 5,
-    "aggregator": 2,
-    "official": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "Syria TV - opposition-origin",
-    "Levant24 - Syria news (EN)",
-    "Google News - Syria (AR)",
-    "Google News - Syria (EN)",
-    "SANA - state news agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141426",
-     "platform": "telegram"
-    },
-    {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45839",
-     "platform": "telegram"
-    },
-    {
-     "source": "SANA - state news agency (EN)",
-     "url": "https://t.me/SANANewsEnglish/78873",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-05T16:02:34Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "israel-south",
-   "key": "2026-10-01-israel-south",
-   "theme": "israel-south",
-   "title": "Israeli Shelling and Incursions in Quneitra and Daraa",
-   "title_ar": "القصف الإسرائيلي والتوغلات في ريف القنيطرة ودرعا",
-   "summary": "Israeli forces shelled agricultural land near Abadeen in Daraa countryside and Tal al-Ahmar in Quneitra, part of what outlets describe as escalating Israeli military activity, as Syrians also mark the anniversary of October 7 amid heightened Israeli alert.",
-   "summary_ar": "قصفت القوات الإسرائيلية أراضي زراعية قرب عابدين بريف درعا وتل الأحمر الشرقي في القنيطرة، ضمن ما تصفه وسائل الإعلام بتصاعد النشاط العسكري الإسرائيلي، في وقت يصادف فيه ذكرى السابع من أكتوبر وسط تأهب إسرائيلي مرتفع.",
-   "public_reaction": "Public reaction mixes anger at Israeli actions with cynicism about Syria's sovereignty, and some voices frame it within a wider narrative of distrust toward the new government's posture toward Israel.",
-   "public_reaction_ar": "تتراوح ردود الفعل الشعبية بين الغضب من الأفعال الإسرائيلية والتهكم على السيادة السورية، مع أصوات تضعها ضمن إطار أوسع من انعدام الثقة بموقف الحكومة الجديدة تجاه إسرائيل.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.4,
-   "outlet_tone": {
-    "official": -0.2,
-    "independent": -0.3,
-    "kurdish": -0.2,
-    "regional": -0.2,
-    "aggregator": -0.2
-   },
-   "public_tone": {
-    "ar": -0.5,
-    "en": -0.2
-   },
-   "emotions": [
-    "anger",
-    "fear",
-    "distrust"
-   ],
-   "emotions_ar": [
-    "غضب",
-    "خوف",
-    "انعدام ثقة"
-   ],
-   "framings": [
-    "ongoing occupation aggression",
-    "sovereignty violation",
-    "normalization fears"
-   ],
-   "framings_ar": [
-    "عدوان احتلال مستمر",
-    "انتهاك للسيادة",
-    "مخاوف من التطبيع"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 17,
-   "public_volume": 6,
-   "share": 0.042,
-   "engagement": 58388,
-   "platforms": {
-    "news": 4,
-    "telegram": 6,
-    "x": 1,
-    "bluesky": 4,
-    "youtube": 1
-   },
-   "languages": {
-    "ar": 9,
-    "en": 7
-   },
-   "public_languages": {
-    "ar": 3,
-    "en": 3
-   },
-   "kinds": {
-    "independent": 5,
-    "regional": 1,
-    "aggregator": 1,
-    "official": 2,
-    "kurdish": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "Syria TV - opposition-origin",
-    "SANA - state news agency (EN)",
-    "Al Jazeera - Qatar-based",
-    "Google News - Syria (EN)",
-    "Levant24 - Syria news (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Al Jazeera - Qatar-based",
-     "url": "https://t.me/AjaNews/515681",
-     "platform": "telegram"
-    },
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141429",
-     "platform": "telegram"
-    },
-    {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/45842",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-01T19:32:56Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "northeast-kurdish",
-   "key": "2026-10-04-northeast-kurdish",
-   "theme": "northeast-kurdish",
-   "title": "Kurdish Education Rights Disputes and Integration Tensions",
-   "title_ar": "خلافات حول التعليم باللغة الكردية وتوترات الاندماج",
-   "summary": "Protests and statements continue over the transitional government's decree making Kurdish-language education elective, with student associations in Afrin and Aleppo alleging systematic exclusion, alongside separate disputes about merging Kobani and Hasakah university programs and camp Roj administration.",
-   "summary_ar": "تتواصل الاحتجاجات والبيانات حول قرار الحكومة الانتقالية تحويل التعليم باللغة الكردية إلى مادة اختيارية، مع اتهامات من رابطات طلاب عفرين وحلب بالإقصاء الممنهج، إلى جانب خلافات منفصلة حول دمج برامج جامعتي كوباني والحسكة وإدارة مخيم روج.",
-   "public_reaction": "Kurdish-language public voices express frustration and a sense of exclusion from Damascus's policies, framing it as systematic marginalization, while Turkish-language commentary debates integration of SDF/PKK fighters; Arabic public commentary on this topic was largely absent.",
-   "public_reaction_ar": "يعبّر المعلقون الناطقون بالكردية عن إحباط وشعور بالإقصاء من سياسات دمشق، ويصفونها بالتهميش الممنهج، بينما يناقش المعلقون بالتركية دمج مقاتلي قسد/العمال الكردستاني؛ وكان التعليق العربي على هذا الموضوع شبه غائب.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.4,
-   "outlet_tone": {
-    "kurdish": -0.2
-   },
-   "public_tone": {
-    "en": -0.3
-   },
-   "emotions": [
-    "frustration",
-    "defiance"
-   ],
-   "emotions_ar": [
-    "إحباط",
-    "تحدٍ"
-   ],
-   "framings": [
-    "systematic exclusion of Kurdish education",
-    "integration process friction",
-    "cultural rights demands"
-   ],
-   "framings_ar": [
-    "إقصاء ممنهج للتعليم الكردي",
-    "احتكاك في عملية الاندماج",
-    "مطالب بالحقوق الثقافية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 16,
-   "public_volume": 13,
-   "share": 0.04,
-   "engagement": 425,
-   "platforms": {
-    "telegram": 2,
-    "news": 1,
-    "bluesky": 9,
-    "x": 1,
-    "youtube": 3
-   },
-   "languages": {
-    "ar": 6,
-    "en": 10
-   },
-   "public_languages": {
-    "en": 10,
-    "ar": 3
-   },
-   "kinds": {
-    "kurdish": 2,
-    "aggregator": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "YouTube comments",
-    "Kurdistan24 Arabic - Kurdistan Region outlet",
-    "Rudaw Arabic - Kurdistan Region outlet",
-    "Google News - Syria (AR)",
-    "X posts"
-   ],
-   "examples": [
-    {
-     "source": "Rudaw Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/RudawArabic/121580",
-     "platform": "telegram"
-    },
-    {
-     "source": "Kurdistan24 Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/k24Arabic/75448",
-     "platform": "telegram"
-    },
-    {
-     "source": "Google News - Syria (AR)",
-     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9GMW40Vmt2NEg4dWZkeDRrT2gxUGRPaHNJNnl6SFA2aDNHQlAyYXZyT2xaWklFbHdxdlN5SlRZMGNFUDA4TUhv?oc=5",
-     "platform": "news"
-    }
-   ],
-   "first_seen": "2026-10-04T13:12:35Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "syrian-airlines-rebrand",
-   "key": "2026-10-05-syrian-airlines-rebrand",
-   "theme": "economy",
-   "title": "Syrian Airlines Unveils New Visual Identity and Fleet Expansion",
-   "title_ar": "الخطوط الجوية السورية تطلق هويتها البصرية الجديدة وتوسيع أسطولها",
-   "summary": "Syrian Airlines launched a new visual identity, booking systems and app at Damascus Airport, with plans to grow its fleet from 6 to 12 aircraft and destinations from 9 to 25 by 2026.",
-   "summary_ar": "أطلقت الخطوط الجوية السورية هويتها البصرية الجديدة وأنظمة الحجز والتطبيق في مطار دمشق، مع خطط لتوسيع أسطولها من 6 إلى 12 طائرة والوجهات من 9 إلى 25 بحلول 2026.",
-   "public_reaction": "Public reaction was mostly positive and hopeful, seen as a symbol of recovery and reconnection to the world, shared widely across languages.",
-   "public_reaction_ar": "كانت ردود الفعل الشعبية إيجابية ومفعمة بالأمل غالباً، واعتُبر الحدث رمزاً للتعافي وإعادة الاتصال بالعالم، وتمت مشاركته على نطاق واسع بلغات متعددة.",
-   "sentiment": 0.5,
-   "public_sentiment": 0.5,
-   "outlet_tone": {
-    "official": 0.5
-   },
-   "public_tone": {
-    "ar": 0.5,
-    "en": 0.5
-   },
-   "emotions": [
-    "pride",
-    "hope"
-   ],
-   "emotions_ar": [
-    "فخر",
-    "أمل"
-   ],
-   "framings": [
-    "symbol of national recovery",
-    "modernization and reconnection to Europe"
-   ],
-   "framings_ar": [
-    "رمز للتعافي الوطني",
-    "تحديث وإعادة ربط بأوروبا"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 8,
-   "public_volume": 7,
-   "share": 0.02,
-   "engagement": 5,
-   "platforms": {
-    "news": 1,
-    "bluesky": 7
-   },
-   "languages": {
-    "ar": 3,
-    "en": 5
-   },
-   "public_languages": {
-    "ar": 2,
-    "en": 5
-   },
-   "kinds": {
-    "official": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "SANA website - state news agency (AR)"
-   ],
-   "examples": [
-    {
-     "source": "SANA website - state news agency (AR)",
-     "url": "https://sana.sy/video/2599373/",
-     "platform": "news"
-    }
-   ],
-   "first_seen": "2026-10-05T22:38:58Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
    "id": "red-gasoline-quality",
    "key": "2026-10-06-red-gasoline-quality",
    "theme": "economy",
    "title": "Complaints Over Substandard 'Red' Gasoline Damaging Cars",
-   "title_ar": "شكاوى من البنزين الأحمر غير المطابق للمواصفات وتضرر السيارات",
-   "summary": "SADCOP and local outlets addressed complaints about substandard gasoline circulating in markets damaging car engines, saying tests are underway though some samples matched specifications.",
-   "summary_ar": "تناولت سادكوب ووسائل إعلام محلية شكاوى حول انتشار بنزين غير مطابق للمواصفات في الأسواق يضر بمحركات السيارات، مؤكدة أن الفحوصات جارية رغم مطابقة بعض العينات للمواصفات.",
-   "public_reaction": "Public commenters were angry and distrustful, blaming officials for negligence and demanding compensation and accountability for damaged vehicles.",
-   "public_reaction_ar": "عبّر المعلقون عن غضب وانعدام ثقة، محمّلين المسؤولين تبعة الإهمال ومطالبين بالتعويض والمحاسبة عن الأضرار التي لحقت بالسيارات.",
-   "sentiment": 0.0,
+   "title_ar": "شكاوى من بنزين 'أحمر' غير مطابق للمواصفات يضر بالسيارات",
+   "summary": "SADCOP announced investigations into complaints about substandard gasoline damaging vehicle engines across Syrian markets, saying tested samples largely met specifications while acknowledging some non-compliant batches were found.",
+   "summary_ar": "أعلنت سادكوب فتح تحقيق في شكاوى حول بنزين غير مطابق للمواصفات يضر بمحركات السيارات في الأسواق السورية، قائلة إن معظم العينات المفحوصة مطابقة مع الإقرار بوجود دفعات غير مطابقة.",
+   "public_reaction": "Public reaction is angry and mocking, with many sharing personal stories of car damage, blaming corruption and lack of oversight, and demanding accountability and compensation.",
+   "public_reaction_ar": "ردود الفعل الشعبية غاضبة وساخرة، مع مشاركة كثيرين لقصص شخصية عن أضرار لحقت بسياراتهم، ولومهم الفساد وغياب الرقابة، ومطالبتهم بالمحاسبة والتعويض.",
+   "sentiment": -0.2,
    "public_sentiment": -0.6,
    "outlet_tone": {
-    "independent": 0.0
+    "independent": -0.1
    },
    "public_tone": {
     "ar": -0.6
    },
    "emotions": [
     "anger",
-    "distrust"
+    "frustration",
+    "mockery"
    ],
    "emotions_ar": [
     "غضب",
-    "انعدام ثقة"
+    "إحباط",
+    "سخرية"
    ],
    "framings": [
-    "consumer protection failure",
-    "government negligence"
+    "Corruption and poor oversight narrative",
+    "Official reassurance vs lived experience"
    ],
    "framings_ar": [
-    "فشل في حماية المستهلك",
-    "إهمال حكومي"
+    "سردية الفساد وضعف الرقابة",
+    "الطمأنة الرسمية مقابل التجربة الواقعية"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 8,
-   "public_volume": 6,
-   "share": 0.02,
-   "engagement": 3537,
+   "volume": 14,
+   "public_volume": 12,
+   "share": 0.034,
+   "engagement": 4544,
    "platforms": {
     "telegram": 2,
-    "youtube": 6
+    "youtube": 10
    },
    "languages": {
-    "ar": 8
+    "ar": 11,
+    "other": 1
    },
    "public_languages": {
-    "ar": 6
+    "ar": 9,
+    "other": 1
    },
    "kinds": {
     "independent": 2
@@ -785,54 +535,393 @@
    }
   },
   {
-   "id": "drug-smuggling-lebanon-border",
-   "key": "2026-10-06-drug-smuggling-lebanon-border",
-   "theme": "security",
-   "title": "Captagon and Hashish Smuggling Attempts Foiled on Lebanon Border",
-   "title_ar": "إحباط محاولات تهريب الكبتاغون والحشيش عبر الحدود اللبنانية",
-   "summary": "Syrian authorities announced foiling multiple drug smuggling attempts from Lebanon into Rural Damascus, seizing large quantities of Captagon pills and hashish.",
-   "summary_ar": "أعلنت السلطات السورية إحباط عدة محاولات لتهريب المخدرات من لبنان إلى ريف دمشق، وضبط كميات كبيرة من حبوب الكبتاغون والحشيش.",
-   "public_reaction": "Public reaction was muted but generally approving of the crackdown, viewed as part of broader security normalization efforts.",
-   "public_reaction_ar": "كانت ردود الفعل الشعبية محدودة لكنها مؤيدة عموماً للحملة الأمنية، واعتُبرت جزءاً من جهود أوسع لتطبيع الوضع الأمني.",
-   "sentiment": 0.2,
-   "public_sentiment": 0.2,
+   "id": "yemen-houthi-saudi-attacks",
+   "key": "2026-10-07-yemen-houthi-saudi-attacks",
+   "theme": "international",
+   "title": "Houthi Attacks on Saudi Airports Draw Syrian Condemnation",
+   "title_ar": "هجمات حوثية على مطارات سعودية تستدعي إدانة سورية",
+   "summary": "Houthi forces struck King Abdullah and Najran airports in Saudi Arabia, injuring several; Syria's Foreign Ministry strongly condemned the attacks and affirmed solidarity with Riyadh, a stance widely repeated across official and independent outlets.",
+   "summary_ar": "استهدفت قوات الحوثي مطاري الملك عبد الله ونجران في السعودية، ما أدى لإصابة عدد من الأشخاص؛ وأدانت وزارة الخارجية السورية بشدة الهجمات وأكدت تضامنها مع الرياض، وهو موقف تكرر على نطاق واسع في وسائل الإعلام الرسمية والمستقلة.",
+   "public_reaction": "Public commenters largely side with Saudi Arabia against the Houthis, with prayers for Saudi security and anger at the Houthis; some mix in unrelated conspiracy claims about casualties among Pakistani/Saudi forces.",
+   "public_reaction_ar": "يقف المعلقون إلى جانب السعودية ضد الحوثيين إلى حد كبير، مع دعوات لحماية أمن المملكة وغضب تجاه الحوثيين؛ ويخلط البعض ادعاءات تآمرية غير مؤكدة حول خسائر بين القوات الباكستانية والسعودية.",
+   "sentiment": -0.2,
+   "public_sentiment": -0.3,
    "outlet_tone": {
-    "kurdish": 0.2,
-    "regional": 0.2
+    "official": -0.1,
+    "independent": -0.1,
+    "regional": -0.2
    },
    "public_tone": {
-    "ar": 0.2,
-    "en": 0.2
+    "ar": -0.3
    },
    "emotions": [
-    "approval"
+    "anger",
+    "solidarity",
+    "fear"
    ],
    "emotions_ar": [
-    "رضا"
+    "غضب",
+    "تضامن",
+    "خوف"
    ],
    "framings": [
-    "security success against drug trade legacy"
+    "Solidarity with Saudi Arabia against Houthi aggression",
+    "Regional conflict spillover"
    ],
    "framings_ar": [
-    "نجاح أمني ضد إرث تجارة المخدرات"
+    "التضامن مع السعودية ضد العدوان الحوثي",
+    "امتداد الصراع الإقليمي"
+   ],
+   "flags": [
+    "Unverified casualty claims about Saudi-Pakistani joint forces near Aden airport"
+   ],
+   "flags_ar": [
+    "ادعاءات غير مؤكدة عن خسائر بين القوات السعودية الباكستانية قرب مطار عدن"
+   ],
+   "volume": 14,
+   "public_volume": 8,
+   "share": 0.034,
+   "engagement": 2075,
+   "platforms": {
+    "telegram": 5,
+    "news": 1,
+    "youtube": 5,
+    "bluesky": 3
+   },
+   "languages": {
+    "ar": 12,
+    "en": 2
+   },
+   "public_languages": {
+    "ar": 8
+   },
+   "kinds": {
+    "regional": 1,
+    "independent": 3,
+    "official": 2
+   },
+   "sources": [
+    "YouTube comments on Al Jazeera Arabic",
+    "Bluesky posts",
+    "Asharq News - Saudi-owned",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Levant24 - Syria news (EN)",
+    "SANA website - state news agency (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141434",
+     "platform": "telegram"
+    },
+    {
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/104677",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/45845",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-07T01:33:45Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "northeast-kurdish",
+   "key": "2026-10-04-northeast-kurdish",
+   "theme": "northeast-kurdish",
+   "title": "North-East Integration, ISIS Camps, and Kurdish Rights Disputes",
+   "title_ar": "دمج الشمال الشرقي ومخيمات داعش والنزاعات حول الحقوق الكردية",
+   "summary": "Coverage addresses the Roj camp housing ISIS-linked families amid slow integration of north-east institutions with Damascus, Hasakah university naming disputes over Kobani, and reports of Kurdish-language protests over cultural and political rights.",
+   "summary_ar": "تتناول التغطية مخيم روج الذي يضم عائلات مرتبطة بداعش وسط دمج بطيء لمؤسسات الشمال الشرقي مع دمشق، والجدل حول تسمية كليات جامعة الحسكة المتعلقة بكوباني، وتقارير عن احتجاجات كردية حول الحقوق الثقافية والسياسية.",
+   "public_reaction": "Kurdish-language public voices express concern about integration terms and cultural recognition, referencing Rojava's autonomy legacy, while Turkish-language comments show tension and mixed views about Kurdish political status.",
+   "public_reaction_ar": "يعبر المتحدثون بالكردية عن قلقهم بشأن شروط الدمج والاعتراف الثقافي، في إشارة إلى إرث الحكم الذاتي في روج آفا، بينما تظهر التعليقات بالتركية توتراً وآراء متباينة حول الوضع السياسي الكردي.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.1,
+   "outlet_tone": {
+    "kurdish": 0.0,
+    "aggregator": 0.0
+   },
+   "public_tone": {
+    "en": -0.1
+   },
+   "emotions": [
+    "concern",
+    "pride",
+    "uncertainty"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "فخر",
+    "عدم يقين"
+   ],
+   "framings": [
+    "Kurdish rights and autonomy framing",
+    "Slow/complicated integration with Damascus",
+    "Security risk from unresolved ISIS camps"
+   ],
+   "framings_ar": [
+    "إطار الحقوق والحكم الذاتي الكردي",
+    "دمج بطيء ومعقد مع دمشق",
+    "خطر أمني من مخيمات داعش غير المحلولة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 5,
-   "public_volume": 3,
-   "share": 0.012,
-   "engagement": 658,
+   "volume": 8,
+   "public_volume": 5,
+   "share": 0.02,
+   "engagement": 454,
    "platforms": {
     "telegram": 2,
+    "news": 1,
+    "youtube": 2,
     "bluesky": 3
    },
    "languages": {
     "ar": 4,
-    "en": 1
+    "en": 4
+   },
+   "public_languages": {
+    "en": 4,
+    "ar": 1
+   },
+   "kinds": {
+    "kurdish": 2,
+    "aggregator": 1
+   },
+   "sources": [
+    "Bluesky posts",
+    "YouTube comments",
+    "Kurdistan24 Arabic - Kurdistan Region outlet",
+    "Rudaw Arabic - Kurdistan Region outlet",
+    "Google News - Syria (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Rudaw Arabic - Kurdistan Region outlet",
+     "url": "https://t.me/RudawArabic/121580",
+     "platform": "telegram"
+    },
+    {
+     "source": "Kurdistan24 Arabic - Kurdistan Region outlet",
+     "url": "https://t.me/k24Arabic/75448",
+     "platform": "telegram"
+    },
+    {
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9GMW40Vmt2NEg4dWZkeDRrT2gxUGRPaHNJNnl6SFA2aDNHQlAyYXZyT2xaWklFbHdxdlN5SlRZMGNFUDA4TUhv?oc=5",
+     "platform": "news"
+    }
+   ],
+   "first_seen": "2026-10-04T13:12:35Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "eagle-hills-investment",
+   "key": "2026-10-05-eagle-hills-investment",
+   "theme": "economy",
+   "title": "Eagle Hills Investment Deals and Broader Economic Agreements",
+   "title_ar": "صفقات استثمارية مع إيغل هيلز واتفاقيات اقتصادية أوسع",
+   "summary": "Reports detail UAE-based Eagle Hills signing major urban and tourism development deals in Damascus and Latakia, alongside other investment and banking cooperation agreements with the UAE, plus plans for an Iraq-Syria oil pipeline and new power plants.",
+   "summary_ar": "تناولت التقارير توقيع شركة إيغل هيلز الإماراتية صفقات تطوير عمراني وسياحي كبرى في دمشق واللاذقية، إلى جانب اتفاقيات تعاون استثماري ومصرفي أخرى مع الإمارات، وخطط لإنشاء خط أنابيب نفط بين العراق وسوريا ومحطات طاقة جديدة.",
+   "public_reaction": "Public reaction is cautiously hopeful about jobs and reconstruction, though some express skepticism about whether benefits will reach ordinary citizens given existing economic hardship.",
+   "public_reaction_ar": "ردود الفعل الشعبية متفائلة بحذر بشأن فرص العمل وإعادة الإعمار، لكن البعض يشكك في وصول الفوائد للمواطن العادي في ظل الصعوبات الاقتصادية القائمة.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.2,
+   "outlet_tone": {
+    "independent": 0.4
+   },
+   "public_tone": {
+    "ar": 0.2,
+    "en": 0.3
+   },
+   "emotions": [
+    "hope",
+    "cautious optimism"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "تفاؤل حذر"
+   ],
+   "framings": [
+    "Reconstruction progress",
+    "Foreign investment as recovery signal"
+   ],
+   "framings_ar": [
+    "تقدم في إعادة الإعمار",
+    "الاستثمار الأجنبي كإشارة على التعافي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 6,
+   "public_volume": 4,
+   "share": 0.015,
+   "engagement": 601,
+   "platforms": {
+    "telegram": 2,
+    "bluesky": 4
+   },
+   "languages": {
+    "en": 4,
+    "ar": 2
    },
    "public_languages": {
     "ar": 2,
-    "en": 1
+    "en": 2
+   },
+   "kinds": {
+    "independent": 2
+   },
+   "sources": [
+    "Bluesky posts",
+    "Levant24 - Syria news (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/45839",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-05T16:02:34Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "syrian-airlines-rebrand",
+   "key": "2026-10-05-syrian-airlines-rebrand",
+   "theme": "economy",
+   "title": "Syrian Airlines Unveils New Visual Identity and Fleet Expansion",
+   "title_ar": "الخطوط الجوية السورية تطلق هوية بصرية جديدة وتوسعاً في الأسطول",
+   "summary": "Syrian Airlines presented a new visual identity, upgraded booking systems, and announced fleet expansion from 6 to 12 aircraft with destinations growing to 25 by 2026/2029, coinciding with its 80th anniversary.",
+   "summary_ar": "قدمت الخطوط الجوية السورية هوية بصرية جديدة، وأنظمة حجز محدثة، وأعلنت عن توسيع الأسطول من 6 إلى 12 طائرة مع زيادة الوجهات إلى 25 بحلول 2026/2029، تزامناً مع الذكرى الثمانين لتأسيسها.",
+   "public_reaction": "Public reaction is mildly positive, viewed as a symbol of national recovery and modernization, with some pairing it with excitement about the new Athens-Damascus route.",
+   "public_reaction_ar": "ردود الفعل الشعبية إيجابية بشكل معتدل، وتُنظر إليها كرمز للتعافي الوطني والتحديث، مع ربط البعض لها بالحماس تجاه خط أثينا-دمشق الجديد.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.3,
+   "outlet_tone": {
+    "independent": 0.4
+   },
+   "public_tone": {
+    "ar": 0.3,
+    "en": 0.3
+   },
+   "emotions": [
+    "pride",
+    "hope"
+   ],
+   "emotions_ar": [
+    "فخر",
+    "أمل"
+   ],
+   "framings": [
+    "Symbol of national revival",
+    "Modernization and connectivity"
+   ],
+   "framings_ar": [
+    "رمز للنهضة الوطنية",
+    "التحديث والربط الدولي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 6,
+   "public_volume": 5,
+   "share": 0.015,
+   "engagement": 3,
+   "platforms": {
+    "news": 1,
+    "bluesky": 5
+   },
+   "languages": {
+    "ar": 3,
+    "en": 3
+   },
+   "public_languages": {
+    "ar": 2,
+    "en": 3
+   },
+   "kinds": {
+    "independent": 1
+   },
+   "sources": [
+    "Bluesky posts",
+    "Syria TV - opposition-origin"
+   ],
+   "examples": [
+    {
+     "source": "Syria TV - opposition-origin",
+     "url": "https://www.syria.tv/%D8%A5%D9%8A%D8%AC%D9%8A%D9%86-%D8%A7%D9%84%D9%8A%D9%88%D9%86%D8%A7%D9%86%D9%8A%D8%A9-%D8%AA%D8%AF%D8%B4%D9%86-%D8%AE%D8%B7%D8%A7-%D8%AC%D9%88%D9%8A%D8%A7-%D9%85%D8%A8%D8%A7%D8%B4%D8%B1%D8%A7-%D8%A8%D9%8A%D9%86-%D8%A3%D8%AB%D9%8A%D9%86%D8%A7-%D9%88%D8%AF%D9%85%D8%B4%D9%82-%D9%81%D9%8A-%D9%83%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%A3%D9%88%D9%84",
+     "platform": "news"
+    }
+   ],
+   "first_seen": "2026-10-05T22:38:58Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "drug-smuggling-lebanon-border",
+   "key": "2026-10-06-drug-smuggling-lebanon-border",
+   "theme": "security",
+   "title": "Captagon and Hashish Smuggling Attempts Foiled on Lebanon Border",
+   "title_ar": "إحباط محاولات تهريب كبتاغون وحشيش عبر الحدود اللبنانية",
+   "summary": "Syrian authorities announced foiling large-scale drug smuggling attempts from Lebanon into rural Damascus, seizing hashish and hundreds of thousands of Captagon pills in separate operations.",
+   "summary_ar": "أعلنت السلطات السورية إحباط محاولات تهريب مخدرات واسعة من لبنان إلى ريف دمشق، وضبط كميات من الحشيش ومئات آلاف حبوب الكبتاغون في عمليات منفصلة.",
+   "public_reaction": "Public reaction is minimal but generally approving of anti-smuggling efforts, seen as part of broader post-Assad drug crackdown narrative.",
+   "public_reaction_ar": "ردود الفعل الشعبية محدودة لكنها إيجابية بشكل عام تجاه جهود مكافحة التهريب، وتُعتبر جزءاً من سردية أوسع لمكافحة المخدرات بعد سقوط الأسد.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.2,
+   "outlet_tone": {
+    "kurdish": 0.3,
+    "regional": 0.3
+   },
+   "public_tone": {
+    "ar": 0.2
+   },
+   "emotions": [
+    "relief",
+    "approval"
+   ],
+   "emotions_ar": [
+    "ارتياح",
+    "استحسان"
+   ],
+   "framings": [
+    "Security success against Assad-era drug networks"
+   ],
+   "framings_ar": [
+    "نجاح أمني ضد شبكات مخدرات عهد الأسد"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 4,
+   "public_volume": 2,
+   "share": 0.01,
+   "engagement": 726,
+   "platforms": {
+    "telegram": 2,
+    "bluesky": 2
+   },
+   "languages": {
+    "ar": 4
+   },
+   "public_languages": {
+    "ar": 2
    },
    "kinds": {
     "regional": 1,
@@ -1016,8 +1105,8 @@
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 18
+   "fetched": 19,
+   "recent": 19
   },
   {
    "name": "Levant24 - Syria news (EN)",
@@ -1080,7 +1169,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al Arabiya - Saudi-owned",
@@ -1094,7 +1183,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 3
+   "recent": 2
   },
   {
    "name": "Al Mayadeen - Beirut-based",
@@ -1108,13 +1197,13 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 3
+   "recent": 2
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
+   "fetched": 20,
    "recent": 2
   },
   {
@@ -1136,14 +1225,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 25
+   "recent": 27
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 33
+   "recent": 29
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1157,7 +1246,7 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 58
+   "recent": 59
   },
   {
    "name": "Zaman al-Wasl - opposition-origin",
@@ -1192,22 +1281,22 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 358,
-   "recent": 358
+   "fetched": 334,
+   "recent": 334
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 246,
-   "recent": 189
+   "fetched": 245,
+   "recent": 186
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 24
+   "recent": 22
   },
   {
    "name": "Reddit r/Kurdistan comments",
@@ -1333,5 +1422,5 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.2138
+ "cost_usd": 0.2249
 }
