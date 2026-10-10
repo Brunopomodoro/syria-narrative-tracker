@@ -101,7 +101,7 @@ W = {   # the words on the static pages
 }
 
 CSS = """
-:root{--paper:#F7F1E3;--ink:#1D262B;--muted:#5B666A;--faint:#9AA3A6;--rule:#E2D9C5;--wash:#EEE6D3;--neg:#A3303C;--neu:#A7ABA3;--pos:#2C7663;--brass:#8A6420;
+:root{--paper:#F7F1E3;--ink:#1A1814;--muted:#45413A;--faint:#6B6559;--rule:#E2D9C5;--wash:#EEE6D3;--neg:#A3303C;--neu:#A7ABA3;--pos:#256454;--brass:#8A6420;
 --sans:"IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif;--display:"IBM Plex Serif","Noto Naskh Arabic",Georgia,serif}
 :root{color-scheme:light}
 html[lang=ar]{--sans:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif;--display:"Noto Naskh Arabic","IBM Plex Sans Arabic",serif}
@@ -728,9 +728,9 @@ def monthly_email_html(cfg: dict, d: dict, lang: str) -> str:
     body = re.sub(r'<td><div class="bar">.*?</div></td>', "", body).replace("<th></th>", "")   # the bar column needs CSS; email clients have none
     body = body.replace("<table>", '<table cellpadding="6" style="border-collapse:collapse;font-size:14px">').replace("<th>", '<th align="left">')
     return (f'<div dir="{"rtl" if lang == "ar" else "ltr"}" lang="{lang}" style="font-family:system-ui,sans-serif;line-height:1.6">'
-            f'<p style="color:#5B666A;font-size:14px"><img src="{esc(base + "/assets/logo-144.png")}" width="24" height="24" alt="" style="vertical-align:middle;border-radius:5px;margin-{"left" if lang == "ar" else "right"}:8px">{esc(site_title(cfg, lang))} · {esc(fmt_month(d["month"], lang))} · <a href="{esc(link)}">{w["readOnline"]}</a></p>'
+            f'<p style="color:#45413A;font-size:14px"><img src="{esc(base + "/assets/logo-144.png")}" width="24" height="24" alt="" style="vertical-align:middle;border-radius:5px;margin-{"left" if lang == "ar" else "right"}:8px">{esc(site_title(cfg, lang))} · {esc(fmt_month(d["month"], lang))} · <a href="{esc(link)}">{w["readOnline"]}</a></p>'
             f'<h1 style="font-size:24px;line-height:1.3">{esc(t(d, "title", lang))}</h1>{body}'
-            f'<p style="color:#5B666A;font-size:13px"><a href="{esc(base)}/">{esc(site_title(cfg, lang))}</a> · {esc(w["footer"])}</p></div>')
+            f'<p style="color:#45413A;font-size:13px"><a href="{esc(base)}/">{esc(site_title(cfg, lang))}</a> · {esc(w["footer"])}</p></div>')
 
 
 def write_monthly_pages(cfg: dict, review: dict) -> None:
