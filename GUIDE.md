@@ -387,7 +387,27 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | backfill-themes | Give a theme to archived stories that have none. | a few cents |
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
 | backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |
+| brand | Remake the logo files: icons, preview cards, wordmarks. Run after changing the site's name or tagline. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
+
+### The logo
+
+The logo is a speech bubble carrying a pulse line: what is being said, and how it moves. It is in the site's brass on a transparent background, and it is the same mark everywhere: the browser tab, the header of every page, the print header of the reports and digests (so it is on every PDF), the card shown when a page is shared on X, Facebook, Telegram or WhatsApp, the RSS feeds and the newsletter.
+
+The files, all under `assets/`:
+
+| File | Use |
+|---|---|
+| `logo.svg` | the mark, any size; `logo-mono.svg` is the same in ink for one-colour print |
+| `logo-wordmark.svg`, `logo-wordmark-ar.svg` | the mark with the name in English or Arabic, as outlines (no font needed); the `-dark` versions have the name in white for dark backgrounds |
+| `logo-wordmark.png`, `logo-wordmark-ar.png` | the same as PNG, 1600 px wide with a transparent background, for documents, slides and posts |
+| `og.png`, `og-ar.png` | the preview card (1200 × 630) shown when a page is shared; pages pick the one in their language |
+| `logo-512.png`, `logo-192.png`, `apple-touch-icon.png`, `favicon-32.png`, `favicon-16.png`, `favicon.ico` (at the root) | browser and home-screen icons |
+| `logo-144.png` | the mark on paper, for the feeds and the newsletter |
+
+When using it elsewhere, keep the mark whole and in one of its two colours, on a plain background, with clear space around it of at least a quarter of its height; do not stretch it or add effects.
+
+`scripts/brand.py` draws the mark and makes all of these. After changing the name or the tagline, run the **brand** maintenance task (or `pip install fonttools uharfbuzz` and `python scripts/brand.py` on your computer, which needs Chrome) and the files are remade.
 
 ### Citing the tracker and getting a DOI
 
