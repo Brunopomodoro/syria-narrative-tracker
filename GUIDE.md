@@ -388,7 +388,39 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
 | backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |
 | brand | Remake the logo files: icons, preview cards, wordmarks. Run after changing the site's name or tagline. | free |
+| facebook-check | Check the Facebook Page token and show the latest daily, weekly and monthly posts. Posts nothing. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
+
+### Posting to Facebook
+
+Once set up, the tracker posts to its Facebook Page by itself: **yesterday's daily brief** every morning (the first update after 4:00 UTC, 7:00 in Damascus), each **weekly digest** once it is written (Monday), and each **monthly report** once it is written (early in the month). Each post has the headline, a few lines, the top stories or key findings, the link, the PDF link for digests and reports, hashtags, and a line saying it is an automatic summary. Arabic comes first and English below; the link preview shows the page's card. At most one post goes out per update, so a Monday with two reports spreads them out. What has been posted is kept in `data/social.json`, so nothing is posted twice and a failed post is tried again.
+
+Setting it up takes about half an hour, all in a browser. Meta for Developers must be reachable from where you are (it is not from Syria).
+
+**1. The Page.** On Facebook, open **Pages → Create new Page**. Name: `Syria Narrative Tracker | متتبّع السرديات السورية`. Category: *News & media website*. Bio: `ملخص آلي يومي وأسبوعي وشهري لما يُقال عن سوريا على الإنترنت. Automatic daily, weekly and monthly summaries of what is said about Syria online.` Add the website `https://www.syrianpulse.org`. Profile picture: `assets/avatar.png`. Cover: `assets/cover-facebook.png` (download both from the repository). Your own Facebook account must have **full control** of the Page.
+
+**2. The app.** Go to https://developers.facebook.com, log in with the same Facebook account and accept the developer terms if asked. **My Apps → Create app**. Name: `Syrian Pulse poster`, your email as contact. Use case: **Manage everything on your Page**. Business portfolio: *I don't want to connect a business portfolio yet*. Finish with **Create app**.
+
+**3. Permissions.** In the app, open **Use cases → Manage everything on your Page → Customize** and make sure `pages_manage_posts`, `pages_read_engagement` and `pages_show_list` are added.
+
+**4. App settings.** Open **App settings → Basic** and fill in: Privacy policy URL `https://www.syrianpulse.org/privacy/en.html`; User data deletion → *Data deletion instructions URL* `https://www.syrianpulse.org/privacy/en.html#deletion`; App icon `assets/avatar.png`; Category *News*. **Save changes.**
+
+**5. Live mode (important).** Posts made by an app in *development* mode are visible only to you, not to the public. Open **Publish** in the left menu (or switch **App mode** at the top from *Development* to *Live*) and publish the app. No App Review is needed: the app only posts to a Page you manage yourself.
+
+**6. The Page token.** Open **Tools → Graph API Explorer** (https://developers.facebook.com/tools/explorer).
+- Meta App: your app. User or Page: *Get User Access Token*. Add the permissions `pages_manage_posts`, `pages_read_engagement`, `pages_show_list`. Press **Generate Access Token** and, in the window that opens, choose your Page and allow everything.
+- Press the **ⓘ** next to the token → **Open in Access Token Tool** → **Extend Access Token** at the bottom, and copy the long token it shows.
+- Back in the Explorer, paste that long token into the *Access Token* field, type `me/accounts?fields=id,name,access_token` in the query box and press **Submit**. Under your Page, copy the `id` and the `access_token`.
+- Check it: paste the Page token into the Access Token Debugger (https://developers.facebook.com/tools/debug/accesstoken). *Expires* should say **Never**, and the type **Page**.
+
+**7. The secrets.** In this repository: **Settings → Secrets and variables → Actions → New repository secret**. Add `FB_PAGE_ID` (the id) and `FB_PAGE_TOKEN` (the Page access token). Optionally, add `FB_APP_SECRET` (App settings → Basic → App secret → Show) and turn on **Require app secret** under App settings → Advanced; then a stolen token alone cannot post. Never paste a token anywhere else, not in chat, an issue or a file.
+
+**8. Check.** Run **Actions → Maintenance → facebook-check**. The log says "Token works: it can post to the Page …" and shows the posts that would go out. The first real post goes out at the next update; to post right away, run **Actions → Update narratives → Run workflow**.
+
+**Good to know.**
+- The Page token stops working if you change your Facebook password, leave the Page, or remove the app; the update log then says so, and posting resumes once you make a new token (step 6) and replace `FB_PAGE_TOKEN`. Updates of the site are never held up by Facebook.
+- To pause posting, set `enabled: false` under `facebook:` in `config.yaml`. To show English first, set `first_lang: en`. To skip a kind, set `daily`, `weekly` or `monthly` to `false`.
+- Turn on two-factor authentication on the Facebook account that owns the Page and the app.
 
 ### Hashtags on the share links
 

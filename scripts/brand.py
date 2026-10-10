@@ -14,6 +14,8 @@ The mark is a speech bubble carrying a pulse line: what is being said, and how i
   assets/apple-touch-icon.png     the mark on paper, 180 px, for iPhone and iPad home screens
   assets/favicon-32.png, -16.png  small PNG icons;  favicon.ico holds both
   assets/logo-144.png             the mark on paper, for the RSS feeds and the newsletter
+  assets/avatar.png               the mark on paper, 1024 px, safe in a circle: profile pictures and the Meta app icon
+  assets/cover-facebook.png       the Facebook Page cover (1640 x 624)
   site.webmanifest                name, colours and icons for browsers
 
 The PNGs are rendered with the Chrome that GitHub's runners and most computers already have (see report_pdf.py);
@@ -200,6 +202,20 @@ def og_html(lang: str, fonts: dict) -> str:
     return html_page(body, 1200, 630, fonts, PAPER)
 
 
+def cover_html(fonts: dict) -> str:
+    """The Facebook cover (1640 x 624): the mark and both names, centred so the phone crop and the profile
+    picture leave them whole."""
+    body = f'''<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:70px;color:{INK}">
+<div style="display:flex;align-items:center;gap:40px">{mark_svg(size=150)}
+<div style="display:flex;flex-direction:column;gap:6px">
+<div dir="rtl" style="font-family:'Noto Naskh Arabic',serif;font-weight:600;font-size:76px;line-height:1.15">{NAME_AR}</div>
+<div style="font-family:'IBM Plex Serif',serif;font-weight:600;font-size:58px;line-height:1.1;letter-spacing:-.5px">{NAME}</div></div></div>
+<div style="margin-top:34px;font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif;font-size:30px;color:{MUTED}"><span dir="rtl">ما يُقال عن سوريا على الإنترنت</span> · What is being said about Syria online</div>
+<div style="margin-top:30px;width:760px;height:12px;border-radius:6px;background:linear-gradient(90deg,{NEG},{NEU} 50%,{POS})"></div>
+<div style="margin-top:16px;font-family:'IBM Plex Sans',sans-serif;font-size:26px;color:{BRASS}">syrianpulse.org</div></div>'''
+    return html_page(body, 1640, 624, fonts, PAPER)
+
+
 def wordmark_png_html(svg: str, fonts: dict, width: int) -> tuple[str, int]:
     vb = re.search(r'viewBox="0 0 (\d+) 64"', svg).group(1)
     height = round(width * 64 / int(vb))
@@ -344,7 +360,7 @@ def main() -> int:
     jobs = [("og.png", og_html("en", fonts), 1200, 630), ("og-ar.png", og_html("ar", fonts), 1200, 630),
             ("logo-512.png", icon_html(512, fonts), 512, 512), ("logo-192.png", icon_html(192, fonts), 192, 192),
             ("apple-touch-icon.png", icon_html(180, fonts, PAPER, 0.11), 180, 180), ("logo-144.png", icon_html(144, fonts, PAPER, 0.1), 144, 144),
-]
+            ("avatar.png", icon_html(1024, fonts, PAPER, 0.17), 1024, 1024), ("cover-facebook.png", cover_html(fonts), 1640, 624)]
     for lang, svg in wordmarks.items() or [(l, (ASSETS / ("logo-wordmark-ar.svg" if l == "ar" else "logo-wordmark.svg")).read_text(encoding="utf-8"))
                                            for l in ("en", "ar") if (ASSETS / ("logo-wordmark-ar.svg" if l == "ar" else "logo-wordmark.svg")).exists()]:
         html, h = wordmark_png_html(svg, fonts, 1600)

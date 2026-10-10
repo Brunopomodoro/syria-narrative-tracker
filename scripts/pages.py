@@ -57,7 +57,7 @@ W = {   # the words on the static pages
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
            "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
-           "aboutReport": "About this report", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
+           "aboutReport": "About this report", "privacy": "Privacy", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
            "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
@@ -88,7 +88,7 @@ W = {   # the words on the static pages
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
            "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
-           "aboutReport": "عن هذا التقرير", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
+           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
            "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
@@ -274,7 +274,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''}</footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a></footer>
 </div>
 </body>
 </html>
@@ -939,6 +939,39 @@ def load_digests() -> list:
     return archive._load(DATA / "weekly" / "index.json", [])
 
 
+PRIVACY_UPDATED = "2026-10-10"
+
+
+def privacy_body(cfg: dict, lang: str) -> str:
+    contact = str(cfg.get("contact_url") or "").strip()
+    c = f'<a href="{esc(contact)}" rel="noopener">{esc(contact.replace("https://", ""))}</a>' if contact.startswith("https://") else ""
+    gh, cf = "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement", "https://www.cloudflare.com/privacypolicy/"
+    if lang == "ar":
+        sections = [
+            ("هذا الموقع", f"لا يستخدم الموقع ملفات تعريف الارتباط (الكوكيز)، ولا أدوات تحليل أو تتبّع، ولا حسابات ولا نماذج، ولا يجمع أي معلومات عن زوّاره. الموقع مستضاف على GitHub Pages ويُقدَّم عبر Cloudflare، ومثل أي خدمة استضافة تعالج هاتان الشركتان عناوين IP للزوار لعرض الصفحات والحماية من الهجمات، وفق سياسات الخصوصية الخاصة بهما (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>، <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
+            ("المنشورات العامة", "يقرأ المتتبّع منشورات عامة عن سوريا وينشر نتائج إجمالية فقط. لا تُخزَّن منشورات الأفراد ولا تُقتبس ولا يُربط إليها، ولا يُرسم ملف لأي شخص. لكشف التنسيق، تُحوَّل أسماء المعلّقين إلى بصمات أحادية الاتجاه لا توجد إلا في الذاكرة أثناء التحديث ولا تُحفظ أبداً."),
+            ("حسابات التواصل الاجتماعي", "تنشر صفحة المتتبّع على فيسبوك تقارير الموقع نفسه تلقائياً عبر تطبيق فيسبوك. يستخدم التطبيق مديرو المتتبّع فقط للنشر على صفحة المتتبّع، ولا يسجّل دخول أحد، ولا يقرأ أو يجمع أو يخزّن أي بيانات عن مستخدمي فيسبوك، ولا يشارك شيئاً مع أي جهة."),
+            ("حذف البيانات", "لا يحتفظ المتتبّع ولا تطبيقه على فيسبوك بأي بيانات شخصية عنك، فلا يوجد ما يُحذف. إذا سبق أن ربطت التطبيق بحسابك على فيسبوك، يمكنك إزالته من إعدادات فيسبوك ← التطبيقات والمواقع الإلكترونية ← إزالة." + (f" لأي سؤال أو طلب، تواصل معنا عبر {c}." if c else "")),
+        ]
+        head = f"<h1>الخصوصية</h1><p class=\"sub\">آخر تحديث: {esc(fmt_date(PRIVACY_UPDATED, lang))}</p>"
+    else:
+        sections = [
+            ("This website", f"The site uses no cookies, no analytics or tracking, no accounts and no forms, and collects nothing about its visitors. It is hosted on GitHub Pages and served through Cloudflare; like any web host, they process visitors' IP addresses to deliver the pages and protect them from attacks, under their own privacy policies (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>, <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
+            ("Public posts", "The tracker reads public posts about Syria and publishes aggregate results only. Posts by individuals are never stored, quoted or linked, and no one is profiled. To detect coordination, commenters' names are turned into one-way fingerprints that exist only in memory during an update and are never saved."),
+            ("Social media accounts", "The tracker's Facebook Page publishes the site's own reports automatically through a Facebook app. The app is used only by the tracker's administrators to post to the tracker's own Page. It logs no one in, does not read, collect or store data about Facebook users, and shares nothing with anyone."),
+            ("Data deletion", "Neither the tracker nor its Facebook app holds personal data about you, so there is nothing to delete. If you have ever connected the app to your Facebook account, you can remove it under Facebook Settings → Apps and websites → Remove." + (f" For any question or request, contact us at {c}." if c else "")),
+        ]
+        head = f"<h1>Privacy</h1><p class=\"sub\">Last updated: {esc(fmt_date(PRIVACY_UPDATED, lang))}</p>"
+    return head + "".join(f'<h2 id="{"deletion" if i == 3 else "s" + str(i)}">{esc(h)}</h2><p>{body}</p>' for i, (h, body) in enumerate(sections))
+
+
+def write_privacy_pages(cfg: dict) -> None:
+    for lang in LANGS:
+        other = "ar" if lang == "en" else "en"
+        write(ROOT / "privacy" / f"{lang}.html", page(cfg, lang, W[lang]["privacy"], W[lang]["privacy"], privacy_body(cfg, lang),
+                                                   f"privacy/{lang}.html", f"privacy/{other}.html", root="../", kind="website"))
+
+
 def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     """Everything the pipeline does after a run: story pages for the run's stories, listings, feeds, sitemap, prerender."""
     update_story_index(latest)
@@ -955,4 +988,5 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
         write_daily_pages(cfg, [today])   # the day's brief, refreshed on every update
     write_daily_listing(cfg)
     write_sitemap(cfg, digests, reviews)
+    write_privacy_pages(cfg)
     prerender_index(cfg, latest)

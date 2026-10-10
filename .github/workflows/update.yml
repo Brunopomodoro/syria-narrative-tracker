@@ -45,6 +45,14 @@ jobs:
       - name: Report PDFs (only when a monthly report or weekly digest is new)
         run: python scripts/report_pdf.py
 
+      - name: Post to Facebook (only once the Page secrets exist)
+        continue-on-error: true
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
+        run: python scripts/social.py
+
       - name: Save results
         run: |
           git config user.name "narrative-bot"

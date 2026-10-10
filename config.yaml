@@ -27,6 +27,23 @@ monthly_review: true
 # have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
 newsletter_url: ""
 
+# Where people can reach the tracker; shown on the privacy page (Meta asks for a contact).
+contact_url: "https://github.com/Brunopomodoro/syria-narrative-tracker/issues"
+
+# Posting the reports to the tracker's Facebook Page (GUIDE.md, "Posting to Facebook"). Nothing is posted
+# until the FB_PAGE_ID and FB_PAGE_TOKEN secrets exist. first_lang: the language shown first in each post
+# (its page is the link preview). per_run: the most posts per update. daily_after_utc: yesterday's brief
+# goes out at the first update after this hour (4 UTC = 7:00 in Damascus). api_version: empty uses the app's.
+facebook:
+  enabled: true
+  first_lang: ar
+  per_run: 1
+  daily: true
+  weekly: true
+  monthly: true
+  daily_after_utc: 4
+  api_version: ""
+
 # Hashtags for the X, Facebook and Telegram share links of daily briefs, weekly digests, monthly reports
 # and story pages (GUIDE.md). always: on every share, by page language. places: added when one of the
 # spellings under match is in the page's story titles. themes: by theme id, for the page's main themes.
