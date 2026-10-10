@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>المراجعات الشهرية · متتبّع السرديات السورية</title>
+<title>التقارير الشهرية · متتبّع السرديات السورية</title>
 <meta name="description" content="مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.">
 <link rel="canonical" href="https://www.syrianpulse.org/monthly/ar/index.html">
 <link rel="alternate" hreflang="ar" href="https://www.syrianpulse.org/monthly/ar/index.html"><link rel="alternate" hreflang="en" href="https://www.syrianpulse.org/monthly/en/index.html">
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="متتبّع السرديات السورية: الملخص الأسبوعي" href="../../feed-ar.xml">
 <link rel="alternate" type="application/rss+xml" title="متتبّع السرديات السورية: المراجعة الشهرية" href="../../feed-monthly-ar.xml">
-<meta property="og:type" content="website"><meta property="og:title" content="المراجعات الشهرية"><meta property="og:description" content="مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.">
+<meta property="og:type" content="website"><meta property="og:title" content="التقارير الشهرية"><meta property="og:description" content="مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.">
 <meta property="og:url" content="https://www.syrianpulse.org/monthly/ar/index.html"><meta property="og:locale" content="ar_SY"><meta property="og:site_name" content="متتبّع السرديات السورية">
 <meta property="og:image" content="https://www.syrianpulse.org/assets/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
@@ -39,15 +39,26 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.82rem;color:var(--muted);margin-inline-end:8px}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
+.report .rmeta{margin-top:-6px}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
+.charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}
+.legend{display:flex;gap:18px;font-size:.82rem;color:var(--muted);margin:6px 0 0}.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-inline-end:6px;background:currentColor}.legend i.b{background:var(--brass)}
+.about-report{border-top:1px solid var(--rule);margin-top:30px;padding-top:14px;font-size:.88rem;color:var(--muted)}.about-report h2{margin-top:0;font-size:1.05rem}.about-report p{max-width:none}
+@media (min-width:640px){.kpis{grid-template-columns:repeat(3,1fr)}.charts{grid-template-columns:1fr 1fr}}
+@page{size:A4;margin:10mm 12mm}
+@media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.top,.share,footer,.chip,.print-hide,.wk-text{display:none!important}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
+.kpis{grid-template-columns:repeat(6,1fr);gap:6pt}.kpi{padding:5pt 8pt;border-color:#bbb}.kpi b{font-size:12pt}.kpi span,.kpi .delta{font-size:7.5pt}.charts{grid-template-columns:1fr 1fr;gap:8pt}.charts figure{padding:5pt 8pt;border-color:#bbb}.charts figcaption{font-size:9pt}
+.analysis{column-count:2;column-gap:16pt}.analysis h2{column-span:all}.weeks ul{column-count:2;column-gap:16pt}section,figure,.kpi,table,li{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="../../?lang=ar">متتبّع السرديات السورية</a>
-<nav><a href="../../?lang=ar">المتتبّع</a><a href="../../?lang=ar#trends">الاتجاهات</a><a href="../../?lang=ar#data">البيانات</a><a href="../../?lang=ar#about">حول الموقع</a><a class="lang" lang="en" href="../../monthly/en/index.html">English</a></nav></header>
+<nav><a href="../../?lang=ar">المتتبّع</a><a href="../../?lang=ar#trends">الاتجاهات</a><a href="../../?lang=ar#reports">التقارير</a><a href="../../?lang=ar#data">البيانات</a><a href="../../?lang=ar#about">حول الموقع</a><a class="lang" lang="en" href="../../monthly/en/index.html">English</a></nav></header>
 <main>
-<h1>المراجعات الشهرية</h1><p class="sub">مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.</p><ul class="list"><li><a href="2026-09.html">الدبلوماسية ترفع الخطاب الرسمي بينما الانفجارات والتقشف ومخاوف الجولان تجر المزاج الشعبي إلى الأسفل</a>
-<span class="meta">أيلول ٢٠٢٦</span></li></ul><p class="sub"><a href="../../feed-monthly-ar.xml">RSS</a></p>
+<h1>التقارير الشهرية</h1><p class="sub">مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.</p><ul class="list"><li><a href="2026-09.html">دبلوماسية صاعدة ومزاج هابط: شهر بين أضواء الأمم المتحدة وضغوط الداخل</a>
+<span class="meta">أيلول ٢٠٢٦ · <a href="2026-09.pdf">تنزيل PDF</a></span></li></ul><p class="sub"><a href="../../feed-monthly-ar.xml">RSS</a></p>
 </main>
 <footer>تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.</footer>
 </div>
