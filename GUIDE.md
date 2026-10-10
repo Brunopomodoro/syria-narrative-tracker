@@ -388,7 +388,7 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
 | backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |
 | brand | Remake the logo files: icons, preview cards, wordmarks. Run after changing the site's name or tagline. | free |
-| facebook-check | Check the Facebook Page token and show the latest daily, weekly and monthly posts. Posts nothing. | free |
+| social-check | Check the Facebook and X keys and show the latest daily, weekly and monthly posts for each. Posts nothing. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
 
 ### Posting to Facebook
@@ -415,12 +415,36 @@ Setting it up takes about half an hour, all in a browser. Meta for Developers mu
 
 **7. The secrets.** In this repository: **Settings → Secrets and variables → Actions → New repository secret**. Add `FB_PAGE_ID` (the id) and `FB_PAGE_TOKEN` (the Page access token). Optionally, add `FB_APP_SECRET` (App settings → Basic → App secret → Show) and turn on **Require app secret** under App settings → Advanced; then a stolen token alone cannot post. Never paste a token anywhere else, not in chat, an issue or a file.
 
-**8. Check.** Run **Actions → Maintenance → facebook-check**. The log says "Token works: it can post to the Page …" and shows the posts that would go out. The first real post goes out at the next update; to post right away, run **Actions → Update narratives → Run workflow**.
+**8. Check.** Run **Actions → Maintenance → social-check**. The log says "Token works: it can post to the Page …" and shows the posts that would go out. The first real post goes out at the next update; to post right away, run **Actions → Update narratives → Run workflow**.
 
 **Good to know.**
 - The Page token stops working if you change your Facebook password, leave the Page, or remove the app; the update log then says so, and posting resumes once you make a new token (step 6) and replace `FB_PAGE_TOKEN`. Updates of the site are never held up by Facebook.
 - To pause posting, set `enabled: false` under `facebook:` in `config.yaml`. To show English first, set `first_lang: en`. To skip a kind, set `daily`, `weekly` or `monthly` to `false`.
 - Turn on two-factor authentication on the Facebook account that owns the Page and the app.
+
+### Posting to X
+
+Once set up, the tracker posts to its X account on the same schedule as Facebook: yesterday's daily brief every morning, each weekly digest and each monthly report once written. Each report is two posts, one in Arabic and one in English, each with the label and date, the headline, as much of the summary as fits, the link and up to four hashtags; every post stays within 280 characters. At most two posts go out per update. The record in `data/social.json` keeps anything from going out twice.
+
+**Cost.** X charges per post from prepaid credits; there has been no free tier for new developers since February 2026. About 35 reports a month means about 70 posts. Reported prices range from about 1 cent a post to 20 cents for a post with a link, so expect roughly $1 to $15 a month; check the price list in the console. Set `languages: [ar]` under `x:` in `config.yaml` to post in Arabic only and halve it.
+
+**1. The account.** Sign up at https://x.com/i/flow/signup with a new email for the tracker. Name `Syria Narrative Tracker`, handle such as `@SyrianPulse`. Profile picture `assets/avatar.png`, header `assets/cover-x.png`. Bio: `ملخص آلي يومي لما يُقال عن سوريا على الإنترنت · Automatic summaries of what is said about Syria online. syrianpulse.org`. Turn on two-factor authentication at https://x.com/settings/account/login_verification.
+
+**2. The automated label.** At https://x.com/settings/account/automation choose your personal X account as the managing account. The tracker's profile then shows "Automated by @you", which X's rules ask of bots.
+
+**3. The developer account.** Logged in as the tracker's account, open https://developer.x.com and sign up. Describe the use honestly: "Posts the daily, weekly and monthly summaries of syrianpulse.org, a public research site, to this account. No reading of other accounts, no replies, no direct messages." Add a payment method, buy the minimum credits, and set a monthly spending limit.
+
+**4. The app.** In the console, create an app (a default one may already exist). Open its **User authentication settings → Set up**: App permissions **Read and write**; Type of app **Web App, Automated App or Bot**; Callback URL `https://www.syrianpulse.org/`; Website `https://www.syrianpulse.org/`. Save.
+
+**5. The keys.** Open the app's **Keys and tokens**:
+- **API Key and Secret** (also called consumer keys): generate or regenerate, copy both.
+- **Access Token and Secret**: generate, copy both. It must say **Read and Write**. If it says Read only, the token was made before step 4: regenerate it.
+
+**6. The secrets.** At https://github.com/Brunopomodoro/syria-narrative-tracker/settings/secrets/actions/new add four secrets: `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`.
+
+**7. Check.** Run **Actions → Maintenance → social-check** (https://github.com/Brunopomodoro/syria-narrative-tracker/actions/workflows/tools.yml). The log says "Keys work: they can post as @…" and shows the posts. The first posts go out at the next update, or at once with **Actions → Update narratives → Run workflow**.
+
+**If posting stops**, the update log says why: no credits left (add credits), keys rejected (copy them again), or read-only (step 5). To pause, set `enabled: false` under `x:`.
 
 ### Hashtags on the share links
 

@@ -44,6 +44,19 @@ facebook:
   daily_after_utc: 4
   api_version: ""
 
+# Posting the reports to the tracker's X account (GUIDE.md, "Posting to X"). Nothing is posted until the four
+# X_ secrets exist. Each report is one post per language in `languages`; X charges per post, so [ar] halves the
+# cost. per_run: the most posts per update. max_tags: the most hashtags on a post.
+x:
+  enabled: true
+  languages: [ar, en]
+  per_run: 2
+  max_tags: 4
+  daily: true
+  weekly: true
+  monthly: true
+  daily_after_utc: 4
+
 # Hashtags for the X, Facebook and Telegram share links of daily briefs, weekly digests, monthly reports
 # and story pages (GUIDE.md). always: on every share, by page language. places: added when one of the
 # spellings under match is in the page's story titles. themes: by theme id, for the page's main themes.
