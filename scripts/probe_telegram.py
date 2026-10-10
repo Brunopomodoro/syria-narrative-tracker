@@ -123,8 +123,14 @@ def main() -> int:
     if sys.argv[1:2] == ["--discover"]:
         sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
         import pipeline as P
-        seeds = [c["name"] for c in P.load_config().get("telegram_channels") or []]
-        names = discover(seeds)[:150]
+        known = {c["name"].lower() for c in P.load_config().get("telegram_channels") or []}
+        if sys.argv[2:]:                      # snowball: discover from the channels given, skip the websites
+            global SITES
+            SITES, seeds = [], sys.argv[2:]
+        else:
+            seeds = sorted(known)
+        skip = known | {x.lower() for x in seeds}
+        names = [n for n in discover(seeds) if n.lower() not in skip][:150]
         print(f"{len(names)} candidates found from {len(seeds)} channels and {len(SITES)} websites.\n")
     else:
         names = sys.argv[1:] or CANDIDATES
