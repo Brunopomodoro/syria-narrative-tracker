@@ -359,11 +359,12 @@ Everything below is already switched on. This section explains what exists and t
 
 The 12 themes live under `themes:` in `config.yaml`, each with a description that tells the analysis what belongs where. You can reword labels and descriptions freely. Avoid changing an `id` or adding and removing themes casually: the trend charts and downloads compare themes across months by id, so a change breaks the continuity. If you do change them, run the **rebuild-index-and-exports** maintenance job afterwards.
 
-### Story pages, weekly digests and feeds
+### Story pages, daily briefs, weekly digests and feeds
 
-- Every story has a permanent page in both languages (`stories/en/…`, `stories/ar/…`; the "Permanent page" link under each story on the tracker), with its full latest analysis and every update it appeared in. Cite those pages rather than the front page when you refer to a specific story.
-- After every completed week the tracker writes a **weekly digest** in English and Arabic (`weekly/en/…`, `weekly/ar/…`), with the week's theme table. The digests are listed at the bottom of the Trends page and published as RSS feeds (`feed.xml`, `feed-ar.xml`), which newsletter tools and feed readers can follow. Turn this off with `weekly_digest: false` in `config.yaml`.
-- After every completed month it writes a **monthly report** (`monthly/en/…`, `monthly/ar/…`), laid out as a one-page briefing for donors, organisations and journalists: key findings, the month in numbers with two charts, the analysis, the stories that mattered, what to watch, the weeks in brief, the stories that carried coordination signals, the theme and tone tables, and an "About this report" block with the method, the sources, the licence and a citation line. Each report has share links (email, X, Facebook, Telegram, WhatsApp), a print layout, and a **PDF** made by `scripts/report_pdf.py` with the Chrome that GitHub's runners already have. The Reports tab lists the reports and the weekly digests. A month needs at least 10 days of data. Turn it off with `monthly_review: false`.
+- Every story has a permanent page in both languages (`stories/en/…`, `stories/ar/…`; the "Permanent page" link under each story on the tracker), with its full latest analysis, every update it appeared in, and share links. Cite those pages rather than the front page when you refer to a specific story.
+- Every day with data has a **daily brief** (`daily/en/…`, `daily/ar/…`): the day in a word, the day in numbers with a theme chart, and every story of the day with its analysis. It is built from the archive at each update (no model call), so it costs nothing, and it has the same share links and print layout as the reports. The last seven days are listed on the Reports tab, every day under "All days".
+- After every completed week the tracker writes a **weekly digest** in English and Arabic (`weekly/en/…`, `weekly/ar/…`), with the week's theme table. Each digest is a page with share links and a print layout, and a **PDF** next to it (`weekly/en/2026-W40.pdf` and so on). The digests are listed on the Reports tab and published as RSS feeds (`feed.xml`, `feed-ar.xml`), which newsletter tools and feed readers can follow. Turn this off with `weekly_digest: false` in `config.yaml`.
+- After every completed month it writes a **monthly report** (`monthly/en/…`, `monthly/ar/…`), laid out as a one-page briefing for donors, organisations and journalists: key findings, the month in numbers with two charts, the analysis, the stories that mattered, what to watch, the weeks in brief, the stories that carried coordination signals, the theme and tone tables, and an "About this report" block with the method, the sources, the licence and a citation line. Each report has share links (email, X, Facebook, Telegram, WhatsApp), a print layout, and a **PDF** made by `scripts/report_pdf.py` with the Chrome that GitHub's runners already have. The Reports tab lists the reports, the weekly digests and the daily briefs. A month needs at least 10 days of data. Turn it off with `monthly_review: false`.
 
 ### Monthly review and newsletter
 
@@ -382,7 +383,7 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | Task | What it does | Cost |
 |---|---|---|
 | rebuild-index-and-exports | Recompute the per-day index, the monthly downloads and the methodology file from the archive. Run after editing themes, events or the changelog. | free |
-| rebuild-pages | Rebuild every story page, listing, feed and the sitemap. Run after changing how pages look. | free |
+| rebuild-pages | Rebuild every story page, daily brief, digest and report page, the listings, feeds and the sitemap, then the PDFs. Run after changing how pages look. | free |
 | backfill-themes | Give a theme to archived stories that have none. | a few cents |
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
 | backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |

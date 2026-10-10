@@ -51,9 +51,11 @@ def main() -> int:
             pages.write_monthly_pages(cfg, r)
     pages.write_monthly_listing(cfg, reviews)
     pages.write_monthly_feeds(cfg, reviews)
+    daily = pages.write_daily_pages(cfg, archive.all_days())
+    pages.write_daily_listing(cfg)
     pages.write_sitemap(cfg, digests, reviews)
     pages.prerender_index(cfg, latest)
-    print(f"{written} story pages, {len(index) or len(pages.load_story_index())} stories in the index, {len(digests)} digests, {len(reviews)} monthly reviews.")
+    print(f"{written} story pages, {len(index) or len(pages.load_story_index())} stories in the index, {daily} daily briefs, {len(digests)} digests, {len(reviews)} monthly reports.")
     return 0
 
 

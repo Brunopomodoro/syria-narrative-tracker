@@ -2,7 +2,7 @@
 const T = {
   en: {
     title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data", reports: "Reports",
-    reportsTitle: "Reports", reportsSub: "Written for sharing. Each monthly report is a one-page briefing on what was said about Syria online that month: the numbers, the stories that mattered, where people and outlets differed, and what to watch. It comes as a web page and a PDF, in English and Arabic. The weekly digests below are shorter and faster.",
+    reportsTitle: "Reports", reportsSub: "Written for sharing. Each monthly report is a one-page briefing on what was said about Syria online that month: the numbers, the stories that mattered, where people and outlets differed, and what to watch. It comes as a web page and a PDF, in English and Arabic. The weekly digests are shorter and faster, also with a PDF, and the daily briefs cover a single day. Every page has share links and a print layout.",
     readReport: "Read the report", pdf: "PDF", reportFeed: "Monthly feed", digestFeed: "Weekly feed", noReports: "The first monthly report is written after the first complete month.",
     intro: "Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true.", switchTo: "العربية", switchLang: "ar",
     loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
@@ -58,8 +58,10 @@ const T = {
     kindTitle: "By kind of outlet", kindSub: "Tone of coverage by each kind of outlet, against all outlets (grey). Available from 28 September 2026.",
     notEnough: "Not enough data yet.", people: "People", outlets: "Outlets", allPublic: "All people", allOutlets: "All outlets", share: "Share", stories: "Stories",
     eventsLbl: "Events", shareLbl: "share of discussion", dateCol: "Date", valueCol: "Value",
-    weeklyTitle: "Weekly digests", weeklySub: "A written summary of each week, with the week's theme table. Also available as an RSS feed.", allDigests: "All digests", feed: "RSS feed", permalink: "Permanent page",
+    weeklyTitle: "Weekly digests", weeklySub: "A written summary of each week, with the week's theme table. Each digest is a page and a PDF, with share links; also available as an RSS feed.", allDigests: "All digests", feed: "RSS feed", permalink: "Permanent page",
     monthlyTitle: "Monthly reports", monthlySub: "One page per month: key findings, the month in numbers, the stories that mattered, and what to watch. Print it, send it, or share it from the page.", allReviews: "All reports", subscribe: "Subscribe by email",
+    briefsTitle: "Daily briefs", briefsSub: "One page per day: the day in a word, the day in numbers, and every story of the day with its analysis. Each page can be printed or shared like the reports.", allDays: "All days",
+    storiesOf: (n) => `${n} ${n === "1" ? "story" : "stories"}`,
     /* data */
     dataTitle: "Data", dataSub: "Everything the tracker produces can be downloaded and reused. Licence: CC BY 4.0 (free to use with attribution). Posts by individuals are never stored: the data holds analyses and outlet headlines only.",
     dlTitle: "Download a date range", dlSub: "Built in your browser from the daily archive files; identical to the monthly files below.",
@@ -133,7 +135,7 @@ const T = {
   },
   ar: {
     title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير",
-    reportsTitle: "التقارير", reportsSub: "كُتبت لتُشارَك. كل تقرير شهري إحاطة من صفحة واحدة عمّا قيل عن سوريا على الإنترنت في ذلك الشهر: الأرقام، والقصص التي كانت الأهم، وأين اختلف الناس عن وسائل الإعلام، وما يجب متابعته. يتوفر كصفحة على الموقع وكملف PDF، بالعربية والإنجليزية. الملخصات الأسبوعية أدناه أقصر وأسرع.",
+    reportsTitle: "التقارير", reportsSub: "كُتبت لتُشارَك. كل تقرير شهري إحاطة من صفحة واحدة عمّا قيل عن سوريا على الإنترنت في ذلك الشهر: الأرقام، والقصص التي كانت الأهم، وأين اختلف الناس عن وسائل الإعلام، وما يجب متابعته. يتوفر كصفحة على الموقع وكملف PDF، بالعربية والإنجليزية. الملخصات الأسبوعية أقصر وأسرع، ولها PDF أيضاً، والموجزات اليومية تغطي يوماً واحداً. لكل صفحة روابط مشاركة وتنسيق للطباعة.",
     readReport: "اقرأ التقرير", pdf: "PDF", reportFeed: "خلاصة التقارير الشهرية", digestFeed: "خلاصة الملخصات الأسبوعية", noReports: "يُكتب أول تقرير شهري بعد اكتمال أول شهر.",
     intro: "يتابع متتبّع السرديات السورية ما يُقال عن سوريا على الإنترنت، ويتجدّد تلقائياً على مدار اليوم. يقرأ منشورات عامة بالعربية والكردية والإنجليزية من قنوات تيليغرام والمواقع الإخبارية ويوتيوب وريديت وإكس، ويستخدم الذكاء الاصطناعي لتجميعها في قصص ووصف تفاعل الناس ووسائل الإعلام معها. يعرض الموقع ما يُقال، لا ما هو صحيح.", switchTo: "English", switchLang: "en",
     loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
@@ -188,8 +190,10 @@ const T = {
     kindTitle: "حسب نوع وسيلة الإعلام", kindSub: "نبرة تغطية كل نوع من وسائل الإعلام، مقارنةً بكل وسائل الإعلام (بالرمادي). متوفر منذ ٢٨ أيلول ٢٠٢٦.",
     notEnough: "لا تكفي البيانات بعد.", people: "الناس", outlets: "وسائل الإعلام", allPublic: "كل الناس", allOutlets: "كل وسائل الإعلام", share: "الحصة", stories: "القصص",
     eventsLbl: "الأحداث", shareLbl: "الحصة من النقاش", dateCol: "التاريخ", valueCol: "القيمة",
-    weeklyTitle: "الملخصات الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. متوفر أيضاً كخلاصة RSS.", allDigests: "كل الملخصات", feed: "خلاصة RSS", permalink: "صفحة دائمة",
+    weeklyTitle: "الملخصات الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. كل ملخص صفحة وملف PDF مع روابط مشاركة؛ متوفر أيضاً كخلاصة RSS.", allDigests: "كل الملخصات", feed: "خلاصة RSS", permalink: "صفحة دائمة",
     monthlyTitle: "التقارير الشهرية", monthlySub: "صفحة واحدة لكل شهر: أبرز النتائج، والشهر بالأرقام، والقصص التي كانت الأهم، وما يجب متابعته. اطبعه أو أرسله أو شاركه من الصفحة نفسها.", allReviews: "كل التقارير", subscribe: "اشترك بالبريد الإلكتروني",
+    briefsTitle: "الموجزات اليومية", briefsSub: "صفحة واحدة لكل يوم: اليوم في كلمة، واليوم بالأرقام، وكل قصص اليوم مع تحليلها. يمكن طباعة كل صفحة أو مشاركتها مثل التقارير.", allDays: "كل الأيام",
+    storiesOf: (n) => { const k = Number(String(n).replace(/[٠-٩]/g, c => "٠١٢٣٤٥٦٧٨٩".indexOf(c))); return `${n} ${k >= 3 && k <= 10 ? "قصص" : "قصة"}`; },
     dataTitle: "البيانات", dataSub: "كل ما ينتجه المتتبّع يمكن تنزيله وإعادة استخدامه. الرخصة: CC BY 4.0 (الاستخدام حر مع ذكر المصدر). لا تُحفظ منشورات الأفراد أبداً؛ تحتوي البيانات على التحليلات وعناوين وسائل الإعلام فقط.",
     dlTitle: "تنزيل فترة زمنية", dlSub: "يُبنى الملف في متصفحك من ملفات الأرشيف اليومية، وهو مطابق للملفات الشهرية أدناه.",
     dataset: "مجموعة البيانات", datasets: { stories: "القصص (صف لكل قصة في كل تحديث)", runs: "التحديثات (صف لكل تحديث)", themes: "المواضيع (صف لكل موضوع في كل تحديث)", headlines: "عناوين وسائل الإعلام" },
@@ -893,7 +897,21 @@ function reportsHTML() {
     <p class="chart-legend">${sub}<a href="${rtl() ? "feed-monthly-ar.xml" : "feed-monthly.xml"}">${t.reportFeed} (RSS)</a><a href="${rtl() ? "feed-ar.xml" : "feed.xml"}">${t.digestFeed} (RSS)</a></p>
   </section>
   ${loaded ? monthlyHTML() : `<p class="nodata">${t.loadingTrends}</p>`}
-  ${loaded ? weeklyHTML() : ""}`;
+  ${loaded ? weeklyHTML() : ""}
+  ${loaded ? dailyHTML() : ""}`;
+}
+/* the last days, each a printable, shareable page built from the archive */
+function dailyHTML() {
+  const t = L(), lang = state.lang, days = (state.trends.index?.days || []).filter(d => d.runs > 0).slice(-7).reverse();
+  if (!days.length) return "";
+  const items = days.map(d => `<li><a href="daily/${lang}/${esc(d.date)}.html"><b>${esc(fmtDay(d.date, { weekday: "long", day: "numeric", month: "long" }))}</b></a>
+    <span class="s-meta">${t.people}: ${esc(toneLabel(d.public_sentiment))} · ${t.outlets}: ${esc(toneLabel(d.outlet_sentiment))} · ${t.storiesOf(num(d.stories))}</span></li>`).join("");
+  return `
+  <section class="tsec" aria-labelledby="h-daily">
+    <div class="sec-head"><div><h2 id="h-daily">${t.briefsTitle}</h2><p class="sub">${t.briefsSub}</p></div>
+      <span class="chart-legend"><a href="daily/${lang}/index.html">${t.allDays}</a></span></div>
+    <ul class="hl">${items}</ul>
+  </section>`;
 }
 function monthlyHTML() {
   const t = L(), list = (state.monthly || []).slice().reverse(), lang = state.lang;
@@ -912,7 +930,7 @@ function weeklyHTML() {
   if (!list.length) return "";
   const items = list.slice(0, 8).map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
     return `<li><a href="weekly/${lang}/${esc(d.week)}.html" dir="auto">${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</a>
-    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))}</span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="weekly/${lang}/${esc(d.week)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
   return `
   <section class="tsec" aria-labelledby="h-weekly">
     <div class="sec-head"><div><h2 id="h-weekly">${t.weeklyTitle}</h2><p class="sub">${t.weeklySub}</p></div>

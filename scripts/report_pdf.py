@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""PDF copies of the monthly reports, made with the Chrome that GitHub's runners (and most computers) already
-have: monthly/<lang>/<YYYY-MM>.pdf next to each page. A PDF is remade when its page is newer. Free, no
-Python packages. Without a Chrome or Chromium on the machine it prints a warning and does nothing.
+"""PDF copies of the monthly reports and weekly digests, made with the Chrome that GitHub's runners (and most
+computers) already have: a .pdf next to each page. A PDF is remade when its page is newer. Free, no Python
+packages. Without a Chrome or Chromium on the machine it prints a warning and does nothing.
 
 Usage:  python scripts/report_pdf.py [--all]
 """
@@ -40,7 +40,7 @@ def main() -> int:
         print("No Chrome or Chromium found; PDFs not made (they are made on GitHub's runners).")
         return 0
     made = 0
-    for page in sorted((ROOT / "monthly").glob("*/20??-??.html")):
+    for page in sorted((ROOT / "monthly").glob("*/20??-??.html")) + sorted((ROOT / "weekly").glob("*/20??-W??.html")):
         out = page.with_suffix(".pdf")
         if not everything and out.exists() and out.stat().st_mtime >= page.stat().st_mtime:
             continue
