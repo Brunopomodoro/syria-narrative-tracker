@@ -18,11 +18,16 @@ on:
           - backfill-monthly            # write the monthly review of every completed month that has none (uses Claude, about 15 cents each)
           - brand                       # remake the logo files: icons, preview cards, wordmarks (free; after changing the name or tagline)
           - social-check                # check the Facebook and X keys and show the latest posts of each kind; posts nothing (free)
+          - telegram-probe              # check candidate Telegram channels (names below, or the built-in list): active? Syria-focused? (free)
           - validation-sample           # a normal update plus a private sample of posts for a validation study (GUIDE.md); size below
       size:
         description: "validation-sample only: how many posts to sample"
         type: string
         default: "300"
+      names:
+        description: "telegram-probe only: channel names separated by spaces, or --discover (empty: the built-in candidate list)"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -74,6 +79,7 @@ jobs:
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          PROBE_NAMES: ${{ inputs.names }}
         run: |
           case "${{ inputs.task }}" in
             test-sources)              python scripts/pipeline.py --dry-run ;;
@@ -85,6 +91,7 @@ jobs:
             backfill-monthly)          python scripts/monthly.py ;;
             brand)                     pip install -q fonttools uharfbuzz && python scripts/brand.py ;;
             social-check)              python scripts/social.py --preview ;;
+            telegram-probe)            python scripts/probe_telegram.py $(printf '%s' "$PROBE_NAMES" | tr -cd 'A-Za-z0-9_ -') ;;
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
           esac
 

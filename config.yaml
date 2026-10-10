@@ -232,6 +232,10 @@ method_changelog:
     note: "Coordination signals for every story: copy-paste, near-identical posts, bursts, bursts without news coverage, the same text on several platforms, commenter concentration (from in-memory hashes, nobody stored) and regular timing, with a level and the values in the downloads. Each update also records how many posts were collected and how many were on topic, not only how many were analysed."
     note_ar: "مؤشرات التنسيق لكل قصة: النسخ واللصق، والمنشورات شبه المتطابقة، والموجات، والموجات بلا تغطية إخبارية، والنص نفسه على منصات عدة، وتركّز المعلّقين (من بصمات في الذاكرة، لا يُحفظ أحد)، والتوقيت المنتظم، مع مستوى وقيم في ملفات التنزيل. يسجّل كل تحديث أيضاً عدد المنشورات المجموعة والمتعلقة بالموضوع، لا المحلَّلة فقط."
 
+  - date: 2026-10-10
+    note: "Thirteen more Telegram channels, each checked for activity and Syria focus before being added: SANA in Arabic, Syria TV, Al-Watan, Syria Plus, Snack Syrian and Step News; local channels for Deir ez-Zor and the east, Daraa and Damascus; and the Syria posts of Al-Hadath, France 24 Arabic and Arabi21. 37 channels in all."
+    note_ar: "ثلاث عشرة قناة تيليغرام إضافية، فُحصت كل منها للتأكد من نشاطها وتركيزها على سوريا قبل إضافتها: سانا بالعربية، وتلفزيون سوريا، وجريدة الوطن، وسوريا بلس، وسناك سوري، ووكالة ستيب؛ وقنوات محلية لدير الزور والمنطقة الشرقية ودرعا ودمشق؛ ومنشورات سوريا من الحدث وفرانس 24 عربي وعربي21. 37 قناة في المجموع."
+
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
@@ -321,6 +325,11 @@ telegram_channels:
     label_ar: "سانا - وكالة الأنباء الرسمية (إنجليزي)"
     filter: false
     kind: official
+  - name: sana_gov
+    label: "SANA - state news agency (AR)"
+    label_ar: "سانا - وكالة الأنباء الرسمية"
+    filter: false
+    kind: official
   - name: SyPresidency
     label: "Syrian Presidency - official"
     label_ar: "رئاسة الجمهورية العربية السورية - رسمي"
@@ -361,6 +370,31 @@ telegram_channels:
     label: "Levant24 - Syria news (EN)"
     label_ar: "ليفانت 24 - أخبار سوريا (إنجليزي)"
     filter: false
+    kind: independent
+  - name: TelevisionSyria
+    label: "Syria TV - opposition-origin broadcaster"
+    label_ar: "تلفزيون سوريا - معارضة سابقاً"
+    filter: false
+    kind: independent
+  - name: alwatan_sy
+    label: "Al-Watan - Damascus daily newspaper"
+    label_ar: "جريدة الوطن - يومية دمشقية"
+    filter: false
+    kind: independent
+  - name: sy_platform
+    label: "Syria Plus (SY+) - news platform"
+    label_ar: "سوريا بلس - منصة إخبارية"
+    filter: false
+    kind: independent
+  - name: snacksyrian
+    label: "Snack Syrian - social and satirical news"
+    label_ar: "سناك سوري - أخبار اجتماعية وساخرة"
+    filter: false
+    kind: independent
+  - name: stepnews
+    label: "Step News Agency - opposition-origin"
+    label_ar: "وكالة ستيب الإخبارية - معارضة سابقاً"
+    filter: true
     kind: independent
   # --- Kurdish-run and north-east Syria
   - name: hawarnews
@@ -429,6 +463,21 @@ telegram_channels:
     label_ar: "تي آر تي عربي - الإذاعة والتلفزيون التركي"
     filter: true
     kind: regional
+  - name: alhadath
+    label: "Al-Hadath - Saudi-owned"
+    label_ar: "الحدث - مملوكة سعودياً"
+    filter: true
+    kind: regional
+  - name: france24_ar
+    label: "France 24 Arabic - French public broadcaster"
+    label_ar: "فرانس 24 عربي - الإعلام العام الفرنسي"
+    filter: true
+    kind: regional
+  - name: arabi21news
+    label: "Arabi21 - London-based"
+    label_ar: "عربي21 - مقرها لندن"
+    filter: true
+    kind: regional
   # --- Local and community outlets (cities, the south, the coast, the north-east, minorities)
   - name: suwayda_24
     label: "Suwayda 24 - local, Druze south"
@@ -438,6 +487,26 @@ telegram_channels:
   - name: athrpress
     label: "Athr Press - Damascus-based"
     label_ar: "أثر برس - مقرها دمشق"
+    filter: false
+    kind: independent
+  - name: Euphrats_post
+    label: "Euphrates Post - Deir ez-Zor and the east"
+    label_ar: "فرات بوست - دير الزور والمنطقة الشرقية"
+    filter: false
+    kind: independent
+  - name: daraa24_org
+    label: "Daraa 24 - local, Daraa"
+    label_ar: "درعا 24 - محلية، درعا"
+    filter: false
+    kind: independent
+  - name: damascusv011
+    label: "Sawt al-Asima - local, Damascus"
+    label_ar: "صوت العاصمة - محلية، دمشق"
+    filter: false
+    kind: independent
+  - name: damascusvoice
+    label: "Sawt Dimashq - local, Damascus"
+    label_ar: "صوت دمشق - محلية، دمشق"
     filter: false
     kind: independent
 
