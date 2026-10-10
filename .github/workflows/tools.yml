@@ -77,6 +77,9 @@ jobs:
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
           esac
 
+      - name: Report PDFs (when a monthly report is new or rebuilt)
+        run: python scripts/report_pdf.py
+
       - name: Upload the validation sample (private repositories only; kept 30 days)
         if: inputs.task == 'validation-sample' && github.event.repository.private == true
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

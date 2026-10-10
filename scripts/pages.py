@@ -48,10 +48,19 @@ W = {   # the words on the static pages
            "tone": ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
            "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
            "feedTitle": "Syria Narrative Tracker: weekly digest", "feedDesc": "A weekly written summary of what is being said about Syria online.",
-           "review": "Monthly review", "reviews": "Monthly reviews", "month": "Month", "monthHighlights": "The month's stories", "watchMonth": "What to watch next month",
+           "review": "Monthly report", "reviews": "Monthly reports", "month": "Month", "monthHighlights": "The stories that mattered", "watchMonth": "What to watch next month",
            "weeksBrief": "The weeks in brief", "flaggedTitle": "Stories that carried signs of coordination", "themeTableMonth": "Themes this month", "vsLastMonth": "vs last month",
            "weeklyTone": "Tone by week", "weekCol": "Week", "daysCol": "Days", "readOnline": "Read online", "subscribe": "Subscribe by email", "level": "Level",
            "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly digests. It describes what was said, not what is true.",
+           "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
+           "aboutReport": "About this report", "share": "Share", "pdf": "Download PDF", "shareEmail": "Email", "cite": "Cite as",
+           "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
+           "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
+           "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
+           "methodText": "This report was generated automatically by the Syria Narrative Tracker from {posts} post analyses over {days} days, drawn from {sources} public sources (Telegram channels, news sites, YouTube comments, Reddit, X and Bluesky) and grouped into stories by an AI model ({model}). Tone runs from −1 (anger, fear, grief) to +1 (hope, pride). It describes what was said online, not what is true, and it is not a representative survey of Syrians: online discussion over-represents people with good connectivity, diaspora communities and media outlets.",
+           "citeText": "{site} ({year}). Monthly report, {month}. {url}",
+           "platformNames": {"telegram": "Telegram channels", "telegram_comments": "Telegram comments", "telegram_groups": "Telegram groups", "news": "News sites", "youtube": "YouTube comments", "reddit": "Reddit", "x": "X", "bluesky": "Bluesky", "threads": "Threads", "instagram": "Instagram"},
+           "langNames": {"ar": "Arabic", "ku": "Kurdish", "en": "English", "other": "other"},
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in"},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
@@ -68,10 +77,19 @@ W = {   # the words on the static pages
            "tone": ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
            "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
            "feedTitle": "متتبّع السرديات السورية: الملخص الأسبوعي", "feedDesc": "ملخص مكتوب أسبوعياً لما يُقال عن سوريا على الإنترنت.",
-           "review": "المراجعة الشهرية", "reviews": "المراجعات الشهرية", "month": "الشهر", "monthHighlights": "قصص الشهر", "watchMonth": "ما يجب متابعته الشهر المقبل",
+           "review": "التقرير الشهري", "reviews": "التقارير الشهرية", "month": "الشهر", "monthHighlights": "القصص التي كانت الأهم", "watchMonth": "ما يجب متابعته الشهر المقبل",
            "weeksBrief": "الأسابيع باختصار", "flaggedTitle": "قصص حملت مؤشرات تنسيق", "themeTableMonth": "مواضيع هذا الشهر", "vsLastMonth": "مقارنة بالشهر الماضي",
            "weeklyTone": "النبرة حسب الأسبوع", "weekCol": "الأسبوع", "daysCol": "الأيام", "readOnline": "اقرأ على الموقع", "subscribe": "اشترك بالبريد الإلكتروني", "level": "المستوى",
            "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن الملخصات الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
+           "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
+           "aboutReport": "عن هذا التقرير", "share": "مشاركة", "pdf": "تنزيل PDF", "shareEmail": "البريد الإلكتروني", "cite": "للاستشهاد",
+           "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
+           "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
+           "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
+           "methodText": "أُنشئ هذا التقرير تلقائياً بواسطة متتبّع السرديات السورية من {posts} تحليل منشور على مدى {days} يوماً، من {sources} مصدراً عاماً (قنوات تيليغرام ومواقع إخبارية وتعليقات يوتيوب وريديت وX وبلوسكاي)، جمعها نموذج ذكاء اصطناعي ({model}) في قصص. تمتد النبرة من −١ (غضب وخوف وحزن) إلى +١ (أمل وفخر). يصف التقرير ما قيل على الإنترنت لا ما هو صحيح، وليس مسحاً تمثيلياً للسوريين: النقاش على الإنترنت يُفرط في تمثيل أصحاب الاتصال الجيد والجاليات ووسائل الإعلام.",
+           "citeText": "{site} ({year}). تقرير شهري، {month}. {url}",
+           "platformNames": {"telegram": "قنوات تيليغرام", "telegram_comments": "تعليقات تيليغرام", "telegram_groups": "مجموعات تيليغرام", "news": "مواقع إخبارية", "youtube": "تعليقات يوتيوب", "reddit": "ريديت", "x": "X", "bluesky": "بلوسكاي", "threads": "ثريدز", "instagram": "إنستغرام"},
+           "langNames": {"ar": "العربية", "ku": "الكردية", "en": "الإنجليزية", "other": "أخرى"},
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في"},
 }
@@ -99,6 +117,17 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.82rem;color:var(--muted);margin-inline-end:8px}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
+.report .rmeta{margin-top:-6px}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
+.charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}
+.legend{display:flex;gap:18px;font-size:.82rem;color:var(--muted);margin:6px 0 0}.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-inline-end:6px;background:currentColor}.legend i.b{background:var(--brass)}
+.about-report{border-top:1px solid var(--rule);margin-top:30px;padding-top:14px;font-size:.88rem;color:var(--muted)}.about-report h2{margin-top:0;font-size:1.05rem}.about-report p{max-width:none}
+@media (min-width:640px){.kpis{grid-template-columns:repeat(3,1fr)}.charts{grid-template-columns:1fr 1fr}}
+@page{size:A4;margin:10mm 12mm}
+@media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.top,.share,footer,.chip,.print-hide,.wk-text{display:none!important}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
+.kpis{grid-template-columns:repeat(6,1fr);gap:6pt}.kpi{padding:5pt 8pt;border-color:#bbb}.kpi b{font-size:12pt}.kpi span,.kpi .delta{font-size:7.5pt}.charts{grid-template-columns:1fr 1fr;gap:8pt}.charts figure{padding:5pt 8pt;border-color:#bbb}.charts figcaption{font-size:9pt}
+.analysis{column-count:2;column-gap:16pt}.analysis h2{column-span:all}.weeks ul{column-count:2;column-gap:16pt}section,figure,.kpi,table,li{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}}
 """
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">'
@@ -233,7 +262,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'?lang=ar' if lang == 'ar' else ''}">{esc(site_title(cfg, lang))}</a>
-<nav><a href="{root}{'?lang=ar' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#about">{w['about']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'?lang=ar' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#about">{w['about']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -484,10 +513,15 @@ def subscribe_link(cfg: dict, lang: str) -> str:
 
 
 def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolute: str = "") -> list:
-    """The review's sections as HTML; absolute links when a site address is given (for the feeds)."""
+    """The report's text sections as HTML; absolute links when a site address is given (for the feeds)."""
     w, s = W[lang], d.get("stats") or {}
     root = absolute + "/" if absolute else base
-    parts = [f"<p>{esc(p)}</p>" for p in (d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [])]
+    parts = []
+    findings = d.get("key_findings_ar" if lang == "ar" else "key_findings") or d.get("key_findings") or []
+    if findings:
+        parts.append(f"<section class=\"findings\"><h2>{w['keyFindings']}</h2><ol>" + "".join(f"<li>{esc(x)}</li>" for x in findings) + "</ol></section>")
+    paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
+    parts.append(f"<section class=\"analysis\"><h2>{w['analysis']}</h2>" + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>")
     hl = d.get("highlights") or []
     if hl:
         items = []
@@ -496,19 +530,10 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
             title = esc(t(h, "title", lang))
             link = f'<a href="{root}stories/{lang}/{esc(key)}.html">{title}</a>' if key else title
             items.append(f"<li><b>{link}</b>{(' — ' if lang == 'en' else ' ـ ')}{esc(t(h, 'why', lang))}</li>")
-        parts.append(f"<h2>{w['monthHighlights']}</h2><ul>{''.join(items)}</ul>")
+        parts.append(f"<section class=\"stories\"><h2>{w['monthHighlights']}</h2><ol>{''.join(items)}</ol></section>")
     watch = d.get("watch_ar" if lang == "ar" else "watch") or []
     if watch:
-        parts.append(f"<h2>{w['watchMonth']}</h2><ul>" + "".join(f"<li>{esc(x)}</li>" for x in watch) + "</ul>")
-    digests = d.get("digests") or []
-    if digests:
-        items = []
-        for x in digests:
-            first = (x.get("paragraphs_ar" if lang == "ar" else "paragraphs") or x.get("paragraphs") or [""])[0]
-            items.append(f'<li><b><a href="{root}weekly/{lang}/{esc(x["week"])}.html">{esc(t(x, "title", lang))}</a></b> '
-                         f'<span class="sub">{esc(fmt_date(x.get("from", ""), lang))} – {esc(fmt_date(x.get("to", ""), lang))}</span>'
-                         f'{("<br>" + esc(first)) if first else ""}</li>')
-        parts.append(f"<h2>{w['weeksBrief']}</h2><ul>{''.join(items)}</ul>")
+        parts.append(f"<section><h2>{w['watchMonth']}</h2><ul>" + "".join(f"<li>{esc(x)}</li>" for x in watch) + "</ul></section>")
     flagged = d.get("flagged") or []
     if flagged:
         import signals as SIG
@@ -519,7 +544,16 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
             names = ", ".join(cat[i["id"]]["label_ar" if lang == "ar" else "label"] if i["id"] in cat else i["id"] for i in sig.get("items") or [])
             items.append(f'<li><b><a href="{root}stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
                          f'<span class="sub">{w["level"]}: {w["sigLevels"].get(sig.get("level"), "")}; {esc(names)}</span></li>')
-        parts.append(f"<h2>{w['flaggedTitle']}</h2><ul>{''.join(items)}</ul><p class=\"sub\">{esc(w['sigNote'])}</p>")
+        parts.append(f"<section><h2>{w['flaggedTitle']}</h2><ul>{''.join(items)}</ul><p class=\"sub\">{esc(w['sigNote'])}</p></section>")
+    digests = d.get("digests") or []
+    if digests:
+        items = []
+        for x in digests:
+            first = (x.get("paragraphs_ar" if lang == "ar" else "paragraphs") or x.get("paragraphs") or [""])[0]
+            text = ('<span class="wk-text"><br>' + esc(first) + "</span>") if first else ""
+            items.append(f'<li><b><a href="{root}weekly/{lang}/{esc(x["week"])}.html">{esc(t(x, "title", lang))}</a></b> '
+                         f'<span class="sub">{esc(fmt_date(x.get("from", ""), lang))} – {esc(fmt_date(x.get("to", ""), lang))}</span>{text}</li>')
+        parts.append(f"<section class=\"weeks\"><h2>{w['weeksBrief']}</h2><ul>{''.join(items)}</ul></section>")
     themes = s.get("themes") or []
     if themes:
         mx = max([x.get("share", 0) for x in themes] + [0.05])
@@ -528,23 +562,137 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
 <td class="n">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td><td class="n">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
                        for x in themes)
         change_note = f" <span class=\"sub\">({w['vsLastMonth']})</span>" if any(x.get("change") is not None for x in themes) else ""
-        parts.append(f"<h2>{w['themeTableMonth']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}{change_note}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+        parts.append(f"<section><h2>{w['themeTableMonth']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}{change_note}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div></section>")
     weeks = s.get("weeks") or []
     if weeks:
         rows = "".join(f"<tr><td class=\"n\">{esc(x['week'])}</td><td class=\"n\">{esc(fmt_date(x['from'], lang))} – {esc(fmt_date(x['to'], lang))}</td>"
                        f"<td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in weeks)
-        parts.append(f"<h2>{w['weeklyTone']}</h2><div class=\"tw\"><table><thead><tr><th>{w['weekCol']}</th><th>{w['daysCol']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
-        parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
-    parts.append(f"<p class=\"sub\">{esc(w['monthNote'])}</p>")
+        parts.append(f"<section class=\"print-hide\"><h2>{w['weeklyTone']}</h2><div class=\"tw\"><table><thead><tr><th>{w['weekCol']}</th><th>{w['daysCol']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>"
+                     f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p></section>")
     return parts
 
 
+def svg_theme_bars(cfg: dict, themes: list, lang: str) -> str:
+    """Share of discussion by theme as a horizontal bar chart (inline SVG: prints and scales)."""
+    rows = [x for x in themes if x.get("share", 0) > 0][:10]
+    if not rows:
+        return ""
+    width, lab, bar_h, gap, top = 640, 268, 16, 10, 4
+    mx = max(x["share"] for x in rows) or 0.05
+    height = top + len(rows) * (bar_h + gap)
+    rtl = lang == "ar"   # mirrored for Arabic: labels on the right, bars growing leftwards; the SVG itself stays LTR so anchors behave
+    out = [f'<svg viewBox="0 0 {width} {height}" width="100%" role="img" aria-label="{esc(W[lang]["chartThemes"])}" style="direction:ltr">']
+    for i, x in enumerate(rows):
+        y = top + i * (bar_h + gap)
+        wbar = max(2.0, x["share"] / mx * (width - lab - 100))
+        change = f" ({pts(x['change'], lang)})" if x.get("change") is not None else ""
+        label, value = esc(theme_label(cfg, x["theme"], lang)), f"{pct(x['share'], lang)}{esc(change)}"
+        if rtl:
+            out.append(f'<text x="{width - lab + 10}" y="{y + bar_h - 3}" text-anchor="start" font-size="12" fill="currentColor">{label}</text>'
+                       f'<rect x="{width - lab - wbar:.1f}" y="{y}" width="{wbar:.1f}" height="{bar_h}" rx="3" style="fill:var(--brass);opacity:.85"/>'
+                       f'<text x="{width - lab - wbar - 8:.1f}" y="{y + bar_h - 3}" text-anchor="end" font-size="12" fill="currentColor" opacity=".8">{value}</text>')
+        else:
+            out.append(f'<text x="{lab - 10}" y="{y + bar_h - 3}" text-anchor="end" font-size="12" fill="currentColor">{label}</text>'
+                       f'<rect x="{lab}" y="{y}" width="{wbar:.1f}" height="{bar_h}" rx="3" style="fill:var(--brass);opacity:.85"/>'
+                       f'<text x="{lab + wbar + 8:.1f}" y="{y + bar_h - 3}" font-size="12" fill="currentColor" opacity=".8">{value}</text>')
+    return "".join(out) + "</svg>"
+
+
+def svg_tone_weeks(weeks: list, lang: str) -> str:
+    """People's and outlets' tone by week as a two-line chart on the -1 to +1 scale (inline SVG)."""
+    pts_ = [x for x in weeks if x.get("public_sentiment") is not None or x.get("outlet_sentiment") is not None]
+    if len(pts_) < 2:
+        return ""
+    width, height, left, right, top, bottom = 640, 230, 46, 96, 12, 36
+    w_ = W[lang]
+    n = len(pts_)
+    x_of = lambda i: left + i * (width - left - right) / (n - 1)
+    y_of = lambda v: top + (1 - (max(-1.0, min(1.0, v)) + 1) / 2) * (height - top - bottom)
+    out = [f'<svg viewBox="0 0 {width} {height}" width="100%" role="img" aria-label="{esc(w_["chartTone"])}" style="direction:ltr">']
+    for v in (-1, -0.5, 0, 0.5, 1):
+        y = y_of(v)
+        out.append(f'<line x1="{left}" x2="{width - right}" y1="{y:.1f}" y2="{y:.1f}" stroke="currentColor" stroke-opacity="{0.35 if v == 0 else 0.12}" stroke-width="1"/>'
+                   f'<text x="{left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="11" fill="currentColor" opacity=".7">{signed(v, lang) if v else "0"}</text>')
+    for i, x in enumerate(pts_):
+        out.append(f'<text x="{x_of(i):.1f}" y="{height - 12}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".8">{esc(x["week"][5:] if lang != "ar" else ar_digits(x["week"][6:]))}</text>')
+    for key, style, label in (("public_sentiment", "stroke:currentColor", w_["people"]), ("outlet_sentiment", "stroke:var(--brass)", w_["outlets"])):
+        pts_xy = [(x_of(i), y_of(x[key])) for i, x in enumerate(pts_) if x.get(key) is not None]
+        if not pts_xy:
+            continue
+        out.append(f'<polyline points="{" ".join(f"{px:.1f},{py:.1f}" for px, py in pts_xy)}" fill="none" style="{style};stroke-width:2.5" stroke-linejoin="round"/>')
+        out += [f'<circle cx="{px:.1f}" cy="{py:.1f}" r="4" style="fill:{"currentColor" if "currentColor" in style else "var(--brass)"}"/>' for px, py in pts_xy]
+        px, py = pts_xy[-1]
+        out.append(f'<text x="{px + 9:.1f}" y="{py + 4:.1f}" font-size="12" fill="currentColor">{esc(label)}</text>')
+    return "".join(out) + "</svg>"
+
+
+def kpi_tiles(cfg: dict, d: dict, lang: str) -> str:
+    w, s = W[lang], d.get("stats") or {}
+    def delta(cur, prev):
+        if cur is None or prev is None:
+            return ""
+        return f'<span class="delta">{signed(cur - prev, lang)} {w["vsPrev"]}</span>'
+    def label(v):
+        return esc(tone_label(v, lang)) if v is not None else "–"
+    tiles = [(label(s.get("public_sentiment")), f"{w['peopleTone']} ({signed(s['public_sentiment'], lang)})" if s.get("public_sentiment") is not None else w["peopleTone"], delta(s.get("public_sentiment"), s.get("prev_public_sentiment"))),
+             (label(s.get("outlet_sentiment")), f"{w['outletTone']} ({signed(s['outlet_sentiment'], lang)})" if s.get("outlet_sentiment") is not None else w["outletTone"], delta(s.get("outlet_sentiment"), s.get("prev_outlet_sentiment"))),
+             (num(int(s.get("stories_total") or 0), lang), w["storiesN"], ""), (num(int(s.get("posts") or 0), lang), w["postIdx"], ""),
+             (num(int(s.get("runs") or 0), lang), w["updatesN"], ""), (num(int(s.get("days") or 0), lang), w["daysN"], "")]
+    return '<div class="kpis">' + "".join(f"<div class=\"kpi\"><b>{v}</b><span>{lbl}</span>{dl}</div>" for v, lbl, dl in tiles) + "</div>"
+
+
+def share_bar(cfg: dict, d: dict, lang: str) -> str:
+    import urllib.parse as up
+    w, base = W[lang], site_url(cfg)
+    url = f"{base}/monthly/{lang}/{d['month']}.html"
+    text = f"{t(d, 'title', lang)} — {site_title(cfg, lang)}, {fmt_month(d['month'], lang)}"
+    q = up.quote
+    links = [f'<a class="pdf" href="{esc(d["month"])}.pdf" download>{w["pdf"]}</a>',
+             f'<a href="mailto:?subject={q(text)}&amp;body={q(url)}">{w["shareEmail"]}</a>',
+             f'<a href="https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" rel="noopener">X</a>',
+             f'<a href="https://www.facebook.com/sharer/sharer.php?u={q(url)}" rel="noopener">Facebook</a>',
+             f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(text)}" rel="noopener">Telegram</a>',
+             f'<a href="https://wa.me/?text={q(text + " " + url)}" rel="noopener">WhatsApp</a>']
+    nl = str(cfg.get("newsletter_url") or "").strip()
+    if nl.startswith("https://"):
+        links.append(f'<a href="{esc(nl)}" rel="noopener">{w["subscribe"]}</a>')
+    links.append(f'<a href="../../{"feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml"}">RSS</a>')
+    return f'<div class="share" aria-label="{w["share"]}"><span class="sub">{w["share"]}:</span>{"".join(links)}</div>'
+
+
+def about_report(cfg: dict, d: dict, lang: str) -> str:
+    w, s, base = W[lang], d.get("stats") or {}, site_url(cfg)
+    n_sources = len(archive.source_catalog(cfg))
+    where = ", ".join(f"{W[lang]['platformNames'].get(k, k)} {pct(v, lang)}" for k, v in list((s.get("platforms") or {}).items())[:6])
+    langs = ", ".join(f"{W[lang]['langNames'].get(k, k)} {pct(v, lang)}" for k, v in (s.get("languages") or {}).items() if v >= 0.005)
+    method = w["methodText"].format(posts=num(int(s.get("posts") or 0), lang), days=num(int(s.get("days") or 0), lang), sources=num(n_sources, lang), model=esc(d.get("model") or cfg.get("model") or ""))
+    url = f"{base}/monthly/{lang}/{d['month']}.html"
+    cite = w["citeText"].format(site=esc(site_title(cfg, lang)), year=d["month"][:4], month=esc(fmt_month(d["month"], lang)), url=esc(url))
+    return (f'<section class="about-report"><h2>{w["aboutReport"]}</h2><p>{method}</p>'
+            f'<p>{w["fromWhere"]}: {esc(where) or "–"}. {w["langsLbl"]}: {esc(langs) or "–"}.</p>'
+            f'<p><a href="{esc(base)}/{"?lang=ar" if lang == "ar" else ""}#about">{w["methodLink"]}</a> · {w["licence"]} · {w["generatedOn"]} {esc(fmt_date(d.get("generated_at", ""), lang, True))}</p>'
+            f'<p>{w["cite"]}: {cite}</p></section>')
+
+
 def monthly_body(cfg: dict, d: dict, lang: str) -> str:
-    w = W[lang]
-    head = [f"<p class=\"eyebrow\"><a href=\"index.html\">{w['reviews']}</a> · {esc(fmt_month(d['month'], lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</p>",
-            f"<h1>{esc(t(d, 'title', lang))}</h1>", subscribe_link(cfg, lang)]
-    return "\n".join(head + monthly_sections(cfg, d, lang))
+    w, s = W[lang], d.get("stats") or {}
+    base = site_url(cfg)
+    head = [f"<p class=\"eyebrow\"><a href=\"index.html\">{w['reviews']}</a> · {w['reportLabel']} · {esc(fmt_month(d['month'], lang))}</p>",
+            f"<h1>{esc(t(d, 'title', lang))}</h1>",
+            f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(base.replace('https://', ''))}</span></p>",
+            share_bar(cfg, d, lang)]
+    charts = []
+    bars = svg_theme_bars(cfg, s.get("themes") or [], lang)
+    if bars:
+        charts.append(f'<figure><figcaption>{w["chartThemes"]}</figcaption>{bars}</figure>')
+    lines = svg_tone_weeks(s.get("weeks") or [], lang)
+    if lines:
+        charts.append(f'<figure><figcaption>{w["chartTone"]}</figcaption>{lines}<p class="legend"><span><i></i>{w["people"]}</span><span><i class="b"></i>{w["outlets"]}</span></p></figure>')
+    sections = monthly_sections(cfg, d, lang)
+    numbers = f'<section class="numbers"><h2>{w["inNumbers"]}</h2>{kpi_tiles(cfg, d, lang)}' + (f'<div class="charts">{"".join(charts)}</div>' if charts else "") + "</section>"
+    body = sections[:1] + [numbers] + sections[1:] if sections and 'class="findings"' in sections[0] else [numbers] + sections
+    return "\n".join(['<article class="report">'] + head + body + [about_report(cfg, d, lang), "</article>"])
 
 
 def monthly_email_html(cfg: dict, d: dict, lang: str) -> str:
@@ -574,7 +722,7 @@ def write_monthly_listing(cfg: dict, reviews: list) -> None:
     for lang in LANGS:
         w, other = W[lang], "ar" if lang == "en" else "en"
         items = "".join(f"""<li><a href="{esc(d['month'])}.html">{esc(d['title_ar'] if lang == 'ar' and d.get('title_ar') else d['title'])}</a>
-<span class="meta">{esc(fmt_month(d['month'], lang))}</span></li>""" for d in sorted(reviews, key=lambda d: d["month"], reverse=True))
+<span class="meta">{esc(fmt_month(d['month'], lang))} · <a href="{esc(d['month'])}.pdf">{w['pdf']}</a></span></li>""" for d in sorted(reviews, key=lambda d: d["month"], reverse=True))
         feed = f'<p class="sub"><a href="../../{"feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml"}">RSS</a></p>'
         write(MONTHLY / lang / "index.html", page(cfg, lang, w["reviews"], w["feedDescMonthly"],
                                                   f"<h1>{w['reviews']}</h1><p class=\"sub\">{esc(w['feedDescMonthly'])}</p>{subscribe_link(cfg, lang)}<ul class=\"list\">{items}</ul>{feed}",

@@ -114,11 +114,13 @@ def month_stats(cfg: dict, month: str) -> dict | None:
                      key=lambda e: e["volume"], reverse=True)[:10]
 
     digests = [x for x in archive._load(weekly.WEEKLY_DATA / "index.json", []) if x.get("from", "") <= end and x.get("to", "") >= start]
-    langs = Counter()
+    langs, plats = Counter(), Counter()
     for d in days:
         for k, v in (d.get("languages") or {}).items():
             langs[k] += int(v or 0)
-    total_l = sum(langs.values()) or 1
+        for k, v in (d.get("platforms") or {}).items():
+            plats[k] += int(v or 0)
+    total_l, total_p = sum(langs.values()) or 1, sum(plats.values()) or 1
     return {
         "month": month, "from": start, "to": end, "days": len(days),
         "posts": sum(d.get("posts", 0) for d in days), "runs": sum(d.get("runs", 0) for d in days),
@@ -129,6 +131,7 @@ def month_stats(cfg: dict, month: str) -> dict | None:
         "prev_days": len(prev),
         "themes": themes, "weeks": week_rows, "top_stories": top, "flagged": flagged, "stories_total": len(stories),
         "languages": {k: round(v / total_l, 3) for k, v in langs.most_common()},
+        "platforms": {k: round(v / total_p, 3) for k, v in plats.most_common()},
         "digests": digests,
         "events": [e for e in index.get("events") or [] if start <= e.get("date", "") <= end],
     }
@@ -136,14 +139,25 @@ def month_stats(cfg: dict, month: str) -> dict | None:
 
 REVIEW_PROMPT = """You are a careful, neutral analyst writing the monthly review of the Syria Narrative Tracker, which follows what is said about Syria online (public posts in Arabic, Kurdish and English from Telegram channels, news feeds, YouTube comments, Reddit, X and Bluesky). The review is also sent as a newsletter to researchers, journalists and people who follow Syria closely, so it must stand on its own.
 
-You receive the month's numbers, the weekly digests, the stories the tracker followed and, for some stories, coordination signals. Write:
+You receive the month's numbers, the weekly digests, the stories the tracker followed and, for some stories, coordination signals. The report is read by donors, NGOs, think tanks and journalists who may have one minute or ten. Write:
 - "title": a headline for the month (not clickbait; what defined the month).
-- "paragraphs": 5 to 7 short paragraphs: the arc of the month and what dominated the discussion; how the themes moved against the previous month, when that is known; where people's reactions and outlet coverage differed; where communities or languages framed things differently; which stories carried signs of coordination and what the signs were; what faded and what emerged. Use the numbers when they matter, sparingly.
-- "highlights": 6 to 10 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
+- "key_findings": 4 to 6 one-sentence findings that a busy reader can take away on their own: the executive summary. Each states one thing that happened in the discussion and, where useful, the number behind it.
+- "paragraphs": 5 short paragraphs of 2 to 3 sentences each, so the whole report fits on two printed pages: the arc of the month and what dominated the discussion; how the themes moved against the previous month, when that is known; where people's reactions and outlet coverage differed; where communities or languages framed things differently, and which stories carried signs of coordination; what faded and what emerged. Use the numbers when they matter, sparingly.
+- "highlights": 6 to 8 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
 - "watch": 3 to 5 short points on what to watch next month, grounded in the stories, not speculation.
 Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare weeks or months with each other; never present them as numbers of posts or of people.
 Coordination signals are measured signs (copy-paste, near-identical posts, bursts, the same text on several platforms, few commenters writing most comments, regular timing) that a reaction may be organised. Report them as signs to look into, never as proof of a campaign, and never guess who is behind them.
 Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation)."""
+
+
+def review_schema() -> dict:
+    strs = {"type": "array", "items": {"type": "string"}}
+    obj = lambda props: {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
+    return obj({"title": {"type": "string"}, "title_ar": {"type": "string"}, "key_findings": strs, "key_findings_ar": strs,
+                "paragraphs": strs, "paragraphs_ar": strs,
+                "highlights": {"type": "array", "items": obj({"key": {"type": "string"}, "title": {"type": "string"}, "title_ar": {"type": "string"},
+                                                              "why": {"type": "string"}, "why_ar": {"type": "string"}})},
+                "watch": strs, "watch_ar": strs})
 
 
 def build_message(cfg: dict, s: dict) -> str:
@@ -155,6 +169,8 @@ def build_message(cfg: dict, s: dict) -> str:
         lines.append("No comparable previous month: this is the first month of data, so do not describe changes from an earlier month.")
     if s["languages"]:
         lines.append("Languages of the posts analysed: " + ", ".join(f"{k} {v * 100:.0f}%" for k, v in s["languages"].items()))
+    if s.get("platforms"):
+        lines.append("Where the posts came from: " + ", ".join(f"{k} {v * 100:.0f}%" for k, v in s["platforms"].items()))
     lines.append("")
     if s["events"]:
         lines += ["Events this month: " + "; ".join(f"{e['date']}: {e['label']}" for e in s["events"]), ""]
@@ -198,7 +214,7 @@ def generate(cfg: dict, month: str, log=print) -> dict | None:
     model = cfg.get("model", "claude-sonnet-5")
     resp = client.messages.create(model=model, max_tokens=12000, system=REVIEW_PROMPT,
                                   messages=[{"role": "user", "content": build_message(cfg, s)}],
-                                  output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": weekly.digest_schema()}})
+                                  output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": review_schema()}})
     text = "".join(b.text for b in resp.content if b.type == "text")
     d = json.loads(text)
     keys = {e["key"] for e in s["top_stories"]} | {e["key"] for e in s["flagged"]}
@@ -207,12 +223,14 @@ def generate(cfg: dict, month: str, log=print) -> dict | None:
         if h.get("key") in keys and h["key"] not in used:
             used.add(h["key"]); highlights.append(h)
     review = {"month": month, "from": s["from"], "to": s["to"], "generated_at": dt.datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-              "model": model, "title": d["title"], "title_ar": d["title_ar"], "paragraphs": d["paragraphs"], "paragraphs_ar": d["paragraphs_ar"],
+              "model": model, "title": d["title"], "title_ar": d["title_ar"],
+              "key_findings": (d.get("key_findings") or [])[:6], "key_findings_ar": (d.get("key_findings_ar") or [])[:6],
+              "paragraphs": d["paragraphs"], "paragraphs_ar": d["paragraphs_ar"],
               "highlights": highlights[:10], "watch": d["watch"], "watch_ar": d["watch_ar"],
               "digests": [{k: x.get(k) for k in ("week", "from", "to", "title", "title_ar", "paragraphs", "paragraphs_ar")} for x in s["digests"]],
               "flagged": [{"key": e["key"], "title": e["title"], "title_ar": e["title_ar"], "theme": e["theme"], "signals": e["signals"]} for e in s["flagged"]],
               "stats": {k: s[k] for k in ("days", "posts", "runs", "public_sentiment", "outlet_sentiment", "prev_public_sentiment", "prev_outlet_sentiment",
-                                          "prev_days", "themes", "weeks", "languages", "events", "stories_total")},
+                                          "prev_days", "themes", "weeks", "languages", "platforms", "events", "stories_total")},
               "usage": {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}}
     archive._save(MONTHLY_DATA / f"{month}.json", review)
     index = [x for x in archive._load(MONTHLY_DATA / "index.json", []) if x.get("month") != month]
