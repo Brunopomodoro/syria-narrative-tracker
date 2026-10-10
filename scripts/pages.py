@@ -26,6 +26,7 @@ ROOT = archive.ROOT
 DATA = archive.DATA
 STORIES = ROOT / "stories"
 WEEKLY = ROOT / "weekly"
+MONTHLY = ROOT / "monthly"
 STORY_INDEX = STORIES / "index.json"
 UTC = dt.timezone.utc
 LANGS = ("en", "ar")
@@ -47,6 +48,11 @@ W = {   # the words on the static pages
            "tone": ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
            "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
            "feedTitle": "Syria Narrative Tracker: weekly digest", "feedDesc": "A weekly written summary of what is being said about Syria online.",
+           "review": "Monthly review", "reviews": "Monthly reviews", "month": "Month", "monthHighlights": "The month's stories", "watchMonth": "What to watch next month",
+           "weeksBrief": "The weeks in brief", "flaggedTitle": "Stories that carried signs of coordination", "themeTableMonth": "Themes this month", "vsLastMonth": "vs last month",
+           "weeklyTone": "Tone by week", "weekCol": "Week", "daysCol": "Days", "readOnline": "Read online", "subscribe": "Subscribe by email", "level": "Level",
+           "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly digests. It describes what was said, not what is true.",
+           "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in"},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
            "people": "الناس", "outlets": "وسائل الإعلام", "reacting": "كيف يتفاعل الناس", "framed": "كيف تُقدَّم القصة", "watch": "انتبه إلى:",
@@ -62,6 +68,11 @@ W = {   # the words on the static pages
            "tone": ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
            "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
            "feedTitle": "متتبّع السرديات السورية: الملخص الأسبوعي", "feedDesc": "ملخص مكتوب أسبوعياً لما يُقال عن سوريا على الإنترنت.",
+           "review": "المراجعة الشهرية", "reviews": "المراجعات الشهرية", "month": "الشهر", "monthHighlights": "قصص الشهر", "watchMonth": "ما يجب متابعته الشهر المقبل",
+           "weeksBrief": "الأسابيع باختصار", "flaggedTitle": "قصص حملت مؤشرات تنسيق", "themeTableMonth": "مواضيع هذا الشهر", "vsLastMonth": "مقارنة بالشهر الماضي",
+           "weeklyTone": "النبرة حسب الأسبوع", "weekCol": "الأسبوع", "daysCol": "الأيام", "readOnline": "اقرأ على الموقع", "subscribe": "اشترك بالبريد الإلكتروني", "level": "المستوى",
+           "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن الملخصات الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
+           "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في"},
 }
 
@@ -214,6 +225,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <link rel="alternate" hreflang="{lang}" href="{esc(canonical)}"><link rel="alternate" hreflang="{other}" href="{esc(alt)}">
 <link rel="icon" href="{root}assets/icon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitle'])}" href="{root}{'feed-ar.xml' if lang == 'ar' else 'feed.xml'}">
+<link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitleMonthly'])}" href="{root}{'feed-monthly-ar.xml' if lang == 'ar' else 'feed-monthly.xml'}">
 {og}
 {FONTS}
 <style>{CSS}</style>
@@ -459,22 +471,167 @@ def write_feeds(cfg: dict, digests: list) -> None:
         write(ROOT / ("feed-ar.xml" if lang == "ar" else "feed.xml"), xml)
 
 
+# ----------------------------------------------------------------- monthly review pages and feeds
+
+def fmt_month(month: str, lang: str) -> str:
+    y, m = int(month[:4]), int(month[5:7])
+    return ar_digits(f"{MONTHS_AR[m - 1]} {y}") if lang == "ar" else f"{MONTHS_EN[m - 1]} {y}"
+
+
+def subscribe_link(cfg: dict, lang: str) -> str:
+    url = str(cfg.get("newsletter_url") or "").strip()
+    return f'<p><a class="chip" href="{esc(url)}" rel="noopener">{W[lang]["subscribe"]}</a></p>' if url.startswith("https://") else ""
+
+
+def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolute: str = "") -> list:
+    """The review's sections as HTML; absolute links when a site address is given (for the feeds)."""
+    w, s = W[lang], d.get("stats") or {}
+    root = absolute + "/" if absolute else base
+    parts = [f"<p>{esc(p)}</p>" for p in (d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [])]
+    hl = d.get("highlights") or []
+    if hl:
+        items = []
+        for h in hl:
+            key = h.get("key") or ""
+            title = esc(t(h, "title", lang))
+            link = f'<a href="{root}stories/{lang}/{esc(key)}.html">{title}</a>' if key else title
+            items.append(f"<li><b>{link}</b>{(' — ' if lang == 'en' else ' ـ ')}{esc(t(h, 'why', lang))}</li>")
+        parts.append(f"<h2>{w['monthHighlights']}</h2><ul>{''.join(items)}</ul>")
+    watch = d.get("watch_ar" if lang == "ar" else "watch") or []
+    if watch:
+        parts.append(f"<h2>{w['watchMonth']}</h2><ul>" + "".join(f"<li>{esc(x)}</li>" for x in watch) + "</ul>")
+    digests = d.get("digests") or []
+    if digests:
+        items = []
+        for x in digests:
+            first = (x.get("paragraphs_ar" if lang == "ar" else "paragraphs") or x.get("paragraphs") or [""])[0]
+            items.append(f'<li><b><a href="{root}weekly/{lang}/{esc(x["week"])}.html">{esc(t(x, "title", lang))}</a></b> '
+                         f'<span class="sub">{esc(fmt_date(x.get("from", ""), lang))} – {esc(fmt_date(x.get("to", ""), lang))}</span>'
+                         f'{("<br>" + esc(first)) if first else ""}</li>')
+        parts.append(f"<h2>{w['weeksBrief']}</h2><ul>{''.join(items)}</ul>")
+    flagged = d.get("flagged") or []
+    if flagged:
+        import signals as SIG
+        cat = {c["id"]: c for c in SIG.CATALOG}
+        items = []
+        for e in flagged:
+            sig = e.get("signals") or {}
+            names = ", ".join(cat[i["id"]]["label_ar" if lang == "ar" else "label"] if i["id"] in cat else i["id"] for i in sig.get("items") or [])
+            items.append(f'<li><b><a href="{root}stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
+                         f'<span class="sub">{w["level"]}: {w["sigLevels"].get(sig.get("level"), "")}; {esc(names)}</span></li>')
+        parts.append(f"<h2>{w['flaggedTitle']}</h2><ul>{''.join(items)}</ul><p class=\"sub\">{esc(w['sigNote'])}</p>")
+    themes = s.get("themes") or []
+    if themes:
+        mx = max([x.get("share", 0) for x in themes] + [0.05])
+        rows = "".join(f"""<tr><td>{esc(theme_label(cfg, x['theme'], lang))}</td><td><div class="bar"><i style="width:{round(x.get('share', 0) / mx * 100)}%"></i></div></td>
+<td class="n">{pct(x.get('share', 0), lang)}{(' <span class="sub">(' + pts(x['change'], lang) + ')</span>') if x.get('change') is not None else ''}</td>
+<td class="n">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td><td class="n">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
+                       for x in themes)
+        change_note = f" <span class=\"sub\">({w['vsLastMonth']})</span>" if any(x.get("change") is not None for x in themes) else ""
+        parts.append(f"<h2>{w['themeTableMonth']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}{change_note}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+    weeks = s.get("weeks") or []
+    if weeks:
+        rows = "".join(f"<tr><td class=\"n\">{esc(x['week'])}</td><td class=\"n\">{esc(fmt_date(x['from'], lang))} – {esc(fmt_date(x['to'], lang))}</td>"
+                       f"<td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
+                       f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in weeks)
+        parts.append(f"<h2>{w['weeklyTone']}</h2><div class=\"tw\"><table><thead><tr><th>{w['weekCol']}</th><th>{w['daysCol']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+        parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
+    parts.append(f"<p class=\"sub\">{esc(w['monthNote'])}</p>")
+    return parts
+
+
+def monthly_body(cfg: dict, d: dict, lang: str) -> str:
+    w = W[lang]
+    head = [f"<p class=\"eyebrow\"><a href=\"index.html\">{w['reviews']}</a> · {esc(fmt_month(d['month'], lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</p>",
+            f"<h1>{esc(t(d, 'title', lang))}</h1>", subscribe_link(cfg, lang)]
+    return "\n".join(head + monthly_sections(cfg, d, lang))
+
+
+def monthly_email_html(cfg: dict, d: dict, lang: str) -> str:
+    """The whole review as self-contained HTML with absolute links, for the feed item (newsletter services send it as is)."""
+    base, w = site_url(cfg), W[lang]
+    link = f"{base}/monthly/{lang}/{d['month']}.html"
+    body = "\n".join(monthly_sections(cfg, d, lang, absolute=base))
+    body = body.replace('<div class="tw">', "").replace("</table></div>", "</table>")   # no scroll wrappers in email
+    body = re.sub(r'<td><div class="bar">.*?</div></td>', "", body).replace("<th></th>", "")   # the bar column needs CSS; email clients have none
+    body = body.replace("<table>", '<table cellpadding="6" style="border-collapse:collapse;font-size:14px">').replace("<th>", '<th align="left">')
+    return (f'<div dir="{"rtl" if lang == "ar" else "ltr"}" lang="{lang}" style="font-family:system-ui,sans-serif;line-height:1.6">'
+            f'<p style="color:#5B666A;font-size:14px">{esc(site_title(cfg, lang))} · {esc(fmt_month(d["month"], lang))} · <a href="{esc(link)}">{w["readOnline"]}</a></p>'
+            f'<h1 style="font-size:24px;line-height:1.3">{esc(t(d, "title", lang))}</h1>{body}'
+            f'<p style="color:#5B666A;font-size:13px"><a href="{esc(base)}/">{esc(site_title(cfg, lang))}</a> · {esc(w["footer"])}</p></div>')
+
+
+def write_monthly_pages(cfg: dict, review: dict) -> None:
+    for lang in LANGS:
+        other = "ar" if lang == "en" else "en"
+        desc = (review.get("paragraphs_ar" if lang == "ar" else "paragraphs") or [""])[0][:200]
+        write(MONTHLY / lang / f"{review['month']}.html",
+              page(cfg, lang, str(t(review, "title", lang)), desc, monthly_body(cfg, review, lang),
+                   f"monthly/{lang}/{review['month']}.html", f"monthly/{other}/{review['month']}.html", updated=review.get("generated_at")))
+
+
+def write_monthly_listing(cfg: dict, reviews: list) -> None:
+    for lang in LANGS:
+        w, other = W[lang], "ar" if lang == "en" else "en"
+        items = "".join(f"""<li><a href="{esc(d['month'])}.html">{esc(d['title_ar'] if lang == 'ar' and d.get('title_ar') else d['title'])}</a>
+<span class="meta">{esc(fmt_month(d['month'], lang))}</span></li>""" for d in sorted(reviews, key=lambda d: d["month"], reverse=True))
+        feed = f'<p class="sub"><a href="../../{"feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml"}">RSS</a></p>'
+        write(MONTHLY / lang / "index.html", page(cfg, lang, w["reviews"], w["feedDescMonthly"],
+                                                  f"<h1>{w['reviews']}</h1><p class=\"sub\">{esc(w['feedDescMonthly'])}</p>{subscribe_link(cfg, lang)}<ul class=\"list\">{items}</ul>{feed}",
+                                                  f"monthly/{lang}/index.html", f"monthly/{other}/index.html", kind="website"))
+
+
+def write_monthly_feeds(cfg: dict, reviews: list) -> None:
+    """RSS with the full review in each item (content:encoded), so an RSS-to-email service can send it as a newsletter."""
+    base = site_url(cfg)
+    for lang in LANGS:
+        w = W[lang]
+        items = []
+        for x in sorted(reviews, key=lambda d: d["month"], reverse=True)[:24]:
+            d = archive._load(MONTHLY_DATA_DIR / f"{x['month']}.json", None) or x
+            link = f"{base}/monthly/{lang}/{x['month']}.html"
+            paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or []
+            pub = archive_parse(x.get("generated_at") or x["to"]) or dt.datetime.now(UTC)
+            full = monthly_email_html(cfg, d, lang) if d.get("stats") else " ".join(f"<p>{esc(p)}</p>" for p in paras)
+            items.append(f"""<item><title>{esc(x['title_ar'] if lang == 'ar' and x.get('title_ar') else x['title'])}</title><link>{esc(link)}</link><guid isPermaLink="true">{esc(link)}</guid>
+<pubDate>{pub.strftime('%a, %d %b %Y %H:%M:%S +0000')}</pubDate><description>{esc(' '.join(paras[:2])[:1500])}</description>
+<content:encoded><![CDATA[{full.replace(']]>', ']]&gt;')}]]></content:encoded></item>""")
+        name = "feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml"
+        xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>{esc(w['feedTitleMonthly'])}</title><link>{esc(base + '/')}</link>
+<description>{esc(w['feedDescMonthly'])}</description><language>{lang}</language><atom:link href="{esc(base + '/' + name)}" rel="self" type="application/rss+xml"/>
+{''.join(items)}</channel></rss>
+"""
+        write(ROOT / name, xml)
+
+
+MONTHLY_DATA_DIR = DATA / "monthly"
+
+
+def load_reviews() -> list:
+    return archive._load(MONTHLY_DATA_DIR / "index.json", [])
+
+
 # ----------------------------------------------------------------- sitemap, robots, prerender
 
-def write_sitemap(cfg: dict, digests: list) -> None:
+def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None:
     base = site_url(cfg)
     if not base:
         return
     today = dt.datetime.now(UTC).strftime("%Y-%m-%d")
     urls = [(f"{base}/", today, "hourly", "1.0"), (f"{base}/?lang=ar", today, "hourly", "1.0"),
             (f"{base}/stories/en/index.html", today, "daily", "0.7"), (f"{base}/stories/ar/index.html", today, "daily", "0.7"),
-            (f"{base}/weekly/en/index.html", today, "weekly", "0.6"), (f"{base}/weekly/ar/index.html", today, "weekly", "0.6")]
+            (f"{base}/weekly/en/index.html", today, "weekly", "0.6"), (f"{base}/weekly/ar/index.html", today, "weekly", "0.6"),
+            (f"{base}/monthly/en/index.html", today, "monthly", "0.6"), (f"{base}/monthly/ar/index.html", today, "monthly", "0.6")]
     for key, e in load_story_index().items():
         for lang in LANGS:
             urls.append((f"{base}/stories/{lang}/{key}.html", str(e.get("last_seen", today))[:10], "daily", "0.6"))
     for d in digests:
         for lang in LANGS:
             urls.append((f"{base}/weekly/{lang}/{d['week']}.html", str(d.get("generated_at", today))[:10], "monthly", "0.6"))
+    for d in reviews if reviews is not None else load_reviews():
+        for lang in LANGS:
+            urls.append((f"{base}/monthly/{lang}/{d['month']}.html", str(d.get("generated_at", today))[:10], "yearly", "0.7"))
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n" for u, m, c, p in urls[:49000])
     write(ROOT / "sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}</urlset>\n')
     write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
@@ -498,7 +655,7 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
             items.append(f"<li><a href=\"stories/{lang}/{esc(key)}.html\">{esc(t(n, 'title', lang))}</a> {esc(t(n, 'summary', lang))}</li>")
         mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
         sections.append(f"""<section class="pre" lang="{lang}" dir="{'rtl' if lang == 'ar' else 'ltr'}"><h2>{w['prerender']} · {esc(fmt_date(latest.get('generated_at', ''), lang, True))}</h2>
-<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul><p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a></p></section>""")
+<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul><p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a></p></section>""")
     block = start + "\n" + "\n".join(sections) + "\n" + end
     new = html_text[:html_text.index(start)] + block + html_text[html_text.index(end) + len(end):]
     if new != html_text:
@@ -519,5 +676,8 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     digests = load_digests()
     write_weekly_listing(cfg, digests)
     write_feeds(cfg, digests)
-    write_sitemap(cfg, digests)
+    reviews = load_reviews()
+    write_monthly_listing(cfg, reviews)
+    write_monthly_feeds(cfg, reviews)
+    write_sitemap(cfg, digests, reviews)
     prerender_index(cfg, latest)

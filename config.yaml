@@ -19,6 +19,14 @@ doi: ""
 # own pages and RSS feed. One Claude call a week, a few cents.
 weekly_digest: true
 
+# A written review of every completed month (English and Arabic), with its own pages
+# and RSS feeds that carry the full text, so a newsletter service can email each one.
+# One Claude call a month, about 15 cents. GUIDE.md, "Monthly review and newsletter".
+monthly_review: true
+# The sign-up page of your newsletter service (for example a Buttondown page), once you
+# have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
+newsletter_url: ""
+
 # How far back to look on every run, in hours. 24 = "the last day".
 window_hours: 24
 

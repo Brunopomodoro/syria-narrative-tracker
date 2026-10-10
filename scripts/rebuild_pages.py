@@ -45,9 +45,15 @@ def main() -> int:
             pages.write_weekly_pages(cfg, d)
     pages.write_weekly_listing(cfg, digests)
     pages.write_feeds(cfg, digests)
-    pages.write_sitemap(cfg, digests)
+    reviews = pages.load_reviews()
+    for r in [archive._load(pages.DATA / "monthly" / f"{x['month']}.json", None) for x in reviews]:
+        if r:
+            pages.write_monthly_pages(cfg, r)
+    pages.write_monthly_listing(cfg, reviews)
+    pages.write_monthly_feeds(cfg, reviews)
+    pages.write_sitemap(cfg, digests, reviews)
     pages.prerender_index(cfg, latest)
-    print(f"{written} story pages, {len(index) or len(pages.load_story_index())} stories in the index, {len(digests)} digests.")
+    print(f"{written} story pages, {len(index) or len(pages.load_story_index())} stories in the index, {len(digests)} digests, {len(reviews)} monthly reviews.")
     return 0
 
 

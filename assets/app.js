@@ -57,6 +57,7 @@ const T = {
     notEnough: "Not enough data yet.", people: "People", outlets: "Outlets", allPublic: "All people", allOutlets: "All outlets", share: "Share", stories: "Stories",
     eventsLbl: "Events", shareLbl: "share of discussion", dateCol: "Date", valueCol: "Value",
     weeklyTitle: "Weekly digests", weeklySub: "A written summary of each week, with the week's theme table. Also available as an RSS feed.", allDigests: "All digests", feed: "RSS feed", permalink: "Permanent page",
+    monthlyTitle: "Monthly reviews", monthlySub: "A written review of each month: what moved, who said what, and the stories that mattered. Also available as an RSS feed, which newsletter services can send by email.", allReviews: "All reviews", subscribe: "Subscribe by email",
     /* data */
     dataTitle: "Data", dataSub: "Everything the tracker produces can be downloaded and reused. Licence: CC BY 4.0 (free to use with attribution). Posts by individuals are never stored: the data holds analyses and outlet headlines only.",
     dlTitle: "Download a date range", dlSub: "Built in your browser from the daily archive files; identical to the monthly files below.",
@@ -71,6 +72,8 @@ const T = {
       ["data/archive/index.json", "One summary per day, permanent: volume and tone overall, per theme, per language and per kind of outlet; the events list."],
       ["data/archive/YYYY-MM-DD.json", "Every run of that day in full, plus that day's outlet headlines."],
       ["data/exports/index.json", "The list of monthly files with row counts, sizes and column names."],
+      ["data/weekly/YYYY-Www.json", "A weekly digest: the text in both languages and the week's numbers; data/weekly/index.json lists them."],
+      ["data/monthly/YYYY-MM.json", "A monthly review: the text in both languages, the month's numbers, its weekly digests and the stories with coordination signals; data/monthly/index.json lists them."],
       ["data/methodology.json", "Sources, themes, sampling settings, model, the exact analysis instructions and the method changelog."]],
     colsTitle: "Columns", colsSub: "Tones run from −1 (anger, fear, grief) to +1 (hope, pride, celebration); 0 is neutral. Empty cells mean the value does not apply (for example no public posts in the story).",
     columns: {
@@ -182,6 +185,7 @@ const T = {
     notEnough: "لا تكفي البيانات بعد.", people: "الناس", outlets: "وسائل الإعلام", allPublic: "كل الناس", allOutlets: "كل وسائل الإعلام", share: "الحصة", stories: "القصص",
     eventsLbl: "الأحداث", shareLbl: "الحصة من النقاش", dateCol: "التاريخ", valueCol: "القيمة",
     weeklyTitle: "الملخصات الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. متوفر أيضاً كخلاصة RSS.", allDigests: "كل الملخصات", feed: "خلاصة RSS", permalink: "صفحة دائمة",
+    monthlyTitle: "المراجعات الشهرية", monthlySub: "مراجعة مكتوبة لكل شهر: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم. متوفرة أيضاً كخلاصة RSS يمكن لخدمات النشرات البريدية إرسالها بالبريد.", allReviews: "كل المراجعات", subscribe: "اشترك بالبريد الإلكتروني",
     dataTitle: "البيانات", dataSub: "كل ما ينتجه المتتبّع يمكن تنزيله وإعادة استخدامه. الرخصة: CC BY 4.0 (الاستخدام حر مع ذكر المصدر). لا تُحفظ منشورات الأفراد أبداً؛ تحتوي البيانات على التحليلات وعناوين وسائل الإعلام فقط.",
     dlTitle: "تنزيل فترة زمنية", dlSub: "يُبنى الملف في متصفحك من ملفات الأرشيف اليومية، وهو مطابق للملفات الشهرية أدناه.",
     dataset: "مجموعة البيانات", datasets: { stories: "القصص (صف لكل قصة في كل تحديث)", runs: "التحديثات (صف لكل تحديث)", themes: "المواضيع (صف لكل موضوع في كل تحديث)", headlines: "عناوين وسائل الإعلام" },
@@ -195,6 +199,8 @@ const T = {
       ["data/archive/index.json", "ملخص لكل يوم، دائم: الحجم والنبرة إجمالاً وحسب الموضوع واللغة ونوع وسيلة الإعلام؛ وقائمة الأحداث."],
       ["data/archive/YYYY-MM-DD.json", "كل تحديثات ذلك اليوم كاملة، مع عناوين وسائل الإعلام فيه."],
       ["data/exports/index.json", "قائمة الملفات الشهرية مع عدد الصفوف والأحجام وأسماء الأعمدة."],
+      ["data/weekly/YYYY-Www.json", "ملخص أسبوعي: النص باللغتين وأرقام الأسبوع؛ يسردها الملف data/weekly/index.json."],
+      ["data/monthly/YYYY-MM.json", "مراجعة شهرية: النص باللغتين وأرقام الشهر وملخصاته الأسبوعية والقصص ذات مؤشرات التنسيق؛ يسردها الملف data/monthly/index.json."],
       ["data/methodology.json", "المصادر والمواضيع وإعدادات العيّنة والنموذج والتعليمات الدقيقة للتحليل وسجل تغييرات المنهجية."]],
     colsTitle: "الأعمدة", colsSub: "تتراوح النبرة من −١ (غضب، خوف، حزن) إلى +١ (أمل، فخر، احتفال)؛ الصفر محايد. الخلايا الفارغة تعني أن القيمة لا تنطبق (مثلاً لا منشورات من الناس في القصة).",
     columns: {
@@ -871,7 +877,23 @@ function trendsHTML() {
   ${sec("lang", t.langTitle, t.langSub, body("lang", "multiples"))}
   ${sec("kind", t.kindTitle, t.kindSub, body("kind", "multiples"))}
   ${sec("what", t.whatTitle, t.whatSub, body("what", "themebars"))}
+  ${monthlyHTML()}
   ${weeklyHTML()}`;
+}
+function monthlyHTML() {
+  const t = L(), list = (state.monthly || []).slice().reverse(), lang = state.lang;
+  if (!list.length) return "";
+  const url = String(state.latest.newsletter_url || "");
+  const sub = url.startsWith("https://") ? `<a href="${esc(url)}" rel="noopener">${t.subscribe}</a>` : "";
+  const items = list.slice(0, 6).map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
+    return `<li><a href="monthly/${lang}/${esc(d.month)}.html" dir="auto">${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</a>
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))}</span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+  return `
+  <section class="tsec" aria-labelledby="h-monthly">
+    <div class="sec-head"><div><h2 id="h-monthly">${t.monthlyTitle}</h2><p class="sub">${t.monthlySub}</p></div>
+      <span class="chart-legend">${sub}<a href="monthly/${lang}/index.html">${t.allReviews}</a><a href="${rtl() ? "feed-monthly-ar.xml" : "feed-monthly.xml"}">${t.feed}</a></span></div>
+    <ul class="hl">${items}</ul>
+  </section>`;
 }
 function weeklyHTML() {
   const t = L(), list = (state.weekly || []).slice().reverse(), lang = state.lang;
@@ -1348,9 +1370,10 @@ async function loadIndex() {
   const S = state.trends;
   if (S.index || S.loading) return;
   S.loading = true;
-  [S.index, state.weekly] = await Promise.all([
+  [S.index, state.weekly, state.monthly] = await Promise.all([
     getJSON("data/archive/index.json").catch(() => ({ days: [], themes: [], kinds: [], languages: [], events: [] })),
-    getJSON("data/weekly/index.json").catch(() => [])]);
+    getJSON("data/weekly/index.json").catch(() => []),
+    getJSON("data/monthly/index.json").catch(() => [])]);
   S.loading = false;
   if (state.view === "trends" || state.view === "data") render();
 }

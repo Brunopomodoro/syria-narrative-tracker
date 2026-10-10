@@ -15,6 +15,7 @@ on:
           - backfill-archive            # rebuild the archive from the git history of the results (free)
           - rebuild-pages               # rebuild every story page, listing, feed and the sitemap from the archive (free)
           - backfill-weekly             # write the weekly digest of every completed week that has none (uses Claude, a few cents each)
+          - backfill-monthly            # write the monthly review of every completed month that has none (uses Claude, about 15 cents each)
           - validation-sample           # a normal update plus a private sample of posts for a validation study (GUIDE.md); size below
       size:
         description: "validation-sample only: how many posts to sample"
@@ -72,6 +73,7 @@ jobs:
             backfill-archive)          python scripts/backfill_archive.py ;;
             rebuild-pages)             python scripts/rebuild_pages.py ;;
             backfill-weekly)           python scripts/weekly.py ;;
+            backfill-monthly)          python scripts/monthly.py ;;
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
           esac
 

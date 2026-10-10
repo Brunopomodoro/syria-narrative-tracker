@@ -38,6 +38,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import archive  # noqa: E402  (permanent archive, downloads and methodology files; scripts/archive.py)
 import pages  # noqa: E402    (story pages, weekly pages, feeds, sitemap, the crawlable block in index.html)
 import weekly  # noqa: E402   (the weekly digest)
+import monthly  # noqa: E402  (the monthly review)
 import signals  # noqa: E402  (coordination signals per story)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -1168,6 +1169,7 @@ def main() -> int:
         "narratives": narratives,
         "themes": [{k: t[k] for k in ("id", "label", "label_ar")} for t in themes],
         "signal_catalog": [{k: s[k] for k in ("id", "label", "label_ar")} for s in signals.CATALOG],
+        "newsletter_url": str(cfg.get("newsletter_url") or "").strip(),
         "sources": status,
         "source_names_ar": source_names_ar(cfg),
         "cost_usd": cost,
@@ -1210,7 +1212,8 @@ def main() -> int:
     alive = {n["id"] for h in history for n in h["narratives"]}
     state = {"last_ids": sorted(seen_key(p["id"]) for p in sample),
              "first_seen": {k: v for k, v in first_seen.items() if k in alive},
-             "weekly_attempts": state.get("weekly_attempts") or {}}
+             "weekly_attempts": state.get("weekly_attempts") or {},
+             "monthly_attempts": state.get("monthly_attempts") or {}}
 
     save_json(latest_path, latest)
     save_json(history_path, history)
@@ -1220,6 +1223,8 @@ def main() -> int:
 
     # the weekly digest (when a week has just ended) and the static pages; neither may fail the run
     if weekly.maybe_generate(cfg, state, log):
+        save_json(state_path, state)
+    if monthly.maybe_generate(cfg, state, log):
         save_json(state_path, state)
     try:
         pages.publish(cfg, latest)
