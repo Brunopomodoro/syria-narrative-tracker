@@ -52,8 +52,10 @@ W = {   # the words on the static pages
            "weeksBrief": "The weeks in brief", "flaggedTitle": "Stories that carried signs of coordination", "themeTableMonth": "Themes this month", "vsLastMonth": "vs last month",
            "weeklyTone": "Tone by week", "weekCol": "Week", "daysCol": "Days", "readOnline": "Read online", "subscribe": "Subscribe by email", "level": "Level",
            "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly digests. It describes what was said, not what is true.",
+           "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
+           "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
            "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
-           "aboutReport": "About this report", "share": "Share", "pdf": "Download PDF", "shareEmail": "Email", "cite": "Cite as",
+           "aboutReport": "About this report", "shareIt": "Share", "pdf": "Download PDF", "shareEmail": "Email", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
            "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
@@ -81,8 +83,10 @@ W = {   # the words on the static pages
            "weeksBrief": "الأسابيع باختصار", "flaggedTitle": "قصص حملت مؤشرات تنسيق", "themeTableMonth": "مواضيع هذا الشهر", "vsLastMonth": "مقارنة بالشهر الماضي",
            "weeklyTone": "النبرة حسب الأسبوع", "weekCol": "الأسبوع", "daysCol": "الأيام", "readOnline": "اقرأ على الموقع", "subscribe": "اشترك بالبريد الإلكتروني", "level": "المستوى",
            "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن الملخصات الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
+           "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
+           "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
            "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
-           "aboutReport": "عن هذا التقرير", "share": "مشاركة", "pdf": "تنزيل PDF", "shareEmail": "البريد الإلكتروني", "cite": "للاستشهاد",
+           "aboutReport": "عن هذا التقرير", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "shareEmail": "البريد الإلكتروني", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
            "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
@@ -120,7 +124,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 .report .rmeta{margin-top:-6px}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
-.charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}
+.charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
 .legend{display:flex;gap:18px;font-size:.82rem;color:var(--muted);margin:6px 0 0}.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-inline-end:6px;background:currentColor}.legend i.b{background:var(--brass)}
 .about-report{border-top:1px solid var(--rule);margin-top:30px;padding-top:14px;font-size:.88rem;color:var(--muted)}.about-report h2{margin-top:0;font-size:1.05rem}.about-report p{max-width:none}
 @media (min-width:640px){.kpis{grid-template-columns:repeat(3,1fr)}.charts{grid-template-columns:1fr 1fr}}
@@ -347,7 +351,8 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
 <span><i class="o"></i>{w['outlets']}: <b>{esc(tone_label(out, lang))}</b> ({signed(out or 0, lang)})</span></div>"""
     n_runs = len(runs) or 1
     parts = [f"""<p class="eyebrow"><a href="index.html">{w['listing']}</a> · <a href="../../{'?lang=ar' if lang == 'ar' else ''}#trends">{esc(theme_label(cfg, theme, lang))}</a> · {w['firstSeen']} {esc(fmt_date(first, lang))} · {w['seenIn']} {num(n_runs, lang)} {w['update1'] if n_runs == 1 else w['updates']}</p>""",
-             f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, f"<p>{esc(t(n, 'summary', lang))}</p>"]
+             f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, share_bar(cfg, lang, f"stories/{lang}/{key}.html", str(t(n, "title", lang))),
+             f"<p>{esc(t(n, 'summary', lang))}</p>"]
     reaction = t(n, "public_reaction", lang)
     if reaction:
         parts.append(f"""<h2>{w['reacting']}</h2><div class="reaction" style="border-color:{tone_color(pub) if pub is not None else 'var(--neu)'}"><p>{esc(reaction)}</p></div>""")
@@ -430,9 +435,13 @@ def archive_key(e: dict) -> str:
 def weekly_body(cfg: dict, d: dict, lang: str) -> str:
     w, s = W[lang], d.get("stats") or {}
     paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
-    parts = [f"<p class=\"eyebrow\"><a href=\"index.html\">{w['digests']}</a> · {w['week']} {esc(d['week'])} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</p>",
-             f"<h1>{esc(t(d, 'title', lang))}</h1>"]
-    parts += [f"<p>{esc(p)}</p>" for p in paras]
+    parts = ['<article class="report">',
+             f"<p class=\"eyebrow\"><a href=\"index.html\">{w['digests']}</a> · {w['week']} {esc(d['week'])} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</p>",
+             f"<h1>{esc(t(d, 'title', lang))}</h1>",
+             f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(site_url(cfg).replace('https://', ''))}</span></p>",
+             share_bar(cfg, lang, f"weekly/{lang}/{d['week']}.html", f"{t(d, 'title', lang)}, {w['week']} {d['week']}",
+                       pdf=f"{d['week']}.pdf", feed="feed-ar.xml" if lang == "ar" else "feed.xml"),
+             '<section class="analysis">' + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>"]
     hl = d.get("highlights") or []
     if hl:
         items = []
@@ -459,7 +468,7 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
         parts.append(f"<h2>{w['dailyTone']}</h2><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
         parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
-    parts.append(f"<p class=\"sub\">{esc(w['note'])}</p>")
+    parts.append(f"<p class=\"sub\">{esc(w['note'])}</p></article>")
     return "\n".join(parts)
 
 
@@ -476,7 +485,7 @@ def write_weekly_listing(cfg: dict, digests: list) -> None:
     for lang in LANGS:
         w, other = W[lang], "ar" if lang == "en" else "en"
         items = "".join(f"""<li><a href="{esc(d['week'])}.html">{esc(d['title_ar'] if lang == 'ar' and d.get('title_ar') else d['title'])}</a>
-<span class="meta">{esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</span></li>""" for d in sorted(digests, key=lambda d: d["week"], reverse=True))
+<span class="meta">{esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <a href="{esc(d['week'])}.pdf">{w['pdf']}</a></span></li>""" for d in sorted(digests, key=lambda d: d["week"], reverse=True))
         write(WEEKLY / lang / "index.html", page(cfg, lang, w["digests"], w["feedDesc"], f"<h1>{w['digests']}</h1><ul class=\"list\">{items}</ul>",
                                                  f"weekly/{lang}/index.html", f"weekly/{other}/index.html", kind="website"))
 
@@ -642,23 +651,25 @@ def kpi_tiles(cfg: dict, d: dict, lang: str) -> str:
     return '<div class="kpis">' + "".join(f"<div class=\"kpi\"><b>{v}</b><span>{lbl}</span>{dl}</div>" for v, lbl, dl in tiles) + "</div>"
 
 
-def share_bar(cfg: dict, d: dict, lang: str) -> str:
+def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = None, feed: str | None = None) -> str:
+    """Share links for a page: PDF (when one exists), email, X, Facebook, Telegram, WhatsApp, the newsletter and a feed."""
     import urllib.parse as up
     w, base = W[lang], site_url(cfg)
-    url = f"{base}/monthly/{lang}/{d['month']}.html"
-    text = f"{t(d, 'title', lang)} — {site_title(cfg, lang)}, {fmt_month(d['month'], lang)}"
+    url = f"{base}/{path}"
+    text = f"{title} — {site_title(cfg, lang)}"
     q = up.quote
-    links = [f'<a class="pdf" href="{esc(d["month"])}.pdf" download>{w["pdf"]}</a>',
-             f'<a href="mailto:?subject={q(text)}&amp;body={q(url)}">{w["shareEmail"]}</a>',
-             f'<a href="https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" rel="noopener">X</a>',
-             f'<a href="https://www.facebook.com/sharer/sharer.php?u={q(url)}" rel="noopener">Facebook</a>',
-             f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(text)}" rel="noopener">Telegram</a>',
-             f'<a href="https://wa.me/?text={q(text + " " + url)}" rel="noopener">WhatsApp</a>']
+    links = ([f'<a class="pdf" href="{esc(pdf)}" download>{w["pdf"]}</a>'] if pdf else []) + [
+        f'<a href="mailto:?subject={q(text)}&amp;body={q(url)}">{w["shareEmail"]}</a>',
+        f'<a href="https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" rel="noopener">X</a>',
+        f'<a href="https://www.facebook.com/sharer/sharer.php?u={q(url)}" rel="noopener">Facebook</a>',
+        f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(text)}" rel="noopener">Telegram</a>',
+        f'<a href="https://wa.me/?text={q(text + " " + url)}" rel="noopener">WhatsApp</a>']
     nl = str(cfg.get("newsletter_url") or "").strip()
     if nl.startswith("https://"):
         links.append(f'<a href="{esc(nl)}" rel="noopener">{w["subscribe"]}</a>')
-    links.append(f'<a href="../../{"feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml"}">RSS</a>')
-    return f'<div class="share" aria-label="{w["share"]}"><span class="sub">{w["share"]}:</span>{"".join(links)}</div>'
+    if feed:
+        links.append(f'<a href="../../{esc(feed)}">RSS</a>')
+    return f'<div class="share" aria-label="{w["shareIt"]}"><span class="sub">{w["shareIt"]}:</span>{"".join(links)}</div>'
 
 
 def about_report(cfg: dict, d: dict, lang: str) -> str:
@@ -681,7 +692,8 @@ def monthly_body(cfg: dict, d: dict, lang: str) -> str:
     head = [f"<p class=\"eyebrow\"><a href=\"index.html\">{w['reviews']}</a> · {w['reportLabel']} · {esc(fmt_month(d['month'], lang))}</p>",
             f"<h1>{esc(t(d, 'title', lang))}</h1>",
             f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(base.replace('https://', ''))}</span></p>",
-            share_bar(cfg, d, lang)]
+            share_bar(cfg, lang, f"monthly/{lang}/{d['month']}.html", f"{t(d, 'title', lang)}, {fmt_month(d['month'], lang)}",
+                      pdf=f"{d['month']}.pdf", feed="feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml")]
     charts = []
     bars = svg_theme_bars(cfg, s.get("themes") or [], lang)
     if bars:
@@ -760,6 +772,98 @@ def load_reviews() -> list:
     return archive._load(MONTHLY_DATA_DIR / "index.json", [])
 
 
+# ----------------------------------------------------------------- daily briefs
+
+DAILY = ROOT / "daily"
+
+
+def daily_summary(cfg: dict, day: dict) -> dict | None:
+    """What a day's page needs, from the archived runs of that day: the last update's brief, the day's stories
+    (each with its last analysis), tone, volume and theme shares."""
+    runs = [r for r in day.get("runs") or [] if r.get("narratives")]
+    if not runs:
+        return None
+    last = runs[-1]
+    stories: dict = {}
+    for r in runs:
+        for n in r.get("narratives") or []:
+            key = n.get("key") or archive.story_key(n)
+            e = stories.setdefault(key, {"key": key, "runs": 0, "max_share": 0.0})
+            e.update(n); e["key"] = key
+            e["runs"] += 1
+            e["max_share"] = max(e["max_share"], float(n.get("share") or 0))
+    pub = archive._mean([((r.get("overall") or {}).get("public_sentiment"), (r.get("stats") or {}).get("public_posts") or 1) for r in runs])
+    out = archive._mean([((r.get("overall") or {}).get("sentiment"), (r.get("stats") or {}).get("outlet_posts") or 1) for r in runs])
+    themes: dict = {}
+    for r in runs:
+        for n in r.get("narratives") or []:
+            themes[n.get("theme") or "other"] = themes.get(n.get("theme") or "other", 0) + float(n.get("share") or 0) / len(runs)
+    theme_rows = sorted([{"theme": k, "share": round(v, 3)} for k, v in themes.items() if v > 0], key=lambda x: x["share"], reverse=True)
+    return {"date": day["date"], "last": last, "overall": last.get("overall") or {}, "runs": len(runs),
+            "posts": sum(int((r.get("stats") or {}).get("posts_analyzed") or 0) for r in runs),
+            "public_sentiment": pub, "outlet_sentiment": out, "themes": theme_rows,
+            "stories": sorted(stories.values(), key=lambda e: (e["max_share"], e["runs"]), reverse=True)}
+
+
+def daily_body(cfg: dict, s: dict, lang: str) -> str:
+    w, ov = W[lang], s["overall"]
+    date = s["date"]
+    title = f"{w['daily']} · {fmt_date(date, lang)}"
+    mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
+    tiles = [(esc(tone_label(s["public_sentiment"], lang)), f"{w['peopleTone']}" + (f" ({signed(s['public_sentiment'], lang)})" if s["public_sentiment"] is not None else "")),
+             (esc(tone_label(s["outlet_sentiment"], lang)), f"{w['outletTone']}" + (f" ({signed(s['outlet_sentiment'], lang)})" if s["outlet_sentiment"] is not None else "")),
+             (num(len(s["stories"]), lang), w["storiesN"]), (num(int(s["posts"]), lang), w["postIdx"]), (num(int(s["runs"]), lang), w["updatesN"])]
+    kpis = '<div class="kpis">' + "".join(f"<div class=\"kpi\"><b>{v}</b><span>{lbl}</span></div>" for v, lbl in tiles) + "</div>"
+    bars = svg_theme_bars(cfg, s["themes"], lang)
+    items = []
+    for e in s["stories"]:
+        p = e.get("public_sentiment")
+        tone_txt = f"{w['people']} {signed(p, lang)} · " if p is not None else ""
+        items.append(f'<li><b><a href="../../stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
+                     f'<span class="sub">{esc(theme_label(cfg, e.get("theme", "other"), lang))} · {tone_txt}{w["outlets"]} {signed(e.get("sentiment") or 0, lang)} · {pct(e["max_share"], lang)}</span>'
+                     f'<br>{esc(t(e, "summary", lang))}</li>')
+    parts = ['<article class="report">',
+             f"<p class=\"eyebrow\"><a href=\"index.html\">{w['dailies']}</a> · {esc(fmt_date(date, lang))}</p>",
+             f"<h1>{esc(title)}</h1>",
+             f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {w['asOf']} {esc(fmt_date(s['last'].get('generated_at', ''), lang, True))}</p>",
+             share_bar(cfg, lang, f"daily/{lang}/{date}.html", title),
+             f"<section class=\"findings\"><h2>{w['dailyMood']}</h2><p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p></section>",
+             f"<section class=\"numbers\"><h2>{w['dayNumbers']}</h2>{kpis}" + (f'<div class="charts"><figure><figcaption>{w["chartThemes"]}</figcaption>{bars}</figure></div>' if bars else "") + "</section>",
+             f"<section class=\"stories\"><h2>{w['storiesOfDay']}</h2><ol>{''.join(items)}</ol></section>",
+             f"<p class=\"sub\">{esc(w['storyNote'])}</p></article>"]
+    return "\n".join(parts)
+
+
+def write_daily_pages(cfg: dict, dates: list) -> int:
+    n = 0
+    for date in dates:
+        s = daily_summary(cfg, archive.load_day(date))
+        if not s:
+            continue
+        for lang in LANGS:
+            other = "ar" if lang == "en" else "en"
+            desc = str(t(s["overall"], "brief", lang) or "")[:200]
+            write(DAILY / lang / f"{date}.html", page(cfg, lang, f"{W[lang]['daily']} · {fmt_date(date, lang)}", desc, daily_body(cfg, s, lang),
+                                                    f"daily/{lang}/{date}.html", f"daily/{other}/{date}.html", updated=s["last"].get("generated_at")))
+        n += 1
+    return n
+
+
+def write_daily_listing(cfg: dict) -> None:
+    index = archive._load(archive.ARCHIVE / "index.json", {})
+    days = [d for d in index.get("days") or [] if d.get("runs")]
+    for lang in LANGS:
+        w, other = W[lang], "ar" if lang == "en" else "en"
+        items = []
+        for d in sorted(days, key=lambda d: d["date"], reverse=True)[:90]:
+            tone = f"{w['people']} {signed(d['public_sentiment'], lang)}" if d.get("public_sentiment") is not None else ""
+            tone += (" · " if tone else "") + (f"{w['outlets']} {signed(d['outlet_sentiment'], lang)}" if d.get("outlet_sentiment") is not None else "")
+            items.append(f"""<li><a href="{esc(d['date'])}.html">{esc(fmt_date(d['date'], lang))}</a><span class="meta">{tone} · {num(int(d.get('stories') or 0), lang)} {w['stories'].lower() if lang == 'en' else w['stories']}</span></li>""")
+        write(DAILY / lang / "index.html", page(cfg, lang, w["dailies"], w["dailySub"],
+                                                f"<h1>{w['dailies']}</h1><p class=\"sub\">{esc(w['dailySub'])}</p><ul class=\"list\">{''.join(items)}</ul>",
+                                                f"daily/{lang}/index.html", f"daily/{other}/index.html", kind="website"))
+
+
 # ----------------------------------------------------------------- sitemap, robots, prerender
 
 def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None:
@@ -780,6 +884,12 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
     for d in reviews if reviews is not None else load_reviews():
         for lang in LANGS:
             urls.append((f"{base}/monthly/{lang}/{d['month']}.html", str(d.get("generated_at", today))[:10], "yearly", "0.7"))
+    for lang in LANGS:
+        urls.append((f"{base}/daily/{lang}/index.html", today, "daily", "0.5"))
+    for date in archive.all_days():
+        for lang in LANGS:
+            if (DAILY / lang / f"{date}.html").exists():
+                urls.append((f"{base}/daily/{lang}/{date}.html", date, "yearly", "0.4"))
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n" for u, m, c, p in urls[:49000])
     write(ROOT / "sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}</urlset>\n')
     write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
@@ -803,7 +913,7 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
             items.append(f"<li><a href=\"stories/{lang}/{esc(key)}.html\">{esc(t(n, 'title', lang))}</a> {esc(t(n, 'summary', lang))}</li>")
         mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
         sections.append(f"""<section class="pre" lang="{lang}" dir="{'rtl' if lang == 'ar' else 'ltr'}"><h2>{w['prerender']} · {esc(fmt_date(latest.get('generated_at', ''), lang, True))}</h2>
-<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul><p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a></p></section>""")
+<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul><p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="daily/{lang}/index.html">{w['dailies']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a></p></section>""")
     block = start + "\n" + "\n".join(sections) + "\n" + end
     new = html_text[:html_text.index(start)] + block + html_text[html_text.index(end) + len(end):]
     if new != html_text:
@@ -827,5 +937,9 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     reviews = load_reviews()
     write_monthly_listing(cfg, reviews)
     write_monthly_feeds(cfg, reviews)
+    today = str(latest.get("generated_at") or "")[:10]
+    if today:
+        write_daily_pages(cfg, [today])   # the day's brief, refreshed on every update
+    write_daily_listing(cfg)
     write_sitemap(cfg, digests, reviews)
     prerender_index(cfg, latest)

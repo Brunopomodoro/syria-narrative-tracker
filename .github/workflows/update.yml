@@ -42,7 +42,7 @@ jobs:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
         run: python scripts/pipeline.py
 
-      - name: Report PDFs (only when a monthly report is new)
+      - name: Report PDFs (only when a monthly report or weekly digest is new)
         run: python scripts/report_pdf.py
 
       - name: Save results

@@ -13,7 +13,7 @@ on:
           - rebuild-index-and-exports   # recompute data/archive/index.json and data/exports from the archive (free)
           - backfill-themes             # give themes to archived stories that have none (uses Claude, a few cents)
           - backfill-archive            # rebuild the archive from the git history of the results (free)
-          - rebuild-pages               # rebuild every story page, listing, feed and the sitemap from the archive (free)
+          - rebuild-pages               # rebuild every story page, daily brief, digest and report page, listing, feed and the sitemap from the archive (free)
           - backfill-weekly             # write the weekly digest of every completed week that has none (uses Claude, a few cents each)
           - backfill-monthly            # write the monthly review of every completed month that has none (uses Claude, about 15 cents each)
           - validation-sample           # a normal update plus a private sample of posts for a validation study (GUIDE.md); size below
@@ -77,7 +77,7 @@ jobs:
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
           esac
 
-      - name: Report PDFs (when a monthly report is new or rebuilt)
+      - name: Report PDFs (monthly reports and weekly digests, when new or rebuilt)
         run: python scripts/report_pdf.py
 
       - name: Upload the validation sample (private repositories only; kept 30 days)
