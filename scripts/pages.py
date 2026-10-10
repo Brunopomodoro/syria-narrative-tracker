@@ -659,7 +659,9 @@ def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = Non
     text = f"{title} — {site_title(cfg, lang)}"
     q = up.quote
     links = ([f'<a class="pdf" href="{esc(pdf)}" download>{w["pdf"]}</a>'] if pdf else []) + [
-        f'<a href="mailto:?subject={q(text)}&amp;body={q(url)}">{w["shareEmail"]}</a>',
+        # the email_off comments stop Cloudflare's "email address obfuscation" from rewriting the mailto link into a
+        # /cdn-cgi/l/email-protection link, which needs a script these pages do not allow
+        f'<!--email_off--><a href="mailto:?subject={q(text)}&amp;body={q(url)}">{w["shareEmail"]}</a><!--/email_off-->',
         f'<a href="https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" rel="noopener">X</a>',
         f'<a href="https://www.facebook.com/sharer/sharer.php?u={q(url)}" rel="noopener">Facebook</a>',
         f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(text)}" rel="noopener">Telegram</a>',
