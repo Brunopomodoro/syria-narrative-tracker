@@ -55,7 +55,7 @@ W = {   # the words on the static pages
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
            "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
-           "aboutReport": "About this report", "shareIt": "Share", "pdf": "Download PDF", "shareEmail": "Email", "cite": "Cite as",
+           "aboutReport": "About this report", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
            "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
@@ -86,7 +86,7 @@ W = {   # the words on the static pages
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
            "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
-           "aboutReport": "عن هذا التقرير", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "shareEmail": "البريد الإلكتروني", "cite": "للاستشهاد",
+           "aboutReport": "عن هذا التقرير", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
            "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
@@ -652,16 +652,13 @@ def kpi_tiles(cfg: dict, d: dict, lang: str) -> str:
 
 
 def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = None, feed: str | None = None) -> str:
-    """Share links for a page: PDF (when one exists), email, X, Facebook, Telegram, WhatsApp, the newsletter and a feed."""
+    """Share links for a page: PDF (when one exists), X, Facebook, Telegram, WhatsApp, the newsletter and a feed."""
     import urllib.parse as up
     w, base = W[lang], site_url(cfg)
     url = f"{base}/{path}"
     text = f"{title} — {site_title(cfg, lang)}"
     q = up.quote
     links = ([f'<a class="pdf" href="{esc(pdf)}" download>{w["pdf"]}</a>'] if pdf else []) + [
-        # the email_off comments stop Cloudflare's "email address obfuscation" from rewriting the mailto link into a
-        # /cdn-cgi/l/email-protection link, which needs a script these pages do not allow
-        f'<!--email_off--><a href="mailto:?subject={q(text)}&amp;body={q(url)}">{w["shareEmail"]}</a><!--/email_off-->',
         f'<a href="https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" rel="noopener">X</a>',
         f'<a href="https://www.facebook.com/sharer/sharer.php?u={q(url)}" rel="noopener">Facebook</a>',
         f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(text)}" rel="noopener">Telegram</a>',
