@@ -27,6 +27,57 @@ monthly_review: true
 # have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
 newsletter_url: ""
 
+# Hashtags for the X, Facebook and Telegram share links of daily briefs, weekly digests, monthly reports
+# and story pages (GUIDE.md). always: on every share, by page language. places: added when one of the
+# spellings under match is in the page's story titles. themes: by theme id, for the page's main themes.
+# brand: added last. max: the most tags on one share. The list is cut to what fits in a post on X.
+share_hashtags:
+  always: {en: [Syria], ar: [سوريا, Syria]}
+  brand: SyrianPulse
+  max: 7
+  themes:
+    economy: {en: [SyrianEconomy], ar: [الاقتصاد_السوري]}
+    security: {en: [], ar: []}
+    northeast-kurdish: {en: [NorthEastSyria, SDF], ar: [شمال_شرق_سوريا, قسد]}
+    suwayda-druze: {en: [Suwayda], ar: [السويداء]}
+    coast-alawite: {en: [SyrianCoast, Latakia], ar: [الساحل_السوري, اللاذقية]}
+    justice: {en: [TransitionalJustice], ar: [العدالة_الانتقالية]}
+    governance: {en: [SyrianGovernment], ar: [الحكومة_السورية]}
+    israel-south: {en: [Israel, Golan], ar: [إسرائيل, الجولان]}
+    international: {en: [MiddleEast], ar: [الشرق_الأوسط]}
+    refugees: {en: [SyrianRefugees], ar: [اللاجئين_السوريين]}
+    society: {en: [], ar: []}
+  places:
+    - {en: Damascus, ar: دمشق, match: [Damascus, دمشق]}
+    - {en: Aleppo, ar: حلب, match: [Aleppo, حلب]}
+    - {en: Homs, ar: حمص, match: [Homs, حمص]}
+    - {en: Hama, ar: حماة, match: [Hama, حماة]}
+    - {en: Latakia, ar: اللاذقية, match: [Latakia, Lattakia, اللاذقية]}
+    - {en: Tartus, ar: طرطوس, match: [Tartus, Tartous, طرطوس]}
+    - {en: Idlib, ar: إدلب, match: [Idlib, إدلب, ادلب]}
+    - {en: Daraa, ar: درعا, match: [Daraa, Deraa, درعا]}
+    - {en: Suwayda, ar: السويداء, match: [Suwayda, Sweida, Suweida, السويداء]}
+    - {en: Quneitra, ar: القنيطرة, match: [Quneitra, Qunaitra, القنيطرة]}
+    - {en: DeirEzzor, ar: دير_الزور, match: [Deir ez-Zor, Deir Ezzor, Deir al-Zor, Deir Ezzour, دير الزور]}
+    - {en: Raqqa, ar: الرقة, match: [Raqqa, Raqqah, الرقة]}
+    - {en: Hasakah, ar: الحسكة, match: [Hasakah, Hasaka, Hassakeh, Hasakeh, الحسكة]}
+    - {en: Qamishli, ar: القامشلي, match: [Qamishli, Qamishlo, القامشلي]}
+    - {en: Kobani, ar: عين_العرب, match: [Kobani, Kobane, Ain al-Arab, كوباني, عين العرب]}
+    - {en: Manbij, ar: منبج, match: [Manbij, منبج]}
+    - {en: Afrin, ar: عفرين, match: [Afrin, عفرين]}
+    - {en: Golan, ar: الجولان, match: [Golan, الجولان]}
+    - {en: Euphrates, ar: الفرات, match: [Euphrates, الفرات]}
+    - {en: Lebanon, ar: لبنان, match: [Lebanon, Lebanese, لبنان, اللبناني]}
+    - {en: Turkey, ar: تركيا, match: [Turkey, Türkiye, Turkish, تركيا, التركي]}
+    - {en: Iraq, ar: العراق, match: [Iraq, Iraqi, العراق, العراقي]}
+    - {en: Jordan, ar: الأردن, match: [Jordan, Jordanian, الأردن, الأردني]}
+    - {en: Israel, ar: إسرائيل, match: [Israel, Israeli, إسرائيل, اسرائيل, الإسرائيلي]}
+    - {en: SDF, ar: قسد, match: [SDF, Syrian Democratic Forces, قسد]}
+    - {en: ISIS, ar: داعش, match: [ISIS, Daesh, Islamic State, داعش, تنظيم الدولة]}
+    - {en: AlSharaa, ar: الشرع, match: [al-Sharaa, Sharaa, al-Shara, الشرع]}
+    - {en: Captagon, ar: كبتاغون, match: [Captagon, كبتاغون, الكبتاغون, الكبتاجون]}
+    - {en: UN, ar: الأمم_المتحدة, match: [UN, United Nations, الأمم المتحدة]}
+
 # How far back to look on every run, in hours. 24 = "the last day".
 window_hours: 24
 
