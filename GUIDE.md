@@ -363,6 +363,17 @@ The 12 themes live under `themes:` in `config.yaml`, each with a description tha
 
 - Every story has a permanent page in both languages (`stories/en/…`, `stories/ar/…`; the "Permanent page" link under each story on the tracker), with its full latest analysis and every update it appeared in. Cite those pages rather than the front page when you refer to a specific story.
 - After every completed week the tracker writes a **weekly digest** in English and Arabic (`weekly/en/…`, `weekly/ar/…`), with the week's theme table. The digests are listed at the bottom of the Trends page and published as RSS feeds (`feed.xml`, `feed-ar.xml`), which newsletter tools and feed readers can follow. Turn this off with `weekly_digest: false` in `config.yaml`.
+- After every completed month it writes a **monthly review** (`monthly/en/…`, `monthly/ar/…`): the arc of the month, the themes against the previous month, where people and outlets differed, the weeks in brief, the stories that carried coordination signals, and the theme and tone tables. It needs at least 10 days of data in the month. Turn it off with `monthly_review: false`.
+
+### Monthly review and newsletter
+
+The monthly review is written to be sent as a newsletter. Its feeds (`feed-monthly.xml` in English, `feed-monthly-ar.xml` in Arabic) carry the full text of every review, with absolute links, so an RSS-to-email service can send each new review to subscribers without anything else to build. The site itself cannot send email: it is static, has no server, and subscriber addresses must never be put in the repository.
+
+1. Create an account with an RSS-to-email service. **Buttondown** (https://buttondown.com) is free up to 100 subscribers, hosts the sign-up page, the unsubscribe link and the consent record that email law requires, and has an "RSS-to-email" automation; **follow.it** is a simpler free alternative. Some US services refuse accounts from certain countries; if one does, try the other.
+2. Point the automation at `https://www.syrianpulse.org/feed-monthly.xml` (or the Arabic feed), set it to send each new item automatically, and send yourself a test.
+3. Put the service's sign-up page address in `config.yaml` as `newsletter_url`. The monthly pages and the Trends page then show a "Subscribe by email" link.
+
+If no service will take your account, the fallback is to send the review yourself from the Maintenance workflow through a Gmail app password to addresses kept in a repository secret, with a Google Form for sign-ups; ask for that to be set up if you need it. The first review is written by **Actions → Maintenance → backfill-monthly**; afterwards each new month's review is written automatically on the first update after the month ends.
 
 ### Maintenance jobs
 
@@ -374,6 +385,7 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | rebuild-pages | Rebuild every story page, listing, feed and the sitemap. Run after changing how pages look. | free |
 | backfill-themes | Give a theme to archived stories that have none. | a few cents |
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
+| backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
 
 ### Citing the tracker and getting a DOI
