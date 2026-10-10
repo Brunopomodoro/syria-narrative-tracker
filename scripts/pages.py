@@ -101,9 +101,9 @@ W = {   # the words on the static pages
 }
 
 CSS = """
-:root{--paper:#F3F5F2;--ink:#1D262B;--muted:#5B666A;--faint:#9AA3A6;--rule:#D6DCD8;--wash:#E9EEEA;--neg:#A3303C;--neu:#A7ABA3;--pos:#2C7663;--brass:#8A6420;
+:root{--paper:#F7F1E3;--ink:#1D262B;--muted:#5B666A;--faint:#9AA3A6;--rule:#E2D9C5;--wash:#EEE6D3;--neg:#A3303C;--neu:#A7ABA3;--pos:#2C7663;--brass:#8A6420;
 --sans:"IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif;--display:"IBM Plex Serif","Noto Naskh Arabic",Georgia,serif}
-@media (prefers-color-scheme:dark){:root{--paper:#172024;--ink:#E7ECE8;--muted:#A1ACAF;--faint:#6B777B;--rule:#2C383D;--wash:#1E292E;--neg:#D8606B;--neu:#6F7670;--pos:#4FAE94;--brass:#D2A95A}}
+:root{color-scheme:light}
 html[lang=ar]{--sans:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif;--display:"Noto Naskh Arabic","IBM Plex Sans Arabic",serif}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--sans)}html[lang=ar] body{font-size:18px;line-height:1.8}
 a{color:inherit;text-decoration-color:var(--brass);text-underline-offset:3px}a:hover{color:var(--brass)}
@@ -260,7 +260,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <link rel="canonical" href="{esc(canonical)}">
 <link rel="alternate" hreflang="{lang}" href="{esc(canonical)}"><link rel="alternate" hreflang="{other}" href="{esc(alt)}">
 <link rel="icon" href="{root}assets/logo.svg" type="image/svg+xml"><link rel="icon" href="{root}favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
-<link rel="manifest" href="{root}site.webmanifest"><meta name="theme-color" content="#F3F5F2" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#172024" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="{root}site.webmanifest"><meta name="theme-color" content="#F7F1E3"><meta name="color-scheme" content="only light">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitle'])}" href="{root}{'feed-ar.xml' if lang == 'ar' else 'feed.xml'}">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitleMonthly'])}" href="{root}{'feed-monthly-ar.xml' if lang == 'ar' else 'feed-monthly.xml'}">
 {og}

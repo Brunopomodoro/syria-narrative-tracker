@@ -41,7 +41,7 @@ import report_pdf  # noqa: E402  (finds Chrome)
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 
-BRASS, PAPER, INK, MUTED, FAINT = "#8A6420", "#F3F5F2", "#1D262B", "#5B666A", "#9AA3A6"
+BRASS, PAPER, INK, MUTED, FAINT = "#8A6420", "#F7F1E3", "#1D262B", "#5B666A", "#9AA3A6"
 NEG, NEU, POS = "#A3303C", "#A7ABA3", "#2C7663"
 
 # the mark, on a 64 x 64 square: a rounded speech bubble (tail at the lower left) and a pulse line through it

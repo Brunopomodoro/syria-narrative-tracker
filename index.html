@@ -15,8 +15,8 @@
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#F3F5F2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#172024" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F7F1E3">
+<meta name="color-scheme" content="only light">
 <link rel="alternate" type="application/rss+xml" title="Syria Narrative Tracker: weekly digest" href="feed.xml">
 <link rel="alternate" type="application/rss+xml" title="متتبّع السرديات السورية: الملخص الأسبوعي" href="feed-ar.xml">
 <link rel="alternate" type="application/rss+xml" title="Syria Narrative Tracker: monthly review" href="feed-monthly.xml">
@@ -35,12 +35,12 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F3F5F2;
+    --paper: #F7F1E3;
     --ink: #1D262B;
     --muted: #5B666A;
     --faint: #9AA3A6;
-    --rule: #D6DCD8;
-    --wash: #E9EEEA;
+    --rule: #E2D9C5;
+    --wash: #EEE6D3;
     --neg: #A3303C;
     --neu: #A7ABA3;
     --pos: #2C7663;
@@ -51,10 +51,7 @@
     --ar-display: "Noto Naskh Arabic", "IBM Plex Sans Arabic", serif;
     --ease: cubic-bezier(.2, .7, .2, 1);
   }
-  @media (prefers-color-scheme: dark) {
-    :root { --paper: #172024; --ink: #E7ECE8; --muted: #A1ACAF; --faint: #6B777B; --rule: #2C383D; --wash: #1E292E;
-            --neg: #D8606B; --neu: #6F7670; --pos: #4FAE94; --brass: #D2A95A; }
-  }
+  :root { color-scheme: light; }
   html[lang="ar"] { --sans: var(--ar-sans); --display: var(--ar-display); }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
