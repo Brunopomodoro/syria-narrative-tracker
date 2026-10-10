@@ -22,6 +22,7 @@ from collections import defaultdict
 
 import archive
 import brand  # noqa: E402
+import hashtags  # noqa: E402
 
 ROOT = archive.ROOT
 DATA = archive.DATA
@@ -354,7 +355,7 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
 <span><i class="o"></i>{w['outlets']}: <b>{esc(tone_label(out, lang))}</b> ({signed(out or 0, lang)})</span></div>"""
     n_runs = len(runs) or 1
     parts = [f"""<p class="eyebrow"><a href="index.html">{w['listing']}</a> · <a href="../../{'?lang=ar' if lang == 'ar' else ''}#trends">{esc(theme_label(cfg, theme, lang))}</a> · {w['firstSeen']} {esc(fmt_date(first, lang))} · {w['seenIn']} {num(n_runs, lang)} {w['update1'] if n_runs == 1 else w['updates']}</p>""",
-             f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, share_bar(cfg, lang, f"stories/{lang}/{key}.html", str(t(n, "title", lang))),
+             f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, share_bar(cfg, lang, f"stories/{lang}/{key}.html", str(t(n, "title", lang)), tags=hashtags.select(cfg, lang, [theme], [t(n, "title", lang)])),
              f"<p>{esc(t(n, 'summary', lang))}</p>"]
     reaction = t(n, "public_reaction", lang)
     if reaction:
@@ -443,7 +444,9 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
              f"<h1>{esc(t(d, 'title', lang))}</h1>",
              f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(site_url(cfg).replace('https://', ''))}</span></p>",
              share_bar(cfg, lang, f"weekly/{lang}/{d['week']}.html", f"{t(d, 'title', lang)}, {w['week']} {d['week']}",
-                       pdf=f"{d['week']}.pdf", feed="feed-ar.xml" if lang == "ar" else "feed.xml"),
+                       pdf=f"{d['week']}.pdf", feed="feed-ar.xml" if lang == "ar" else "feed.xml",
+                       tags=hashtags.select(cfg, lang, [x["theme"] for x in sorted(s.get("themes") or [], key=lambda x: -x.get("share", 0))],
+                                            [t(d, "title", lang)] + [t(h, "title", lang) for h in d.get("highlights") or []])),
              '<section class="analysis">' + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>"]
     hl = d.get("highlights") or []
     if hl:
@@ -654,17 +657,22 @@ def kpi_tiles(cfg: dict, d: dict, lang: str) -> str:
     return '<div class="kpis">' + "".join(f"<div class=\"kpi\"><b>{v}</b><span>{lbl}</span>{dl}</div>" for v, lbl, dl in tiles) + "</div>"
 
 
-def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = None, feed: str | None = None) -> str:
-    """Share links for a page: PDF (when one exists), X, Facebook, Telegram, WhatsApp, the newsletter and a feed."""
+def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = None, feed: str | None = None, tags: list | None = None) -> str:
+    """Share links for a page: PDF (when one exists), X, Facebook, Telegram, WhatsApp, the newsletter and a feed.
+    tags: hashtags without '#', most relevant first, for X (as many as fit the post), Facebook (the first) and Telegram."""
     import urllib.parse as up
     w, base = W[lang], site_url(cfg)
     url = f"{base}/{path}"
     text = f"{title} — {site_title(cfg, lang)}"
     q = up.quote
+    tags = hashtags.fit(tags or [], text)
+    x = f"https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" + (f"&amp;hashtags={q(','.join(tags))}" if tags else "")
+    fb = f"https://www.facebook.com/sharer/sharer.php?u={q(url)}" + (f"&amp;hashtag={q('#' + tags[0])}" if tags else "")
+    tg = text + ("\n" + " ".join("#" + tag for tag in tags) if tags else "")
     links = ([f'<a class="pdf" href="{esc(pdf)}" download>{w["pdf"]}</a>'] if pdf else []) + [
-        f'<a href="https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" rel="noopener">X</a>',
-        f'<a href="https://www.facebook.com/sharer/sharer.php?u={q(url)}" rel="noopener">Facebook</a>',
-        f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(text)}" rel="noopener">Telegram</a>',
+        f'<a href="{x}" rel="noopener">X</a>',
+        f'<a href="{fb}" rel="noopener">Facebook</a>',
+        f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(tg)}" rel="noopener">Telegram</a>',
         f'<a href="https://wa.me/?text={q(text + " " + url)}" rel="noopener">WhatsApp</a>']
     nl = str(cfg.get("newsletter_url") or "").strip()
     if nl.startswith("https://"):
@@ -695,7 +703,9 @@ def monthly_body(cfg: dict, d: dict, lang: str) -> str:
             f"<h1>{esc(t(d, 'title', lang))}</h1>",
             f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(base.replace('https://', ''))}</span></p>",
             share_bar(cfg, lang, f"monthly/{lang}/{d['month']}.html", f"{t(d, 'title', lang)}, {fmt_month(d['month'], lang)}",
-                      pdf=f"{d['month']}.pdf", feed="feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml")]
+                      pdf=f"{d['month']}.pdf", feed="feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml",
+                      tags=hashtags.select(cfg, lang, [x["theme"] for x in sorted(s.get("themes") or [], key=lambda x: -x.get("share", 0))],
+                                           [t(d, "title", lang)] + [t(h, "title", lang) for h in d.get("highlights") or []]))]
     charts = []
     bars = svg_theme_bars(cfg, s.get("themes") or [], lang)
     if bars:
@@ -828,7 +838,8 @@ def daily_body(cfg: dict, s: dict, lang: str) -> str:
              f"<p class=\"eyebrow\"><a href=\"index.html\">{w['dailies']}</a> · {esc(fmt_date(date, lang))}</p>",
              f"<h1>{esc(title)}</h1>",
              f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {w['asOf']} {esc(fmt_date(s['last'].get('generated_at', ''), lang, True))}</p>",
-             share_bar(cfg, lang, f"daily/{lang}/{date}.html", title),
+             share_bar(cfg, lang, f"daily/{lang}/{date}.html", title,
+                       tags=hashtags.select(cfg, lang, [x["theme"] for x in s["themes"]], [t(e, "title", lang) for e in s["stories"]])),
              f"<section class=\"findings\"><h2>{w['dailyMood']}</h2><p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p></section>",
              f"<section class=\"numbers\"><h2>{w['dayNumbers']}</h2>{kpis}" + (f'<div class="charts"><figure><figcaption>{w["chartThemes"]}</figcaption>{bars}</figure></div>' if bars else "") + "</section>",
              f"<section class=\"stories\"><h2>{w['storiesOfDay']}</h2><ol>{''.join(items)}</ol></section>",
