@@ -21,6 +21,7 @@ import re
 from collections import defaultdict
 
 import archive
+import brand  # noqa: E402
 
 ROOT = archive.ROOT
 DATA = archive.DATA
@@ -106,8 +107,8 @@ html[lang=ar]{--sans:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--sans)}html[lang=ar] body{font-size:18px;line-height:1.8}
 a{color:inherit;text-decoration-color:var(--brass);text-underline-offset:3px}a:hover{color:var(--brass)}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 40px}
-.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding:22px 0 18px;border-bottom:1px solid var(--rule);margin-bottom:34px}
-.top .brand{font-weight:600;font-size:1rem;text-decoration:none}.top nav{display:flex;gap:18px;color:var(--muted);font-size:.88rem;flex-wrap:wrap}.top nav a{text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:22px 0 18px;border-bottom:1px solid var(--rule);margin-bottom:34px}
+.top .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;text-decoration:none;color:var(--ink)}.top .brand .mark{width:26px;height:26px;flex:none}.purl{display:none}.top nav{display:flex;gap:18px;color:var(--muted);font-size:.88rem;flex-wrap:wrap}.top nav a{text-decoration:none}
 .top .lang{border:1px solid var(--rule);border-radius:999px;padding:2px 12px;color:var(--ink)}
 .eyebrow{color:var(--muted);font-size:.9rem;margin:0 0 10px}h1{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.25;margin:0 0 14px}
 h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:34px 0 10px}p{margin:0 0 14px;max-width:68ch}.sub{color:var(--muted);font-size:.9rem}
@@ -129,7 +130,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 .about-report{border-top:1px solid var(--rule);margin-top:30px;padding-top:14px;font-size:.88rem;color:var(--muted)}.about-report h2{margin-top:0;font-size:1.05rem}.about-report p{max-width:none}
 @media (min-width:640px){.kpis{grid-template-columns:repeat(3,1fr)}.charts{grid-template-columns:1fr 1fr}}
 @page{size:A4;margin:10mm 12mm}
-@media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.top,.share,footer,.chip,.print-hide,.wk-text{display:none!important}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
+@media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.share,footer,.chip,.print-hide,.wk-text,.top nav{display:none!important}.top{padding:0 0 5pt;margin:0 0 10pt;border-bottom:1px solid #bbb}.top .brand{font-size:9.5pt;color:#000}.top .brand .mark{width:14pt;height:14pt}.purl{display:block;color:#555;font-size:8.5pt}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
 .kpis{grid-template-columns:repeat(6,1fr);gap:6pt}.kpi{padding:5pt 8pt;border-color:#bbb}.kpi b{font-size:12pt}.kpi span,.kpi .delta{font-size:7.5pt}.charts{grid-template-columns:1fr 1fr;gap:8pt}.charts figure{padding:5pt 8pt;border-color:#bbb}.charts figcaption{font-size:9pt}
 .analysis{column-count:2;column-gap:16pt}.analysis h2{column-span:all}.weeks ul{column-count:2;column-gap:16pt}section,figure,.kpi,table,li{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}}
 """
@@ -237,14 +238,15 @@ def t(n: dict, field: str, lang: str):
 # ----------------------------------------------------------------- the page frame
 
 def page(cfg: dict, lang: str, title: str, description: str, body: str, path: str, alt_path: str, root: str = "../../",
-         updated: str | None = None, kind: str = "article", image: str = "assets/og.png") -> str:
+         updated: str | None = None, kind: str = "article", image: str | None = None) -> str:
     w, base = W[lang], site_url(cfg)
+    image = image or ("assets/og-ar.png" if lang == "ar" else "assets/og.png")
     other = "en" if lang == "ar" else "ar"
     canonical = f"{base}/{path}" if base else path
     alt = f"{base}/{alt_path}" if base else root + alt_path
     og = f"""<meta property="og:type" content="{kind}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(canonical)}"><meta property="og:locale" content="{'ar_SY' if lang == 'ar' else 'en_GB'}"><meta property="og:site_name" content="{esc(site_title(cfg, lang))}">
-<meta property="og:image" content="{esc((base + '/' if base else root) + image)}"><meta name="twitter:card" content="summary_large_image">"""
+<meta property="og:image" content="{esc((base + '/' if base else root) + image)}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">"""
     return f"""<!doctype html>
 <html lang="{lang}" dir="{'rtl' if lang == 'ar' else 'ltr'}">
 <head>
@@ -256,7 +258,8 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{esc(canonical)}">
 <link rel="alternate" hreflang="{lang}" href="{esc(canonical)}"><link rel="alternate" hreflang="{other}" href="{esc(alt)}">
-<link rel="icon" href="{root}assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="{root}assets/logo.svg" type="image/svg+xml"><link rel="icon" href="{root}favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
+<link rel="manifest" href="{root}site.webmanifest"><meta name="theme-color" content="#F3F5F2" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#172024" media="(prefers-color-scheme: dark)">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitle'])}" href="{root}{'feed-ar.xml' if lang == 'ar' else 'feed.xml'}">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitleMonthly'])}" href="{root}{'feed-monthly-ar.xml' if lang == 'ar' else 'feed-monthly.xml'}">
 {og}
@@ -265,7 +268,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 </head>
 <body>
 <div class="wrap">
-<header class="top"><a class="brand" href="{root}{'?lang=ar' if lang == 'ar' else ''}">{esc(site_title(cfg, lang))}</a>
+<header class="top"><a class="brand" href="{root}{'?lang=ar' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
 <nav><a href="{root}{'?lang=ar' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#about">{w['about']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
@@ -502,7 +505,7 @@ def write_feeds(cfg: dict, digests: list) -> None:
             items.append(f"""<item><title>{esc(d['title_ar'] if lang == 'ar' and d.get('title_ar') else d['title'])}</title><link>{esc(link)}</link><guid isPermaLink="true">{esc(link)}</guid>
 <pubDate>{pub.strftime('%a, %d %b %Y %H:%M:%S +0000')}</pubDate><description>{esc(' '.join(paras)[:1500])}</description></item>""")
         xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>{esc(w['feedTitle'])}</title><link>{esc(base + '/')}</link>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>{esc(w['feedTitle'])}</title><link>{esc(base + '/')}</link><image><url>{esc(base + '/assets/logo-144.png')}</url><title>{esc(w['feedTitle'])}</title><link>{esc(base + '/')}</link></image>
 <description>{esc(w['feedDesc'])}</description><language>{lang}</language><atom:link href="{esc(base + '/' + ('feed-ar.xml' if lang == 'ar' else 'feed.xml'))}" rel="self" type="application/rss+xml"/>
 {''.join(items)}</channel></rss>
 """
@@ -715,7 +718,7 @@ def monthly_email_html(cfg: dict, d: dict, lang: str) -> str:
     body = re.sub(r'<td><div class="bar">.*?</div></td>', "", body).replace("<th></th>", "")   # the bar column needs CSS; email clients have none
     body = body.replace("<table>", '<table cellpadding="6" style="border-collapse:collapse;font-size:14px">').replace("<th>", '<th align="left">')
     return (f'<div dir="{"rtl" if lang == "ar" else "ltr"}" lang="{lang}" style="font-family:system-ui,sans-serif;line-height:1.6">'
-            f'<p style="color:#5B666A;font-size:14px">{esc(site_title(cfg, lang))} · {esc(fmt_month(d["month"], lang))} · <a href="{esc(link)}">{w["readOnline"]}</a></p>'
+            f'<p style="color:#5B666A;font-size:14px"><img src="{esc(base + "/assets/logo-144.png")}" width="24" height="24" alt="" style="vertical-align:middle;border-radius:5px;margin-{"left" if lang == "ar" else "right"}:8px">{esc(site_title(cfg, lang))} · {esc(fmt_month(d["month"], lang))} · <a href="{esc(link)}">{w["readOnline"]}</a></p>'
             f'<h1 style="font-size:24px;line-height:1.3">{esc(t(d, "title", lang))}</h1>{body}'
             f'<p style="color:#5B666A;font-size:13px"><a href="{esc(base)}/">{esc(site_title(cfg, lang))}</a> · {esc(w["footer"])}</p></div>')
 
@@ -757,7 +760,7 @@ def write_monthly_feeds(cfg: dict, reviews: list) -> None:
 <content:encoded><![CDATA[{full.replace(']]>', ']]&gt;')}]]></content:encoded></item>""")
         name = "feed-monthly-ar.xml" if lang == "ar" else "feed-monthly.xml"
         xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>{esc(w['feedTitleMonthly'])}</title><link>{esc(base + '/')}</link>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>{esc(w['feedTitleMonthly'])}</title><link>{esc(base + '/')}</link><image><url>{esc(base + '/assets/logo-144.png')}</url><title>{esc(w['feedTitleMonthly'])}</title><link>{esc(base + '/')}</link></image>
 <description>{esc(w['feedDescMonthly'])}</description><language>{lang}</language><atom:link href="{esc(base + '/' + name)}" rel="self" type="application/rss+xml"/>
 {''.join(items)}</channel></rss>
 """
