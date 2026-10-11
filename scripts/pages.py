@@ -57,7 +57,7 @@ W = {   # the words on the static pages
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
            "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
-           "aboutReport": "About this report", "privacy": "Privacy", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
+           "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
            "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
@@ -88,7 +88,7 @@ W = {   # the words on the static pages
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
            "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
-           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
+           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
            "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
@@ -123,7 +123,7 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.82rem;color:var(--muted);margin-inline-end:8px}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
-.report .rmeta{margin-top:-6px}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.report .rmeta{margin-top:-6px}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
 .charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
@@ -270,11 +270,11 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'?lang=ar' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'?lang=ar' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#about">{w['about']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'?lang=ar' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a></footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}</footer>
 </div>
 </body>
 </html>
@@ -965,6 +965,84 @@ def privacy_body(cfg: dict, lang: str) -> str:
     return head + "".join(f'<h2 id="{"deletion" if i == 3 else "s" + str(i)}">{esc(h)}</h2><p>{body}</p>' for i, (h, body) in enumerate(sections))
 
 
+SUPPORT_PLATFORMS = [("open_collective", "Open Collective"), ("github_sponsors", "GitHub Sponsors"), ("kofi", "Ko-fi"), ("paypal", "PayPal"), ("other", None)]
+
+
+def support_links(cfg: dict) -> list:
+    """[(label, url)] of the ways to give set under `support:` in config.yaml; https links only."""
+    sup, out = cfg.get("support") or {}, []
+    for key, label in SUPPORT_PLATFORMS:
+        url = str(sup.get(key) or "").strip()
+        if url.startswith("https://"):
+            out.append((label or str(sup.get("other_label") or "Donate"), url))
+    return out
+
+
+def support_on(cfg: dict) -> bool:
+    return bool(support_links(cfg))
+
+
+def measured_costs(days: int = 30) -> tuple:
+    """(dollars, days with data, updates) of the analysis over the last `days` days, from the archive index."""
+    idx = archive._load(DATA / "archive" / "index.json", {}) or {}
+    rows = [d for d in (idx.get("days") or []) if d.get("runs")][-days:]
+    return round(sum(float(d.get("cost_usd") or 0) for d in rows), 2), len(rows), sum(int(d.get("runs") or 0) for d in rows)
+
+
+def support_body(cfg: dict, lang: str) -> str:
+    sup, links = cfg.get("support") or {}, support_links(cfg)
+    dollars, ndays, runs = measured_costs()
+    note = str(sup.get("recipient_note_ar" if lang == "ar" else "recipient_note") or "").strip()
+    funders = [f for f in sup.get("funders") or [] if f.get("name")]
+    oc = bool(str(sup.get("open_collective") or "").startswith("https://"))
+    money = f"${dollars:,.2f}"
+    if lang == "ar":
+        money = ar_digits(money)
+        head = "<h1>ادعم المتتبّع</h1><p>متتبّع السرديات السورية مجاني ومستقل ومفتوح: يمكن لأي شخص قراءته وتنزيل بياناته وإعادة استخدامها. يعمل بتكاليف صغيرة لكنها مستمرة، ويساعد دعمك على استمراره وتوسيعه.</p>"
+        cost = (f"<h2>كم يكلّف</h2><div class=\"tw\"><table><tbody>"
+                f"<tr><td>تحليل المنشورات بنموذج Claude، آخر {ar_digits(str(ndays))} يوماً ({ar_digits(str(runs))} تحديثاً)</td><td class=\"n\"><b>{money}</b></td></tr>"
+                f"<tr><td>استضافة الموقع (GitHub Pages)</td><td class=\"n\">مجاناً</td></tr>"
+                f"<tr><td>اسم النطاق syrianpulse.org</td><td class=\"n\">رسم سنوي</td></tr></tbody></table></div>"
+                f"<p class=\"sub\">رقم التحليل مُقاس من سجلّ التحديثات نفسه، ويتحدّث تلقائياً.</p>")
+        uses = ("<h2>ما الذي يموّله دعمك</h2><ul><li>استمرار التحديثات اليومية والتقارير الأسبوعية والشهرية.</li>"
+                "<li>قراءة مزيد من المنشورات في كل تحديث، لتقديرات أدقّ للنبرة وقصص أصغر لا تضيع.</li>"
+                "<li>مصادر جديدة، خصوصاً من المناطق التي لا يغطيها المتتبّع جيداً بعد.</li>"
+                "<li>مراجعة بشرية لعيّنات من التحليل بالعربية والكردية، ونسخة كردية من الموقع.</li></ul>")
+        give = "<h2>كيف تدعم</h2>" + (f'<p class="give">' + "".join(f'<a class="chip" href="{esc(u)}" rel="noopener">{esc(l)}</a>' for l, u in links) + "</p>" if links else "<p class=\"sub\">ستظهر طرق الدعم هنا قريباً.</p>")
+        where = note or ("تذهب المدفوعات إلى صندوق المشروع على Open Collective، حيث تظهر كل دفعة وكل نفقة للعموم." if oc else
+                         "تذهب المدفوعات إلى حساب مؤسس المشروع، ولا تُنفق إلا على المشروع. تكاليف كل شهر معروضة في هذه الصفحة.")
+        rules = ("<h2>قواعدنا</h2><ul><li>لا يؤثر أي داعم أو ممول على ما ينشره المتتبّع أو كيف يحلّله.</li>"
+                 "<li>يُذكر كل ممول مؤسسي في هذه الصفحة.</li><li>لا تُباع ولا تُشارك أي بيانات عن الأفراد، أبداً.</li>"
+                 "<li>تبقى البيانات والتقارير مجانية ومفتوحة للجميع بترخيص CC BY 4.0.</li></ul>")
+        fund = "<h2>الممولون</h2>" + ("<ul>" + "".join(f"<li>{esc(f.get('name_ar') or f['name'])}</li>" for f in funders) + "</ul>" if funders else "<p>لا ممولين مؤسسيين حتى الآن؛ المشروع ممول ذاتياً.</p>")
+        return head + cost + uses + give + f"<h2>أين يذهب المال</h2><p>{esc(where)}</p>" + rules + fund
+    head = "<h1>Support the tracker</h1><p>The Syria Narrative Tracker is free, independent and open: anyone can read it, download its data and reuse it. It runs on small but steady costs, and your support keeps it going and helps it grow.</p>"
+    cost = (f"<h2>What it costs</h2><div class=\"tw\"><table><tbody>"
+            f"<tr><td>Analysis of the posts by Claude, last {ndays} days ({runs} updates)</td><td class=\"n\"><b>{money}</b></td></tr>"
+            f"<tr><td>Website hosting (GitHub Pages)</td><td class=\"n\">free</td></tr>"
+            f"<tr><td>Domain name syrianpulse.org</td><td class=\"n\">yearly fee</td></tr></tbody></table></div>"
+            f"<p class=\"sub\">The analysis figure is measured from the tracker's own record of updates and refreshes by itself.</p>")
+    uses = ("<h2>What your support pays for</h2><ul><li>Keeping the daily updates and the weekly and monthly reports running.</li>"
+            "<li>Reading more posts per update, for steadier tone estimates and fewer small stories missed.</li>"
+            "<li>New sources, especially from areas the tracker does not yet cover well.</li>"
+            "<li>Human review of samples of the analysis in Arabic and Kurdish, and a Kurdish version of the site.</li></ul>")
+    give = "<h2>How to give</h2>" + (f'<p class="give">' + "".join(f'<a class="chip" href="{esc(u)}" rel="noopener">{esc(l)}</a>' for l, u in links) + "</p>" if links else "<p class=\"sub\">Ways to give will appear here soon.</p>")
+    where = note or ("Payments go to the project's Open Collective, where every payment and every expense is public." if oc else
+                     "Payments go to the account of the project's founder and are spent only on the project. Each month's costs are shown on this page.")
+    rules = ("<h2>Our rules</h2><ul><li>No supporter or funder has any say in what the tracker publishes or how it analyses it.</li>"
+             "<li>Every institutional funder is named on this page.</li><li>No data about individuals is ever sold or shared.</li>"
+             "<li>The data and reports stay free and open to everyone under CC BY 4.0.</li></ul>")
+    fund = "<h2>Funders</h2>" + ("<ul>" + "".join(f"<li>{esc(f['name'])}</li>" for f in funders) + "</ul>" if funders else "<p>No institutional funders yet; the project is self-funded.</p>")
+    return head + cost + uses + give + f"<h2>Where the money goes</h2><p>{esc(where)}</p>" + rules + fund
+
+
+def write_support_pages(cfg: dict) -> None:
+    for lang in LANGS:
+        other = "ar" if lang == "en" else "en"
+        write(ROOT / "support" / f"{lang}.html", page(cfg, lang, W[lang]["support"], W[lang]["support"], support_body(cfg, lang),
+                                                   f"support/{lang}.html", f"support/{other}.html", root="../", kind="website"))
+
+
 def write_privacy_pages(cfg: dict) -> None:
     for lang in LANGS:
         other = "ar" if lang == "en" else "en"
@@ -989,4 +1067,5 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_daily_listing(cfg)
     write_sitemap(cfg, digests, reviews)
     write_privacy_pages(cfg)
+    write_support_pages(cfg)
     prerender_index(cfg, latest)

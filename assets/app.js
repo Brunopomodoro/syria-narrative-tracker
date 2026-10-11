@@ -136,7 +136,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -266,7 +266,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -352,7 +352,9 @@ function applyLang() {
   b.textContent = t.switchTo;
   b.setAttribute("lang", t.switchLang);
   b.setAttribute("aria-label", t.switchLang === "ar" ? "اعرض الموقع بالعربية" : "Show the site in English");
-  $("#footer").innerHTML = `${esc(t.footer)} · <a href="privacy/${state.lang}.html">${t.privacy}</a>`;
+  const sup = !!state.latest?.support_on, supLink = $("#support-link");
+  if (supLink) { supLink.hidden = !sup; supLink.textContent = t.support; supLink.href = `support/${state.lang}.html`; }
+  $("#footer").innerHTML = `${esc(t.footer)} · <a href="privacy/${state.lang}.html">${t.privacy}</a>` + (sup ? ` · <a href="support/${state.lang}.html">${t.support}</a>` : "");
 }
 
 /* tone */

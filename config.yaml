@@ -30,6 +30,21 @@ newsletter_url: ""
 # Where people can reach the tracker; shown on the privacy page (Meta asks for a contact).
 contact_url: "https://github.com/Brunopomodoro/syria-narrative-tracker/issues"
 
+# The Support page (support/en.html) and its link in the menu and footer (GUIDE.md, "Support page").
+# The link appears once at least one of these https links is filled in. Money goes to the account behind the
+# link: an Open Collective is held by its host and every payment and expense is public; the others pay you.
+# recipient_note: optional wording for "Where the money goes". funders: institutional funders, listed on the page.
+support:
+  open_collective: ""
+  github_sponsors: ""
+  kofi: ""
+  paypal: ""
+  other: ""
+  other_label: ""
+  recipient_note: ""
+  recipient_note_ar: ""
+  funders: []      # e.g.  - {name: "Some Foundation", name_ar: "مؤسسة ما"}
+
 # Posting the reports to the tracker's Facebook Page (GUIDE.md, "Posting to Facebook"). Nothing is posted
 # until the FB_PAGE_ID and FB_PAGE_TOKEN secrets exist. first_lang: the language shown first in each post
 # (its page is the link preview). per_run: the most posts per update. daily_after_utc: yesterday's brief
