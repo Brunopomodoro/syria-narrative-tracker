@@ -392,6 +392,19 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | social-check | Check the Facebook and X keys and show the latest daily, weekly and monthly posts for each. Posts nothing. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
 
+### Support page
+
+The site has a bilingual **Support** page (`support/en.html`, `support/ar.html`) that shows what the tracker costs (the analysis cost of the last 30 days, measured from its own records), what support pays for, the ways to give, where the money goes, the funding rules (no funder influences the findings, every institutional funder is named, no data about individuals is ever sold) and the list of funders. Its link appears in the menu and the footer only once at least one way to give is set.
+
+**Where the money goes is decided by the account you link:**
+- **Open Collective** (https://opencollective.com): create a collective and apply to a fiscal host (for a European project, a European host). The host holds the money, every payment and every expense is public, and you are paid back by submitting expenses such as the monthly Claude invoice. Best for credibility; the host takes a fee, shown on its page.
+- **GitHub Sponsors** (https://github.com/sponsors): payments go to your GitHub account and then your bank. Simple; it is personal income.
+- **Ko-fi** (https://ko-fi.com) or **PayPal**: payments go straight to you. Also personal income.
+
+In Germany, money paid to you personally is taxable income; money held by a fiscal host or, later, a registered non-profit is not yours personally. A tax adviser can tell you which suits you.
+
+To switch it on, put the link under `support:` in `config.yaml` (for example `open_collective: "https://opencollective.com/syrian-pulse"`). The page and links appear at the next update, or at once with the **rebuild-pages** maintenance task. Add institutional funders under `funders:` as they come.
+
 ### Posting to Facebook
 
 Once set up, the tracker posts to its Facebook Page by itself: **yesterday's daily brief** every morning (the first update after 4:00 UTC, 7:00 in Damascus), each **weekly digest** once it is written (Monday), and each **monthly report** once it is written (early in the month). Each post has the headline, a few lines, the top stories or key findings, the link, the PDF link for digests and reports, hashtags, and a line saying it is an automatic summary. Arabic comes first and English below; the link preview shows the page's card. At most one post goes out per update, so a Monday with two reports spreads them out. What has been posted is kept in `data/social.json`, so nothing is posted twice and a failed post is tried again.
