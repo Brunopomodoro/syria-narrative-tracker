@@ -122,9 +122,10 @@ model: "claude-sonnet-5"
 default_language: "en"
 
 # Cost control. These two numbers decide most of your monthly bill.
-#   max_posts: the most posts sent to Claude per run
+#   max_posts: the most posts sent to Claude per run (800: about 30 US cents a run,
+#              about $40 a month; 400: about 22 cents, about $30)
 #   max_chars_per_post: long posts are cut to this length
-max_posts: 400
+max_posts: 800
 max_chars_per_post: 400
 
 # Share of the analysis reserved for ordinary people's voices (comments, groups)
@@ -235,6 +236,9 @@ method_changelog:
   - date: 2026-10-10
     note: "Thirteen more Telegram channels, each checked for activity and Syria focus before being added: SANA in Arabic, Syria TV, Al-Watan, Syria Plus, Snack Syrian and Step News; local channels for Deir ez-Zor and the east, Daraa and Damascus; and the Syria posts of Al-Hadath, France 24 Arabic and Arabi21. 37 channels in all."
     note_ar: "ثلاث عشرة قناة تيليغرام إضافية، فُحصت كل منها للتأكد من نشاطها وتركيزها على سوريا قبل إضافتها: سانا بالعربية، وتلفزيون سوريا، وجريدة الوطن، وسوريا بلس، وسناك سوري، ووكالة ستيب؛ وقنوات محلية لدير الزور والمنطقة الشرقية ودرعا ودمشق؛ ومنشورات سوريا من الحدث وفرانس 24 عربي وعربي21. 37 قناة في المجموع."
+  - date: 2026-10-11
+    note: "Up to 800 posts analysed per update instead of 400, so that most of the recent, on-topic posts collected are read rather than about half. Tone per story rests on about twice as many posts. Counts before and after this date are comparable as shares, not as totals."
+    note_ar: "تحليل ما يصل إلى 800 منشور في كل تحديث بدلاً من 400، لقراءة معظم المنشورات الحديثة والمتعلقة بالموضوع بدلاً من نصفها تقريباً. تستند نبرة كل قصة إلى ضعف عدد المنشورات تقريباً. الأعداد قبل هذا التاريخ وبعده قابلة للمقارنة كنسب، لا كمجاميع."
 
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".

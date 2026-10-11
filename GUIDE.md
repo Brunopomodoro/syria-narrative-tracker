@@ -18,7 +18,7 @@ Behind it, GitHub runs a small program every hour that collects public posts, as
 | YouTube comments (optional) | Free within Google's daily quota |
 | X / Twitter (optional) | About $0.005 per post read (roughly $36/month at default settings) |
 
-Claude cost depends on how many posts you analyze and which model reads them. With the default settings (up to 400 posts per run) and the default model `claude-sonnet-5`, a run costs about 20 to 25 US cents. GitHub currently runs the update every 3 to 6 hours, so that is roughly $1.50 a day, about $45 a month; if it ran every hour (extra E below) it would be about $170 a month. Two ways to spend less: switch `model` in `config.yaml` to `claude-haiku-4-5-20251001` (about half the cost, a less careful reading of dialect and sarcasm), or lower `max_posts` (for example to 150). Runs are skipped (free) when nothing new was posted, and every run prints its exact cost in the log. The weekly digest adds one call a week, a few cents.
+Claude cost depends on how many posts you analyze and which model reads them. With the default settings (up to 800 posts per run) and the default model `claude-sonnet-5`, a run costs about 30 US cents (about 22 cents at 400 posts). GitHub currently runs the update every 4 to 6 hours, so that is roughly $1.35 a day, about $40 a month; if it ran every hour (extra E below) it would be about $220 a month. Two ways to spend less: switch `model` in `config.yaml` to `claude-haiku-4-5-20251001` (about half the cost, a less careful reading of dialect and sarcasm), or lower `max_posts` (for example to 150). Runs are skipped (free) when nothing new was posted, and every run prints its exact cost in the log. The weekly digest adds one call a week, a few cents.
 
 ---
 
