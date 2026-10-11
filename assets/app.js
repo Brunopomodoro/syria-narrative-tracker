@@ -1,3 +1,12 @@
+/* =================== framing guard =================== */
+// GitHub Pages cannot send X-Frame-Options or frame-ancestors, so the page
+// refuses to show inside another site's frame (clickjacking). The proper
+// fix is the Cloudflare header rule described in README.md, "Security".
+if (window.top !== window.self) {
+  document.documentElement.style.display = "none";
+  try { window.top.location.replace(window.self.location.href); } catch (e) { /* stays hidden */ }
+}
+
 /* =================== words =================== */
 const T = {
   en: {
