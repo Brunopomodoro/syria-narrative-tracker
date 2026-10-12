@@ -1,0 +1,48 @@
+name: Update keeper
+
+# GitHub delays or skips scheduled runs when it is busy, which once left the site 10 hours without an update.
+# This keeper guarantees a maximum gap: whenever an update finishes, it waits KEEPER_HOURS and then starts the
+# next update. Every finished update (scheduled, manual or started by the keeper) cancels the waiting keeper and
+# starts a fresh one, so updates come at least every KEEPER_HOURS, and the hourly schedule still runs alongside.
+# It uses the repository's own built-in token; runner time is free for public repositories.
+# To stop it, disable this workflow under Actions -> Update keeper -> "..." -> Disable workflow.
+on:
+  workflow_run:
+    workflows: ["Update narratives"]
+    types: [completed]
+  workflow_dispatch:        # start the countdown by hand
+    inputs:
+      hours:
+        description: "Hours to wait (empty: the usual KEEPER_HOURS)"
+        type: string
+        default: ""
+
+permissions:
+  actions: write            # lets it start the update workflow
+  contents: read
+
+concurrency:
+  group: update-keeper
+  cancel-in-progress: true  # a newer finished update restarts the countdown
+
+env:
+  KEEPER_HOURS: "5"
+
+jobs:
+  wait-then-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330    # GitHub stops any job after 6 hours; the wait must stay below that
+    steps:
+      - name: Wait
+        env:
+          HOURS_INPUT: ${{ inputs.hours }}
+        run: |
+          hours="${HOURS_INPUT:-$KEEPER_HOURS}"
+          case "$hours" in ''|*[!0-9.]*) hours="$KEEPER_HOURS" ;; esac
+          echo "Next update in ${hours} hours unless another one finishes first."
+          sleep "$(python3 -c "print(int(min(float('$hours'), 5.4) * 3600))")"   # at most 5.4 hours, inside the job's time limit
+      - name: Start the update
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run update.yml --ref main
