@@ -318,7 +318,11 @@ The hashtags are listed under `instagram:` in `config.yaml`. Meta counts unique 
 
 ### E. Reliable hourly updates
 
-GitHub runs scheduled jobs late or skips them when its servers are busy, which is why the tracker updates every three to six hours rather than every hour. A free external timer fixes that:
+GitHub runs scheduled jobs late or skips them when its servers are busy, which is why the tracker updates every three to six hours rather than every hour, and why it once went 10 hours without one.
+
+**Built in: the update keeper.** `.github/workflows/keeper.yml` makes sure the gap never grows past 5 hours: whenever an update finishes, it waits 5 hours and then starts the next one, and every update that finishes in the meantime restarts the countdown. It needs no token or account (it uses the repository's own built-in key) and costs nothing on GitHub (runner time is free for public repositories); each update it starts costs the usual Claude amount. Change `KEEPER_HOURS` in that file to change the gap (at most 5), or turn it off under **Actions → Update keeper → … → Disable workflow**.
+
+**For updates on the hour,** a free external timer can start them on an exact schedule instead:
 
 1. In GitHub, open **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**. Give it access to this repository only, with the permission **Actions: Read and write**, and an expiry of a year. Copy the token.
 2. At **https://cron-job.org** (free) create a job that runs every hour and sends `POST https://api.github.com/repos/YOUR_USER/YOUR_REPO/actions/workflows/update.yml/dispatches` with the headers `Authorization: Bearer YOUR_TOKEN`, `Accept: application/vnd.github+json`, and the body `{"ref":"main"}`.
