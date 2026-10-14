@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action https://api.web3forms.com/submit 'self'">
 <meta name="referrer" content="no-referrer">
 <title>اتصل بنا · متتبّع السرديات السورية</title>
 <meta name="description" content="اتصل بنا">
@@ -59,7 +59,18 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 <header class="top"><a class="brand" href="../ar/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark" aria-hidden="true" focusable="false"><path d="M18 6H46A14 14 0 0 1 60 20V36A14 14 0 0 1 46 50H27L13 60L18 50A14 14 0 0 1 4 36V20A14 14 0 0 1 18 6Z" fill="var(--brass)"/><polyline points="13 28 22 28 27 19 32 38 37 14 42 34 46 28 51 28" fill="none" stroke="var(--paper)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>متتبّع السرديات السورية</span></a><span class="purl" dir="ltr">www.syrianpulse.org</span>
 <nav><a href="../ar/">المتتبّع</a><a href="../ar/#trends">الاتجاهات</a><a href="../ar/#reports">التقارير</a><a href="../ar/#data">البيانات</a><a href="../ar/#about">حول الموقع</a><a href="../contact/ar.html">اتصل بنا</a><a class="lang" lang="en" href="../contact/en.html">English</a></nav></header>
 <main>
-<h1>اتصل بنا</h1><p>لسؤال أو تصحيح أو استفسار إعلامي أو شراكة، اكتب لنا هنا. نقرأ كل رسالة ونرد عادة خلال أيام قليلة.</p><p>نموذج التواصل قيد الإعداد. إلى ذلك الحين يمكنك الكتابة لنا عبر <a href="https://github.com/Brunopomodoro/syria-narrative-tracker/issues" rel="noopener">github.com/Brunopomodoro/syria-narrative-tracker/issues</a>.</p>
+<h1>اتصل بنا</h1><p>لسؤال أو تصحيح أو استفسار إعلامي أو شراكة، اكتب لنا هنا. نقرأ كل رسالة ونرد عادة خلال أيام قليلة.</p><form class="cform" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="access_key" value="f76248a3-ddfa-4003-9afb-6ee56c73b4c2">
+<input type="hidden" name="subject" value="رسالة جديدة من syrianpulse.org (عربي)">
+<input type="hidden" name="from_name" value="Syria Narrative Tracker">
+<input type="hidden" name="redirect" value="https://www.syrianpulse.org/contact/ar-sent.html">
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label><span>الاسم <span class="opt">(اختياري)</span></span><input type="text" name="name" maxlength="120" autocomplete="name"></label>
+<label>بريدك الإلكتروني<input type="email" name="email" required maxlength="200" autocomplete="email" dir="ltr"></label>
+<label>الموضوع<select name="topic"><option>سؤال عام أو ملاحظة</option><option>تصحيح لقصة أو تقرير</option><option>استفسار إعلامي</option><option>شراكة أو تمويل</option><option>مشكلة تقنية في الموقع</option></select></label>
+<label>رسالتك<textarea name="message" required maxlength="5000"></textarea></label>
+<button type="submit">إرسال</button>
+</form><p class="sub">تُرسَل رسالتك إلى فريق المتتبّع بالبريد الإلكتروني عبر خدمة Web3Forms، ولا تُحفظ على هذا الموقع ولا تُنشر. نستخدم بريدك للرد عليك فقط. التفاصيل في <a href="../privacy/ar.html">صفحة الخصوصية</a>.</p>
 </main>
 <footer>تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح. · <a href="../privacy/ar.html">الخصوصية</a> · <a href="../contact/ar.html">اتصل بنا</a></footer>
 </div>
