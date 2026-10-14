@@ -392,6 +392,7 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
 | backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |
 | brand | Remake the logo files: icons, preview cards, wordmarks. Run after changing the site's name or tagline. | free |
+| backfill-arabic | Translate Arabic text that past updates left empty or in English, then rebuild the pages. New updates do this themselves. | a cent or two |
 | telegram-probe | Check Telegram channels before adding them: active, subscribers, last post, share of posts about Syria. Leave *names* empty for the built-in list, type channel names, or type `--discover` to find candidates from the channels' forwards and Syrian outlets' websites. | free |
 | social-check | Check the Facebook and X keys and show the latest daily, weekly and monthly posts for each. Posts nothing. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
