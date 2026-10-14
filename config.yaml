@@ -144,8 +144,11 @@ max_posts: 800
 max_chars_per_post: 400
 
 # Share of the analysis reserved for ordinary people's voices (comments, groups)
-# rather than outlets. 0.7 = 70% public, 30% outlets. Unused room is shared.
+# rather than outlets. 0.7 = 70% public, 30% outlets. Unused outlet room goes to people.
+# strict_public_share: true keeps outlets at their share even when there are too few public posts to fill
+# the rest (false lets outlets take the unused room).
 public_share: 0.7
+strict_public_share: true
 
 # Hours of history kept for the trend views and story search (336 = 14 days).
 history_hours: 336
@@ -254,6 +257,9 @@ method_changelog:
   - date: 2026-10-11
     note: "Up to 800 posts analysed per update instead of 400, so that most of the recent, on-topic posts collected are read rather than about half. Tone per story rests on about twice as many posts. Counts before and after this date are comparable as shares, not as totals."
     note_ar: "تحليل ما يصل إلى 800 منشور في كل تحديث بدلاً من 400، لقراءة معظم المنشورات الحديثة والمتعلقة بالموضوع بدلاً من نصفها تقريباً. تستند نبرة كل قصة إلى ضعف عدد المنشورات تقريباً. الأعداد قبل هذا التاريخ وبعده قابلة للمقارنة كنسب، لا كمجاميع."
+  - date: 2026-10-14
+    note: "Outlets are held to their 30% share of each analysed sample even when there are too few posts by people to fill the other 70%; before, they took the unused room (up to 38%). Zaman al-Wasl's news feed, which has refused automated readers since 11 October, is removed; its stories still arrive through Google News."
+    note_ar: "تبقى وسائل الإعلام عند حصتها البالغة 30% من كل عيّنة محلَّلة حتى عندما لا تكفي منشورات الناس لملء الـ70% الباقية؛ في السابق كانت تأخذ المساحة غير المستخدمة (حتى 38%). أُزيلت خلاصة أخبار زمان الوصل التي ترفض القرّاء الآليين منذ 11 تشرين الأول؛ ما زالت قصصها تصل عبر أخبار غوغل."
 
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
@@ -550,11 +556,6 @@ rss_feeds:
   - url: https://www.syria.tv/rss.xml
     label: "Syria TV - opposition-origin"
     label_ar: "تلفزيون سوريا - معارض سابقاً"
-    filter: false
-    kind: independent
-  - url: https://www.zamanalwsl.net/rss
-    label: "Zaman al-Wasl - opposition-origin"
-    label_ar: "زمان الوصل - معارضة سابقاً"
     filter: false
     kind: independent
   - url: https://www.skynewsarabia.com/rss/middle-east.xml
