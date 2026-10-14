@@ -669,13 +669,17 @@ def _round_robin(posts: list, limit: int) -> list:
     return out
 
 
-def balanced_sample(posts: list, limit: int, public_share: float) -> list:
-    """Reserve most of the budget for ordinary people's voices, spread fairly across sources."""
+def balanced_sample(posts: list, limit: int, public_share: float, strict: bool = True) -> list:
+    """Reserve most of the budget for ordinary people's voices, spread fairly across sources. With strict, outlets
+    keep their share even when there are too few public posts to fill the rest (at least 60, for context), instead
+    of taking the unused room."""
     public = [p for p in posts if p["voice"] == "public"]
     outlet = [p for p in posts if p["voice"] != "public"]
     n_public = min(len(public), int(limit * public_share))
     n_outlet = min(len(outlet), limit - n_public)
     n_public = min(len(public), limit - n_outlet)       # give unused outlet room back to public
+    if strict and 0 < public_share < 1:
+        n_outlet = min(n_outlet, max(60, round(n_public * (1 - public_share) / public_share)))
     return _round_robin(outlet, n_outlet) + _round_robin(public, n_public)
 
 
@@ -1067,7 +1071,7 @@ def main() -> int:
     log("Collecting...")
     raw, status = collect_all(cfg)
     posts = prepare(raw, cfg)
-    sample = balanced_sample(posts, int(cfg.get("max_posts", 150)), float(cfg.get("public_share", 0.7)))
+    sample = balanced_sample(posts, int(cfg.get("max_posts", 150)), float(cfg.get("public_share", 0.7)), bool(cfg.get("strict_public_share", True)))
     for i, p in enumerate(sample, 1):
         p["pid"] = f"p{i}"
     counts = Counter(p["source"] for p in posts)

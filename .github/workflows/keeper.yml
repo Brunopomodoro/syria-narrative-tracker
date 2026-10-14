@@ -19,7 +19,7 @@ on:
 
 permissions:
   actions: write            # lets it start the update workflow
-  contents: read
+  contents: read            # reads the time of the last update
 
 concurrency:
   group: update-keeper
@@ -34,13 +34,27 @@ jobs:
     timeout-minutes: 330    # GitHub stops any job after 6 hours; the wait must stay below that
     steps:
       - name: Wait
+        # Started by a finished update: wait until KEEPER_HOURS after the LAST REAL update (a scheduled run that
+        # skipped itself must not push the next update further away). Started by hand or by itself: wait the
+        # hours given, from now.
         env:
           HOURS_INPUT: ${{ inputs.hours }}
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
         run: |
           hours="${HOURS_INPUT:-$KEEPER_HOURS}"
           case "$hours" in ''|*[!0-9.]*) hours="$KEEPER_HOURS" ;; esac
-          echo "Next update in ${hours} hours unless another one finishes first."
-          sleep "$(python3 -c "print(int(min(float('$hours'), 5.4) * 3600))")"   # at most 5.4 hours, inside the job's time limit
+          wait=$(python3 -c "print(int(min(float('$hours'), 5.4) * 3600))")
+          if [ "$EVENT" = "workflow_run" ]; then
+            generated=$(gh api "repos/$GH_REPO/contents/data/latest.json?ref=main" -H "Accept: application/vnd.github.raw" | python3 -c "import sys,json; print(json.load(sys.stdin)['generated_at'])" || echo "")
+            if [ -n "$generated" ]; then
+              wait=$(python3 -c "import datetime as d; g=d.datetime.fromisoformat('$generated'.replace('Z','+00:00')); age=(d.datetime.now(d.timezone.utc)-g).total_seconds(); print(max(0, int($wait - age)))")
+              echo "Last update: $generated."
+            fi
+          fi
+          echo "Next update in $(( wait / 60 )) minutes unless another one finishes first."
+          sleep "$wait"
       - name: Start the update, then start the next countdown
         # GitHub does not send "workflow_run" for runs started with the built-in token, so the update started here
         # would not restart the keeper when it finishes; the keeper therefore re-arms itself. Updates started by
@@ -50,4 +64,4 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           gh workflow run update.yml --ref main
-          gh workflow run keeper.yml --ref main
+          gh workflow run keeper.yml --ref main -f hours="$KEEPER_HOURS"
