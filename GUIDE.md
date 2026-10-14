@@ -521,7 +521,7 @@ Repeat the study after any major change to the model or the instructions, so the
 
 ### Search engines
 
-The site has a sitemap, link previews and a crawlable copy of the current analysis. To be found sooner, register it with **Google Search Console** (https://search.google.com/search-console) and **Bing Webmaster Tools**, verify by adding the DNS record they show, and submit `https://www.syrianpulse.org/sitemap.xml`. Both also show which searches bring readers.
+The site has a sitemap, link previews and a crawlable copy of the current analysis. Every story, brief, digest and report also carries structured data (schema.org Article or Report), and the home page describes the site and the dataset (WebSite, Organization, Dataset), which is how the tracker can appear in Google Dataset Search. The Arabic home has its own address, `/ar/`. Stories seen in only one update stay on the site but are kept out of search results and the sitemap (`seo: index_min_runs` in `config.yaml`); each story page links to related stories of the same theme. To be found sooner, register it with **Google Search Console** (https://search.google.com/search-console) and **Bing Webmaster Tools**, verify by adding the DNS record they show, and submit `https://www.syrianpulse.org/sitemap.xml`. Both also show which searches bring readers.
 
 ---
 
