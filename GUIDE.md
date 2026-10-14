@@ -396,6 +396,12 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | social-check | Check the Facebook and X keys and show the latest daily, weekly and monthly posts for each. Posts nothing. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
 
+### Contact page
+
+Every page has a **Contact** link (menu and footer, both languages) to `contact/en.html` and `contact/ar.html`: a form with name (optional), email, topic (question, correction, media, partnership, technical problem) and message. Messages reach your inbox through **Web3Forms**, a free form service (250 messages a month), so your email address never appears on the site. The form works without any script, a hidden field catches simple spam bots, and after sending, visitors land on a thank-you page in their language.
+
+To switch it on: open https://web3forms.com, enter the email address that should receive the messages and press **Create Access Key**; Web3Forms emails you a key. Put it under `contact: web3forms_access_key:` in `config.yaml` (the key is meant to be public; it only lets the form send to you). Until then the page points to `contact_url`.
+
 ### Support page
 
 The site has a bilingual **Support** page (`support/en.html`, `support/ar.html`) that shows what the tracker costs (the analysis cost of the last 30 days, measured from its own records), what support pays for, the ways to give, where the money goes, the funding rules (no funder influences the findings, every institutional funder is named, no data about individuals is ever sold) and the list of funders. Its link appears in the menu and the footer only once at least one way to give is set.

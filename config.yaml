@@ -35,6 +35,12 @@ contact_url: "https://github.com/Brunopomodoro/syria-narrative-tracker/issues"
 seo:
   index_min_runs: 2
 
+# The Contact page (contact/en.html): its form sends each message to your email through Web3Forms
+# (https://web3forms.com, free, 250 messages a month). Put the access key Web3Forms emails you here; the key is
+# meant to be public, your email address is not in it. Empty: the page points to contact_url instead.
+contact:
+  web3forms_access_key: ""
+
 # The Support page (support/en.html) and its link in the menu and footer (GUIDE.md, "Support page").
 # The link appears once at least one of these https links is filled in. Money goes to the account behind the
 # link: an Open Collective is held by its host and every payment and expense is public; the others pay you.

@@ -57,7 +57,7 @@ W = {   # the words on the static pages
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
            "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
-           "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "related": "Related stories", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
+           "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "related": "Related stories", "contact": "Contact", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
            "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
@@ -88,7 +88,7 @@ W = {   # the words on the static pages
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
            "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
-           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "related": "قصص ذات صلة", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
+           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "related": "قصص ذات صلة", "contact": "اتصل بنا", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
            "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
@@ -123,7 +123,7 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.82rem;color:var(--muted);margin-inline-end:8px}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
-.report .rmeta{margin-top:-6px}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.report .rmeta{margin-top:-6px}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
 .charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
@@ -240,7 +240,7 @@ def t(n: dict, field: str, lang: str):
 
 def page(cfg: dict, lang: str, title: str, description: str, body: str, path: str, alt_path: str, root: str = "../../",
          updated: str | None = None, kind: str = "article", image: str | None = None, jsonld: dict | None = None,
-         noindex: bool = False) -> str:
+         noindex: bool = False, csp: str | None = None) -> str:
     w, base = W[lang], site_url(cfg)
     image = image or ("assets/og-ar.png" if lang == "ar" else "assets/og.png")
     other = "en" if lang == "ar" else "ar"
@@ -254,7 +254,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{CSP}
+{csp or CSP}
 <meta name="referrer" content="no-referrer">
 <title>{esc(title)} · {esc(site_title(cfg, lang))}</title>
 <meta name="description" content="{esc(description)}">
@@ -272,11 +272,11 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}</footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a></footer>
 </div>
 </body>
 </html>
@@ -1044,7 +1044,7 @@ def write_arabic_home(cfg: dict, html_text: str) -> None:
     level up. The site's script sees the /ar/ path, opens in Arabic and adjusts the links it writes."""
     base = site_url(cfg)
     a = html_text.replace('<html lang="en" dir="ltr">', '<html lang="ar" dir="rtl">', 1)
-    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy)[^"]*)"',
+    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy|contact)[^"]*)"',
                lambda m: f'{m.group(1)}../{m.group(2)}"', a)
     en, ar = HOME_TEXT["en"], HOME_TEXT["ar"]
     a = a.replace(f"<title>{en['title']}</title>", f"<title>{ar['title']}</title>", 1)
@@ -1067,7 +1067,7 @@ def load_digests() -> list:
     return archive._load(DATA / "weekly" / "index.json", [])
 
 
-PRIVACY_UPDATED = "2026-10-10"
+PRIVACY_UPDATED = "2026-10-15"
 
 
 def privacy_body(cfg: dict, lang: str) -> str:
@@ -1076,7 +1076,7 @@ def privacy_body(cfg: dict, lang: str) -> str:
     gh, cf = "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement", "https://www.cloudflare.com/privacypolicy/"
     if lang == "ar":
         sections = [
-            ("هذا الموقع", f"لا يستخدم الموقع ملفات تعريف الارتباط (الكوكيز)، ولا أدوات تحليل أو تتبّع، ولا حسابات ولا نماذج، ولا يجمع أي معلومات عن زوّاره. الموقع مستضاف على GitHub Pages ويُقدَّم عبر Cloudflare، ومثل أي خدمة استضافة تعالج هاتان الشركتان عناوين IP للزوار لعرض الصفحات والحماية من الهجمات، وفق سياسات الخصوصية الخاصة بهما (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>، <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
+            ("هذا الموقع", f"لا يستخدم الموقع ملفات تعريف الارتباط (الكوكيز)، ولا أدوات تحليل أو تتبّع، ولا حسابات، ولا يجمع أي معلومات عن زوّاره. إذا راسلتنا عبر صفحة «اتصل بنا»، تُرسَل رسالتك واسمك وبريدك إلى فريق المتتبّع بالبريد الإلكتروني عبر خدمة Web3Forms؛ لا تُحفظ على الموقع ولا تُنشر، ونستخدمها للرد عليك فقط، ويمكنك أن تطلب حذفها في أي وقت. الموقع مستضاف على GitHub Pages ويُقدَّم عبر Cloudflare، ومثل أي خدمة استضافة تعالج هاتان الشركتان عناوين IP للزوار لعرض الصفحات والحماية من الهجمات، وفق سياسات الخصوصية الخاصة بهما (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>، <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
             ("المنشورات العامة", "يقرأ المتتبّع منشورات عامة عن سوريا وينشر نتائج إجمالية فقط. لا تُخزَّن منشورات الأفراد ولا تُقتبس ولا يُربط إليها، ولا يُرسم ملف لأي شخص. لكشف التنسيق، تُحوَّل أسماء المعلّقين إلى بصمات أحادية الاتجاه لا توجد إلا في الذاكرة أثناء التحديث ولا تُحفظ أبداً."),
             ("حسابات التواصل الاجتماعي", "تنشر صفحة المتتبّع على فيسبوك تقارير الموقع نفسه تلقائياً عبر تطبيق فيسبوك. يستخدم التطبيق مديرو المتتبّع فقط للنشر على صفحة المتتبّع، ولا يسجّل دخول أحد، ولا يقرأ أو يجمع أو يخزّن أي بيانات عن مستخدمي فيسبوك، ولا يشارك شيئاً مع أي جهة."),
             ("حذف البيانات", "لا يحتفظ المتتبّع ولا تطبيقه على فيسبوك بأي بيانات شخصية عنك، فلا يوجد ما يُحذف. إذا سبق أن ربطت التطبيق بحسابك على فيسبوك، يمكنك إزالته من إعدادات فيسبوك ← التطبيقات والمواقع الإلكترونية ← إزالة." + (f" لأي سؤال أو طلب، تواصل معنا عبر {c}." if c else "")),
@@ -1084,7 +1084,7 @@ def privacy_body(cfg: dict, lang: str) -> str:
         head = f"<h1>الخصوصية</h1><p class=\"sub\">آخر تحديث: {esc(fmt_date(PRIVACY_UPDATED, lang))}</p>"
     else:
         sections = [
-            ("This website", f"The site uses no cookies, no analytics or tracking, no accounts and no forms, and collects nothing about its visitors. It is hosted on GitHub Pages and served through Cloudflare; like any web host, they process visitors' IP addresses to deliver the pages and protect them from attacks, under their own privacy policies (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>, <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
+            ("This website", f"The site uses no cookies, no analytics or tracking and no accounts, and collects nothing about its visitors. If you write to us through the Contact page, your message, name and email are sent to the tracker's team by email through the Web3Forms service; they are not stored on the site or published, we use them only to reply, and you can ask us to delete them at any time. It is hosted on GitHub Pages and served through Cloudflare; like any web host, they process visitors' IP addresses to deliver the pages and protect them from attacks, under their own privacy policies (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>, <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
             ("Public posts", "The tracker reads public posts about Syria and publishes aggregate results only. Posts by individuals are never stored, quoted or linked, and no one is profiled. To detect coordination, commenters' names are turned into one-way fingerprints that exist only in memory during an update and are never saved."),
             ("Social media accounts", "The tracker's Facebook Page publishes the site's own reports automatically through a Facebook app. The app is used only by the tracker's administrators to post to the tracker's own Page. It logs no one in, does not read, collect or store data about Facebook users, and shares nothing with anyone."),
             ("Data deletion", "Neither the tracker nor its Facebook app holds personal data about you, so there is nothing to delete. If you have ever connected the app to your Facebook account, you can remove it under Facebook Settings → Apps and websites → Remove." + (f" For any question or request, contact us at {c}." if c else "")),
@@ -1164,6 +1164,57 @@ def support_body(cfg: dict, lang: str) -> str:
     return head + cost + uses + give + f"<h2>Where the money goes</h2><p>{esc(where)}</p>" + rules + fund
 
 
+FORM_ENDPOINT = "https://api.web3forms.com/submit"
+CONTACT_TOPICS = {"en": ["General question or feedback", "Correction to a story or report", "Media enquiry", "Partnership or funding", "Technical problem with the site"],
+                  "ar": ["سؤال عام أو ملاحظة", "تصحيح لقصة أو تقرير", "استفسار إعلامي", "شراكة أو تمويل", "مشكلة تقنية في الموقع"]}
+
+
+def contact_key(cfg: dict) -> str:
+    return str((cfg.get("contact") or {}).get("web3forms_access_key") or "").strip()
+
+
+def contact_body(cfg: dict, lang: str) -> str:
+    key, base = contact_key(cfg), site_url(cfg)
+    fallback = str(cfg.get("contact_url") or "").strip()
+    topics = "".join(f"<option>{esc(x)}</option>" for x in CONTACT_TOPICS[lang])
+    ar = lang == "ar"
+    head = ("<h1>اتصل بنا</h1><p>لسؤال أو تصحيح أو استفسار إعلامي أو شراكة، اكتب لنا هنا. نقرأ كل رسالة ونرد عادة خلال أيام قليلة.</p>" if ar else
+            "<h1>Contact us</h1><p>For a question, a correction, a media enquiry or a partnership, write to us here. We read every message and usually reply within a few days.</p>")
+    if not key:
+        link = f'<a href="{esc(fallback)}" rel="noopener">{esc(fallback.replace("https://", ""))}</a>' if fallback.startswith("https://") else ""
+        return head + (f"<p>نموذج التواصل قيد الإعداد. إلى ذلك الحين يمكنك الكتابة لنا عبر {link}.</p>" if ar else f"<p>The contact form is being set up. Until then you can reach us at {link}.</p>")
+    labels = (("الاسم", "اختياري"), "بريدك الإلكتروني", "الموضوع", "رسالتك", "إرسال") if ar else (("Your name", "optional"), "Your email", "Topic", "Your message", "Send")
+    note = ("تُرسَل رسالتك إلى فريق المتتبّع بالبريد الإلكتروني عبر خدمة Web3Forms، ولا تُحفظ على هذا الموقع ولا تُنشر. نستخدم بريدك للرد عليك فقط. "
+            f'التفاصيل في <a href="../privacy/{lang}.html">صفحة الخصوصية</a>.' if ar else
+            "Your message goes to the tracker's team by email through the Web3Forms service; it is not stored on this site or published. "
+            f'We use your email only to reply. Details on the <a href="../privacy/{lang}.html">privacy page</a>.')
+    return head + f"""<form class="cform" action="{FORM_ENDPOINT}" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="access_key" value="{esc(key)}">
+<input type="hidden" name="subject" value="{esc('رسالة جديدة من syrianpulse.org (عربي)' if ar else 'New message from syrianpulse.org (English)')}">
+<input type="hidden" name="from_name" value="{esc(site_title(cfg, 'en'))}">
+<input type="hidden" name="redirect" value="{esc(base)}/contact/{lang}-sent.html">
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label><span>{labels[0][0]} <span class="opt">({labels[0][1]})</span></span><input type="text" name="name" maxlength="120" autocomplete="name"></label>
+<label>{labels[1]}<input type="email" name="email" required maxlength="200" autocomplete="email" dir="ltr"></label>
+<label>{labels[2]}<select name="topic">{topics}</select></label>
+<label>{labels[3]}<textarea name="message" required maxlength="5000"></textarea></label>
+<button type="submit">{labels[4]}</button>
+</form><p class="sub">{note}</p>"""
+
+
+def write_contact_pages(cfg: dict) -> None:
+    csp = CSP.replace("form-action 'none'", f"form-action {FORM_ENDPOINT} 'self'") if contact_key(cfg) else CSP
+    for lang in LANGS:
+        other = "ar" if lang == "en" else "en"
+        w = W[lang]
+        write(ROOT / "contact" / f"{lang}.html", page(cfg, lang, w["contact"], w["contact"], contact_body(cfg, lang),
+                                                   f"contact/{lang}.html", f"contact/{other}.html", root="../", kind="website", csp=csp))
+        sent = ('<h1>شكراً لك</h1><p>وصلت رسالتك. سنقرؤها ونرد عليك قريباً.</p><p><a href="../ar/">العودة إلى المتتبّع</a></p>' if lang == "ar" else
+                '<h1>Thank you</h1><p>Your message has been sent. We will read it and reply soon.</p><p><a href="../">Back to the tracker</a></p>')
+        write(ROOT / "contact" / f"{lang}-sent.html", page(cfg, lang, w["contact"], w["contact"], sent, f"contact/{lang}-sent.html",
+                                                        f"contact/{other}-sent.html", root="../", kind="website", noindex=True))
+
+
 def write_support_pages(cfg: dict) -> None:
     for lang in LANGS:
         other = "ar" if lang == "en" else "en"
@@ -1196,4 +1247,5 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_sitemap(cfg, digests, reviews)
     write_privacy_pages(cfg)
     write_support_pages(cfg)
+    write_contact_pages(cfg)
     prerender_index(cfg, latest)
