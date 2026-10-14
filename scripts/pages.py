@@ -57,7 +57,7 @@ W = {   # the words on the static pages
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
            "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
-           "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
+           "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "related": "Related stories", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
            "fromWhere": "Where the posts came from", "langsLbl": "Languages", "methodLink": "Method, sources and limitations", "licence": "Data: CC BY 4.0", "generatedOn": "Generated",
@@ -88,7 +88,7 @@ W = {   # the words on the static pages
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
            "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
-           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
+           "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "related": "قصص ذات صلة", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
            "fromWhere": "من أين جاءت المنشورات", "langsLbl": "اللغات", "methodLink": "المنهجية والمصادر وحدود المنهج", "licence": "البيانات: CC BY 4.0", "generatedOn": "أُنشئ في",
@@ -239,7 +239,8 @@ def t(n: dict, field: str, lang: str):
 # ----------------------------------------------------------------- the page frame
 
 def page(cfg: dict, lang: str, title: str, description: str, body: str, path: str, alt_path: str, root: str = "../../",
-         updated: str | None = None, kind: str = "article", image: str | None = None) -> str:
+         updated: str | None = None, kind: str = "article", image: str | None = None, jsonld: dict | None = None,
+         noindex: bool = False) -> str:
     w, base = W[lang], site_url(cfg)
     image = image or ("assets/og-ar.png" if lang == "ar" else "assets/og.png")
     other = "en" if lang == "ar" else "ar"
@@ -257,20 +258,21 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <meta name="referrer" content="no-referrer">
 <title>{esc(title)} · {esc(site_title(cfg, lang))}</title>
 <meta name="description" content="{esc(description)}">
-<link rel="canonical" href="{esc(canonical)}">
+<link rel="canonical" href="{esc(canonical)}">{'<meta name="robots" content="noindex, follow">' if noindex else ''}
 <link rel="alternate" hreflang="{lang}" href="{esc(canonical)}"><link rel="alternate" hreflang="{other}" href="{esc(alt)}">
 <link rel="icon" href="{root}assets/logo.svg" type="image/svg+xml"><link rel="icon" href="{root}favicon.ico" sizes="32x32"><link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
 <link rel="manifest" href="{root}site.webmanifest"><meta name="theme-color" content="#F7F1E3"><meta name="color-scheme" content="only light">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitle'])}" href="{root}{'feed-ar.xml' if lang == 'ar' else 'feed.xml'}">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitleMonthly'])}" href="{root}{'feed-monthly-ar.xml' if lang == 'ar' else 'feed-monthly.xml'}">
 {og}
+{ld_script(jsonld)}
 {FONTS}
 <style>{CSS}</style>
 </head>
 <body>
 <div class="wrap">
-<header class="top"><a class="brand" href="{root}{'?lang=ar' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'?lang=ar' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'?lang=ar' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -284,6 +286,58 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 def write(path: pathlib.Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
+
+
+
+# ----------------------------------------------------------------- structured data (schema.org, for search engines)
+
+def ld_script(data: dict | None) -> str:
+    """A JSON-LD block. It is data, not code: browsers do not run it, so the pages' script policy is unaffected."""
+    if not data:
+        return ""
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
+
+
+def ld_publisher(cfg: dict, lang: str) -> dict:
+    base = site_url(cfg)
+    return {"@type": "Organization", "name": site_title(cfg, lang), "url": f"{base}/",
+            "logo": {"@type": "ImageObject", "url": f"{base}/assets/logo-512.png", "width": 512, "height": 512}}
+
+
+def ld_article(cfg: dict, lang: str, kind: str, headline: str, description: str, path: str, published: str, modified: str,
+               about: str = "", image: str | None = None) -> dict:
+    """Article (stories, daily briefs) or Report (weekly digests, monthly reports)."""
+    base = site_url(cfg)
+    out = {"@context": "https://schema.org", "@type": kind, "headline": str(headline)[:110], "description": str(description)[:300],
+           "inLanguage": lang, "url": f"{base}/{path}", "mainEntityOfPage": f"{base}/{path}",
+           "datePublished": published or modified, "dateModified": modified or published,
+           "image": f"{base}/{image or ('assets/og-ar.png' if lang == 'ar' else 'assets/og.png')}",
+           "author": ld_publisher(cfg, lang), "publisher": ld_publisher(cfg, lang), "isAccessibleForFree": True,
+           "license": "https://creativecommons.org/licenses/by/4.0/", "spatialCoverage": {"@type": "Place", "name": "Syria"}}
+    if about:
+        out["about"] = about
+    return out
+
+
+def index_min_runs(cfg: dict) -> int:
+    """Stories seen in fewer updates than this are left out of search results (still on the site)."""
+    return int((cfg.get("seo") or {}).get("index_min_runs", 2))
+
+
+def story_indexable(cfg: dict, key: str, index: dict | None = None) -> bool:
+    e = (index if index is not None else load_story_index()).get(key) or {}
+    return int(e.get("runs") or 0) >= index_min_runs(cfg)
+
+
+def related_stories(cfg: dict, key: str, theme: str, lang: str, limit: int = 5) -> str:
+    """Links to other stories of the same theme that search engines may index, most recent first."""
+    index = load_story_index()
+    rows = sorted((e | {"key": k} for k, e in index.items() if k != key and e.get("theme") == theme and theme != "other"
+                   and int(e.get("runs") or 0) >= index_min_runs(cfg)), key=lambda e: e.get("last_seen", ""), reverse=True)[:limit]
+    if not rows:
+        return ""
+    items = "".join(f'<li><a href="{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a> <span class="sub">{esc(fmt_date(e.get("last_seen", ""), lang))}</span></li>' for e in rows)
+    return f"<h2>{W[lang]['related']}</h2><ul>{items}</ul>"
 
 
 # ----------------------------------------------------------------- stories
@@ -354,7 +408,7 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
     tone = f"""<div class="tone"><span><i style="background:{tone_color(pub) if pub is not None else 'var(--faint)'}"></i>{w['people']}: <b>{esc(tone_label(pub, lang))}</b>{(' (' + signed(pub, lang) + ')') if pub is not None else ''}</span>
 <span><i class="o"></i>{w['outlets']}: <b>{esc(tone_label(out, lang))}</b> ({signed(out or 0, lang)})</span></div>"""
     n_runs = len(runs) or 1
-    parts = [f"""<p class="eyebrow"><a href="index.html">{w['listing']}</a> · <a href="../../{'?lang=ar' if lang == 'ar' else ''}#trends">{esc(theme_label(cfg, theme, lang))}</a> · {w['firstSeen']} {esc(fmt_date(first, lang))} · {w['seenIn']} {num(n_runs, lang)} {w['update1'] if n_runs == 1 else w['updates']}</p>""",
+    parts = [f"""<p class="eyebrow"><a href="index.html">{w['listing']}</a> · <a href="../../{'ar/' if lang == 'ar' else ''}#trends">{esc(theme_label(cfg, theme, lang))}</a> · {w['firstSeen']} {esc(fmt_date(first, lang))} · {w['seenIn']} {num(n_runs, lang)} {w['update1'] if n_runs == 1 else w['updates']}</p>""",
              f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, share_bar(cfg, lang, f"stories/{lang}/{key}.html", str(t(n, "title", lang)), tags=hashtags.select(cfg, lang, [theme], [t(n, "title", lang)])),
              f"<p>{esc(t(n, 'summary', lang))}</p>"]
     reaction = t(n, "public_reaction", lang)
@@ -386,6 +440,7 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
                        f"<td class=\"n\">{signed(r[2], lang) if r[2] is not None else '–'}</td><td class=\"n\">{signed(r[3] or 0, lang)}</td></tr>"
                        for r in reversed(runs[-40:]))
         parts.append(f"<h2>{w['overtime']}</h2><div class=\"tw\"><table><thead><tr><th>{w['update']}</th><th>{w['share']}</th><th>{w['people']}</th><th>{w['outlets']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+    parts.append(related_stories(cfg, key, theme, lang))
     parts.append(f"<p class=\"sub\">{esc(w['storyNote'])}</p>")
     return "\n".join(parts)
 
@@ -401,12 +456,15 @@ def write_story_pages(cfg: dict, latest: dict, narratives: list | None = None, c
         if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+", key):
             continue
         runs = story_runs(key, key[:10], today, cache)
+        thin = not story_indexable(cfg, key)
         for lang in LANGS:
             other = "ar" if lang == "en" else "en"
             body = story_body(cfg, n, runs, lang, when)
             desc = str(t(n, "summary", lang) or "")[:200]
             write(STORIES / lang / f"{key}.html",
-                  page(cfg, lang, str(t(n, "title", lang) or key), desc, body, f"stories/{lang}/{key}.html", f"stories/{other}/{key}.html", updated=when))
+                  page(cfg, lang, str(t(n, "title", lang) or key), desc, body, f"stories/{lang}/{key}.html", f"stories/{other}/{key}.html", updated=when,
+                       noindex=thin, jsonld=ld_article(cfg, lang, "Article", t(n, "title", lang) or key, desc, f"stories/{lang}/{key}.html",
+                                                       str(n.get("first_seen") or (runs[0][0] if runs else when)), when, theme_label(cfg, n.get("theme", "other"), lang))))
         count += 1
     return count
 
@@ -484,7 +542,8 @@ def write_weekly_pages(cfg: dict, digest: dict) -> None:
         desc = (digest.get("paragraphs_ar" if lang == "ar" else "paragraphs") or [""])[0][:200]
         write(WEEKLY / lang / f"{digest['week']}.html",
               page(cfg, lang, str(t(digest, "title", lang)), desc, weekly_body(cfg, digest, lang),
-                   f"weekly/{lang}/{digest['week']}.html", f"weekly/{other}/{digest['week']}.html", updated=digest.get("generated_at")))
+                   f"weekly/{lang}/{digest['week']}.html", f"weekly/{other}/{digest['week']}.html", updated=digest.get("generated_at"),
+                   jsonld=ld_article(cfg, lang, "Report", t(digest, "title", lang), desc, f"weekly/{lang}/{digest['week']}.html", digest.get("generated_at", ""), digest.get("generated_at", ""))))
 
 
 def write_weekly_listing(cfg: dict, digests: list) -> None:
@@ -692,7 +751,7 @@ def about_report(cfg: dict, d: dict, lang: str) -> str:
     cite = w["citeText"].format(site=esc(site_title(cfg, lang)), year=d["month"][:4], month=esc(fmt_month(d["month"], lang)), url=esc(url))
     return (f'<section class="about-report"><h2>{w["aboutReport"]}</h2><p>{method}</p>'
             f'<p>{w["fromWhere"]}: {esc(where) or "–"}. {w["langsLbl"]}: {esc(langs) or "–"}.</p>'
-            f'<p><a href="{esc(base)}/{"?lang=ar" if lang == "ar" else ""}#about">{w["methodLink"]}</a> · {w["licence"]} · {w["generatedOn"]} {esc(fmt_date(d.get("generated_at", ""), lang, True))}</p>'
+            f'<p><a href="{esc(base)}/{"ar/" if lang == "ar" else ""}#about">{w["methodLink"]}</a> · {w["licence"]} · {w["generatedOn"]} {esc(fmt_date(d.get("generated_at", ""), lang, True))}</p>'
             f'<p>{w["cite"]}: {cite}</p></section>')
 
 
@@ -739,7 +798,8 @@ def write_monthly_pages(cfg: dict, review: dict) -> None:
         desc = (review.get("paragraphs_ar" if lang == "ar" else "paragraphs") or [""])[0][:200]
         write(MONTHLY / lang / f"{review['month']}.html",
               page(cfg, lang, str(t(review, "title", lang)), desc, monthly_body(cfg, review, lang),
-                   f"monthly/{lang}/{review['month']}.html", f"monthly/{other}/{review['month']}.html", updated=review.get("generated_at")))
+                   f"monthly/{lang}/{review['month']}.html", f"monthly/{other}/{review['month']}.html", updated=review.get("generated_at"),
+                   jsonld=ld_article(cfg, lang, "Report", t(review, "title", lang), desc, f"monthly/{lang}/{review['month']}.html", review.get("generated_at", ""), review.get("generated_at", ""))))
 
 
 def write_monthly_listing(cfg: dict, reviews: list) -> None:
@@ -857,7 +917,9 @@ def write_daily_pages(cfg: dict, dates: list) -> int:
             other = "ar" if lang == "en" else "en"
             desc = str(t(s["overall"], "brief", lang) or "")[:200]
             write(DAILY / lang / f"{date}.html", page(cfg, lang, f"{W[lang]['daily']} · {fmt_date(date, lang)}", desc, daily_body(cfg, s, lang),
-                                                    f"daily/{lang}/{date}.html", f"daily/{other}/{date}.html", updated=s["last"].get("generated_at")))
+                                                    f"daily/{lang}/{date}.html", f"daily/{other}/{date}.html", updated=s["last"].get("generated_at"),
+                                                    jsonld=ld_article(cfg, lang, "Article", f"{W[lang]['daily']} · {fmt_date(date, lang)}", desc, f"daily/{lang}/{date}.html",
+                                                                      f"{date}T00:00:00Z", s["last"].get("generated_at", ""))))
         n += 1
     return n
 
@@ -884,11 +946,14 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
     if not base:
         return
     today = dt.datetime.now(UTC).strftime("%Y-%m-%d")
-    urls = [(f"{base}/", today, "hourly", "1.0"), (f"{base}/?lang=ar", today, "hourly", "1.0"),
+    urls = [(f"{base}/", today, "hourly", "1.0"), (f"{base}/ar/", today, "hourly", "1.0"),
             (f"{base}/stories/en/index.html", today, "daily", "0.7"), (f"{base}/stories/ar/index.html", today, "daily", "0.7"),
             (f"{base}/weekly/en/index.html", today, "weekly", "0.6"), (f"{base}/weekly/ar/index.html", today, "weekly", "0.6"),
             (f"{base}/monthly/en/index.html", today, "monthly", "0.6"), (f"{base}/monthly/ar/index.html", today, "monthly", "0.6")]
-    for key, e in load_story_index().items():
+    story_index = load_story_index()
+    for key, e in story_index.items():
+        if not story_indexable(cfg, key, story_index):
+            continue                                # seen in a single update: on the site, not offered to search engines
         for lang in LANGS:
             urls.append((f"{base}/stories/{lang}/{key}.html", str(e.get("last_seen", today))[:10], "daily", "0.6"))
     for d in digests:
@@ -929,10 +994,73 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
 <p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul><p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="daily/{lang}/index.html">{w['dailies']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a></p></section>""")
     block = start + "\n" + "\n".join(sections) + "\n" + end
     new = html_text[:html_text.index(start)] + block + html_text[html_text.index(end) + len(end):]
-    if new != html_text:
+    j0, j1 = "<!--jsonld-->", "<!--/jsonld-->"
+    if j0 in new and j1 in new:
+        new = new[:new.index(j0)] + j0 + home_jsonld(cfg, "en") + j1 + new[new.index(j1) + len(j1):]
+    changed = new != html_text
+    if changed:
         path.write_text(new, encoding="utf-8")
-        return True
-    return False
+    write_arabic_home(cfg, new)
+    return changed
+
+
+HOME_TEXT = {
+    "en": {"title": "Syria Narrative Tracker – what Syrians are saying online, updated through the day",
+           "desc": "What is being said about Syria online today: public posts in Arabic, Kurdish and English grouped into stories, "
+                   "with how people and outlets are reacting. Daily briefs, weekly and monthly reports, open data."},
+    "ar": {"title": "متتبّع السرديات السورية – ماذا يقول السوريون على الإنترنت اليوم، يتجدّد على مدار اليوم",
+           "desc": "ما يُقال عن سوريا على الإنترنت اليوم: منشورات عامة بالعربية والكردية والإنجليزية مجمّعة في قصص، مع كيفية تفاعل "
+                   "الناس ووسائل الإعلام معها. موجز يومي وتقارير أسبوعية وشهرية وبيانات مفتوحة."},
+}
+
+
+def home_jsonld(cfg: dict, lang: str) -> str:
+    """WebSite, Organization and Dataset descriptions for the home page (the Dataset is what Google Dataset Search lists)."""
+    base = site_url(cfg)
+    idx = archive._load(DATA / "archive" / "index.json", {}) or {}
+    first, last = idx.get("first_day", ""), idx.get("last_day", "")
+    home = f"{base}/ar/" if lang == "ar" else f"{base}/"
+    data = [
+        {"@context": "https://schema.org", "@type": "WebSite", "name": site_title(cfg, lang), "url": home, "inLanguage": lang,
+         "description": HOME_TEXT[lang]["desc"], "publisher": ld_publisher(cfg, lang)},
+        {"@context": "https://schema.org", **ld_publisher(cfg, lang), "sameAs": [u for u in [str(cfg.get("doi") or "").strip()] if u.startswith("https://")]},
+        {"@context": "https://schema.org", "@type": "Dataset", "name": "Syria Narrative Tracker: stories, themes and tone of online discussion about Syria",
+         "alternateName": "متتبّع السرديات السورية",
+         "description": "Stories found in public online discussion about Syria (Telegram, news sites, YouTube, Reddit, Bluesky, X), in Arabic, "
+                        "Kurdish and English, with each story's theme, share of the discussion and the tone of people's and outlets' reactions, "
+                        "updated several times a day since September 2026. Aggregates only: posts by individuals are never stored.",
+         "url": f"{base}/#data", "keywords": ["Syria", "سوريا", "public opinion", "narratives", "social media", "sentiment", "disinformation", "Kurdish", "Arabic"],
+         "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": True, "creator": ld_publisher(cfg, "en"),
+         "spatialCoverage": {"@type": "Place", "name": "Syria"}, "temporalCoverage": f"{first}/{last}" if first and last else None,
+         "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": f"{base}/data/archive/index.json"},
+                          {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": f"{base}/data/exports/index.json"}]},
+    ]
+    data[2] = {k: v for k, v in data[2].items() if v is not None}
+    return "".join(ld_script(d) for d in data)
+
+
+def write_arabic_home(cfg: dict, html_text: str) -> None:
+    """ar/index.html: the same page with Arabic as its language, titles and description, and every relative link one
+    level up. The site's script sees the /ar/ path, opens in Arabic and adjusts the links it writes."""
+    base = site_url(cfg)
+    a = html_text.replace('<html lang="en" dir="ltr">', '<html lang="ar" dir="rtl">', 1)
+    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy)[^"]*)"',
+               lambda m: f'{m.group(1)}../{m.group(2)}"', a)
+    en, ar = HOME_TEXT["en"], HOME_TEXT["ar"]
+    a = a.replace(f"<title>{en['title']}</title>", f"<title>{ar['title']}</title>", 1)
+    a = a.replace(f'<meta name="description" content="{esc(en["desc"])}">', f'<meta name="description" content="{esc(ar["desc"])}">', 1)
+    a = a.replace(f'<link rel="canonical" href="{base}/">', f'<link rel="canonical" href="{base}/ar/">', 1)
+    a = a.replace(f'<meta property="og:url" content="{base}/">', f'<meta property="og:url" content="{base}/ar/">', 1)
+    a = a.replace(f'<meta property="og:title" content="{esc(en["title"])}">', f'<meta property="og:title" content="{esc(ar["title"])}">', 1)
+    a = a.replace(f'<meta property="og:description" content="{esc(en["desc"])}">', f'<meta property="og:description" content="{esc(ar["desc"])}">', 1)
+    a = a.replace(f'content="{base}/assets/og.png"', f'content="{base}/assets/og-ar.png"', 1)
+    a = a.replace('<meta property="og:site_name" content="Syria Narrative Tracker">', f'<meta property="og:site_name" content="{esc(site_title(cfg, "ar"))}">', 1)
+    j0, j1 = "<!--jsonld-->", "<!--/jsonld-->"
+    if j0 in a and j1 in a:
+        a = a[:a.index(j0)] + j0 + home_jsonld(cfg, "ar") + j1 + a[a.index(j1) + len(j1):]
+    path = ROOT / "ar" / "index.html"
+    if not path.exists() or path.read_text(encoding="utf-8") != a:
+        write(path, a)
 
 
 def load_digests() -> list:

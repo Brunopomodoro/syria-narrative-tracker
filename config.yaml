@@ -30,6 +30,11 @@ newsletter_url: ""
 # Where people can reach the tracker; shown on the privacy page (Meta asks for a contact).
 contact_url: "https://github.com/Brunopomodoro/syria-narrative-tracker/issues"
 
+# Search engines. Stories seen in fewer updates than index_min_runs stay on the site but are kept out of
+# search results and the sitemap (many one-update pages read as thin content to Google).
+seo:
+  index_min_runs: 2
+
 # The Support page (support/en.html) and its link in the menu and footer (GUIDE.md, "Support page").
 # The link appears once at least one of these https links is filled in. Money goes to the account behind the
 # link: an Open Collective is held by its host and every payment and expense is public; the others pay you.

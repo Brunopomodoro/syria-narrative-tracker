@@ -136,7 +136,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", tagline: "what Syrians are saying online, updated through the day",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -266,7 +266,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", tagline: "ماذا يقول السوريون على الإنترنت اليوم، يتجدّد على مدار اليوم",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -277,6 +277,16 @@ const T = {
 /* =================== state & helpers =================== */
 const TZ = "Asia/Damascus";
 const $ = (s, el = document) => el.querySelector(s);
+/* The Arabic home lives at /ar/: data and pages are one level up there. */
+const ROOT = /\/ar\/(index\.html)?$/.test(location.pathname) ? "../" : "";
+const rooted = (p) => (!ROOT || /^([a-z][a-z0-9+.-]*:|\/|#|\.\.\/)/i.test(p)) ? p : ROOT + p;
+if (ROOT) {   // links the page writes (stories/..., daily/..., data/...) get the "../" they need
+  const fix = (el) => { const h = el.getAttribute("href"); if (h && rooted(h) !== h) el.setAttribute("href", rooted(h)); };
+  const sweep = (node) => { if (node.nodeType !== 1) return; if (node.matches("a[href]")) fix(node); node.querySelectorAll("a[href]").forEach(fix); };
+  new MutationObserver((list) => list.forEach((m) => m.type === "attributes" ? fix(m.target) : m.addedNodes.forEach(sweep)))
+    .observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ["href"] });
+  document.addEventListener("DOMContentLoaded", () => sweep(document.body));
+}
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
 const has = (v) => v !== null && v !== undefined && v !== "";
@@ -331,6 +341,7 @@ const titleAlt = (n) => rtl() ? (n.title_ar ? n.title : "") : (n.title ? n.title
 function pickLang(latest) {
   const url = new URLSearchParams(location.search).get("lang");
   if (url === "ar" || url === "en") return url;
+  if (ROOT) return "ar";                       // the /ar/ home is Arabic
   try { const s = localStorage.getItem("snt-lang"); if (s === "ar" || s === "en") return s; } catch (e) {}
   return latest?.default_language === "ar" ? "ar" : "en";
 }
@@ -340,7 +351,7 @@ function applyLang() {
   document.documentElement.dir = rtl() ? "rtl" : "ltr";
   const title = (rtl() ? state.latest?.site_title_ar : state.latest?.site_title) || t.title;
   $("#site-title").textContent = title;
-  document.title = title;
+  document.title = `${title} – ${t.tagline}`;
   for (const [id, word] of [["home", t.home], ["trends", t.trends], ["reports", t.reports], ["data", t.data], ["about", t.about]]) {
     const a = $(`#${id}-link`);
     a.textContent = word;
@@ -1385,11 +1396,14 @@ function renderEmpty(sources) {
 $("#lang-btn").addEventListener("click", () => {
   state.lang = L().switchLang;
   try { localStorage.setItem("snt-lang", state.lang); } catch (e) {}
+  // each language has its own home address (/ and /ar/), so the language can be shared and found by search engines
+  if (state.lang === "ar" && !ROOT) { location.href = "ar/" + location.hash; return; }
+  if (state.lang === "en" && ROOT) { location.href = "../" + location.hash; return; }
   showView();
 });
 
 async function getJSON(path) {
-  const r = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
+  const r = await fetch(`${rooted(path)}?t=${Date.now()}`, { cache: "no-store" });
   if (!r.ok) throw new Error(r.status);
   return r.json();
 }
@@ -1404,7 +1418,7 @@ async function load() {
   render();
 }
 async function getJSONCached(path) {   // for files that never change once written (past days' archives)
-  const r = await fetch(path);
+  const r = await fetch(rooted(path));
   if (!r.ok) throw new Error(r.status);
   return r.json();
 }

@@ -814,6 +814,58 @@ def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
     raise RuntimeError(f"Claude did not return valid JSON: {last_err}")
 
 
+AR_FIELDS = ("title", "summary", "public_reaction", "emotions", "framings", "flags")
+
+
+def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict) -> int:
+    """The analysis now and then leaves an Arabic field empty (the English one is there). Rather than show English on
+    the Arabic site, translate just those fields in one small request. Returns how many fields were filled."""
+    todo = {}
+    for k in ("brief", "mood", "public_mood"):
+        if overall.get(k) and not overall.get(k + "_ar"):
+            todo[f"overall.{k}"] = str(overall[k])
+    for i, n in enumerate(narratives):
+        for k in AR_FIELDS:
+            en, ar = n.get(k), n.get(k + "_ar")
+            if en and not ar:
+                todo[f"n{i}.{k}"] = "\n".join(en) if isinstance(en, list) else str(en)
+    if not todo:
+        return 0
+    import anthropic
+    client = anthropic.Anthropic(api_key=secret("ANTHROPIC_API_KEY"))
+    schema = {"type": "object", "additionalProperties": False, "required": ["items"],
+              "properties": {"items": {"type": "array", "items": {"type": "object", "additionalProperties": False,
+                                                                   "required": ["key", "ar"],
+                                                                   "properties": {"key": {"type": "string"}, "ar": {"type": "string"}}}}}}
+    prompt = ("Translate each English text below into natural Modern Standard Arabic for Syrian readers, keeping the meaning, "
+              "names and numbers exactly; keep line breaks where there are several lines. Spell Syrian places in their standard "
+              "Arabic form. Return every key.\n\n" + json.dumps(todo, ensure_ascii=False, indent=1))
+    try:
+        with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=8000,
+                                    output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
+                                    messages=[{"role": "user", "content": prompt}]) as stream:
+            resp = stream.get_final_message()
+        usage["input_tokens"] += resp.usage.input_tokens
+        usage["output_tokens"] += resp.usage.output_tokens
+        got = {x["key"]: x["ar"] for x in extract_json("".join(b.text for b in resp.content if b.type == "text")).get("items") or []}
+    except Exception as e:  # noqa: BLE001  (the update goes on; the site shows its "English only" notice)
+        log(f"  Arabic fill-in failed: {type(e).__name__}")
+        return 0
+    filled = 0
+    for key, ar in got.items():
+        if key not in todo or not str(ar).strip():
+            continue
+        where, field = key.split(".", 1)
+        target = overall if where == "overall" else narratives[int(where[1:])] if where[1:].isdigit() and int(where[1:]) < len(narratives) else None
+        if target is None:
+            continue
+        en = target.get(field)
+        value = no_pids(str(ar).strip())
+        target[field + "_ar"] = [x.strip() for x in value.split("\n") if x.strip()][:6] if isinstance(en, list) else (mood_word(value) if "mood" in field else value[:1200])
+        filled += 1
+    return filled
+
+
 def estimate_cost(model: str, usage: dict) -> float:
     rate = next((v for k, v in PRICES.items() if model.startswith(k)), (1.0, 5.0))
     return round(usage["input_tokens"] / 1e6 * rate[0] + usage["output_tokens"] / 1e6 * rate[1], 4)
@@ -1126,6 +1178,17 @@ def main() -> int:
     first_seen = state.get("first_seen", {})
     themes = archive.theme_catalog(cfg)
     narratives = build_narratives(result, sample, first_seen, [t["id"] for t in themes])
+    if not narratives and len(sample) >= 50:
+        # a reply with no usable story (an empty list, or post labels that match nothing) would publish an empty page
+        log("  The reply produced no stories; asking once more...")
+        result2, usage2 = ask_claude(cfg, msg)
+        usage = {k: usage[k] + usage2[k] for k in usage}
+        cost = estimate_cost(cfg.get("model", ""), usage)
+        narratives = build_narratives(result2, sample, first_seen, [t["id"] for t in themes])
+        if not narratives:
+            log(f"No stories twice (~${cost} spent). Keeping the previous update on the site.")
+            return 0
+        result = result2
     signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
     if args.validation_sample:
         write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
@@ -1143,6 +1206,10 @@ def main() -> int:
         "brief": str(ov.get("brief", ""))[:1200],
         "brief_ar": str(ov.get("brief_ar", ""))[:1200],
     }
+    filled = fill_missing_arabic(cfg, overall, narratives, usage)
+    if filled:
+        cost = estimate_cost(cfg.get("model", ""), usage)
+        log(f"  {filled} Arabic field(s) were missing and have been translated (~${cost} this run in all).")
     headline = overall["public_sentiment"] if overall["public_sentiment"] is not None else overall["sentiment"]
 
     latest = {
