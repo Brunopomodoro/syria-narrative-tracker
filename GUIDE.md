@@ -518,7 +518,7 @@ Make a new release every month or two; each one becomes a new versioned snapshot
 ### What to watch
 
 Above the stories, the home page lists up to five things worth keeping an eye on, worked out by `scripts/watch.py` from the numbers of the last updates, with no extra Claude call:
-- a story whose share grew in each of the last three updates or more;
+- a story whose share grew in at least two updates in a row;
 - a new story already at 10% or more of the discussion;
 - people's tone at least half the scale away from the outlets' tone;
 - people's tone down by more than a third of the scale within 36 hours;

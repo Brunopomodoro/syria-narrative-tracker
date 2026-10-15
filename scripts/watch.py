@@ -14,7 +14,7 @@ Each item: {"type", "id", "key", "title", "title_ar", "share", ...numbers for it
 import datetime as dt
 
 MAX_ITEMS = 5
-RISE_UPDATES = 3        # the share must grow in at least this many updates in a row (counting the current one)
+RISE_UPDATES = 3        # data points in a row with a growing share (3 = grew in two updates in a row)
 RISE_MIN = 0.03         # ... by at least 3 points in all
 RISE_FLOOR = 0.05       # ... to at least 5% of the discussion
 NEW_SHARE = 0.10
