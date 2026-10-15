@@ -235,6 +235,16 @@
   .hint { color: var(--muted); font-size: .92rem; margin: 12px 0 0; max-width: 60ch; }
   .notice { color: var(--brass); font-size: .88rem; margin: 0 0 28px; max-width: 64ch; }
 
+  /* what to watch */
+  .watch { padding: 0 0 40px; }
+  .watch h2 { margin-bottom: 4px; }
+  .watch ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; max-width: 70ch; }
+  .watch li { border-inline-start: 3px solid var(--brass); padding-inline-start: 12px; }
+  .w-story { display: block; text-align: start; font-size: 1.05rem; line-height: 1.4; color: var(--ink); padding: 2px 0; }
+  .w-story:hover { text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 4px; }
+  .w-note { display: block; color: var(--muted); font-size: .92rem; line-height: 1.5; }
+  .w-none { color: var(--muted); font-size: .95rem; max-width: 64ch; margin: 10px 0 0; }
+
   /* search */
   .search-box { position: relative; max-width: 640px; }
   .search-box svg { position: absolute; inset-inline-start: 14px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
@@ -409,6 +419,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="assets/app.js?v=20261015"></script>
+<script src="assets/app.js?v=20261015b"></script>
 </body>
 </html>

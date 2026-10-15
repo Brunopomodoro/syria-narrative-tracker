@@ -22,6 +22,16 @@ const T = {
     postsFrom: (n, s, h) => `${n} posts from ${s} sources, last ${h} hours.`,
     hint: "This update is based on news outlets only. People's reactions will appear here as comment sources are added.",
     fallback: "",
+    watchTitle: "What to watch", watchSub: "Patterns the numbers of the last updates already show. Observations, not forecasts.",
+    watchNone: "Nothing stands out right now: no story has gained for several updates in a row, and people's tone is close to the coverage.",
+    watchItem: {
+      rising: (i) => `Gaining for ${i.updates} updates in a row: from ${i.from} to ${i.to} of the discussion.`,
+      new: (i) => `New in this update and already ${i.share} of the discussion.`,
+      gap: (i) => `People and outlets far apart: people ${i.public}, outlets ${i.outlet}.`,
+      falling: (i) => i.to === i.from ? `People's tone has turned even more negative over the last ${i.hours} hours.` : `People's tone is falling: ${i.to} now, ${i.from} ${i.hours} hours ago.`,
+      signals: (i) => `Coordination signs (${i.level}) for a second update in a row. Signs, not proof.`,
+      level: { medium: "moderate", high: "strong" },
+    },
     stories: "Stories", storiesSub: (n, h) => `${n} ${n === "1" ? "story" : "stories"} in the last ${h} hours. Open one to read more.`,
     coverage: (p) => `Together they cover ${p} of the posts analysed; the rest fit no clear story, so the percentages do not add up to 100%.`,
     sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
@@ -110,6 +120,7 @@ const T = {
       ["Sampling.", `At most ${m.max_posts} posts go to the analysis per update: ${m.public_share}% of the places are reserved for people's voices and the rest for outlets, and within each group posts are taken in turn from every source, most recent first, so that no single source dominates. The sample is therefore balanced across sources, not proportional to how much each source posts.`],
       ["Analysis.", `The sample is sent to ${m.model} with the instructions shown at the bottom of this page. The model groups posts into stories, files each under one of the fixed themes, scores the tone of outlet coverage and of public reactions from −1 to +1, names emotions, framings and warning signs, and writes every text in English and Arabic. Where a story contains posts from several kinds of outlet or public posts in several languages, tone is also scored per kind and per language. A story that continues from the previous update keeps its id, so it can be followed over time.`],
       ["Checks.", "The model's answer is validated: unknown themes become \"other\", tones are held to the scale, per-group tones are kept only for groups with posts in the story, and each post counts towards at most one story. An update where nothing new was collected is skipped. Every text is generated, and the site says so."],
+      ["What to watch.", "A short list above the stories, worked out from the numbers alone, with no extra AI call: a story whose share grew in each of the last three updates or more, a new story already at 10% or more, people's tone at least half the scale away from the outlets' tone, people's tone down by more than a third of the scale within 36 hours, or coordination signs at a moderate or strong level two updates running. These are observations about the recent past, not forecasts. Every list is kept in the archive so that it can be checked later."],
       ["What is stored.", "The analysis of every update, per-day aggregates, and outlet headlines, permanently. Individuals' posts, comments and identifiers are not stored; the fingerprints used to notice that nothing new was posted are one-way hashes."]],
     limits: [
       ["Not a survey.", "The posts are a sample of what is public online, capped per update and balanced across sources. Shares and tones describe that sample, not Syrians as a whole, and small themes rest on few posts."],
@@ -155,6 +166,16 @@ const T = {
     postsFrom: (n, s, h) => `عدد المنشورات ${n}، من مصادر عددها ${s}، خلال آخر ${h} ساعة.`,
     hint: "يعتمد هذا التحديث على وسائل الإعلام فقط، وستظهر تفاعلات الناس هنا عند إضافة مصادر التعليقات.",
     fallback: "بعض النصوص في هذا التحديث متوفرة بالإنجليزية فقط، وستظهر بالعربية مع التحديث القادم.",
+    watchTitle: "ما يستحق المتابعة", watchSub: "أنماط تُظهرها أرقام التحديثات الأخيرة بالفعل. ملاحظات، لا توقعات.",
+    watchNone: "لا شيء لافت الآن: لم تتقدّم أي قصة في عدة تحديثات متتالية، ونبرة الناس قريبة من نبرة التغطية.",
+    watchItem: {
+      rising: (i) => `في صعود منذ ${i.updates} تحديثات متتالية: من ${i.from} إلى ${i.to} من النقاش.`,
+      new: (i) => `جديدة في هذا التحديث وتشكّل بالفعل ${i.share} من النقاش.`,
+      gap: (i) => `فجوة واسعة بين الناس والإعلام: الناس ${i.public}، والإعلام ${i.outlet}.`,
+      falling: (i) => i.to === i.from ? `ازدادت نبرة الناس سلبية خلال آخر ${i.hours} ساعة.` : `نبرة الناس في تراجع: ${i.to} الآن، و${i.from} قبل ${i.hours} ساعة.`,
+      signals: (i) => `علامات تنسيق (${i.level}) للتحديث الثاني على التوالي. علامات لا دليل.`,
+      level: { medium: "متوسطة", high: "قوية" },
+    },
     stories: "القصص", storiesSub: (n, h) => `عدد القصص خلال آخر ${h} ساعة: ${n}. افتح أي قصة لمعرفة المزيد.`,
     coverage: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فلا تنتمي إلى قصة واضحة، ولذلك لا يبلغ مجموع النسب ١٠٠٪.`,
     sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
@@ -240,6 +261,7 @@ const T = {
       ["العيّنة.", `يذهب إلى التحليل ${m.max_posts} منشوراً على الأكثر في كل تحديث: ${m.public_share}٪ من الأماكن محجوزة لأصوات الناس والباقي لوسائل الإعلام، وضمن كل مجموعة تؤخذ المنشورات بالتناوب من كل مصدر، الأحدث أولاً، حتى لا يهيمن مصدر واحد. العيّنة إذن متوازنة بين المصادر، لا متناسبة مع غزارة نشر كل مصدر.`],
       ["التحليل.", `تُرسل العيّنة إلى ${m.model} مع التعليمات المعروضة في أسفل هذه الصفحة. يجمّع النموذج المنشورات في قصص، ويصنّف كل قصة تحت موضوع ثابت واحد، ويقيس نبرة تغطية وسائل الإعلام ونبرة تفاعل الناس من −١ إلى +١، ويسمّي المشاعر والتأطيرات وعلامات التحذير، ويكتب كل نص بالإنجليزية والعربية. وحين تضم القصة منشورات من أنواع عدة من وسائل الإعلام أو منشورات من الناس بلغات عدة، تُقاس النبرة أيضاً حسب النوع وحسب اللغة. تحتفظ القصة المستمرة من التحديث السابق بمعرّفها، فيمكن تتبّعها مع الوقت.`],
       ["التحقق.", "يُتحقق من إجابة النموذج: تصبح المواضيع غير المعروفة «أخرى»، وتُحصر النبرات ضمن المقياس، وتُحفظ نبرات المجموعات فقط للمجموعات التي لها منشورات في القصة، ويُحسب كل منشور في قصة واحدة على الأكثر. ويُتخطى التحديث الذي لم يجمع شيئاً جديداً. كل النصوص مولَّدة، والموقع يقول ذلك."],
+      ["ما يستحق المتابعة.", "قائمة قصيرة فوق القصص تُستخرج من الأرقام وحدها، من دون أي استدعاء إضافي للذكاء الاصطناعي: قصة زادت حصتها في كل تحديث من آخر ثلاثة تحديثات أو أكثر، أو قصة جديدة تبلغ حصتها 10٪ أو أكثر، أو نبرة الناس تبتعد عن نبرة الإعلام نصف المقياس على الأقل، أو نبرة الناس تراجعت أكثر من ثلث المقياس خلال 36 ساعة، أو علامات تنسيق متوسطة أو قوية في تحديثين متتاليين. إنها ملاحظات عن الماضي القريب لا توقعات. تُحفظ كل قائمة في الأرشيف كي يمكن التحقق منها لاحقاً."],
       ["ما يُحفظ.", "تحليل كل تحديث، والمجاميع اليومية، وعناوين وسائل الإعلام، بشكل دائم. لا تُحفظ منشورات الأفراد وتعليقاتهم ومعرّفاتهم؛ والبصمات المستخدمة لملاحظة أن لا جديد نُشر هي تجزئات أحادية الاتجاه."]],
     limits: [
       ["ليس استطلاع رأي.", "المنشورات عيّنة مما هو علني على الإنترنت، محدودة في كل تحديث ومتوازنة بين المصادر. الحصص والنبرات تصف هذه العيّنة لا السوريين جميعاً، والمواضيع الصغيرة تستند إلى منشورات قليلة."],
@@ -493,6 +515,22 @@ function signalsBlock(n) {
   if (!s || !s.items || !s.items.length) return "";
   const items = s.items.map(i => `<li><b>${esc(signalLabel(i.id))}</b> <span dir="auto">${esc(t.sigValue[i.id] ? t.sigValue[i.id](i) : String(i.value))}</span></li>`).join("");
   return `<div class="signals ${esc(s.level)}"><span class="lbl">${t.sigTitle} <b>${t.sigLevels[s.level] || s.level}</b></span><ul>${items}</ul><p class="sub">${t.sigNote} <a href="#signals">${t.sigMore}</a></p></div>`;
+}
+function watchHTML() {
+  const t = L(), items = state.latest.watch;
+  if (!Array.isArray(items)) return "";          // updates made before this section existed
+  const fill = (i) => ({ ...i, share: pctText(i.share), from: i.type === "falling" ? toneLabel(i.from).toLowerCase() : pctText(i.from),
+    to: i.type === "falling" ? toneLabel(i.to).toLowerCase() : pctText(i.to), public: toneLabel(i.public).toLowerCase(),
+    outlet: toneLabel(i.outlet).toLowerCase(), updates: num(i.updates), hours: num(i.hours), level: t.watchItem.level[i.level] || i.level });
+  const rows = items.filter(i => t.watchItem[i.type]).map(i => `
+      <li><button type="button" class="w-story" data-id="${esc(i.id)}" dir="auto">${esc(rtl() ? (i.title_ar || i.title) : (i.title || i.title_ar))}</button>
+        <span class="w-note">${esc(t.watchItem[i.type](fill(i)))}</span></li>`).join("");
+  return `
+  <section class="watch" aria-labelledby="h-watch">
+    <h2 id="h-watch">${t.watchTitle}</h2>
+    <p class="sub">${t.watchSub}</p>
+    ${rows ? `<ul>${rows}</ul>` : `<p class="w-none">${t.watchNone}</p>`}
+  </section>`;
 }
 function storiesHTML() {
   const t = L(), nars = state.latest.narratives || [], h = num(state.latest.window_hours || 24);
@@ -1330,7 +1368,7 @@ function render() {
   if (state.view === "data") { $("#app").innerHTML = dataHTML(); bindData(); loadIndex(); loadExports(); return; }
   usedFallback = false;
   const typing = document.activeElement?.id === "q", caret = typing ? document.activeElement.selectionStart : 0;
-  let html = heroHTML() + searchHTML() + storiesHTML() + weekHTML();
+  let html = heroHTML() + watchHTML() + searchHTML() + storiesHTML() + weekHTML();
   if (usedFallback && t.fallback) html = html.replace("<!--notice-->", `<p class="notice">${t.fallback}</p>`);
   $("#app").innerHTML = html;
   bind();
@@ -1342,6 +1380,13 @@ function render() {
   }
 }
 function bind() {
+  document.querySelectorAll(".w-story").forEach(b => b.addEventListener("click", () => {
+    const art = [...document.querySelectorAll("#stories .story")].find(a => a.dataset.id === b.dataset.id);
+    if (!art) return;
+    if (!art.classList.contains("open")) art.querySelector(".row")?.click();
+    art.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    art.querySelector(".row")?.focus({ preventScroll: true });
+  }));
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
     state.sort = b.dataset.sort;
     $("#stories").innerHTML = sorted(state.latest.narratives || []).map(storyHTML).join("");
