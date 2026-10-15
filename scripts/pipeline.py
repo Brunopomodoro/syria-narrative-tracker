@@ -44,6 +44,7 @@ import signals  # noqa: E402  (coordination signals per story)
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 SNAPSHOTS = DATA / "snapshots"
+QUALITY = DATA / "quality.json"   # one line of health numbers per run, read by the weekly quality review
 UTC = dt.timezone.utc
 NOW = dt.datetime.now(UTC)
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; SyriaNarrativeTracker/1.0)"}
@@ -1105,6 +1106,48 @@ def write_validation_sample(cfg: dict, sample: list, result: dict, narratives: l
 
 # ----------------------------------------------------------------- main
 
+def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narratives=(), usage=None,
+                   cost=0.0, retried=False, arabic_filled=0, model="") -> None:
+    """Append this run's health numbers to data/quality.json (kept for 60 days). Counts and source names
+    only, never post text. The weekly quality review reads it to spot sources going quiet, a drifting outlet share,
+    retries, missing Arabic and rising cost."""
+    try:
+        n_pub = sum(1 for p in sample if p.get("voice") == "public")
+        weight = sum(p.get("copies", 1) for p in sample)      # with copies, like stats.public_posts in latest.json
+        w_pub = sum(p.get("copies", 1) for p in sample if p.get("voice") == "public")
+        shares = sorted((float(n.get("share") or 0) for n in narratives), reverse=True)
+        row = {
+            "time": iso(NOW),
+            "outcome": outcome,           # published | nothing_new | no_posts | no_stories
+            "collected": len(raw),
+            "relevant": len(posts),
+            "sent": len(sample),
+            "public": n_pub,
+            "outlet_share": round(1 - w_pub / weight, 3) if weight else None,
+            "languages": dict(Counter(p.get("lang", "other") for p in sample)),
+            "platforms": dict(Counter(p.get("platform", "?") for p in sample)),
+            "sources_ok": sum(1 for s in status if s.get("ok")),
+            "sources_total": len(status),
+            "failed": sorted(s["name"] for s in status if not s.get("ok")),
+            "quiet": sorted(s["name"] for s in status if s.get("ok") and not s.get("recent")),
+            "stories": len(narratives),
+            "top_share": shares[0] if shares else None,
+            "retried": retried,
+            "arabic_filled": arabic_filled,
+            "tokens_in": (usage or {}).get("input_tokens", 0),
+            "tokens_out": (usage or {}).get("output_tokens", 0),
+            "cost_usd": cost,
+            "model": model,
+        }
+        rows = load_json(QUALITY, [])
+        cutoff = NOW - dt.timedelta(days=60)
+        rows = [r for r in rows if (parse_iso(r.get("time", "")) or NOW) >= cutoff] + [row]
+        QUALITY.write_text("[\n" + ",\n".join(json.dumps(r, ensure_ascii=False, separators=(",", ":")) for r in rows) + "\n]\n",
+                           encoding="utf-8")
+    except Exception as e:  # noqa: BLE001  (the health log must never fail an update)
+        log(f"  WARN  quality log not written: {e}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -1155,6 +1198,7 @@ def main() -> int:
         latest_prev.setdefault("narratives", [])
         save_json(latest_path, latest_prev)
         archive.write_exports(cfg, head_months)
+        record_quality("no_posts", status, raw, posts)
         return 0
 
     new_ids = {seen_key(p["id"]) for p in sample} - set(state.get("last_ids", []))
@@ -1166,6 +1210,7 @@ def main() -> int:
         latest_prev.update({"checked_at": iso(NOW), "sources": status})
         save_json(latest_path, latest_prev)
         archive.write_exports(cfg, head_months)
+        record_quality("nothing_new", status, raw, posts, sample)
         return 0
 
     log(f"{len(new_ids)} new posts. Asking Claude ({cfg.get('model')})...")
@@ -1178,15 +1223,18 @@ def main() -> int:
     first_seen = state.get("first_seen", {})
     themes = archive.theme_catalog(cfg)
     narratives = build_narratives(result, sample, first_seen, [t["id"] for t in themes])
+    retried = False
     if not narratives and len(sample) >= 50:
         # a reply with no usable story (an empty list, or post labels that match nothing) would publish an empty page
         log("  The reply produced no stories; asking once more...")
+        retried = True
         result2, usage2 = ask_claude(cfg, msg)
         usage = {k: usage[k] + usage2[k] for k in usage}
         cost = estimate_cost(cfg.get("model", ""), usage)
         narratives = build_narratives(result2, sample, first_seen, [t["id"] for t in themes])
         if not narratives:
             log(f"No stories twice (~${cost} spent). Keeping the previous update on the site.")
+            record_quality("no_stories", status, raw, posts, sample, usage=usage, cost=cost, retried=True, model=cfg.get("model", ""))
             return 0
         result = result2
     signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
@@ -1291,6 +1339,7 @@ def main() -> int:
     save_json(history_path, history)
     compact_json(DATA / "stories.json", build_story_index(history))
     save_json(state_path, state)
+    record_quality("published", status, raw, posts, sample, narratives, usage, cost, retried, filled, cfg.get("model", ""))
     log(f"Saved {len(narratives)} narratives.")
 
     # the weekly digest (when a week has just ended) and the static pages; neither may fail the run
