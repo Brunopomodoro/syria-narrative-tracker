@@ -977,6 +977,13 @@ def no_pids(v):
     return v
 
 
+def weight(p: dict) -> int:
+    """How much a post counts towards volumes and shares. People's repeated texts count each time (that is how
+    slogans and copy-paste campaigns show); an item that several outlets publish word for word counts once, so
+    outlets repeating the same news do not outweigh what people say."""
+    return p["copies"] if p["voice"] == "public" else 1
+
+
 def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_ids: list | None = None) -> list:
     by_pid = {p["pid"]: p for p in sample}
     text_keys = ("title", "title_ar", "summary", "summary_ar", "public_reaction", "public_reaction_ar",
@@ -988,7 +995,7 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
     for k in ("brief", "brief_ar", "mood", "mood_ar", "public_mood", "public_mood_ar"):
         if isinstance(result.get("overall"), dict) and k in result["overall"]:
             result["overall"][k] = no_pids(result["overall"][k])
-    total = sum(p["copies"] for p in sample) or 1
+    total = sum(weight(p) for p in sample) or 1
     theme_ids = theme_ids or ["other"]
     used, out = set(), []
     for n in result.get("narratives") or []:
@@ -1000,7 +1007,7 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
         if not ids:
             continue
         ps = [by_pid[i] for i in ids]
-        volume = sum(p["copies"] for p in ps)
+        volume = sum(weight(p) for p in ps)
         public_volume = sum(p["copies"] for p in ps if p["voice"] == "public")
         nid = re.sub(r"[^a-z0-9-]", "", re.sub(r"[\s_]+", "-", str(n.get("id", "")).strip().lower()))[:60] or f"n{len(out) + 1}"
         examples, seen_src = [], set()
@@ -1113,8 +1120,8 @@ def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narr
     retries, missing Arabic and rising cost."""
     try:
         n_pub = sum(1 for p in sample if p.get("voice") == "public")
-        weight = sum(p.get("copies", 1) for p in sample)      # with copies, like stats.public_posts in latest.json
-        w_pub = sum(p.get("copies", 1) for p in sample if p.get("voice") == "public")
+        w_all = sum(weight(p) for p in sample)               # weighted like stats.posts_analyzed in latest.json
+        w_pub = sum(weight(p) for p in sample if p.get("voice") == "public")
         shares = sorted((float(n.get("share") or 0) for n in narratives), reverse=True)
         row = {
             "time": iso(NOW),
@@ -1123,7 +1130,7 @@ def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narr
             "relevant": len(posts),
             "sent": len(sample),
             "public": n_pub,
-            "outlet_share": round(1 - w_pub / weight, 3) if weight else None,
+            "outlet_share": round(1 - w_pub / w_all, 3) if w_all else None,
             "languages": dict(Counter(p.get("lang", "other") for p in sample)),
             "platforms": dict(Counter(p.get("platform", "?") for p in sample)),
             "sources_ok": sum(1 for s in status if s.get("ok")),
@@ -1274,9 +1281,9 @@ def main() -> int:
         "stats": {
             "collected": len(raw),                      # everything the sources returned
             "relevant": sum(p["copies"] for p in posts),   # recent, on topic, before the sampling cap
-            "posts_analyzed": sum(p["copies"] for p in sample),
+            "posts_analyzed": sum(weight(p) for p in sample),
             "public_posts": sum(p["copies"] for p in sample if p["voice"] == "public"),
-            "outlet_posts": sum(p["copies"] for p in sample if p["voice"] != "public"),
+            "outlet_posts": sum(weight(p) for p in sample if p["voice"] != "public"),
             "reactions_posts": len(REACTIONS),
             "unique_posts": len(sample),
             "sources_ok": sum(1 for s in status if s["ok"]),
