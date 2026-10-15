@@ -87,7 +87,7 @@ def load_day(date: str) -> dict:
 
 def run_record(latest: dict) -> dict:
     """What the archive keeps about one run: the full analysis plus how it was made."""
-    keep = ("format", "generated_at", "window_hours", "model", "stats", "overall", "narratives", "cost_usd")
+    keep = ("format", "generated_at", "window_hours", "model", "stats", "overall", "narratives", "watch", "cost_usd")
     rec = {k: latest[k] for k in keep if k in latest}
     rec["sources"] = [{"name": s["name"], "platform": s["platform"], "ok": bool(s.get("ok")),
                        "fetched": int(s.get("fetched") or 0)} for s in latest.get("sources") or []]

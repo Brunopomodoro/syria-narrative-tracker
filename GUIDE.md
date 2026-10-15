@@ -515,6 +515,17 @@ For a DOI that journals accept, use Zenodo (free, run by CERN):
 
 Make a new release every month or two; each one becomes a new versioned snapshot under the same concept DOI.
 
+### What to watch
+
+Above the stories, the home page lists up to five things worth keeping an eye on, worked out by `scripts/watch.py` from the numbers of the last updates, with no extra Claude call:
+- a story whose share grew in each of the last three updates or more;
+- a new story already at 10% or more of the discussion;
+- people's tone at least half the scale away from the outlets' tone;
+- people's tone down by more than a third of the scale within 36 hours;
+- coordination signs at a moderate or strong level two updates running.
+
+They are observations about the recent past, not forecasts, and the page says so. Every list is saved in latest.json and in the archive (`watch`), so after a few months it can be checked how often "gaining" stories went on gaining before anything more forecast-like is considered. The thresholds are at the top of `scripts/watch.py`.
+
 ### Coordination signals
 
 Every story carries measurable signs that its public reaction may be organised rather than spontaneous, computed by `scripts/signals.py` from the posts assigned to the story in that update: copy-paste posting, near-identical posts, a sudden burst, a burst with no outlet coverage in that hour, the same text on several platforms within an hour, a few commenters writing most comments, and regular timing. Each triggered signal is shown under the story with its value, a level (weak, moderate, strong) and its innocent explanation, and the values are in the `stories.csv` downloads (`signal_level`, `signal_count`, `signals`). The About page's "Coordination signals" section documents each one.

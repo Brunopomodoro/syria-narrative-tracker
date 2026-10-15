@@ -40,6 +40,7 @@ import pages  # noqa: E402    (story pages, weekly pages, feeds, sitemap, the cr
 import weekly  # noqa: E402   (the weekly digest)
 import monthly  # noqa: E402  (the monthly review)
 import signals  # noqa: E402  (coordination signals per story)
+import watch  # noqa: E402    (what to watch: patterns in the last updates)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -1322,6 +1323,10 @@ def main() -> int:
                         "sentiment": n["public_sentiment"] if n["public_sentiment"] is not None else n["sentiment"]}
                        for n in narratives],
     })
+
+    latest["watch"] = watch.compute(latest, history, latest_prev)
+    if latest["watch"]:
+        log("What to watch: " + "; ".join(f"{i['type']} {i['id']}" for i in latest["watch"]))
 
     # the permanent record: this run in its day's archive file, the per-day index, this month's downloads
     day = archive.add_run(latest)
