@@ -395,7 +395,12 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | backfill-arabic | Translate Arabic text that past updates left empty or in English, then rebuild the pages. New updates do this themselves. | a cent or two |
 | telegram-probe | Check Telegram channels before adding them: active, subscribers, last post, share of posts about Syria. Leave *names* empty for the built-in list, type channel names, or type `--discover` to find candidates from the channels' forwards and Syrian outlets' websites. | free |
 | social-check | Check the Facebook and X keys and show the latest daily, weekly and monthly posts for each. Posts nothing. | free |
+| quality-report | The tracker's health over the last 7 days compared with the 7 before: updates and gaps, outlet share, languages, failing or quiet sources, retries, missing Arabic, cost. It is printed in the job's log. | free |
 | backfill-archive | Rebuild the archive from the git history of the results. Only needed if the archive is lost. | free |
+
+### Quality log and weekly review
+
+Every update adds one line to `data/quality.json` (kept for 60 days): posts collected and analysed, outlet share, languages, sources that failed or had nothing new, number of stories, retries, Arabic filled in afterwards, tokens and cost. It holds counts and source names only, never post text. `scripts/quality_report.py` (the **quality-report** maintenance task) turns it into a weekly summary, and a weekly Claude review reads that summary and the published pages, fixes small problems through pull requests and reports bigger ones.
 
 ### Contact page
 
