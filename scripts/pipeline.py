@@ -969,9 +969,17 @@ def tone_by(values, groups: Counter) -> dict:
 PID_REF = re.compile(r"\s*[\(\[]\s*p\d{1,3}(?:\s*[,،/]\s*p\d{1,3})*\s*[\)\]]|(?<![\w-])p\d{1,3}(?![\w-])")
 
 
+# JSON punctuation the model sometimes leaves at the end of the last field of an object (for example .”}, at the end
+# of brief_ar): a closing quote of any kind, a closing brace, then any more braces, brackets and commas
+JSON_TAIL = re.compile(r"""\s*['"”“’》»]?\s*}[}\],\s'"”“’》»]*$""")
+
+
 def no_pids(v):
-    """Strip post labels like "(p28)" that the model sometimes cites in prose; they mean nothing to readers."""
+    """Strip post labels like "(p28)" that the model sometimes cites in prose, which mean nothing to readers, and
+    stray JSON punctuation at the end of a text."""
     if isinstance(v, str):
+        if v.count("}") > v.count("{"):          # a brace that closes nothing in the text itself
+            v = JSON_TAIL.sub("", v)
         return re.sub(r"\s{2,}", " ", PID_REF.sub("", v)).strip()
     if isinstance(v, list):
         return [x for x in (no_pids(i) for i in v) if x]
