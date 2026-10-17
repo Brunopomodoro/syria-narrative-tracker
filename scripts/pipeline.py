@@ -701,8 +701,8 @@ Rules:
 - Describe, never endorse. Attribute claims ("posts claim...", "state media reports...", "commenters argue..."). Never present an unverified claim as fact, and add no facts that are not in the posts.
 - Sentiment runs from -1 (anger, fear, grief, contempt) to +1 (hope, pride, celebration); 0 is neutral. Give "sentiment" for the tone of OUTLET coverage and "public_sentiment" for the tone of PUBLIC voices and reactions (null if there are none for that narrative). Read sarcasm, mockery, religious expressions and dialect carefully; for example "الله يفرجها" is weary hope, and mocking praise is negative.
 - "outlet_tone": the tone of coverage for each outlet TYPE (official, independent, kurdish, regional, aggregator) that has posts in the narrative; null for types with no posts in it. "public_tone": the tone of PUBLIC voices for each language (ar, ku, en) that has public posts in the narrative; null for languages with none. Both use the same -1 to +1 scale.
-- "summary": 3 sentences (about 50-65 words) that a reader who has not followed the news can understand: what happened, where and when, who is involved, and the context the posts give, such as what led to it, how it connects to earlier events in the same story, and what officials or outlets said. Prefer concrete details (places, numbers, public bodies and officials) to general phrases. The Arabic summary carries the same details.
-- "rest" (in "overall"): 1-2 sentences on what the posts you left unassigned are mostly about, naming the main kinds of content (for example religious greetings and prayers, everyday complaints about prices, scattered local news, off-topic comments) and any subject that recurs among them. Empty string if every post was assigned.
+- "summary": 3 short sentences, at most 60 words (about 380 characters) in all, that a reader who has not followed the news can understand: what happened, where and when, who is involved, and the context the posts give, such as what led to it, how it connects to earlier events in the same story, and what officials or outlets said. Prefer concrete details (places, numbers, public bodies and officials) to general phrases. The Arabic summary carries the same details.
+- "rest" (in "overall", in English; "rest_ar" in Arabic): 1-2 sentences on what the posts you left unassigned are mostly about, naming the main kinds of content (for example religious greetings and prayers, everyday complaints about prices, scattered local news, off-topic comments) and any subject that recurs among them. Empty string if every post was assigned.
 - "public_reaction": 1-2 sentences on how ordinary people are reacting: agreement, anger, jokes, doubt, divisions between groups. Empty string if there are no public voices for it.
 - framings: how different kinds of sources frame the story, in short phrases.
 - flags: signs of coordinated copy-paste messaging (the "copies" note helps; many identical short comments like prayers or slogans are normal), comments that ignore the post they reply to and push an unrelated message, sectarian incitement, or unverified claims spreading. Empty list if none.
@@ -719,7 +719,7 @@ Themes (id: what belongs there):
 
 Reply with ONLY a JSON object (no markdown, no commentary) in exactly this shape:
 {"overall": {"public_sentiment": 0.0, "public_mood": "Frustrated", "public_mood_ar": "محبَط", "sentiment": 0.0, "mood": "Upbeat", "mood_ar": "متفائل", "brief": "3-4 neutral sentences on what people are discussing and how they are reacting, compared with outlet coverage", "brief_ar": "...", "rest": "1-2 sentences on the unassigned posts", "rest_ar": "..."},
- "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "3 sentences, about 50-65 words: what happened, where, who, and the context", "summary_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
+ "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "3 short sentences, at most 60 words: what happened, where, who, and the context", "summary_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
 
 
 def result_schema(theme_ids: list) -> dict:
@@ -819,6 +819,7 @@ def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
     raise RuntimeError(f"Claude did not return valid JSON: {last_err}")
 
 
+ARABIC_SCRIPT = re.compile(r"[\u0600-\u06FF]")
 AR_FIELDS = ("title", "summary", "public_reaction", "emotions", "framings", "flags")
 
 
@@ -826,6 +827,15 @@ def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict)
     """The analysis now and then leaves an Arabic field empty (the English one is there). Rather than show English on
     the Arabic site, translate just those fields in one small request. Returns how many fields were filled."""
     todo = {}
+    # an English field written in Arabic (it happens): keep it as the Arabic text if that is missing, and translate it
+    for prefix, obj, keys in [("overall", overall, ("brief", "rest"))] + [(f"n{i}", n, ("title", "summary", "public_reaction")) for i, n in enumerate(narratives)]:
+        for k in keys:
+            v = obj.get(k)
+            if isinstance(v, str) and v and ARABIC_SCRIPT.search(v) and not re.search(r"[A-Za-z]{3}", v):
+                if not obj.get(k + "_ar"):
+                    obj[k + "_ar"] = v
+                obj[k] = ""
+                todo[f"en.{prefix}.{k}"] = v
     for k in ("brief", "mood", "public_mood", "rest"):
         if overall.get(k) and not overall.get(k + "_ar"):
             todo[f"overall.{k}"] = str(overall[k])
@@ -844,7 +854,7 @@ def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict)
                                                                    "properties": {"key": {"type": "string"}, "ar": {"type": "string"}}}}}}
     prompt = ("Translate each English text below into natural Modern Standard Arabic for Syrian readers, keeping the meaning, "
               "names and numbers exactly; keep line breaks where there are several lines. Spell Syrian places in their standard "
-              "Arabic form. Return every key.\n\n" + json.dumps(todo, ensure_ascii=False, indent=1))
+              "Arabic form. Keys starting with \"en.\" hold Arabic text instead: translate those into plain English. Return every key.\n\n" + json.dumps(todo, ensure_ascii=False, indent=1))
     try:
         with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=8000,
                                     output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
@@ -860,12 +870,17 @@ def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict)
     for key, ar in got.items():
         if key not in todo or not str(ar).strip():
             continue
-        where, field = key.split(".", 1)
+        to_en = key.startswith("en.")
+        where, field = key.removeprefix("en.").split(".", 1)
         target = overall if where == "overall" else narratives[int(where[1:])] if where[1:].isdigit() and int(where[1:]) < len(narratives) else None
         if target is None:
             continue
         en = target.get(field)
         value = no_pids(str(ar).strip())
+        if to_en:
+            target[field] = value[:1200]
+            filled += 1
+            continue
         target[field + "_ar"] = [x.strip() for x in value.split("\n") if x.strip()][:6] if isinstance(en, list) else (mood_word(value) if "mood" in field else value[:1200])
         filled += 1
     return filled
