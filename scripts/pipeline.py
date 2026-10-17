@@ -701,6 +701,7 @@ Rules:
 - Describe, never endorse. Attribute claims ("posts claim...", "state media reports...", "commenters argue..."). Never present an unverified claim as fact, and add no facts that are not in the posts.
 - Sentiment runs from -1 (anger, fear, grief, contempt) to +1 (hope, pride, celebration); 0 is neutral. Give "sentiment" for the tone of OUTLET coverage and "public_sentiment" for the tone of PUBLIC voices and reactions (null if there are none for that narrative). Read sarcasm, mockery, religious expressions and dialect carefully; for example "الله يفرجها" is weary hope, and mocking praise is negative.
 - "outlet_tone": the tone of coverage for each outlet TYPE (official, independent, kurdish, regional, aggregator) that has posts in the narrative; null for types with no posts in it. "public_tone": the tone of PUBLIC voices for each language (ar, ku, en) that has public posts in the narrative; null for languages with none. Both use the same -1 to +1 scale.
+- "summary": 3-4 sentences (about 60-90 words) that a reader who has not followed the news can understand: what happened, where and when, who is involved, and the context the posts give, such as what led to it, how it connects to earlier events in the same story, and what officials or outlets said. Prefer concrete details (places, numbers, public bodies and officials) to general phrases. The Arabic summary carries the same details.
 - "public_reaction": 1-2 sentences on how ordinary people are reacting: agreement, anger, jokes, doubt, divisions between groups. Empty string if there are no public voices for it.
 - framings: how different kinds of sources frame the story, in short phrases.
 - flags: signs of coordinated copy-paste messaging (the "copies" note helps; many identical short comments like prayers or slogans are normal), comments that ignore the post they reply to and push an unrelated message, sectarian incitement, or unverified claims spreading. Empty list if none.
@@ -717,7 +718,7 @@ Themes (id: what belongs there):
 
 Reply with ONLY a JSON object (no markdown, no commentary) in exactly this shape:
 {"overall": {"public_sentiment": 0.0, "public_mood": "Frustrated", "public_mood_ar": "محبَط", "sentiment": 0.0, "mood": "Upbeat", "mood_ar": "متفائل", "brief": "3-4 neutral sentences on what people are discussing and how they are reacting, compared with outlet coverage", "brief_ar": "..."},
- "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "2-3 sentences on the story", "summary_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
+ "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "3-4 sentences: what happened, where, who, and the context", "summary_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
 
 
 def result_schema(theme_ids: list) -> dict:
@@ -1036,8 +1037,8 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
             "theme": theme if theme in theme_ids else "other",
             "title": str(n.get("title", ""))[:140],
             "title_ar": str(n.get("title_ar", ""))[:140],
-            "summary": str(n.get("summary", ""))[:900],
-            "summary_ar": str(n.get("summary_ar", ""))[:900],
+            "summary": str(n.get("summary", ""))[:1200],
+            "summary_ar": str(n.get("summary_ar", ""))[:1200],
             "public_reaction": str(n.get("public_reaction") or "")[:600] if public_volume else "",
             "public_reaction_ar": str(n.get("public_reaction_ar") or "")[:600] if public_volume else "",
             "sentiment": clamp(n.get("sentiment")),
