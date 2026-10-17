@@ -702,6 +702,7 @@ Rules:
 - Sentiment runs from -1 (anger, fear, grief, contempt) to +1 (hope, pride, celebration); 0 is neutral. Give "sentiment" for the tone of OUTLET coverage and "public_sentiment" for the tone of PUBLIC voices and reactions (null if there are none for that narrative). Read sarcasm, mockery, religious expressions and dialect carefully; for example "الله يفرجها" is weary hope, and mocking praise is negative.
 - "outlet_tone": the tone of coverage for each outlet TYPE (official, independent, kurdish, regional, aggregator) that has posts in the narrative; null for types with no posts in it. "public_tone": the tone of PUBLIC voices for each language (ar, ku, en) that has public posts in the narrative; null for languages with none. Both use the same -1 to +1 scale.
 - "summary": 3 sentences (about 50-65 words) that a reader who has not followed the news can understand: what happened, where and when, who is involved, and the context the posts give, such as what led to it, how it connects to earlier events in the same story, and what officials or outlets said. Prefer concrete details (places, numbers, public bodies and officials) to general phrases. The Arabic summary carries the same details.
+- "rest" (in "overall"): 1-2 sentences on what the posts you left unassigned are mostly about, naming the main kinds of content (for example religious greetings and prayers, everyday complaints about prices, scattered local news, off-topic comments) and any subject that recurs among them. Empty string if every post was assigned.
 - "public_reaction": 1-2 sentences on how ordinary people are reacting: agreement, anger, jokes, doubt, divisions between groups. Empty string if there are no public voices for it.
 - framings: how different kinds of sources frame the story, in short phrases.
 - flags: signs of coordinated copy-paste messaging (the "copies" note helps; many identical short comments like prayers or slogans are normal), comments that ignore the post they reply to and push an unrelated message, sectarian incitement, or unverified claims spreading. Empty list if none.
@@ -717,7 +718,7 @@ Themes (id: what belongs there):
 {themes}
 
 Reply with ONLY a JSON object (no markdown, no commentary) in exactly this shape:
-{"overall": {"public_sentiment": 0.0, "public_mood": "Frustrated", "public_mood_ar": "محبَط", "sentiment": 0.0, "mood": "Upbeat", "mood_ar": "متفائل", "brief": "3-4 neutral sentences on what people are discussing and how they are reacting, compared with outlet coverage", "brief_ar": "..."},
+{"overall": {"public_sentiment": 0.0, "public_mood": "Frustrated", "public_mood_ar": "محبَط", "sentiment": 0.0, "mood": "Upbeat", "mood_ar": "متفائل", "brief": "3-4 neutral sentences on what people are discussing and how they are reacting, compared with outlet coverage", "brief_ar": "...", "rest": "1-2 sentences on the unassigned posts", "rest_ar": "..."},
  "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "3 sentences, about 50-65 words: what happened, where, who, and the context", "summary_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
 
 
@@ -729,7 +730,8 @@ def result_schema(theme_ids: list) -> dict:
     return obj({
         "overall": obj({"public_sentiment": opt, "public_mood": {"type": "string"}, "public_mood_ar": {"type": "string"},
                         "sentiment": num, "mood": {"type": "string"}, "mood_ar": {"type": "string"},
-                        "brief": {"type": "string"}, "brief_ar": {"type": "string"}}),
+                        "brief": {"type": "string"}, "brief_ar": {"type": "string"},
+                        "rest": {"type": "string"}, "rest_ar": {"type": "string"}}),
         "narratives": {"type": "array", "items": obj({
             "id": {"type": "string"}, "theme": {"type": "string", "enum": theme_ids},
             "title": {"type": "string"}, "title_ar": {"type": "string"}, "summary": {"type": "string"}, "summary_ar": {"type": "string"},
@@ -824,7 +826,7 @@ def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict)
     """The analysis now and then leaves an Arabic field empty (the English one is there). Rather than show English on
     the Arabic site, translate just those fields in one small request. Returns how many fields were filled."""
     todo = {}
-    for k in ("brief", "mood", "public_mood"):
+    for k in ("brief", "mood", "public_mood", "rest"):
         if overall.get(k) and not overall.get(k + "_ar"):
             todo[f"overall.{k}"] = str(overall[k])
     for i, n in enumerate(narratives):
@@ -1002,7 +1004,7 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
         for k in text_keys:
             if k in n:
                 n[k] = no_pids(n[k])
-    for k in ("brief", "brief_ar", "mood", "mood_ar", "public_mood", "public_mood_ar"):
+    for k in ("brief", "brief_ar", "mood", "mood_ar", "public_mood", "public_mood_ar", "rest", "rest_ar"):
         if isinstance(result.get("overall"), dict) and k in result["overall"]:
             result["overall"][k] = no_pids(result["overall"][k])
     total = sum(weight(p) for p in sample) or 1
@@ -1270,6 +1272,10 @@ def main() -> int:
         "public_mood_ar": mood_word(ov.get("public_mood_ar")) if has_public else "",
         "brief": str(ov.get("brief", ""))[:1200],
         "brief_ar": str(ov.get("brief_ar", ""))[:1200],
+        # the posts in no story, described in a sentence or two; their share makes the stories add up to 100%
+        "rest": str(ov.get("rest") or "")[:600],
+        "rest_ar": str(ov.get("rest_ar") or "")[:600],
+        "rest_share": round(max(0.0, 1 - sum(n["share"] for n in narratives)), 3),
     }
     filled = fill_missing_arabic(cfg, overall, narratives, usage)
     if filled:

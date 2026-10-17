@@ -29,7 +29,7 @@ def blank_non_arabic(run: dict) -> bool:
     """Empty every Arabic field that holds no Arabic (so fill_missing_arabic sees it as missing). Returns whether any."""
     found = False
     ov = run.get("overall") or {}
-    for k in ("brief", "mood", "public_mood"):
+    for k in ("brief", "mood", "public_mood", "rest"):
         if ov.get(k) and not ARABIC.search(str(ov.get(k + "_ar") or "")):
             ov[k + "_ar"] = ""
             found = True

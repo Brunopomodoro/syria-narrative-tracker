@@ -34,6 +34,8 @@ const T = {
     },
     stories: "Stories", storiesSub: (n, h) => `${n} ${n === "1" ? "story" : "stories"} in the last ${h} hours. Open one to read more.`,
     coverage: (p) => `Together they cover ${p} of the posts analysed; the rest fit no clear story, so the percentages do not add up to 100%.`,
+    coverageRest: (p) => `Together they cover ${p} of the posts analysed; the rest is described under "Everything else" at the end.`,
+    restTitle: "Everything else", restNote: "Posts that belong to no single story. They are a mix of unrelated things, so they get no tone or trend.",
     sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
     people: "People", outlets: "Outlets", negative: "Negative", neutral: "Neutral", positive: "Positive",
     noStories: "No clear stories in this update.",
@@ -178,6 +180,8 @@ const T = {
     },
     stories: "القصص", storiesSub: (n, h) => `عدد القصص خلال آخر ${h} ساعة: ${n}. افتح أي قصة لمعرفة المزيد.`,
     coverage: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فلا تنتمي إلى قصة واضحة، ولذلك لا يبلغ مجموع النسب ١٠٠٪.`,
+    coverageRest: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فموصوفة تحت «كل ما عدا ذلك» في الأسفل.`,
+    restTitle: "كل ما عدا ذلك", restNote: "منشورات لا تنتمي إلى قصة واحدة. إنها خليط من أمور لا رابط بينها، لذلك لا تُحسب لها نبرة ولا مسار.",
     sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
     people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
     noStories: "لا توجد قصص واضحة في هذا التحديث.",
@@ -536,10 +540,11 @@ function storiesHTML() {
   const t = L(), nars = state.latest.narratives || [], h = num(state.latest.window_hours || 24);
   const btn = (k, label) => `<button data-sort="${k}" aria-pressed="${state.sort === k}">${label}</button>`;
   const scale = [t.negative, t.neutral, t.positive];   // the grid flows right-to-left in Arabic, matching the mirrored chart
+  const o = state.latest.overall || {}, restText = tx(o, "rest"), rest = nars.length && restText && o.rest_share > 0;
   return `
   <section aria-labelledby="h-stories">
     <div class="sec-head">
-      <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}${nars.length ? " " + t.coverage(pctText(Math.min(1, nars.reduce((a, n) => a + (n.share || 0), 0)))) : ""}</p></div>
+      <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}${nars.length ? " " + (rest ? t.coverageRest : t.coverage)(pctText(Math.min(1, nars.reduce((a, n) => a + (n.share || 0), 0)))) : ""}</p></div>
       <div class="seg" role="group" aria-label="${t.sortLabel}">${btn("share", t.mostDiscussed)}${btn("negative", t.mostNegative)}${btn("gap", t.biggestGap)}</div>
     </div>
     ${nars.length ? `
@@ -547,7 +552,9 @@ function storiesHTML() {
       <span class="key"><span><i class="k-dot"></i>${t.people}</span><span><i class="k-ring"></i>${t.outlets}</span></span>
       <span class="scale">${scale.map(s => `<span>${s}</span>`).join("")}</span>
     </div>
-    <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>` : `<p>${t.noStories}</p>`}
+    <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>
+    ${rest ? `<div class="rest"><p class="rest-h"><span>${t.restTitle}</span><span class="share">${pctText(o.rest_share)}</span></p>
+      <p class="rest-t" dir="auto">${esc(restText)}</p><p class="rest-n">${t.restNote}</p></div>` : ""}` : `<p>${t.noStories}</p>`}
   </section>`;
 }
 
