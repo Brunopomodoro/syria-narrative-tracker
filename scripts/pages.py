@@ -1073,6 +1073,8 @@ PRIVACY_UPDATED = "2026-10-15"
 def privacy_body(cfg: dict, lang: str) -> str:
     contact = str(cfg.get("contact_url") or "").strip()
     c = f'<a href="{esc(contact)}" rel="noopener">{esc(contact.replace("https://", ""))}</a>' if contact.startswith("https://") else ""
+    if contact_key(cfg):   # the contact form is set up: send people there rather than to a public page
+        c = f'<a href="../contact/{lang}.html">{"صفحة «اتصل بنا»" if lang == "ar" else "the Contact page"}</a>'
     gh, cf = "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement", "https://www.cloudflare.com/privacypolicy/"
     if lang == "ar":
         sections = [
@@ -1087,7 +1089,7 @@ def privacy_body(cfg: dict, lang: str) -> str:
             ("This website", f"The site uses no cookies, no analytics or tracking and no accounts, and collects nothing about its visitors. If you write to us through the Contact page, your message, name and email are sent to the tracker's team by email through the Web3Forms service; they are not stored on the site or published, we use them only to reply, and you can ask us to delete them at any time. It is hosted on GitHub Pages and served through Cloudflare; like any web host, they process visitors' IP addresses to deliver the pages and protect them from attacks, under their own privacy policies (<a href=\"{gh}\" rel=\"noopener\">GitHub</a>, <a href=\"{cf}\" rel=\"noopener\">Cloudflare</a>)."),
             ("Public posts", "The tracker reads public posts about Syria and publishes aggregate results only. Posts by individuals are never stored, quoted or linked, and no one is profiled. To detect coordination, commenters' names are turned into one-way fingerprints that exist only in memory during an update and are never saved."),
             ("Social media accounts", "The tracker's Facebook Page publishes the site's own reports automatically through a Facebook app. The app is used only by the tracker's administrators to post to the tracker's own Page. It logs no one in, does not read, collect or store data about Facebook users, and shares nothing with anyone."),
-            ("Data deletion", "Neither the tracker nor its Facebook app holds personal data about you, so there is nothing to delete. If you have ever connected the app to your Facebook account, you can remove it under Facebook Settings → Apps and websites → Remove." + (f" For any question or request, contact us at {c}." if c else "")),
+            ("Data deletion", "Neither the tracker nor its Facebook app holds personal data about you, so there is nothing to delete. If you have ever connected the app to your Facebook account, you can remove it under Facebook Settings → Apps and websites → Remove." + (f" For any question or request, write to us through {c}." if c else "")),
         ]
         head = f"<h1>Privacy</h1><p class=\"sub\">Last updated: {esc(fmt_date(PRIVACY_UPDATED, lang))}</p>"
     return head + "".join(f'<h2 id="{"deletion" if i == 3 else "s" + str(i)}">{esc(h)}</h2><p>{body}</p>' for i, (h, body) in enumerate(sections))
