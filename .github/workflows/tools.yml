@@ -132,4 +132,5 @@ jobs:
             git commit -m "Maintenance: ${{ inputs.task }} $(date -u +'%Y-%m-%d %H:%M UTC')"
             git pull --rebase
             git push
+            python scripts/indexnow.py || true   # tell search engines which pages changed
           fi

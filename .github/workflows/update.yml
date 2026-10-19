@@ -88,4 +88,5 @@ jobs:
             git commit -m "Update narratives $(date -u +'%Y-%m-%d %H:%M UTC')"
             git pull --rebase
             git push
+            python scripts/indexnow.py || true   # tell search engines which pages changed
           fi

@@ -526,7 +526,7 @@ The **Expert view** tab is our analysis of what English-language media, think ta
 - **Leanings.** When the analyses cite an outlet or think tank whose political orientation, ownership or state funding is widely documented, they say so briefly (for example "the pro-Israel Middle East Forum"), so a broad range of sources can be kept with readers able to weigh each one.
 - **Cost.** A cent or two a day for the one-line summaries, about 5 cents a day for the daily brief, about 20 cents a week and 40 cents a month for the analyses.
 - **By hand.** Maintenance tasks `experts-collect`, `experts-daily`, `experts-weekly`, `experts-monthly` and `experts-probe` (checks every feed; results in `data/experts/probe.json`).
-- **Limits.** English-language and mostly Western-based sources, and no paywalled outlets; the pages say so.
+- **Limits.** English- and Arabic-language sources, mostly based outside Syria, and no paywalled outlets; the pages say so.
 
 ### What to watch
 
@@ -558,6 +558,11 @@ Repeat the study after any major change to the model or the instructions, so the
 ### Search engines
 
 The site has a sitemap, link previews and a crawlable copy of the current analysis. Every story, brief, digest and report also carries structured data (schema.org Article or Report), and the home page describes the site and the dataset (WebSite, Organization, Dataset), which is how the tracker can appear in Google Dataset Search. The Arabic home has its own address, `/ar/`. Stories seen in only one update stay on the site but are kept out of search results and the sitemap (`seo: index_min_runs` in `config.yaml`); each story page links to related stories of the same theme. To be found sooner, register it with **Google Search Console** (https://search.google.com/search-console) and **Bing Webmaster Tools**, verify by adding the DNS record they show, and submit `https://www.syrianpulse.org/sitemap.xml`. Both also show which searches bring readers.
+
+- **Breadcrumbs.** Story, brief, digest, report, Expert view and Sources pages carry a breadcrumb trail (schema.org BreadcrumbList), which search engines often show instead of the bare address. Expert view pages also list the reports they cite (`citation`) and what they are about.
+- **Links between sections.** The tracker's daily brief links to the Expert view brief of the same day and back; the weekly digest to the week's analyses and back; a story page to the Expert view analysis of its area for that week. The crawlable block on the home pages links to the Expert view and the Sources page.
+- **Feeds.** `feed.xml` (weekly digests), `feed-monthly.xml` (monthly reports) and `feed-experts.xml` (Expert view briefs and analyses), each with an Arabic version (`-ar`).
+- **IndexNow.** After every update and maintenance run, `scripts/indexnow.py` announces the pages that changed to Bing, Yandex and the other search engines that take part, so new pages are crawled within hours. The key (`indexnow_key` in `config.yaml`) is public by design and matches the file `<key>.txt` at the site's root.
 
 ---
 
