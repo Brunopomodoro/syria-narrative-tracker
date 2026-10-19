@@ -276,7 +276,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a></footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a></footer>
 </div>
 </body>
 </html>
@@ -968,6 +968,8 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
         for lang in LANGS:
             if (DAILY / lang / f"{date}.html").exists():
                 urls.append((f"{base}/daily/{lang}/{date}.html", date, "yearly", "0.4"))
+    for lang in LANGS:
+        urls.append((f"{base}/sources/{lang}.html", today, "monthly", "0.5"))
     import experts                                   # imported here: experts imports this module
     urls += experts.sitemap_urls(base)
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n" for u, m, c, p in urls[:49000])
@@ -1233,6 +1235,95 @@ def write_privacy_pages(cfg: dict) -> None:
                                                    f"privacy/{lang}.html", f"privacy/{other}.html", root="../", kind="website"))
 
 
+# ----------------------------------------------------------------- the index of every source the site uses
+
+SOURCES_WORDS = {
+    "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the organisations and outlets behind the Expert view.",
+           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "The Expert view: international media, think tanks and organisations",
+           "telegram": "Telegram channels", "news": "News sites", "youtube": "YouTube", "reddit": "Reddit", "bluesky": "Bluesky", "x": "X",
+           "ytSearch": "Comments under the videos found by these searches", "ytChannels": "and under the newest videos of these channels",
+           "search": "Posts found by keyword searches", "comments": "Telegram comments and reactions on the channels above, through a Telegram account",
+           "kinds": {"intl": "International organisations", "thinktank": "Think tanks and research centres", "media": "Media"},
+           "via": "read through Google News searches limited to its site",
+           "note": "Posts by individuals are read only in aggregate: they are never stored, quoted or linked. The list changes as sources are added or stop working; every change to the tracker's sources is recorded in the method changelog on the About page."},
+    "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، والجهات ووسائل الإعلام التي تستند إليها قراءات الخبراء.",
+           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "قراءات الخبراء: وسائل إعلام ومراكز أبحاث ومنظمات دولية",
+           "telegram": "قنوات تيليغرام", "news": "مواقع إخبارية", "youtube": "يوتيوب", "reddit": "ريديت", "bluesky": "بلوسكاي", "x": "إكس",
+           "ytSearch": "التعليقات على الفيديوهات التي تُظهرها عمليات البحث هذه", "ytChannels": "وعلى أحدث فيديوهات هذه القنوات",
+           "search": "منشورات تُظهرها عمليات بحث بالكلمات المفتاحية", "comments": "تعليقات تيليغرام وتفاعلاته على القنوات أعلاه، عبر حساب تيليغرام",
+           "kinds": {"intl": "منظمات دولية", "thinktank": "مراكز أبحاث ودراسات", "media": "وسائل إعلام"},
+           "via": "تُقرأ عبر بحث غوغل نيوز المحصور في موقعها",
+           "note": "تُقرأ منشورات الأفراد إجمالاً فقط: لا تُخزَّن ولا تُقتبس ولا يُربط إليها. تتغير القائمة مع إضافة مصادر أو توقف أخرى، وكل تغيير في مصادر المتتبّع مسجَّل في سجل تغييرات المنهجية في صفحة «حول الموقع»."},
+}
+
+
+def source_domains(url: str) -> list:
+    """The publisher sites behind a feed address: the site: terms of a Google News search, else the feed's host."""
+    import urllib.parse as up
+    sites = re.findall(r"site%3A([a-z0-9.-]+)", url, re.I) or re.findall(r"site:([a-z0-9.-]+)", url, re.I)
+    if sites:
+        return sites
+    host = up.urlparse(url).netloc.lower()
+    return [re.sub(r"^(www|feeds|news)\.(?=.+\..+)", "", host)] if host else []
+
+
+def sources_body(cfg: dict, lang: str) -> str:
+    w = SOURCES_WORDS[lang]
+    kinds = {k["id"]: (k["label_ar"] if lang == "ar" else k["label"]) for k in archive.KINDS}
+    lab = lambda x: (x.get("label_ar") if lang == "ar" and x.get("label_ar") else x.get("label")) or x.get("name") or ""
+    link = lambda d: f'<a href="https://{esc(d)}" rel="noopener nofollow" dir="ltr">{esc(d)}</a>'
+    parts = [f"<h1>{w['title']}</h1><p>{esc(w['sub'])}</p>", f"<h2>{w['tracker']}</h2>"]
+    tg = cfg.get("telegram_channels") or []
+    if tg:
+        rows = "".join(f'<tr><td>{esc(lab(c))}</td><td>{esc(kinds.get(c.get("kind"), ""))}</td><td><a href="https://t.me/{esc(c["name"])}" rel="noopener nofollow" dir="ltr">t.me/{esc(c["name"])}</a></td></tr>' for c in tg)
+        parts.append(f"<h3>{w['telegram']} ({num(len(tg), lang)})</h3><div class=\"tw\"><table><tbody>{rows}</tbody></table></div>")
+    if (cfg.get("telegram_api") or {}).get("enabled"):
+        parts.append(f"<p class=\"sub\">{esc(w['comments'])}</p>")
+    feeds = cfg.get("rss_feeds") or []
+    if feeds:
+        rows = "".join(f'<tr><td>{esc(lab(f))}</td><td>{esc(kinds.get(f.get("kind"), ""))}</td><td>{" ".join(link(d) for d in source_domains(f["url"]))}</td></tr>' for f in feeds)
+        parts.append(f"<h3>{w['news']} ({num(len(feeds), lang)})</h3><div class=\"tw\"><table><tbody>{rows}</tbody></table></div>")
+    yt = cfg.get("youtube") or {}
+    if yt.get("enabled"):
+        chans = ", ".join(f'<a href="https://www.youtube.com/{esc(c["handle"])}" rel="noopener nofollow">{esc(lab(c))}</a>' for c in yt.get("channels") or [])
+        parts.append(f"<h3>{w['youtube']}</h3><p>{esc(w['ytSearch'])}: <span dir=\"auto\">{esc(' · '.join(yt.get('search_terms') or []))}</span>" + (f"; {esc(w['ytChannels'])}: {chans}" if chans else "") + ".</p>")
+    rd = cfg.get("reddit") or {}
+    if rd.get("enabled"):
+        subs = ", ".join(f'<a href="https://www.reddit.com/r/{esc(str(f["subreddit"]).removeprefix("r/"))}" rel="noopener nofollow" dir="ltr">r/{esc(str(f["subreddit"]).removeprefix("r/"))}</a>' for f in rd.get("feeds") or [])
+        parts.append(f"<h3>{w['reddit']}</h3><p>{subs}</p>")
+    bs = cfg.get("bluesky") or {}
+    if bs.get("enabled"):
+        parts.append(f"<h3>{w['bluesky']}</h3><p>{esc(w['search'])}: <span dir=\"auto\">{esc(' · '.join(bs.get('search_terms') or []))}</span></p>")
+    if (cfg.get("x_twitter") or {}).get("enabled"):
+        parts.append(f"<h3>{w['x']}</h3><p>{esc(w['search'])}.</p>")
+    ex = (cfg.get("experts") or {})
+    if ex.get("enabled") and ex.get("sources"):
+        parts.append(f"<h2>{w['experts']}</h2>")
+        for kind in ("intl", "thinktank", "media"):
+            seen: dict = {}
+            for x in (y for y in ex["sources"] if y.get("kind", "media") == kind and y.get("enabled") is not False):
+                name = re.sub(r"\s*\(via Google News\)", "", x["name"])
+                google = "news.google.com" in x["url"]
+                e = seen.setdefault(name, {"domains": [], "via": False})
+                for d in (source_domains(x["url"]) if not google or "site%3A" in x["url"] else ["news.google.com"]):
+                    if d not in e["domains"]:
+                        e["domains"].append(d)
+                e["via"] = e["via"] or (google and "site%3A" in x["url"])
+            rows = [f'<tr><td>{esc(n)}</td><td>{" ".join(link(d) for d in e["domains"])}</td><td class="sub">{esc(w["via"]) if e["via"] else ""}</td></tr>'
+                    for n, e in seen.items()]
+            if rows:
+                parts.append(f"<h3>{w['kinds'][kind]}</h3><div class=\"tw\"><table><tbody>{''.join(rows)}</tbody></table></div>")
+    parts.append(f"<p class=\"sub\">{esc(w['note'])}</p>")
+    return "\n".join(parts)
+
+
+def write_sources_pages(cfg: dict) -> None:
+    for lang in LANGS:
+        w, other = SOURCES_WORDS[lang], "ar" if lang == "en" else "en"
+        write(ROOT / "sources" / f"{lang}.html", page(cfg, lang, w["title"], w["sub"], sources_body(cfg, lang),
+                                                      f"sources/{lang}.html", f"sources/{other}.html", kind="website"))
+
+
 def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     """Everything the pipeline does after a run: story pages for the run's stories, listings, feeds, sitemap, prerender."""
     update_story_index(latest)
@@ -1252,4 +1343,5 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_privacy_pages(cfg)
     write_support_pages(cfg)
     write_contact_pages(cfg)
+    write_sources_pages(cfg)
     prerender_index(cfg, latest)

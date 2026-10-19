@@ -517,12 +517,14 @@ Make a new release every month or two; each one becomes a new versioned snapshot
 
 ### Expert view
 
-The **Expert view** tab collects what English-language media, think tanks and international organisations publish about Syria's security, economy and governance (`scripts/experts.py`). After every update it reads the feeds listed under `experts: sources:` in `config.yaml`; Claude files each new item under security, economy or governance (or sets it aside) and writes one sentence on it in English and Arabic. Items are linked, never republished, and kept for 180 days in `data/experts/library.json`. Once a week, after the weekly digest, Claude writes an analysis of that week's items per area, where sources agree and differ, their recommendations, and how the expert view compares with what Syrians were discussing on the tracker (`experts/en/<week>.html`).
+The **Expert view** tab is our analysis of what English-language media, think tanks and international organisations say about Syria's security, economy and governance (`scripts/experts.py`).
 
-- **Sources.** The status of every source after the last update is in `data/experts/library.json` under `sources`. To add one, add a line with its name, kind (`intl`, `thinktank` or `media`) and feed URL; `filter: true` (the default) keeps only items that mention Syria, for feeds that cover more.
-- **Cost.** A cent or two a day for the one-line summaries, and about 10 cents for each weekly analysis.
-- **By hand.** Maintenance tasks `experts-collect` (collect now) and `experts-weekly` (write the analysis of the last complete week).
-- **Limits.** English-language and mostly Western-based sources, and no paywalled outlets; the page says so.
+- **Material.** After every update the feeds listed under `experts: sources:` in `config.yaml` are read; Claude files each new item under security, economy or governance (or sets it aside) and writes one line on it. Items are kept for 180 days in `data/experts/library.json`, with the status of every source.
+- **Analyses.** Every week (after the weekly digest) and every month (from the 2nd), one page per area with enough items and an overall page: findings, where sources agree and differ, their recommendations, how it compares with what Syrians discussed in that area on the tracker, and what to watch. The reports drawn on are linked at the bottom of each page. Files: `data/experts/analyses/<period>.json`, pages `experts/<lang>/<period>.html` (overall) and `<period>-<area>.html`.
+- **Sources.** Every source the site uses, for the tracker and the Expert view, is listed on the Sources page (`sources/en.html`), built from `config.yaml`. To add an Expert view source, add a line with its name, kind (`intl`, `thinktank` or `media`) and feed URL; publishers that block automated readers can be read through a Google News search limited to their site. `exclude_orgs` leaves out Syrian outlets the tracker already reads; `max` caps a source per update.
+- **Cost.** A cent or two a day for the one-line summaries, about 20 cents a week and 40 cents a month for the analyses.
+- **By hand.** Maintenance tasks `experts-collect`, `experts-weekly`, `experts-monthly` and `experts-probe` (checks every feed; results in `data/experts/probe.json`).
+- **Limits.** English-language and mostly Western-based sources, and no paywalled outlets; the pages say so.
 
 ### What to watch
 
