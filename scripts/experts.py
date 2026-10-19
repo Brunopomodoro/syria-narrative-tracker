@@ -148,7 +148,7 @@ def collect(cfg: dict, log=print) -> tuple[list, list]:
 
 CLASSIFY_PROMPT = """You sort reports and articles about Syria by subject and summarise each in one sentence.
 For each item decide:
-- "keep": true only if the piece is substantially about Syria (not a passing mention) and about its security, economy or governance.
+- "keep": true only if the piece is substantially about Syria (not a passing mention), about its security, economy or governance, and is a report, analysis, briefing, statement, investigation or news article about current events. Set aside data tables and indicator pages, event listings, job adverts, catalogue or index pages, personal human-interest stories, and documents that are clearly old (a plan, report or appeal for a past year).
 - "domain": security (armed groups, violence, foreign military action, border security, transitional justice and security sector), economy (sanctions, reconstruction, finance, trade, prices, energy, livelihoods, aid funding), governance (government, institutions, elections, constitution, minorities and decentralisation, rights, diplomacy and recognition). "none" when keep is false.
 - "summary": one neutral sentence of at most 30 words on what the piece says or finds, attributed to its author (for example "Crisis Group argues that ..." or "The World Bank estimates ..."). Only what the title and excerpt support; add nothing.
 - "summary_ar": the same sentence in natural Modern Standard Arabic for Syrian readers.
@@ -176,6 +176,15 @@ def classify(cfg: dict, items: list, usage: dict) -> dict:
     return {x["id"]: x for x in data.get("items") or []}
 
 
+YEAR = re.compile(r"\b(?:19|20)\d\d\b")
+
+
+def old_title(title: str) -> bool:
+    """A title naming only years before last year (a 2023 response plan found today by a search engine)."""
+    years = [int(y) for y in YEAR.findall(title)]
+    return bool(years) and max(years) < dt.datetime.now(UTC).year - 1
+
+
 def update(cfg: dict, log=print) -> dict:
     """Collect, summarise the new items, save the library. Returns the token usage. Never raises."""
     usage = {"input_tokens": 0, "output_tokens": 0}
@@ -191,6 +200,9 @@ def update(cfg: dict, log=print) -> dict:
         new, ids = [], set()
         for i in sorted(items, key=lambda i: i["date"], reverse=True):
             if i["id"] in known or i["id"] in ids or norm_url(i["url"]) in seen_urls:
+                continue
+            if old_title(i["title"]) or "open data" in i["org"].lower():
+                lib.setdefault("skipped", []).append(i["id"])
                 continue
             ids.add(i["id"])
             new.append(i)
@@ -213,7 +225,8 @@ def update(cfg: dict, log=print) -> dict:
                 kept += 1
         cutoff = (dt.datetime.now(UTC) - dt.timedelta(days=int(s["keep_days"]))).strftime("%Y-%m-%dT%H:%M:%SZ")
         excl = [x.lower() for x in s["exclude_orgs"]]
-        lib["items"] = sorted((i for i in lib["items"] if i["date"] >= cutoff and not any(x in i["org"].lower() for x in excl)),
+        lib["items"] = sorted((i for i in lib["items"] if i["date"] >= cutoff and not any(x in i["org"].lower() for x in excl)
+                               and not old_title(i["title"]) and "open data" not in i["org"].lower()),
                               key=lambda i: i["date"], reverse=True)
         lib["skipped"] = (lib.get("skipped") or [])[-4000:]
         lib["sources"], lib["updated"] = status, now_iso()
