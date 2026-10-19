@@ -744,9 +744,20 @@ def result_schema(theme_ids: list) -> dict:
 
 
 def system_prompt(cfg: dict) -> str:
-    """The analysis instructions with the theme list from config.yaml filled in."""
+    """The analysis instructions with the theme list (and the names to spell a fixed way) from config.yaml filled in."""
     themes = "\n".join(f"- {t['id']}: {t['label']}. {t['about']}" for t in archive.theme_catalog(cfg))
-    return SYSTEM_PROMPT.replace("{themes}", themes)
+    prompt = SYSTEM_PROMPT.replace("{themes}", themes)
+    names = [n for n in cfg.get("names") or [] if n.get("en") and n.get("ar")]
+    if names:
+        prompt += "\n\nSpell these names exactly as given (English / Arabic):\n" + "\n".join(f"- {n['en']} / {n['ar']}" for n in names)
+    return prompt
+
+
+NAME_FIXES: list = []   # (wrong, right) Arabic spellings from config.yaml "names", applied to every text by no_pids
+
+
+def set_name_fixes(cfg: dict) -> None:
+    NAME_FIXES[:] = [(w, n["fix"]) for n in cfg.get("names") or [] if n.get("fix") for w in n.get("wrong") or [] if w]
 
 
 def hours_ago(d: dt.datetime) -> str:
@@ -998,6 +1009,8 @@ def no_pids(v):
     if isinstance(v, str):
         if v.count("}") > v.count("{"):          # a brace that closes nothing in the text itself
             v = JSON_TAIL.sub("", v)
+        for wrong, right in NAME_FIXES:
+            v = v.replace(wrong, right)
         return re.sub(r"\s{2,}", " ", PID_REF.sub("", v)).strip()
     if isinstance(v, list):
         return [x for x in (no_pids(i) for i in v) if x]
@@ -1191,6 +1204,7 @@ def main() -> int:
     args = ap.parse_args()
 
     cfg = load_config()
+    set_name_fixes(cfg)
     latest_path, history_path, state_path = DATA / "latest.json", DATA / "history.json", DATA / "state.json"
     latest_prev = load_json(latest_path, {})
     history = load_json(history_path, [])
