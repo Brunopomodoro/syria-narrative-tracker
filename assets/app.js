@@ -11,8 +11,8 @@ if (window.top !== window.self) {
 const T = {
   en: {
     title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data", reports: "Reports", experts: "Expert view",
-    expTitle: "Expert view", expSub: "Our analysis of what English-language media, think tanks and international organisations say about Syria's security, economy and governance, set against what Syrians are saying. One page per area and an overall one, every week and every month.",
-    expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
+    expTitle: "Expert view", expSub: "Our analysis of what English-language media, think tanks and international organisations say about Syria's security, economy and governance, set against what Syrians are saying. A short brief every day; one page per area and an overall one every week and every month.",
+    expLatestDay: "Daily brief", expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "All analyses", allSources: "All the sources the site uses",
     expAreas: { overall: "Overall", security: "Security", economy: "Economy", governance: "Governance" },
     expNone: "The first analyses are written after the first full week of collection.",
@@ -129,7 +129,7 @@ const T = {
       ["Analysis.", `The sample is sent to ${m.model} with the instructions shown at the bottom of this page. The model groups posts into stories, files each under one of the fixed themes, scores the tone of outlet coverage and of public reactions from −1 to +1, names emotions, framings and warning signs, and writes every text in English and Arabic. Where a story contains posts from several kinds of outlet or public posts in several languages, tone is also scored per kind and per language. A story that continues from the previous update keeps its id, so it can be followed over time.`],
       ["Checks.", "The model's answer is validated: unknown themes become \"other\", tones are held to the scale, per-group tones are kept only for groups with posts in the story, and each post counts towards at most one story. An update where nothing new was collected is skipped. Every text is generated, and the site says so."],
       ["What to watch.", "A short list above the stories, worked out from the numbers alone, with no extra AI call: a story whose share grew in at least two updates in a row, a new story already at 10% or more, people's tone at least half the scale away from the outlets' tone, people's tone down by more than a third of the scale within 36 hours, or coordination signs at a moderate or strong level two updates running. These are observations about the recent past, not forecasts. Every list is kept in the archive so that it can be checked later."],
-      ["Expert view.", "A separate tab gives our analysis of what English-language media, think tanks and international organisations say about Syria's security, economy and governance. Their reports and articles are read from the feeds on the Sources page; each new item is filed under one of the three areas, or set aside if it is not substantially about Syria, and summarised in one sentence from its title and excerpt. Every week and every month the model writes one page per area and an overall page from those summaries, comparing them with the stories Syrians discussed in the same area on the tracker. The reports drawn on are linked, never republished."],
+      ["Expert view.", "A separate tab gives our analysis of what English-language media, think tanks and international organisations say about Syria's security, economy and governance. Their reports and articles are read from the feeds on the Sources page; each new item is filed under one of the three areas, or set aside if it is not substantially about Syria, and summarised in one sentence from its title and excerpt. Every day the model writes a short brief on the day before, and every week and every month one page per area and an overall page, comparing what the reports say with the stories Syrians discussed on the tracker. When it cites an outlet or think tank whose political orientation, ownership or state funding is widely documented, it says so. The reports drawn on are linked, never republished."],
       ["What is stored.", "The analysis of every update, per-day aggregates, and outlet headlines, permanently. Individuals' posts, comments and identifiers are not stored; the fingerprints used to notice that nothing new was posted are one-way hashes."]],
     limits: [
       ["Not a survey.", "The posts are a sample of what is public online, capped per update and balanced across sources. Shares and tones describe that sample, not Syrians as a whole, and small themes rest on few posts."],
@@ -164,8 +164,8 @@ const T = {
   },
   ar: {
     title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "قراءات الخبراء",
-    expTitle: "قراءات الخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام الناطقة بالإنجليزية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون. صفحة لكل مجال وصفحة شاملة، كل أسبوع وكل شهر.",
-    expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
+    expTitle: "قراءات الخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام الناطقة بالإنجليزية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون. موجز قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر.",
+    expLatestDay: "الموجز اليومي", expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "كل التحليلات", allSources: "كل المصادر التي يعتمدها الموقع",
     expAreas: { overall: "نظرة شاملة", security: "الأمن", economy: "الاقتصاد", governance: "الحوكمة" },
     expNone: "تُكتب أولى التحليلات بعد أول أسبوع كامل من الجمع.",
@@ -279,7 +279,7 @@ const T = {
       ["التحليل.", `تُرسل العيّنة إلى ${m.model} مع التعليمات المعروضة في أسفل هذه الصفحة. يجمّع النموذج المنشورات في قصص، ويصنّف كل قصة تحت موضوع ثابت واحد، ويقيس نبرة تغطية وسائل الإعلام ونبرة تفاعل الناس من −١ إلى +١، ويسمّي المشاعر والتأطيرات وعلامات التحذير، ويكتب كل نص بالإنجليزية والعربية. وحين تضم القصة منشورات من أنواع عدة من وسائل الإعلام أو منشورات من الناس بلغات عدة، تُقاس النبرة أيضاً حسب النوع وحسب اللغة. تحتفظ القصة المستمرة من التحديث السابق بمعرّفها، فيمكن تتبّعها مع الوقت.`],
       ["التحقق.", "يُتحقق من إجابة النموذج: تصبح المواضيع غير المعروفة «أخرى»، وتُحصر النبرات ضمن المقياس، وتُحفظ نبرات المجموعات فقط للمجموعات التي لها منشورات في القصة، ويُحسب كل منشور في قصة واحدة على الأكثر. ويُتخطى التحديث الذي لم يجمع شيئاً جديداً. كل النصوص مولَّدة، والموقع يقول ذلك."],
       ["ما يستحق المتابعة.", "قائمة قصيرة فوق القصص تُستخرج من الأرقام وحدها، من دون أي استدعاء إضافي للذكاء الاصطناعي: قصة زادت حصتها في تحديثين متتاليين على الأقل، أو قصة جديدة تبلغ حصتها 10٪ أو أكثر، أو نبرة الناس تبتعد عن نبرة الإعلام نصف المقياس على الأقل، أو نبرة الناس تراجعت أكثر من ثلث المقياس خلال 36 ساعة، أو علامات تنسيق متوسطة أو قوية في تحديثين متتاليين. إنها ملاحظات عن الماضي القريب لا توقعات. تُحفظ كل قائمة في الأرشيف كي يمكن التحقق منها لاحقاً."],
-      ["قراءات الخبراء.", "تقدّم علامة تبويب مستقلة تحليلنا لما تقوله وسائل الإعلام الناطقة بالإنجليزية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا. تُقرأ تقاريرها ومقالاتها من الخلاصات المدرجة في صفحة المصادر؛ ويُصنَّف كل عنصر جديد في أحد المجالات الثلاثة، أو يُستبعد إن لم يكن عن سوريا أساساً، ويُلخَّص في جملة واحدة من عنوانه ومقتطفه. وكل أسبوع وكل شهر يكتب النموذج صفحة لكل مجال وصفحة شاملة انطلاقاً من هذه الملخصات، ويقارنها بالقصص التي ناقشها السوريون في المجال نفسه على المتتبّع. التقارير المعتمدة مرتبطة بروابط ولا يُعاد نشرها."],
+      ["قراءات الخبراء.", "تقدّم علامة تبويب مستقلة تحليلنا لما تقوله وسائل الإعلام الناطقة بالإنجليزية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا. تُقرأ تقاريرها ومقالاتها من الخلاصات المدرجة في صفحة المصادر؛ ويُصنَّف كل عنصر جديد في أحد المجالات الثلاثة، أو يُستبعد إن لم يكن عن سوريا أساساً، ويُلخَّص في جملة واحدة من عنوانه ومقتطفه. ويكتب النموذج كل يوم موجزاً قصيراً عن اليوم السابق، وكل أسبوع وكل شهر صفحة لكل مجال وصفحة شاملة، ويقارن ما تقوله التقارير بالقصص التي ناقشها السوريون على المتتبّع. وحين يستشهد بوسيلة إعلام أو مركز أبحاث معروف التوجه السياسي أو الملكية أو التمويل الحكومي، يذكر ذلك. التقارير المعتمدة مرتبطة بروابط ولا يُعاد نشرها."],
       ["ما يُحفظ.", "تحليل كل تحديث، والمجاميع اليومية، وعناوين وسائل الإعلام، بشكل دائم. لا تُحفظ منشورات الأفراد وتعليقاتهم ومعرّفاتهم؛ والبصمات المستخدمة لملاحظة أن لا جديد نُشر هي تجزئات أحادية الاتجاه."]],
     limits: [
       ["ليس استطلاع رأي.", "المنشورات عيّنة مما هو علني على الإنترنت، محدودة في كل تحديث ومتوازنة بين المصادر. الحصص والنبرات تصف هذه العيّنة لا السوريين جميعاً، والمواضيع الصغيرة تستند إلى منشورات قليلة."],
@@ -1514,15 +1514,15 @@ async function loadExperts() {
 }
 function expertPeriodHTML(x) {
   const t = L(), lang = state.lang, day = (d) => fmtDay(d, { day: "numeric", month: "long" });
-  const label = x.kind === "week" ? t.expWeek(x.id, day(x.from), day(x.to)) : t.expMonth(fmtDay(x.from, { month: "long", year: "numeric" }));
+  const label = x.kind === "day" ? fmtDay(x.from, { weekday: "long", day: "numeric", month: "long" }) : x.kind === "week" ? t.expWeek(x.id, day(x.from), day(x.to)) : t.expMonth(fmtDay(x.from, { month: "long", year: "numeric" }));
   const page = (area) => `experts/${lang}/${x.id}${area === "overall" ? "" : "-" + area}.html`;
   const card = (area) => {
     const title = rtl() ? x[`${area}_title_ar`] || x[`${area}_title`] : x[`${area}_title`] || x[`${area}_title_ar`];
     const lede = rtl() ? x[`${area}_lede_ar`] || x[`${area}_lede`] : x[`${area}_lede`] || x[`${area}_lede_ar`];
-    return `<a class="e-card${area === "overall" ? " e-overall" : ""}" href="${page(area)}"><span class="e-area">${t.expAreas[area]}</span>
+    return `<a class="e-card${area === "overall" ? " e-overall" : ""}" href="${page(area)}"><span class="e-area">${x.kind === "day" ? t.expLatestDay : t.expAreas[area]}</span>
       <span class="e-title" dir="auto">${esc(title || "")}</span><span class="e-lede" dir="auto">${esc(lede || "")}</span></a>`;
   };
-  return `<div class="e-period"><h3>${x.kind === "week" ? t.expLatestWeek : t.expLatestMonth} <span class="sub">· ${esc(label)}</span></h3>
+  return `<div class="e-period"><h3>${{ day: t.expLatestDay, week: t.expLatestWeek, month: t.expLatestMonth }[x.kind]} <span class="sub">· ${esc(label)}</span></h3>
     <div class="e-cards">${["overall", "security", "economy", "governance"].filter(a => (x.areas || []).includes(a)).map(card).join("")}</div></div>`;
 }
 function expertsHTML() {
@@ -1530,10 +1530,11 @@ function expertsHTML() {
   const head = `<h2 id="h-experts">${t.expTitle}</h2><p class="sub">${t.expSub}</p>`;
   if (!S.loaded) return `<section class="experts" aria-labelledby="h-experts">${head}<p>${t.loadingMethod}</p></section>`;
   const newest = (kind) => (S.index || []).filter(x => x.kind === kind).sort((a, b) => a.from < b.from ? 1 : -1)[0];
-  const week = newest("week"), month = newest("month");
+  const today = newest("day"), week = newest("week"), month = newest("month");
   return `
   <section class="experts" aria-labelledby="h-experts">
     ${head}
+    ${today ? expertPeriodHTML(today) : ""}
     ${week ? expertPeriodHTML(week) : `<p class="sub">${t.expNone}</p>`}
     ${month ? expertPeriodHTML(month) : ""}
     <p class="e-links"><a href="experts/${lang}/index.html">${t.expAll}</a> · <a href="sources/${lang}.html">${t.allSources}</a></p>
