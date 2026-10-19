@@ -58,7 +58,7 @@ def _pipeline():
 
 
 def settings(cfg: dict) -> dict:
-    s = {"enabled": True, "weekly": True, "window_days": 10, "keep_days": 180, "max_new_per_run": 80, "sources": []}
+    s = {"enabled": True, "weekly": True, "window_days": 10, "keep_days": 180, "max_new_per_run": 80, "sources": [], "exclude_orgs": []}
     s.update(cfg.get("experts") or {})
     return s
 
@@ -118,9 +118,12 @@ def fetch_feed(src: dict, since: dt.datetime) -> list:
                 or clean(e.get("author"), 80) or src["name"]
         if "news.google.com" in src["url"] and " - " in title:     # Google News titles end in " - Outlet"
             title = title.rsplit(" - ", 1)[0].strip()
+        if any(x.lower() in org.lower() for x in src.get("_exclude") or []):
+            continue                              # Syrian outlets: the tracker itself reads them
         out.append({"id": item_id(url, title), "url": url, "title": title, "org": org[:80], "kind": src.get("kind", "media"),
                     "source": src["name"], "date": when.strftime("%Y-%m-%dT%H:%M:%SZ"), "text": text})
-    return out
+    out.sort(key=lambda i: i["date"], reverse=True)
+    return out[:int(src["max"])] if src.get("max") else out
 
 
 def collect(cfg: dict, log=print) -> tuple[list, list]:
@@ -131,7 +134,7 @@ def collect(cfg: dict, log=print) -> tuple[list, list]:
         if not src.get("url") or src.get("enabled") is False:
             continue
         try:
-            got = fetch_feed(src, since)
+            got = fetch_feed({**src, "_exclude": s["exclude_orgs"]}, since)
             items.extend(got)
             status.append({"name": src["name"], "kind": src.get("kind", "media"), "ok": True, "items": len(got)})
         except Exception as e:  # noqa: BLE001  (one broken source must never stop the others)
@@ -209,7 +212,9 @@ def update(cfg: dict, log=print) -> dict:
                 lib["items"].append(i)
                 kept += 1
         cutoff = (dt.datetime.now(UTC) - dt.timedelta(days=int(s["keep_days"]))).strftime("%Y-%m-%dT%H:%M:%SZ")
-        lib["items"] = sorted((i for i in lib["items"] if i["date"] >= cutoff), key=lambda i: i["date"], reverse=True)
+        excl = [x.lower() for x in s["exclude_orgs"]]
+        lib["items"] = sorted((i for i in lib["items"] if i["date"] >= cutoff and not any(x in i["org"].lower() for x in excl)),
+                              key=lambda i: i["date"], reverse=True)
         lib["skipped"] = (lib.get("skipped") or [])[-4000:]
         lib["sources"], lib["updated"] = status, now_iso()
         archive._save(LIBRARY, lib)
