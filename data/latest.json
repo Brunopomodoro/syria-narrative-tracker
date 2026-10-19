@@ -3,141 +3,137 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-10-19T11:21:00Z",
- "checked_at": "2026-10-19T11:21:00Z",
+ "generated_at": "2026-10-19T15:37:56Z",
+ "checked_at": "2026-10-19T15:37:56Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1512,
-  "relevant": 898,
-  "posts_analyzed": 758,
-  "public_posts": 535,
-  "outlet_posts": 223,
+  "collected": 1420,
+  "relevant": 810,
+  "posts_analyzed": 620,
+  "public_posts": 436,
+  "outlet_posts": 184,
   "reactions_posts": 0,
-  "unique_posts": 743,
+  "unique_posts": 613,
   "sources_ok": 49,
   "sources_total": 49,
   "platforms": {
-   "news": 47,
-   "telegram": 176,
-   "reddit": 21,
-   "youtube": 312,
+   "telegram": 147,
+   "news": 37,
+   "bluesky": 161,
+   "youtube": 237,
    "x": 10,
-   "bluesky": 177
+   "reddit": 21
   },
   "languages": {
-   "ar": 567,
-   "en": 172,
+   "en": 156,
+   "ar": 454,
    "ku": 2,
-   "other": 2
+   "other": 1
   }
  },
  "overall": {
-  "sentiment": 0.1,
-  "mood": "Cautious",
-  "mood_ar": "حذر",
-  "public_sentiment": -0.15,
-  "public_mood": "Frustrated",
-  "public_mood_ar": "محبَط",
-  "brief": "Public discourse this cycle centers on the World Bank START reconstruction fund, a new industry minister appointment, continuing anger over wages versus prices, Israeli incursions in the south, the Mihrac Ural arrest, and Suwayda's unresolved crisis. Outlets frame government reshuffles and economic deals optimistically, while ordinary commenters—especially on YouTube and X—express fatigue with corruption, skepticism toward new appointees, and anger over the gap between official announcements and daily hardship. Kurdish-language sources highlight distinct grievances over language rights, property law and Rojava university admissions policies barring women from some security programs, rarely overlapping with Arabic-speaking audiences. Strong religious and pro-leadership sentiment coexists with sharp economic complaints and generalized distrust of officials tied to the former regime or western lobbying.",
-  "brief_ar": "يتركز النقاش العام هذه الدورة حول صندوق البنك الدولي",
-  "rest": "Unassigned posts include religious greetings and prayers for the president, generic weather and traffic updates, cultural and entertainment items (festivals, art, cinema, cuisine), scattered personal reddit/social media exchanges, and many off-topic international items (France protests, Ukraine, Yemen, Gaza aid cuts) not directly about Syria.",
-  "rest_ar": "تضم المنشورات غير المصنفة تهانٍ ودعوات دينية للرئيس، وتحديثات عامة عن الطقس والمرور، ومحتوى ثقافي وفني (مهرجانات، سينما، طبخ)، وتبادلات شخصية متفرقة على رديت ومواقع التواصل، إضافة إلى أخبار دولية غير متعلقة مباشرة بسوريا مثل احتجاجات فرنسا وأوكرانيا واليمن وغزة.",
-  "rest_share": 0.673
+  "sentiment": 0.15,
+  "mood": "Mixed",
+  "mood_ar": "متباين",
+  "public_sentiment": -0.05,
+  "public_mood": "Divided",
+  "public_mood_ar": "منقسم",
+  "brief": "Outlets focused on petroleum company leadership changes, the World Bank's new START reconstruction fund, repeal of a 1955 property seizure law, and continued Israeli incursions in Quneitra and Daraa. Public reaction split sharply: many commenters voiced strong support and emotional praise for officials and the interview with the Aleppo governor, while others mocked new appointments as recycled cronyism and demanded accountability for the fuel scandal. Kurdish-language audiences focused on language rights and property law grievances distinct from Arabic-speaking commenters. A deadly shooting of a soldier in Baghuz and an Israeli drone/incursion wave in the south drew anger and anxiety, while some commenters expressed fatalistic or resigned tones about corruption persisting under new leadership.",
+  "brief_ar": "ركزت وسائل الإعلام على تغييرات قيادية في شركة البترول، وإطلاق صندوق «ستارت» مع البنك الدولي لإعادة الإعمار، وإلغاء قانون الاستيلاء على العقارات لعام 1955، واستمرار التوغلات الإسرائيلية في القنيطرة ودرعا. انقسم الجمهور بشدة: كثيرون عبّروا عن دعم عاطفي قوي للمسؤولين ولمقابلة محافظ حلب، بينما سخر آخرون من التعيينات الجديدة واعتبروها استمراراً للمحسوبية وطالبوا بالمحاسبة على فضيحة البنزين. ركز الجمهور الكردي على حقوق اللغة ومظالم قانون العقارات بشكل منفصل عن المتحدثين بالعربية. أثار مقتل جندي في الباغوز وموجة توغلات إسرائيلية في الجنوب غضباً وقلقاً، بينما عبّر بعض المعلقين عن نبرة استسلامية إزاء استمرار الفساد تحت القيادة الجديدة.",
+  "rest": "Many unassigned posts are religious greetings, prayers for the president and soldiers, emotional praise comments on an Aleppo governor interview, and off-topic chatter (sports, recipes, personal travel, unrelated international news, Damascus goat memes) that do not connect to a specific Syria news narrative.",
+  "rest_ar": "تضم المنشورات غير المصنفة أدعية وتهانٍ دينية، وتعليقات عاطفية مدح لمحافظ حلب، ومحتوى غير متصل بسوريا مثل الرياضة والوصفات والسفر الشخصي وأخبار دولية غير ذات صلة ونكات عن 'ماعز دمشق'.",
+  "rest_share": 0.744
  },
  "narratives": [
   {
    "id": "petroleum-ceo-appointment",
    "key": "2026-10-18-petroleum-ceo-appointment",
-   "theme": "governance",
-   "title": "New heads appointed for Petroleum Company and Sovereign Fund after gasoline scandal",
-   "title_ar": "تعيينات جديدة لرئاسة الشركة السورية للبترول والصندوق السيادي بعد فضيحة البنزين",
-   "summary": "President al-Sharaa replaced Yousef Qablawi with Maher al-Hassan as head of the Syrian Petroleum Company, and appointed Omar Halabi as economic adviser and sovereign fund chairman, following public anger over adulterated gasoline. Commenters widely demand accountability for Qablawi rather than mere reassignment, suspecting cronyism and lack of real reform.",
-   "summary_ar": "استبدل الرئيس الشرع يوسف قبلاوي بماهر الحسن رئيساً للشركة السورية للبترول، وعيّن عمر الحلبي مستشاراً اقتصادياً ورئيساً للصندوق السيادي، عقب غضب شعبي من غش البنزين. يطالب كثير من المعلقين بمحاسبة قبلاوي بدلاً من مجرد نقله، وسط شكوك بالمحسوبية وغياب الإصلاح الحقيقي.",
-   "public_reaction": "Strong public anger and distrust, with many demanding criminal investigation of the previous CEO rather than quiet transfer, and skepticism about whether new appointees will break patterns of corruption.",
-   "public_reaction_ar": "غضب شعبي قوي وانعدام ثقة، مع مطالبة كثيرين بالتحقيق الجنائي مع الرئيس التنفيذي السابق بدلاً من نقله بهدوء، وشكوك حول قدرة المعينين الجدد على كسر أنماط الفساد.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.4,
+   "theme": "economy",
+   "title": "New petroleum company and sovereign fund chiefs named after fuel scandal",
+   "title_ar": "تعيين رؤساء جدد لشركة البترول والصندوق السيادي بعد فضيحة المحروقات",
+   "summary": "President al-Sharaa appointed Maher Khalil al-Hassan as CEO of the Syrian Petroleum Company and Omar al-Halabi as presidential economic adviser and sovereign fund chairman, replacing Yousef Qablawi amid scandal over adulterated gasoline. Outlets framed it as reform; many commenters doubted it addresses underlying corruption and demanded accountability for officials like Mohammad al-Bashir.",
+   "summary_ar": "عيّن الرئيس الشرع ماهر خليل الحسن رئيساً تنفيذياً للشركة السورية للبترول وعمر الحلبي مستشاراً اقتصادياً ورئيساً لمجلس الصندوق السيادي، خلفاً ليوسف قبلاوي وسط فضيحة غش البنزين. قدمت الوسائل الإعلامية ذلك كإصلاح، لكن كثيرين من المعلقين شككوا في معالجته للفساد الجذري وطالبوا بمحاسبة مسؤولين مثل محمد البشير.",
+   "public_reaction": "Reactions are divided: some express relief and hope the new appointee will fix problems, while many mock the move as reshuffling the same networks of cronyism and demand prosecution of those behind the gasoline fraud.",
+   "public_reaction_ar": "الآراء منقسمة: بعضهم يعبر عن ارتياح وأمل بأن يصلح المعيّن الجديد الأمور، بينما يسخر كثيرون من الخطوة باعتبارها إعادة تدوير لشبكات المحسوبية نفسها، ويطالبون بمحاسبة المتورطين في فضيحة غش البنزين.",
+   "sentiment": 0.1,
+   "public_sentiment": -0.3,
    "outlet_tone": {
-    "independent": 0.0
+    "independent": 0.1
    },
    "public_tone": {
-    "ar": -0.4,
+    "ar": -0.3,
     "en": 0.0
    },
    "emotions": [
-    "anger",
-    "distrust",
-    "demand for justice"
+    "skepticism",
+    "hope",
+    "anger"
    ],
    "emotions_ar": [
-    "غضب",
-    "انعدام ثقة",
-    "مطالبة بالعدالة"
+    "شك",
+    "أمل",
+    "غضب"
    ],
    "framings": [
-    "accountability vs reshuffling",
-    "cronyism concerns",
-    "technocratic fix"
+    "official reform narrative",
+    "public distrust of cronyism",
+    "calls for accountability"
    ],
    "framings_ar": [
-    "المحاسبة مقابل إعادة التوزيع",
-    "مخاوف المحسوبية",
-    "حل تكنوقراطي"
+    "سردية الإصلاح الرسمية",
+    "انعدام ثقة شعبي بالمحسوبية",
+    "مطالب بالمحاسبة"
    ],
-   "flags": [
-    "unverified claims about CEO's past ties circulating"
-   ],
-   "flags_ar": [
-    "انتشار ادعاءات غير مؤكدة حول ارتباطات الرئيس التنفيذي السابق"
-   ],
-   "volume": 62,
-   "public_volume": 59,
-   "share": 0.082,
-   "engagement": 770,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 59,
+   "public_volume": 56,
+   "share": 0.095,
+   "engagement": 403,
    "platforms": {
-    "news": 1,
     "telegram": 2,
-    "youtube": 56,
-    "bluesky": 3
+    "news": 1,
+    "youtube": 55,
+    "bluesky": 1
    },
    "languages": {
-    "ar": 59,
-    "en": 3
+    "en": 3,
+    "ar": 55,
+    "other": 1
    },
    "public_languages": {
-    "ar": 57,
-    "en": 2
+    "ar": 54,
+    "en": 1,
+    "other": 1
    },
    "kinds": {
-    "aggregator": 1,
-    "independent": 2
+    "independent": 3
    },
    "sources": [
     "YouTube comments",
-    "Bluesky posts",
-    "Google News - Syria (AR)",
     "Levant24 - Syria news (EN)",
-    "Enab Baladi - independent (AR)",
-    "YouTube comments on Halab Today TV"
+    "Syria TV - opposition-origin",
+    "YouTube comments on Halab Today TV",
+    "Bluesky posts"
    ],
    "examples": [
     {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93449",
-     "platform": "telegram"
-    },
-    {
      "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46087",
+     "url": "https://t.me/Levant24/46097",
      "platform": "telegram"
     },
     {
-     "source": "Google News - Syria (AR)",
-     "url": "https://news.google.com/rss/articles/CBMi_gVBVV95cUxQREhseHZ1R0phTW5CZUJtNFphQzA0Q3pMblJSRWRiTm8zSlh0MElMS2FxQXVBbi1PX2loSUJVQWlDQWFwaW5vQktVdVpRUFNFV0liU0NvbG43eW1pQ0dpLVp3NkZJT0lwNEhTYTJ4WEdTclNyanRMMVNQYTh2WGNoa2Vxd1FNRElGa0tHQmpKdDFqYUtMZ0k4dlJWa1VfWFlXbDkxbThSR0JMbllZTGhaMmRQWnN0N0NfSXg3cHFJbzZBLXI3d3FDLVRqRWtWX0EwNXhENFdhT1MycVNRWTNlODdDZjJaQlVXTi0xMHVmclFlNEM4QUg4SnNfS3RxbVpIeHBXOWJDUHlFRG8xck40dkgtbHUxRm43Y0gwRU1sNEtsTjA2SkdPNEVOZGtmREUyYjRvR25xdEM2RV9KQzhXcnhUZGUtcldiX3I5TFZsVjV0bVhmeDJFdDY3RnVKQVllcWRPd24waTVVZzdLUnB3c3FxOEJYZGRPUDUtcEVYRHR0dHplMFdsT1djOTZOOTdjakJGcFZidDdRWmpadFpGTGRzOTBIY1FCR0RHNE1Eazh2dmZfMUZuN29HdWxiam5NcklndUdPbFFpNDZXNTBFNUxBZmdtUmhvREVScjY3WWlIa0twcEFhaVZhSDRqT1J5OU5TcDRvbjZaMDJOdm8teXRXZlNybU81ZEdFMFhLa0lyLS1qR09FQUU4LURFR0w0X3p2eTFjYW9oVTdFczg4UExtejZWdUtmQTN3M0hyZ0ZoSWx0bUNjVmFNNlFjeE1rS2JtbnVPNTVxY3dYTXVDWE9uTGZ2cTlibnRUUlo2VktKa09BX3dqRWhDNm5aMjZUSV9pczlFNHdhYnBTRXJSYlFPTlQyaHFYN1FxQnNKckRaVXBRSkhqT1ZtZzhzMkdaV3hNSkMtUGVKYm5UV21ZbHJvNVc2X0RobUt4cURTckswOFVJUTRfY2VyQUg0NzVjZG4xdDlXXzN1R0hfMVpzd3pUSERfcHh0OWhjOUpn?oc=5",
+     "source": "Syria TV - opposition-origin",
+     "url": "https://www.syria.tv/%D8%A8%D8%B9%D8%AF-%D9%81%D8%B5%D9%84%D9%87%D8%A7-%D8%B9%D9%86-%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%AA%D8%B9%D9%8A%D9%8A%D9%86-%D8%A8%D8%A7%D8%B3%D9%84-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%86%D8%A7%D9%86-%D9%88%D8%B2%D9%8A%D8%B1%D8%A7%D9%8B-%D9%84%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D8%A9-%D9%88%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9",
      "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=TQ9HuxYPxf0",
+     "platform": "youtube"
     }
    ],
    "first_seen": "2026-10-18T13:13:13Z",
@@ -152,97 +148,89 @@
    "key": "2026-09-28-israel-quneitra-daraa-incursions",
    "theme": "israel-south",
    "title": "Israeli incursions, checkpoints and olive grove bulldozing continue in Quneitra and Daraa",
-   "title_ar": "استمرار التوغلات الإسرائيلية وتجريف أراضٍ في القنيطرة ودرعا",
-   "summary": "Israeli forces continued incursions in Quneitra and Daraa provinces, bulldozing olive groves, erecting checkpoints, and detaining two young men near the village of al-Huriya, while reconnaissance flights intensified over Damascus countryside near Dirbal. Syria's foreign ministry condemned the actions as violations of sovereignty and called for international action; Netanyahu confirmed plans for buffer zones along Syria's border.",
-   "summary_ar": "واصلت القوات الإسرائيلية توغلاتها في محافظتي القنيطرة ودرعا، مع تجريف بساتين الزيتون وإقامة حواجز واحتجاز شابين قرب قرية الحرية، وسط تكثيف طلعات استطلاع فوق ريف دمشق قرب دربل. أدانت الخارجية السورية هذه التحركات ودعت لتحرك دولي، فيما أكد نتنياهو خططاً لإقامة مناطق عازلة على حدود سوريا.",
-   "public_reaction": "Public reaction split between anger at Israeli actions and the government's perceived inaction, and darker sarcasm; some minority comments explicitly welcome Israeli intervention as protection, sparking friction.",
-   "public_reaction_ar": "انقسمت ردود الفعل بين الغضب من التصرفات الإسرائيلية وتقاعس الحكومة المُتصوَّر، وسخرية مريرة؛ بينما رحّب بعض التعليقات القليلة صراحة بالتدخل الإسرائيلي باعتباره حماية، ما أثار احتكاكاً.",
-   "sentiment": -0.5,
+   "title_ar": "استمرار التوغلات الإسرائيلية والحواجز وتجريف أشجار الزيتون في القنيطرة ودرعا",
+   "summary": "Israeli forces conducted incursions near Derbel village and the Yarmouk Basin in Quneitra and Daraa, setting up checkpoints, detaining two young men, and bulldozing olive groves, with reconnaissance planes over both provinces. Syria's foreign ministry condemned the violations and demanded a withdrawal from the Golan; a parliament member from Daraa warned against political exploitation of southern bloodshed.",
+   "summary_ar": "نفذت القوات الإسرائيلية توغلات قرب قرية دربل وحوض اليرموك في القنيطرة ودرعا، وأقامت حواجز واحتجزت شابين وجرفت أشجار زيتون، وسط تحليق طائرات استطلاع فوق المحافظتين. أدانت الخارجية السورية الانتهاكات وطالبت بالانسحاب من الجولان، وحذر نائب من درعا من استغلال دماء الجنوب سياسياً.",
+   "public_reaction": "Public commenters express anger and fear over the incursions, with some condemning Israel and others more cynically noting government inaction; a few voices controversially welcome Israeli presence as stability, drawing pushback.",
+   "public_reaction_ar": "عبّر المعلقون عن غضب وخوف من التوغلات، بينما أدان بعضهم إسرائيل وأشار آخرون بسخرية لعجز الحكومة؛ ورحّب بعض الأصوات بشكل مثير للجدل بالوجود الإسرائيلي كعامل استقرار، ما أثار ردود فعل غاضبة.",
+   "sentiment": -0.4,
    "public_sentiment": -0.5,
    "outlet_tone": {
-    "official": -0.5,
-    "independent": -0.4,
-    "regional": -0.3,
-    "aggregator": -0.2
+    "independent": -0.4
    },
    "public_tone": {
     "ar": -0.5,
-    "en": -0.2
+    "en": -0.3
    },
    "emotions": [
     "anger",
-    "humiliation",
-    "fear"
+    "fear",
+    "resentment"
    ],
    "emotions_ar": [
     "غضب",
-    "إهانة",
-    "خوف"
+    "خوف",
+    "استياء"
    ],
    "framings": [
     "sovereignty violation",
-    "state inaction criticism",
-    "pro-Israel minority voices"
+    "resource and water grab framing",
+    "fringe pro-Israel voices"
    ],
    "framings_ar": [
-    "انتهاك السيادة",
-    "انتقاد تقاعس الدولة",
-    "أصوات أقلية مؤيدة لإسرائيل"
+    "انتهاك للسيادة",
+    "استهداف الموارد والمياه",
+    "أصوات هامشية مؤيدة لإسرائيل"
    ],
    "flags": [
-    "near-identical phrasing across multiple outlets",
-    "sectarian friction in comments over pro-Israel remarks"
+    "sectarian/polarizing fringe comments"
    ],
    "flags_ar": [
-    "صياغة شبه متطابقة عبر عدة مواقع إخبارية",
-    "احتكاك طائفي في التعليقات حول تصريحات مؤيدة لإسرائيل"
+    "تعليقات هامشية مستقطبة"
    ],
-   "volume": 39,
-   "public_volume": 15,
-   "share": 0.051,
-   "engagement": 30146,
+   "volume": 18,
+   "public_volume": 11,
+   "share": 0.029,
+   "engagement": 16574,
    "platforms": {
-    "news": 8,
-    "telegram": 16,
-    "youtube": 9,
-    "bluesky": 6
+    "telegram": 7,
+    "x": 2,
+    "bluesky": 5,
+    "youtube": 4
    },
    "languages": {
-    "ar": 30,
-    "en": 9
+    "en": 5,
+    "ar": 13
    },
    "public_languages": {
-    "ar": 10,
-    "en": 5
+    "ar": 7,
+    "en": 4
    },
    "kinds": {
-    "regional": 2,
-    "independent": 19,
-    "aggregator": 2,
-    "official": 1
+    "independent": 7
    },
    "sources": [
+    "Bluesky posts",
     "YouTube comments",
     "Daraa 24 - local, Daraa",
-    "Bluesky posts",
-    "Euphrates Post - Deir ez-Zor and the east",
-    "Syria TV - opposition-origin",
+    "Syria TV - opposition-origin broadcaster",
+    "X posts",
     "Levant24 - Syria news (EN)"
    ],
    "examples": [
     {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/96590",
+     "platform": "telegram"
+    },
+    {
      "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/109701",
+     "url": "https://t.me/Euphrats_post/109708",
      "platform": "telegram"
     },
     {
      "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28233",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/43885",
+     "url": "https://t.me/daraa24_org/28238",
      "platform": "telegram"
     }
    ],
@@ -254,158 +242,92 @@
    }
   },
   {
-   "id": "wages-prices-anger",
-   "key": "2026-10-19-wages-prices-anger",
-   "theme": "economy",
-   "title": "Anger over 50% salary hike seen as offset by rising prices",
-   "title_ar": "غضب من زيادة الرواتب 50% التي تبتلعها الأسعار المرتفعة",
-   "summary": "Syria's People's Assembly discussed a 50% public sector salary increase and exceptional grants, but commenters across YouTube widely complain this will be absorbed by rising prices, and that pensioners, the unemployed, private-sector workers and those laid off for revolutionary reasons are excluded. Many demand structural wage reform rather than periodic raises.",
-   "summary_ar": "ناقش مجلس الشعب السوري زيادة 50% على رواتب القطاع العام ومنحاً استثنائية، لكن المعلقين على يوتيوب يشتكون بكثافة من أن الزيادة ستبتلعها الأسعار المرتفعة، وأن المتقاعدين والعاطلين عن العمل وموظفي القطاع الخاص والمفصولين لأسباب ثورية مستبعدون منها. يطالب كثيرون بإصلاح هيكلي للأجور بدلاً من الزيادات الدورية.",
-   "public_reaction": "Widespread frustration and sarcasm; commenters argue the raise benefits only a fraction of society while prices for fuel, electricity, and goods keep climbing, deepening a sense of being left behind.",
-   "public_reaction_ar": "إحباط وسخرية واسعة النطاق؛ يرى المعلقون أن الزيادة تفيد فئة محدودة من المجتمع بينما تستمر أسعار الوقود والكهرباء والسلع بالارتفاع، مما يعمّق شعور التهميش.",
-   "sentiment": 0.1,
-   "public_sentiment": -0.5,
-   "outlet_tone": {},
+   "id": "law-521-repeal",
+   "key": "2026-10-19-law-521-repeal",
+   "theme": "governance",
+   "title": "Parliament repeals 1955 law allowing education minister to seize property",
+   "title_ar": "مجلس الشعب يلغي قانون 1955 الذي يسمح لوزير التربية بالاستيلاء على العقارات",
+   "summary": "Syria's parliament voted to repeal Law 521 of 1955, which let the education minister seize any property deemed necessary without the public-benefit decree required under the 1983 expropriation law. The vote, widely covered on October 19, also saw debate on Law 41 of 2004 restricting property rights for Kurdish landowners in border areas.",
+   "summary_ar": "صوّت مجلس الشعب السوري على إلغاء القانون رقم 521 لعام 1955 الذي كان يمنح وزير التربية صلاحية الاستيلاء على أي عقار دون الحاجة لمرسوم المنفعة العامة المطلوب بموجب قانون الاستملاك لعام 1983. ترافق التصويت في 19 تشرين الأول مع نقاش حول القانون رقم 41 لعام 2004 الذي قيّد حقوق ملاك كرد في المناطق الحدودية.",
+   "public_reaction": "Public commenters, especially on X, welcomed the repeal as protecting private property rights from arbitrary seizure; Kurdish voices separately highlighted ongoing grievances over Law 41 affecting Kurdish landowners.",
+   "public_reaction_ar": "رحّب المعلقون، خصوصاً على منصة إكس، بالإلغاء باعتباره حماية لحقوق الملكية الخاصة من القرارات التعسفية؛ بينما أبرزت الأصوات الكردية بشكل منفصل مظالم مستمرة بخصوص القانون 41 الذي يضر بملاك كرد.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.4,
+   "outlet_tone": {
+    "independent": 0.3,
+    "kurdish": 0.2,
+    "aggregator": 0.2
+   },
    "public_tone": {
-    "ar": -0.5
+    "ar": 0.4
    },
    "emotions": [
-    "anger",
-    "frustration",
-    "despair"
+    "relief",
+    "approval"
    ],
    "emotions_ar": [
-    "غضب",
-    "إحباط",
-    "يأس"
+    "ارتياح",
+    "استحسان"
    ],
    "framings": [
-    "raise offset by inflation",
-    "excluded groups (pensioners, private sector)",
-    "demand for structural reform"
+    "property rights protection",
+    "Kurdish property grievances separate issue"
    ],
    "framings_ar": [
-    "زيادة تلتهمها الأسعار",
-    "فئات مستبعدة (متقاعدون، قطاع خاص)",
-    "مطالبة بإصلاح هيكلي"
+    "حماية حقوق الملكية",
+    "مظالم عقارية كردية منفصلة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 35,
-   "public_volume": 35,
-   "share": 0.046,
-   "engagement": 56,
+   "volume": 17,
+   "public_volume": 3,
+   "share": 0.027,
+   "engagement": 15495,
    "platforms": {
-    "youtube": 35
+    "telegram": 13,
+    "news": 1,
+    "x": 2,
+    "bluesky": 1
    },
    "languages": {
-    "ar": 35
-   },
-   "public_languages": {
-    "ar": 35
-   },
-   "kinds": {},
-   "sources": [
-    "YouTube comments"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=jeDTH4Y-fgI",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-10-19T01:20:23Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "lebanon-syria-returns-cooperation",
-   "key": "2026-10-19-lebanon-syria-returns-cooperation",
-   "theme": "refugees",
-   "title": "Lebanese and Syrian ministers discuss refugee returns and prisoner handovers",
-   "title_ar": "وزيرتا الشؤون الاجتماعية في سوريا ولبنان تبحثان عودة اللاجئين وتسليم السجناء",
-   "summary": "Lebanese Social Affairs Minister Hanine Sayed visited Damascus meeting Syrian counterpart Hind Qabawat, discussing safe and voluntary return of roughly 700,000 Syrians from Lebanon, child protection, and social safety nets. Lebanon also confirmed a third batch of Syrian prisoners convicted in Lebanon will soon be handed to Damascus.",
-   "summary_ar": "زارت وزيرة الشؤون الاجتماعية اللبنانية حنين السيد دمشق والتقت نظيرتها السورية هند قبوات لبحث العودة الآمنة والطوعية لنحو 700 ألف سوري من لبنان، وحماية الأطفال، وشبكات الحماية الاجتماعية. كما أكد لبنان أن دفعة ثالثة من السجناء السوريين المحكومين هناك ستُسلّم قريباً إلى دمشق.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.4,
-   "public_sentiment": null,
-   "outlet_tone": {
-    "official": 0.5,
-    "independent": 0.4
-   },
-   "public_tone": {},
-   "emotions": [
-    "cooperative optimism"
-   ],
-   "emotions_ar": [
-    "تفاؤل تعاوني"
-   ],
-   "framings": [
-    "bilateral cooperation",
-    "humane return framing"
-   ],
-   "framings_ar": [
-    "تعاون ثنائي",
-    "إطار إنساني للعودة"
-   ],
-   "flags": [
-    "many near-identical quotes repeated across outlets"
-   ],
-   "flags_ar": [
-    "اقتباسات شبه متطابقة متكررة عبر عدة مواقع"
-   ],
-   "volume": 28,
-   "public_volume": 5,
-   "share": 0.037,
-   "engagement": 21005,
-   "platforms": {
-    "telegram": 23,
-    "x": 1,
-    "bluesky": 4
-   },
-   "languages": {
-    "ar": 26,
-    "en": 2
-   },
-   "public_languages": {
-    "ar": 4,
+    "ar": 16,
     "en": 1
    },
+   "public_languages": {
+    "ar": 3
+   },
    "kinds": {
-    "independent": 6,
-    "official": 17
+    "independent": 11,
+    "kurdish": 1,
+    "aggregator": 1,
+    "official": 1
    },
    "sources": [
-    "SANA - state news agency (AR)",
-    "Al-Ikhbariya Syria - state TV",
-    "Bluesky posts",
+    "Shaam News Network - opposition-origin",
+    "Syria TV - opposition-origin broadcaster",
     "Al-Watan - Damascus daily newspaper",
-    "Sawt al-Asima - local, Damascus",
-    "Levant24 - Syria news (EN)"
+    "X posts",
+    "Levant24 - Syria news (EN)",
+    "Sawt al-Asima - local, Damascus"
    ],
    "examples": [
     {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/188353",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/96591",
      "platform": "telegram"
     },
     {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/43887",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141930",
      "platform": "telegram"
     },
     {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/236538",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/109712",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-19T11:21:00Z",
+   "first_seen": "2026-10-19T15:37:56Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -417,91 +339,66 @@
    "key": "2026-10-18-world-bank-start-fund",
    "theme": "economy",
    "title": "Syria and World Bank launch START reconstruction trust fund",
-   "title_ar": "سوريا والبنك الدولي يطلقان صندوق \"ستارت\" للتعافي وإعادة الإعمار",
-   "summary": "Syria and the World Bank Group announced the START multi-donor trust fund to finance reconstruction and economic recovery, offering concessional financing and investment guarantees. Officials, including the finance minister, framed it as a historic step toward reintegration into global finance. Public reaction online is largely optimistic but some question governance, transparency, and whether pledges will reach ordinary citizens given the $216 billion damage estimate.",
-   "summary_ar": "أعلنت سوريا ومجموعة البنك الدولي عن صندوق \"ستارت\" متعدد المانحين لتمويل إعادة الإعمار والتعافي الاقتصادي، يقدم تمويلاً ميسراً وضمانات استثمارية. وصفه وزير المالية بأنه خطوة تاريخية نحو الاندماج بالمنظومة المالية الدولية. ردود الفعل الشعبية متفائلة غالباً، مع تساؤلات حول الحوكمة والشفافية ومدى وصول التمويل للمواطنين في ظل أضرار تقدر بـ216 مليار دولار.",
-   "public_reaction": "Mixed: some celebrate as a milestone of reintegration; others on Bluesky and elsewhere raise doubts about the gap between pledges and actual reconstruction needs, and about governance of the sovereign fund.",
-   "public_reaction_ar": "ردود فعل متباينة: البعض يحتفي بها كمحطة اندماج دولي، بينما يثير آخرون على بلوسكاي وغيرها شكوكاً حول الفجوة بين التعهدات واحتياجات الإعمار الفعلية، وحول حوكمة الصندوق السيادي.",
+   "title_ar": "سوريا والبنك الدولي يطلقان صندوق «ستارت» لإعادة الإعمار",
+   "summary": "Syria's finance ministry and the World Bank Group agreed to establish the START multi-donor trust fund, announced during the World Bank-IMF meetings in Bangkok with EU and US backing, aiming to finance economic recovery. Officials called it an unprecedented step; some commenters are hopeful while others question whether pledges can match the $216 billion damage estimate.",
+   "summary_ar": "اتفقت وزارة المالية السورية ومجموعة البنك الدولي على إنشاء صندوق «ستارت» متعدد المانحين، أُعلن خلال اجتماعات البنك الدولي وصندوق النقد في بانكوك بدعم أوروبي وأمريكي، بهدف تمويل التعافي الاقتصادي. اعتبره المسؤولون خطوة غير مسبوقة، فيما أبدى بعض المعلقين تفاؤلاً وتساءل آخرون عن مدى كفاية التعهدات مقارنة بتقدير أضرار بـ216 مليار دولار.",
+   "public_reaction": "Mixed hopeful and cautious reactions; some praise it as a major milestone for reintegration into global finance, while others point out the gap between pledges and actual reconstruction needs.",
+   "public_reaction_ar": "ردود فعل متفائلة وحذرة في آن؛ يرى البعض أنه إنجاز كبير لإعادة الاندماج بالمالية العالمية، بينما يشير آخرون إلى الفجوة بين التعهدات واحتياجات إعادة الإعمار الفعلية.",
    "sentiment": 0.5,
    "public_sentiment": 0.3,
    "outlet_tone": {
-    "independent": 0.4,
-    "kurdish": 0.4,
-    "regional": 0.4,
-    "aggregator": 0.3
+    "regional": 0.5
    },
    "public_tone": {
-    "ar": 0.2,
+    "ar": 0.3,
     "en": 0.4
    },
    "emotions": [
     "hope",
-    "cautious optimism",
-    "skepticism"
+    "cautious optimism"
    ],
    "emotions_ar": [
     "أمل",
-    "تفاؤل حذر",
-    "تشكك"
+    "تفاؤل حذر"
    ],
    "framings": [
-    "historic reintegration",
-    "governance concerns",
-    "insufficient scale vs damage"
+    "milestone for reintegration",
+    "gap between pledges and damage"
    ],
    "framings_ar": [
-    "اندماج تاريخي",
-    "مخاوف حوكمة",
-    "حجم غير كافٍ مقارنة بالأضرار"
+    "إنجاز للاندماج الدولي",
+    "فجوة بين التعهدات والأضرار"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 27,
-   "public_volume": 14,
-   "share": 0.036,
-   "engagement": 6948,
+   "volume": 16,
+   "public_volume": 15,
+   "share": 0.026,
+   "engagement": 6,
    "platforms": {
-    "news": 8,
-    "telegram": 5,
-    "bluesky": 14
+    "news": 1,
+    "bluesky": 15
    },
    "languages": {
-    "ar": 14,
-    "en": 13
+    "ar": 6,
+    "en": 10
    },
    "public_languages": {
-    "en": 8,
-    "ar": 6
+    "en": 10,
+    "ar": 5
    },
    "kinds": {
-    "regional": 1,
-    "kurdish": 1,
-    "aggregator": 6,
-    "independent": 5
+    "regional": 1
    },
    "sources": [
     "Bluesky posts",
-    "Google News - Syria (EN)",
-    "Google News - Syria (AR)",
-    "Sky News Arabia - UAE-based",
-    "Rudaw Arabic - Kurdistan Region outlet",
-    "Syria TV - opposition-origin"
+    "Sky News Arabia - UAE-based"
    ],
    "examples": [
     {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/109698",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/43886",
-     "platform": "telegram"
-    },
-    {
-     "source": "Rudaw Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/RudawArabic/122389",
-     "platform": "telegram"
+     "source": "Sky News Arabia - UAE-based",
+     "url": "https://www.skynewsarabia.com/middle-east/1898978-%D8%AE%D8%B7%D9%88%D8%A9-%D9%85%D8%B3%D8%A8%D9%88%D9%82%D8%A9-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%AA%D8%B7%D9%84%D9%82-%D8%B5%D9%86%D8%AF%D9%88%D9%82-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%81%D9%8A-%D8%A8%D8%B6%D9%85%D8%A7%D9%86%D8%A7%D8%AA-%D8%AF%D9%88%D9%84%D9%8A%D8%A9",
+     "platform": "news"
     }
    ],
    "first_seen": "2026-10-18T20:46:04Z",
@@ -512,91 +409,86 @@
    }
   },
   {
-   "id": "industry-minister-appointment",
-   "key": "2026-10-19-industry-minister-appointment",
-   "theme": "governance",
-   "title": "Al-Sharaa appoints Basel Abdul Hanan as industry minister",
-   "title_ar": "الشرع يعيّن باسل عبد الحنان وزيراً للصناعة والتجارة الداخلية",
-   "summary": "President Ahmad al-Sharaa issued Decree No. 189 appointing engineer Basel Abdul Aziz Abdul Hanan as minister of industry, internal trade and consumer protection, separating the portfolio from the economy ministry. Outlets detailed his background as former Salvation Government economy minister and Aleppo University lecturer. Public reaction was muted, with some expressing fatigue over frequent cabinet reshuffles.",
-   "summary_ar": "أصدر الرئيس أحمد الشرع المرسوم رقم 189 بتعيين المهندس باسل عبد العزيز عبد الحنان وزيراً للصناعة والتجارة الداخلية وحماية المستهلك، في خطوة فصلت الوزارة عن وزارة الاقتصاد. استعرضت وسائل الإعلام سيرته كوزير اقتصاد سابق في حكومة الإنقاذ ومحاضر جامعي في حلب. جاءت ردود الفعل الشعبية محدودة، مع تعبير بعضهم عن ملل من تكرار التغييرات الوزارية.",
-   "public_reaction": "Limited public commentary; some skepticism about whether new appointees will differ from predecessors given ongoing corruption concerns.",
-   "public_reaction_ar": "تعليقات شعبية محدودة، مع شكوك من البعض حول إمكانية اختلاف المعينين الجدد عن سابقيهم في ظل استمرار مخاوف الفساد.",
-   "sentiment": 0.1,
-   "public_sentiment": -0.1,
+   "id": "lebanon-syria-returns-cooperation",
+   "key": "2026-10-19-lebanon-syria-returns-cooperation",
+   "theme": "refugees",
+   "title": "Lebanese and Syrian ministers discuss refugee returns and prisoner handovers",
+   "title_ar": "وزيرتان لبنانية وسورية تبحثان عودة اللاجئين وتسليم السجناء",
+   "summary": "Syria's Social Affairs Minister Hind Kabawat and her Lebanese counterpart Hanin al-Sayed held a joint press conference in Damascus on voluntary, safe returns of Syrians from Lebanon, visiting welfare centers in Daraya. Lebanon's deputy PM separately said a third batch of Syrian prisoners convicted in Lebanon will soon be handed to Damascus.",
+   "summary_ar": "عقدت وزيرة الشؤون الاجتماعية السورية هند قبوات ونظيرتها اللبنانية حنين السيد مؤتمراً صحفياً مشتركاً في دمشق حول العودة الطوعية والآمنة للسوريين من لبنان، وزارتا مراكز رعاية اجتماعية في داريا. وقال نائب رئيس الوزراء اللبناني إن دفعة ثالثة من السجناء السوريين المحكومين في لبنان ستُسلم قريباً إلى دمشق.",
+   "public_reaction": "Some commenters criticize the social affairs ministry as ineffective in supporting returnees, while others focus on prisoner issues separately in Lebanon.",
+   "public_reaction_ar": "انتقد بعض المعلقين وزارة الشؤون الاجتماعية باعتبارها غير فعالة في دعم العائدين، بينما ركز آخرون على قضية السجناء بشكل منفصل في لبنان.",
+   "sentiment": 0.2,
+   "public_sentiment": -0.2,
    "outlet_tone": {
     "official": 0.3,
-    "independent": 0.1,
-    "kurdish": 0.1
+    "independent": 0.2
    },
    "public_tone": {
-    "ar": -0.1
+    "ar": -0.2
    },
    "emotions": [
-    "neutral",
-    "skepticism"
+    "skepticism",
+    "hope"
    ],
    "emotions_ar": [
-    "حياد",
-    "تشكك"
+    "شك",
+    "أمل"
    ],
    "framings": [
-    "routine cabinet reshuffle",
-    "technocratic appointment"
+    "official cooperation narrative",
+    "public doubt about ministry effectiveness"
    ],
    "framings_ar": [
-    "تغيير وزاري روتيني",
-    "تعيين تكنوقراطي"
+    "سردية تعاون رسمي",
+    "شك شعبي بفعالية الوزارة"
    ],
-   "flags": [
-    "many near-identical outlet posts about the same appointment"
-   ],
-   "flags_ar": [
-    "العديد من المنشورات الإخبارية شبه المتطابقة حول نفس التعيين"
-   ],
-   "volume": 21,
-   "public_volume": 2,
-   "share": 0.028,
-   "engagement": 9373,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 14,
+   "public_volume": 6,
+   "share": 0.023,
+   "engagement": 8860,
    "platforms": {
-    "telegram": 16,
-    "news": 3,
-    "bluesky": 1,
-    "x": 1
+    "telegram": 7,
+    "youtube": 3,
+    "bluesky": 3,
+    "news": 1
    },
    "languages": {
-    "ar": 19,
-    "en": 2
+    "ar": 13,
+    "en": 1
    },
    "public_languages": {
-    "ar": 2
+    "ar": 5,
+    "en": 1
    },
    "kinds": {
-    "kurdish": 1,
-    "independent": 14,
+    "independent": 4,
     "official": 4
    },
    "sources": [
-    "Shaam News Network - opposition-origin",
-    "Al-Watan - Damascus daily newspaper",
-    "SANA website - state news agency (AR)",
-    "Sawt al-Asima - local, Damascus",
-    "Syria TV - opposition-origin broadcaster",
-    "Halab Today TV - opposition-origin, Aleppo"
+    "YouTube comments",
+    "Bluesky posts",
+    "SANA - state news agency (AR)",
+    "Al-Ikhbariya Syria - state TV",
+    "Syria Plus (SY+) - news platform",
+    "Sawt al-Asima - local, Damascus"
    ],
    "examples": [
     {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/96583",
+     "source": "SANA - state news agency (AR)",
+     "url": "https://t.me/sana_gov/188367",
      "platform": "telegram"
     },
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141923",
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/236587",
      "platform": "telegram"
     },
     {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/203822",
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/43894",
      "platform": "telegram"
     }
    ],
@@ -612,87 +504,177 @@
    "key": "2026-10-19-kurdish-identity-language-rights",
    "theme": "northeast-kurdish",
    "title": "Push for Kurdish language recognition and property law grievances in the north-east",
-   "title_ar": "مطالب بإقرار اللغة الكردية وتظلمات قانون الملكية العقارية في الشمال الشرقي",
-   "summary": "Kurdish activists in Qamishli launched an initiative demanding constitutional recognition of Kurdish-language education, while Syria's parliament discussed repealing Law 41 of 2004, which restricted property registration in border areas and harmed Kurdish landowners in Hasakah, Kobani and Afrin. Separately, new state security universities reportedly bar women from most programs, and Rojava University saw record enrollment amid system changes.",
-   "summary_ar": "أطلق ناشطون كرد في القامشلي مبادرة للمطالبة بالاعتراف الدستوري بالتعليم باللغة الكردية، بينما ناقش البرلمان السوري إلغاء القانون 41 لعام 2004 الذي قيّد تسجيل العقارات في المناطق الحدودية وأضر بملاك كرد في الحسكة وكوباني وعفرين. كما كشفت تقارير عن منع النساء من معظم برامج جامعتين أمنيتين جديدتين، وسط إقبال قياسي على جامعة روج آفا.",
-   "public_reaction": "Kurdish-language posts and English-language activist accounts frame this as ongoing marginalization and a struggle for recognized rights, including criticism of new security university admission rules; Arabic-language public reaction is largely absent, reflecting separate discourse spheres.",
-   "public_reaction_ar": "تصوّر المنشورات الكردية والناشطون الناطقون بالإنكليزية هذا كتهميش مستمر ونضال من أجل حقوق معترف بها، مع انتقاد قواعد قبول الجامعات الأمنية الجديدة؛ بينما يغيب التفاعل الشعبي الناطق بالعربية إلى حد كبير، ما يعكس دوائر نقاش منفصلة.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.2,
+   "title_ar": "دفع نحو الاعتراف باللغة الكردية ومظالم قانون العقارات في الشمال الشرقي",
+   "summary": "A new initiative in Qamishli launched to push for constitutional recognition of Kurdish-language education, while parliament separately debated repealing Law 41 of 2004, which restricted property rights for Kurdish owners in Hasakah, Kobani and Afrin. Kurdish MPs spoke in the session; reports also note displaced Kurds returning to Ras al-Ain areas and depopulation of Washokani camp.",
+   "summary_ar": "أُطلقت مبادرة في قامشلو للدفع نحو تثبيت حق التعليم باللغة الكردية في الدستور، فيما ناقش البرلمان بشكل منفصل إلغاء القانون 41 لعام 2004 الذي قيّد حقوق ملاك كرد في الحسكة وكوباني وعفرين. تحدث نواب أكراد خلال الجلسة، كما أشارت تقارير إلى عودة نازحين من رأس العين وتراجع عدد سكان مخيم واشوكاني.",
+   "public_reaction": "Kurdish-language public voices express hope for constitutional protections but frustration over long-standing restrictions; Arabic commenters largely did not engage with this specific framing.",
+   "public_reaction_ar": "عبّرت الأصوات الكردية عن أمل بحماية دستورية لكن مع إحباط من القيود الطويلة الأمد؛ ولم يتفاعل المعلقون بالعربية بشكل كبير مع هذا الإطار تحديداً.",
+   "sentiment": 0.1,
+   "public_sentiment": 0.0,
    "outlet_tone": {
-    "kurdish": 0.0
+    "kurdish": 0.1
    },
    "public_tone": {
-    "ku": 0.0,
-    "en": -0.3
+    "ku": 0.1,
+    "en": 0.2
    },
    "emotions": [
-    "determination",
-    "grievance"
+    "hope",
+    "frustration"
    ],
    "emotions_ar": [
-    "إصرار",
-    "تظلم"
+    "أمل",
+    "إحباط"
    ],
    "framings": [
-    "Kurdish rights struggle",
-    "property restitution",
-    "gender restriction in new institutions"
+    "Kurdish rights framing",
+    "constitutional recognition push",
+    "property rights for minorities"
    ],
    "framings_ar": [
-    "نضال من أجل الحقوق الكردية",
-    "استعادة الملكية",
-    "قيود جندرية في مؤسسات جديدة"
+    "إطار حقوق الكرد",
+    "دفع نحو الاعتراف الدستوري",
+    "حقوق ملكية للأقليات"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 15,
-   "public_volume": 7,
-   "share": 0.02,
-   "engagement": 1440,
+   "volume": 12,
+   "public_volume": 5,
+   "share": 0.019,
+   "engagement": 1075,
    "platforms": {
-    "telegram": 7,
+    "telegram": 6,
     "news": 1,
-    "bluesky": 7
+    "bluesky": 5
    },
    "languages": {
-    "ar": 8,
+    "ar": 5,
     "en": 5,
     "ku": 2
    },
    "public_languages": {
-    "ar": 1,
     "ku": 2,
-    "en": 4
+    "en": 3
    },
    "kinds": {
-    "kurdish": 7,
+    "kurdish": 6,
     "independent": 1
    },
    "sources": [
     "Bluesky posts",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "North Press Agency - Qamishli-based (AR)",
     "Rudaw Arabic - Kurdistan Region outlet",
-    "Syria Direct - independent (EN/AR)"
+    "Syria Direct - independent (EN/AR)",
+    "North Press Agency (EN)",
+    "ANHA (Hawar) - north-east administration news agency (AR)"
    ],
    "examples": [
     {
      "source": "Rudaw Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/RudawArabic/122375",
+     "url": "https://t.me/RudawArabic/122394",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/84233",
      "platform": "telegram"
     },
     {
      "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/82940",
+     "url": "https://t.me/HawarNews/82948",
      "platform": "telegram"
-    },
-    {
-     "source": "Syria Direct - independent (EN/AR)",
-     "url": "https://syriadirect.org/syrias-kurds-fight-to-keep-their-language-alive-in-the-classroom/",
-     "platform": "news"
     }
    ],
    "first_seen": "2026-10-19T01:20:23Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "baghuz-soldier-killings",
+   "key": "2026-10-19-baghuz-soldier-killings",
+   "theme": "security",
+   "title": "Unidentified gunmen kill soldiers near Baghuz and Boukamal in eastern Deir ez-Zor",
+   "title_ar": "مجهولون يقتلون جنوداً قرب الباغوز والبوكمال شرقي دير الزور",
+   "summary": "A Syrian Defense Ministry soldier was killed by unidentified gunmen in al-Baghuz, eastern Deir ez-Zor countryside, the latest in a string of attacks following an earlier killing in Boqros on October 6. A young man from Baghuz serving in the army was separately found shot dead in Albu Kamal.",
+   "summary_ar": "قُتل عنصر من الجيش العربي السوري على يد مجهولين في منطقة الباغوز بريف دير الزور الشرقي، في استمرار لسلسلة هجمات بعد مقتل عنصر آخر في بقرص في 6 تشرين الأول. كما عُثر على شاب من أبناء الباغوز يخدم في الجيش مقتولاً بطلق ناري في البوكمال.",
+   "public_reaction": "Public reaction is largely mourning and prayers for the fallen soldier, with some expressing concern about ongoing instability and unidentified attackers in the east.",
+   "public_reaction_ar": "ردود الفعل الشعبية غلب عليها الحزن والدعاء للجندي الشهيد، مع تعبير بعضهم عن القلق من استمرار عدم الاستقرار ومجهولي الهوية في الشرق.",
+   "sentiment": -0.5,
+   "public_sentiment": -0.4,
+   "outlet_tone": {
+    "independent": -0.5,
+    "kurdish": -0.4
+   },
+   "public_tone": {
+    "ar": -0.4
+   },
+   "emotions": [
+    "grief",
+    "concern"
+   ],
+   "emotions_ar": [
+    "حزن",
+    "قلق"
+   ],
+   "framings": [
+    "ongoing insecurity in the east",
+    "mourning fallen soldiers"
+   ],
+   "framings_ar": [
+    "استمرار انعدام الأمن شرقاً",
+    "حداد على الجنود الشهداء"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 10,
+   "public_volume": 1,
+   "share": 0.016,
+   "engagement": 6782,
+   "platforms": {
+    "telegram": 8,
+    "news": 1,
+    "x": 1
+   },
+   "languages": {
+    "ar": 8,
+    "en": 2
+   },
+   "public_languages": {
+    "ar": 1
+   },
+   "kinds": {
+    "kurdish": 3,
+    "independent": 6
+   },
+   "sources": [
+    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "Syria TV - opposition-origin",
+    "North Press Agency (EN)",
+    "North Press Agency - Qamishli-based (AR)",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Euphrates Post - Deir ez-Zor and the east"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141931",
+     "platform": "telegram"
+    },
+    {
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/109711",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Watan - Damascus daily newspaper",
+     "url": "https://t.me/alwatan_sy/203836",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-19T15:37:56Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -704,66 +686,67 @@
    "key": "2026-10-19-suwayda-dialogue-calls",
    "theme": "suwayda-druze",
    "title": "Suwayda governor renews calls for dialogue amid insecurity and displacement",
-   "title_ar": "محافظ السويداء يجدد الدعوة للحوار وسط انعدام الأمن والنزوح",
-   "summary": "Suwayda Governor Mustafa al-Bakour said the state has restored about 20-25 villages for returning residents and reiterated calls for dialogue, stating the crisis should not become a conflict between the province and the state. He cited lawlessness by armed groups affecting locals and said presidential directives support partial home repairs.",
-   "summary_ar": "قال محافظ السويداء مصطفى البكور إن الدولة رممت نحو 20 إلى 25 قرية تمهيداً لعودة الأهالي، وجدد دعوته للحوار مؤكداً أن أزمة السويداء يجب ألا تتحول إلى صراع بين المحافظة والدولة. وأشار إلى انفلات أمني من مجموعات خارجة عن القانون، وقال إن توجيهات رئاسية تدعم ترميم المنازل جزئياً.",
-   "public_reaction": "Limited direct public commentary; posts mostly repost the governor's statements without heavy engagement, suggesting cautious watching rather than active mobilization.",
-   "public_reaction_ar": "تعليقات شعبية مباشرة محدودة؛ معظم المنشورات تعيد نشر تصريحات المحافظ دون تفاعل كبير، ما يعكس ترقباً حذراً أكثر من تعبئة فعلية.",
+   "title_ar": "محافظ السويداء يجدد الدعوة للحوار وسط انفلات أمني ونزوح",
+   "summary": "Suwayda governor Mustafa al-Bakour said some families have returned to western countryside homes and the state has partially restored 20-25 villages, while warning residents still face lawlessness from armed groups outside state control. He framed dialogue as a path to resolving disputes, not surrender, amid reports of unverified claims about Hikmat al-Hijri's intentions toward Daraa.",
+   "summary_ar": "قال محافظ السويداء مصطفى البكور إن بعض العائلات عادت إلى منازلها في الريف الغربي وإن الدولة رممت جزئياً 20-25 قرية، محذراً من أن الأهالي ما زالوا يعانون الانفلات الأمني من مجموعات خارجة عن سيطرة الدولة. واعتبر الحوار طريقاً لمعالجة الخلافات وليس استسلاماً، وسط تداول ادعاء غير صحيح عن نوايا حكمت الهجري تجاه درعا.",
+   "public_reaction": "Reactions are mixed, with some expressing hope for stability and others skeptical about security claims; a fact-check outlet denied a circulating rumor about Hijri advancing toward Damascus.",
+   "public_reaction_ar": "تباينت ردود الفعل بين أمل بتحسن الأوضاع وشكوك حيال التصريحات الأمنية؛ ونفت جهة تحقق من الأخبار شائعة متداولة عن تقدم الهجري نحو دمشق.",
    "sentiment": 0.0,
    "public_sentiment": -0.1,
    "outlet_tone": {
-    "independent": 0.0
+    "independent": 0.0,
+    "aggregator": -0.2
    },
    "public_tone": {
     "ar": -0.1
    },
    "emotions": [
-    "weariness",
+    "concern",
     "cautious hope"
    ],
    "emotions_ar": [
-    "إرهاق",
+    "قلق",
     "أمل حذر"
    ],
    "framings": [
-    "reconciliation call",
-    "grievance over lawlessness",
-    "state-community trust building"
+    "gradual recovery narrative",
+    "lawlessness warning",
+    "misinformation debunking"
    ],
    "framings_ar": [
-    "دعوة للمصالحة",
-    "تظلم من الانفلات الأمني",
-    "بناء الثقة بين الدولة والمجتمع"
+    "سردية تعاف تدريجي",
+    "تحذير من انفلات أمني",
+    "دحض معلومات مضللة"
    ],
-   "flags": [],
-   "flags_ar": [],
+   "flags": [
+    "unverified rumor about Hijri circulating and debunked"
+   ],
+   "flags_ar": [
+    "شائعة غير مؤكدة عن الهجري جرى دحضها"
+   ],
    "volume": 8,
-   "public_volume": 4,
-   "share": 0.011,
-   "engagement": 3653,
+   "public_volume": 6,
+   "share": 0.013,
+   "engagement": 2240,
    "platforms": {
-    "telegram": 3,
     "news": 1,
-    "x": 1,
-    "bluesky": 3
+    "telegram": 1,
+    "bluesky": 6
    },
    "languages": {
-    "en": 1,
-    "ar": 7
+    "ar": 8
    },
    "public_languages": {
-    "ar": 4
+    "ar": 6
    },
    "kinds": {
-    "independent": 4
+    "aggregator": 1,
+    "independent": 1
    },
    "sources": [
     "Bluesky posts",
-    "Levant24 - Syria news (EN)",
-    "Daraa 24 - local, Daraa",
-    "Sawt al-Asima - local, Damascus",
-    "Syria TV - opposition-origin",
-    "X posts"
+    "Google News - Syria (AR)",
+    "Daraa 24 - local, Daraa"
    ],
    "examples": [
     {
@@ -772,14 +755,9 @@
      "platform": "telegram"
     },
     {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/43888",
-     "platform": "telegram"
-    },
-    {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46091",
-     "platform": "telegram"
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMirwVBVV95cUxOMnhHdkl1TkFjSEgxUUE2bno2UHBweG1STDhFRENvVERXVjlvLWZEdGp6c29wTjR1MWpYcTM4Smw1dWNXYVNKLWxkaUZacmE3bWlwZnVmNjJ5SkwxV3JkYlFmRFVIeDM1Z0ozY2dtMTVDc1kyblpoQS1xbTBDRWV1QnZ1aFRWcGpVQnRvMkZEVVltWXRKdEpaRjJtN3UxaHZza0lQS1NyY0ZlUWo2SzRVeGtkQ2ppcmJxUXU2S2VETGdfb0pNbXlrZmtOM3RXRjBZLU9GNmRFUnpFUldtbTFIOXJPS1l2WWhNQk9nUmQ3elc0dHg2TTRwRDlyWUFkWVkzOHlyd0p1X0MzMnl3ZmZsREdUeWhNY29zQjROS1lZb3RtdTlRQTFlSDVKeG5wTXIwSEdaLUtTc21QSkpka2ltNTdOSE5lNmxUMUJWS2ZvUzVvaElLSDgxVGpQNW5OSF95N2pORThvUG1VZEdhclNTb0RxYUFRLWI5WEtuN05PbV9JSmFOdHhQWDJfS3l5cHBVOEpsMEwwOUMzcG1zNmdSTG5rSHlhX2EzQk4tSnpYQUhDeGJmdVZyZFZjZFMycV9SSk5rcEVNdTZ6R1VvSnlWbWZiYTF5R2JOOEVRVzQyLS1SQ09MLTE5QlFvWEo1WUFZM2VlVVdvQU1idWJfZi1LM251SVlZTzVOaDBTT0ZWMXpkdk11LXlfdzA5ZXBkQWM3bjVQVGJUSm5CTFRuUjRJeWRHODVoVDIycE0yX1JNR3gyRnM3SE9xRFJ6cVFMWVdFNVVRb2IxWlZmcENkOUk2WXFDWUZGMUhCTzVXZXFoM1JSR1A4LVd0U1piWXJNQ0h4XzZNV29MOHd4R1c5eHp6QTlPN3dGdXVtcjFRbmplRi1rX1l1dWNYdmxUdDU2ZDQ?oc=5",
+     "platform": "news"
     }
    ],
    "first_seen": "2026-10-19T01:20:23Z",
@@ -793,151 +771,76 @@
    "id": "south-returnees-displacement",
    "key": "2026-10-19-south-returnees-displacement",
    "theme": "refugees",
-   "title": "Returnees from Turkey and ex-ISIS-held areas face destroyed homes and camp depopulation",
-   "title_ar": "عائدون من تركيا ومناطق سابقة يواجهون منازل مدمرة وتفريغ المخيمات",
-   "summary": "Washokani camp near Hasakah shows depopulation as hundreds of displaced Ras al-Ain/Sere Kaniye residents return home, while in Nouruz camp near Derik displaced people from the same area demand accelerated return before winter. Individual stories, like a man returning after seven years to a destroyed house with insufficient compensation, highlight hardships of resettlement.",
-   "summary_ar": "يشهد مخيم واشوكاني قرب الحسكة تفريغاً تدريجياً مع عودة مئات النازحين من سري كانيه/رأس العين إلى مناطقهم، بينما يطالب نازحون في مخيم نوروز قرب ديريك بتسريع عودتهم قبل الشتاء. تبرز قصص فردية، مثل عودة رجل بعد سبع سنوات إلى منزل مدمر بتعويض غير كافٍ، صعوبات إعادة التوطين.",
+   "title": "Returnees from Turkey and Kurdish camps face destroyed homes and depopulation",
+   "title_ar": "عائدون من تركيا ومخيمات كردية يواجهون منازل مدمرة وتراجع سكاني",
+   "summary": "Reports describe residents of eastern Aleppo returning to destroyed homes with no reconstruction, while displaced people from Ras al-Ain/Sere Kaniye in Washokani and Nowruz camps near Hasakah speak of hardship and demand return to their original areas, with Washokani camp showing signs of depopulation.",
+   "summary_ar": "تصف التقارير سكاناً من شرق حلب عادوا إلى منازل مدمرة دون إعادة إعمار، بينما يتحدث نازحون من رأس العين/سري كانيه في مخيمي واشوكاني والنوروز قرب الحسكة عن معاناتهم ويطالبون بالعودة إلى مناطقهم الأصلية، مع ظهور علامات تراجع سكاني في مخيم واشوكاني.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": -0.1,
+   "sentiment": -0.3,
    "public_sentiment": null,
    "outlet_tone": {
-    "kurdish": -0.2
+    "regional": -0.3,
+    "aggregator": -0.2
    },
    "public_tone": {},
    "emotions": [
-    "hardship",
-    "hope mixed with worry"
+    "frustration",
+    "sympathy"
    ],
    "emotions_ar": [
-    "معاناة",
-    "أمل ممزوج بالقلق"
+    "إحباط",
+    "تعاطف"
    ],
    "framings": [
-    "return before winter",
-    "inadequate compensation"
+    "lack of reconstruction aid",
+    "displacement hardship"
    ],
    "framings_ar": [
-    "العودة قبل الشتاء",
-    "تعويضات غير كافية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 6,
-   "public_volume": 0,
-   "share": 0.008,
-   "engagement": 944,
-   "platforms": {
-    "telegram": 6
-   },
-   "languages": {
-    "en": 1,
-    "ar": 5
-   },
-   "public_languages": {},
-   "kinds": {
-    "kurdish": 5,
-    "independent": 1
-   },
-   "sources": [
-    "North Press Agency - Qamishli-based (AR)",
-    "North Press Agency (EN)",
-    "Enab Baladi - independent (AR)"
-   ],
-   "examples": [
-    {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93448",
-     "platform": "telegram"
-    },
-    {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/84233",
-     "platform": "telegram"
-    },
-    {
-     "source": "North Press Agency (EN)",
-     "url": "https://t.me/npasyria/35136",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-19T11:21:00Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "nizariya-family-clash",
-   "key": "2026-10-18-nizariya-family-clash",
-   "theme": "security",
-   "title": "Deadly family clash in Nizariya village near Homs",
-   "title_ar": "اشتباك عائلي دامٍ في قرية النزارية قرب حمص",
-   "summary": "Armed clashes between two families in Nizariya village, Qusayr area south of Homs, killed two people including Ali Difou Amer and his son Omran, and wounded between 5 and 10 others. Internal security forces deployed reinforcements to secure the village's entrances after the incident.",
-   "summary_ar": "أسفرت اشتباكات مسلحة بين عائلتين في قرية النزارية بمنطقة القصير جنوبي حمص عن مقتل شخصين هما علي ضيفو عامر ونجله عمران، وإصابة ما بين 5 و10 أشخاص آخرين. دفعت قوى الأمن الداخلي بتعزيزات أمنية لتأمين مداخل القرية عقب الحادثة.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": -0.2,
-   "public_sentiment": null,
-   "outlet_tone": {
-    "independent": -0.2
-   },
-   "public_tone": {},
-   "emotions": [
-    "concern"
-   ],
-   "emotions_ar": [
-    "قلق"
-   ],
-   "framings": [
-    "local security response",
-    "tribal/family dispute"
-   ],
-   "framings_ar": [
-    "استجابة أمنية محلية",
-    "نزاع عشائري عائلي"
+    "غياب دعم الإعمار",
+    "معاناة النزوح"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 4,
    "public_volume": 0,
-   "share": 0.005,
-   "engagement": 5541,
+   "share": 0.006,
+   "engagement": 3250,
    "platforms": {
-    "telegram": 4
+    "telegram": 2,
+    "news": 2
    },
    "languages": {
     "ar": 4
    },
    "public_languages": {},
    "kinds": {
-    "independent": 4
+    "regional": 2,
+    "aggregator": 2
    },
    "sources": [
-    "Syria Plus (SY+) - news platform",
-    "Shaam News Network - opposition-origin",
-    "Al-Watan - Damascus daily newspaper",
-    "Euphrates Post - Deir ez-Zor and the east"
+    "Google News - Syria (AR)",
+    "Al-Hadath - Saudi-owned",
+    "Al Arabiya - Saudi-owned"
    ],
    "examples": [
     {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/109702",
+     "source": "Al-Hadath - Saudi-owned",
+     "url": "https://t.me/alhadath/51799",
      "platform": "telegram"
     },
     {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/203820",
+     "source": "Al Arabiya - Saudi-owned",
+     "url": "https://t.me/Alarabiya/167789",
      "platform": "telegram"
     },
     {
-     "source": "Syria Plus (SY+) - news platform",
-     "url": "https://t.me/sy_platform/40555",
-     "platform": "telegram"
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMivANBVV95cUxOLVdZTVhTLTkyd21jR2NabUJyRnZqYXhmZ3lGT0VrLV9jNzhDMEFGbXgwY1I1OWNwNGFjZFVfaE9FX24wbnh2LTdDeTBLNm9SS0c0Vm5KLUo4LVFEaWJXUzVESnd0TjJTYkZWRlhqLVJHZ3ktdXVodG5vVW1CS1VfNk9wVS02eWNmSTlTUW40bFJVNEpnd3phTWhhWkNUclV0a1d5S0FKQ0JQandLSkpVc2FOb2RZQTEyd3Y4b1YzTm92YS12eXdWTVlfcDFMMVdqTm9zTWRoYUNERVd1QmdqZGxCR0VJQk9wTDNaSDNpb1AxanNTdm1DTXZRcVdqR296WlhiUWx2TUw5cEw1bk5RV0JiVkYyYXVDeVRuX0xSUldLUHpPNnZZRzJpRkU1b2JLTURfYURQY0REM1NJTGk2ZVhzUDZTNVc4YTVHU01wTkNmZ1Q1d3lBeGFrc2tXcTVnQUg0XzNpOEpjLVFUeWRkQ19acmZkSUg5R1EyRDhhWGZDYzVkSENvLUJXREJndzc1UlRPWFhwZXpuN1RMUmZTQUFKY3ZkMTZDLXBPM05LSmVBbUZPemV0NnE2al_SAcIDQVVfeXFMUHJlZjhSRkdRM1Fsa013QzhRVkNZR0I1NnQ0Q05kVnJfSEVBOTI3ZDVKQ25icXJxd0lCNFlPOU9kbTFKVVZ4OXg5T0doNG82TUNNQmtYS2dVUG44a2hnb0RrZFVLTkVkMHZZM2w0d1EwakpKdXpRVEk5c242dkMtek8tTHhzUWJCTnY4c2FOTEN2ZlQ0ME5jZm82dWpkWnFGNXQ2eDByOU54M3gwUm1RTHRUazM0N2hfVmtTZUdna3o3eEh5Wk9VeDVraFJPZ1NOZFhXeVgxaUdwcFpmTzBJM1ZEZkdJbE5aMGlaOGhYYnIyLVlZbVdLOC1pRWJrTjcwZ080WkpQYVI0WlBsUy0xcFExOUZOcmxWUGo5dDhjM2xoZXBCbFotX19reFA2MW5VSTloOHFUYVlaTkRIeFVmLWVDMnpCYXJ2NDVVN2x5ZFpJRGRZekppWDlDTUM2UFVVRWZ0RVI5V2FzbjZ3N29mT0hTNGRGT2w0OHozVDJwLXFIdGF0cW4xVkI5VHFNaERPamt3eExWVHpFaXZDdHg3S1VUN1lQNWlGbGhjM3hVZWdHNWlyZ2tqREQxdUticEQxU2NB?oc=5",
+     "platform": "news"
     }
    ],
-   "first_seen": "2026-10-18T20:46:04Z",
+   "first_seen": "2026-10-19T11:21:00Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -949,47 +852,45 @@
    "key": "2026-10-15-mihrac-ural-arrest",
    "theme": "justice",
    "title": "Arrest of Baniyas massacre suspect Mihrac Ural renews attention on 2013 killings",
-   "title_ar": "اعتقال معراج أورال يعيد قضية مجزرة بانياس للواجهة",
-   "summary": "The arrest of Mihrac Ural (Ali Kayali), an Arab Alawite born in Hatay, Turkey, has refocused attention on the May 2013 Baniyas massacres and his broader militant history. Public posts recount his background in leftist Turkish militancy, imprisonment in Europe, and later role in Syria, framing the arrest as a step toward accountability.",
-   "summary_ar": "أعاد اعتقال معراج أورال (علي كيالي)، وهو علوي عربي من ولاية هاتاي التركية، تسليط الضوء على مجازر بانياس في مايو 2013 وتاريخه النضالي الأوسع. تستعرض المنشورات خلفيته في الحركات اليسارية التركية وسجنه في أوروبا ودوره لاحقاً في سوريا، معتبرة الاعتقال خطوة نحو المحاسبة.",
-   "public_reaction": "Public reaction treats this as significant for transitional justice, with some providing detailed biographical context; sentiment is grim but sees the arrest as overdue accountability.",
-   "public_reaction_ar": "يُنظر إلى الاعتقال كخطوة مهمة للعدالة الانتقالية، مع تقديم البعض سياقاً سيرياً مفصلاً؛ المشاعر قاتمة لكنها ترى في الاعتقال محاسبة طال انتظارها.",
+   "title_ar": "اعتقال معراج أورال المتهم بمجزرة بانياس يجدد الاهتمام بقتلى 2013",
+   "summary": "Social media discussion highlighted the background of Mihrac Ural (Ali Kayali), an Arab Alawite from Hatay accused of crimes in Syria and Turkey, following reports of his capture. Posts recalled his history in leftist Turkish militancy and later activity tied to violence in Syria.",
+   "summary_ar": "تناولت منشورات على وسائل التواصل خلفية معراج أورال (علي كيالي)، وهو علوي عربي من هاتاي متهم بارتكاب جرائم في سوريا وتركيا، عقب تقارير عن اعتقاله. واستذكرت المنشورات تاريخه في الحركة اليسارية التركية ونشاطه اللاحق المرتبط بالعنف في سوريا.",
+   "public_reaction": "Limited public reaction focused mainly on background information and historical context rather than strong emotional response in this batch.",
+   "public_reaction_ar": "اقتصرت ردود الفعل الشعبية المحدودة على معلومات خلفية وسياق تاريخي أكثر من استجابة عاطفية قوية في هذه الدفعة.",
    "sentiment": -0.1,
-   "public_sentiment": 0.1,
+   "public_sentiment": -0.1,
    "outlet_tone": {},
    "public_tone": {
-    "en": 0.1
+    "en": -0.1
    },
    "emotions": [
-    "grim satisfaction",
-    "remembrance"
+    "curiosity",
+    "grim recollection"
    ],
    "emotions_ar": [
-    "رضا قاتم",
-    "تذكّر"
+    "فضول",
+    "استذكار قاتم"
    ],
    "framings": [
-    "overdue accountability",
-    "historical massacre revisited"
+    "accountability for Assad-era crimes"
    ],
    "framings_ar": [
-    "محاسبة متأخرة",
-    "استذكار مجزرة تاريخية"
+    "محاسبة على جرائم حقبة الأسد"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 2,
-   "public_volume": 2,
-   "share": 0.003,
+   "volume": 1,
+   "public_volume": 1,
+   "share": 0.002,
    "engagement": 2,
    "platforms": {
-    "bluesky": 2
+    "bluesky": 1
    },
    "languages": {
-    "en": 2
+    "en": 1
    },
    "public_languages": {
-    "en": 2
+    "en": 1
    },
    "kinds": {},
    "sources": [
@@ -1117,8 +1018,8 @@
    "name": "SANA - state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 15,
-   "recent": 15
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Syrian Presidency - official",
@@ -1131,8 +1032,8 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 10,
-   "recent": 10
+   "fetched": 15,
+   "recent": 15
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -1146,35 +1047,35 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 11
+   "recent": 13
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 2
   },
   {
    "name": "Halab Today TV - opposition-origin, Aleppo",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 18
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
-   "recent": 14
+   "fetched": 10,
+   "recent": 10
   },
   {
    "name": "Levant24 - Syria news (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 17
+   "recent": 16
   },
   {
    "name": "Syria TV - opposition-origin broadcaster",
@@ -1187,8 +1088,8 @@
    "name": "Al-Watan - Damascus daily newspaper",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
-   "recent": 16
+   "fetched": 17,
+   "recent": 17
   },
   {
    "name": "Syria Plus (SY+) - news platform",
@@ -1209,14 +1110,14 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 9,
-   "recent": 9
+   "fetched": 11,
+   "recent": 11
   },
   {
    "name": "North Press Agency - Qamishli-based (AR)",
@@ -1229,8 +1130,8 @@
    "name": "North Press Agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 3,
-   "recent": 3
+   "fetched": 4,
+   "recent": 4
   },
   {
    "name": "SDF media center - official",
@@ -1243,21 +1144,21 @@
    "name": "Rudaw Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 4
+   "fetched": 14,
+   "recent": 1
   },
   {
    "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 0
   },
   {
    "name": "Kurdistan24 English",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
+   "fetched": 20,
    "recent": 0
   },
   {
@@ -1292,7 +1193,7 @@
    "name": "Anadolu Agency - Turkish state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
+   "fetched": 20,
    "recent": 0
   },
   {
@@ -1307,7 +1208,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "France 24 Arabic - French public broadcaster",
@@ -1320,7 +1221,7 @@
    "name": "Arabi21 - London-based",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
+   "fetched": 18,
    "recent": 0
   },
   {
@@ -1341,8 +1242,8 @@
    "name": "Euphrates Post - Deir ez-Zor and the east",
    "platform": "telegram",
    "ok": true,
-   "fetched": 17,
-   "recent": 16
+   "fetched": 18,
+   "recent": 14
   },
   {
    "name": "Daraa 24 - local, Daraa",
@@ -1356,7 +1257,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 15
+   "recent": 17
   },
   {
    "name": "Sawt Dimashq - local, Damascus",
@@ -1370,14 +1271,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 41
+   "recent": 37
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 24
+   "recent": 29
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1391,21 +1292,21 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 38
+   "recent": 43
   },
   {
    "name": "Sky News Arabia - UAE-based",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 2
+   "recent": 1
   },
   {
    "name": "BBC Arabic",
    "platform": "news",
    "ok": true,
    "fetched": 24,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Syria Direct - independent (EN/AR)",
@@ -1418,29 +1319,29 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 337,
-   "recent": 337
+   "fetched": 249,
+   "recent": 249
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 221,
-   "recent": 177
+   "fetched": 209,
+   "recent": 161
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 20
+   "recent": 21
   },
   {
    "name": "Reddit r/Kurdistan comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 15,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "X posts",
@@ -1595,28 +1496,29 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.3616,
+ "cost_usd": 0.3038,
  "watch": [
   {
    "type": "falling",
-   "id": "petroleum-ceo-appointment",
-   "key": "2026-10-18-petroleum-ceo-appointment",
-   "title": "New heads appointed for Petroleum Company and Sovereign Fund after gasoline scandal",
-   "title_ar": "تعيينات جديدة لرئاسة الشركة السورية للبترول والصندوق السيادي بعد فضيحة البنزين",
-   "share": 0.082,
-   "from": 0.0,
-   "to": -0.4,
-   "hours": 22
+   "id": "mihrac-ural-arrest",
+   "key": "2026-10-15-mihrac-ural-arrest",
+   "title": "Arrest of Baniyas massacre suspect Mihrac Ural renews attention on 2013 killings",
+   "title_ar": "اعتقال معراج أورال المتهم بمجزرة بانياس يجدد الاهتمام بقتلى 2013",
+   "share": 0.002,
+   "from": 0.5,
+   "to": -0.1,
+   "hours": 31
   },
   {
-   "type": "gap",
-   "id": "wages-prices-anger",
-   "key": "2026-10-19-wages-prices-anger",
-   "title": "Anger over 50% salary hike seen as offset by rising prices",
-   "title_ar": "غضب من زيادة الرواتب 50% التي تبتلعها الأسعار المرتفعة",
-   "share": 0.046,
-   "public": -0.5,
-   "outlet": 0.1
+   "type": "rising",
+   "id": "petroleum-ceo-appointment",
+   "key": "2026-10-18-petroleum-ceo-appointment",
+   "title": "New petroleum company and sovereign fund chiefs named after fuel scandal",
+   "title_ar": "تعيين رؤساء جدد لشركة البترول والصندوق السيادي بعد فضيحة المحروقات",
+   "share": 0.095,
+   "from": 0.031,
+   "to": 0.095,
+   "updates": 4
   }
  ]
 }
