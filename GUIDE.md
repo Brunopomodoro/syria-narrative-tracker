@@ -531,9 +531,10 @@ The **Expert view** tab is our analysis of what English-language media, think ta
 - **Analyses.** Every week (after the weekly digest) and every month (from the 2nd), one page per area with enough items and an overall page: findings, where sources agree and differ, their recommendations, how it compares with what Syrians discussed in that area on the tracker, and what to watch. The reports drawn on are linked at the bottom of each page. Files: `data/experts/analyses/<period>.json`, pages `experts/<lang>/<period>.html` (overall) and `<period>-<area>.html`.
 - **Sources.** Every source the site uses, for the tracker and the Expert view, is listed on the Sources page (`sources/en.html`), built from `config.yaml`. To add an Expert view source, add a line with its name, kind (`intl`, `thinktank` or `media`) and feed URL; publishers that block automated readers can be read through a Google News search limited to their site. `exclude_orgs` leaves out Syrian outlets the tracker already reads; `max` caps a source per update.
 - **Leanings.** When the analyses cite an outlet or think tank whose political orientation, ownership or state funding is widely documented, they say so briefly (for example "the pro-Israel Middle East Forum"), so a broad range of sources can be kept with readers able to weigh each one.
-- **Cost.** A cent or two a day for the one-line summaries, about 5 cents a day for the daily brief, about 20 cents a week and 40 cents a month for the analyses.
+- **Cost.** A cent or two a day for the one-line summaries, about 5 cents a day for the daily brief, about 35 cents a week and 70 cents a month for the analyses.
 - **By hand.** Maintenance tasks `experts-collect`, `experts-daily`, `experts-weekly`, `experts-monthly` and `experts-probe` (checks every feed; results in `data/experts/probe.json`).
-- **Limits.** English- and Arabic-language sources, mostly based outside Syria, and no paywalled outlets; the pages say so.
+- **Languages.** Sources in Arabic, English, French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian. Set `lang` on a source (a language code such as `fr`) so its titles are marked correctly and its language appears on the Sources page; the one-line summaries are always in English and Arabic.
+- **Limits.** Mostly based outside Syria, and no paywalled outlets; the pages say so.
 
 ### What to watch
 
