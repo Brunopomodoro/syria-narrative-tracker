@@ -38,7 +38,9 @@ LIBRARY = DATA / "library.json"
 WEEKLY_DATA = DATA / "weekly"
 OUT = archive.ROOT / "experts"
 UTC = dt.timezone.utc
-HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; SyriaNarrativeTracker/1.0; +https://www.syrianpulse.org/)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
+           "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+           "Accept-Language": "en-GB,en;q=0.8"}   # several publishers refuse requests that do not look like a browser
 DOMAINS = ("security", "economy", "governance")
 KINDS = ("intl", "thinktank", "media")
 SYRIA = re.compile(r"\bsyria|\bsyrian|damascus|aleppo|idlib|\bhoms\b|\bhama\b|latakia|tartus|deir ez|deir al|raqqa|hasakah|"
@@ -427,11 +429,71 @@ def sitemap_urls(base: str) -> list:
     return out
 
 
+# Alternative feed addresses tried by `probe`, for sources that failed or returned nothing.
+PROBE_CANDIDATES = [
+    "https://reliefweb.int/updates/rss.xml?search=syria",
+    "https://reliefweb.int/country/syr/rss.xml",
+    "https://reliefweb.int/updates/rss.xml?advanced-search=%28C226%29",
+    "https://reliefweb.int/updates/rss.xml",
+    "https://www.hrw.org/rss/news",
+    "https://www.hrw.org/middle-east/n-africa/syria/rss",
+    "https://www.chathamhouse.org/rss.xml",
+    "https://www.washingtoninstitute.org/feed",
+    "https://www.washingtoninstitute.org/rss/policy-analysis",
+    "https://www.coar-global.org/feed/",
+    "https://www.brookings.edu/feed/?post_type=article",
+    "https://www.crisisgroup.org/rss.xml",
+    "https://www.crisisgroup.org/middle-east-north-africa/east-mediterranean-mena/syria/rss",
+    "https://carnegieendowment.org/rss/solr/?lang=en",
+    "https://www.mei.edu/rss/syria",
+    "https://www.enabbaladi.net/en/feed/",
+    "https://www.syria-report.com/feed",
+    "https://news.google.com/rss/search?q=Syria%20site%3Acrisisgroup.org&hl=en-US&gl=US&ceid=US%3Aen",
+    "https://news.google.com/rss/search?q=Syria%20site%3Achathamhouse.org&hl=en-US&gl=US&ceid=US%3Aen",
+    "https://news.google.com/rss/search?q=Syria%20site%3Awashingtoninstitute.org&hl=en-US&gl=US&ceid=US%3Aen",
+    "https://news.google.com/rss/search?q=Syria%20site%3Abrookings.edu&hl=en-US&gl=US&ceid=US%3Aen",
+    "https://news.google.com/rss/search?q=Syria%20site%3Ahrw.org&hl=en-US&gl=US&ceid=US%3Aen",
+    "https://news.google.com/rss/search?q=Syria%20site%3Aecfr.eu&hl=en-US&gl=US&ceid=US%3Aen",
+    "https://news.google.com/rss/search?q=Syria%20(report%20OR%20analysis)%20(%22think%20tank%22%20OR%20institute%20OR%20%22crisis%20group%22)%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen",
+]
+
+
+def probe(cfg: dict) -> list:
+    """For each configured source and each candidate address: HTTP status, entries, how many fall in the window
+    and mention Syria, and a few titles. Written to data/experts/probe.json for checking feeds from elsewhere."""
+    import feedparser
+    import requests
+    since = dt.datetime.now(UTC) - dt.timedelta(days=int(settings(cfg)["window_days"]))
+    urls = [(x["name"], x["url"]) for x in settings(cfg)["sources"]] + [("candidate", u) for u in PROBE_CANDIDATES]
+    out = []
+    for name, url in urls:
+        row = {"name": name, "url": url}
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=30)
+            row.update({"status": r.status_code, "final": r.url, "type": r.headers.get("content-type", "")[:60], "bytes": len(r.content)})
+            f = feedparser.parse(r.content)
+            ents = f.entries
+            dated = [e for e in ents if e.get("published_parsed") or e.get("updated_parsed")]
+            recent = [e for e in dated if dt.datetime(*(e.get("published_parsed") or e.get("updated_parsed"))[:6], tzinfo=UTC) >= since]
+            row.update({"entries": len(ents), "recent": len(recent),
+                        "recent_syria": sum(1 for e in recent if SYRIA.search(clean(e.get("title")) + " " + clean(e.get("summary")))),
+                        "sample": [f"{(e.get('published') or e.get('updated') or '')[:16]} | {clean(e.get('title'), 90)}" for e in ents[:3]]})
+        except Exception as e:  # noqa: BLE001
+            row["error"] = str(e)[:160]
+        out.append(row)
+        time.sleep(0.5)
+    archive._save(DATA / "probe.json", {"at": now_iso(), "results": out})
+    return out
+
+
 if __name__ == "__main__":
     import pipeline as P
     cfg = P.load_config()
     P.set_name_fixes(cfg)
-    if sys.argv[1:2] == ["weekly"]:
+    if sys.argv[1:2] == ["probe"]:
+        for x in probe(cfg):
+            print(x.get("status", "ERR"), x.get("entries", "-"), x.get("recent", "-"), x.get("recent_syria", "-"), x["name"], x["url"][:90], x.get("error", ""))
+    elif sys.argv[1:2] == ["weekly"]:
         wk = sys.argv[2] if sys.argv[2:] else weekly.week_of(dt.datetime.now(UTC).date() - dt.timedelta(days=7))
         print("written" if generate(cfg, wk) else "not written")
     else:
