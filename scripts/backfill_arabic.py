@@ -21,7 +21,7 @@ ARABIC = re.compile(r"[؀-ۿ]")
 
 def save_like(path: pathlib.Path, obj, original: str) -> None:
     """Write JSON in the same layout as the file had (indented or compact), so only the repaired fields change."""
-    indented = original.lstrip().startswith("{\n")
+    indented = original.lstrip().startswith(("{\n", "[\n"))
     text = json.dumps(obj, ensure_ascii=False, indent=1) if indented else json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
     path.write_text(text + ("\n" if original.endswith("\n") else ""), encoding="utf-8")
 
