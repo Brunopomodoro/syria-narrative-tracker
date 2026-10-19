@@ -106,7 +106,8 @@ You receive the week's numbers and the stories the tracker followed. Write:
 - "watch": 2 to 4 short points on what to watch next week, grounded in the stories, not speculation.
 Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare days or weeks with each other; never present them as numbers of posts or of people.
 Some stories carry "Coordination signals": measured signs (copy-paste, near-identical posts, bursts, the same text on several platforms, few commenters writing most comments, regular timing) that the reaction may be organised. Mention them in the paragraphs or "watch" as signs to look into, never as proof of a campaign, and never guess who is behind them.
-Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation)."""
+Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation).
+Do not use the long dash (—); use commas, colons or parentheses instead."""
 
 
 def digest_schema() -> dict:
@@ -161,7 +162,7 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
                                   messages=[{"role": "user", "content": build_message(cfg, s)}],
                                   output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": digest_schema()}})
     text = "".join(b.text for b in resp.content if b.type == "text")
-    d = json.loads(text)
+    d = archive.no_dashes(json.loads(text))   # no long dashes in the published text
     keys = {e["key"] for e in s["top_stories"]}
     highlights, used = [], set()   # only stories of the week, each once
     for h in d.get("highlights") or []:

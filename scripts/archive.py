@@ -18,6 +18,7 @@ import datetime as dt
 import io
 import json
 import pathlib
+import re
 from collections import defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -56,6 +57,27 @@ def _load(path: pathlib.Path, default):
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return default
+
+
+DASH = re.compile(r"\s*\u2014\s*")
+ARABIC_CHAR = re.compile(r"[\u0600-\u06FF]")
+
+
+def no_dashes(v):
+    """Replace the long dash (—) in generated text with a comma (Arabic: «،»), in strings, lists and dicts."""
+    if isinstance(v, str):
+        if "\u2014" not in v:
+            return v
+        comma = "، " if ARABIC_CHAR.search(v) else ", "
+        v = DASH.sub(comma, v)
+        v = re.sub(r"[,،]\s*([,،.;:!?؟)])", r"\1", v)       # no comma right before other punctuation
+        v = re.sub(r"\(\s*[,،]\s*", "(", v)
+        return re.sub(r"^\s*[,،]\s*", "", v).strip()
+    if isinstance(v, list):
+        return [no_dashes(x) for x in v]
+    if isinstance(v, dict):
+        return {k: no_dashes(x) for k, x in v.items()}
+    return v
 
 
 def _save(path: pathlib.Path, obj) -> None:
