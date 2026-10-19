@@ -123,6 +123,50 @@ experts:
     - {name: "Al-Modon (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalmodon.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
     - {name: "Al-Jumhuriya (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=site%3Aaljumhuriya.net%20when%3A30d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
     - {name: "Al-Akhbar (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aal-akhbar.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 8}
+    # in other languages (the organisation is named in Latin script; its language is shown on the Sources page)
+    # French
+    - {name: "Le Monde (via Google News)", kind: media, lang: fr, org: "Le Monde", url: "https://news.google.com/rss/search?q=Syrie%20site%3Alemonde.fr%20when%3A3d&hl=fr&gl=FR&ceid=FR%3Afr", filter: false, max: 8}
+    - {name: "RFI (via Google News)", kind: media, lang: fr, org: "RFI", url: "https://news.google.com/rss/search?q=Syrie%20site%3Arfi.fr%20when%3A3d&hl=fr&gl=FR&ceid=FR%3Afr", filter: false, max: 8}
+    - {name: "L'Orient-Le Jour (via Google News)", kind: media, lang: fr, org: "L'Orient-Le Jour", url: "https://news.google.com/rss/search?q=Syrie%20site%3Alorientlejour.com%20when%3A3d&hl=fr&gl=FR&ceid=FR%3Afr", filter: false, max: 8}
+    - {name: "Orient XXI (via Google News)", kind: media, lang: fr, org: "Orient XXI", url: "https://news.google.com/rss/search?q=Syrie%20site%3Aorientxxi.info%20when%3A30d&hl=fr&gl=FR&ceid=FR%3Afr", filter: false}
+    - {name: "IFRI (via Google News)", kind: thinktank, lang: fr, org: "IFRI", url: "https://news.google.com/rss/search?q=Syrie%20site%3Aifri.org%20when%3A30d&hl=fr&gl=FR&ceid=FR%3Afr", filter: false}
+    - {name: "Fondation pour la recherche stratégique (via Google News)", kind: thinktank, lang: fr, org: "FRS", url: "https://news.google.com/rss/search?q=Syrie%20site%3Afrstrategie.org%20when%3A30d&hl=fr&gl=FR&ceid=FR%3Afr", filter: false}
+    # German
+    - {name: "Der Spiegel (via Google News)", kind: media, lang: de, org: "Der Spiegel", url: "https://news.google.com/rss/search?q=Syrien%20site%3Aspiegel.de%20when%3A3d&hl=de&gl=DE&ceid=DE%3Ade", filter: false, max: 6}
+    - {name: "Frankfurter Allgemeine Zeitung (via Google News)", kind: media, lang: de, org: "FAZ", url: "https://news.google.com/rss/search?q=Syrien%20site%3Afaz.net%20when%3A3d&hl=de&gl=DE&ceid=DE%3Ade", filter: false, max: 6}
+    - {name: "Süddeutsche Zeitung (via Google News)", kind: media, lang: de, org: "Süddeutsche Zeitung", url: "https://news.google.com/rss/search?q=Syrien%20site%3Asueddeutsche.de%20when%3A3d&hl=de&gl=DE&ceid=DE%3Ade", filter: false, max: 6}
+    - {name: "Deutsche Welle (German) (via Google News)", kind: media, lang: de, org: "Deutsche Welle", url: "https://news.google.com/rss/search?q=Syrien%20site%3Adw.com%20when%3A3d&hl=de&gl=DE&ceid=DE%3Ade", filter: false, max: 6}
+    - {name: "Qantara.de (via Google News)", kind: media, lang: de, org: "Qantara.de", url: "https://news.google.com/rss/search?q=Syrien%20site%3Aqantara.de%20when%3A30d&hl=de&gl=DE&ceid=DE%3Ade", filter: false}
+    - {name: "SWP Berlin (via Google News)", kind: thinktank, lang: de, org: "SWP", url: "https://news.google.com/rss/search?q=Syrien%20site%3Aswp-berlin.org%20when%3A30d&hl=de&gl=DE&ceid=DE%3Ade", filter: false}
+    # Turkish
+    - {name: "Anadolu Agency (Turkish) (via Google News)", kind: media, lang: tr, org: "Anadolu Agency", url: "https://news.google.com/rss/search?q=Suriye%20site%3Aaa.com.tr%20when%3A3d&hl=tr&gl=TR&ceid=TR%3Atr", filter: false, max: 6}
+    - {name: "BBC Türkçe (via Google News)", kind: media, lang: tr, org: "BBC Türkçe", url: "https://news.google.com/rss/search?q=Suriye%20site%3Abbc.com%2Fturkce%20when%3A7d&hl=tr&gl=TR&ceid=TR%3Atr", filter: false, max: 6}
+    - {name: "Hürriyet (via Google News)", kind: media, lang: tr, org: "Hürriyet", url: "https://news.google.com/rss/search?q=Suriye%20site%3Ahurriyet.com.tr%20when%3A3d&hl=tr&gl=TR&ceid=TR%3Atr", filter: false, max: 6}
+    - {name: "Medyascope (via Google News)", kind: media, lang: tr, org: "Medyascope", url: "https://news.google.com/rss/search?q=Suriye%20site%3Amedyascope.tv%20when%3A7d&hl=tr&gl=TR&ceid=TR%3Atr", filter: false, max: 6}
+    - {name: "SETA (via Google News)", kind: thinktank, lang: tr, org: "SETA", url: "https://news.google.com/rss/search?q=Suriye%20site%3Asetav.org%20when%3A30d&hl=tr&gl=TR&ceid=TR%3Atr", filter: false}
+    - {name: "ORSAM (via Google News)", kind: thinktank, lang: tr, org: "ORSAM", url: "https://news.google.com/rss/search?q=Suriye%20site%3Aorsam.org.tr%20when%3A30d&hl=tr&gl=TR&ceid=TR%3Atr", filter: false}
+    # Hebrew
+    - {name: "Haaretz (Hebrew) (via Google News)", kind: media, lang: he, org: "Haaretz", url: "https://news.google.com/rss/search?q=%D7%A1%D7%95%D7%A8%D7%99%D7%94%20site%3Ahaaretz.co.il%20when%3A3d&hl=he&gl=IL&ceid=IL%3Ahe", filter: false, max: 6}
+    - {name: "Ynet (via Google News)", kind: media, lang: he, org: "Ynet", url: "https://news.google.com/rss/search?q=%D7%A1%D7%95%D7%A8%D7%99%D7%94%20site%3Aynet.co.il%20when%3A3d&hl=he&gl=IL&ceid=IL%3Ahe", filter: false, max: 6}
+    - {name: "INSS (via Google News)", kind: thinktank, lang: he, org: "INSS", url: "https://news.google.com/rss/search?q=%D7%A1%D7%95%D7%A8%D7%99%D7%94%20site%3Ainss.org.il%20when%3A30d&hl=he&gl=IL&ceid=IL%3Ahe", filter: false}
+    - {name: "Alma Research Center (via Google News)", kind: thinktank, lang: he, org: "Alma Research Center", url: "https://news.google.com/rss/search?q=%D7%A1%D7%95%D7%A8%D7%99%D7%94%20site%3Aisrael-alma.org%20when%3A30d&hl=he&gl=IL&ceid=IL%3Ahe", filter: false}
+    # Russian
+    - {name: "TASS (via Google News)", kind: media, lang: ru, org: "TASS", url: "https://news.google.com/rss/search?q=%D0%A1%D0%B8%D1%80%D0%B8%D1%8F%20site%3Atass.ru%20when%3A3d&hl=ru&gl=RU&ceid=RU%3Aru", filter: false, max: 6}
+    - {name: "Kommersant (via Google News)", kind: media, lang: ru, org: "Kommersant", url: "https://news.google.com/rss/search?q=%D0%A1%D0%B8%D1%80%D0%B8%D1%8F%20site%3Akommersant.ru%20when%3A3d&hl=ru&gl=RU&ceid=RU%3Aru", filter: false, max: 6}
+    - {name: "Russian International Affairs Council (via Google News)", kind: thinktank, lang: ru, org: "RIAC", url: "https://news.google.com/rss/search?q=%D0%A1%D0%B8%D1%80%D0%B8%D1%8F%20site%3Arussiancouncil.ru%20when%3A30d&hl=ru&gl=RU&ceid=RU%3Aru", filter: false}
+    - {name: "Valdai Discussion Club (via Google News)", kind: thinktank, lang: ru, org: "Valdai Club", url: "https://news.google.com/rss/search?q=%D0%A1%D0%B8%D1%80%D0%B8%D1%8F%20site%3Aru.valdaiclub.com%20when%3A30d&hl=ru&gl=RU&ceid=RU%3Aru", filter: false}
+    # Persian
+    - {name: "BBC Persian (via Google News)", kind: media, lang: fa, org: "BBC Persian", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%DB%8C%D9%87%20site%3Abbc.com%2Fpersian%20when%3A7d&hl=fa&gl=IR&ceid=IR%3Afa", filter: false, max: 6}
+    - {name: "IRNA (via Google News)", kind: media, lang: fa, org: "IRNA", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%DB%8C%D9%87%20site%3Airna.ir%20when%3A3d&hl=fa&gl=IR&ceid=IR%3Afa", filter: false, max: 6}
+    - {name: "Tasnim (via Google News)", kind: media, lang: fa, org: "Tasnim", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%DB%8C%D9%87%20site%3Atasnimnews.com%20when%3A3d&hl=fa&gl=IR&ceid=IR%3Afa", filter: false, max: 6}
+    # Chinese
+    - {name: "Xinhua (Chinese) (via Google News)", kind: media, lang: zh, org: "Xinhua", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Anews.cn%20when%3A7d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
+    - {name: "Global Times (Huanqiu) (via Google News)", kind: media, lang: zh, org: "Global Times", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Ahuanqiu.com%20when%3A7d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
+    - {name: "Caixin (via Google News)", kind: media, lang: zh, org: "Caixin", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Acaixin.com%20when%3A14d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
+    # Spanish and Italian
+    - {name: "El País (via Google News)", kind: media, lang: es, org: "El País", url: "https://news.google.com/rss/search?q=Siria%20site%3Aelpais.com%20when%3A3d&hl=es&gl=ES&ceid=ES%3Aes", filter: false, max: 6}
+    - {name: "Real Instituto Elcano (via Google News)", kind: thinktank, lang: es, org: "Elcano Royal Institute", url: "https://news.google.com/rss/search?q=Siria%20site%3Arealinstitutoelcano.org%20when%3A30d&hl=es&gl=ES&ceid=ES%3Aes", filter: false}
+    - {name: "ISPI (via Google News)", kind: thinktank, lang: it, org: "ISPI", url: "https://news.google.com/rss/search?q=Siria%20site%3Aispionline.it%20when%3A30d&hl=it&gl=IT&ceid=IT%3Ait", filter: false}
 
 # The Contact page (contact/en.html): its form sends each message to your email through Web3Forms
 # (https://web3forms.com, free, 250 messages a month). Put the access key Web3Forms emails you here; the key is
@@ -379,6 +423,9 @@ method_changelog:
   - date: 2026-10-19
     note: "Expert view: one page per area (security, economy, governance) and an overall page every week and every month, a short daily brief, and a Sources page listing every source the site uses. The analyses name the documented political leaning, ownership or state funding of the outlets and think tanks they cite."
     note_ar: "قراءات الخبراء: صفحة لكل مجال (الأمن والاقتصاد والحوكمة) وصفحة شاملة كل أسبوع وكل شهر، وموجز يومي قصير، وصفحة مصادر تضم كل ما يعتمده الموقع. وتذكر التحليلات التوجه السياسي أو الملكية أو التمويل الحكومي الموثق لوسائل الإعلام ومراكز الأبحاث التي تستشهد بها."
+  - date: 2026-10-19
+    note: "Expert view: 35 sources added in French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian (media, think tanks and research centres); each item still summarised in English and Arabic."
+    note_ar: "قراءات الخبراء: إضافة 35 مصدراً بالفرنسية والألمانية والتركية والعبرية والروسية والفارسية والصينية والإسبانية والإيطالية (وسائل إعلام ومراكز أبحاث ودراسات)؛ ويبقى ملخص كل عنصر بالإنجليزية والعربية."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:

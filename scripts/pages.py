@@ -1310,20 +1310,24 @@ def write_privacy_pages(cfg: dict) -> None:
 
 SOURCES_WORDS = {
     "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the organisations and outlets behind the Expert view.",
-           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "The Expert view: international and Arab media, think tanks and organisations",
+           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "The Expert view: media, think tanks and organisations from the region and beyond",
            "telegram": "Telegram channels", "news": "News sites", "youtube": "YouTube", "reddit": "Reddit", "bluesky": "Bluesky", "x": "X",
            "ytSearch": "Comments under the videos found by these searches", "ytChannels": "and under the newest videos of these channels",
            "search": "Posts found by keyword searches", "comments": "Telegram comments and reactions on the channels above, through a Telegram account",
            "kinds": {"intl": "International organisations", "thinktank": "Think tanks and research centres", "media": "Media"},
            "via": "read through Google News searches limited to its site",
+           "langs": {"en": "English", "ar": "Arabic", "fr": "French", "de": "German", "tr": "Turkish", "he": "Hebrew", "ru": "Russian",
+                     "fa": "Persian", "zh": "Chinese", "es": "Spanish", "it": "Italian"},
            "note": "Posts by individuals are read only in aggregate: they are never stored, quoted or linked. The list changes as sources are added or stop working; every change to the tracker's sources is recorded in the method changelog on the About page."},
     "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، والجهات ووسائل الإعلام التي تستند إليها قراءات الخبراء.",
-           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "قراءات الخبراء: وسائل إعلام ومراكز أبحاث ومنظمات دولية وعربية",
+           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "قراءات الخبراء: وسائل إعلام ومراكز أبحاث ومنظمات من المنطقة والعالم",
            "telegram": "قنوات تيليغرام", "news": "مواقع إخبارية", "youtube": "يوتيوب", "reddit": "ريديت", "bluesky": "بلوسكاي", "x": "إكس",
            "ytSearch": "التعليقات على الفيديوهات التي تُظهرها عمليات البحث هذه", "ytChannels": "وعلى أحدث فيديوهات هذه القنوات",
            "search": "منشورات تُظهرها عمليات بحث بالكلمات المفتاحية", "comments": "تعليقات تيليغرام وتفاعلاته على القنوات أعلاه، عبر حساب تيليغرام",
            "kinds": {"intl": "منظمات دولية", "thinktank": "مراكز أبحاث ودراسات", "media": "وسائل إعلام"},
            "via": "تُقرأ عبر بحث غوغل نيوز المحصور في موقعها",
+           "langs": {"en": "الإنجليزية", "ar": "العربية", "fr": "الفرنسية", "de": "الألمانية", "tr": "التركية", "he": "العبرية", "ru": "الروسية",
+                     "fa": "الفارسية", "zh": "الصينية", "es": "الإسبانية", "it": "الإيطالية"},
            "note": "تُقرأ منشورات الأفراد إجمالاً فقط: لا تُخزَّن ولا تُقتبس ولا يُربط إليها. تتغير القائمة مع إضافة مصادر أو توقف أخرى، وكل تغيير في مصادر المتتبّع مسجَّل في سجل تغييرات المنهجية في صفحة «حول الموقع»."},
 }
 
@@ -1375,12 +1379,13 @@ def sources_body(cfg: dict, lang: str) -> str:
             for x in (y for y in ex["sources"] if y.get("kind", "media") == kind and y.get("enabled") is not False):
                 name = re.sub(r"\s*\(via Google News\)", "", x["name"])
                 google = "news.google.com" in x["url"]
-                e = seen.setdefault(name, {"domains": [], "via": False})
+                code = x.get("lang") or ("ar" if "hl=ar" in x["url"] or "/ar/" in x["url"] else "en")
+                e = seen.setdefault(name, {"domains": [], "via": False, "lang": code})
                 for d in (source_domains(x["url"]) if not google or "site%3A" in x["url"] else ["news.google.com"]):
                     if d not in e["domains"]:
                         e["domains"].append(d)
                 e["via"] = e["via"] or (google and "site%3A" in x["url"])
-            rows = [f'<tr><td>{esc(n)}</td><td>{" ".join(link(d) for d in e["domains"])}</td><td class="sub">{esc(w["via"]) if e["via"] else ""}</td></tr>'
+            rows = [f'<tr><td>{esc(n)}</td><td>{esc(w["langs"].get(e["lang"], e["lang"]))}</td><td>{" ".join(link(d) for d in e["domains"])}</td><td class="sub">{esc(w["via"]) if e["via"] else ""}</td></tr>'
                     for n, e in seen.items()]
             if rows:
                 parts.append(f"<h3>{w['kinds'][kind]}</h3><div class=\"tw\"><table><tbody>{''.join(rows)}</tbody></table></div>")
