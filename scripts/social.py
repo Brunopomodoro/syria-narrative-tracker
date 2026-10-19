@@ -151,7 +151,7 @@ def compose(cfg: dict, kind: str, ident: str) -> dict | None:
                 blocks.append(block(head, clip(paras[0], 420), w["stories"], top, w["read"], url(cfg, f"{folder}/{lang}/{ident}.html"), pdf))
     else:
         return None
-    message = "\n\n— — —\n\n".join(blocks) + "\n\n" + tag_line(cfg, themes, titles, order) + "\n\n" + NOTE
+    message = "\n\n· · ·\n\n".join(blocks) + "\n\n" + tag_line(cfg, themes, titles, order) + "\n\n" + NOTE
     first = order[0]
     link = url(cfg, {"daily": f"daily/{first}/{ident}.html", "weekly": f"weekly/{first}/{ident}.html", "monthly": f"monthly/{first}/{ident}.html"}[kind])
     return {"key": f"{kind}:{ident}", "message": message, "link": link}

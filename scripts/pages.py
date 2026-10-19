@@ -560,7 +560,7 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
             key = h.get("key") or ""
             title = esc(t(h, "title", lang))
             link = f'<a href="../../stories/{lang}/{esc(key)}.html">{title}</a>' if key else title
-            items.append(f"<li><b>{link}</b>{(' — ' if lang == 'en' else ' ـ ')}{esc(t(h, 'why', lang))}</li>")
+            items.append(f"<li><b>{link}</b>{(': ' if lang == 'en' else ': ')}{esc(t(h, 'why', lang))}</li>")
         parts.append(f"<h2>{w['highlights']}</h2><ul>{''.join(items)}</ul>")
     watch = d.get("watch_ar" if lang == "ar" else "watch") or []
     if watch:
@@ -652,7 +652,7 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
             key = h.get("key") or ""
             title = esc(t(h, "title", lang))
             link = f'<a href="{root}stories/{lang}/{esc(key)}.html">{title}</a>' if key else title
-            items.append(f"<li><b>{link}</b>{(' — ' if lang == 'en' else ' ـ ')}{esc(t(h, 'why', lang))}</li>")
+            items.append(f"<li><b>{link}</b>{(': ' if lang == 'en' else ': ')}{esc(t(h, 'why', lang))}</li>")
         parts.append(f"<section class=\"stories\"><h2>{w['monthHighlights']}</h2><ol>{''.join(items)}</ol></section>")
     watch = d.get("watch_ar" if lang == "ar" else "watch") or []
     if watch:
@@ -771,7 +771,7 @@ def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = Non
     import urllib.parse as up
     w, base = W[lang], site_url(cfg)
     url = f"{base}/{path}"
-    text = f"{title} — {site_title(cfg, lang)}"
+    text = f"{title} · {site_title(cfg, lang)}"
     q = up.quote
     tags = hashtags.fit(tags or [], text)
     x = f"https://twitter.com/intent/tweet?text={q(text)}&amp;url={q(url)}" + (f"&amp;hashtags={q(','.join(tags))}" if tags else "")
