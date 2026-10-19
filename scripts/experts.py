@@ -300,7 +300,7 @@ def linked(text: str, a: dict) -> str:
     for m in LINK.finditer(text):
         out.append(pages.esc(text[pos:m.start()]))
         i = items.get(m.group(2).translate(WESTERN))
-        out.append(f'<a href="{pages.esc(i["url"])}" rel="noopener nofollow" title="{pages.esc(i["title"])}">{pages.esc(m.group(1))}</a>'
+        out.append(f'<a href="{pages.esc(i["url"])}" target="_blank" rel="noopener nofollow" title="{pages.esc(i["title"])}">{pages.esc(m.group(1))}</a>'
                    if i else pages.esc(m.group(1)))
         pos = m.end()
     return "".join(out) + pages.esc(text[pos:])
@@ -595,7 +595,7 @@ def period_label(a: dict, lang: str) -> str:
 
 def item_li(i: dict, lang: str) -> str:
     w = WORDS[lang]
-    return (f'<li><a href="{pages.esc(i["url"])}" rel="noopener nofollow" lang="{pages.esc(i.get("lang") or "en")}" dir="{"rtl" if i.get("lang") in RTL else "ltr"}">{pages.esc(i["title"])}</a> '
+    return (f'<li><a href="{pages.esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{pages.esc(i.get("lang") or "en")}" dir="{"rtl" if i.get("lang") in RTL else "ltr"}">{pages.esc(i["title"])}</a> '
             f'<span class="sub">{pages.esc(i["org"])} · {pages.esc(w["kinds"].get(i.get("kind"), ""))} · {pages.esc(pages.fmt_date(i["date"], lang))}</span>'
             f'<br><span>{pages.esc(tr(i, "summary", lang) or "")}</span></li>')
 
