@@ -67,7 +67,7 @@ W = {   # the words on the static pages
            "langNames": {"ar": "Arabic", "ku": "Kurdish", "en": "English", "other": "other"},
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
-           "home": "Home", "stories": "Stories", "expertsTitle": "Expert view", "sourcesTitle": "Sources", "expertsLatest": "In the Expert view",
+           "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Expert view", "sourcesTitle": "Sources", "expertsLatest": "In the Expert view",
            "xDay": "What international and Arab experts said that day", "xWeek": "This week in the Expert view: our analysis of international and Arab reports",
            "xArea": "The expert view on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
@@ -101,7 +101,7 @@ W = {   # the words on the static pages
            "langNames": {"ar": "العربية", "ku": "الكردية", "en": "الإنجليزية", "other": "أخرى"},
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
-           "home": "الرئيسية", "stories": "القصص", "expertsTitle": "قراءات الخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في قراءات الخبراء",
+           "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "قراءات الخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في قراءات الخبراء",
            "xDay": "ما قاله الخبراء الدوليون والعرب في ذلك اليوم", "xWeek": "هذا الأسبوع في قراءات الخبراء: تحليلنا للتقارير الدولية والعربية",
            "xArea": "قراءة الخبراء في {area} هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
 }
@@ -288,7 +288,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}experts/{lang}/index.html">{w['expertsTab']}</a><a href="{root}timeline/{lang}.html">{TIMELINE_WORDS[lang]['nav']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}experts/{lang}/index.html">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}timeline/{lang}.html">{TIMELINE_WORDS[lang]['nav']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -453,6 +453,9 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
     parts = [f"""<p class="eyebrow"><a href="index.html">{w['listing']}</a> · <a href="../../{'ar/' if lang == 'ar' else ''}#trends">{esc(theme_label(cfg, theme, lang))}</a> · {w['firstSeen']} {esc(fmt_date(first, lang))} · {w['seenIn']} {num(n_runs, lang)} {w['update1'] if n_runs == 1 else w['updates']}</p>""",
              f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, share_bar(cfg, lang, f"stories/{lang}/{key}.html", str(t(n, "title", lang)), tags=hashtags.select(cfg, lang, [theme], [t(n, "title", lang)])),
              f"<p>{esc(t(n, 'summary', lang))}</p>"]
+    detail = t(n, "detail", lang)
+    if detail:
+        parts.append(f"<h2>{w['inDetail']}</h2><p>{esc(detail)}</p>")
     reaction = t(n, "public_reaction", lang)
     if reaction:
         parts.append(f"""<h2>{w['reacting']}</h2><div class="reaction" style="border-color:{tone_color(pub) if pub is not None else 'var(--neu)'}"><p>{esc(reaction)}</p></div>""")
