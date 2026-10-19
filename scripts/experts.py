@@ -264,6 +264,53 @@ LEANING = ("when you cite an outlet or think tank whose political orientation, o
            "briefly and neutrally the first time you name it (for example \"the pro-Israel Middle East Forum\", \"Turkish state-run Anadolu "
            "Agency\", \"Qatar-funded Al Jazeera\"); say nothing when it is not well established, and never use it to dismiss a claim;")
 
+LINKS = ("\nLinks: when a sentence draws on a specific item, write the name of its organisation as a link in exactly this form: "
+         "[Crisis Group](3f9a0c1d2e4b5a), with that item's id in the round brackets. Do the same in the Arabic text, for example "
+         "[Crisis Group](3f9a0c1d2e4b5a) or [الأمم المتحدة](3f9a0c1d2e4b5a). Link an item the first time you cite it in a field, link only "
+         "names tied to a specific item, and never invent an id.")
+KEEP_LINKS = ("\nLinks: the analyses contain links in the form [Crisis Group](3f9a0c1d2e4b5a). When you use a point from them, keep its link "
+              "exactly, with the same id, in the English and the Arabic text; never invent an id.")
+LINK = re.compile(r"\[([^\[\]\n]{1,100})\]\(([0-9a-f]{14})\)")
+
+
+def plain(v):
+    """A text without its links: [Crisis Group](id) becomes Crisis Group (for feeds, descriptions and listings)."""
+    if isinstance(v, list):
+        return [plain(x) for x in v]
+    return LINK.sub(r"\1", v) if isinstance(v, str) else v
+
+
+def link_ids(*texts) -> list:
+    """The item ids linked in some texts (strings or lists of strings), in order of first appearance."""
+    out = []
+    for t in texts:
+        for x in (t if isinstance(t, list) else [t]):
+            for m in LINK.finditer(x if isinstance(x, str) else ""):
+                if m.group(2) not in out:
+                    out.append(m.group(2))
+    return out
+
+
+def linked(text: str, a: dict) -> str:
+    """Escaped HTML of a text, with each [name](id) turned into a link to that item's article."""
+    items, out, pos = a.get("items") or {}, [], 0
+    text = text or ""
+    for m in LINK.finditer(text):
+        out.append(pages.esc(text[pos:m.start()]))
+        i = items.get(m.group(2))
+        out.append(f'<a href="{pages.esc(i["url"])}" rel="noopener nofollow" title="{pages.esc(i["title"])}">{pages.esc(m.group(1))}</a>'
+                   if i else pages.esc(m.group(1)))
+        pos = m.end()
+    return "".join(out) + pages.esc(text[pos:])
+
+
+def cited_items(a: dict, d: dict) -> list:
+    """The items an analysis drew on: its item_ids, then any other item it links to."""
+    texts = [v for k, v in d.items() if k not in ("item_ids", "count", "orgs")]
+    ids = list(d.get("item_ids") or []) + [x for x in link_ids(*texts) if x not in (d.get("item_ids") or [])]
+    return [a["items"][x] for x in ids if x in (a.get("items") or {})]
+
+
 AREA_PROMPT = """You are a careful, neutral analyst writing for the Syria Narrative Tracker. You receive the reports and articles that media, think tanks and international organisations writing in several languages published about one area of Syrian affairs ({area}) over one period, each with its organisation, type and a one-line summary, and the stories in that area that ordinary Syrians and Syrian outlets discussed online over the same period (from the tracker: share of the discussion and the tone of people's reactions, -1 to +1).
 
 Write a one-page analysis of the {area} picture in the expert and international view:
@@ -386,7 +433,7 @@ def generate(cfg: dict, pid: str, log=print) -> dict | None:
                                     ensure_ascii=False) for i in mine) +
                "\n\nWHAT SYRIANS DISCUSSED IN THIS AREA (Syria Narrative Tracker)\n" +
                ("\n".join(syrian_stories(start, end, AREA_THEMES[area])) or "(no stories in this area)"))
-        d, u = ask(cfg, AREA_PROMPT.replace("{area}", area).replace("{leaning}", LEANING), msg, area_schema(), max_tokens=20000)
+        d, u = ask(cfg, AREA_PROMPT.replace("{area}", area).replace("{leaning}", LEANING) + LINKS, msg, area_schema(), max_tokens=20000)
         ids = {i["id"]: i for i in mine}
         d["item_ids"] = [x for x in d.get("item_ids") or [] if x in ids][:15]
         d["count"] = len(mine)
@@ -399,10 +446,13 @@ def generate(cfg: dict, pid: str, log=print) -> dict | None:
         return None
     summary = "\n\n".join(f"{area.upper()}\n{d['title']}\n{d['lede']}\n" + "\n".join(d["findings"]) + f"\nCompared with Syrians: {d['syrians']}"
                           for area, d in areas.items())
-    overall, u = ask(cfg, OVERALL_PROMPT.replace("{leaning}", LEANING), f"Period: {pid} ({start} to {end}).\n\nTHE THREE ANALYSES\n{summary}\n\nWHAT SYRIANS DISCUSSED "
+    overall, u = ask(cfg, OVERALL_PROMPT.replace("{leaning}", LEANING) + KEEP_LINKS, f"Period: {pid} ({start} to {end}).\n\nTHE THREE ANALYSES\n{summary}\n\nWHAT SYRIANS DISCUSSED "
                                           f"(Syria Narrative Tracker)\n" + "\n".join(syrian_stories(start, end, None, 15)), area_schema(True), max_tokens=20000)
     usage = {k: usage[k] + u[k] for k in usage}
     overall["count"], overall["orgs"] = len(items), len({i["org"] for i in items})
+    by_id = {i["id"]: i for i in items}
+    for d in [*areas.values(), overall]:          # the articles the texts link to
+        cited.update({x: by_id[x] for x in link_ids(*d.values()) if x in by_id})
     a = {"id": pid, "kind": kind, "from": start, "to": end, "generated_at": now_iso(), "model": cfg.get("model", ""),
          "areas": areas, "overall": overall, "items": cited,
          "stats": {"items": len(items), "orgs": len({i["org"] for i in items}),
@@ -415,8 +465,8 @@ def generate(cfg: dict, pid: str, log=print) -> dict | None:
                   "areas": [x for x in AREAS if x == "overall" or x in areas],
                   **{f"{x}_title": (overall if x == "overall" else areas[x])["title"] for x in AREAS if x == "overall" or x in areas},
                   **{f"{x}_title_ar": (overall if x == "overall" else areas[x])["title_ar"] for x in AREAS if x == "overall" or x in areas},
-                  **{f"{x}_lede": (overall if x == "overall" else areas[x])["lede"] for x in AREAS if x == "overall" or x in areas},
-                  **{f"{x}_lede_ar": (overall if x == "overall" else areas[x])["lede_ar"] for x in AREAS if x == "overall" or x in areas}})
+                  **{f"{x}_lede": plain((overall if x == "overall" else areas[x])["lede"]) for x in AREAS if x == "overall" or x in areas},
+                  **{f"{x}_lede_ar": plain((overall if x == "overall" else areas[x])["lede_ar"]) for x in AREAS if x == "overall" or x in areas}})
     index.sort(key=lambda x: (x["from"], x["kind"]))
     archive._save(INDEX, index)
     write_pages(cfg, a)
@@ -439,18 +489,18 @@ def generate_day(cfg: dict, date: str, log=print) -> dict | None:
            "\n".join(json.dumps({"id": i["id"], "org": i["org"], "type": i["kind"], "language": i.get("lang", "en"), "area": i["domain"], "title": i["title"], "summary": i.get("summary", "")},
                                 ensure_ascii=False) for i in items) +
            "\n\nWHAT SYRIANS DISCUSSED THAT DAY (Syria Narrative Tracker)\n" + ("\n".join(syrian_stories(date, date, None, 12)) or "(no tracker data)"))
-    d, usage = ask(cfg, DAY_PROMPT.replace("{leaning}", LEANING), msg, day_schema(), max_tokens=12000)
+    d, usage = ask(cfg, DAY_PROMPT.replace("{leaning}", LEANING) + LINKS, msg, day_schema(), max_tokens=12000)
     ids = {i["id"]: i for i in items}
     d["item_ids"] = [x for x in d.get("item_ids") or [] if x in ids][:12]
     d["count"], d["orgs"] = len(items), len({i["org"] for i in items})
     a = {"id": date, "kind": "day", "from": date, "to": date, "generated_at": now_iso(), "model": cfg.get("model", ""),
-         "areas": {}, "overall": d, "items": {x: ids[x] for x in d["item_ids"]},
+         "areas": {}, "overall": d, "items": {x: ids[x] for x in d["item_ids"] + link_ids(*d.values()) if x in ids},
          "stats": {"items": len(items), "orgs": d["orgs"], "areas": {k: sum(1 for i in items if i["domain"] == k) for k in DOMAINS}},
          "usage": usage}
     archive._save(PERIODS / f"{date}.json", a)
     index = [x for x in archive._load(INDEX, []) if x.get("id") != date]
     index.append({"id": date, "kind": "day", "from": date, "to": date, "generated_at": a["generated_at"], "areas": ["overall"],
-                  "overall_title": d["title"], "overall_title_ar": d["title_ar"], "overall_lede": d["lede"], "overall_lede_ar": d["lede_ar"]})
+                  "overall_title": d["title"], "overall_title_ar": d["title_ar"], "overall_lede": plain(d["lede"]), "overall_lede_ar": plain(d["lede_ar"])})
     index.sort(key=lambda x: (x["from"], x["kind"]))
     archive._save(INDEX, index)
     write_pages(cfg, a)
@@ -548,8 +598,8 @@ def item_li(i: dict, lang: str) -> str:
             f'<br><span>{pages.esc(tr(i, "summary", lang) or "")}</span></li>')
 
 
-def lst(items: list) -> str:
-    return "<ul>" + "".join(f"<li>{pages.esc(x)}</li>" for x in items) + "</ul>" if items else ""
+def lst(items: list, a: dict) -> str:
+    return "<ul>" + "".join(f"<li>{linked(x, a)}</li>" for x in items) + "</ul>" if items else ""
 
 
 def body(cfg: dict, a: dict, area: str, lang: str) -> str:
@@ -560,19 +610,19 @@ def body(cfg: dict, a: dict, area: str, lang: str) -> str:
              f'<h1>{P.esc(tr(d, "title", lang))}</h1>',
              f'<p class="sub rmeta">{P.esc(w["stats"].format(n=P.num(d.get("count", 0), lang), o=P.num(d.get("orgs", 0), lang)))}</p>',
              P.share_bar(cfg, lang, f"experts/{lang}/{page_name(a['id'], area)}", f"{tr(d, 'title', lang)} · {w['title']}: {w['areas'][area]}"),
-             f'<p class="lede"><strong>{w["lede"]}:</strong> {P.esc(tr(d, "lede", lang))}</p>',
-             f'<h2>{w["findings"]}</h2>' + "".join(f"<p>{P.esc(x)}</p>" for x in tr(d, "findings", lang) or [])]
+             f'<p class="lede"><strong>{w["lede"]}:</strong> {linked(tr(d, "lede", lang), a)}</p>',
+             f'<h2>{w["findings"]}</h2>' + "".join(f"<p>{linked(x, a)}</p>" for x in tr(d, "findings", lang) or [])]
     for f, label in (("agree", w["agree"]), ("disagree", w["disagree"])):
         if tr(d, f, lang):
-            parts.append(f'<h2>{label}</h2><p>{P.esc(tr(d, f, lang))}</p>')
+            parts.append(f'<h2>{label}</h2><p>{linked(tr(d, f, lang), a)}</p>')
     if tr(d, "recommendations", lang):
-        parts.append(f'<h2>{w["recs"]}</h2>' + lst(tr(d, "recommendations", lang)))
-    parts.append(f'<h2>{w["syrians"]}</h2><p>{P.esc(tr(d, "syrians", lang))}</p>')
+        parts.append(f'<h2>{w["recs"]}</h2>' + lst(tr(d, "recommendations", lang), a))
+    parts.append(f'<h2>{w["syrians"]}</h2><p>{linked(tr(d, "syrians", lang), a)}</p>')
     if tr(d, "blind_spots", lang):
-        parts.append(f'<h2>{w["blind"]}</h2>' + lst(tr(d, "blind_spots", lang)))
+        parts.append(f'<h2>{w["blind"]}</h2>' + lst(tr(d, "blind_spots", lang), a))
     if tr(d, "watch", lang):
-        parts.append(f'<h2>{w["watch"]}</h2>' + lst(tr(d, "watch", lang)))
-    cited = [a["items"][x] for x in d.get("item_ids") or [] if x in (a.get("items") or {})]
+        parts.append(f'<h2>{w["watch"]}</h2>' + lst(tr(d, "watch", lang), a))
+    cited = cited_items(a, d)
     if cited:
         parts.append(f'<details><summary>{w["sources"]} ({P.num(len(cited), lang)})</summary><ul class="list">' + "".join(item_li(i, lang) for i in cited) + "</ul></details>")
     if area == "overall" and a["kind"] == "week" and (archive.ROOT / "weekly" / lang / f"{a['id']}.html").exists():
@@ -592,12 +642,12 @@ def day_body(cfg: dict, a: dict, lang: str) -> str:
              f'<h1>{P.esc(tr(d, "title", lang))}</h1>',
              f'<p class="sub rmeta">{P.esc(w["stats"].format(n=P.num(d.get("count", 0), lang), o=P.num(d.get("orgs", 0), lang)))}</p>',
              P.share_bar(cfg, lang, f"experts/{lang}/{a['id']}.html", f"{tr(d, 'title', lang)} · {w['title']}: {w['daily']}"),
-             f'<p class="lede"><strong>{w["lede"]}:</strong> {P.esc(tr(d, "lede", lang))}</p>']
+             f'<p class="lede"><strong>{w["lede"]}:</strong> {linked(tr(d, "lede", lang), a)}</p>']
     for area in DOMAINS:
         if tr(d, area, lang):
-            parts.append(f'<h2>{w["areas"][area]}</h2><p>{P.esc(tr(d, area, lang))}</p>')
-    parts.append(f'<h2>{w["syrians"]}</h2><p>{P.esc(tr(d, "syrians", lang))}</p>')
-    cited = [a["items"][x] for x in d.get("item_ids") or [] if x in (a.get("items") or {})]
+            parts.append(f'<h2>{w["areas"][area]}</h2><p>{linked(tr(d, area, lang), a)}</p>')
+    parts.append(f'<h2>{w["syrians"]}</h2><p>{linked(tr(d, "syrians", lang), a)}</p>')
+    cited = cited_items(a, d)
     if cited:
         parts.append(f'<details><summary>{w["sources"]} ({P.num(len(cited), lang)})</summary><ul class="list">' + "".join(item_li(i, lang) for i in cited) + "</ul></details>")
     week = weekly.week_of(dt.date.fromisoformat(a["id"]))
@@ -615,7 +665,7 @@ def jsonld(cfg: dict, a: dict, area: str, lang: str, title: str, desc: str, path
     d = a["overall"] if area == "overall" else a["areas"][area]
     art = P.ld_article(cfg, lang, "Report", title, desc, path, a.get("generated_at", ""), a.get("generated_at", ""))
     art["about"] = [{"@type": "Place", "name": "Syria"}] + ([{"@type": "Thing", "name": WORDS["en"]["areas"][area]}] if area != "overall" else [])
-    cited = [a["items"][x] for x in d.get("item_ids") or [] if x in (a.get("items") or {})]
+    cited = cited_items(a, d)
     if cited:
         art["citation"] = [{"@type": "CreativeWork", "name": i["title"][:150], "url": i["url"], "publisher": {"@type": "Organization", "name": i["org"]}} for i in cited[:15]]
     label = P.fmt_date(a["from"], lang) if a["kind"] == "day" else (f'{w["week"]} {a["id"]}' if a["kind"] == "week" else P.fmt_month(a["id"], lang))
@@ -654,7 +704,7 @@ def write_pages(cfg: dict, a: dict) -> None:
     if a.get("kind") == "day":
         for lang in pages.LANGS:
             other, d = "ar" if lang == "en" else "en", a["overall"]
-            desc, path = str(tr(d, "lede", lang) or "")[:200], f"experts/{lang}/{a['id']}.html"
+            desc, path = str(plain(tr(d, "lede", lang)) or "")[:200], f"experts/{lang}/{a['id']}.html"
             pages.write(OUT / lang / f"{a['id']}.html",
                         pages.page(cfg, lang, f'{tr(d, "title", lang)} · {WORDS[lang]["daily"]}', desc, day_body(cfg, a, lang), path,
                                    f"experts/{other}/{a['id']}.html", updated=a.get("generated_at"),
@@ -666,7 +716,7 @@ def write_pages(cfg: dict, a: dict) -> None:
             if area != "overall" and area not in a["areas"]:
                 continue
             d = a["overall"] if area == "overall" else a["areas"][area]
-            desc = str(tr(d, "lede", lang) or "")[:200]
+            desc = str(plain(tr(d, "lede", lang)) or "")[:200]
             name = page_name(a["id"], area)
             path = f"experts/{lang}/{name}"
             pages.write(OUT / lang / name,
