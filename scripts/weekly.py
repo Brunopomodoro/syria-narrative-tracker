@@ -107,7 +107,8 @@ You receive the week's numbers and the stories the tracker followed. Write:
 Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare days or weeks with each other; never present them as numbers of posts or of people.
 Some stories carry "Coordination signals": measured signs (copy-paste, near-identical posts, bursts, the same text on several platforms, few commenters writing most comments, regular timing) that the reaction may be organised. Mention them in the paragraphs or "watch" as signs to look into, never as proof of a campaign, and never guess who is behind them.
 Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation).
-Do not use the long dash (—); use commas, colons or parentheses instead."""
+Do not use the long dash (—); use commas, colons or parentheses instead.
+In the Arabic text, write the names of foreign organisations, outlets, think tanks and websites in their original Latin spelling (for example ReliefWeb, Chatham House, Atlantic Council, The National); never spell them out in Arabic letters. Keep a name in Arabic only when it has a well-established Arabic form (for example الأمم المتحدة، البنك الدولي، الجزيرة، هيومن رايتس ووتش)."""
 
 
 def digest_schema() -> dict:
