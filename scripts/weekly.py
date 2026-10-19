@@ -18,6 +18,7 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import arabic  # noqa: E402
 import archive  # noqa: E402
 import pages  # noqa: E402
 
@@ -159,11 +160,11 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
         raise RuntimeError("ANTHROPIC_API_KEY secret is missing")
     client = anthropic.Anthropic(api_key=key)
     model = cfg.get("model", "claude-sonnet-5")
-    resp = client.messages.create(model=model, max_tokens=8000, system=DIGEST_PROMPT,
+    resp = client.messages.create(model=model, max_tokens=8000, system=DIGEST_PROMPT + arabic.rules(),
                                   messages=[{"role": "user", "content": build_message(cfg, s)}],
                                   output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": digest_schema()}})
     text = "".join(b.text for b in resp.content if b.type == "text")
-    d = archive.no_dashes(json.loads(text))   # no long dashes in the published text
+    d = arabic.tidy(archive.no_dashes(json.loads(text)))   # no long dashes; Arabic fixes
     keys = {e["key"] for e in s["top_stories"]}
     highlights, used = [], set()   # only stories of the week, each once
     for h in d.get("highlights") or []:

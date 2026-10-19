@@ -536,6 +536,10 @@ The **Expert view** tab is our analysis of what English-language media, think ta
 - **Languages.** Sources in Arabic, English, French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian. Set `lang` on a source (a language code such as `fr`) so its titles are marked correctly and its language appears on the Sources page; the one-line summaries are always in English and Arabic.
 - **Limits.** Mostly based outside Syria, and no paywalled outlets; the pages say so.
 
+### Arabic quality
+
+Every prompt that writes Arabic carries the same style rules (`scripts/arabic.py`): write as a Syrian newsroom editor would rather than translate, verb-first sentences where natural, correct agreement, a neutral register, Syrian month names, «» quotation marks, no transliterated English jargon. It also carries the glossary `arabic_terms` in `config.yaml`, the Arabic to use for terms that keep coming back. After each update the Arabic texts are tidied automatically, at no cost: straight and curly quotes become «», Gregorian month names next to a date become Syrian ones (أكتوبر → تشرين الأول), digits become Arabic-Indic like the rest of the site, and any whole word or phrase listed under `avoid` in the glossary is replaced. When you see a term translated badly, add a line to `arabic_terms` (with the bad form under `avoid` if it should be replaced automatically); the weekly quality review also lists doubtful Arabic phrases for you to approve as glossary lines. Names of people and places are fixed the same way in `names`.
+
 ### What to watch
 
 Above the stories, the home page lists up to five things worth keeping an eye on, worked out by `scripts/watch.py` from the numbers of the last updates, with no extra Claude call:

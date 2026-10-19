@@ -33,6 +33,7 @@ import sys
 import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import arabic  # noqa: E402
 import archive  # noqa: E402
 import pages  # noqa: E402
 import weekly  # noqa: E402
@@ -176,7 +177,7 @@ def classify(cfg: dict, items: list, usage: dict) -> dict:
                        "summary": {"type": "string"}, "summary_ar": {"type": "string"}}}}}}
     lines = [json.dumps({"id": i["id"], "org": i["org"], "title": i["title"], "excerpt": i["text"][:500]}, ensure_ascii=False) for i in items]
     client = anthropic.Anthropic(api_key=key)
-    with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=16000, system=CLASSIFY_PROMPT,
+    with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=16000, system=CLASSIFY_PROMPT + arabic.rules(),
                                 messages=[{"role": "user", "content": "\n".join(lines)}],
                                 output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}}) as stream:
         resp = stream.get_final_message()
@@ -354,7 +355,7 @@ def ask(cfg: dict, system: str, msg: str, schema: dict, max_tokens: int = 10000)
     if not key:
         raise RuntimeError("ANTHROPIC_API_KEY secret is missing")
     client = anthropic.Anthropic(api_key=key)
-    with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=max_tokens, system=system,
+    with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=max_tokens, system=system + arabic.rules(),
                                 messages=[{"role": "user", "content": msg}],
                                 output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": schema}}) as stream:
         resp = stream.get_final_message()

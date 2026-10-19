@@ -27,6 +27,51 @@ monthly_review: true
 # have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
 newsletter_url: ""
 
+# Arabic glossary: the Arabic to use for terms that keep coming back. Every prompt that writes Arabic gets this list,
+# and after each update any whole word or phrase under "avoid" is replaced with "ar" in the Arabic texts. Add a line whenever you
+# see a term translated badly; it then stays fixed. (Free: no extra call to Claude.)
+arabic_terms:
+  - {en: "OSINT (open-source intelligence) accounts", ar: "حسابات الرصد من المصادر المفتوحة", avoid: ["حسابات أوسينت", "حسابات OSINT"]}
+  - {en: "OSINT", ar: "المصادر المفتوحة", avoid: ["أوسينت"]}
+  - {en: "news aggregators", ar: "مواقع تجميع الأخبار", avoid: ["مجمعات غوغل نيوز", "مجمعات الأخبار", "المجمعات الإخبارية", "مجمّعات الأخبار"]}
+  - {en: "outlets / media outlets", ar: "وسائل الإعلام"}
+  - {en: "official (state) outlets", ar: "وسائل الإعلام الرسمية"}
+  - {en: "independent outlets", ar: "وسائل الإعلام المستقلة"}
+  - {en: "opposition outlets", ar: "وسائل الإعلام المعارضة"}
+  - {en: "outlets in the north-east", ar: "وسائل إعلام في شمال شرق سوريا", avoid: ["وسائل إعلام شمال شرقية", "وسائل الإعلام الشمال شرقية", "منصات شمال شرقية"]}
+  - {en: "the north-east (of Syria)", ar: "شمال شرق سوريا"}
+  - {en: "story (in the tracker)", ar: "قصة"}
+  - {en: "narrative", ar: "رواية"}
+  - {en: "framing / framings", ar: "زاوية التناول / زوايا التناول"}
+  - {en: "public reaction", ar: "تفاعل الناس"}
+  - {en: "engagement", ar: "التفاعل"}
+  - {en: "post / posts", ar: "منشور / منشورات"}
+  - {en: "trend / trending", ar: "رائج / متداول"}
+  - {en: "hashtag", ar: "وسم"}
+  - {en: "coordinated messaging", ar: "رسائل منسّقة"}
+  - {en: "copy-paste posts", ar: "منشورات منسوخة"}
+  - {en: "disinformation", ar: "التضليل"}
+  - {en: "unverified claims", ar: "ادعاءات لم يُتحقق منها"}
+  - {en: "sectarian incitement", ar: "التحريض الطائفي"}
+  - {en: "bravado / defiant talk", ar: "خطاب التحدي", avoid: ["التبجح بالمقاومة"]}
+  - {en: "think tank", ar: "مركز أبحاث", avoid: ["خزان فكر", "ثينك تانك"]}
+  - {en: "briefing (UN)", ar: "إحاطة"}
+  - {en: "stakeholders", ar: "الأطراف المعنية"}
+  - {en: "pro-government", ar: "موالٍ للحكومة"}
+  - {en: "the transitional government", ar: "الحكومة الانتقالية"}
+  - {en: "transitional justice", ar: "العدالة الانتقالية"}
+  - {en: "the Assad regime / the former regime", ar: "نظام الأسد / النظام السابق"}
+  - {en: "SDF", ar: "قوات سوريا الديمقراطية (قسد)"}
+  - {en: "the Autonomous Administration", ar: "الإدارة الذاتية"}
+  - {en: "security operation / security campaign", ar: "عملية أمنية / حملة أمنية"}
+  - {en: "incursion", ar: "توغّل"}
+  - {en: "sanctions relief", ar: "تخفيف العقوبات"}
+  - {en: "Caesar Act", ar: "قانون قيصر"}
+  - {en: "reconstruction", ar: "إعادة الإعمار"}
+  - {en: "returnees", ar: "العائدون"}
+  - {en: "internally displaced people", ar: "النازحون داخلياً"}
+  - {en: "cost of living", ar: "غلاء المعيشة"}
+
 # Names the analysis must spell a fixed way; they are added to its instructions. "wrong" lists Arabic misspellings
 # seen before, each replaced by "fix" in every text the analysis writes. Add a name whenever one comes out wrong.
 names:
@@ -424,6 +469,9 @@ method_changelog:
   - date: 2026-10-19
     note: "Expert view: 33 sources added in French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian (media, think tanks and research centres); each item still summarised in English and Arabic."
     note_ar: "قراءات الخبراء: إضافة 33 مصدراً بالفرنسية والألمانية والتركية والعبرية والروسية والفارسية والصينية والإسبانية والإيطالية (وسائل إعلام ومراكز أبحاث ودراسات)؛ ويبقى ملخص كل عنصر بالإنجليزية والعربية."
+  - date: 2026-10-20
+    note: "Arabic quality: every prompt that writes Arabic now carries style rules (write like a Syrian newsroom, not a translation) and a glossary of fixed terms, and the Arabic texts are tidied after each update («» quotation marks, Syrian month names, Arabic-Indic digits, known wrong terms replaced). Applied to the texts already published."
+    note_ar: "جودة العربية: باتت كل تعليمات الكتابة بالعربية تتضمن قواعد أسلوبية (الكتابة كما تكتب غرفة أخبار سورية لا كترجمة) ومسرداً بالمصطلحات الثابتة، وتُنقَّح النصوص العربية بعد كل تحديث (علامات التنصيص «»، وأسماء الأشهر المعتمدة في سوريا، والأرقام العربية المشرقية، واستبدال المصطلحات الخاطئة المعروفة). وطُبّق ذلك على النصوص المنشورة سابقاً."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
