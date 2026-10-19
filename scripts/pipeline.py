@@ -703,6 +703,7 @@ Rules:
 - Sentiment runs from -1 (anger, fear, grief, contempt) to +1 (hope, pride, celebration); 0 is neutral. Give "sentiment" for the tone of OUTLET coverage and "public_sentiment" for the tone of PUBLIC voices and reactions (null if there are none for that narrative). Read sarcasm, mockery, religious expressions and dialect carefully; for example "الله يفرجها" is weary hope, and mocking praise is negative.
 - "outlet_tone": the tone of coverage for each outlet TYPE (official, independent, kurdish, regional, aggregator) that has posts in the narrative; null for types with no posts in it. "public_tone": the tone of PUBLIC voices for each language (ar, ku, en) that has public posts in the narrative; null for languages with none. Both use the same -1 to +1 scale.
 - "summary": 3 short sentences, at most 60 words (about 380 characters) in all, that a reader who has not followed the news can understand: what happened, where and when, who is involved, and the context the posts give, such as what led to it, how it connects to earlier events in the same story, and what officials or outlets said. Prefer concrete details (places, numbers, public bodies and officials) to general phrases. The Arabic summary carries the same details.
+- "detail": 6 to 8 sentences (about 120-160 words) for the story's own page, going further than the summary: the background a reader needs, what each side, official body or kind of outlet says, the main disputed points, and what changed since the previous snapshot. Only what the posts support; attribute every claim. The Arabic detail carries the same content.
 - "rest" (in "overall", in English; "rest_ar" in Arabic): 1-2 sentences on what the posts you left unassigned are mostly about, naming the main kinds of content (for example religious greetings and prayers, everyday complaints about prices, scattered local news, off-topic comments) and any subject that recurs among them. Empty string if every post was assigned.
 - "public_reaction": 1-2 sentences on how ordinary people are reacting: agreement, anger, jokes, doubt, divisions between groups. Empty string if there are no public voices for it.
 - framings: how different kinds of sources frame the story, in short phrases.
@@ -722,7 +723,7 @@ Themes (id: what belongs there):
 
 Reply with ONLY a JSON object (no markdown, no commentary) in exactly this shape:
 {"overall": {"public_sentiment": 0.0, "public_mood": "Frustrated", "public_mood_ar": "محبَط", "sentiment": 0.0, "mood": "Upbeat", "mood_ar": "متفائل", "brief": "3-4 neutral sentences on what people are discussing and how they are reacting, compared with outlet coverage", "brief_ar": "...", "rest": "1-2 sentences on the unassigned posts", "rest_ar": "..."},
- "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "3 short sentences, at most 60 words: what happened, where, who, and the context", "summary_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
+ "narratives": [{"id": "kebab-case-id", "theme": "theme-id", "title": "English title", "title_ar": "عنوان عربي", "summary": "3 short sentences, at most 60 words: what happened, where, who, and the context", "summary_ar": "...", "detail": "6-8 sentences for the story page", "detail_ar": "...", "public_reaction": "1-2 sentences", "public_reaction_ar": "...", "sentiment": 0.0, "public_sentiment": 0.0, "outlet_tone": {"official": 0.0, "independent": 0.0}, "public_tone": {"ar": 0.0, "en": 0.0}, "emotions": ["anger"], "emotions_ar": ["غضب"], "framings": ["..."], "framings_ar": ["..."], "flags": ["..."], "flags_ar": ["..."], "post_ids": ["p1", "p7"]}]}"""
 
 
 def result_schema(theme_ids: list) -> dict:
@@ -738,6 +739,7 @@ def result_schema(theme_ids: list) -> dict:
         "narratives": {"type": "array", "items": obj({
             "id": {"type": "string"}, "theme": {"type": "string", "enum": theme_ids},
             "title": {"type": "string"}, "title_ar": {"type": "string"}, "summary": {"type": "string"}, "summary_ar": {"type": "string"},
+            "detail": {"type": "string"}, "detail_ar": {"type": "string"},
             "public_reaction": {"type": "string"}, "public_reaction_ar": {"type": "string"},
             "sentiment": num, "public_sentiment": opt,
             "outlet_tone": obj({k: opt for k in archive.KIND_IDS}), "public_tone": obj({k: opt for k in archive.LANGS}),
@@ -834,7 +836,7 @@ def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
 
 
 ARABIC_SCRIPT = re.compile(r"[\u0600-\u06FF]")
-AR_FIELDS = ("title", "summary", "public_reaction", "emotions", "framings", "flags")
+AR_FIELDS = ("title", "summary", "detail", "public_reaction", "emotions", "framings", "flags")
 
 
 def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict) -> int:
@@ -842,7 +844,7 @@ def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict)
     the Arabic site, translate just those fields in one small request. Returns how many fields were filled."""
     todo = {}
     # an English field written in Arabic (it happens): keep it as the Arabic text if that is missing, and translate it
-    for prefix, obj, keys in [("overall", overall, ("brief", "rest"))] + [(f"n{i}", n, ("title", "summary", "public_reaction")) for i, n in enumerate(narratives)]:
+    for prefix, obj, keys in [("overall", overall, ("brief", "rest"))] + [(f"n{i}", n, ("title", "summary", "detail", "public_reaction")) for i, n in enumerate(narratives)]:
         for k in keys:
             v = obj.get(k)
             if isinstance(v, str) and v and ARABIC_SCRIPT.search(v) and not re.search(r"[A-Za-z]{3}", v):
@@ -1072,6 +1074,8 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
             "title_ar": str(n.get("title_ar", ""))[:140],
             "summary": str(n.get("summary", ""))[:1200],
             "summary_ar": str(n.get("summary_ar", ""))[:1200],
+            "detail": str(n.get("detail") or "")[:2400],      # the longer text of the story page
+            "detail_ar": str(n.get("detail_ar") or "")[:2400],
             "public_reaction": str(n.get("public_reaction") or "")[:600] if public_volume else "",
             "public_reaction_ar": str(n.get("public_reaction_ar") or "")[:600] if public_volume else "",
             "sentiment": clamp(n.get("sentiment")),
