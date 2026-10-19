@@ -39,13 +39,18 @@ names:
 # form below is set up, the site's own pages point to the form instead.
 contact_url: "https://www.syrianpulse.org/contact/en.html"
 
+# IndexNow (scripts/indexnow.py): after each update, the pages that changed are announced to Bing, Yandex and other
+# search engines that take part, so they are crawled within hours. The key is public by design; the file <key>.txt
+# at the site's root proves the site is ours. To stop, empty the key.
+indexnow_key: "3bbef69b32af22d888cae21153ac8679"
+
 # Search engines. Stories seen in fewer updates than index_min_runs stay on the site but are kept out of
 # search results and the sitemap (many one-update pages read as thin content to Google).
 seo:
   index_min_runs: 2
 
 # The Expert view tab (scripts/experts.py): reports and articles about Syria's security, economy and governance from
-# English-language media, think tanks and international organisations, each summarised in one line and linked, and a
+# English- and Arabic-language media, think tanks and international organisations, each summarised in one line and linked, and a
 # weekly analysis set against what Syrians were saying. kind: intl, thinktank or media. filter: true keeps only items
 # that mention Syria (for feeds that cover more than Syria). The status of every source after each update is in
 # data/experts/library.json ("sources"); a source that keeps failing can be fixed or removed here.
@@ -54,9 +59,9 @@ experts:
   weekly: true
   window_days: 10        # items older than this when first seen are ignored
   keep_days: 180
-  max_new_per_run: 80
+  max_new_per_run: 120
   # Outlets the tracker already reads as Syrian sources; left out here (matched in the organisation's name).
-  exclude_orgs: ["SANA", "سانا", "Enab Baladi", "عنب بلدي", "North Press", "ANHA", "Hawar", "Syria TV", "تلفزيون سوريا", "Levant24", "Halab Today", "Zaman al-Wasl", "Alikhbaria", "Shaam Network"]
+  exclude_orgs: ["SANA", "سانا", "Enab Baladi", "عنب بلدي", "North Press", "نورث برس", "ANHA", "Hawar", "هاوار", "Syria TV", "تلفزيون سوريا", "Levant24", "Halab Today", "حلب اليوم", "Zaman al-Wasl", "زمان الوصل", "Alikhbaria", "الإخبارية السورية", "Shaam Network", "شبكة شام"]
   # Publishers that refuse automated readers are read through Google News searches limited to their own site
   # (filter: false, since the search already asks for Syria; the summarising step sets aside what is not about it).
   sources:
@@ -93,6 +98,27 @@ experts:
     - {name: "New Lines", kind: media, org: "New Lines", url: "https://newlinesmag.com/feed/"}
     - {name: "Syria Direct", kind: media, org: "Syria Direct", url: "https://syriadirect.org/feed/", filter: false}
     - {name: "Google News: Syria", kind: media, url: "https://news.google.com/rss/search?q=Syria%20when%3A2d&hl=en-US&gl=US&ceid=US%3Aen", max: 25}
+    # in Arabic: research centres, analysis outlets and international organisations
+    - {name: "UN News Arabic", kind: intl, org: "أخبار الأمم المتحدة", url: "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml"}
+    - {name: "ESCWA (via Google News)", kind: intl, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aunescwa.org%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Harmoon Center (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aharmoon.org%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Omran Center (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aomranstudies.org%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Jusoor Center (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Ajusoor.co%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Syrian Dialogue Center (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Asydialogue.org%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Arab Center for Research and Policy Studies (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Adohainstitute.org%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Al Jazeera Centre for Studies (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Astudies.aljazeera.net%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Emirates Policy Center (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aepc.ae%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Al-Ahram Center for Political and Strategic Studies (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aacpss.ahram.org.eg%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Syrian Center for Policy Research (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Ascpr-syria.org%20when%3A30d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Arab think tanks on Syria (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20%28%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20OR%20%22%D9%88%D8%B1%D9%82%D8%A9%20%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D9%8A%D8%A9%22%20OR%20%22%D8%AA%D9%82%D8%AF%D9%8A%D8%B1%20%D9%85%D9%88%D9%82%D9%81%22%20OR%20%22%D9%85%D8%B1%D9%83%D8%B2%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA%22%29%20when%3A7d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 15}
+    - {name: "Asharq Al-Awsat (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aaawsat.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
+    - {name: "Al-Majalla (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Amajalla.com%20when%3A7d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Independent Arabia (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aindependentarabia.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
+    - {name: "Al-Quds Al-Arabi (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalquds.co.uk%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
+    - {name: "Al-Araby Al-Jadeed (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalaraby.co.uk%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
+    - {name: "Al-Modon (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalmodon.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
+    - {name: "Al-Jumhuriya (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=site%3Aaljumhuriya.net%20when%3A30d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Al-Akhbar (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aal-akhbar.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 8}
 
 # The Contact page (contact/en.html): its form sends each message to your email through Web3Forms
 # (https://web3forms.com, free, 250 messages a month). Put the access key Web3Forms emails you here; the key is

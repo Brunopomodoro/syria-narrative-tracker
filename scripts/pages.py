@@ -66,7 +66,10 @@ W = {   # the words on the static pages
            "platformNames": {"telegram": "Telegram channels", "telegram_comments": "Telegram comments", "telegram_groups": "Telegram groups", "news": "News sites", "youtube": "YouTube comments", "reddit": "Reddit", "x": "X", "bluesky": "Bluesky", "threads": "Threads", "instagram": "Instagram"},
            "langNames": {"ar": "Arabic", "ku": "Kurdish", "en": "English", "other": "other"},
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
-           "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in"},
+           "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
+           "home": "Home", "stories": "Stories", "expertsTitle": "Expert view", "sourcesTitle": "Sources", "expertsLatest": "In the Expert view",
+           "xDay": "What international and Arab experts said that day", "xWeek": "This week in the Expert view: our analysis of international and Arab reports",
+           "xArea": "The expert view on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
            "people": "الناس", "outlets": "وسائل الإعلام", "reacting": "كيف يتفاعل الناس", "framed": "كيف تُقدَّم القصة", "watch": "انتبه إلى:",
            "sigTitle": "مؤشرات التنسيق:", "sigLevels": {"none": "لا شيء", "low": "ضعيفة", "medium": "متوسطة", "high": "قوية"},
@@ -97,7 +100,10 @@ W = {   # the words on the static pages
            "platformNames": {"telegram": "قنوات تيليغرام", "telegram_comments": "تعليقات تيليغرام", "telegram_groups": "مجموعات تيليغرام", "news": "مواقع إخبارية", "youtube": "تعليقات يوتيوب", "reddit": "ريديت", "x": "X", "bluesky": "بلوسكاي", "threads": "ثريدز", "instagram": "إنستغرام"},
            "langNames": {"ar": "العربية", "ku": "الكردية", "en": "الإنجليزية", "other": "أخرى"},
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
-           "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في"},
+           "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
+           "home": "الرئيسية", "stories": "القصص", "expertsTitle": "قراءات الخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في قراءات الخبراء",
+           "xDay": "ما قاله الخبراء الدوليون والعرب في ذلك اليوم", "xWeek": "هذا الأسبوع في قراءات الخبراء: تحليلنا للتقارير الدولية والعربية",
+           "xArea": "قراءة الخبراء في {area} هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
 }
 
 CSS = """
@@ -122,6 +128,7 @@ ul{padding-inline-start:20px}li{margin-bottom:6px}.flag{color:var(--brass);font-
 td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative;height:10px;background:var(--wash);border-radius:3px;min-width:80px}.bar i{position:absolute;inset-inline-start:0;top:0;height:100%;background:var(--brass);border-radius:3px;opacity:.85}
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.82rem;color:var(--muted);margin-inline-end:8px}
+.xlink{margin:22px 0 8px;font-weight:500}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
 .report .rmeta{margin-top:-6px}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
@@ -264,6 +271,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <link rel="manifest" href="{root}site.webmanifest"><meta name="theme-color" content="#F7F1E3"><meta name="color-scheme" content="only light">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitle'])}" href="{root}{'feed-ar.xml' if lang == 'ar' else 'feed.xml'}">
 <link rel="alternate" type="application/rss+xml" title="{esc(w['feedTitleMonthly'])}" href="{root}{'feed-monthly-ar.xml' if lang == 'ar' else 'feed-monthly.xml'}">
+<link rel="alternate" type="application/rss+xml" title="{esc(w['expertsTab'])} · {esc(site_title(cfg, lang))}" href="{root}{'feed-experts-ar.xml' if lang == 'ar' else 'feed-experts.xml'}">
 {og}
 {ld_script(jsonld)}
 {FONTS}
@@ -272,7 +280,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#experts">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}experts/{lang}/index.html">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -317,6 +325,32 @@ def ld_article(cfg: dict, lang: str, kind: str, headline: str, description: str,
     if about:
         out["about"] = about
     return out
+
+
+def ld_breadcrumbs(cfg: dict, lang: str, crumbs: list) -> dict:
+    """BreadcrumbList: the site's home in the page's language, then (name, path) pairs; the last is the page itself."""
+    base = site_url(cfg)
+    items = [(W[lang]["home"], "ar/" if lang == "ar" else "")] + list(crumbs)
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList",
+            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": str(n)[:110], "item": f"{base}/{path}"} for i, (n, path) in enumerate(items)]}
+
+
+# The tracker's themes per Expert view area (scripts/experts.py AREA_THEMES), for linking story pages to the analysis.
+THEME_AREA = {"security": "security", "israel-south": "security", "coast-alawite": "security", "suwayda-druze": "security",
+              "economy": "economy", "refugees": "economy", "society": "economy",
+              "governance": "governance", "justice": "governance", "northeast-kurdish": "governance", "international": "governance"}
+
+
+def expert_link(lang: str, name: str, label: str) -> str:
+    """A "see also" line to an Expert view page, only when that page exists."""
+    if not (ROOT / "experts" / lang / name).exists():
+        return ""
+    return f'<p class="xlink">→ <a href="../../experts/{lang}/{esc(name)}">{esc(label)}</a></p>'
+
+
+def week_of_date(date: str) -> str:
+    y, w, _ = dt.date.fromisoformat(date[:10]).isocalendar()
+    return f"{y}-W{w:02d}"
 
 
 def index_min_runs(cfg: dict) -> int:
@@ -441,6 +475,10 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
                        for r in reversed(runs[-40:]))
         parts.append(f"<h2>{w['overtime']}</h2><div class=\"tw\"><table><thead><tr><th>{w['update']}</th><th>{w['share']}</th><th>{w['people']}</th><th>{w['outlets']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
     parts.append(related_stories(cfg, key, theme, lang))
+    area = THEME_AREA.get(theme)
+    if area:
+        week = week_of_date(when or key[:10])
+        parts.append(expert_link(lang, f"{week}-{area}.html", w["xArea"].format(area=w["areas"][area])))
     parts.append(f"<p class=\"sub\">{esc(w['storyNote'])}</p>")
     return "\n".join(parts)
 
@@ -463,8 +501,9 @@ def write_story_pages(cfg: dict, latest: dict, narratives: list | None = None, c
             desc = str(t(n, "summary", lang) or "")[:200]
             write(STORIES / lang / f"{key}.html",
                   page(cfg, lang, str(t(n, "title", lang) or key), desc, body, f"stories/{lang}/{key}.html", f"stories/{other}/{key}.html", updated=when,
-                       noindex=thin, jsonld=ld_article(cfg, lang, "Article", t(n, "title", lang) or key, desc, f"stories/{lang}/{key}.html",
-                                                       str(n.get("first_seen") or (runs[0][0] if runs else when)), when, theme_label(cfg, n.get("theme", "other"), lang))))
+                       noindex=thin, jsonld=[ld_article(cfg, lang, "Article", t(n, "title", lang) or key, desc, f"stories/{lang}/{key}.html",
+                                                        str(n.get("first_seen") or (runs[0][0] if runs else when)), when, theme_label(cfg, n.get("theme", "other"), lang)),
+                                             ld_breadcrumbs(cfg, lang, [(W[lang]["stories"], f"stories/{lang}/index.html"), (t(n, "title", lang) or key, f"stories/{lang}/{key}.html")])]))
         count += 1
     return count
 
@@ -532,6 +571,7 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
         parts.append(f"<h2>{w['dailyTone']}</h2><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
         parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
+    parts.append(expert_link(lang, f"{d['week']}.html", w["xWeek"]))
     parts.append(f"<p class=\"sub\">{esc(w['note'])}</p></article>")
     return "\n".join(parts)
 
@@ -543,7 +583,8 @@ def write_weekly_pages(cfg: dict, digest: dict) -> None:
         write(WEEKLY / lang / f"{digest['week']}.html",
               page(cfg, lang, str(t(digest, "title", lang)), desc, weekly_body(cfg, digest, lang),
                    f"weekly/{lang}/{digest['week']}.html", f"weekly/{other}/{digest['week']}.html", updated=digest.get("generated_at"),
-                   jsonld=ld_article(cfg, lang, "Report", t(digest, "title", lang), desc, f"weekly/{lang}/{digest['week']}.html", digest.get("generated_at", ""), digest.get("generated_at", ""))))
+                   jsonld=[ld_article(cfg, lang, "Report", t(digest, "title", lang), desc, f"weekly/{lang}/{digest['week']}.html", digest.get("generated_at", ""), digest.get("generated_at", "")),
+                           ld_breadcrumbs(cfg, lang, [(W[lang]["digests"], f"weekly/{lang}/index.html"), (t(digest, "title", lang), f"weekly/{lang}/{digest['week']}.html")])]))
 
 
 def write_weekly_listing(cfg: dict, digests: list) -> None:
@@ -799,7 +840,8 @@ def write_monthly_pages(cfg: dict, review: dict) -> None:
         write(MONTHLY / lang / f"{review['month']}.html",
               page(cfg, lang, str(t(review, "title", lang)), desc, monthly_body(cfg, review, lang),
                    f"monthly/{lang}/{review['month']}.html", f"monthly/{other}/{review['month']}.html", updated=review.get("generated_at"),
-                   jsonld=ld_article(cfg, lang, "Report", t(review, "title", lang), desc, f"monthly/{lang}/{review['month']}.html", review.get("generated_at", ""), review.get("generated_at", ""))))
+                   jsonld=[ld_article(cfg, lang, "Report", t(review, "title", lang), desc, f"monthly/{lang}/{review['month']}.html", review.get("generated_at", ""), review.get("generated_at", "")),
+                           ld_breadcrumbs(cfg, lang, [(W[lang]["reviews"], f"monthly/{lang}/index.html"), (t(review, "title", lang), f"monthly/{lang}/{review['month']}.html")])]))
 
 
 def write_monthly_listing(cfg: dict, reviews: list) -> None:
@@ -903,6 +945,7 @@ def daily_body(cfg: dict, s: dict, lang: str) -> str:
              f"<section class=\"findings\"><h2>{w['dailyMood']}</h2><p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p></section>",
              f"<section class=\"numbers\"><h2>{w['dayNumbers']}</h2>{kpis}" + (f'<div class="charts"><figure><figcaption>{w["chartThemes"]}</figcaption>{bars}</figure></div>' if bars else "") + "</section>",
              f"<section class=\"stories\"><h2>{w['storiesOfDay']}</h2><ol>{''.join(items)}</ol></section>",
+             expert_link(lang, f"{date}.html", w["xDay"]),
              f"<p class=\"sub\">{esc(w['storyNote'])}</p></article>"]
     return "\n".join(parts)
 
@@ -918,8 +961,9 @@ def write_daily_pages(cfg: dict, dates: list) -> int:
             desc = str(t(s["overall"], "brief", lang) or "")[:200]
             write(DAILY / lang / f"{date}.html", page(cfg, lang, f"{W[lang]['daily']} · {fmt_date(date, lang)}", desc, daily_body(cfg, s, lang),
                                                     f"daily/{lang}/{date}.html", f"daily/{other}/{date}.html", updated=s["last"].get("generated_at"),
-                                                    jsonld=ld_article(cfg, lang, "Article", f"{W[lang]['daily']} · {fmt_date(date, lang)}", desc, f"daily/{lang}/{date}.html",
-                                                                      f"{date}T00:00:00Z", s["last"].get("generated_at", ""))))
+                                                    jsonld=[ld_article(cfg, lang, "Article", f"{W[lang]['daily']} · {fmt_date(date, lang)}", desc, f"daily/{lang}/{date}.html",
+                                                                       f"{date}T00:00:00Z", s["last"].get("generated_at", "")),
+                                                            ld_breadcrumbs(cfg, lang, [(W[lang]["dailies"], f"daily/{lang}/index.html"), (fmt_date(date, lang), f"daily/{lang}/{date}.html")])]))
         n += 1
     return n
 
@@ -977,6 +1021,20 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
     write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
 
 
+def expert_prerender(lang: str) -> str:
+    """The newest Expert view pages (daily brief, week, month) as plain links for the crawlable home block."""
+    index = archive._load(archive.DATA / "experts" / "analyses" / "index.json", [])
+    rows = []
+    for kind in ("day", "week", "month"):
+        x = max((y for y in index if y.get("kind") == kind), key=lambda y: y["from"], default=None)
+        if not x:
+            continue
+        title = x.get("overall_title_ar" if lang == "ar" else "overall_title") or x.get("overall_title") or ""
+        lede = x.get("overall_lede_ar" if lang == "ar" else "overall_lede") or ""
+        rows.append(f'<li><a href="experts/{lang}/{esc(x["id"])}.html">{esc(title)}</a> {esc(lede)}</li>')
+    return f"<h3>{W[lang]['expertsLatest']}</h3><ul>{''.join(rows)}</ul>" if rows else ""
+
+
 def prerender_index(cfg: dict, latest: dict) -> bool:
     """Write the current analysis into index.html as plain HTML, for crawlers and link previews; the site's
     script replaces it on load. Returns whether index.html changed."""
@@ -994,8 +1052,9 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
             key = n.get("key") or archive.story_key(n)
             items.append(f"<li><a href=\"stories/{lang}/{esc(key)}.html\">{esc(t(n, 'title', lang))}</a> {esc(t(n, 'summary', lang))}</li>")
         mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
+        xp = expert_prerender(lang)
         sections.append(f"""<section class="pre" lang="{lang}" dir="{'rtl' if lang == 'ar' else 'ltr'}"><h2>{w['prerender']} · {esc(fmt_date(latest.get('generated_at', ''), lang, True))}</h2>
-<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul><p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="daily/{lang}/index.html">{w['dailies']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a></p></section>""")
+<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul>{xp}<p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="daily/{lang}/index.html">{w['dailies']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a> · <a href="experts/{lang}/index.html">{w['expertsTitle']}</a> · <a href="sources/{lang}.html">{w['sourcesTitle']}</a></p></section>""")
     block = start + "\n" + "\n".join(sections) + "\n" + end
     new = html_text[:html_text.index(start)] + block + html_text[html_text.index(end) + len(end):]
     j0, j1 = "<!--jsonld-->", "<!--/jsonld-->"
@@ -1048,7 +1107,7 @@ def write_arabic_home(cfg: dict, html_text: str) -> None:
     level up. The site's script sees the /ar/ path, opens in Arabic and adjusts the links it writes."""
     base = site_url(cfg)
     a = html_text.replace('<html lang="en" dir="ltr">', '<html lang="ar" dir="rtl">', 1)
-    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy|contact)[^"]*)"',
+    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy|contact|experts|sources)[^"]*)"',
                lambda m: f'{m.group(1)}../{m.group(2)}"', a)
     en, ar = HOME_TEXT["en"], HOME_TEXT["ar"]
     a = a.replace(f"<title>{en['title']}</title>", f"<title>{ar['title']}</title>", 1)
@@ -1239,7 +1298,7 @@ def write_privacy_pages(cfg: dict) -> None:
 
 SOURCES_WORDS = {
     "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the organisations and outlets behind the Expert view.",
-           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "The Expert view: international media, think tanks and organisations",
+           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "The Expert view: international and Arab media, think tanks and organisations",
            "telegram": "Telegram channels", "news": "News sites", "youtube": "YouTube", "reddit": "Reddit", "bluesky": "Bluesky", "x": "X",
            "ytSearch": "Comments under the videos found by these searches", "ytChannels": "and under the newest videos of these channels",
            "search": "Posts found by keyword searches", "comments": "Telegram comments and reactions on the channels above, through a Telegram account",
@@ -1247,7 +1306,7 @@ SOURCES_WORDS = {
            "via": "read through Google News searches limited to its site",
            "note": "Posts by individuals are read only in aggregate: they are never stored, quoted or linked. The list changes as sources are added or stop working; every change to the tracker's sources is recorded in the method changelog on the About page."},
     "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، والجهات ووسائل الإعلام التي تستند إليها قراءات الخبراء.",
-           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "قراءات الخبراء: وسائل إعلام ومراكز أبحاث ومنظمات دولية",
+           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "قراءات الخبراء: وسائل إعلام ومراكز أبحاث ومنظمات دولية وعربية",
            "telegram": "قنوات تيليغرام", "news": "مواقع إخبارية", "youtube": "يوتيوب", "reddit": "ريديت", "bluesky": "بلوسكاي", "x": "إكس",
            "ytSearch": "التعليقات على الفيديوهات التي تُظهرها عمليات البحث هذه", "ytChannels": "وعلى أحدث فيديوهات هذه القنوات",
            "search": "منشورات تُظهرها عمليات بحث بالكلمات المفتاحية", "comments": "تعليقات تيليغرام وتفاعلاته على القنوات أعلاه، عبر حساب تيليغرام",
@@ -1321,7 +1380,8 @@ def write_sources_pages(cfg: dict) -> None:
     for lang in LANGS:
         w, other = SOURCES_WORDS[lang], "ar" if lang == "en" else "en"
         write(ROOT / "sources" / f"{lang}.html", page(cfg, lang, w["title"], w["sub"], sources_body(cfg, lang),
-                                                      f"sources/{lang}.html", f"sources/{other}.html", kind="website"))
+                                                      f"sources/{lang}.html", f"sources/{other}.html", kind="website",
+                                                      jsonld=ld_breadcrumbs(cfg, lang, [(w["title"], f"sources/{lang}.html")])))
 
 
 def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
