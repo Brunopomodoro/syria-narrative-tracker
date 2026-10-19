@@ -1554,7 +1554,8 @@ async function loadExports() {
 }
 async function loadMethod() {
   if (state.method) return;
-  const [m, v] = await Promise.all([getJSON("data/methodology.json").catch(() => null), getJSON("data/validation.json").catch(() => null)]);
+  const m = await getJSON("data/methodology.json").catch(() => null);
+  const v = m?.validation ? await getJSON("data/validation.json").catch(() => null) : null;
   state.method = m || { missing: true }; state.validation = v;
   if (state.view === "about") render();
 }

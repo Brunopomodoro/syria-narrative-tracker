@@ -1397,7 +1397,7 @@ def write_sources_pages(cfg: dict) -> None:
     for lang in LANGS:
         w, other = SOURCES_WORDS[lang], "ar" if lang == "en" else "en"
         write(ROOT / "sources" / f"{lang}.html", page(cfg, lang, w["title"], w["sub"], sources_body(cfg, lang),
-                                                      f"sources/{lang}.html", f"sources/{other}.html", kind="website",
+                                                      f"sources/{lang}.html", f"sources/{other}.html", root="../", kind="website",
                                                       jsonld=ld_breadcrumbs(cfg, lang, [(w["title"], f"sources/{lang}.html")])))
 
 
