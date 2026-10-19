@@ -54,6 +54,7 @@ MONTH_DATE = re.compile(f"(?:(?<=[{D}] )|(?<=شهر ))({_M})(?![{L}])|({_M})(?= 
 Q = "'\"“”‘’"                   # straight and curly quotation marks
 QUOTED = re.compile(f"(?:(?<=^)|(?<=[\\s(وبلفك]))[{Q}]([^{Q}«»\\n]{{1,120}}?)[{Q}](?=$|[\\s.,،؛:!?؟)])")
 DIGITS = str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩")
+LINK_TARGET = re.compile(r"(\]\([0-9a-f]{14}\))")         # the item id of an Expert view link, never changed
 NUMBER = re.compile(r"(?<![A-Za-z0-9_\-/])\d+(?:[.,]\d+)*%?(?![A-Za-z0-9_\-/])")   # not inside i24NEWS or COVID-19
 
 
@@ -82,7 +83,7 @@ def tidy(v):
                 v = re.sub(f"(?<![{L}]){re.escape(wrong)}(?![{L}])", t["ar"], v)
     v = MONTH_DATE.sub(lambda m: MONTHS[m.group(1) or m.group(2)], v)
     v = QUOTED.sub(lambda m: f"«{m.group(1).strip()}»" if ARABIC.search(m.group(1)) else m.group(0), v)
-    v = NUMBER.sub(_number, v)
+    v = "".join(part if LINK_TARGET.fullmatch(part) else NUMBER.sub(_number, part) for part in LINK_TARGET.split(v))
     v = re.sub(f"(?<=[{L}»\u066A\u0660-\u0669])\\s*,(?=\\s)", "،", v)            # a Latin comma after Arabic text
     v = re.sub(f"(?<=[{L}])\\s?\\?", "؟", v)
     return v
