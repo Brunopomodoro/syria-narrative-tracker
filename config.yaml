@@ -156,9 +156,9 @@ experts:
     - {name: "Russian International Affairs Council (via Google News)", kind: thinktank, lang: ru, org: "RIAC", url: "https://news.google.com/rss/search?q=%D0%A1%D0%B8%D1%80%D0%B8%D1%8F%20site%3Arussiancouncil.ru%20when%3A30d&hl=ru&gl=RU&ceid=RU%3Aru", filter: false}
     - {name: "Valdai Discussion Club (via Google News)", kind: thinktank, lang: ru, org: "Valdai Club", url: "https://news.google.com/rss/search?q=%D0%A1%D0%B8%D1%80%D0%B8%D1%8F%20site%3Avaldaiclub.com%20when%3A30d&hl=ru&gl=RU&ceid=RU%3Aru", filter: false}
     # Persian
-    - {name: "BBC Persian (via Google News)", kind: media, lang: fa, org: "BBC Persian", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%DB%8C%D9%87%20site%3Abbc.com%2Fpersian%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, max: 6}
-    - {name: "IRNA (via Google News)", kind: media, lang: fa, org: "IRNA", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%DB%8C%D9%87%20site%3Airna.ir%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, max: 6}
-    - {name: "Tasnim (via Google News)", kind: media, lang: fa, org: "Tasnim", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%DB%8C%D9%87%20site%3Atasnimnews.com%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, max: 6}
+    - {name: "BBC Persian", kind: media, lang: fa, org: "BBC Persian", url: "https://feeds.bbci.co.uk/persian/rss.xml", max: 6}
+    - {name: "IRNA", kind: media, lang: fa, org: "IRNA", url: "https://www.irna.ir/rss", max: 6}
+    - {name: "Tasnim", kind: media, lang: fa, org: "Tasnim", url: "https://www.tasnimnews.com/fa/rss/feed/0/7/0", max: 6}
     # Chinese
     - {name: "Xinhua (Chinese) (via Google News)", kind: media, lang: zh, org: "Xinhua", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Anews.cn%20when%3A7d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
     - {name: "Global Times (Huanqiu) (via Google News)", kind: media, lang: zh, org: "Global Times", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Ahuanqiu.com%20when%3A7d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
