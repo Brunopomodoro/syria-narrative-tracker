@@ -85,7 +85,7 @@
   .tab { white-space: nowrap; }
   @media (max-width: 640px) {
     .top nav { width: 100%; flex-wrap: wrap; justify-content: space-between; row-gap: 10px; gap: 14px; }
-    .tabs { gap: 14px; }
+    .tabs { gap: 8px 14px; flex-wrap: wrap; max-width: 100%; }
     #updated { flex-basis: 100%; order: 3; }
   }
   .tab[aria-current] { color: var(--ink); border-bottom-color: var(--brass); }
@@ -240,6 +240,19 @@
   .rest-h { display: flex; justify-content: space-between; gap: 16px; margin: 0 0 6px; font-size: 1.2rem; color: var(--muted); }
   .rest-t { margin: 0 0 6px; max-width: 70ch; line-height: 1.6; }
   .rest-n { margin: 0 0 12px; color: var(--muted); font-size: .88rem; max-width: 70ch; }
+
+  /* expert view */
+  .experts h2 { margin-bottom: 4px; }
+  .e-week { border-inline-start: 3px solid var(--brass); padding-inline-start: 16px; margin: 22px 0 34px; max-width: 72ch; }
+  .e-week h3 { font-family: var(--display); font-size: 1.5rem; line-height: 1.25; margin: 4px 0 10px; }
+  .e-week h4 { margin: 16px 0 4px; font-size: 1rem; }
+  .e-week p { margin: 0 0 8px; line-height: 1.65; }
+  .e-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+  .e-filters .seg { flex-wrap: wrap; max-width: 100%; border-radius: 18px; }
+  .e-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 16px; max-width: 76ch; }
+  .e-list a { font-size: 1.05rem; line-height: 1.4; color: var(--ink); }
+  .e-list .meta { display: block; color: var(--muted); font-size: .85rem; margin: 2px 0; }
+  .e-sum { display: block; line-height: 1.55; }
 
   /* what to watch */
   .watch { padding: 0 0 40px; }
@@ -410,7 +423,7 @@
     <a class="brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="mark" aria-hidden="true" focusable="false"><path d="M18 6H46A14 14 0 0 1 60 20V36A14 14 0 0 1 46 50H27L13 60L18 50A14 14 0 0 1 4 36V20A14 14 0 0 1 18 6Z" fill="var(--brass)"/><polyline points="13 28 22 28 27 19 32 38 37 14 42 34 46 28 51 28" fill="none" stroke="var(--paper)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg><h1 id="site-title">Syria Narrative Tracker</h1></a>
     <nav>
       <span id="updated" aria-live="polite"></span>
-      <span class="tabs"><a href="#" id="home-link" class="tab"></a><a href="#trends" id="trends-link" class="tab"></a><a href="#reports" id="reports-link" class="tab"></a><a href="#data" id="data-link" class="tab"></a><a href="#about" id="about-link" class="tab"></a><a href="../support/en.html" id="support-link" class="tab" hidden></a><a href="../contact/en.html" id="contact-link" class="tab"></a></span>
+      <span class="tabs"><a href="#" id="home-link" class="tab"></a><a href="#trends" id="trends-link" class="tab"></a><a href="#reports" id="reports-link" class="tab"></a><a href="#experts" id="experts-link" class="tab"></a><a href="#data" id="data-link" class="tab"></a><a href="#about" id="about-link" class="tab"></a><a href="../support/en.html" id="support-link" class="tab" hidden></a><a href="../contact/en.html" id="contact-link" class="tab"></a></span>
       <button class="lang" id="lang-btn"></button>
     </nav>
   </header>
@@ -425,6 +438,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="../assets/app.js?v=20261017"></script>
+<script src="../assets/app.js?v=20261019"></script>
 </body>
 </html>

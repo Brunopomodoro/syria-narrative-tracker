@@ -515,6 +515,15 @@ For a DOI that journals accept, use Zenodo (free, run by CERN):
 
 Make a new release every month or two; each one becomes a new versioned snapshot under the same concept DOI.
 
+### Expert view
+
+The **Expert view** tab collects what English-language media, think tanks and international organisations publish about Syria's security, economy and governance (`scripts/experts.py`). After every update it reads the feeds listed under `experts: sources:` in `config.yaml`; Claude files each new item under security, economy or governance (or sets it aside) and writes one sentence on it in English and Arabic. Items are linked, never republished, and kept for 180 days in `data/experts/library.json`. Once a week, after the weekly digest, Claude writes an analysis of that week's items per area, where sources agree and differ, their recommendations, and how the expert view compares with what Syrians were discussing on the tracker (`experts/en/<week>.html`).
+
+- **Sources.** The status of every source after the last update is in `data/experts/library.json` under `sources`. To add one, add a line with its name, kind (`intl`, `thinktank` or `media`) and feed URL; `filter: true` (the default) keeps only items that mention Syria, for feeds that cover more.
+- **Cost.** A cent or two a day for the one-line summaries, and about 10 cents for each weekly analysis.
+- **By hand.** Maintenance tasks `experts-collect` (collect now) and `experts-weekly` (write the analysis of the last complete week).
+- **Limits.** English-language and mostly Western-based sources, and no paywalled outlets; the page says so.
+
 ### What to watch
 
 Above the stories, the home page lists up to five things worth keeping an eye on, worked out by `scripts/watch.py` from the numbers of the last updates, with no extra Claude call:
