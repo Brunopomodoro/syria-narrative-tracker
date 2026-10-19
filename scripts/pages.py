@@ -477,7 +477,7 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
     names = n.get("sources") or []
     links = [e for e in (n.get("examples") or []) if str(e.get("url", "")).startswith("https://")]
     if names or links:
-        src = ", ".join(f'<a href="{esc(e["url"])}" rel="noopener nofollow">{esc(e["source"])}</a>' for e in links)
+        src = ", ".join(f'<a href="{esc(e["url"])}" target="_blank" rel="noopener nofollow">{esc(e["source"])}</a>' for e in links)
         rest = [s for s in names if s not in {e["source"] for e in links}]
         parts.append(f"<h2>{w['where']}</h2><p>{src}{(', ' if src and rest else '') + esc(', '.join(rest))}</p>")
     if runs:
@@ -781,10 +781,10 @@ def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = Non
     fb = f"https://www.facebook.com/sharer/sharer.php?u={q(url)}" + (f"&amp;hashtag={q('#' + tags[0])}" if tags else "")
     tg = text + ("\n" + " ".join("#" + tag for tag in tags) if tags else "")
     links = ([f'<a class="pdf" href="{esc(pdf)}" download>{w["pdf"]}</a>'] if pdf else []) + [
-        f'<a href="{x}" rel="noopener">X</a>',
-        f'<a href="{fb}" rel="noopener">Facebook</a>',
-        f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(tg)}" rel="noopener">Telegram</a>',
-        f'<a href="https://wa.me/?text={q(text + " " + url)}" rel="noopener">WhatsApp</a>']
+        f'<a href="{x}" target="_blank" rel="noopener">X</a>',
+        f'<a href="{fb}" target="_blank" rel="noopener">Facebook</a>',
+        f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(tg)}" target="_blank" rel="noopener">Telegram</a>',
+        f'<a href="https://wa.me/?text={q(text + " " + url)}" target="_blank" rel="noopener">WhatsApp</a>']
     nl = str(cfg.get("newsletter_url") or "").strip()
     if nl.startswith("https://"):
         links.append(f'<a href="{esc(nl)}" rel="noopener">{w["subscribe"]}</a>')
@@ -1346,11 +1346,11 @@ def sources_body(cfg: dict, lang: str) -> str:
     w = SOURCES_WORDS[lang]
     kinds = {k["id"]: (k["label_ar"] if lang == "ar" else k["label"]) for k in archive.KINDS}
     lab = lambda x: (x.get("label_ar") if lang == "ar" and x.get("label_ar") else x.get("label")) or x.get("name") or ""
-    link = lambda d: f'<a href="https://{esc(d)}" rel="noopener nofollow" dir="ltr">{esc(d)}</a>'
+    link = lambda d: f'<a href="https://{esc(d)}" target="_blank" rel="noopener nofollow" dir="ltr">{esc(d)}</a>'
     parts = [f"<h1>{w['title']}</h1><p>{esc(w['sub'])}</p>", f"<h2>{w['tracker']}</h2>"]
     tg = cfg.get("telegram_channels") or []
     if tg:
-        rows = "".join(f'<tr><td>{esc(lab(c))}</td><td>{esc(kinds.get(c.get("kind"), ""))}</td><td><a href="https://t.me/{esc(c["name"])}" rel="noopener nofollow" dir="ltr">t.me/{esc(c["name"])}</a></td></tr>' for c in tg)
+        rows = "".join(f'<tr><td>{esc(lab(c))}</td><td>{esc(kinds.get(c.get("kind"), ""))}</td><td><a href="https://t.me/{esc(c["name"])}" target="_blank" rel="noopener nofollow" dir="ltr">t.me/{esc(c["name"])}</a></td></tr>' for c in tg)
         parts.append(f"<h3>{w['telegram']} ({num(len(tg), lang)})</h3><div class=\"tw\"><table><tbody>{rows}</tbody></table></div>")
     if (cfg.get("telegram_api") or {}).get("enabled"):
         parts.append(f"<p class=\"sub\">{esc(w['comments'])}</p>")
@@ -1360,11 +1360,11 @@ def sources_body(cfg: dict, lang: str) -> str:
         parts.append(f"<h3>{w['news']} ({num(len(feeds), lang)})</h3><div class=\"tw\"><table><tbody>{rows}</tbody></table></div>")
     yt = cfg.get("youtube") or {}
     if yt.get("enabled"):
-        chans = ", ".join(f'<a href="https://www.youtube.com/{esc(c["handle"])}" rel="noopener nofollow">{esc(lab(c))}</a>' for c in yt.get("channels") or [])
+        chans = ", ".join(f'<a href="https://www.youtube.com/{esc(c["handle"])}" target="_blank" rel="noopener nofollow">{esc(lab(c))}</a>' for c in yt.get("channels") or [])
         parts.append(f"<h3>{w['youtube']}</h3><p>{esc(w['ytSearch'])}: <span dir=\"auto\">{esc(' · '.join(yt.get('search_terms') or []))}</span>" + (f"; {esc(w['ytChannels'])}: {chans}" if chans else "") + ".</p>")
     rd = cfg.get("reddit") or {}
     if rd.get("enabled"):
-        subs = ", ".join(f'<a href="https://www.reddit.com/r/{esc(str(f["subreddit"]).removeprefix("r/"))}" rel="noopener nofollow" dir="ltr">r/{esc(str(f["subreddit"]).removeprefix("r/"))}</a>' for f in rd.get("feeds") or [])
+        subs = ", ".join(f'<a href="https://www.reddit.com/r/{esc(str(f["subreddit"]).removeprefix("r/"))}" target="_blank" rel="noopener nofollow" dir="ltr">r/{esc(str(f["subreddit"]).removeprefix("r/"))}</a>' for f in rd.get("feeds") or [])
         parts.append(f"<h3>{w['reddit']}</h3><p>{subs}</p>")
     bs = cfg.get("bluesky") or {}
     if bs.get("enabled"):
@@ -1446,7 +1446,7 @@ def timeline_body(cfg: dict, lang: str) -> str:
         week = week_of_date(e["date"])
         if (ROOT / "experts" / lang / f"{week}.html").exists():
             links.append(f'<a href="../experts/{lang}/{week}.html">{w["experts"]}</a>')
-        src = ", ".join(f'<a href="{esc(x["url"])}" rel="noopener nofollow">{esc(x["name"])}</a>' for x in e.get("sources") or [])
+        src = ", ".join(f'<a href="{esc(x["url"])}" target="_blank" rel="noopener nofollow">{esc(x["name"])}</a>' for x in e.get("sources") or [])
         meta = f'{esc(w["areas"].get(e["area"], ""))}' + (f' · {esc(w["regions"].get(e.get("region"), ""))}' if w["regions"].get(e.get("region")) else "") + (f' · <b>{w["key"]}</b>' if e.get("key") else "")
         parts.append(f'<article class="ev a-{esc(e["area"])}{" key" if e.get("key") else ""}" id="e-{esc(e["date"])}">'
                      f'<p class="evd"><time datetime="{esc(e["date"])}">{esc(fmt_date(e["date"], lang))}</time> · <span class="sub">{meta}</span></p>'
