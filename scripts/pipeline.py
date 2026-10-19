@@ -41,6 +41,7 @@ import weekly  # noqa: E402   (the weekly digest)
 import monthly  # noqa: E402  (the monthly review)
 import signals  # noqa: E402  (coordination signals per story)
 import watch  # noqa: E402    (what to watch: patterns in the last updates)
+import experts  # noqa: E402  (expert view: media, think tank and international reports, and their weekly analysis)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -1389,6 +1390,7 @@ def main() -> int:
     state = {"last_ids": sorted(seen_key(p["id"]) for p in sample),
              "first_seen": {k: v for k, v in first_seen.items() if k in alive},
              "weekly_attempts": state.get("weekly_attempts") or {},
+             "experts_attempts": state.get("experts_attempts") or {},
              "monthly_attempts": state.get("monthly_attempts") or {}}
 
     save_json(latest_path, latest)
@@ -1402,6 +1404,9 @@ def main() -> int:
     if weekly.maybe_generate(cfg, state, log):
         save_json(state_path, state)
     if monthly.maybe_generate(cfg, state, log):
+        save_json(state_path, state)
+    experts.update(cfg, log)                    # the expert view's library: new reports and articles, one line each
+    if experts.maybe_generate(cfg, state, log):  # and its weekly analysis, once a week has ended
         save_json(state_path, state)
     try:
         pages.publish(cfg, latest)

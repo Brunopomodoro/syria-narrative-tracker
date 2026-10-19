@@ -56,7 +56,7 @@ W = {   # the words on the static pages
            "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly digests. It describes what was said, not what is true.",
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
-           "reportsTab": "Reports", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
+           "reportsTab": "Reports", "expertsTab": "Expert view", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
            "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "related": "Related stories", "contact": "Contact", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
@@ -87,7 +87,7 @@ W = {   # the words on the static pages
            "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن الملخصات الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
-           "reportsTab": "التقارير", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
+           "reportsTab": "التقارير", "expertsTab": "قراءات الخبراء", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
            "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "related": "قصص ذات صلة", "contact": "اتصل بنا", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
@@ -272,7 +272,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#experts">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -968,6 +968,8 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
         for lang in LANGS:
             if (DAILY / lang / f"{date}.html").exists():
                 urls.append((f"{base}/daily/{lang}/{date}.html", date, "yearly", "0.4"))
+    import experts                                   # imported here: experts imports this module
+    urls += experts.sitemap_urls(base)
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n" for u, m, c, p in urls[:49000])
     write(ROOT / "sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}</urlset>\n')
     write(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")

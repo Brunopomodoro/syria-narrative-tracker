@@ -44,6 +44,49 @@ contact_url: "https://www.syrianpulse.org/contact/en.html"
 seo:
   index_min_runs: 2
 
+# The Expert view tab (scripts/experts.py): reports and articles about Syria's security, economy and governance from
+# English-language media, think tanks and international organisations, each summarised in one line and linked, and a
+# weekly analysis set against what Syrians were saying. kind: intl, thinktank or media. filter: true keeps only items
+# that mention Syria (for feeds that cover more than Syria). The status of every source after each update is in
+# data/experts/library.json ("sources"); a source that keeps failing can be fixed or removed here.
+experts:
+  enabled: true
+  weekly: true
+  window_days: 10        # items older than this when first seen are ignored
+  keep_days: 180
+  max_new_per_run: 80
+  sources:
+    # international organisations
+    - {name: "ReliefWeb: Syria", kind: intl, url: "https://reliefweb.int/updates/rss.xml?advanced-search=%28PC226%29", filter: false}
+    - {name: "ReliefWeb: Syria analysis", kind: intl, url: "https://reliefweb.int/updates/rss.xml?advanced-search=%28PC226%29_%28F5%29", filter: false}
+    - {name: "UN News: Middle East", kind: intl, org: "UN News", url: "https://news.un.org/feed/subscribe/en/news/region/middle-east/feed/rss.xml"}
+    - {name: "Human Rights Watch", kind: intl, org: "Human Rights Watch", url: "https://www.hrw.org/rss"}
+    # think tanks
+    - {name: "International Crisis Group", kind: thinktank, org: "International Crisis Group", url: "https://www.crisisgroup.org/rss"}
+    - {name: "Carnegie Middle East Center", kind: thinktank, org: "Carnegie Middle East Center", url: "https://carnegieendowment.org/rss/feeds/middle-east"}
+    - {name: "Chatham House", kind: thinktank, org: "Chatham House", url: "https://www.chathamhouse.org/rss/all"}
+    - {name: "Atlantic Council", kind: thinktank, org: "Atlantic Council", url: "https://www.atlanticcouncil.org/feed/"}
+    - {name: "Washington Institute", kind: thinktank, org: "The Washington Institute", url: "https://www.washingtoninstitute.org/rss.xml"}
+    - {name: "Middle East Institute", kind: thinktank, org: "Middle East Institute", url: "https://www.mei.edu/rss.xml"}
+    - {name: "ECFR", kind: thinktank, org: "European Council on Foreign Relations", url: "https://ecfr.eu/feed/"}
+    - {name: "Brookings", kind: thinktank, org: "Brookings", url: "https://www.brookings.edu/feed/"}
+    - {name: "Century International", kind: thinktank, org: "Century International", url: "https://tcf.org/feed/"}
+    - {name: "COAR", kind: thinktank, org: "COAR", url: "https://coar-global.org/feed/", filter: false}
+    - {name: "Etana", kind: thinktank, org: "Etana", url: "https://etanasyria.org/feed/", filter: false}
+    - {name: "The Syria Report", kind: thinktank, org: "The Syria Report", url: "https://syria-report.com/feed/", filter: false}
+    # media
+    - {name: "BBC: Middle East", kind: media, org: "BBC", url: "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml"}
+    - {name: "The Guardian: Syria", kind: media, org: "The Guardian", url: "https://www.theguardian.com/world/syria/rss", filter: false}
+    - {name: "Al Jazeera English", kind: media, org: "Al Jazeera", url: "https://www.aljazeera.com/xml/rss/all.xml"}
+    - {name: "France 24: Middle East", kind: media, org: "France 24", url: "https://www.france24.com/en/middle-east/rss"}
+    - {name: "Al-Monitor", kind: media, org: "Al-Monitor", url: "https://www.al-monitor.com/rss"}
+    - {name: "Middle East Eye", kind: media, org: "Middle East Eye", url: "https://www.middleeasteye.net/rss"}
+    - {name: "The National", kind: media, org: "The National", url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml"}
+    - {name: "The New Arab", kind: media, org: "The New Arab", url: "https://www.newarab.com/rss"}
+    - {name: "New Lines", kind: media, org: "New Lines", url: "https://newlinesmag.com/feed/"}
+    - {name: "Syria Direct", kind: media, org: "Syria Direct", url: "https://syriadirect.org/feed/", filter: false}
+    - {name: "Google News: Syria", kind: media, url: "https://news.google.com/rss/search?q=Syria%20when%3A2d&hl=en-US&gl=US&ceid=US%3Aen"}
+
 # The Contact page (contact/en.html): its form sends each message to your email through Web3Forms
 # (https://web3forms.com, free, 250 messages a month). Put the access key Web3Forms emails you here; the key is
 # meant to be public, your email address is not in it. Empty: the page points to contact_url instead.
@@ -293,6 +336,9 @@ method_changelog:
   - date: 2026-10-17
     note: "\"Everything else\": the posts that belong to no story are described in a sentence or two at the end of the stories, with their share, so the shares add up to 100%. It is a mix of unrelated posts and gets no tone, trend or story page."
     note_ar: "«كل ما عدا ذلك»: تُوصف المنشورات التي لا تنتمي إلى أي قصة في جملة أو جملتين في آخر القصص، مع حصتها، كي يبلغ مجموع الحصص 100٪. إنها خليط من منشورات لا رابط بينها، فلا تُحسب لها نبرة ولا مسار ولا صفحة قصة."
+  - date: 2026-10-19
+    note: "New Expert view tab: reports and articles about Syria's security, economy and governance from English-language media, think tanks and international organisations, each summarised in one line and linked, and a weekly analysis comparing the expert view with what Syrians were discussing."
+    note_ar: "علامة تبويب جديدة «قراءات الخبراء»: تقارير ومقالات عن الأمن والاقتصاد والحوكمة في سوريا من وسائل إعلام ناطقة بالإنجليزية ومراكز أبحاث ومنظمات دولية، يُلخَّص كل منها في سطر مع رابط إليه، وتحليل أسبوعي يقارن قراءات الخبراء بما كان السوريون يناقشونه."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
