@@ -129,6 +129,14 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .day{margin:22px 0 6px;font-weight:500;color:var(--muted);font-size:.9rem}.list{list-style:none;padding:0}.list li{padding:8px 0;border-top:1px solid var(--rule);margin:0}.list .meta{display:block;color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;border:1px solid var(--rule);border-radius:999px;padding:1px 10px;font-size:.82rem;color:var(--muted);margin-inline-end:8px}
 .xlink{margin:22px 0 8px;font-weight:500}
+.tlf{position:absolute;opacity:0;pointer-events:none}.tlbar{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.tlbar label{border:1px solid var(--rule);border-radius:999px;padding:5px 14px;font-size:.88rem;cursor:pointer;color:var(--muted)}
+#tlf-all:checked~.tlbar label[for=tlf-all],#tlf-security:checked~.tlbar label[for=tlf-security],#tlf-economy:checked~.tlbar label[for=tlf-economy],#tlf-governance:checked~.tlbar label[for=tlf-governance]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+#tlf-security:checked~.tl .ev:not(.a-security),#tlf-economy:checked~.tl .ev:not(.a-economy),#tlf-governance:checked~.tl .ev:not(.a-governance){display:none}
+.tlf:focus-visible~.tlbar{outline:2px solid var(--brass);outline-offset:4px}
+.tlm{margin:34px 0 6px;font-size:1.05rem;color:var(--muted);border-bottom:1px solid var(--rule);padding-bottom:6px}
+.ev{border-inline-start:2px solid var(--rule);padding:4px 0 4px 16px;margin:16px 0}html[dir=rtl] .ev{padding:4px 16px 4px 0}
+.ev.key{border-inline-start:3px solid var(--brass)}.ev h3{margin:2px 0 6px;font-size:1.12rem}.ev p{margin:0 0 6px}.evd{font-size:.88rem}.ev .xlink{margin:6px 0 0;font-size:.9rem}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
 .report .rmeta{margin-top:-6px}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
@@ -280,7 +288,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}experts/{lang}/index.html">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}experts/{lang}/index.html">{w['expertsTab']}</a><a href="{root}timeline/{lang}.html">{TIMELINE_WORDS[lang]['nav']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -1014,6 +1022,7 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
                 urls.append((f"{base}/daily/{lang}/{date}.html", date, "yearly", "0.4"))
     for lang in LANGS:
         urls.append((f"{base}/sources/{lang}.html", today, "monthly", "0.5"))
+        urls.append((f"{base}/timeline/{lang}.html", today, "weekly", "0.8"))
     import experts                                   # imported here: experts imports this module
     urls += experts.sitemap_urls(base)
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n" for u, m, c, p in urls[:49000])
@@ -1054,7 +1063,7 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
         mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
         xp = expert_prerender(lang)
         sections.append(f"""<section class="pre" lang="{lang}" dir="{'rtl' if lang == 'ar' else 'ltr'}"><h2>{w['prerender']} · {esc(fmt_date(latest.get('generated_at', ''), lang, True))}</h2>
-<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul>{xp}<p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="daily/{lang}/index.html">{w['dailies']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a> · <a href="experts/{lang}/index.html">{w['expertsTitle']}</a> · <a href="sources/{lang}.html">{w['sourcesTitle']}</a></p></section>""")
+<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p><ul>{''.join(items)}</ul>{xp}<p><a href="stories/{lang}/index.html">{w['moreStories']}</a> · <a href="daily/{lang}/index.html">{w['dailies']}</a> · <a href="weekly/{lang}/index.html">{w['digests']}</a> · <a href="monthly/{lang}/index.html">{w['reviews']}</a> · <a href="experts/{lang}/index.html">{w['expertsTitle']}</a> · <a href="timeline/{lang}.html">{TIMELINE_WORDS[lang]['nav']}</a> · <a href="sources/{lang}.html">{w['sourcesTitle']}</a></p></section>""")
     block = start + "\n" + "\n".join(sections) + "\n" + end
     new = html_text[:html_text.index(start)] + block + html_text[html_text.index(end) + len(end):]
     j0, j1 = "<!--jsonld-->", "<!--/jsonld-->"
@@ -1107,7 +1116,7 @@ def write_arabic_home(cfg: dict, html_text: str) -> None:
     level up. The site's script sees the /ar/ path, opens in Arabic and adjusts the links it writes."""
     base = site_url(cfg)
     a = html_text.replace('<html lang="en" dir="ltr">', '<html lang="ar" dir="rtl">', 1)
-    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy|contact|experts|sources)[^"]*)"',
+    a = re.sub(r'((?:href|src|content)=")(?!#|[a-z]+:|/|\.\./|data:)((?:assets|feed|site\.webmanifest|favicon\.ico|stories|daily|weekly|monthly|support|privacy|contact|experts|sources|timeline)[^"]*)"',
                lambda m: f'{m.group(1)}../{m.group(2)}"', a)
     en, ar = HOME_TEXT["en"], HOME_TEXT["ar"]
     a = a.replace(f"<title>{en['title']}</title>", f"<title>{ar['title']}</title>", 1)
@@ -1384,6 +1393,75 @@ def write_sources_pages(cfg: dict) -> None:
                                                       jsonld=ld_breadcrumbs(cfg, lang, [(w["title"], f"sources/{lang}.html")])))
 
 
+# ----------------------------------------------------------------- timeline since the fall of the Assad government
+
+TIMELINE_WORDS = {
+    "en": {"title": "Timeline since the fall of the Assad government", "nav": "Timeline",
+           "sub": "The main political, security and economic events in Syria since 8 December 2024, each in a sentence or two with the sources it was checked against. From September 2026, each event links to what Syrians were saying that day on the tracker.",
+           "all": "All", "key": "Key event", "sources": "Sources", "said": "What Syrians said that day", "experts": "The Expert view that week",
+           "areas": {"security": "Security", "economy": "Economy", "governance": "Governance"},
+           "regions": {"national": "Nationwide", "south": "South", "coast": "Coast", "suwayda": "Suwayda", "northeast": "North-east", "aleppo": "Aleppo",
+                       "damascus": "Damascus", "central": "Central Syria", "east": "East", "international": "International"},
+           "note": "Each event was checked against at least two published sources; where sources give different figures, the range is shown. Descriptions are neutral and attribute disputed claims. To suggest a correction or a missing event, use the contact page.",
+           "updated": "Last checked"},
+    "ar": {"title": "الخط الزمني منذ سقوط حكومة الأسد", "nav": "الخط الزمني",
+           "sub": "أبرز الأحداث السياسية والأمنية والاقتصادية في سوريا منذ 8 كانون الأول 2024، كل حدث في جملة أو جملتين مع المصادر التي جرى التحقق منها. ومنذ أيلول 2026 يرتبط كل حدث بما كان السوريون يقولونه في ذلك اليوم على المتتبّع.",
+           "all": "الكل", "key": "حدث مفصلي", "sources": "المصادر", "said": "ما قاله السوريون في ذلك اليوم", "experts": "قراءات الخبراء في ذلك الأسبوع",
+           "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"},
+           "regions": {"national": "على مستوى البلاد", "south": "الجنوب", "coast": "الساحل", "suwayda": "السويداء", "northeast": "شمال شرق سوريا", "aleppo": "حلب",
+                       "damascus": "دمشق", "central": "وسط سوريا", "east": "الشرق", "international": "دولي"},
+           "note": "جرى التحقق من كل حدث في مصدرين منشورين على الأقل، وحين تختلف المصادر في الأرقام يُذكر النطاق. والأوصاف محايدة وتنسب الادعاءات المتنازع عليها إلى أصحابها. لاقتراح تصحيح أو حدث ناقص، استخدم صفحة «اتصل بنا».",
+           "updated": "آخر تحقق"},
+}
+
+
+def load_timeline() -> dict:
+    return archive._load(archive.DATA / "timeline.json", {"events": []})
+
+
+def timeline_body(cfg: dict, lang: str) -> str:
+    w, tl = TIMELINE_WORDS[lang], load_timeline()
+    days = set(archive.all_days())
+    radios = [("all", w["all"])] + [(a, w["areas"][a]) for a in ("security", "economy", "governance")]
+    parts = [f"<h1>{esc(w['title'])}</h1><p>{esc(w['sub'])}</p>",
+             "".join(f'<input type="radio" name="tlf" id="tlf-{k}" class="tlf"{" checked" if k == "all" else ""}>' for k, _ in radios),
+             '<div class="tlbar">' + "".join(f'<label for="tlf-{k}">{esc(lbl)}</label>' for k, lbl in radios) + "</div>", '<div class="tl">']
+    month = None
+    for e in sorted(tl.get("events") or [], key=lambda e: e["date"], reverse=True):
+        m = e["date"][:7]
+        if m != month:
+            parts.append(f'<h2 class="tlm">{esc(fmt_month(m, lang))}</h2>')
+            month = m
+        links = []
+        if e["date"] in days and (DAILY / lang / f"{e['date']}.html").exists():
+            links.append(f'<a href="../daily/{lang}/{e["date"]}.html">{w["said"]}</a>')
+        week = week_of_date(e["date"])
+        if (ROOT / "experts" / lang / f"{week}.html").exists():
+            links.append(f'<a href="../experts/{lang}/{week}.html">{w["experts"]}</a>')
+        src = ", ".join(f'<a href="{esc(x["url"])}" rel="noopener nofollow">{esc(x["name"])}</a>' for x in e.get("sources") or [])
+        meta = f'{esc(w["areas"].get(e["area"], ""))}' + (f' · {esc(w["regions"].get(e.get("region"), ""))}' if w["regions"].get(e.get("region")) else "") + (f' · <b>{w["key"]}</b>' if e.get("key") else "")
+        parts.append(f'<article class="ev a-{esc(e["area"])}{" key" if e.get("key") else ""}" id="e-{esc(e["date"])}">'
+                     f'<p class="evd"><time datetime="{esc(e["date"])}">{esc(fmt_date(e["date"], lang))}</time> · <span class="sub">{meta}</span></p>'
+                     f'<h3>{esc(t(e, "title", lang))}</h3><p>{esc(t(e, "text", lang))}</p>'
+                     f'<p class="sub">{w["sources"]}: {src}</p>' + (f'<p class="xlink">→ {" · ".join(links)}</p>' if links else "") + "</article>")
+    parts.append("</div>")
+    parts.append(f'<p class="sub">{esc(w["note"])} {w["updated"]}: {esc(fmt_date(tl.get("updated", ""), lang))}.</p>')
+    return "\n".join(parts)
+
+
+def write_timeline_pages(cfg: dict) -> None:
+    tl = load_timeline()
+    if not tl.get("events"):
+        return
+    for lang in LANGS:
+        w, other = TIMELINE_WORDS[lang], "ar" if lang == "en" else "en"
+        path = f"timeline/{lang}.html"
+        art = ld_article(cfg, lang, "Article", w["title"], w["sub"], path, f"{tl.get('since', '2024-12-08')}T00:00:00Z", f"{tl.get('updated', '')}T00:00:00Z")
+        write(ROOT / "timeline" / f"{lang}.html", page(cfg, lang, w["title"], w["sub"], timeline_body(cfg, lang), path, f"timeline/{other}.html",
+                                                       root="../", updated=f"{tl.get('updated', '')}T00:00:00Z",
+                                                       jsonld=[art, ld_breadcrumbs(cfg, lang, [(w["nav"], path)])]))
+
+
 def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     """Everything the pipeline does after a run: story pages for the run's stories, listings, feeds, sitemap, prerender."""
     update_story_index(latest)
@@ -1404,4 +1482,5 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_support_pages(cfg)
     write_contact_pages(cfg)
     write_sources_pages(cfg)
+    write_timeline_pages(cfg)
     prerender_index(cfg, latest)

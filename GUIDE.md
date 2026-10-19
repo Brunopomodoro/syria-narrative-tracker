@@ -515,6 +515,13 @@ For a DOI that journals accept, use Zenodo (free, run by CERN):
 
 Make a new release every month or two; each one becomes a new versioned snapshot under the same concept DOI.
 
+### Timeline
+
+The Timeline page (`timeline/en.html`, `timeline/ar.html`) lists the main political, security and economic events since the fall of the Assad government on 8 December 2024. Each event has a date, an area (security, economy, governance), a region, one or two neutral sentences in English and Arabic, and at least two published sources; where sources give different figures, the range is shown. From September 2026, each event links to the tracker's daily brief of that day and the Expert view analyses of that week. Events marked `key` also appear as markers on the Trends charts.
+
+- **The file.** `data/timeline.json`. To correct or add an event, edit its entry (or ask Claude to); the page is rebuilt at the next update, or at once with the maintenance task **rebuild-pages**. Set `updated` to the day you checked it.
+- **New events.** The weekly quality review proposes events from the stories that dominated the tracker and were confirmed by several international sources, with sources and draft wording. They are added only after the site owner approves them.
+
 ### Expert view
 
 The **Expert view** tab is our analysis of what English-language media, think tanks and international organisations say about Syria's security, economy and governance (`scripts/experts.py`).

@@ -37,6 +37,18 @@ KINDS = [
 KIND_IDS = [k["id"] for k in KINDS]
 
 
+def event_list(cfg: dict) -> list:
+    """Events marked on the charts: the key events of the timeline (data/timeline.json) and any listed under `events`
+    in config.yaml, one per date and label."""
+    tl = _load(DATA / "timeline.json", {"events": []}).get("events") or []
+    out = {(str(e.get("date"))[:10], str(e.get("label", ""))): {"date": str(e.get("date"))[:10], "label": str(e.get("label", "")), "label_ar": str(e.get("label_ar", ""))}
+           for e in (cfg.get("events") or []) if e.get("date")}
+    for e in tl:
+        if e.get("key"):
+            out.setdefault((e["date"], e["title"]), {"date": e["date"], "label": e["title"], "label_ar": e.get("title_ar", "")})
+    return sorted(out.values(), key=lambda e: e["date"])
+
+
 # ----------------------------------------------------------------- small helpers
 
 def _load(path: pathlib.Path, default):
@@ -230,8 +242,7 @@ def update_index(cfg: dict, dates: list | None = None) -> dict:
         "kinds": KINDS,
         "languages": [{"id": "ar", "label": "Arabic", "label_ar": "العربية"}, {"id": "ku", "label": "Kurdish", "label_ar": "الكردية"},
                       {"id": "en", "label": "English", "label_ar": "الإنجليزية"}],
-        "events": [{"date": str(e.get("date"))[:10], "label": str(e.get("label", "")), "label_ar": str(e.get("label_ar", ""))}
-                   for e in (cfg.get("events") or []) if e.get("date")],
+        "events": event_list(cfg),
         "days": ordered,
     }
     _save(path, index)
@@ -451,8 +462,7 @@ def write_methodology(cfg: dict, prompt: str, format_version: int) -> dict:
         "signals": __import__("signals").CATALOG,
         "changelog": [{"date": str(c.get("date"))[:10], "note": str(c.get("note", "")), "note_ar": str(c.get("note_ar", ""))}
                       for c in (cfg.get("method_changelog") or []) if c.get("date")],
-        "events": [{"date": str(e.get("date"))[:10], "label": str(e.get("label", "")), "label_ar": str(e.get("label_ar", ""))}
-                   for e in (cfg.get("events") or []) if e.get("date")],
+        "events": event_list(cfg),
     }
     _save(DATA / "methodology.json", m)
     return m
