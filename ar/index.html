@@ -243,16 +243,17 @@
 
   /* expert view */
   .experts h2 { margin-bottom: 4px; }
-  .e-week { border-inline-start: 3px solid var(--brass); padding-inline-start: 16px; margin: 22px 0 34px; max-width: 72ch; }
-  .e-week h3 { font-family: var(--display); font-size: 1.5rem; line-height: 1.25; margin: 4px 0 10px; }
-  .e-week h4 { margin: 16px 0 4px; font-size: 1rem; }
-  .e-week p { margin: 0 0 8px; line-height: 1.65; }
-  .e-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
-  .e-filters .seg { flex-wrap: wrap; max-width: 100%; border-radius: 18px; }
-  .e-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 16px; max-width: 76ch; }
-  .e-list a { font-size: 1.05rem; line-height: 1.4; color: var(--ink); }
-  .e-list .meta { display: block; color: var(--muted); font-size: .85rem; margin: 2px 0; }
-  .e-sum { display: block; line-height: 1.55; }
+  .e-period { margin: 28px 0 8px; }
+  .e-period h3 { font-family: var(--display); font-size: 1.3rem; margin: 0 0 12px; }
+  .e-period h3 .sub { font-family: var(--sans); font-size: .9rem; font-weight: 400; }
+  .e-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .e-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 10px; text-decoration: none; color: var(--ink); transition: border-color .2s; }
+  .e-card:hover { border-color: var(--brass); }
+  .e-overall { border-inline-start: 3px solid var(--brass); }
+  .e-area { color: var(--brass); font-size: .82rem; font-weight: 600; letter-spacing: .02em; }
+  .e-title { font-family: var(--display); font-size: 1.12rem; line-height: 1.3; }
+  .e-lede { color: var(--muted); font-size: .92rem; line-height: 1.5; }
+  .e-links { margin: 22px 0 8px; }
 
   /* what to watch */
   .watch { padding: 0 0 40px; }
@@ -438,6 +439,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="../assets/app.js?v=20261019"></script>
+<script src="../assets/app.js?v=20261019b"></script>
 </body>
 </html>
