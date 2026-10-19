@@ -35,6 +35,7 @@ import yaml
 from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import arabic  # noqa: E402   (Arabic style rules, glossary and fixes)
 import archive  # noqa: E402  (permanent archive, downloads and methodology files; scripts/archive.py)
 import pages  # noqa: E402    (story pages, weekly pages, feeds, sitemap, the crawlable block in index.html)
 import weekly  # noqa: E402   (the weekly digest)
@@ -755,7 +756,7 @@ def system_prompt(cfg: dict) -> str:
     names = [n for n in cfg.get("names") or [] if n.get("en") and n.get("ar")]
     if names:
         prompt += "\n\nSpell these names exactly as given (English / Arabic):\n" + "\n".join(f"- {n['en']} / {n['ar']}" for n in names)
-    return prompt
+    return prompt + arabic.rules()
 
 
 NAME_FIXES: list = []   # (wrong, right) Arabic spellings from config.yaml "names", applied to every text by no_pids
@@ -870,7 +871,7 @@ def fill_missing_arabic(cfg: dict, overall: dict, narratives: list, usage: dict)
                                                                    "properties": {"key": {"type": "string"}, "ar": {"type": "string"}}}}}}
     prompt = ("Translate each English text below into natural Modern Standard Arabic for Syrian readers, keeping the meaning, "
               "names and numbers exactly; keep line breaks where there are several lines. Spell Syrian places in their standard "
-              "Arabic form; keep the names of foreign organisations, outlets and websites in their original Latin spelling unless they have a well-established Arabic name. Keys starting with \"en.\" hold Arabic text instead: translate those into plain English. Return every key.\n\n" + json.dumps(todo, ensure_ascii=False, indent=1))
+              "Arabic form; keep the names of foreign organisations, outlets and websites in their original Latin spelling unless they have a well-established Arabic name. Keys starting with \"en.\" hold Arabic text instead: translate those into plain English. Return every key." + arabic.rules() + "\n\n" + json.dumps(todo, ensure_ascii=False, indent=1))
     try:
         with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=8000,
                                     output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
@@ -1016,7 +1017,7 @@ def no_pids(v):
             v = JSON_TAIL.sub("", v)
         for wrong, right in NAME_FIXES:
             v = v.replace(wrong, right)
-        return archive.no_dashes(re.sub(r"\s{2,}", " ", PID_REF.sub("", v)).strip())
+        return arabic.tidy(archive.no_dashes(re.sub(r"\s{2,}", " ", PID_REF.sub("", v)).strip()))
     if isinstance(v, list):
         return [x for x in (no_pids(i) for i in v) if x]
     return v
