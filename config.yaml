@@ -158,7 +158,6 @@ experts:
     # Persian
     - {name: "BBC Persian", kind: media, lang: fa, org: "BBC Persian", url: "https://feeds.bbci.co.uk/persian/rss.xml", max: 6}
     - {name: "IRNA", kind: media, lang: fa, org: "IRNA", url: "https://www.irna.ir/rss", max: 6}
-    - {name: "Tasnim", kind: media, lang: fa, org: "Tasnim", url: "https://www.tasnimnews.com/fa/rss/feed/0/7/0", max: 6}
     # Chinese
     - {name: "Xinhua (Chinese) (via Google News)", kind: media, lang: zh, org: "Xinhua", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Anews.cn%20when%3A7d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
     - {name: "Global Times (Huanqiu) (via Google News)", kind: media, lang: zh, org: "Global Times", url: "https://news.google.com/rss/search?q=%E5%8F%99%E5%88%A9%E4%BA%9A%20site%3Ahuanqiu.com%20when%3A7d&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans", filter: false, max: 6}
@@ -423,8 +422,8 @@ method_changelog:
     note: "Expert view: one page per area (security, economy, governance) and an overall page every week and every month, a short daily brief, and a Sources page listing every source the site uses. The analyses name the documented political leaning, ownership or state funding of the outlets and think tanks they cite."
     note_ar: "قراءات الخبراء: صفحة لكل مجال (الأمن والاقتصاد والحوكمة) وصفحة شاملة كل أسبوع وكل شهر، وموجز يومي قصير، وصفحة مصادر تضم كل ما يعتمده الموقع. وتذكر التحليلات التوجه السياسي أو الملكية أو التمويل الحكومي الموثق لوسائل الإعلام ومراكز الأبحاث التي تستشهد بها."
   - date: 2026-10-19
-    note: "Expert view: 34 sources added in French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian (media, think tanks and research centres); each item still summarised in English and Arabic."
-    note_ar: "قراءات الخبراء: إضافة 34 مصدراً بالفرنسية والألمانية والتركية والعبرية والروسية والفارسية والصينية والإسبانية والإيطالية (وسائل إعلام ومراكز أبحاث ودراسات)؛ ويبقى ملخص كل عنصر بالإنجليزية والعربية."
+    note: "Expert view: 33 sources added in French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian (media, think tanks and research centres); each item still summarised in English and Arabic."
+    note_ar: "قراءات الخبراء: إضافة 33 مصدراً بالفرنسية والألمانية والتركية والعبرية والروسية والفارسية والصينية والإسبانية والإيطالية (وسائل إعلام ومراكز أبحاث ودراسات)؛ ويبقى ملخص كل عنصر بالإنجليزية والعربية."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
