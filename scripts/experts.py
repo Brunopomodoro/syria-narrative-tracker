@@ -270,7 +270,8 @@ LINKS = ("\nLinks: when a sentence draws on a specific item, write the name of i
          "names tied to a specific item, and never invent an id.")
 KEEP_LINKS = ("\nLinks: the analyses contain links in the form [Crisis Group](3f9a0c1d2e4b5a). When you use a point from them, keep its link "
               "exactly, with the same id, in the English and the Arabic text; never invent an id.")
-LINK = re.compile(r"\[([^\[\]\n]{1,100})\]\(([0-9a-f]{14})\)")
+LINK = re.compile(r"\[([^\[\]\n]{1,100})\]\(([0-9a-f\u0660-\u0669]{14})\)")
+WESTERN = str.maketrans("\u0660\u0661\u0662\u0663\u0664\u0665\u0666\u0667\u0668\u0669", "0123456789")
 
 
 def plain(v):
@@ -286,8 +287,9 @@ def link_ids(*texts) -> list:
     for t in texts:
         for x in (t if isinstance(t, list) else [t]):
             for m in LINK.finditer(x if isinstance(x, str) else ""):
-                if m.group(2) not in out:
-                    out.append(m.group(2))
+                x = m.group(2).translate(WESTERN)
+                if x not in out:
+                    out.append(x)
     return out
 
 
@@ -297,7 +299,7 @@ def linked(text: str, a: dict) -> str:
     text = text or ""
     for m in LINK.finditer(text):
         out.append(pages.esc(text[pos:m.start()]))
-        i = items.get(m.group(2))
+        i = items.get(m.group(2).translate(WESTERN))
         out.append(f'<a href="{pages.esc(i["url"])}" rel="noopener nofollow" title="{pages.esc(i["title"])}">{pages.esc(m.group(1))}</a>'
                    if i else pages.esc(m.group(1)))
         pos = m.end()
