@@ -11,7 +11,7 @@ if (window.top !== window.self) {
 const T = {
   en: {
     title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data", reports: "Reports", experts: "Expert view",
-    expTitle: "Expert view", expSub: "Our analysis of what English- and Arabic-language media, think tanks and international organisations say about Syria's security, economy and governance, set against what Syrians are saying. A short brief every day; one page per area and an overall one every week and every month.",
+    timeline: "Timeline", expTitle: "Expert view", expSub: "Our analysis of what English- and Arabic-language media, think tanks and international organisations say about Syria's security, economy and governance, set against what Syrians are saying. A short brief every day; one page per area and an overall one every week and every month.",
     expLatestDay: "Daily brief", expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "All analyses", allSources: "All the sources the site uses",
     expAreas: { overall: "Overall", security: "Security", economy: "Economy", governance: "Governance" },
@@ -164,7 +164,7 @@ const T = {
   },
   ar: {
     title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "قراءات الخبراء",
-    expTitle: "قراءات الخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام الناطقة بالإنجليزية والعربية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون. موجز قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر.",
+    timeline: "الخط الزمني", expTitle: "قراءات الخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام الناطقة بالإنجليزية والعربية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون. موجز قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر.",
     expLatestDay: "الموجز اليومي", expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "كل التحليلات", allSources: "كل المصادر التي يعتمدها الموقع",
     expAreas: { overall: "نظرة شاملة", security: "الأمن", economy: "الاقتصاد", governance: "الحوكمة" },
@@ -405,6 +405,8 @@ function applyLang() {
   b.setAttribute("aria-label", t.switchLang === "ar" ? "اعرض الموقع بالعربية" : "Show the site in English");
   const sup = !!state.latest?.support_on, supLink = $("#support-link");
   if (supLink) { supLink.hidden = !sup; supLink.textContent = t.support; supLink.href = `support/${state.lang}.html`; }
+  const tlLink = $("#timeline-link");
+  if (tlLink) { tlLink.textContent = t.timeline; tlLink.href = `timeline/${state.lang}.html`; }
   const conLink = $("#contact-link");
   if (conLink) { conLink.textContent = t.contact; conLink.href = `contact/${state.lang}.html`; }
   $("#footer").innerHTML = `${esc(t.footer)} · <a href="privacy/${state.lang}.html">${t.privacy}</a>` + (sup ? ` · <a href="support/${state.lang}.html">${t.support}</a>` : "") + ` · <a href="contact/${state.lang}.html">${t.contact}</a> · <a href="sources/${state.lang}.html">${t.sourcesTitle}</a>`;
