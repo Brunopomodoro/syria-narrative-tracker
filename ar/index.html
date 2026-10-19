@@ -249,7 +249,8 @@
   .e-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
   .e-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--rule); border-radius: 10px; text-decoration: none; color: var(--ink); transition: border-color .2s; }
   .e-card:hover { border-color: var(--brass); }
-  .e-overall { border-inline-start: 3px solid var(--brass); }
+  .e-overall { border-inline-start: 3px solid var(--brass); grid-column: 1 / -1; }
+  .e-overall .e-title { font-size: 1.3rem; }
   .e-area { color: var(--brass); font-size: .82rem; font-weight: 600; letter-spacing: .02em; }
   .e-title { font-family: var(--display); font-size: 1.12rem; line-height: 1.3; }
   .e-lede { color: var(--muted); font-size: .92rem; line-height: 1.5; }
@@ -439,6 +440,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="../assets/app.js?v=20261019b"></script>
+<script src="../assets/app.js?v=20261019c"></script>
 </body>
 </html>
