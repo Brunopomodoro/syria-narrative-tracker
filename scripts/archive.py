@@ -485,6 +485,7 @@ def write_methodology(cfg: dict, prompt: str, format_version: int) -> dict:
         "changelog": [{"date": str(c.get("date"))[:10], "note": str(c.get("note", "")), "note_ar": str(c.get("note_ar", ""))}
                       for c in (cfg.get("method_changelog") or []) if c.get("date")],
         "events": event_list(cfg),
+        "validation": (DATA / "validation.json").exists(),   # the site asks for the study results only when there are some
     }
     _save(DATA / "methodology.json", m)
     return m
