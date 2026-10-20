@@ -470,13 +470,20 @@ def wrong_language(field: str, text: str) -> bool:
 def fix_languages(cfg: dict, d: dict, usage: dict) -> int:
     """The model sometimes writes a field in the other language, or an Arabic name inside an English sentence. Such
     fields are rewritten in the right language by one short call, keeping the links. Returns how many were fixed."""
-    todo = {}
+    todo, names = {}, set()
     for k, v in d.items():
         if k in ("item_ids", "count", "orgs"):
             continue
         for n, x in enumerate(v if isinstance(v, list) else [v]):
-            if wrong_language(k, x):
-                todo[f"{k}#{n}" if isinstance(v, list) else k] = {"to": "Arabic" if k.endswith("_ar") else "English", "text": x}
+            if not wrong_language(k, x):
+                continue
+            if not k.endswith("_ar"):             # Arabic names in English links are translated on their own, then swapped in
+                names.update(m.group(1) for m in LINK.finditer(x) if ARABIC.search(m.group(1)))
+                if not ARABIC.search(LINK.sub("", x)):
+                    continue
+            todo[f"{k}#{n}" if isinstance(v, list) else k] = {"to": "Arabic" if k.endswith("_ar") else "English", "text": x}
+    for i, name in enumerate(sorted(names)):
+        todo[f"name#{i}"] = {"to": "English", "text": name, "note": "an organisation's name: give its usual English name only"}
     if not todo:
         return 0
     schema = {"type": "object", "additionalProperties": False, "required": ["items"], "properties": {"items": {"type": "array", "items": {
@@ -501,9 +508,20 @@ def fix_languages(cfg: dict, d: dict, usage: dict) -> int:
         print(f"  WARN  language repair failed: {e}")
         return 0
     P, fixed = _pipeline(), 0
+    english = {todo[key]["text"]: out[key].strip() for key in todo if key.startswith("name#") and out.get(key, "").strip()
+               and not ARABIC.search(out[key])}
+    if english:
+        for k, v in d.items():
+            if k.endswith("_ar") or k in ("item_ids", "count", "orgs"):
+                continue
+            swap = lambda t: LINK.sub(lambda m: f"[{english.get(m.group(1), m.group(1))}]({m.group(2)})", t) if isinstance(t, str) else t
+            new = [swap(t) for t in v] if isinstance(v, list) else swap(v)
+            if new != v:
+                d[k] = new
+                fixed += 1
     for key, text in out.items():
         k, _, n = key.partition("#")
-        if key not in todo or not text.strip() or wrong_language(k, P.no_pids(text)):
+        if k == "name" or key not in todo or not text.strip() or wrong_language(k, P.no_pids(text)):
             continue
         if n:
             d[k][int(n)] = P.no_pids(text)
