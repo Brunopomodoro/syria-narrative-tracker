@@ -111,9 +111,10 @@ experts:
   window_days: 10        # items older than this when first seen are ignored
   keep_days: 180
   max_new_per_run: 120
-  # Outlets left out here (matched in the organisation's name): Syrian outlets the tracker already reads as its own
-  # sources, and sites removed for credibility (Mankish Net, a site whose ownership and standards could not be verified).
-  exclude_orgs: ["SANA", "سانا", "Enab Baladi", "عنب بلدي", "North Press", "نورث برس", "ANHA", "Hawar", "هاوار", "Syria TV", "تلفزيون سوريا", "Levant24", "Halab Today", "حلب اليوم", "Zaman al-Wasl", "زمان الوصل", "Alikhbaria", "الإخبارية السورية", "Shaam Network", "شبكة شام", "مانكيش نت", "Mankish"]
+  # Outlets left out (matched in the organisation's name): sites removed for credibility (Mankish Net, whose ownership
+  # and standards could not be verified). Syrian outlets are included as their own kind ("syrian"); from them the
+  # summarising step keeps only investigations, in-depth reports, analysis and official statements.
+  exclude_orgs: ["مانكيش نت", "Mankish"]
   # The broad searches (known_only: true) keep only items from these organisations, filed under the kind given here
   # rather than the search's own. A listed name matches an organisation's whole name or its start; add an outlet,
   # think tank or organisation here once it is known to be established. Listed on the Sources page.
@@ -134,6 +135,10 @@ experts:
                 "Syrian Dialogue Center", "مركز الحوار السوري", "Syrian Center for Policy Research", "Syrian Observatory for Human Rights",
                 "المرصد السوري لحقوق الإنسان", "SOHR", "Syrian Network for Human Rights", "الشبكة السورية لحقوق الإنسان", "SNHR",
                 "Karam Shaar Advisory", "Observatory of Political and Economic Networks"]
+    syrian: ["SANA", "سانا", "الوكالة العربية السورية للأنباء", "Syrian Arab News Agency", "Enab Baladi", "عنب بلدي", "Syria TV", "تلفزيون سوريا",
+             "North Press", "نورث برس", "Halab Today", "حلب اليوم", "Zaman al-Wasl", "زمان الوصل", "Syria Direct", "سوريا على طول",
+             "The Syrian Observer", "Al-Jumhuriya", "الجمهورية", "Hawar News", "ANHA", "هاوار", "Alikhbaria", "الإخبارية السورية",
+             "Al-Watan Online", "Levant24", "Shaam Network", "شبكة شام"]
     media: ["Reuters", "Associated Press", "AP News", "AFP", "Agence France-Presse", "BBC", "BBC News", "The Guardian", "The New York Times",
             "The Washington Post", "The Wall Street Journal", "Financial Times", "The Economist", "Bloomberg", "CNN", "ABC News", "NBC News",
             "CBS News", "NPR", "Sky News", "Sky News Arabia", "سكاي نيوز عربية", "Al Jazeera", "الجزيرة", "الجزيرة نت", "Al Arabiya", "العربية",
@@ -144,7 +149,7 @@ experts:
             "The New Region", "Kurdpress", "کردپرس", "Iraqi News Agency", "وكالة الانباء العراقية", "Qatar News Agency", "QNA", "The Peninsula",
             "Gulf News", "Khaleej Times", "Gulf Times", "L'Orient Today", "L'Orient-Le Jour", "Naharnet", "Annahar", "النهار", "MTV Lebanon",
             "LBCI", "Al-Quds Al-Arabi", "القدس العربي", "Independent Arabia", "إندبندنت عربية", "Al-Majalla", "المجلة", "Al-Modon", "المدن",
-            "Al-Akhbar", "الأخبار", "Noon Post", "نون بوست", "Syria Direct", "The Syrian Observer", "New Lines", "Energy Intelligence",
+            "Al-Akhbar", "الأخبار", "Noon Post", "نون بوست", "New Lines", "Energy Intelligence",
             "EnterpriseAM", "Il Sole 24 ORE", "Le Monde", "Der Spiegel", "El País", "TASS", "Xinhua", "IRNA", "Kommersant",
             "Politico", "Axios", "Foreign Policy", "The Times", "The Telegraph", "The Independent", "Al-Ahram", "الأهرام", "Asharq Business",
             "Times of India", "South China Morning Post", "Al Mayadeen", "الميادين", "RT", "RT Arabic", "Press TV", "Tasnim"]
@@ -182,7 +187,17 @@ experts:
     - {name: "The National", kind: media, org: "The National", url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml"}
     - {name: "The New Arab (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=Syria%20site%3Anewarab.com%20when%3A3d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, max: 8}
     - {name: "New Lines", kind: media, org: "New Lines", url: "https://newlinesmag.com/feed/"}
-    - {name: "Syria Direct", kind: media, org: "Syria Direct", url: "https://syriadirect.org/feed/", filter: false}
+    # Syrian outlets (kind syrian): only their investigations, in-depth reports, analysis and official statements are kept
+    - {name: "SANA", kind: syrian, lang: ar, org: "SANA", url: "https://sana.sy/feed", filter: false, max: 8}
+    - {name: "Syria TV", kind: syrian, lang: ar, org: "Syria TV", url: "https://www.syria.tv/rss.xml", filter: false, max: 8}
+    - {name: "Enab Baladi (via Google News)", kind: syrian, lang: ar, org: "Enab Baladi", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aenabbaladi.net%20when%3A3d&hl=ar&gl=SY&ceid=SY%3Aar", filter: false, max: 8}
+    - {name: "Enab Baladi English (via Google News)", kind: syrian, lang: en, org: "Enab Baladi", url: "https://news.google.com/rss/search?q=Syria%20site%3Aenglish.enabbaladi.net%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, max: 6}
+    - {name: "North Press (via Google News)", kind: syrian, lang: ar, org: "North Press", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Anpasyria.com%20when%3A3d&hl=ar&gl=SY&ceid=SY%3Aar", filter: false, max: 6}
+    - {name: "Halab Today (via Google News)", kind: syrian, lang: ar, org: "Halab Today", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Ahalabtodaytv.net%20when%3A3d&hl=ar&gl=SY&ceid=SY%3Aar", filter: false, max: 6}
+    - {name: "Zaman al-Wasl (via Google News)", kind: syrian, lang: ar, org: "Zaman al-Wasl", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Azamanalwsl.net%20when%3A7d&hl=ar&gl=SY&ceid=SY%3Aar", filter: false, max: 6}
+    - {name: "Hawar News (via Google News)", kind: syrian, lang: ar, org: "Hawar News", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Ahawarnews.com%20when%3A3d&hl=ar&gl=SY&ceid=SY%3Aar", filter: false, max: 5}
+    - {name: "Al-Watan (via Google News)", kind: syrian, lang: ar, org: "Al-Watan Online", url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalwatan.sy%20when%3A3d&hl=ar&gl=SY&ceid=SY%3Aar", filter: false, max: 5}
+    - {name: "Syria Direct", kind: syrian, org: "Syria Direct", url: "https://syriadirect.org/feed/", filter: false}
     - {name: "Google News: Syria", kind: media, url: "https://news.google.com/rss/search?q=Syria%20when%3A2d&hl=en-US&gl=US&ceid=US%3Aen", max: 25, known_only: true}
     # in Arabic: research centres, analysis outlets and international organisations
     - {name: "UN News Arabic", kind: intl, org: "أخبار الأمم المتحدة", url: "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml"}
@@ -203,7 +218,7 @@ experts:
     - {name: "Al-Quds Al-Arabi (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalquds.co.uk%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
     - {name: "Al-Araby Al-Jadeed (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalaraby.co.uk%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
     - {name: "Al-Modon (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aalmodon.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
-    - {name: "Al-Jumhuriya (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=site%3Aaljumhuriya.net%20when%3A30d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
+    - {name: "Al-Jumhuriya (via Google News)", kind: syrian, url: "https://news.google.com/rss/search?q=site%3Aaljumhuriya.net%20when%3A30d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
     - {name: "Al-Akhbar (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aal-akhbar.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 8}
     # in other languages (the organisation is named in Latin script; its language is shown on the Sources page)
     # French
@@ -515,6 +530,9 @@ method_changelog:
   - date: 2026-10-20
     note: "Expert view: the three broad Google News searches now keep only items from a published list of established organisations, each filed under what it is (international organisation, research centre or media); aggregators and unknown sites are left out. The analyses of week 42 and the daily briefs of 18 and 19 October were rewritten without them."
     note_ar: "قراءات الخبراء: باتت عمليات البحث الواسعة الثلاث في غوغل نيوز تحتفظ فقط بعناصر من قائمة منشورة بجهات راسخة، تُصنَّف كل منها بحسب طبيعتها (منظمة دولية أو مركز أبحاث أو وسيلة إعلام)، وتُستبعد مواقع التجميع والمواقع غير المعروفة. وأُعيدت كتابة تحليلات الأسبوع ٤٢ والموجزين اليوميين ليومي ١٨ و١٩ تشرين الأول من دونها."
+  - date: 2026-10-20
+    note: "People vs media: the Expert view becomes Media and experts and now includes Syrian outlets as their own category (only their investigations, in-depth reports, analysis and official statements); its comparison uses only what ordinary people said on the tracker; and the home page orders stories by people's share of posts. The stories, tones and shares the tracker computes are unchanged."
+    note_ar: "الناس مقابل الإعلام: باتت «قراءات الخبراء» قسم «الإعلام والخبراء» ويضم الآن وسائل الإعلام السورية فئةً مستقلة (تحقيقاتها وتقاريرها المعمّقة وتحليلاتها وبياناتها الرسمية فقط)؛ وتعتمد مقارنته على ما قاله الناس العاديون في المتتبّع فقط؛ وترتّب الصفحة الرئيسية القصص بحسب حصتها من منشورات الناس. ولم تتغير القصص والنبرات والحصص التي يحسبها المتتبّع."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
