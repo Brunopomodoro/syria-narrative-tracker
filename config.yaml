@@ -114,6 +114,40 @@ experts:
   # Outlets left out here (matched in the organisation's name): Syrian outlets the tracker already reads as its own
   # sources, and sites removed for credibility (Mankish Net, a site whose ownership and standards could not be verified).
   exclude_orgs: ["SANA", "سانا", "Enab Baladi", "عنب بلدي", "North Press", "نورث برس", "ANHA", "Hawar", "هاوار", "Syria TV", "تلفزيون سوريا", "Levant24", "Halab Today", "حلب اليوم", "Zaman al-Wasl", "زمان الوصل", "Alikhbaria", "الإخبارية السورية", "Shaam Network", "شبكة شام", "مانكيش نت", "Mankish"]
+  # The broad searches (known_only: true) keep only items from these organisations, filed under the kind given here
+  # rather than the search's own. A listed name matches an organisation's whole name or its start; add an outlet,
+  # think tank or organisation here once it is known to be established. Listed on the Sources page.
+  known_orgs:
+    intl: ["United Nations", "UN News", "أخبار الأمم المتحدة", "UNHCR", "UNICEF", "UNDP", "UNOCHA", "OCHA", "WFP", "World Food Programme",
+           "WHO", "World Health Organization", "IOM", "UNRWA", "UNESCO", "FAO", "World Bank", "البنك الدولي", "IMF", "International Monetary Fund",
+           "ICRC", "International Committee of the Red Cross", "European Commission", "European Union", "Council of the EU", "ESCWA",
+           "Human Rights Watch", "Amnesty International", "Médecins Sans Frontières", "MSF", "Norwegian Refugee Council", "Save the Children",
+           "International Rescue Committee", "OHCHR", "ReliefWeb"]
+    thinktank: ["International Crisis Group", "Crisis Group", "Carnegie", "Carnegie Endowment", "Chatham House", "Atlantic Council",
+                "Washington Institute", "Middle East Institute", "ECFR", "European Council on Foreign Relations", "Brookings",
+                "Century International", "The Century Foundation", "COAR", "Etana", "The Syria Report", "RAND", "CSIS", "Stimson",
+                "Wilson Center", "Council on Foreign Relations", "IISS", "Institute for the Study of War", "Foundation for Defense of Democracies",
+                "Middle East Forum", "Hudson Institute", "New Lines Institute", "Arab Center Washington DC", "Arab Reform Initiative",
+                "Clingendael", "SWP", "IFRI", "ISPI", "INSS", "Alma Research", "Valdai", "RIAC", "SETA", "ORSAM", "Emirates Policy Center",
+                "Al Jazeera Centre for Studies", "مركز الجزيرة للدراسات", "Arab Center for Research and Policy Studies", "المركز العربي للأبحاث ودراسة السياسات",
+                "Jusoor", "مركز جسور للدراسات", "Omran", "مركز عمران للدراسات الاستراتيجية", "Harmoon", "مركز حرمون للدراسات المعاصرة",
+                "Syrian Dialogue Center", "مركز الحوار السوري", "Syrian Center for Policy Research", "Syrian Observatory for Human Rights",
+                "المرصد السوري لحقوق الإنسان", "SOHR", "Syrian Network for Human Rights", "الشبكة السورية لحقوق الإنسان", "SNHR",
+                "Karam Shaar Advisory", "Observatory of Political and Economic Networks"]
+    media: ["Reuters", "Associated Press", "AP News", "AFP", "Agence France-Presse", "BBC", "BBC News", "The Guardian", "The New York Times",
+            "The Washington Post", "The Wall Street Journal", "Financial Times", "The Economist", "Bloomberg", "CNN", "ABC News", "NBC News",
+            "CBS News", "NPR", "Sky News", "Sky News Arabia", "سكاي نيوز عربية", "Al Jazeera", "الجزيرة", "الجزيرة نت", "Al Arabiya", "العربية",
+            "Asharq Al-Awsat", "الشرق الأوسط", "Asharq", "الشرق للأخبار", "The National", "Arab News", "アラブニュース", "Middle East Eye",
+            "Al-Monitor", "The New Arab", "العربي الجديد", "France 24", "DW", "Deutsche Welle", "Euronews", "The Times of Israel",
+            "The Jerusalem Post", "Haaretz", "i24NEWS", "Ynet", "Ynetnews", "JNS", "Israel National News", "Anadolu Agency", "Anadolu Ajansı",
+            "الأناضول", "Daily Sabah", "Hürriyet Daily News", "Hürriyet", "TRT World", "Rudaw", "رووداو", "Kurdistan24", "Shafaq News", "شفق نيوز",
+            "The New Region", "Kurdpress", "کردپرس", "Iraqi News Agency", "وكالة الانباء العراقية", "Qatar News Agency", "QNA", "The Peninsula",
+            "Gulf News", "Khaleej Times", "Gulf Times", "L'Orient Today", "L'Orient-Le Jour", "Naharnet", "Annahar", "النهار", "MTV Lebanon",
+            "LBCI", "Al-Quds Al-Arabi", "القدس العربي", "Independent Arabia", "إندبندنت عربية", "Al-Majalla", "المجلة", "Al-Modon", "المدن",
+            "Al-Akhbar", "الأخبار", "Noon Post", "نون بوست", "Syria Direct", "The Syrian Observer", "New Lines", "Energy Intelligence",
+            "EnterpriseAM", "Il Sole 24 ORE", "Le Monde", "Der Spiegel", "El País", "TASS", "Xinhua", "IRNA", "Kommersant",
+            "Politico", "Axios", "Foreign Policy", "The Times", "The Telegraph", "The Independent", "Al-Ahram", "الأهرام", "Asharq Business",
+            "Times of India", "South China Morning Post", "Al Mayadeen", "الميادين", "RT", "RT Arabic", "Press TV", "Tasnim"]
   # Publishers that refuse automated readers are read through Google News searches limited to their own site
   # (filter: false, since the search already asks for Syria; the summarising step sets aside what is not about it).
   sources:
@@ -137,7 +171,7 @@ experts:
     - {name: "COAR (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=Syria%20site%3Acoar-global.org%20when%3A14d&hl=en-US&gl=US&ceid=US%3Aen", filter: false}
     - {name: "Etana", kind: thinktank, org: "Etana", url: "https://etanasyria.org/feed/", filter: false}
     - {name: "The Syria Report", kind: thinktank, org: "The Syria Report", url: "https://syria-report.com/feed/", filter: false}
-    - {name: "Think tanks on Syria (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=Syria%20(report%20OR%20analysis)%20(%22think%20tank%22%20OR%20institute%20OR%20%22crisis%20group%22)%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen", filter: false}
+    - {name: "Think tanks on Syria (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=Syria%20(report%20OR%20analysis)%20(%22think%20tank%22%20OR%20institute%20OR%20%22crisis%20group%22)%20when%3A7d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, known_only: true}
     # media
     - {name: "BBC: Middle East", kind: media, org: "BBC", url: "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml"}
     - {name: "The Guardian: Syria", kind: media, org: "The Guardian", url: "https://www.theguardian.com/world/syria/rss", filter: false}
@@ -149,7 +183,7 @@ experts:
     - {name: "The New Arab (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=Syria%20site%3Anewarab.com%20when%3A3d&hl=en-US&gl=US&ceid=US%3Aen", filter: false, max: 8}
     - {name: "New Lines", kind: media, org: "New Lines", url: "https://newlinesmag.com/feed/"}
     - {name: "Syria Direct", kind: media, org: "Syria Direct", url: "https://syriadirect.org/feed/", filter: false}
-    - {name: "Google News: Syria", kind: media, url: "https://news.google.com/rss/search?q=Syria%20when%3A2d&hl=en-US&gl=US&ceid=US%3Aen", max: 25}
+    - {name: "Google News: Syria", kind: media, url: "https://news.google.com/rss/search?q=Syria%20when%3A2d&hl=en-US&gl=US&ceid=US%3Aen", max: 25, known_only: true}
     # in Arabic: research centres, analysis outlets and international organisations
     - {name: "UN News Arabic", kind: intl, org: "أخبار الأمم المتحدة", url: "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml"}
     - {name: "ESCWA (via Google News)", kind: intl, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aunescwa.org%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
@@ -162,7 +196,7 @@ experts:
     - {name: "Emirates Policy Center (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aepc.ae%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
     - {name: "Al-Ahram Center for Political and Strategic Studies (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aacpss.ahram.org.eg%20when%3A14d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
     - {name: "Syrian Center for Policy Research (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Ascpr-syria.org%20when%3A30d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
-    - {name: "Arab think tanks on Syria (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20%28%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20OR%20%22%D9%88%D8%B1%D9%82%D8%A9%20%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D9%8A%D8%A9%22%20OR%20%22%D8%AA%D9%82%D8%AF%D9%8A%D8%B1%20%D9%85%D9%88%D9%82%D9%81%22%20OR%20%22%D9%85%D8%B1%D9%83%D8%B2%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA%22%29%20when%3A7d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 15}
+    - {name: "Arab think tanks on Syria (via Google News)", kind: thinktank, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20%28%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9%20OR%20%22%D9%88%D8%B1%D9%82%D8%A9%20%D8%AA%D8%AD%D9%84%D9%8A%D9%84%D9%8A%D8%A9%22%20OR%20%22%D8%AA%D9%82%D8%AF%D9%8A%D8%B1%20%D9%85%D9%88%D9%82%D9%81%22%20OR%20%22%D9%85%D8%B1%D9%83%D8%B2%20%D8%AF%D8%B1%D8%A7%D8%B3%D8%A7%D8%AA%22%29%20when%3A7d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 15, known_only: true}
     - {name: "Asharq Al-Awsat (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aaawsat.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
     - {name: "Al-Majalla (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Amajalla.com%20when%3A7d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false}
     - {name: "Independent Arabia (via Google News)", kind: media, url: "https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20site%3Aindependentarabia.com%20when%3A3d&hl=ar&gl=EG&ceid=EG%3Aar", filter: false, max: 10}
@@ -478,6 +512,9 @@ method_changelog:
   - date: 2026-10-20
     note: "Expert view: Mankish Net removed (it entered through a broad search, was labelled a think tank, and its ownership and standards could not be verified). Its one report, on $406 million in Saudi Fund for Development loans, was checked against other outlets and is now cited from Al-Quds Al-Arabi."
     note_ar: "قراءات الخبراء: إزالة موقع مانكيش نت (دخل عبر بحث واسع وصُنّف خطأً مركزَ أبحاث، ولم يمكن التحقق من ملكيته ومعاييره). وجرى التحقق من تقريره الوحيد عن قروض الصندوق السعودي للتنمية بقيمة ٤٠٦ ملايين دولار من وسائل إعلام أخرى، وبات يُستشهد به من القدس العربي."
+  - date: 2026-10-20
+    note: "Expert view: the three broad Google News searches now keep only items from a published list of established organisations, each filed under what it is (international organisation, research centre or media); aggregators and unknown sites are left out. The analyses of week 42 and the daily briefs of 18 and 19 October were rewritten without them."
+    note_ar: "قراءات الخبراء: باتت عمليات البحث الواسعة الثلاث في غوغل نيوز تحتفظ فقط بعناصر من قائمة منشورة بجهات راسخة، تُصنَّف كل منها بحسب طبيعتها (منظمة دولية أو مركز أبحاث أو وسيلة إعلام)، وتُستبعد مواقع التجميع والمواقع غير المعروفة. وأُعيدت كتابة تحليلات الأسبوع ٤٢ والموجزين اليوميين ليومي ١٨ و١٩ تشرين الأول من دونها."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
