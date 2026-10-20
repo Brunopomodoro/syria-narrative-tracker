@@ -1,0 +1,54 @@
+name: Expert view daily brief
+
+# Yesterday's Expert view brief, ready by 6:00 in Damascus (3:00 UTC; Syria is on UTC+3 all year). GitHub often starts
+# scheduled runs late, so this one is set for 2:30 UTC. It reads the newest reports first, then writes the brief. If
+# this run is delayed past 3:00 UTC or skipped, the first hourly update after 3:00 UTC writes the brief instead; the
+# brief is never written twice.
+
+on:
+  schedule:
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-narratives    # never at the same time as an update or a maintenance task
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Read the newest reports, then write yesterday's brief
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scripts/experts.py collect
+          python scripts/experts.py daily --if-missing
+
+      - name: Save results
+        run: |
+          git config user.name "narrative-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to save."
+          else
+            git commit -m "Expert view daily brief $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase
+            git push
+            python scripts/indexnow.py || true   # tell search engines which pages changed
+          fi

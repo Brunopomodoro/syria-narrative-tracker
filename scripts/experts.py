@@ -513,7 +513,7 @@ def generate_day(cfg: dict, date: str, log=print) -> dict | None:
 
 
 def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
-    """After a run: yesterday's daily brief (from 4:00 UTC); once a week has ended (and its digest is written, or it
+    """After a run: yesterday's daily brief (from 3:00 UTC, 6:00 in Damascus, if the morning job has not written it); once a week has ended (and its digest is written, or it
     is evening), its analyses; once a month has ended (from the 2nd), its analyses too. Never raises; each period is
     tried up to three times, and at most one is written per update."""
     s = settings(cfg)
@@ -524,8 +524,8 @@ def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
     attempts = state.get("experts_attempts") or {}
     due = []
     yesterday = (now.date() - dt.timedelta(days=1)).isoformat()
-    if now.hour >= 4:
-        due.append(yesterday)                      # the daily brief of yesterday, from the first update after 4:00 UTC
+    if now.hour >= 3:
+        due.append(yesterday)                      # the daily brief of yesterday, if the 2:30 UTC job (experts-daily.yml) missed it
     week = weekly.week_of(now.date() - dt.timedelta(days=7))
     digest_done = week in {x.get("week") for x in archive._load(archive.DATA / "weekly" / "index.json", [])}
     if digest_done or now.hour >= 20:
@@ -823,8 +823,12 @@ if __name__ == "__main__":
         for x in probe(cfg):
             print(x.get("status", "ERR"), x.get("entries", "-"), x.get("recent", "-"), x.get("recent_syria", "-"), x["name"], x["url"][:90], x.get("error", ""))
     elif sys.argv[1:2] == ["daily"]:
-        day = sys.argv[2] if sys.argv[2:] else (dt.datetime.now(UTC).date() - dt.timedelta(days=1)).isoformat()
-        print("written" if generate_day(cfg, day) else "not written")
+        args = [x for x in sys.argv[2:] if x != "--if-missing"]
+        day = args[0] if args else (dt.datetime.now(UTC).date() - dt.timedelta(days=1)).isoformat()
+        if "--if-missing" in sys.argv and any(x.get("id") == day for x in archive._load(INDEX, [])):
+            print(f"daily brief {day} already written")
+        else:
+            print("written" if generate_day(cfg, day) else "not written")
     elif sys.argv[1:2] in (["weekly"], ["monthly"]):
         today = dt.datetime.now(UTC).date()
         default = weekly.week_of(today - dt.timedelta(days=7)) if sys.argv[1] == "weekly" else (today.replace(day=1) - dt.timedelta(days=1)).strftime("%Y-%m")
