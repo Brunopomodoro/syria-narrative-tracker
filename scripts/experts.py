@@ -296,7 +296,9 @@ LEANING = ("when you cite an outlet or think tank whose political orientation, o
            "Agency\", \"Qatar-funded Al Jazeera\"); say nothing when it is not well established, and never use it to dismiss a claim;")
 
 LINKS = ("\nLinks: when a sentence draws on a specific item, write the name of its organisation as a link in exactly this form: "
-         "[Crisis Group](3f9a0c1d2e4b5a), with that item's id in the round brackets. Do the same in the Arabic text, for example "
+         "[Crisis Group](3f9a0c1d2e4b5a), with that item's id in the round brackets. In the English text the name in the square brackets is "
+         "the organisation's English name even when the item gives it in Arabic (for example [Syrian Dialogue Center](5007c5b6b8f261)). "
+         "Do the same in the Arabic text, for example "
          "[Crisis Group](3f9a0c1d2e4b5a) or [الأمم المتحدة](3f9a0c1d2e4b5a). Link an item the first time you cite it in a field, link only "
          "names tied to a specific item, and never invent an id.")
 KEEP_LINKS = ("\nLinks: the analyses contain links in the form [Crisis Group](3f9a0c1d2e4b5a). When you use a point from them, keep its link "
@@ -453,7 +455,88 @@ def ask(cfg: dict, system: str, msg: str, schema: dict, max_tokens: int = 10000)
     P = _pipeline()
     d = json.loads("".join(b.text for b in resp.content if b.type == "text"))
     d = {k: (v if k == "item_ids" else P.no_pids(v)) for k, v in d.items()}
-    return d, {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}
+    usage = {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}
+    fix_languages(cfg, d, usage)
+    return d, usage
+
+
+def wrong_language(field: str, text: str) -> bool:
+    """An English field with Arabic letters in it, or an Arabic field that is mostly not Arabic."""
+    if not isinstance(text, str) or not text.strip():
+        return False
+    return not arabic.is_arabic(plain(text)) if field.endswith("_ar") else bool(ARABIC.search(text))
+
+
+def fix_languages(cfg: dict, d: dict, usage: dict) -> int:
+    """The model sometimes writes a field in the other language, or an Arabic name inside an English sentence. Such
+    fields are rewritten in the right language by one short call, keeping the links. Returns how many were fixed."""
+    todo = {}
+    for k, v in d.items():
+        if k in ("item_ids", "count", "orgs"):
+            continue
+        for n, x in enumerate(v if isinstance(v, list) else [v]):
+            if wrong_language(k, x):
+                todo[f"{k}#{n}" if isinstance(v, list) else k] = {"to": "Arabic" if k.endswith("_ar") else "English", "text": x}
+    if not todo:
+        return 0
+    schema = {"type": "object", "additionalProperties": False, "required": ["items"], "properties": {"items": {"type": "array", "items": {
+        "type": "object", "additionalProperties": False, "required": ["key", "text"],
+        "properties": {"key": {"type": "string"}, "text": {"type": "string"}}}}}}
+    prompt = ("Rewrite each text below entirely in its target language (\"to\"), keeping the meaning, names, numbers and attributions exactly. "
+              "English: translate every Arabic word, including organisation names (use their usual English names). Arabic: natural Modern "
+              "Standard Arabic for Syrian readers; keep the names of foreign organisations in Latin script unless they have a well-established "
+              "Arabic name. Keep every link in the form [name](id) with the same id, translating only the name in the square brackets. "
+              "Do not use the long dash. Return every key.\n\n" + json.dumps(todo, ensure_ascii=False, indent=1))
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", "").strip())
+        with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=16000, system=arabic.rules().strip(),
+                                    messages=[{"role": "user", "content": prompt}],
+                                    output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}}) as stream:
+            resp = stream.get_final_message()
+        usage["input_tokens"] += resp.usage.input_tokens
+        usage["output_tokens"] += resp.usage.output_tokens
+        out = {x["key"]: x["text"] for x in json.loads("".join(b.text for b in resp.content if b.type == "text")).get("items") or []}
+    except Exception as e:  # noqa: BLE001  (a failed repair leaves the text as it was)
+        print(f"  WARN  language repair failed: {e}")
+        return 0
+    P, fixed = _pipeline(), 0
+    for key, text in out.items():
+        k, _, n = key.partition("#")
+        if key not in todo or not text.strip() or wrong_language(k, P.no_pids(text)):
+            continue
+        if n:
+            d[k][int(n)] = P.no_pids(text)
+        else:
+            d[k] = P.no_pids(text)
+        fixed += 1
+    return fixed
+
+
+def fix_published(cfg: dict, log=print) -> None:
+    """Run the language repair on every analysis already written, and rewrite the pages that changed."""
+    for x in archive._load(INDEX, []):
+        f = PERIODS / f"{x['id']}.json"
+        a = archive._load(f, None)
+        if not a:
+            continue
+        usage, fixed = {"input_tokens": 0, "output_tokens": 0}, 0
+        for d in [a["overall"], *a["areas"].values()]:
+            fixed += fix_languages(cfg, d, usage)
+        if fixed:
+            archive._save(f, a)
+            write_pages(cfg, a)
+        log(f"  {x['id']}: {fixed} fields fixed ({usage['input_tokens']}/{usage['output_tokens']} tokens)")
+    index = archive._load(INDEX, [])
+    for e in index:                               # the listing's ledes, from the repaired analyses
+        a = archive._load(PERIODS / f"{e['id']}.json", None)
+        if a:
+            for area in e.get("areas") or []:
+                d = a["overall"] if area == "overall" else a["areas"].get(area)
+                if d:
+                    e[f"{area}_lede"], e[f"{area}_lede_ar"] = plain(d.get("lede", "")), plain(d.get("lede_ar", ""))
+    archive._save(INDEX, index)
+    write_listing(cfg)
 
 
 def generate(cfg: dict, pid: str, log=print) -> dict | None:
@@ -864,6 +947,8 @@ if __name__ == "__main__":
     if sys.argv[1:2] == ["probe"]:
         for x in probe(cfg):
             print(x.get("status", "ERR"), x.get("entries", "-"), x.get("recent", "-"), x.get("recent_syria", "-"), x["name"], x["url"][:90], x.get("error", ""))
+    elif sys.argv[1:2] == ["fix-languages"]:
+        fix_published(cfg)
     elif sys.argv[1:2] == ["daily"]:
         args = [x for x in sys.argv[2:] if x != "--if-missing"]
         day = args[0] if args else (dt.datetime.now(UTC).date() - dt.timedelta(days=1)).isoformat()

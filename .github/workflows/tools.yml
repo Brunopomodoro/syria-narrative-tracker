@@ -25,6 +25,7 @@ on:
           - experts-daily               # write the Expert view brief of yesterday, or the day in 'period' (about 10 cents)
           - experts-weekly              # write the Expert view analyses of the last complete week, or the week in 'period' (about 40 cents)
           - experts-monthly             # write the Expert view analyses of the last complete month, or the month in 'period' (about 70 cents)
+          - experts-fix-languages       # rewrite in the right language any analysis field written in the other one (a cent or two)
           - quality-report              # the tracker's health over the last 7 days compared with the 7 before (free; printed in the log)
           - validation-sample           # a normal update plus a private sample of posts for a validation study (GUIDE.md); size below
       size:
@@ -110,6 +111,7 @@ jobs:
             experts-weekly)            python scripts/experts.py weekly $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
             experts-monthly)           python scripts/experts.py monthly $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
             experts-probe)             python scripts/experts.py probe ;;
+            experts-fix-languages)     python scripts/experts.py fix-languages ;;
             quality-report)            python scripts/quality_report.py ;;
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
           esac
