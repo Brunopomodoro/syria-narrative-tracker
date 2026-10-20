@@ -111,8 +111,9 @@ experts:
   window_days: 10        # items older than this when first seen are ignored
   keep_days: 180
   max_new_per_run: 120
-  # Outlets the tracker already reads as Syrian sources; left out here (matched in the organisation's name).
-  exclude_orgs: ["SANA", "سانا", "Enab Baladi", "عنب بلدي", "North Press", "نورث برس", "ANHA", "Hawar", "هاوار", "Syria TV", "تلفزيون سوريا", "Levant24", "Halab Today", "حلب اليوم", "Zaman al-Wasl", "زمان الوصل", "Alikhbaria", "الإخبارية السورية", "Shaam Network", "شبكة شام"]
+  # Outlets left out here (matched in the organisation's name): Syrian outlets the tracker already reads as its own
+  # sources, and sites removed for credibility (Mankish Net, a site whose ownership and standards could not be verified).
+  exclude_orgs: ["SANA", "سانا", "Enab Baladi", "عنب بلدي", "North Press", "نورث برس", "ANHA", "Hawar", "هاوار", "Syria TV", "تلفزيون سوريا", "Levant24", "Halab Today", "حلب اليوم", "Zaman al-Wasl", "زمان الوصل", "Alikhbaria", "الإخبارية السورية", "Shaam Network", "شبكة شام", "مانكيش نت", "Mankish"]
   # Publishers that refuse automated readers are read through Google News searches limited to their own site
   # (filter: false, since the search already asks for Syria; the summarising step sets aside what is not about it).
   sources:
@@ -474,6 +475,9 @@ method_changelog:
   - date: 2026-10-20
     note: "Arabic quality: every prompt that writes Arabic now carries style rules (write like a Syrian newsroom, not a translation) and a glossary of fixed terms, and the Arabic texts are tidied after each update («» quotation marks, Syrian month names, Arabic-Indic digits, known wrong terms replaced). Applied to the texts already published."
     note_ar: "جودة العربية: باتت كل تعليمات الكتابة بالعربية تتضمن قواعد أسلوبية (الكتابة كما تكتب غرفة أخبار سورية لا كترجمة) ومسرداً بالمصطلحات الثابتة، وتُنقَّح النصوص العربية بعد كل تحديث (علامات التنصيص «»، وأسماء الأشهر المعتمدة في سوريا، والأرقام العربية المشرقية، واستبدال المصطلحات الخاطئة المعروفة). وطُبّق ذلك على النصوص المنشورة سابقاً."
+  - date: 2026-10-20
+    note: "Expert view: Mankish Net removed (it entered through a broad search, was labelled a think tank, and its ownership and standards could not be verified). Its one report, on $406 million in Saudi Fund for Development loans, was checked against other outlets and is now cited from Al-Quds Al-Arabi."
+    note_ar: "قراءات الخبراء: إزالة موقع مانكيش نت (دخل عبر بحث واسع وصُنّف خطأً مركزَ أبحاث، ولم يمكن التحقق من ملكيته ومعاييره). وجرى التحقق من تقريره الوحيد عن قروض الصندوق السعودي للتنمية بقيمة ٤٠٦ ملايين دولار من وسائل إعلام أخرى، وبات يُستشهد به من القدس العربي."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:
