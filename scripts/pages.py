@@ -1316,6 +1316,7 @@ SOURCES_WORDS = {
            "search": "Posts found by keyword searches", "comments": "Telegram comments and reactions on the channels above, through a Telegram account",
            "kinds": {"intl": "International organisations", "thinktank": "Think tanks and research centres", "media": "Media"},
            "via": "read through Google News searches limited to its site",
+           "known": "Broad Google News searches (Google News: Syria, Think tanks on Syria, Arab think tanks on Syria) keep only items from these established organisations, each filed under what it is",
            "langs": {"en": "English", "ar": "Arabic", "fr": "French", "de": "German", "tr": "Turkish", "he": "Hebrew", "ru": "Russian",
                      "fa": "Persian", "zh": "Chinese", "es": "Spanish", "it": "Italian"},
            "note": "Posts by individuals are read only in aggregate: they are never stored, quoted or linked. The list changes as sources are added or stop working; every change to the tracker's sources is recorded in the method changelog on the About page."},
@@ -1326,6 +1327,7 @@ SOURCES_WORDS = {
            "search": "منشورات تُظهرها عمليات بحث بالكلمات المفتاحية", "comments": "تعليقات تيليغرام وتفاعلاته على القنوات أعلاه، عبر حساب تيليغرام",
            "kinds": {"intl": "منظمات دولية", "thinktank": "مراكز أبحاث ودراسات", "media": "وسائل إعلام"},
            "via": "تُقرأ عبر بحث غوغل نيوز المحصور في موقعها",
+           "known": "تحتفظ عمليات البحث الواسعة في غوغل نيوز (سوريا عموماً، ومراكز الأبحاث، ومراكز الأبحاث العربية) بعناصر هذه الجهات الراسخة فقط، وتصنّف كلاً منها بحسب طبيعتها",
            "langs": {"en": "الإنجليزية", "ar": "العربية", "fr": "الفرنسية", "de": "الألمانية", "tr": "التركية", "he": "العبرية", "ru": "الروسية",
                      "fa": "الفارسية", "zh": "الصينية", "es": "الإسبانية", "it": "الإيطالية"},
            "note": "تُقرأ منشورات الأفراد إجمالاً فقط: لا تُخزَّن ولا تُقتبس ولا يُربط إليها. تتغير القائمة مع إضافة مصادر أو توقف أخرى، وكل تغيير في مصادر المتتبّع مسجَّل في سجل تغييرات المنهجية في صفحة «حول الموقع»."},
@@ -1389,6 +1391,11 @@ def sources_body(cfg: dict, lang: str) -> str:
                     for n, e in seen.items()]
             if rows:
                 parts.append(f"<h3>{w['kinds'][kind]}</h3><div class=\"tw\"><table><tbody>{''.join(rows)}</tbody></table></div>")
+        known = ex.get("known_orgs") or {}
+        if known:
+            parts.append(f"<p>{esc(w['known'])}:</p>" + "".join(
+                f"<p class=\"sub\"><strong>{w['kinds'][k]}:</strong> <span dir=\"auto\">{esc(' · '.join(known.get(k) or []))}</span></p>"
+                for k in ("intl", "thinktank", "media") if known.get(k)))
     parts.append(f"<p class=\"sub\">{esc(w['note'])}</p>")
     return "\n".join(parts)
 

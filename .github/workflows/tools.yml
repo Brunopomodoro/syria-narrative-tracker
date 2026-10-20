@@ -22,15 +22,19 @@ on:
           - telegram-probe              # check candidate Telegram channels (names below, or the built-in list): active? Syria-focused? (free)
           - experts-collect             # collect and summarise new reports for the Expert view now (a cent or two)
           - experts-probe               # check every Expert view feed and some alternatives; results in data/experts/probe.json (free)
-          - experts-daily               # write the Expert view brief of yesterday (about 5 cents)
-          - experts-weekly              # write the Expert view analyses of the last complete week (about 20 cents)
-          - experts-monthly             # write the Expert view analyses of the last complete month (about 40 cents)
+          - experts-daily               # write the Expert view brief of yesterday, or the day in 'period' (about 10 cents)
+          - experts-weekly              # write the Expert view analyses of the last complete week, or the week in 'period' (about 40 cents)
+          - experts-monthly             # write the Expert view analyses of the last complete month, or the month in 'period' (about 70 cents)
           - quality-report              # the tracker's health over the last 7 days compared with the 7 before (free; printed in the log)
           - validation-sample           # a normal update plus a private sample of posts for a validation study (GUIDE.md); size below
       size:
         description: "validation-sample only: how many posts to sample"
         type: string
         default: "300"
+      period:
+        description: "experts-daily, -weekly, -monthly only: the day (2026-10-18), week (2026-W42) or month (2026-10) to (re)write; empty: the last complete one"
+        type: string
+        default: ""
       names:
         description: "telegram-probe only: channel names separated by spaces, or --discover (empty: the built-in candidate list)"
         type: string
@@ -87,6 +91,7 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           PROBE_NAMES: ${{ inputs.names }}
+          PERIOD: ${{ inputs.period }}
         run: |
           case "${{ inputs.task }}" in
             test-sources)              python scripts/pipeline.py --dry-run ;;
@@ -101,9 +106,9 @@ jobs:
             backfill-arabic)           python scripts/backfill_arabic.py && python scripts/rebuild_pages.py ;;
             telegram-probe)            python scripts/probe_telegram.py $(printf '%s' "$PROBE_NAMES" | tr -cd 'A-Za-z0-9_ -') ;;
             experts-collect)           python scripts/experts.py collect ;;
-            experts-daily)             python scripts/experts.py daily ;;
-            experts-weekly)            python scripts/experts.py weekly ;;
-            experts-monthly)           python scripts/experts.py monthly ;;
+            experts-daily)             python scripts/experts.py daily $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
+            experts-weekly)            python scripts/experts.py weekly $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
+            experts-monthly)           python scripts/experts.py monthly $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
             experts-probe)             python scripts/experts.py probe ;;
             quality-report)            python scripts/quality_report.py ;;
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;

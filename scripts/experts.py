@@ -73,6 +73,24 @@ def settings(cfg: dict) -> dict:
     return s
 
 
+def norm_org(name: str) -> str:
+    """An organisation name for matching: lower case, letters and digits only, without a leading "the"."""
+    n = re.sub(r"[^\w]+", " ", str(name).lower()).strip()
+    return n[4:] if n.startswith("the ") else n
+
+
+def known_kind(org: str, known: dict) -> str | None:
+    """The kind (intl, thinktank, media) of an organisation on the known list in config.yaml, or None. A listed name
+    matches the whole name or its start ("ABC News - Breaking News" matches "ABC News")."""
+    o = norm_org(org)
+    for kind, names in (known or {}).items():
+        for n in names or []:
+            k = norm_org(n)
+            if k and (o == k or o.startswith(k + " ")):
+                return kind
+    return None
+
+
 def now_iso() -> str:
     return dt.datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -130,7 +148,12 @@ def fetch_feed(src: dict, since: dt.datetime) -> list:
             title = title.rsplit(" - ", 1)[0].strip()
         if any(x.lower() in org.lower() for x in src.get("_exclude") or []):
             continue                              # Syrian outlets: the tracker itself reads them
-        out.append({"id": item_id(url, title), "url": url, "title": title, "org": org[:80], "kind": src.get("kind", "media"),
+        kind = src.get("kind", "media")
+        if src.get("known_only"):                 # a broad search: only organisations on the known list, as what they are
+            kind = known_kind(org, src.get("_known"))
+            if not kind:
+                continue
+        out.append({"id": item_id(url, title), "url": url, "title": title, "org": org[:80], "kind": kind,
                     "lang": src.get("lang") or ("ar" if ARABIC.search(title) else "en"),
                     "source": src["name"], "date": when.strftime("%Y-%m-%dT%H:%M:%SZ"), "text": text})
     out.sort(key=lambda i: i["date"], reverse=True)
@@ -145,7 +168,7 @@ def collect(cfg: dict, log=print) -> tuple[list, list]:
         if not src.get("url") or src.get("enabled") is False:
             continue
         try:
-            got = fetch_feed({**src, "_exclude": s["exclude_orgs"]}, since)
+            got = fetch_feed({**src, "_exclude": s["exclude_orgs"], "_known": s.get("known_orgs")}, since)
             items.extend(got)
             status.append({"name": src["name"], "kind": src.get("kind", "media"), "ok": True, "items": len(got)})
         except Exception as e:  # noqa: BLE001  (one broken source must never stop the others)
@@ -236,8 +259,13 @@ def update(cfg: dict, log=print) -> dict:
                 kept += 1
         cutoff = (dt.datetime.now(UTC) - dt.timedelta(days=int(s["keep_days"]))).strftime("%Y-%m-%dT%H:%M:%SZ")
         excl = [x.lower() for x in s["exclude_orgs"]]
+        broad = {x["name"] for x in s["sources"] if x.get("known_only")}
+        for i in lib["items"]:                    # items from broad searches: known organisations only, labelled as what they are
+            if i.get("source") in broad:
+                i["kind"] = known_kind(i["org"], s.get("known_orgs")) or ""
         lib["items"] = sorted((i for i in lib["items"] if i["date"] >= cutoff and not any(x in i["org"].lower() for x in excl)
-                               and not old_title(i["title"]) and "open data" not in i["org"].lower()),
+                               and not old_title(i["title"]) and "open data" not in i["org"].lower()
+                               and (i.get("source") not in broad or i["kind"])),
                               key=lambda i: i["date"], reverse=True)
         lib["skipped"] = (lib.get("skipped") or [])[-4000:]
         lib["sources"], lib["updated"] = status, now_iso()
