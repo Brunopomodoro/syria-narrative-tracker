@@ -56,7 +56,7 @@ W = {   # the words on the static pages
            "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly digests. It describes what was said, not what is true.",
            "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
-           "reportsTab": "Reports", "expertsTab": "Expert view", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
+           "reportsTab": "Reports", "expertsTab": "Media and experts", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
            "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "related": "Related stories", "contact": "Contact", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
@@ -67,8 +67,8 @@ W = {   # the words on the static pages
            "langNames": {"ar": "Arabic", "ku": "Kurdish", "en": "English", "other": "other"},
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
-           "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Expert view", "sourcesTitle": "Sources", "expertsLatest": "In the Expert view",
-           "xDay": "What international and Arab experts said that day", "xWeek": "This week in the Expert view: our analysis of international and Arab reports",
+           "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media and experts", "sourcesTitle": "Sources", "expertsLatest": "In Media and experts",
+           "xDay": "What the media and experts said that day", "xWeek": "This week in Media and experts: our analysis of Syrian and international reporting and research",
            "xArea": "The expert view on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
            "people": "الناس", "outlets": "وسائل الإعلام", "reacting": "كيف يتفاعل الناس", "framed": "كيف تُقدَّم القصة", "watch": "انتبه إلى:",
@@ -90,7 +90,7 @@ W = {   # the words on the static pages
            "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن الملخصات الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
            "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
-           "reportsTab": "التقارير", "expertsTab": "قراءات الخبراء", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
+           "reportsTab": "التقارير", "expertsTab": "الإعلام والخبراء", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
            "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "related": "قصص ذات صلة", "contact": "اتصل بنا", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
@@ -101,8 +101,8 @@ W = {   # the words on the static pages
            "langNames": {"ar": "العربية", "ku": "الكردية", "en": "الإنجليزية", "other": "أخرى"},
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
-           "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "قراءات الخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في قراءات الخبراء",
-           "xDay": "ما قاله الخبراء الدوليون والعرب في ذلك اليوم", "xWeek": "هذا الأسبوع في قراءات الخبراء: تحليلنا للتقارير الدولية والعربية",
+           "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "الإعلام والخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في «الإعلام والخبراء»",
+           "xDay": "ما قاله الإعلام والخبراء في ذلك اليوم", "xWeek": "هذا الأسبوع في «الإعلام والخبراء»: تحليلنا للتغطية والأبحاث السورية والدولية",
            "xArea": "قراءة الخبراء في {area} هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
 }
 
@@ -1060,7 +1060,7 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
     for lang in LANGS:
         w = W[lang]
         items = []
-        for n in latest.get("narratives") or []:
+        for n in sorted(latest.get("narratives") or [], key=lambda n: (-(n.get("public_volume") or 0), -(n.get("share") or 0))):   # people first, as on the page
             key = n.get("key") or archive.story_key(n)
             items.append(f"<li><a href=\"stories/{lang}/{esc(key)}.html\">{esc(t(n, 'title', lang))}</a> {esc(t(n, 'summary', lang))}</li>")
         mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
@@ -1309,23 +1309,23 @@ def write_privacy_pages(cfg: dict) -> None:
 # ----------------------------------------------------------------- the index of every source the site uses
 
 SOURCES_WORDS = {
-    "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the organisations and outlets behind the Expert view.",
-           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "The Expert view: media, think tanks and organisations from the region and beyond",
+    "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the media, think tanks and organisations behind Media and experts.",
+           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "Media and experts: Syrian and international media, think tanks and organisations",
            "telegram": "Telegram channels", "news": "News sites", "youtube": "YouTube", "reddit": "Reddit", "bluesky": "Bluesky", "x": "X",
            "ytSearch": "Comments under the videos found by these searches", "ytChannels": "and under the newest videos of these channels",
            "search": "Posts found by keyword searches", "comments": "Telegram comments and reactions on the channels above, through a Telegram account",
-           "kinds": {"intl": "International organisations", "thinktank": "Think tanks and research centres", "media": "Media"},
+           "kinds": {"intl": "International organisations", "thinktank": "Think tanks and research centres", "media": "Regional and international media", "syrian": "Syrian media"},
            "via": "read through Google News searches limited to its site",
            "known": "Broad Google News searches (Google News: Syria, Think tanks on Syria, Arab think tanks on Syria) keep only items from these established organisations, each filed under what it is",
            "langs": {"en": "English", "ar": "Arabic", "fr": "French", "de": "German", "tr": "Turkish", "he": "Hebrew", "ru": "Russian",
                      "fa": "Persian", "zh": "Chinese", "es": "Spanish", "it": "Italian"},
            "note": "Posts by individuals are read only in aggregate: they are never stored, quoted or linked. The list changes as sources are added or stop working; every change to the tracker's sources is recorded in the method changelog on the About page."},
-    "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، والجهات ووسائل الإعلام التي تستند إليها قراءات الخبراء.",
-           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "قراءات الخبراء: وسائل إعلام ومراكز أبحاث ومنظمات من المنطقة والعالم",
+    "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، ووسائل الإعلام ومراكز الأبحاث والمنظمات التي يستند إليها قسم «الإعلام والخبراء».",
+           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "الإعلام والخبراء: وسائل إعلام سورية ودولية ومراكز أبحاث ومنظمات",
            "telegram": "قنوات تيليغرام", "news": "مواقع إخبارية", "youtube": "يوتيوب", "reddit": "ريديت", "bluesky": "بلوسكاي", "x": "إكس",
            "ytSearch": "التعليقات على الفيديوهات التي تُظهرها عمليات البحث هذه", "ytChannels": "وعلى أحدث فيديوهات هذه القنوات",
            "search": "منشورات تُظهرها عمليات بحث بالكلمات المفتاحية", "comments": "تعليقات تيليغرام وتفاعلاته على القنوات أعلاه، عبر حساب تيليغرام",
-           "kinds": {"intl": "منظمات دولية", "thinktank": "مراكز أبحاث ودراسات", "media": "وسائل إعلام"},
+           "kinds": {"intl": "منظمات دولية", "thinktank": "مراكز أبحاث ودراسات", "media": "إعلام إقليمي ودولي", "syrian": "إعلام سوري"},
            "via": "تُقرأ عبر بحث غوغل نيوز المحصور في موقعها",
            "known": "تحتفظ عمليات البحث الواسعة في غوغل نيوز (سوريا عموماً، ومراكز الأبحاث، ومراكز الأبحاث العربية) بعناصر هذه الجهات الراسخة فقط، وتصنّف كلاً منها بحسب طبيعتها",
            "langs": {"en": "الإنجليزية", "ar": "العربية", "fr": "الفرنسية", "de": "الألمانية", "tr": "التركية", "he": "العبرية", "ru": "الروسية",
@@ -1376,7 +1376,7 @@ def sources_body(cfg: dict, lang: str) -> str:
     ex = (cfg.get("experts") or {})
     if ex.get("enabled") and ex.get("sources"):
         parts.append(f"<h2>{w['experts']}</h2>")
-        for kind in ("intl", "thinktank", "media"):
+        for kind in ("syrian", "intl", "thinktank", "media"):
             seen: dict = {}
             for x in (y for y in ex["sources"] if y.get("kind", "media") == kind and y.get("enabled") is not False):
                 name = re.sub(r"\s*\(via Google News\)", "", x["name"])
@@ -1395,7 +1395,7 @@ def sources_body(cfg: dict, lang: str) -> str:
         if known:
             parts.append(f"<p>{esc(w['known'])}:</p>" + "".join(
                 f"<p class=\"sub\"><strong>{w['kinds'][k]}:</strong> <span dir=\"auto\">{esc(' · '.join(known.get(k) or []))}</span></p>"
-                for k in ("intl", "thinktank", "media") if known.get(k)))
+                for k in ("syrian", "intl", "thinktank", "media") if known.get(k)))
     parts.append(f"<p class=\"sub\">{esc(w['note'])}</p>")
     return "\n".join(parts)
 
@@ -1413,7 +1413,7 @@ def write_sources_pages(cfg: dict) -> None:
 TIMELINE_WORDS = {
     "en": {"title": "Timeline since the fall of the Assad government", "nav": "Timeline",
            "sub": "The main political, security and economic events in Syria since 8 December 2024, each in a sentence or two with the sources it was checked against. From September 2026, each event links to what Syrians were saying that day on the tracker.",
-           "all": "All", "key": "Key event", "sources": "Sources", "said": "What Syrians said that day", "experts": "The Expert view that week",
+           "all": "All", "key": "Key event", "sources": "Sources", "said": "What Syrians said that day", "experts": "Media and experts that week",
            "areas": {"security": "Security", "economy": "Economy", "governance": "Governance"},
            "regions": {"national": "Nationwide", "south": "South", "coast": "Coast", "suwayda": "Suwayda", "northeast": "North-east", "aleppo": "Aleppo",
                        "damascus": "Damascus", "central": "Central Syria", "east": "East", "international": "International"},
@@ -1421,7 +1421,7 @@ TIMELINE_WORDS = {
            "updated": "Last checked"},
     "ar": {"title": "الخط الزمني منذ سقوط حكومة الأسد", "nav": "الخط الزمني",
            "sub": "أبرز الأحداث السياسية والأمنية والاقتصادية في سوريا منذ 8 كانون الأول 2024، كل حدث في جملة أو جملتين مع المصادر التي جرى التحقق منها. ومنذ أيلول 2026 يرتبط كل حدث بما كان السوريون يقولونه في ذلك اليوم على المتتبّع.",
-           "all": "الكل", "key": "حدث مفصلي", "sources": "المصادر", "said": "ما قاله السوريون في ذلك اليوم", "experts": "قراءات الخبراء في ذلك الأسبوع",
+           "all": "الكل", "key": "حدث مفصلي", "sources": "المصادر", "said": "ما قاله السوريون في ذلك اليوم", "experts": "الإعلام والخبراء في ذلك الأسبوع",
            "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"},
            "regions": {"national": "على مستوى البلاد", "south": "الجنوب", "coast": "الساحل", "suwayda": "السويداء", "northeast": "شمال شرق سوريا", "aleppo": "حلب",
                        "damascus": "دمشق", "central": "وسط سوريا", "east": "الشرق", "international": "دولي"},

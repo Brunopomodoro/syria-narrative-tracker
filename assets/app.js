@@ -10,8 +10,8 @@ if (window.top !== window.self) {
 /* =================== words =================== */
 const T = {
   en: {
-    title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data", reports: "Reports", experts: "Expert view",
-    timeline: "Timeline", expTitle: "Expert view", expSub: "Our analysis of what media, think tanks and international organisations say about Syria's security, economy and governance, set against what Syrians are saying. A short brief every day; one page per area and an overall one every week and every month.",
+    title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data", reports: "Reports", experts: "Media and experts",
+    timeline: "Timeline", expTitle: "Media and experts", expSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, set against what ordinary Syrians are saying. A short brief every day; one page per area and an overall one every week and every month.",
     expLatestDay: "Daily brief", expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "All analyses", allSources: "All the sources the site uses",
     expAreas: { overall: "Overall", security: "Security", economy: "Economy", governance: "Governance" },
@@ -42,7 +42,8 @@ const T = {
     coverage: (p) => `Together they cover ${p} of the posts analysed; the rest fit no clear story, so the percentages do not add up to 100%.`,
     coverageRest: (p) => `Together they cover ${p} of the posts analysed; the rest is described under "Everything else" at the end.`,
     restTitle: "Everything else", restNote: "Posts that belong to no single story. They are a mix of unrelated things, so they get no tone or trend.",
-    sortLabel: "Sort stories", mostDiscussed: "Most discussed", mostNegative: "Most negative", biggestGap: "Biggest gap",
+    sortLabel: "Sort stories", mostPeople: "Most discussed by people", mostDiscussed: "Most discussed overall", mostNegative: "Most negative", biggestGap: "Biggest gap",
+    peopleSortNote: "Percentages show each story's share of what people posted; outlets are not counted.", allSortNote: "Percentages show each story's share of all posts analysed, people's and outlets'.",
     people: "People", outlets: "Outlets", negative: "Negative", neutral: "Neutral", positive: "Positive",
     noStories: "No clear stories in this update.",
     reacting: "How people are reacting", framed: "How it's framed", watch: "Watch for:",
@@ -129,7 +130,7 @@ const T = {
       ["Analysis.", `The sample is sent to ${m.model} with the instructions shown at the bottom of this page. The model groups posts into stories, files each under one of the fixed themes, scores the tone of outlet coverage and of public reactions from −1 to +1, names emotions, framings and warning signs, and writes every text in English and Arabic. Where a story contains posts from several kinds of outlet or public posts in several languages, tone is also scored per kind and per language. A story that continues from the previous update keeps its id, so it can be followed over time.`],
       ["Checks.", "The model's answer is validated: unknown themes become \"other\", tones are held to the scale, per-group tones are kept only for groups with posts in the story, and each post counts towards at most one story. An update where nothing new was collected is skipped. Every text is generated, and the site says so."],
       ["What to watch.", "A short list above the stories, worked out from the numbers alone, with no extra AI call: a story whose share grew in at least two updates in a row, a new story already at 10% or more, people's tone at least half the scale away from the outlets' tone, people's tone down by more than a third of the scale within 36 hours, or coordination signs at a moderate or strong level two updates running. These are observations about the recent past, not forecasts. Every list is kept in the archive so that it can be checked later."],
-      ["Expert view.", "A separate tab gives our analysis of what media, think tanks and international organisations, in several languages, say about Syria's security, economy and governance. Their reports and articles are read from the feeds on the Sources page; each new item is filed under one of the three areas, or set aside if it is not substantially about Syria, and summarised in one sentence from its title and excerpt. Every day the model writes a short brief on the day before, and every week and every month one page per area and an overall page, comparing what the reports say with the stories Syrians discussed on the tracker. When it cites an outlet or think tank whose political orientation, ownership or state funding is widely documented, it says so. The reports drawn on are linked, never republished."],
+      ["Media and experts.", "A separate tab gives our analysis of what Syrian and international media, think tanks and international organisations, in several languages, say about Syria's security, economy and governance. Their reports and articles are read from the feeds on the Sources page; each new item is filed under one of the three areas, or set aside if it is not substantially about Syria, and summarised in one sentence from its title and excerpt. Syrian outlets are a category of their own, and from them only investigations, in-depth reports, analysis and official statements are used, since the tracker already reads their daily news. Every day the model writes a short brief on the day before, and every week and every month one page per area and an overall page, comparing what the media and experts say with what ordinary Syrians said on the tracker (people's own posts and comments, not outlets). When it cites an outlet or think tank whose political orientation, ownership or state funding is widely documented, it says so. The reports drawn on are linked, never republished."],
       ["What is stored.", "The analysis of every update, per-day aggregates, and outlet headlines, permanently. Individuals' posts, comments and identifiers are not stored; the fingerprints used to notice that nothing new was posted are one-way hashes."]],
     limits: [
       ["Not a survey.", "The posts are a sample of what is public online, capped per update and balanced across sources. Shares and tones describe that sample, not Syrians as a whole, and small themes rest on few posts."],
@@ -163,8 +164,8 @@ const T = {
     locale: "en-GB"
   },
   ar: {
-    title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "قراءات الخبراء",
-    timeline: "الخط الزمني", expTitle: "قراءات الخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون. موجز قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر.",
+    title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "الإعلام والخبراء",
+    timeline: "الخط الزمني", expTitle: "الإعلام والخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون العاديون. موجز قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر.",
     expLatestDay: "الموجز اليومي", expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "كل التحليلات", allSources: "كل المصادر التي يعتمدها الموقع",
     expAreas: { overall: "نظرة شاملة", security: "الأمن", economy: "الاقتصاد", governance: "الحوكمة" },
@@ -195,7 +196,8 @@ const T = {
     coverage: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فلا تنتمي إلى قصة واضحة، ولذلك لا يبلغ مجموع النسب ١٠٠٪.`,
     coverageRest: (p) => `تغطي القصص معاً ${p} من المنشورات المحلَّلة؛ أما البقية فموصوفة تحت «كل ما عدا ذلك» في الأسفل.`,
     restTitle: "كل ما عدا ذلك", restNote: "منشورات لا تنتمي إلى قصة واحدة. إنها خليط من أمور لا رابط بينها، لذلك لا تُحسب لها نبرة ولا مسار.",
-    sortLabel: "ترتيب القصص", mostDiscussed: "الأكثر تداولاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
+    sortLabel: "ترتيب القصص", mostPeople: "الأكثر تداولاً بين الناس", mostDiscussed: "الأكثر تداولاً إجمالاً", mostNegative: "الأكثر سلبية", biggestGap: "أكبر فجوة",
+    peopleSortNote: "تُظهر النسب حصة كل قصة مما نشره الناس، من دون احتساب وسائل الإعلام.", allSortNote: "تُظهر النسب حصة كل قصة من كل المنشورات المحلَّلة، للناس ولوسائل الإعلام.",
     people: "الناس", outlets: "وسائل الإعلام", negative: "سلبي", neutral: "محايد", positive: "إيجابي",
     noStories: "لا توجد قصص واضحة في هذا التحديث.",
     reacting: "كيف يتفاعل الناس", framed: "كيف تُقدَّم القصة", watch: "انتبه إلى:",
@@ -279,7 +281,7 @@ const T = {
       ["التحليل.", `تُرسل العيّنة إلى ${m.model} مع التعليمات المعروضة في أسفل هذه الصفحة. يجمّع النموذج المنشورات في قصص، ويصنّف كل قصة تحت موضوع ثابت واحد، ويقيس نبرة تغطية وسائل الإعلام ونبرة تفاعل الناس من −١ إلى +١، ويسمّي المشاعر والتأطيرات وعلامات التحذير، ويكتب كل نص بالإنجليزية والعربية. وحين تضم القصة منشورات من أنواع عدة من وسائل الإعلام أو منشورات من الناس بلغات عدة، تُقاس النبرة أيضاً حسب النوع وحسب اللغة. تحتفظ القصة المستمرة من التحديث السابق بمعرّفها، فيمكن تتبّعها مع الوقت.`],
       ["التحقق.", "يُتحقق من إجابة النموذج: تصبح المواضيع غير المعروفة «أخرى»، وتُحصر النبرات ضمن المقياس، وتُحفظ نبرات المجموعات فقط للمجموعات التي لها منشورات في القصة، ويُحسب كل منشور في قصة واحدة على الأكثر. ويُتخطى التحديث الذي لم يجمع شيئاً جديداً. كل النصوص مولَّدة، والموقع يقول ذلك."],
       ["ما يستحق المتابعة.", "قائمة قصيرة فوق القصص تُستخرج من الأرقام وحدها، من دون أي استدعاء إضافي للذكاء الاصطناعي: قصة زادت حصتها في تحديثين متتاليين على الأقل، أو قصة جديدة تبلغ حصتها 10٪ أو أكثر، أو نبرة الناس تبتعد عن نبرة الإعلام نصف المقياس على الأقل، أو نبرة الناس تراجعت أكثر من ثلث المقياس خلال 36 ساعة، أو علامات تنسيق متوسطة أو قوية في تحديثين متتاليين. إنها ملاحظات عن الماضي القريب لا توقعات. تُحفظ كل قائمة في الأرشيف كي يمكن التحقق منها لاحقاً."],
-      ["قراءات الخبراء.", "تقدّم علامة تبويب مستقلة تحليلنا لما تقوله وسائل الإعلام ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا. تُقرأ تقاريرها ومقالاتها من الخلاصات المدرجة في صفحة المصادر؛ ويُصنَّف كل عنصر جديد في أحد المجالات الثلاثة، أو يُستبعد إن لم يكن عن سوريا أساساً، ويُلخَّص في جملة واحدة من عنوانه ومقتطفه. ويكتب النموذج كل يوم موجزاً قصيراً عن اليوم السابق، وكل أسبوع وكل شهر صفحة لكل مجال وصفحة شاملة، ويقارن ما تقوله التقارير بالقصص التي ناقشها السوريون على المتتبّع. وحين يستشهد بوسيلة إعلام أو مركز أبحاث معروف التوجه السياسي أو الملكية أو التمويل الحكومي، يذكر ذلك. التقارير المعتمدة مرتبطة بروابط ولا يُعاد نشرها."],
+      ["الإعلام والخبراء.", "تقدّم علامة تبويب مستقلة تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا. تُقرأ تقاريرها ومقالاتها من الخلاصات المدرجة في صفحة المصادر؛ ويُصنَّف كل عنصر جديد في أحد المجالات الثلاثة، أو يُستبعد إن لم يكن عن سوريا أساساً، ويُلخَّص في جملة واحدة من عنوانه ومقتطفه. وتشكّل وسائل الإعلام السورية فئة مستقلة، ولا يُعتمد منها إلا التحقيقات والتقارير المعمّقة والتحليلات والبيانات الرسمية، لأن المتتبّع يقرأ أخبارها اليومية أصلاً. ويكتب النموذج كل يوم موجزاً قصيراً عن اليوم السابق، وكل أسبوع وكل شهر صفحة لكل مجال وصفحة شاملة، ويقارن ما يقوله الإعلام والخبراء بما قاله السوريون العاديون على المتتبّع (منشوراتهم وتعليقاتهم، لا وسائل الإعلام). وحين يستشهد بوسيلة إعلام أو مركز أبحاث معروف التوجه السياسي أو الملكية أو التمويل الحكومي، يذكر ذلك. التقارير المعتمدة مرتبطة بروابط ولا يُعاد نشرها."],
       ["ما يُحفظ.", "تحليل كل تحديث، والمجاميع اليومية، وعناوين وسائل الإعلام، بشكل دائم. لا تُحفظ منشورات الأفراد وتعليقاتهم ومعرّفاتهم؛ والبصمات المستخدمة لملاحظة أن لا جديد نُشر هي تجزئات أحادية الاتجاه."]],
     limits: [
       ["ليس استطلاع رأي.", "المنشورات عيّنة مما هو علني على الإنترنت، محدودة في كل تحديث ومتوازنة بين المصادر. الحصص والنبرات تصف هذه العيّنة لا السوريين جميعاً، والمواضيع الصغيرة تستند إلى منشورات قليلة."],
@@ -330,7 +332,7 @@ if (ROOT) {   // links the page writes (stories/..., daily/..., data/...) get th
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const safeUrl = (u) => /^https:\/\//i.test(u || "") ? u : "";
 const has = (v) => v !== null && v !== undefined && v !== "";
-const state = { experts: { loaded: false, loading: false, index: [] }, latest: null, history: [], sort: "share", open: new Set(), sel: null, first: true, lang: null,
+const state = { experts: { loaded: false, loading: false, index: [] }, latest: null, history: [], sort: "people", open: new Set(), sel: null, first: true, lang: null,
   snaps: new Map(), hourOpen: new Set(),
   search: { q: "", kind: "", data: null, loading: false, open: new Set(), shown: 30 },
   trends: { index: null, loading: false, period: 90, theme: "", tables: new Set() },
@@ -475,9 +477,19 @@ function dumbbell(n) {
   return h + `</div>`;
 }
 const gapOf = (n) => peopleTone(n) === null ? -1 : Math.abs(peopleTone(n) - n.sentiment);
+// A story's share of what people posted (outlets not counted), or null when the update has no people's posts.
+const peopleShare = (n) => { const p = state.latest?.stats?.public_posts || 0; return p ? Math.min(1, (n.public_volume || 0) / p) : null; };
+const shownShare = (n) => state.sort === "people" && peopleShare(n) !== null ? peopleShare(n) : n.share;
+// "Everything else" in the same terms as the stories above it.
+const shownRest = () => {
+  const nars = state.latest?.narratives || [];
+  if (state.sort === "people" && nars.length && peopleShare(nars[0]) !== null) return Math.max(0, 1 - nars.reduce((a, n) => a + peopleShare(n), 0));
+  return state.latest?.overall?.rest_share || 0;
+};
 function sorted(list) {
   const a = [...list];
-  if (state.sort === "negative") a.sort((x, y) => (peopleTone(x) ?? x.sentiment) - (peopleTone(y) ?? y.sentiment));
+  if (state.sort === "people") a.sort((x, y) => ((peopleShare(y) ?? y.share) - (peopleShare(x) ?? x.share)) || (y.share - x.share));
+  else if (state.sort === "negative") a.sort((x, y) => (peopleTone(x) ?? x.sentiment) - (peopleTone(y) ?? y.sentiment));
   else if (state.sort === "gap") a.sort((x, y) => gapOf(y) - gapOf(x));
   else a.sort((x, y) => y.share - x.share);
   return a;
@@ -492,7 +504,7 @@ function storyHTML(n) {
       <span class="t"><span class="chev" aria-hidden="true">▶</span>
         <span class="t-text"><span class="t-main ${mainCls}" dir="auto">${esc(titleMain(n))}${tr === "New" || tr === "Rising" ? `<span class="badge">${t.trend[tr]}</span>` : ""}</span>
         ${alt ? `<span class="t-alt ${altCls}" lang="${rtl() ? "en" : "ar"}" dir="${rtl() ? "ltr" : "rtl"}">${esc(alt)}</span>` : ""}</span></span>
-      <span class="share">${pctText(n.share)}</span>
+      <span class="share">${shownShare(n) > 0 && shownShare(n) < 0.005 ? (rtl() ? "&lt;١٪" : "&lt;1%") : pctText(shownShare(n))}</span>
       ${dumbbell(n)}
     </button>
     <div class="detail" id="d-${esc(n.id)}"><div><div class="detail-in">${detailBody(n, tr)}</div></div></div>
@@ -561,15 +573,16 @@ function storiesHTML() {
   <section aria-labelledby="h-stories">
     <div class="sec-head">
       <div><h2 id="h-stories">${t.stories}</h2><p class="sub">${t.storiesSub(num(nars.length), h)}${nars.length ? " " + (rest ? t.coverageRest : t.coverage)(pctText(Math.min(1, nars.reduce((a, n) => a + (n.share || 0), 0)))) : ""}</p></div>
-      <div class="seg" role="group" aria-label="${t.sortLabel}">${btn("share", t.mostDiscussed)}${btn("negative", t.mostNegative)}${btn("gap", t.biggestGap)}</div>
+      <div class="seg" role="group" aria-label="${t.sortLabel}">${btn("people", t.mostPeople)}${btn("share", t.mostDiscussed)}${btn("negative", t.mostNegative)}${btn("gap", t.biggestGap)}</div>
     </div>
+    ${nars.length ? `<p class="sub" id="sortnote">${state.sort === "people" ? t.peopleSortNote : t.allSortNote}</p>` : ""}
     ${nars.length ? `
     <div class="axis-head" aria-hidden="true">
       <span class="key"><span><i class="k-dot"></i>${t.people}</span><span><i class="k-ring"></i>${t.outlets}</span></span>
       <span class="scale">${scale.map(s => `<span>${s}</span>`).join("")}</span>
     </div>
     <div id="stories" class="${state.first ? "pending" : ""}">${sorted(nars).map(storyHTML).join("")}</div>
-    ${rest ? `<div class="rest"><p class="rest-h"><span>${t.restTitle}</span><span class="share">${pctText(o.rest_share)}</span></p>
+    ${rest ? `<div class="rest"><p class="rest-h"><span>${t.restTitle}</span><span class="share" id="restshare">${pctText(shownRest())}</span></p>
       <p class="rest-t" dir="auto">${esc(restText)}</p><p class="rest-n">${t.restNote}</p></div>` : ""}` : `<p>${t.noStories}</p>`}
   </section>`;
 }
@@ -1415,6 +1428,10 @@ function bind() {
   document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
     state.sort = b.dataset.sort;
     $("#stories").innerHTML = sorted(state.latest.narratives || []).map(storyHTML).join("");
+    const note = $("#sortnote");
+    if (note) note.textContent = state.sort === "people" ? L().peopleSortNote : L().allSortNote;
+    const rest = $("#restshare");
+    if (rest) rest.textContent = pctText(shownRest());
     document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
     bindRows();
   }));
