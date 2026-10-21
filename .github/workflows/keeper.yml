@@ -65,3 +65,4 @@ jobs:
         run: |
           gh workflow run update.yml --ref main
           gh workflow run keeper.yml --ref main -f hours="$KEEPER_HOURS"
+          gh workflow run brief-timer.yml --ref main   # for the same reason, the daily brief timer is set from here too
