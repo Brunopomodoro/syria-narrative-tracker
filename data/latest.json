@@ -3,134 +3,240 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-10-20T23:54:10Z",
- "checked_at": "2026-10-20T23:54:10Z",
+ "generated_at": "2026-10-21T04:51:12Z",
+ "checked_at": "2026-10-21T04:51:12Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1562,
-  "relevant": 940,
-  "posts_analyzed": 758,
-  "public_posts": 538,
-  "outlet_posts": 220,
+  "collected": 1704,
+  "relevant": 1063,
+  "posts_analyzed": 815,
+  "public_posts": 575,
+  "outlet_posts": 240,
   "reactions_posts": 0,
-  "unique_posts": 734,
+  "unique_posts": 800,
   "sources_ok": 49,
   "sources_total": 49,
   "platforms": {
-   "news": 45,
-   "telegram": 175,
+   "telegram": 192,
+   "news": 48,
    "x": 10,
-   "reddit": 23,
-   "youtube": 299,
-   "bluesky": 182
+   "bluesky": 170,
+   "youtube": 356,
+   "reddit": 24
   },
   "languages": {
-   "ar": 504,
-   "en": 227,
-   "ku": 2,
-   "other": 1
+   "ar": 565,
+   "en": 233,
+   "ku": 2
   }
  },
  "overall": {
-  "sentiment": -0.05,
+  "sentiment": -0.1,
   "mood": "Tense",
   "mood_ar": "متوتر",
-  "public_sentiment": -0.25,
+  "public_sentiment": -0.35,
   "public_mood": "Angry",
   "public_mood_ar": "غاضب",
-  "brief": "Public attention centered on the Saroot chanting controversy at a basketball match, drone attacks on security posts in Suwayda, continued Israeli incursions in Quneitra and Suwayda, and Turkey's statement on keeping troops in Syria and Iraq. Economic stories (JPMorgan-Aramco fuel deal, currency controls, potato import denial) drew measured public interest, while DNA identification of missing persons was welcomed. Outlets covered events with institutional, investigative framing while public voices showed anger, mockery, sectarian anxiety and calls for protest.",
-  "brief_ar": "تركز اهتمام الجمهور على الجدل حول هتافات الساروت خلال مباراة كرة سلة، وهجمات بطائرات مسيّرة على نقاط أمنية في السويداء، واستمرار التوغلات الإسرائيلية في القنيطرة والسويداء، وتصريح تركيا بشأن بقاء قواتها في سوريا والعراق. وحظيت قصص اقتصادية (صفقة جيه بي مورغان وأرامكو، ضبط سوق الصرافة، نفي استيراد البطاطا) باهتمام أقل حدة، بينما لقي تحديد هوية المفقودين عبر الحمض النووي ترحيباً. غطت وسائل الإعلام الأحداث بأسلوب رسمي وتحقيقي بينما أظهر الجمهور غضباً وسخرية وقلقاً طائفياً ودعوات للاحتجاج.",
-  "rest": "Many unassigned posts are personal chatter: a viral home tour video in Hama drawing compliments and small talk, Damascus steel and craft hobby posts, religious greetings and prayers, Kurdish-language cultural and solidarity posts, moderation notices on subreddits, and scattered off-topic international commentary (Turkey-Yemen, Ukraine, France protests).",
-  "rest_ar": "تتكون معظم المنشورات غير المصنّفة من أحاديث شخصية: فيديو جولة منزلية رائج في حماة يحظى بتعليقات ودية، منشورات عن الفولاذ الدمشقي والهوايات، تحيات دينية ودعوات، محتوى ثقافي وتضامني باللغة الكردية، إشعارات إشرافية على منتديات ريديت، وتعليقات دولية متفرقة خارج السياق (تركيا واليمن، أوكرانيا، احتجاجات فرنسا).",
-  "rest_share": 0.814
+  "brief": "Public discourse is dominated by the basketball match controversy over chants about martyr Abdul Basset al-Saroot, which outlets and commenters frame as touching sectarian and revolutionary symbolism. Israeli incursions in Quneitra and drone attacks in Suwayda feed fears of wider escalation, with sharp divides between pro-government and Druze-sympathetic voices. Economic news (J.P. Morgan fuel deal, currency crackdown, price complaints) draws more muted, weary reactions, while DNA identification of the missing and Turkey's troop statements are reported mostly neutrally.",
+  "brief_ar": "يهيمن على النقاش العام الجدل حول الهتافات المتعلقة بالشهيد عبد الباسط الساروت خلال مباراة كرة السلة، إذ تؤطره وسائل الإعلام والمعلقون بوصفه مساً بالرموز الوطنية والطائفية. وتغذي التوغلات الإسرائيلية في القنيطرة وهجمات الطائرات المسيرة في السويداء مخاوف من تصعيد أوسع، وسط انقسام حاد بين الأصوات الموالية للحكومة وتلك المتعاطفة مع الدروز. أما الأخبار الاقتصادية (صفقة الوقود مع جيه بي مورغان وضبط سوق الصرف وشكاوى الأسعار) فتلقى تفاعلاً أكثر هدوءاً وإنهاكاً، بينما تُغطى تصريحات تركيا حول بقاء قواتها وتحديد هوية رفات المفقودين عبر الحمض النووي بشكل أكثر حيادية.",
+  "rest": "Many unassigned posts are religious greetings, prayers and supportive comments on unrelated lifestyle videos (cooking, home tours), plus scattered off-topic chatter (Damascus steel knives, diaspora reflections, history discussions) and local football results.",
+  "rest_ar": "تتوزع المنشورات غير المصنفة بين تحيات دينية ودعوات وتعليقات داعمة على مقاطع حياتية غير سياسية (طبخ، جولات منزلية)، إضافة إلى أحاديث عامة متفرقة (سكاكين دمشقية، انطباعات المغتربين، نقاشات تاريخية) ونتائج كروية محلية.",
+  "rest_share": 0.784
  },
  "narratives": [
+  {
+   "id": "suwayda-druze-drone-attacks",
+   "key": "2026-10-20-suwayda-druze-drone-attacks",
+   "theme": "suwayda-druze",
+   "title": "Drone attacks on security posts in western Suwayda countryside and fears of broader escalation",
+   "title_ar": "هجمات بطائرات مسيّرة على نقاط أمنية في ريف السويداء الغربي ومخاوف من تصعيد أوسع",
+   "summary": "Drone attacks using explosives targeted Internal Security Forces posts in western rural Suwayda, attributed by security sources to armed Druze factions. Reports and officials voiced fears of a larger Druze-Israeli coordinated attack, while Israeli media allegedly detailed a plan to incite unrest. Public reaction is deeply divided along sectarian lines.",
+   "summary_ar": "استهدفت هجمات بطائرات مسيّرة محمّلة بمتفجرات نقاطاً للأمن الداخلي في ريف السويداء الغربي، ونسبتها مصادر أمنية إلى فصائل درزية مسلحة. وأعرب مسؤولون عن مخاوف من هجوم درزي إسرائيلي أوسع، بينما زعمت تقارير إعلامية إسرائيلية وجود مخطط لإثارة الاضطرابات. تفاعل الجمهور انقسم بشدة على أساس طائفي.",
+   "detail": "Security sources cited by state and independent media said Suwayda's National Guard, linked to Sheikh Hikmat al-Hijri, struck Internal Security Forces positions with explosive drones in a recurring flashpoint. Sky News Arabia reported a senior Syrian official's fear of an imminent Druze attack backed by Israel, while a widely shared post cited Yedioth Ahronoth alleging an Israeli plan to strike Suwayda to provoke unrest as pretext for wider operations. Civil society groups called for Friday protests under ",
+   "detail_ar": "نقلت وسائل إعلام رسمية ومستقلة عن مصادر أمنية أن «الحرس الوطني» في السويداء، المرتبط بالشيخ حكمت الهجري، استهدف مواقع لقوى الأمن الداخلي بطائرات مسيّرة مفخخة، في تكرار لنقطة توتر متجددة. وذكرت سكاي نيوز عربية أن مسؤولاً سورياً رفيعاً أبدى مخاوف من هجوم درزي وشيك مدعوم من إسرائيل، في حين استشهد منشور تداوله كثيرون بصحيفة يديعوت أحرونوت التي زعمت وجود خطة إسرائيلية لضرب السويداء بهدف إثارة اضطرابات تُستخدم ذريعة لعمليات أوسع. ودعت مجموعات من المجتمع المدني إلى تظاهرات يوم الجمعة تحت شعار",
+   "public_reaction": "Public reaction is split between Sunni-majority commenters blaming Hijri and Druze militias for treason and alignment with Israel, and other voices (including some self-identified Sunnis) expressing solidarity with Suwayda's suffering and blaming the government's sectarian rhetoric; a minority fear an Israeli-orchestrated provocation.",
+   "public_reaction_ar": "انقسم الجمهور بين معلقين من الغالبية السنية يحمّلون الهجري والميليشيات الدرزية مسؤولية الخيانة والتحالف مع إسرائيل، وأصوات أخرى (بينها من يعرّف نفسه سنياً) تعبّر عن تضامنها مع معاناة السويداء وتحمّل الخطاب الطائفي الحكومي المسؤولية، فيما تخشى أقلية من استفزاز إسرائيلي مدبر.",
+   "sentiment": -0.4,
+   "public_sentiment": -0.5,
+   "outlet_tone": {
+    "independent": -0.4,
+    "kurdish": -0.2,
+    "regional": -0.3,
+    "aggregator": -0.3
+   },
+   "public_tone": {
+    "ar": -0.5,
+    "en": -0.3
+   },
+   "emotions": [
+    "fear",
+    "anger",
+    "suspicion"
+   ],
+   "emotions_ar": [
+    "خوف",
+    "غضب",
+    "ريبة"
+   ],
+   "framings": [
+    "Druze militia aggression against the state",
+    "State and sectarian incitement against Druze",
+    "Israeli instigation theory"
+   ],
+   "framings_ar": [
+    "اعتداء ميليشيات درزية على الدولة",
+    "تحريض الدولة والطائفية ضد الدروز",
+    "نظرية التحريض الإسرائيلي"
+   ],
+   "flags": [
+    "Unverified claim about Israeli plan from Yedioth Ahronoth",
+    "sectarian incitement in comments"
+   ],
+   "flags_ar": [
+    "ادعاء لم يُتحقق منه عن مخطط إسرائيلي نقلاً عن يديعوت أحرونوت",
+    "تحريض طائفي في التعليقات"
+   ],
+   "volume": 54,
+   "public_volume": 47,
+   "share": 0.066,
+   "engagement": 2927,
+   "platforms": {
+    "telegram": 3,
+    "news": 4,
+    "x": 2,
+    "youtube": 39,
+    "bluesky": 4
+   },
+   "languages": {
+    "en": 3,
+    "ar": 49
+   },
+   "public_languages": {
+    "ar": 44,
+    "en": 1
+   },
+   "kinds": {
+    "independent": 3,
+    "aggregator": 2,
+    "regional": 1,
+    "kurdish": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Bluesky posts",
+    "X posts",
+    "Levant24 - Syria news (EN)",
+    "Google News - Syria (EN)",
+    "Google News - Syria (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141971",
+     "platform": "telegram"
+    },
+    {
+     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
+     "url": "https://t.me/HawarNews/83056",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/46130",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-20T23:54:10Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
   {
    "id": "saroot-chants-controversy",
    "key": "2026-10-20-saroot-chants-controversy",
    "theme": "society",
    "title": "Chants controversy at Wehda-Karama basketball match ignites nationwide anger",
-   "title_ar": "جدل الهتافات في مباراة الوحدة والكرامة يشعل غضباً واسعاً",
-   "summary": "A basketball match in Damascus between al-Wehda and al-Karama clubs on 19 October sparked controversy after chants were interpreted as insulting revolution-era figure Abdul Baset al-Saroot. Karama's club and activists in Homs demanded accountability; Wehda denied insult, calling the chants a tribute. The Sports Ministry and Basketball Federation formed investigation committees.",
-   "summary_ar": "أثارت مباراة كرة سلة بين ناديي الوحدة والكرامة في دمشق يوم ١٩ تشرين الأول جدلاً بعدما فُسّرت هتافات على أنها إساءة لرمز الثورة عبد الباسط الساروت. طالب نادي الكرامة وناشطون في حمص بالمحاسبة، بينما نفى نادي الوحدة الإساءة واعتبر الهتافات ترحماً. شكّلت وزارة الرياضة واتحاد كرة السلة لجان تحقيق.",
-   "detail": "The incident occurred during a Syrian basketball league match in Damascus, with Karama's fans (from Homs) accusing a minority of Wehda's (Damascus) fans of insulting the late Saroot, a revolutionary icon who died fighting the Assad regime. Wehda's club statement said the chants were meant as tribute, not insult, and blamed 'edited clips' for stoking tension. The Basketball Federation and Sports Ministry both announced independent investigative committees, pledging accountability and framing the issue as protecting 'national symbols' and martyrs' dignity. Protests erupted in Homs with young men gathering in solidarity with Saroot. Social media users across Syrian cities adopted the hashtag asserting Saroot belongs to all of Syria regardless of city of origin, pushing back against regionalist framing. Some observers noted this kind of flare-up repeats a recurring pattern of local/regional clashes on social media.",
-   "detail_ar": "وقعت الحادثة خلال مباراة في الدوري السوري لكرة السلة في دمشق، حيث اتهم جمهور الكرامة (من حمص) قلة من جمهور الوحدة (من دمشق) بالإساءة إلى الساروت، رمز الثورة الذي قُتل في معارك ضد نظام الأسد. وأكد نادي الوحدة في بيانه أن الهتافات كانت ترحماً لا إساءة، محمّلاً المقاطع المجتزأة مسؤولية إثارة التوتر. وأعلن اتحاد كرة السلة ووزارة الرياضة تشكيل لجان تحقيق مستقلة، مؤكدين حماية «الرموز الوطنية» وكرامة الشهداء. واندلعت احتجاجات في حمص تضامناً مع الساروت. وتبنى مستخدمو منصات التواصل في مدن سورية مختلفة وسوماً تؤكد أن الساروت ملك لكل السوريين بغض النظر عن مدينته، ردّاً على التأطير المناطقي. ولاحظ بعض المراقبين أن هذا النوع من التصعيد يكرر نمطاً متكرراً من الخناقات المناطقية على وسائل التواصل.",
-   "public_reaction": "Public reaction was emotionally charged: protests in Homs, viral hashtags defending Saroot's legacy across all Syrian cities, and mutual insults between Wehda and Karama fans; some commenters criticized the cycle of recurring regional flare-ups online as repetitive and tiresome.",
-   "public_reaction_ar": "كان رد فعل الجمهور مشحوناً عاطفياً: احتجاجات في حمص، ووسوم رائجة تدافع عن إرث الساروت باعتباره ملكاً لكل المدن السورية، وتبادل شتائم بين جمهوري الوحدة والكرامة؛ وانتقد بعض المعلقين تكرار هذا النوع من الخناقات المناطقية على الإنترنت ووصفوه بالمُمل.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.4,
+   "title_ar": "جدل الهتافات في مباراة الوحدة والكرامة يثير غضباً واسعاً",
+   "summary": "A basketball match between Wehda (Homs) and Karama clubs sparked outrage after chants perceived as insulting martyr Abdul Basset al-Saroot circulated online. Sports authorities, the basketball federation and ministry formed investigation committees; Wehda's club denied insult, saying chants were commemorative. The dispute has become a proxy for broader tensions over revolutionary symbolism.",
+   "summary_ar": "أثارت مباراة كرة سلة بين ناديي الوحدة (حمص) والكرامة غضباً واسعاً بعد تداول هتافات اعتُبرت إساءة للشهيد عبد الباسط الساروت. شكّلت الجهات الرياضية والاتحاد والوزارة لجان تحقيق، بينما نفى نادي الوحدة الإساءة قائلاً إن الهتافات كانت ترحماً. تحوّل الخلاف إلى انعكاس لتوترات أوسع حول الرموز الثورية.",
+   "detail": "The controversy erupted after a match in Damascus between Wehda and Karama clubs, with Karama's fans accusing Wehda supporters of insulting al-Saroot, an iconic revolutionary martyr, while Wehda's fans say they were mocking rival player Omar al-Soumah, leading to an exchange of chants. Official outlets (SANA, Al-Ikhbariya) reported statements from the Ministry of Sports, the basketball federation and the People's Assembly's youth committee demanding investigations. Independent outlets amplified Karama's statement and Wehda's defense equally. Public reaction split: many commenters defended al-Saroot's memory and condemned any disrespect, framing it as an attack on revolutionary symbols, while others (including satirical and skeptical voices) mocked the controversy as distraction, questioned sports fan culture broadly, and tied it to regional rivalries (Homs vs Damascus). Some protests were reported in Homs's Dawar al-Saa against the alleged insult.",
+   "detail_ar": "اندلع الجدل بعد مباراة في دمشق بين ناديي الوحدة والكرامة، حيث اتهم جمهور الكرامة مشجعي الوحدة بالإساءة إلى الساروت، أيقونة الثورة، بينما قال مشجعو الوحدة إنهم كانوا يسخرون من اللاعب المنافس عمر السومة، مما أدى لتبادل الهتافات. نقلت وسائل الإعلام الرسمية (سانا، الإخبارية) تصريحات وزارة الرياضة واتحاد كرة السلة ولجنة الشباب في مجلس الشعب تطالب بالتحقيق. وسائل الإعلام المستقلة نقلت بيان الكرامة ودفاع الوحدة بالتساوي. انقسم الجمهور: دافع كثيرون عن ذكرى الساروت واعتبروا الأمر مساً بالرموز الثورية، بينما سخر آخرون من الضجة واعتبروها تلهية، وربطوها بتنافس مناطقي بين حمص ودمشق. وأفادت تقارير بوقفات احتجاجية في دوار الساعة بحمص رفضاً للإساءة المزعومة.",
+   "public_reaction": "Reactions split sharply: many condemned the chants as an insult to a revolutionary symbol and demanded accountability, while others mocked both fan bases as hooligans and dismissed the furor as a distraction from real issues like prices and Israeli incursions.",
+   "public_reaction_ar": "انقسمت ردود الفعل بشدة؛ أدان كثيرون الهتافات بوصفها إساءة لرمز ثوري وطالبوا بالمحاسبة، بينما سخر آخرون من جمهور الفريقين ووصفوهم بالشغب، معتبرين الضجة إلهاءً عن قضايا حقيقية كالأسعار والتوغلات الإسرائيلية.",
+   "sentiment": -0.3,
+   "public_sentiment": -0.2,
    "outlet_tone": {
-    "official": -0.1,
+    "official": -0.2,
     "independent": -0.2,
     "aggregator": -0.1
    },
    "public_tone": {
-    "ar": -0.45
+    "ar": -0.2
    },
    "emotions": [
     "anger",
-    "grief",
-    "defensiveness"
+    "indignation",
+    "mockery"
    ],
    "emotions_ar": [
     "غضب",
-    "حزن",
-    "دفاعية"
+    "استياء",
+    "سخرية"
    ],
    "framings": [
-    "Official framing as protecting national symbols and sportsmanship",
-    "Independent outlets framing it as a revolution-memory dispute",
-    "Public framing as regional (Homs vs Damascus) rivalry turned national solidarity"
+    "Defense of revolutionary martyrs' honor",
+    "Sports rivalry turned political",
+    "Distraction from real crises"
    ],
    "framings_ar": [
-    "تأطير رسمي كحماية للرموز الوطنية والروح الرياضية",
-    "تأطير وسائل الإعلام المستقلة كخلاف حول ذاكرة الثورة",
-    "تأطير شعبي كخصومة مناطقية (حمص مقابل دمشق) تحولت لتضامن وطني"
+    "الدفاع عن كرامة شهداء الثورة",
+    "تنافس رياضي يتحول سياسياً",
+    "إلهاء عن أزمات حقيقية"
    ],
    "flags": [
-    "Unverified clips framing disputed chants as insult",
-    "Sectarian/regional rivalry rhetoric"
+    "Unverified claims about which side insulted whom"
    ],
    "flags_ar": [
-    "مقاطع لم يتحقق منها تؤطر الهتافات المتنازع عليها كإساءة",
-    "خطاب خصومة مناطقية وطائفية"
+    "ادعاءات لم يُتحقق منها حول الطرف الذي بدأ الإساءة"
    ],
-   "volume": 31,
-   "public_volume": 9,
-   "share": 0.041,
-   "engagement": 22225,
+   "volume": 30,
+   "public_volume": 6,
+   "share": 0.037,
+   "engagement": 43084,
    "platforms": {
-    "telegram": 18,
+    "telegram": 20,
     "news": 4,
-    "x": 7,
-    "bluesky": 2
+    "x": 2,
+    "bluesky": 4
    },
    "languages": {
-    "ar": 31
+    "ar": 30
    },
    "public_languages": {
-    "ar": 9
+    "ar": 6
    },
    "kinds": {
-    "official": 9,
-    "independent": 12,
+    "official": 10,
+    "independent": 13,
     "aggregator": 1
    },
    "sources": [
-    "X posts",
     "Al-Ikhbariya Syria - state TV",
     "Syria TV - opposition-origin broadcaster",
     "Al-Watan - Damascus daily newspaper",
+    "Bluesky posts",
     "Halab Today TV - opposition-origin, Aleppo",
     "SANA - state news agency (AR)"
    ],
    "examples": [
     {
      "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/96679",
+     "url": "https://t.me/TelevisionSyria/96681",
      "platform": "telegram"
     },
     {
@@ -152,198 +258,91 @@
    }
   },
   {
-   "id": "suwayda-druze-drone-attacks",
-   "key": "2026-10-20-suwayda-druze-drone-attacks",
-   "theme": "suwayda-druze",
-   "title": "Drone attacks on security posts in western Suwayda countryside",
-   "title_ar": "هجمات بطائرات مسيّرة على نقاط أمنية غرب السويداء",
-   "summary": "Explosive-laden drones struck Internal Security Forces positions in western rural Suwayda on 20 October. Security sources and outlets attributed the attack to 'outlaw groups', while Levant24 identified the attackers as Suwayda's National Guard, linked to Druze religious leader Hikmat al-Hijri. The attack follows weeks of tension and fears of a broader Druze-government confrontation.",
-   "summary_ar": "استهدفت طائرات مسيّرة محمّلة بمتفجرات نقاطاً لقوى الأمن الداخلي في ريف السويداء الغربي يوم ٢٠ تشرين الأول. ونسبت مصادر أمنية ووسائل إعلام الهجوم لـ«مجموعات خارجة عن القانون»، بينما حدد موقع Levant24 المهاجمين بأنهم «الحرس الوطني» التابع لفصائل درزية موالية لحكمت الهجري. يأتي الهجوم بعد أسابيع من التوتر والمخاوف من مواجهة أوسع بين الدروز والحكومة.",
-   "detail": "State-aligned and independent outlets described the attack using security-source language, calling the attackers 'outlaw groups' without naming them explicitly, while Levant24 (English, independent) specifically named the Suwayda National Guard, a Druze faction loyal to Hikmat al-Hijri, as responsible. This follows Governor Mustafa al-Bakour's earlier calls for local notables to calm tensions, and a Sky News Arabia report citing a Syrian official's fear of an imminent Israeli-backed Druze offensive. Separately, public posts note Israeli military equipment reportedly moving toward a strategic peak in Suwayda to build a base, and reports of a radar installation near the province. Civil society groups called for nationwide Friday protests against Israeli involvement in southern Syria, explicitly linking Suwayda and Quneitra under one banner.",
-   "detail_ar": "وصفت وسائل الإعلام الرسمية والمستقلة الهجوم باستخدام لغة المصادر الأمنية، واصفة المهاجمين بـ«مجموعات خارجة عن القانون» دون تسميتهم، في حين حدد موقع Levant24 (مستقل، إنكليزي) أن المسؤولين هم «الحرس الوطني» في السويداء، وهو فصيل درزي موالٍ لحكمت الهجري. يأتي هذا بعد دعوات سابقة من محافظ السويداء مصطفى البكور لوجهاء المحافظة لتهدئة التوترات، وتقرير لسكاي نيوز عربية نقل عن مسؤول سوري مخاوف من هجوم درزي وشيك مدعوم من إسرائيل. وأشارت منشورات عامة إلى تحركات عسكرية إسرائيلية مزعومة نحو قمة استراتيجية في السويداء لإقامة قاعدة، وتقارير عن رادار قرب المحافظة. ودعت مجموعات مجتمع مدني لاحتجاجات يوم الجمعة في عموم البلاد ضد التدخل الإسرائيلي في جنوب سوريا، رابطة بين قضيتي السويداء والقنيطرة تحت شعار واحد.",
-   "public_reaction": "Public voices range from fear of renewed conflict to anger at Israel's alleged role, with some commenters expressing suspicion of both the government and al-Hijri's faction; others call for solidarity and warn against Israeli and local escalation.",
-   "public_reaction_ar": "تتراوح أصوات الجمهور بين الخوف من تجدد النزاع والغضب من الدور الإسرائيلي المزعوم، مع تعبير بعض المعلقين عن الشك في كل من الحكومة وفصيل الهجري؛ ويدعو آخرون للتضامن ويحذرون من التصعيد الإسرائيلي والمحلي.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.5,
-   "outlet_tone": {
-    "official": -0.3,
-    "independent": -0.4,
-    "regional": -0.4,
-    "aggregator": -0.3
-   },
-   "public_tone": {
-    "ar": -0.5,
-    "en": -0.3
-   },
-   "emotions": [
-    "fear",
-    "anger",
-    "suspicion"
-   ],
-   "emotions_ar": [
-    "خوف",
-    "غضب",
-    "ريبة"
-   ],
-   "framings": [
-    "Official/security-source framing as outlaw groups",
-    "Independent outlet naming Druze National Guard directly",
-    "Public framing linking Israel to Druze militia escalation"
-   ],
-   "framings_ar": [
-    "تأطير رسمي/أمني كمجموعات خارجة عن القانون",
-    "تسمية وسائل إعلام مستقلة مباشرة للحرس الوطني الدرزي",
-    "تأطير شعبي يربط إسرائيل بتصعيد الميليشيا الدرزية"
-   ],
-   "flags": [
-    "Unverified claims about Israeli base construction in Suwayda",
-    "Sectarian framing risk between Druze and government forces"
-   ],
-   "flags_ar": [
-    "ادعاءات لم يتحقق منها حول بناء قاعدة إسرائيلية في السويداء",
-    "خطر تأطير طائفي بين الدروز وقوات الحكومة"
-   ],
-   "volume": 22,
-   "public_volume": 15,
-   "share": 0.029,
-   "engagement": 3571,
-   "platforms": {
-    "news": 3,
-    "telegram": 4,
-    "x": 1,
-    "bluesky": 11,
-    "youtube": 2
-   },
-   "languages": {
-    "ar": 16,
-    "en": 5
-   },
-   "public_languages": {
-    "ar": 11,
-    "en": 3
-   },
-   "kinds": {
-    "independent": 4,
-    "aggregator": 1,
-    "regional": 1,
-    "official": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "YouTube comments",
-    "Syria TV - opposition-origin",
-    "Google News - Syria (EN)",
-    "Levant24 - Syria news (EN)",
-    "Halab Today TV - opposition-origin, Aleppo"
-   ],
-   "examples": [
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/236756",
-     "platform": "telegram"
-    },
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141971",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/203903",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-20T23:54:10Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
    "id": "israel-quneitra-daraa-incursions",
    "key": "2026-09-28-israel-quneitra-daraa-incursions",
    "theme": "israel-south",
    "title": "Israeli incursions, checkpoints and detentions continue in Quneitra and Daraa",
    "title_ar": "استمرار التوغلات الإسرائيلية ونقاط التفتيش والاعتقالات في القنيطرة ودرعا",
-   "summary": "Israeli forces conducted new incursions into Tarnaja village, northern Quneitra countryside, on 19-20 October, raiding a home and setting up positions near the old governorate building in al-Salam city. Syrian Foreign Ministry condemned the incursions as undermining reconstruction and sovereignty. Civil society groups called for nationwide Friday protests under the slogan 'Quneitra Is Not Alone'.",
-   "summary_ar": "نفذت القوات الإسرائيلية توغلات جديدة في قرية طرنجة بريف القنيطرة الشمالي يومي ١٩ و٢٠ تشرين الأول، داهمت خلالها منزلاً وتمركزت قرب مبنى المحافظة القديم في مدينة السلام. وأدانت وزارة الخارجية السورية التوغلات معتبرة أنها تقوّض فرص الاستقرار وإعادة الإعمار. ودعت مجموعات مجتمع مدني لاحتجاجات وطنية يوم الجمعة تحت شعار «القنيطرة ليست وحدها».",
-   "detail": "Multiple outlets (TRT Arabi, Anadolu, North Press, Daraa 24) reported Israeli tanks entering Tel al-Hawa near Jabata al-Khashab and troops raiding a home in Tarnaja, accompanied by flares. The Syrian Foreign Ministry formally demanded withdrawal and condemned ongoing violations as obstructing reconstruction. A Daraa 24 report quoted a local resident describing being threatened at gunpoint and barred from entering his village. US envoy Tom Barrack publicly called for a halt to Israeli military operations in Syria, suggesting a possible non-aggression agreement. Civil society activists announced nationwide protests for Friday, 23 October, explicitly framing Quneitra as a 'national cause' uniting all Syrians, reflecting rising public frustration at the lack of concrete government response.",
-   "detail_ar": "نقلت وسائل إعلام متعددة (TRT عربي، الأناضول، نورث برس، درعا ٢٤) دخول دبابات إسرائيلية إلى تل الهوى قرب جباتا الخشب ومداهمة قوات لمنزل في طرنجة وسط إطلاق قنابل مضيئة. وطالبت الخارجية السورية رسمياً بالانسحاب وأدانت استمرار الانتهاكات باعتبارها تعرقل إعادة الإعمار. ونقل تقرير لدرعا ٢٤ عن مواطن محلي وصفه بالتهديد بالسلاح ومنعه من دخول قريته. ودعا المبعوث الأميركي توم باراك علناً لوقف العمليات العسكرية الإسرائيلية في سوريا، مشيراً إلى إمكانية التوصل لاتفاق عدم اعتداء. وأعلن ناشطون مدنيون عن احتجاجات وطنية يوم الجمعة ٢٣ تشرين الأول، مؤطرين قضية القنيطرة بأنها «قضية وطنية جامعة» تعكس تصاعد الإحباط الشعبي من غياب رد حكومي ملموس.",
-   "public_reaction": "Public reaction combines anger at Israeli incursions, frustration with perceived government silence, and mobilization calls for protest; some commenters express defiant rhetoric about future confrontation while others criticize the government's restrained response.",
-   "public_reaction_ar": "يجمع رد الفعل الشعبي بين الغضب من التوغلات الإسرائيلية والإحباط من الصمت الحكومي المتصوَّر، ودعوات للتعبئة من أجل الاحتجاج؛ ويعبّر بعض المعلقين عن خطاب تحدٍّ بشأن مواجهة مستقبلية بينما ينتقد آخرون استجابة الحكومة المتحفظة.",
+   "summary": "Israeli forces conducted tank incursions into villages in northern Quneitra countryside, detained a civilian at a checkpoint, and flew reconnaissance aircraft over Daraa and Damascus countryside. Syria's Foreign Ministry condemned the incursions as undermining stability and reconstruction. Civil society groups called for protests on 23 October under the slogan",
+   "summary_ar": "نفذت القوات الإسرائيلية توغلات بالدبابات في قرى شمال ريف القنيطرة، واحتجزت مدنياً عند حاجز، كما حلّقت طائرات استطلاع فوق درعا وريف دمشق. وأدانت وزارة الخارجية السورية هذه التوغلات باعتبارها تقوّض الاستقرار وجهود الإعمار، ودعت مجموعات من المجتمع المدني إلى تظاهرات في ٢٣ تشرين الأول تحت شعار «القنيطرة ليست وحدها».",
+   "detail": "Multiple outlets (TRT Arabi, Anadolu, North Press, Daraa 24) reported Israeli tanks entering Tarnaja village and Jabata al-Khashab, positioning near Quneitra's old governorate building, alongside flares and detentions. Syria's Foreign Ministry demanded withdrawal and respect for sovereignty. US envoy Tom Barrack reiterated calls for Israel to halt operations, describing President al-Sharaa's handling of the transition favorably while noting peace in the region may take generations. Civil society activists announced planned demonstrations in Damascus, Daraa, Homs, Aleppo and Suwayda. Public commenters expressed anger and helplessness, with some invoking religious framing and others blaming the government for failing to respond forcefully.",
+   "detail_ar": "نقلت عدة وسائل إعلام (TRT عربي، الأناضول، نورث برس، درعا 24) دخول دبابات إسرائيلية قرية طرنجة وجباتا الخشب، وتمركزها قرب مبنى محافظة القنيطرة القديم، إلى جانب إطلاق قنابل مضيئة واحتجاز مدنيين. وطالبت وزارة الخارجية السورية بالانسحاب واحترام السيادة. وكرر المبعوث الأمريكي توم باراك دعوته إسرائيل لوقف عملياتها، مشيداً بإدارة الرئيس الشرع للمرحلة الانتقالية، مشيراً إلى أن السلام قد يستغرق أجيالاً. وأعلن ناشطون مدنيون عن تظاهرات مزمعة في دمشق ودرعا وحمص وحلب والسويداء. عبّر المعلقون عن غضب وشعور بالعجز، بين من استخدم إطاراً دينياً ومن حمّل الحكومة مسؤولية ضعف الرد.",
+   "public_reaction": "Public comments show frustration and a sense of powerlessness, some invoking religious resignation, others accusing the government of weak response, and civil society mobilizing nationwide protests in solidarity with Quneitra.",
+   "public_reaction_ar": "أظهرت تعليقات الجمهور إحباطاً وشعوراً بالعجز، بين من لجأ إلى التسليم الديني ومن اتهم الحكومة بضعف ردها، بينما حشد نشطاء المجتمع المدني تظاهرات على مستوى البلاد تضامناً مع القنيطرة.",
    "sentiment": -0.4,
-   "public_sentiment": -0.45,
+   "public_sentiment": -0.5,
    "outlet_tone": {
-    "independent": -0.4,
-    "kurdish": -0.3,
-    "regional": -0.3
+    "independent": -0.3,
+    "kurdish": -0.2,
+    "regional": -0.2,
+    "aggregator": -0.1
    },
    "public_tone": {
-    "ar": -0.5,
+    "ar": -0.4,
     "en": -0.2
    },
    "emotions": [
     "anger",
-    "frustration",
-    "defiance"
+    "fear",
+    "helplessness"
    ],
    "emotions_ar": [
     "غضب",
-    "إحباط",
-    "تحدٍّ"
+    "خوف",
+    "عجز"
    ],
    "framings": [
-    "Official framing as sovereignty violation obstructing reconstruction",
-    "Civil society framing as unifying national cause",
-    "Public framing mixing anger with calls for armed resistance"
+    "Sovereignty violation",
+    "US mediation push",
+    "Civil society mobilization"
    ],
    "framings_ar": [
-    "تأطير رسمي كانتهاك للسيادة يعرقل الإعمار",
-    "تأطير المجتمع المدني كقضية وطنية جامعة",
-    "تأطير شعبي يمزج الغضب بدعوات للمقاومة المسلحة"
+    "انتهاك للسيادة",
+    "دفع أمريكي للوساطة",
+    "تحرك المجتمع المدني"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 22,
-   "public_volume": 11,
+   "volume": 24,
+   "public_volume": 8,
    "share": 0.029,
-   "engagement": 18090,
+   "engagement": 21848,
    "platforms": {
-    "telegram": 11,
-    "bluesky": 6,
-    "youtube": 5
+    "news": 1,
+    "telegram": 15,
+    "bluesky": 8
    },
    "languages": {
-    "ar": 17,
-    "en": 5
+    "en": 9,
+    "ar": 15
    },
    "public_languages": {
-    "en": 4,
-    "ar": 7
+    "en": 5,
+    "ar": 3
    },
    "kinds": {
+    "aggregator": 1,
     "regional": 2,
-    "kurdish": 2,
-    "independent": 7
+    "independent": 10,
+    "kurdish": 3
    },
    "sources": [
     "Bluesky posts",
-    "YouTube comments",
     "Daraa 24 - local, Daraa",
+    "Levant24 - Syria news (EN)",
     "Sawt al-Asima - local, Damascus",
-    "TRT Arabi - Turkish public broadcaster",
-    "Anadolu Agency - Turkish state news agency (AR)"
+    "Google News - Syria (EN)",
+    "TRT Arabi - Turkish public broadcaster"
    ],
    "examples": [
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141964",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/109734",
      "platform": "telegram"
     },
     {
      "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28262",
+     "url": "https://t.me/daraa24_org/28261",
      "platform": "telegram"
     },
     {
@@ -360,23 +359,111 @@
    }
   },
   {
+   "id": "economy-cost-of-living",
+   "key": "2026-10-10-economy-cost-of-living",
+   "theme": "economy",
+   "title": "Public anger over prices, exchange rate volatility and currency crackdown",
+   "title_ar": "غضب شعبي من الأسعار وتقلب سعر الصرف وحملة ضبط سوق الصرافة",
+   "summary": "Central Bank Governor Safwat Rslan reaffirmed that regulating the currency exchange and remittance market is a lasting policy, not temporary. Daraa residents reported rising food prices (sugar, eggs, olive oil), and a Damascus resident's complaint video about electricity and living costs drew widespread sympathy and anger.",
+   "summary_ar": "أكد حاكم مصرف سوريا المركزي صفوت رسلان أن ضبط سوق الصرافة والحوالات سياسة دائمة وليست مؤقتة. ورصدت تقارير من درعا ارتفاع أسعار مواد غذائية (السكر، البيض، زيت الزيتون)، وأثار فيديو لمواطن دمشقي يشتكي من غلاء المعيشة والكهرباء تعاطفاً وغضباً واسعين.",
+   "detail": "State and independent outlets (SANA, Al-Watan, Halab Today, Shaam) quoted Rslan on tightening currency and remittance controls as a long-term priority, alongside efforts to combat corruption (a circular against bribery labeled ",
+   "detail_ar": "نقلت وسائل إعلام رسمية ومستقلة (سانا، الوطن، حلب اليوم، شام) عن رسلان حديثه عن تشديد الرقابة على العملة والحوالات باعتباره أولوية طويلة الأمد، إلى جانب جهود لمكافحة الفساد، ومن ذلك تعميم ضد الرشوة وُصف بـ",
+   "public_reaction": "Commenters express deep frustration and weariness over rising prices, electricity bills and stagnant incomes, with some directly blaming the government and demanding presidential intervention; the mood is resigned anger rather than hope.",
+   "public_reaction_ar": "عبّر المعلقون عن إحباط وإنهاك عميقين من ارتفاع الأسعار وفواتير الكهرباء وركود الدخل، وحمّل بعضهم الحكومة المسؤولية مباشرة مطالبين بتدخل رئاسي، وساد شعور بالغضب المكتوم أكثر من الأمل.",
+   "sentiment": -0.1,
+   "public_sentiment": -0.6,
+   "outlet_tone": {
+    "independent": -0.1
+   },
+   "public_tone": {
+    "ar": -0.6
+   },
+   "emotions": [
+    "frustration",
+    "exhaustion",
+    "anger"
+   ],
+   "emotions_ar": [
+    "إحباط",
+    "إنهاك",
+    "غضب"
+   ],
+   "framings": [
+    "Government reform narrative",
+    "Public suffering narrative"
+   ],
+   "framings_ar": [
+    "رواية الإصلاح الحكومي",
+    "رواية معاناة المواطنين"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 21,
+   "public_volume": 9,
+   "share": 0.026,
+   "engagement": 15007,
+   "platforms": {
+    "telegram": 12,
+    "youtube": 7
+   },
+   "languages": {
+    "ar": 19
+   },
+   "public_languages": {
+    "ar": 7
+   },
+   "kinds": {
+    "independent": 12
+   },
+   "sources": [
+    "YouTube comments",
+    "Sawt al-Asima - local, Damascus",
+    "Syria Plus (SY+) - news platform",
+    "Shaam News Network - opposition-origin",
+    "Daraa 24 - local, Daraa",
+    "Al-Watan - Damascus daily newspaper"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/141967",
+     "platform": "telegram"
+    },
+    {
+     "source": "Daraa 24 - local, Daraa",
+     "url": "https://t.me/daraa24_org/28271",
+     "platform": "telegram"
+    },
+    {
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/43902",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-10T07:10:31Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
    "id": "turkey-troops-syria-iraq",
    "key": "2026-10-20-turkey-troops-syria-iraq",
    "theme": "international",
    "title": "Turkey confirms troops will stay in Syria and Iraq until border security ensured",
    "title_ar": "تركيا تؤكد بقاء قواتها في سوريا والعراق حتى ضمان أمن الحدود",
-   "summary": "Turkish Defense Minister Yasar Guler told AFP on 20 October that Turkish troops will remain in Syria and Iraq until border security is fully guaranteed, with redeployment conditional on meeting security requirements. The statement, widely covered by Turkish, Kurdish and aggregator outlets, comes amid ongoing PKK dissolution demands and north-east integration talks.",
-   "summary_ar": "أكد وزير الدفاع التركي يشار غولر لوكالة فرانس برس في ٢٠ تشرين الأول أن القوات التركية ستبقى في سوريا والعراق حتى ضمان أمن الحدود بالكامل، على أن تُراجع إعادة الانتشار وفق تحقق الشروط الأمنية. وتأتي التصريحات، التي غطتها وسائل إعلام تركية وكردية ومواقع تجميع الأخبار على نطاق واسع، وسط استمرار مطالب حل حزب العمال الكردستاني ومحادثات الاندماج في شمال شرق سوريا.",
-   "detail": "Guler's remarks, carried by Anadolu, TRT, North Press, Kurdistan24 and multiple aggregators, reiterate Ankara's position that any troop withdrawal depends on regional and border security conditions, explicitly tying this to the PKK's dissolution. The statement follows Turkey's broader regional posture including defense pacts with Saudi Arabia and Pakistan (Mecca Joint Defense Agreement) and continued involvement in north-east Syria affairs. Kurdish-language and Kurdish-run outlets framed this cautiously, noting ongoing PJAK disarmament calls from Turkish nationalist leader Devlet Bahceli as part of broader pressure on Kurdish armed groups across the region. Public commentary, especially in Kurdish and Turkish, shows skepticism about Turkish intentions and concern over the future of Kurdish autonomy.",
-   "detail_ar": "تكرر تصريحات غولر، التي نقلتها الأناضول وTRT ونورث برس وكردستان٢٤ ومواقع تجميع عديدة، موقف أنقرة بأن أي انسحاب للقوات مرهون بتحقق الشروط الأمنية الإقليمية والحدودية، مرتبطاً صراحة بحل حزب العمال الكردستاني. وتأتي التصريحات ضمن موقف تركيا الإقليمي الأوسع الذي يشمل اتفاقيات دفاعية مع السعودية وباكستان (اتفاقية مكة للدفاع المشترك) واستمرار التدخل في شؤون شمال شرق سوريا. وأطّرت وسائل الإعلام الكردية هذا بحذر، مشيرة إلى دعوات زعيم الحركة القومية التركية دولت بهتشلي لنزع سلاح «بجاك» كجزء من ضغط أوسع على الجماعات المسلحة الكردية في المنطقة. وتُظهر التعليقات الشعبية، خصوصاً بالكردية والتركية، تشككاً في النوايا التركية وقلقاً على مستقبل الحكم الذاتي الكردي.",
-   "public_reaction": "Kurdish-language commentators express suspicion that this serves a broader plan to pressure PKK/SDF fighters, while Turkish-language posts show mixed nationalist support and some mockery ('shocked, shocked'); English-language users treat it as expected realpolitik.",
-   "public_reaction_ar": "يعبّر المعلقون باللغة الكردية عن شكّهم في أن هذا يخدم خطة أوسع للضغط على مقاتلي حزب العمال الكردستاني وقسد، بينما تُظهر المنشورات التركية دعماً قومياً مختلطاً مع بعض السخرية («صدمة، يا للصدمة»)؛ ويتعامل مستخدمو الإنكليزية مع الخبر كواقع سياسي متوقع.",
+   "summary": "Turkish Defense Minister Yasar Guler told AFP that Turkish troops will remain in Syria and Iraq until border security is fully guaranteed and the PKK fully dissolves, with redeployment reviewed only once conditions are met. The statement was widely carried by regional and aggregator outlets.",
+   "summary_ar": "صرّح وزير الدفاع التركي يشار غولر لوكالة فرانس برس بأن القوات التركية ستبقى في سوريا والعراق حتى ضمان أمن الحدود بشكل كامل وحل حزب العمال الكردستاني كلياً، على أن تُراجع إعادة الانتشار فقط عند استيفاء الشروط. وتناقلت وسائل الإعلام الإقليمية ومواقع التجميع هذا التصريح على نطاق واسع.",
+   "detail": "Multiple outlets (Anadolu, Sky News Arabia, North Press, Kurdistan24, Google News aggregators) reported Guler's comments to AFP, emphasizing Turkey's continued military presence pending full border security and PKK dissolution. The statement comes amid broader regional security dynamics including Turkish-Saudi defense cooperation (Mecca Defense Pact) and Turkish domestic political criticism of alleged new ",
+   "detail_ar": "نقلت عدة وسائل إعلام (الأناضول، سكاي نيوز عربية، نورث برس، كردستان٢٤، ومواقع تجميع الأخبار في Google) تصريحات غولر لوكالة فرانس برس، التي شدد فيها على استمرار الوجود العسكري التركي إلى حين تحقيق أمن حدودي كامل وحل حزب العمال الكردستاني. ويأتي هذا التصريح في سياق ديناميكيات أمنية إقليمية أوسع، منها التعاون الدفاعي التركي السعودي (ميثاق مكة للدفاع)، إلى جانب انتقادات سياسية داخلية في تركيا لما يُزعم أنه",
+   "public_reaction": "Public reaction in Turkish and Kurdish-language posts shows mixed views: Turkish nationalist commenters frame the presence as protecting borders, while Kurdish voices express skepticism about Turkey's long-term intentions and concern over continued militarization in northern Syria.",
+   "public_reaction_ar": "أظهرت تعليقات الجمهور باللغتين التركية والكردية آراءً متباينة: فالمعلقون القوميون الأتراك يؤطرون الوجود العسكري بأنه حماية للحدود، بينما تعبّر أصوات كردية عن شكوك حيال نوايا تركيا طويلة الأمد وقلق من استمرار العسكرة في شمال سوريا.",
    "sentiment": 0.0,
-   "public_sentiment": -0.15,
+   "public_sentiment": -0.1,
    "outlet_tone": {
-    "official": 0.0,
     "independent": 0.0,
-    "kurdish": -0.1,
+    "kurdish": 0.0,
     "regional": 0.0,
     "aggregator": 0.0
    },
@@ -384,47 +471,42 @@
     "en": -0.1
    },
    "emotions": [
-    "suspicion",
-    "resignation"
+    "wariness"
    ],
    "emotions_ar": [
-    "ريبة",
-    "استسلام"
+    "حذر"
    ],
    "framings": [
-    "Turkish official framing as border security necessity",
-    "Kurdish framing as pressure tool against PKK/SDF",
-    "Public mockery of repeated non-withdrawal promises"
+    "Border security necessity",
+    "Occupation concern"
    ],
    "framings_ar": [
-    "تأطير تركي رسمي كضرورة أمنية حدودية",
-    "تأطير كردي كأداة ضغط ضد حزب العمال الكردستاني وقسد",
-    "سخرية شعبية من تكرار وعود عدم الانسحاب"
+    "ضرورة أمنية حدودية",
+    "قلق من الاحتلال"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 21,
-   "public_volume": 7,
-   "share": 0.028,
-   "engagement": 4778,
+   "volume": 19,
+   "public_volume": 6,
+   "share": 0.023,
+   "engagement": 5026,
    "platforms": {
-    "telegram": 7,
+    "telegram": 6,
     "news": 7,
-    "bluesky": 7
+    "bluesky": 6
    },
    "languages": {
-    "en": 14,
+    "en": 12,
     "ar": 7
    },
    "public_languages": {
-    "en": 7
+    "en": 6
    },
    "kinds": {
     "kurdish": 3,
     "regional": 1,
     "independent": 3,
-    "aggregator": 6,
-    "official": 1
+    "aggregator": 6
    },
    "sources": [
     "Bluesky posts",
@@ -459,183 +541,89 @@
    }
   },
   {
-   "id": "economy-cost-of-living",
-   "key": "2026-10-10-economy-cost-of-living",
-   "theme": "economy",
-   "title": "Public anger over prices, exchange rate volatility and currency crackdown",
-   "title_ar": "غضب شعبي من غلاء الأسعار وتقلبات سعر الصرف وحملة ضبط السوق",
-   "summary": "Syrians continue to voice anger over rising prices (sugar, eggs, olive oil in Daraa) and electricity bills, even as the central bank governor Safwat Rslan pledged permanent oversight of the currency exchange market. The Agriculture Ministry denied a forged circular claiming potato imports were allowed, warning against spreading false decrees.",
-   "summary_ar": "يواصل السوريون التعبير عن غضبهم من ارتفاع الأسعار (السكر، البيض، زيت الزيتون في درعا) وفواتير الكهرباء، في وقت تعهد فيه حاكم المصرف المركزي صفوت رسلان برقابة دائمة على سوق الصرافة. ونفت وزارة الزراعة صحة تعميم مزوّر زعم السماح باستيراد البطاطا، محذرة من تداول قرارات غير موثوقة.",
-   "detail": "Daraa 24 documented food prices (sugar at 100-110 SYP/kg, olive oil 800-1000 SYP/liter, eggs 370-400 SYP/tray). The Agriculture Ministry, through spokesman Diab al-Sakhouri, denied a widely circulated forged statement permitting potato imports, reaffirming an April decision banning several vegetable imports through end of October to protect local producers. Separately, central bank governor Safwat Rslan declared that currency-market controls are a permanent policy priority, not temporary, drawing mixed public reaction: some welcome stricter oversight, while many commenters express exhaustion over electricity price hikes and stagnant wages amid continued inflation. YouTube comments under a Damascus cost-of-living video show sharp anger directly blaming the government for worsening the crisis.",
-   "detail_ar": "وثّقت درعا ٢٤ أسعار المواد الغذائية (السكر بين ١٠٠-١١٠ ليرة للكيلو، زيت الزيتون ٨٠٠-١٠٠٠ ليرة لليتر، البيض ٣٧٠-٤٠٠ ليرة للطبق). ونفت وزارة الزراعة، عبر الناطق باسمها دياب الصخوري، صحة بيان مزوّر متداول يسمح باستيراد البطاطا، مؤكدة استمرار قرار نيسان الذي يمنع استيراد عدة خضروات حتى نهاية تشرين الأول حماية للمنتج المحلي. وبشكل منفصل، أعلن حاكم المصرف المركزي صفوت رسلان أن ضبط سوق الصرافة سياسة دائمة لا إجراء مؤقت، ما أثار ردود فعل متباينة: فبينما يرحب البعض بالرقابة الأكثر صرامة، يعبّر كثيرون عن إنهاكهم من ارتفاع فواتير الكهرباء وركود الأجور وسط استمرار التضخم. وأظهرت تعليقات يوتيوب تحت فيديو عن غلاء المعيشة في دمشق غضباً حاداً يحمّل الحكومة مسؤولية تفاقم الأزمة مباشرة.",
-   "public_reaction": "Public reaction is sharply negative, with many blaming the government directly for inflation, electricity price hikes and stagnant incomes; some contrast current hardship unfavorably or favorably with the Assad era in heated exchanges.",
-   "public_reaction_ar": "رد الفعل الشعبي سلبي بشكل حاد، إذ يحمّل كثيرون الحكومة مسؤولية التضخم وارتفاع أسعار الكهرباء وركود الدخل مباشرة؛ ويقارن بعضهم الوضع الحالي بعهد الأسد بشكل إيجابي أو سلبي ضمن نقاشات محتدمة.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.5,
+   "id": "north-east-returns-integration",
+   "key": "2026-10-20-north-east-returns-integration",
+   "theme": "northeast-kurdish",
+   "title": "Displaced families return to Ras al-Ain as north-east integration talks continue",
+   "title_ar": "عودة عائلات نازحة إلى رأس العين واستمرار مباحثات الاندماج في شمال شرق سوريا",
+   "summary": "A convoy of 645 displaced families from the Ras al-Ain area departed for home after their villages were cleared of mines, Hasakah's Deputy Governor announced. This is the fifth such convoy since August, part of broader north-east integration efforts, alongside presidential adviser Mazloum Abdi's meetings with Christian clergy and tribal leaders in Qamishli.",
+   "summary_ar": "انطلقت قافلة تضم ٦٤٥ عائلة نازحة من منطقة رأس العين عائدة إلى ديارها بعد تطهير قراها من الألغام، وفق ما أعلن نائب محافظ الحسكة. وهذه خامس قافلة من نوعها منذ آب، في إطار جهود الاندماج الأوسع في شمال شرق سوريا، إلى جانب لقاءات مستشار الرئاسة مظلوم عبدي مع رجال دين مسيحيين وزعماء عشائر في القامشلي.",
+   "detail": "Kurdish and independent outlets (North Press, Levant24, Halab Today, Al-Watan) reported the convoy of 645 families returning to Ras al-Ain villages after demining, following earlier convoys that returned over 2,150 of roughly 12,000 displaced Hasakah families since August 10. Separately, Mazloum Abdi met Christian clergy in Qamishli to discuss coexistence and civil peace, and met Shammar tribal leader Sheikh Mani al-Jerba, framed as reinforcing ties amid integration talks between the Autonomous Administration and Damascus. Kurdish-language social posts noted concerns about Arabic-language instruction threatening Kurdish identity in schools, highlighting friction points in integration. Coverage overall is cautiously positive on returns but reflects ongoing community-specific anxieties.",
+   "detail_ar": "نقلت وسائل إعلام كردية ومستقلة (نورث برس، Levant24، حلب اليوم، الوطن) خبر قافلة الـ645 عائلة العائدة إلى قرى رأس العين بعد تطهيرها من الألغام، بعد قوافل سابقة أعادت أكثر من 2150 عائلة من أصل نحو 12 ألف عائلة نازحة في الحسكة منذ 10 آب. وبشكل منفصل، التقى مظلوم عبدي رجال دين مسيحيين في القامشلي لبحث التعايش والسلم الأهلي، كما التقى شيخ عشيرة شمر مانع الجربا، في إطار تعزيز العلاقات وسط مباحثات الاندماج بين الإدارة الذاتية ودمشق. وأشارت منشورات كردية إلى مخاوف من أن التحول إلى التعليم باللغة العربية يهدد الهوية الكردية في المدارس، ما يعكس نقاط احتكاك مستمرة في مسار الاندماج. التغطية إيجابية بحذر بشأن العودة لكنها تعكس قلقاً مجتمعياً مستمراً.",
+   "public_reaction": "Kurdish-language public voices express pride in local self-governance achievements but also concern over cultural and linguistic erosion under integration, differing from the mostly neutral or positive official framing of returns.",
+   "public_reaction_ar": "عبّرت الأصوات العامة الناطقة بالكردية عن فخر بإنجازات الحكم الذاتي المحلي، لكنها أبدت أيضاً قلقاً من تآكل الهوية الثقافية واللغوية في ظل الاندماج، بخلاف الإطار الرسمي المحايد أو الإيجابي غالباً للعودة.",
+   "sentiment": 0.2,
+   "public_sentiment": 0.0,
    "outlet_tone": {
-    "independent": -0.1
+    "independent": 0.3,
+    "kurdish": 0.2
    },
    "public_tone": {
-    "ar": -0.5
+    "en": 0.1
    },
    "emotions": [
-    "anger",
-    "exhaustion"
+    "hope",
+    "concern"
    ],
    "emotions_ar": [
-    "غضب",
-    "إنهاك"
+    "أمل",
+    "قلق"
    ],
    "framings": [
-    "Official framing as necessary market discipline",
-    "Public framing as government-caused hardship"
+    "Humanitarian return success",
+    "Cultural identity concerns"
    ],
    "framings_ar": [
-    "تأطير رسمي كانضباط ضروري للسوق",
-    "تأطير شعبي كمعاناة من صنع الحكومة"
+    "نجاح إنساني في العودة",
+    "مخاوف على الهوية الثقافية"
    ],
-   "flags": [
-    "Forged ministry circular spreading online"
-   ],
-   "flags_ar": [
-    "تعميم مزوّر منسوب للوزارة يتم تداوله"
-   ],
-   "volume": 17,
-   "public_volume": 7,
-   "share": 0.022,
-   "engagement": 9415,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 11,
+   "public_volume": 5,
+   "share": 0.013,
+   "engagement": 6898,
    "platforms": {
-    "telegram": 9,
-    "news": 1,
-    "youtube": 4
+    "telegram": 6,
+    "bluesky": 5
    },
    "languages": {
-    "ar": 14
+    "ar": 4,
+    "en": 7
    },
    "public_languages": {
-    "ar": 4
+    "en": 5
    },
    "kinds": {
-    "independent": 9,
-    "aggregator": 1
+    "kurdish": 3,
+    "independent": 3
    },
    "sources": [
-    "YouTube comments",
-    "Shaam News Network - opposition-origin",
-    "Daraa 24 - local, Daraa",
-    "Al-Watan - Damascus daily newspaper",
-    "Sawt al-Asima - local, Damascus",
-    "Syria Plus (SY+) - news platform"
+    "Bluesky posts",
+    "North Press Agency - Qamishli-based (AR)",
+    "North Press Agency (EN)",
+    "Levant24 - Syria news (EN)",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Al-Watan - Damascus daily newspaper"
    ],
    "examples": [
     {
-     "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28271",
-     "platform": "telegram"
-    },
-    {
      "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/141967",
+     "url": "https://t.me/HalabTodayTV/141964",
      "platform": "telegram"
     },
     {
      "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/203898",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-10T07:10:31Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "jpmorgan-aramco-fuel-deal",
-   "key": "2026-10-20-jpmorgan-aramco-fuel-deal",
-   "theme": "economy",
-   "title": "J.P. Morgan helps Syria secure first letter of credit in over a decade for Saudi fuel deal",
-   "title_ar": "جيه بي مورغان يساعد سوريا في إصدار أول خطاب اعتماد منذ أكثر من عقد لصفقة وقود سعودية",
-   "summary": "US bank J.P. Morgan facilitated Syria's first letter of credit in 14 years, enabling a commercial deal to buy fuel from Saudi Aramco, Reuters reported on 20 October. Syria received 65,000 metric tons of diesel, with the first Aramco diesel tanker arriving at Baniyas port, and shipments may expand to gasoline and crude oil.",
-   "summary_ar": "ساعد بنك جيه بي مورغان الأميركي سوريا في إصدار أول خطاب اعتماد لها منذ ١٤ عاماً، ما مكّنها من إبرام صفقة تجارية لشراء وقود من أرامكو السعودية، بحسب ما أوردته رويترز في ٢٠ تشرين الأول. واستلمت سوريا ٦٥ ألف طن متري من الديزل، ووصلت أول ناقلة ديزل من أرامكو إلى مرفأ بانياس، مع إمكانية توسيع الشحنات لتشمل البنزين والنفط الخام.",
-   "detail": "Reuters, cited by numerous Syrian outlets including Euphrates Post, Syria Plus, Enab Baladi and Levant24, reported that a senior Syrian energy official confirmed the deal, framed by independent and aggregator outlets as a milestone signaling reintegration into global banking and energy markets after years of sanctions isolation. The deal follows broader economic normalization efforts, including the START recovery fund and sanctions relief discussions. Public posts shared the Reuters report widely with little critical commentary, generally treating it as a positive economic development, though some commentary elsewhere ties it to broader skepticism about the government's economic management amid continued inflation and currency pressure.",
-   "detail_ar": "نقلت وسائل إعلام سورية عدة، منها فرات بوست وسوريا بلس وعنب بلدي وLevant24، عن رويترز تأكيد مسؤول سوري كبير في قطاع الطاقة الصفقة، التي أطّرتها وسائل الإعلام المستقلة ومواقع التجميع كعلامة فارقة تشير لإعادة الاندماج في الأسواق المصرفية والطاقوية العالمية بعد سنوات من العزلة بسبب العقوبات. وتأتي الصفقة ضمن جهود تطبيع اقتصادي أوسع، تشمل صندوق التعافي START ونقاشات تخفيف العقوبات. وتداول الجمهور تقرير رويترز على نطاق واسع بتعليقات نقدية قليلة، معتبرين إياه تطوراً اقتصادياً إيجابياً عموماً، رغم ربط بعض التعليقات الأخرى ذلك بتشكك أوسع في إدارة الحكومة الاقتصادية وسط استمرار التضخم وضغط سعر الصرف.",
-   "public_reaction": "Public sharing was largely neutral-to-positive, treating the deal as a notable economic milestone, though it drew less engagement than political or security stories.",
-   "public_reaction_ar": "كان التداول الشعبي محايداً إلى إيجابي إلى حد كبير، معتبراً الصفقة إنجازاً اقتصادياً لافتاً، رغم أنها حظيت بتفاعل أقل من القصص السياسية أو الأمنية.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.1,
-   "outlet_tone": {
-    "independent": 0.3,
-    "aggregator": 0.3
-   },
-   "public_tone": {
-    "ar": 0.1,
-    "en": 0.1
-   },
-   "emotions": [
-    "cautious optimism"
-   ],
-   "emotions_ar": [
-    "تفاؤل حذر"
-   ],
-   "framings": [
-    "Economic milestone signaling sanctions relief progress",
-    "Routine commercial news with little skepticism"
-   ],
-   "framings_ar": [
-    "إنجاز اقتصادي يشير إلى تقدم في تخفيف العقوبات",
-    "خبر تجاري روتيني بتشكك قليل"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 10,
-   "public_volume": 3,
-   "share": 0.013,
-   "engagement": 2498,
-   "platforms": {
-    "telegram": 4,
-    "news": 3,
-    "bluesky": 3
-   },
-   "languages": {
-    "ar": 6,
-    "en": 4
-   },
-   "public_languages": {
-    "en": 2,
-    "ar": 1
-   },
-   "kinds": {
-    "independent": 5,
-    "aggregator": 2
-   },
-   "sources": [
-    "Bluesky posts",
-    "Euphrates Post - Deir ez-Zor and the east",
-    "Google News - Syria (AR)",
-    "Enab Baladi - independent (AR)",
-    "Syria Plus (SY+) - news platform",
-    "Levant24 - Syria news (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/109745",
+     "url": "https://t.me/alwatan_sy/203897",
      "platform": "telegram"
     },
     {
-     "source": "Syria Plus (SY+) - news platform",
-     "url": "https://t.me/sy_platform/40610",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93478",
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/46124",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-20T20:37:02Z",
+   "first_seen": "2026-10-20T23:54:10Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -648,23 +636,23 @@
    "theme": "justice",
    "title": "DNA testing identifies remains of missing persons in Syria for the first time",
    "title_ar": "فحوص الحمض النووي تحدد هوية رفات مفقودين في سوريا للمرة الأولى",
-   "summary": "Reuters reported that DNA testing identified the remains of missing people in at least three cases in Syria this year, the country's first such identifications. The National Commission for Missing Persons confirmed two cases with ICRC review, while Syrian and international NGOs identified a third, a Raqqa family killed in a suspected 2017 airstrike.",
-   "summary_ar": "أفادت رويترز بأن اختبارات الحمض النووي حددت هوية رفات مفقودين في ثلاث حالات على الأقل في سوريا هذا العام، في سابقة هي الأولى من نوعها في البلاد. أكدت الهيئة الوطنية للمفقودين حالتين بمراجعة من اللجنة الدولية للصليب الأحمر، بينما حددت منظمات سورية ودولية غير حكومية الحالة الثالثة المتعلقة بعائلة من الرقة قُتلت في غارة جوية يُشتبه وقوعها عام ٢٠١٧.",
-   "detail": "The National Commission for Missing Persons completed two identifications after ICRC expert review, while a third case, involving Manar Aliwi, her husband and their five children, was carried out by Syrian and international NGOs. The commission reportedly receives an average of 100 new missing-person reports daily, underscoring the scale of the unresolved case backlog since the civil war. Outlets across the spectrum (independent, kurdish, aggregator) covered the story with similar details, framing it as a milestone in transitional justice efforts despite the immense remaining caseload. Public Bluesky posts highlighted the development as offering hope to families, while also noting the scale of unresolved disappearances.",
-   "detail_ar": "أنجزت الهيئة الوطنية للمفقودين حالتين بعد مراجعة خبراء اللجنة الدولية للصليب الأحمر، في حين نفذت منظمات سورية ودولية غير حكومية الحالة الثالثة المتعلقة بعائلة منار عليوي وزوجها وأطفالها الخمسة. وتتلقى الهيئة بحسب التقارير ما معدله ١٠٠ بلاغ جديد يومياً عن مفقودين، ما يعكس حجم الملفات العالقة منذ الحرب الأهلية. وغطت وسائل إعلام من أطياف مختلفة (مستقلة، كردية، مواقع تجميع) القصة بتفاصيل متشابهة، مؤطرة إياها كإنجاز في مسار العدالة الانتقالية رغم ضخامة الملفات المتبقية. وأبرزت منشورات عامة على Bluesky هذا التطور كمصدر أمل للعائلات، مع الإشارة إلى حجم حالات الاختفاء غير المحلولة.",
-   "public_reaction": "Public reaction, mainly in English on Bluesky, was hopeful but measured, emphasizing both the breakthrough and the vast scale of still-unresolved missing-person cases.",
-   "public_reaction_ar": "كان رد الفعل الشعبي، خصوصاً بالإنكليزية على Bluesky، متفائلاً لكن حذراً، مع التركيز على الإنجاز وحجم حالات الاختفاء التي ما تزال دون حل.",
+   "summary": "Reuters reported that DNA testing identified the remains of missing persons in Syria in at least three cases this year, a first for the country. The National Commission for Missing Persons handled two cases with ICRC review, while Syrian and international NGOs identified a Raqqa family of seven killed in a suspected 2017 airstrike.",
+   "summary_ar": "أفادت رويترز بأن فحوص الحمض النووي حددت هوية رفات مفقودين في سوريا في ثلاث حالات على الأقل هذا العام، وهي سابقة في البلاد. تولت الهيئة الوطنية للمفقودين حالتين بمراجعة من اللجنة الدولية للصليب الأحمر، بينما حددت منظمات سورية ودولية غير حكومية هوية عائلة من الرقة مكوّنة من سبعة أفراد قُتلوا في غارة جوية يُشتبه وقوعها عام ٢٠١٧.",
+   "detail": "Multiple outlets (Syria Plus, Shaam, Sawt al-Asima, Euphrates Post, Levant24, Syria TV, Bluesky posts citing ITV and Arab News) covered the Reuters report in detail, noting the third case involved a suspected US airstrike that killed Manar Aliwi, her husband and five children. This marks a technical and symbolic milestone in Syria's transitional justice process regarding the tens of thousands still missing from the Assad era and war years. Coverage framed it as a hopeful but limited step, given the scale of the missing persons crisis. Public reaction via Bluesky noted the case as historic but tied it to broader criticism of US airstrikes.",
+   "detail_ar": "غطت عدة وسائل إعلام (سوريا بلس، شام، صوت العاصمة، فرات بوست، Levant24، تلفزيون سوريا، ومنشورات على Bluesky نقلاً عن ITV وArab News) تقرير رويترز بالتفصيل، مشيرة إلى أن الحالة الثالثة تتعلق بغارة جوية أمريكية يُشتبه بها أودت بحياة منار عليوي وزوجها وأطفالها الخمسة. ويمثل هذا إنجازاً تقنياً ورمزياً في مسار العدالة الانتقالية السورية المتعلق بعشرات الآلاف من المفقودين منذ عهد الأسد وسنوات الحرب. أُطِّرت التغطية كخطوة مبشرة لكنها محدودة أمام حجم أزمة المفقودين. وربط تفاعل الجمهور عبر Bluesky الحالة بأهميتها التاريخية مع انتقاد أوسع للغارات الجوية الأمريكية.",
+   "public_reaction": "Reaction is limited but notable: some English-language posts highlighted the case as historic hope for families, while others used it to criticize US airstrikes that killed the identified family.",
+   "public_reaction_ar": "التفاعل محدود لكنه لافت: أبرزت بعض المنشورات بالإنجليزية الحالة باعتبارها أملاً تاريخياً للعائلات، بينما استخدمها آخرون لانتقاد الغارات الأمريكية التي أودت بحياة العائلة التي جرى التعرف عليها.",
    "sentiment": 0.2,
-   "public_sentiment": 0.2,
+   "public_sentiment": 0.0,
    "outlet_tone": {
-    "independent": 0.2
+    "independent": 0.3
    },
    "public_tone": {
-    "en": 0.2
+    "en": -0.1
    },
    "emotions": [
     "hope",
-    "grief"
+    "sorrow"
    ],
    "emotions_ar": [
     "أمل",
@@ -672,32 +660,31 @@
    ],
    "framings": [
     "Transitional justice milestone",
-    "Reminder of enormous scale of unresolved disappearances"
+    "Critique of US airstrikes"
    ],
    "framings_ar": [
-    "إنجاز في مسار العدالة الانتقالية",
-    "تذكير بحجم حالات الاختفاء غير المحلولة الهائل"
+    "إنجاز في العدالة الانتقالية",
+    "انتقاد الغارات الأمريكية"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 10,
-   "public_volume": 3,
-   "share": 0.013,
-   "engagement": 9486,
+   "public_volume": 4,
+   "share": 0.012,
+   "engagement": 11262,
    "platforms": {
     "telegram": 6,
-    "news": 1,
-    "bluesky": 3
+    "bluesky": 4
    },
    "languages": {
-    "ar": 6,
-    "en": 4
+    "ar": 5,
+    "en": 5
    },
    "public_languages": {
-    "en": 3
+    "en": 4
    },
    "kinds": {
-    "independent": 7
+    "independent": 6
    },
    "sources": [
     "Bluesky posts",
@@ -705,7 +692,7 @@
     "Euphrates Post - Deir ez-Zor and the east",
     "Levant24 - Syria news (EN)",
     "Syria TV - opposition-origin broadcaster",
-    "Syria TV - opposition-origin"
+    "Syria Plus (SY+) - news platform"
    ],
    "examples": [
     {
@@ -732,97 +719,83 @@
    }
   },
   {
-   "id": "north-east-returns-integration",
-   "key": "2026-10-20-north-east-returns-integration",
-   "theme": "northeast-kurdish",
-   "title": "Displaced families return to Ras al-Ain as north-east integration talks continue",
-   "title_ar": "عودة عائلات نازحة إلى رأس العين واستمرار محادثات الاندماج في شمال شرق سوريا",
-   "summary": "A convoy of 645 displaced families left Newroz camp for Ras al-Ain and nearby villages on 21 October after mine-clearance operations, Hasakah's deputy governor said. It is part of a larger return effort covering roughly 12,000 displaced families, alongside ongoing SDF-Damascus integration talks and Kurdish language/identity concerns.",
-   "summary_ar": "انطلقت قافلة تضم ٦٤٥ عائلة نازحة من مخيم نوروز باتجاه رأس العين وقرى مجاورة يوم ٢١ تشرين الأول بعد عمليات تطهير من الألغام، بحسب نائب محافظ الحسكة. وتأتي ضمن جهود أوسع لعودة نحو ١٢ ألف عائلة نازحة، بالتزامن مع استمرار محادثات الاندماج بين قسد ودمشق ومخاوف بشأن الهوية واللغة الكردية.",
-   "detail": "Hasakah Deputy Governor Ahmad al-Hilali said the convoy was the sixth such organized return since Assad's fall, following village demining. Previous convoys since August have returned over 2,150 of roughly 12,000 displaced families, according to Levant24 and SOHR-sourced posts. Separately, Syria Direct and public Kurdish-language posts raised concerns about the shift to Arabic-language instruction threatening Kurdish students' education and identity in Qamishli. Presidential adviser Mazloum Abdi met Christian clergy in Qamishli and Shammar tribal leaders, reflecting continued outreach amid integration efforts. Public Kurdish voices show mixed views: some celebrate returns, while others express anxiety over language rights and skepticism about Damascus-SDF integration terms.",
-   "detail_ar": "قال نائب محافظ الحسكة أحمد الهلالي إن القافلة هي السادسة من نوعها منذ سقوط الأسد، وتأتي بعد تطهير القرى من الألغام. وأعادت القوافل السابقة منذ آب أكثر من ٢١٥٠ عائلة من أصل نحو ١٢ ألف عائلة نازحة، بحسب منشورات نقلاً عن Levant24 والمرصد السوري لحقوق الإنسان. وبشكل منفصل، أثارت Syria Direct ومنشورات عامة باللغة الكردية مخاوف من أن التحول إلى التعليم باللغة العربية يهدد تعليم وهوية الطلاب الكرد في القامشلي. والتقى مستشار الرئاسة مظلوم عبدي رجال دين مسيحيين في القامشلي وزعماء عشيرة شمّر، ما يعكس استمرار التواصل وسط جهود الاندماج. وتُظهر الأصوات الكردية الشعبية آراء متباينة: بعضها يحتفي بالعودة، بينما يعبّر آخرون عن قلق من حقوق اللغة وتشكك في شروط اندماج دمشق وقسد.",
-   "public_reaction": "Kurdish-language public voices show a mix of hope over returns and persistent anxiety about language and identity rights; some English-language Reddit/Bluesky commenters frame integration as a US-driven effort to redirect SDF/PKK fighters.",
-   "public_reaction_ar": "تُظهر الأصوات الشعبية الكردية مزيجاً من الأمل بالعودة والقلق المستمر بشأن حقوق اللغة والهوية؛ ويؤطر بعض المعلقين الإنكليز على ريديت وBluesky الاندماج كجهد أميركي لإعادة توجيه مقاتلي قسد وحزب العمال الكردستاني.",
-   "sentiment": 0.2,
-   "public_sentiment": 0.0,
+   "id": "jpmorgan-aramco-fuel-deal",
+   "key": "2026-10-20-jpmorgan-aramco-fuel-deal",
+   "theme": "economy",
+   "title": "J.P. Morgan helps Syria secure first letter of credit in over a decade for Saudi fuel deal",
+   "title_ar": "جيه بي مورغان يساعد سوريا في إصدار أول خطاب اعتماد منذ أكثر من عقد لصفقة وقود سعودية",
+   "summary": "Reuters reported that US bank J.P. Morgan helped Syria issue its first letter of credit in over a decade, enabling a commercial deal to purchase fuel products from Saudi Aramco, with 65,000 metric tons of diesel already received. Outlets widely covered this as a sign of financial normalization.",
+   "summary_ar": "أفادت رويترز بأن بنك جيه بي مورغان الأمريكي ساعد سوريا في إصدار أول خطاب اعتماد لها منذ أكثر من عقد، ما أتاح تنفيذ صفقة تجارية لشراء منتجات وقود من أرامكو السعودية، مع استلام ٦٥ ألف طن متري من الديزل فعلياً. وتناولت وسائل الإعلام هذا التطور باعتباره مؤشراً على التطبيع المالي.",
+   "detail": "Reuters' report, relayed by Syrian state, independent and aggregator outlets (SANA via Euphrates Post, Syria Plus, Enab Baladi, Levant24, Google News), said the letter of credit enabled a fuel agreement with Aramco, with potential future expansion to gasoline and crude. This follows previous reporting on Syria's financial reintegration efforts and complements other economic news this period: French commitments to secure Gulf diesel supplies, Qatari plans to support Lebanon's electricity via Syria, and a reshuffle of Syria's economic leadership. Coverage is largely descriptive and positive in tone across outlet types, framed as progress toward reconnecting Syria's banking system internationally after years of isolation under Caesar Act sanctions. No strong public reaction was found distinct from general cost-of-living commentary.",
+   "detail_ar": "نقلت تقرير رويترز وسائل إعلام سورية رسمية ومستقلة ومواقع تجميع (سانا عبر فرات بوست، سوريا بلس، عنب بلدي، Levant24، Google News) بأن خطاب الاعتماد أتاح تنفيذ اتفاق وقود مع أرامكو، مع إمكانية التوسع مستقبلاً ليشمل البنزين والنفط الخام. ويأتي هذا في سياق أخبار اقتصادية أخرى هذه الفترة: تعهدات فرنسية بتأمين إمدادات ديزل خليجية، وخطة قطرية لدعم كهرباء لبنان عبر سوريا، وتعديل في القيادة الاقتصادية السورية. جاءت التغطية وصفية وإيجابية إلى حد كبير عبر مختلف أنواع وسائل الإعلام، وأُطِّرت كخطوة نحو إعادة ربط النظام المصرفي السوري دولياً بعد سنوات من العزلة بموجب قانون قيصر. ولم يُلاحظ تفاعل جماهيري واضح ومنفصل عن التعليقات العامة حول غلاء المعيشة.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.3,
+   "public_sentiment": null,
    "outlet_tone": {
-    "independent": 0.2,
-    "kurdish": 0.1,
-    "aggregator": 0.2
+    "independent": 0.3,
+    "aggregator": 0.3
    },
-   "public_tone": {
-    "ku": -0.1,
-    "en": -0.1
-   },
+   "public_tone": {},
    "emotions": [
-    "hope",
-    "anxiety"
+    "cautious optimism"
    ],
    "emotions_ar": [
-    "أمل",
-    "قلق"
+    "تفاؤل حذر"
    ],
    "framings": [
-    "Official/local framing as humanitarian return success",
-    "Kurdish framing highlighting language and identity concerns",
-    "English public framing as geopolitical maneuvering"
+    "Financial normalization milestone",
+    "Sanctions relief progress"
    ],
    "framings_ar": [
-    "تأطير رسمي/محلي كنجاح إنساني للعودة",
-    "تأطير كردي يبرز مخاوف اللغة والهوية",
-    "تأطير شعبي إنكليزي كمناورة جيوسياسية"
+    "إنجاز في التطبيع المالي",
+    "تقدم في تخفيف العقوبات"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 8,
-   "public_volume": 5,
-   "share": 0.011,
-   "engagement": 312,
+   "public_volume": 0,
+   "share": 0.01,
+   "engagement": 11103,
    "platforms": {
-    "telegram": 2,
-    "news": 1,
-    "reddit": 1,
-    "bluesky": 4
+    "telegram": 5,
+    "news": 3
    },
    "languages": {
-    "ar": 1,
-    "en": 6,
-    "ku": 1
+    "ar": 6,
+    "en": 2
    },
-   "public_languages": {
-    "en": 4,
-    "ku": 1
-   },
+   "public_languages": {},
    "kinds": {
-    "kurdish": 1,
-    "independent": 1,
-    "aggregator": 1
+    "independent": 6,
+    "aggregator": 2
    },
    "sources": [
-    "Bluesky posts",
-    "North Press Agency - Qamishli-based (AR)",
+    "Euphrates Post - Deir ez-Zor and the east",
+    "Enab Baladi - independent (AR)",
+    "Syria Plus (SY+) - news platform",
     "Levant24 - Syria news (EN)",
-    "Google News - Syria (EN)",
-    "Reddit r/Kurdistan comments"
+    "Google News - Syria (AR)",
+    "Google News - Syria (EN)"
    ],
    "examples": [
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46124",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/96671",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/84270",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/109745",
      "platform": "telegram"
     },
     {
-     "source": "Google News - Syria (EN)",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPUlNNM1BhYjhwa2ticjdhclc3dGg4aU1VTzMxdWhTQzNzaGJxNmVDWkRISG9qQ2JXZWdTYTB2dlIwcEhQNnZMV09yRnhMUXNkOTVqdHUyQVhieFF2bGVJRDhTRUFCelVOUl9zMlFveHJkbkRkbWFUekRfUTdDWWhCWEx5WHAxcXpHQ3N2VzM3RQ?oc=5",
-     "platform": "news"
+     "source": "Syria Plus (SY+) - news platform",
+     "url": "https://t.me/sy_platform/40610",
+     "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-20T23:54:10Z",
+   "first_seen": "2026-10-20T20:37:02Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -1105,7 +1078,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 5
+   "recent": 1
   },
   {
    "name": "Al Mayadeen - Beirut-based",
@@ -1119,7 +1092,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 17,
-   "recent": 2
+   "recent": 1
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
@@ -1196,14 +1169,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 35
+   "recent": 39
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 31
+   "recent": 29
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1217,7 +1190,7 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 60
+   "recent": 59
   },
   {
    "name": "Sky News Arabia - UAE-based",
@@ -1244,22 +1217,22 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 352,
-   "recent": 352
+   "fetched": 491,
+   "recent": 491
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 230,
-   "recent": 182
+   "fetched": 233,
+   "recent": 170
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 21
+   "recent": 22
   },
   {
    "name": "Reddit r/Kurdistan comments",
@@ -1421,6 +1394,6 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.3994,
+ "cost_usd": 0.4076,
  "watch": []
 }
