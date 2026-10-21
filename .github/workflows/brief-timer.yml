@@ -1,0 +1,57 @@
+name: Daily brief timer
+
+# GitHub often starts scheduled runs hours late at night, so the 2:30 UTC schedule of experts-daily.yml alone cannot
+# promise the Media and experts brief by 6:00 in Damascus (3:00 UTC). Like the update keeper, this timer starts
+# whenever an update finishes: it waits until 2:40 UTC and then starts experts-daily.yml, which reads the newest
+# reports and writes yesterday's brief. Updates come at least every 5 hours (keeper.yml), so a timer is always waiting
+# overnight; a newer finished update replaces the waiting timer. If 2:40 UTC has already passed and the brief is still
+# missing, it starts the job at once. Runner time is free for public repositories.
+on:
+  workflow_run:
+    workflows: ["Update narratives"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  actions: write            # lets it start experts-daily.yml
+  contents: read            # reads which briefs exist
+
+concurrency:
+  group: brief-timer
+  cancel-in-progress: true
+
+jobs:
+  wait-then-brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330    # GitHub stops any job after 6 hours; the wait stays below that
+    steps:
+      - name: Wait until 2:40 UTC, then start the brief
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          plan=$(gh api "repos/$GH_REPO/contents/data/experts/analyses/index.json?ref=main" -H "Accept: application/vnd.github.raw" | python3 -c "
+          import sys, json, datetime as d
+          done = {x.get('id') for x in json.load(sys.stdin)}
+          now = d.datetime.now(d.timezone.utc)
+          today_target = now.replace(hour=2, minute=40, second=0, microsecond=0)
+          yesterday = (now.date() - d.timedelta(days=1)).isoformat()
+          if now >= today_target:
+              # past 2:40 today: start now if yesterday's brief is missing (until noon), else aim at tomorrow
+              if yesterday not in done and now.hour < 12:
+                  print('0 ' + yesterday); raise SystemExit
+              target = today_target + d.timedelta(days=1)
+          else:
+              target = today_target
+          day = (target.date() - d.timedelta(days=1)).isoformat()
+          wait = int((target - now).total_seconds())
+          print(('skip' if day in done or wait > 5.3 * 3600 else str(wait)) + ' ' + day)
+          ")
+          wait=${plan%% *}; day=${plan##* }
+          if [ "$wait" = "skip" ]; then
+            echo "Brief of $day already written, or 2:40 UTC is more than 5.3 hours away (a later update will set the timer)."
+            exit 0
+          fi
+          echo "Brief of $day: starting in $(( wait / 60 )) minutes unless a newer update replaces this timer."
+          sleep "$wait"
+          gh workflow run experts-daily.yml --ref main

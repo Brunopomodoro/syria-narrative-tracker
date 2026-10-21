@@ -1,9 +1,9 @@
 name: Expert view daily brief
 
-# Yesterday's Expert view brief, ready by 6:00 in Damascus (3:00 UTC; Syria is on UTC+3 all year). GitHub often starts
-# scheduled runs late, so this one is set for 2:30 UTC. It reads the newest reports first, then writes the brief. If
-# this run is delayed past 3:00 UTC or skipped, the first hourly update after 3:00 UTC writes the brief instead; the
-# brief is never written twice.
+# Yesterday's Media and experts brief, ready by 6:00 in Damascus (3:00 UTC; Syria is on UTC+3 all year). It reads
+# the newest reports first, then writes the brief. It is started at 2:40 UTC by brief-timer.yml, which GitHub's late
+# night schedules cannot delay; the 2:30 UTC schedule below is a second chance, and the first update after 3:00 UTC a
+# third. The brief is never written twice.
 
 on:
   schedule:
@@ -36,8 +36,13 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python scripts/experts.py collect
-          python scripts/experts.py daily --if-missing
+          day=$(date -u -d yesterday +%F)
+          if python -c "import json,sys; sys.exit(0 if any(x.get('id') == '$day' for x in json.load(open('data/experts/analyses/index.json'))) else 1)"; then
+            echo "The brief of $day is already written."
+          else
+            python scripts/experts.py collect
+            python scripts/experts.py daily --if-missing
+          fi
 
       - name: Save results
         run: |
