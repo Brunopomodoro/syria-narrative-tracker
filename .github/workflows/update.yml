@@ -33,14 +33,14 @@ jobs:
             echo "The last update finished $(( age / 60 )) minutes ago; skipping this scheduled run."
           fi
 
+      # Python is set up on every run: posting to X runs hourly, even when the analysis is skipped, so story posts
+      # go out at their hours (scripts/social.py decides whether anything is due; most hours nothing is).
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
-        if: steps.gap.outputs.skip != 'true'
         with:
           python-version: "3.12"
           cache: pip
 
       - name: Install
-        if: steps.gap.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: Collect and analyze
@@ -63,8 +63,7 @@ jobs:
         if: steps.gap.outputs.skip != 'true'
         run: python scripts/report_pdf.py
 
-      - name: Post to Facebook and X (each only once its secrets exist)
-        if: steps.gap.outputs.skip != 'true'
+      - name: Post to Facebook and X (each only once its secrets exist; every hour)
         continue-on-error: true
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
@@ -77,16 +76,23 @@ jobs:
         run: python scripts/social.py
 
       - name: Save results
-        if: steps.gap.outputs.skip != 'true'
+        env:
+          SKIPPED: ${{ steps.gap.outputs.skip }}
         run: |
           git config user.name "narrative-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          if [ "$SKIPPED" = "true" ]; then
+            git add data/social.json        # an hour without an update: only the record of posts can change
+            msg="Social posts"
+          else
+            git add -A
+            msg="Update narratives"
+          fi
           if git diff --cached --quiet; then
             echo "No changes to save."
           else
-            git commit -m "Update narratives $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "$msg $(date -u +'%Y-%m-%d %H:%M UTC')"
             git pull --rebase
             git push
-            python scripts/indexnow.py || true   # tell search engines which pages changed
+            [ "$SKIPPED" = "true" ] || python scripts/indexnow.py || true   # tell search engines which pages changed
           fi
