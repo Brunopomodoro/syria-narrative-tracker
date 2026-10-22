@@ -196,7 +196,9 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
         when = (f"{pages.fmt_date(d['from'], lang)} – {pages.fmt_date(d['to'], lang)}" if kind == "weekly" else pages.fmt_month(ident, lang))
         head = f"{LABEL[kind][lang]} · {when}\n{pages.t(d, 'title', lang)}"
         findings = d.get("key_findings_ar" if lang == "ar" else "key_findings") or d.get("key_findings") or []
-        body = str(findings[0]) if kind == "monthly" and findings else str((d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [""])[0])
+        points = d.get("key_points_ar" if lang == "ar" else "key_points") or d.get("key_points") or []   # the weekly report's key points
+        lead = findings if kind == "monthly" else points
+        body = str(lead[0]) if lead else str((d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [""])[0])
         themes = [x["theme"] for x in sorted((d.get("stats") or {}).get("themes") or [], key=lambda x: -x.get("share", 0))]
         titles = [pages.t(d, "title", lang)] + [pages.t(h, "title", lang) for h in d.get("highlights") or []]
         link = url(cfg, f"{kind}/{lang}/{ident}.html")

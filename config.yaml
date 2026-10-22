@@ -309,7 +309,7 @@ facebook:
 # X_ secrets exist. Each report is one post per language in `languages`; X charges per post, so [ar] halves the
 # cost. per_run: the most posts per update. max_tags: the most hashtags on a post.
 x:
-  enabled: false        # paused until the account the keys post as (@Silentocean2p) is confirmed as the site's
+  enabled: true
   languages: [ar, en]
   per_run: 2
   max_tags: 4
