@@ -17,6 +17,7 @@ Run weekly by the site check task; free.
 Usage:  python scripts/site_check.py [--json FILE]
 """
 import datetime as dt
+import html as html_lib
 import json
 import pathlib
 import re
@@ -162,14 +163,14 @@ def main() -> int:
     for p in indexable:
         h, hd, r = html_of[p], head_of[p], rel(p)
         m = re.search(r"<title>([^<]*)</title>", hd)
-        t = (m.group(1).strip() if m else "")
+        t = html_lib.unescape(m.group(1).strip()) if m else ""
         if not t:
             no_title.append(r)
         else:
             titles[t].append(r)
             if len(t) > 70:
                 long_title.append(f"{r} ({len(t)} characters)")
-        d = meta(hd, "description")
+        d = html_lib.unescape(meta(hd, "description") or "")
         if not d:
             no_desc.append(r)
         elif not 50 <= len(d) <= 170:

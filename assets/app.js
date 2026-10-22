@@ -157,7 +157,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", tagline: "what Syrians are saying online, updated through the day", contact: "Contact",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", tagline: "what Syrians are saying online", contact: "Contact",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -308,7 +308,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", tagline: "ماذا يقول السوريون على الإنترنت اليوم، يتجدّد على مدار اليوم", contact: "اتصل بنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -393,7 +393,7 @@ function applyLang() {
   document.documentElement.dir = rtl() ? "rtl" : "ltr";
   const title = (rtl() ? state.latest?.site_title_ar : state.latest?.site_title) || t.title;
   $("#site-title").textContent = title;
-  document.title = `${title} – ${t.tagline}`;
+  document.title = `${title}: ${t.tagline}`;
   for (const [id, word] of [["home", t.home], ["trends", t.trends], ["reports", t.reports], ["experts", t.experts], ["data", t.data], ["about", t.about]]) {
     const a = $(`#${id}-link`);
     a.textContent = word;

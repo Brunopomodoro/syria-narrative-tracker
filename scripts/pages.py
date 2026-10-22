@@ -18,7 +18,7 @@ import html
 import json
 import pathlib
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 import archive
 import brand  # noqa: E402
@@ -541,6 +541,11 @@ def write_story_pages(cfg: dict, latest: dict, narratives: list | None = None, c
     when = latest.get("generated_at", "")
     today = when[:10]
     count = 0
+    try:                                             # titles shared by several stories (the same subject on other days)
+        index = json.loads((STORIES / "index.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        index = {}
+    shared = {k for k, n in Counter(str(v.get("title") or "").strip().lower() for v in index.values()).items() if n > 1}
     for n in narratives if narratives is not None else (latest.get("narratives") or []):
         key = n.get("key") or archive.story_key(n)
         if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+", key):
@@ -551,8 +556,11 @@ def write_story_pages(cfg: dict, latest: dict, narratives: list | None = None, c
             other = "ar" if lang == "en" else "en"
             body = story_body(cfg, n, runs, lang, when)
             desc = str(t(n, "summary", lang) or "")[:200]
+            title = str(t(n, "title", lang) or key)
+            if str(n.get("title") or "").strip().lower() in shared:   # the date tells same-named stories apart in search results
+                title = f"{title} ({fmt_date(key[:10], lang)})"
             write(STORIES / lang / f"{key}.html",
-                  page(cfg, lang, str(t(n, "title", lang) or key), desc, body, f"stories/{lang}/{key}.html", f"stories/{other}/{key}.html", updated=when,
+                  page(cfg, lang, title, desc, body, f"stories/{lang}/{key}.html", f"stories/{other}/{key}.html", updated=when,
                        noindex=thin, jsonld=[ld_article(cfg, lang, "Article", t(n, "title", lang) or key, desc, f"stories/{lang}/{key}.html",
                                                         str(n.get("first_seen") or (runs[0][0] if runs else when)), when, theme_label(cfg, n.get("theme", "other"), lang)),
                                              ld_breadcrumbs(cfg, lang, [(W[lang]["stories"], f"stories/{lang}/index.html"), (t(n, "title", lang) or key, f"stories/{lang}/{key}.html")])]))
@@ -1232,12 +1240,12 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
 
 
 HOME_TEXT = {
-    "en": {"title": "Syria Narrative Tracker – what Syrians are saying online, updated through the day",
-           "desc": "What is being said about Syria online today: public posts in Arabic, Kurdish and English grouped into stories, "
-                   "with how people and outlets are reacting. Daily briefs, weekly and monthly reports, open data."},
-    "ar": {"title": "متتبّع السرديات السورية – ماذا يقول السوريون على الإنترنت اليوم، يتجدّد على مدار اليوم",
-           "desc": "ما يُقال عن سوريا على الإنترنت اليوم: منشورات عامة بالعربية والكردية والإنجليزية مجمّعة في قصص، مع كيفية تفاعل "
-                   "الناس ووسائل الإعلام معها. موجز يومي وتقارير أسبوعية وشهرية وبيانات مفتوحة."},
+    "en": {"title": "Syria Narrative Tracker: what Syrians are saying online",
+           "desc": "What Syrians say online, updated through the day, set against what the media and experts say. "
+                   "Daily briefs, weekly and monthly reports, open data."},
+    "ar": {"title": "متتبّع السرديات السورية: ماذا يقول السوريون على الإنترنت",
+           "desc": "ما يقوله السوريون على الإنترنت، يتجدّد على مدار اليوم، مقارنةً بما يقوله الإعلام والخبراء. "
+                   "موجز يومي وتقارير أسبوعية وشهرية وبيانات مفتوحة."},
 }
 
 
