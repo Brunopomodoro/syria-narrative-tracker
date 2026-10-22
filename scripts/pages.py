@@ -48,7 +48,7 @@ W = {   # the words on the static pages
            "note": "Written automatically by an AI model from the week's public posts. It describes what was said, not what is true.",
            "storyNote": "Analysis generated automatically by an AI model from public posts. It describes what is being said, not what is true. Individuals are never named, quoted or linked.",
            "tone": ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
-           "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.",
+           "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", "followX": "Follow on X",
            "feedTitle": "Syria Narrative Tracker: weekly digest", "feedDesc": "A weekly written summary of what is being said about Syria online.",
            "review": "Monthly report", "reviews": "Monthly reports", "month": "Month", "monthHighlights": "The stories that mattered", "watchMonth": "What to watch next month",
            "weeksBrief": "The weeks in brief", "flaggedTitle": "Stories that carried signs of coordination", "themeTableMonth": "Themes this month", "vsLastMonth": "vs last month",
@@ -93,7 +93,7 @@ W = {   # the words on the static pages
            "note": "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الأسبوع العامة، ويصف ما قيل لا ما هو صحيح.",
            "storyNote": "تحليل مولَّد تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات عامة، يصف ما يُقال لا ما هو صحيح. لا يُذكر الأفراد ولا يُقتبس كلامهم ولا تُربط منشوراتهم.",
            "tone": ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
-           "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.",
+           "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", "followX": "تابعنا على X",
            "feedTitle": "متتبّع السرديات السورية: الملخص الأسبوعي", "feedDesc": "ملخص مكتوب أسبوعياً لما يُقال عن سوريا على الإنترنت.",
            "review": "التقرير الشهري", "reviews": "التقارير الشهرية", "month": "الشهر", "monthHighlights": "القصص التي كانت الأهم", "watchMonth": "ما يجب متابعته الشهر المقبل",
            "weeksBrief": "الأسابيع باختصار", "flaggedTitle": "قصص حملت مؤشرات تنسيق", "themeTableMonth": "مواضيع هذا الشهر", "vsLastMonth": "مقارنة بالشهر الماضي",
@@ -333,7 +333,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a></footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a href="{esc(x_profile(cfg))}" rel="me noopener">{w["followX"]}</a>') if x_profile(cfg) else ''}</footer>
 </div>
 </body>
 </html>
@@ -1287,7 +1287,7 @@ def home_jsonld(cfg: dict, lang: str) -> str:
     data = [
         {"@context": "https://schema.org", "@type": "WebSite", "name": site_title(cfg, lang), "url": home, "inLanguage": lang,
          "description": HOME_TEXT[lang]["desc"], "publisher": ld_publisher(cfg, lang)},
-        {"@context": "https://schema.org", **ld_publisher(cfg, lang), "sameAs": [u for u in [str(cfg.get("doi") or "").strip()] if u.startswith("https://")]},
+        {"@context": "https://schema.org", **ld_publisher(cfg, lang), "sameAs": [u for u in [str(cfg.get("doi") or "").strip(), x_profile(cfg)] if u.startswith("https://")]},
         {"@context": "https://schema.org", "@type": "Dataset", "name": "Syria Narrative Tracker: stories, themes and tone of online discussion about Syria",
          "alternateName": "متتبّع السرديات السورية",
          "description": "Stories found in public online discussion about Syria (Telegram, news sites, YouTube, Reddit, Bluesky, X), in Arabic, "
@@ -1374,6 +1374,12 @@ def support_links(cfg: dict) -> list:
 
 def support_on(cfg: dict) -> bool:
     return bool(support_links(cfg))
+
+
+def x_profile(cfg: dict) -> str:
+    """The site's X account (config.yaml x_profile_url), or "" when none is set."""
+    u = str(cfg.get("x_profile_url") or "").strip()
+    return u if re.fullmatch(r"https://(x|twitter)\.com/[A-Za-z0-9_]{1,15}", u) else ""
 
 
 def measured_costs(days: int = 30) -> tuple:
