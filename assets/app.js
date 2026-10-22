@@ -88,7 +88,7 @@ const T = {
     eventsLbl: "Events", shareLbl: "share of discussion", dateCol: "Date", valueCol: "Value",
     weeklyTitle: "Weekly digests", weeklySub: "A written summary of each week, with the week's theme table. Each digest is a page and a PDF, with share links; also available as an RSS feed.", allDigests: "All digests", feed: "RSS feed", permalink: "Permanent page",
     monthlyTitle: "Monthly reports", monthlySub: "One page per month: key findings, the month in numbers, the stories that mattered, and what to watch. Print it, send it, or share it from the page.", allReviews: "All reports", subscribe: "Subscribe by email",
-    briefsTitle: "Daily briefs", briefsSub: "One page per day: the day in a word, the day in numbers, and every story of the day with its analysis. Each page can be printed or shared like the reports.", allDays: "All days",
+    briefsTitle: "Daily briefs", briefsSub: "One page and one PDF per finished day: the day at a glance, what people said with every story of the day, and what the media and experts said.", allDays: "All days",
     storiesOf: (n) => `${n} ${n === "1" ? "story" : "stories"}`,
     /* data */
     dataTitle: "Data", dataSub: "Everything the tracker produces can be downloaded and reused. Licence: CC BY 4.0 (free to use with attribution). Posts by individuals are never stored: the data holds analyses and outlet headlines only.",
@@ -241,7 +241,7 @@ const T = {
     eventsLbl: "الأحداث", shareLbl: "الحصة من النقاش", dateCol: "التاريخ", valueCol: "القيمة",
     weeklyTitle: "الملخصات الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. كل ملخص صفحة وملف PDF مع روابط مشاركة؛ متوفر أيضاً كخلاصة RSS.", allDigests: "كل الملخصات", feed: "خلاصة RSS", permalink: "صفحة دائمة",
     monthlyTitle: "التقارير الشهرية", monthlySub: "صفحة واحدة لكل شهر: أبرز النتائج، والشهر بالأرقام، والقصص التي كانت الأهم، وما يجب متابعته. اطبعه أو أرسله أو شاركه من الصفحة نفسها.", allReviews: "كل التقارير", subscribe: "اشترك بالبريد الإلكتروني",
-    briefsTitle: "الموجزات اليومية", briefsSub: "صفحة واحدة لكل يوم: اليوم في كلمة، واليوم بالأرقام، وكل قصص اليوم مع تحليلها. يمكن طباعة كل صفحة أو مشاركتها مثل التقارير.", allDays: "كل الأيام",
+    briefsTitle: "الموجزات اليومية", briefsSub: "صفحة واحدة وملف PDF لكل يوم مكتمل: اليوم باختصار، وما قاله الناس مع كل قصص اليوم، وما قاله الإعلام والخبراء.", allDays: "كل الأيام",
     storiesOf: (n) => { const k = Number(String(n).replace(/[٠-٩]/g, c => "٠١٢٣٤٥٦٧٨٩".indexOf(c))); return `${n} ${k >= 3 && k <= 10 ? "قصص" : "قصة"}`; },
     dataTitle: "البيانات", dataSub: "كل ما ينتجه المتتبّع يمكن تنزيله وإعادة استخدامه. الرخصة: CC BY 4.0 (الاستخدام حر مع ذكر المصدر). لا تُحفظ منشورات الأفراد أبداً؛ تحتوي البيانات على التحليلات وعناوين وسائل الإعلام فقط.",
     dlTitle: "تنزيل فترة زمنية", dlSub: "يُبنى الملف في متصفحك من ملفات الأرشيف اليومية، وهو مطابق للملفات الشهرية أدناه.",
@@ -1003,7 +1003,7 @@ function dailyHTML() {
   const t = L(), lang = state.lang, days = (state.trends.index?.days || []).filter(d => d.runs > 0).slice(-7).reverse();
   if (!days.length) return "";
   const items = days.map(d => `<li><a href="daily/${lang}/${esc(d.date)}.html"><b>${esc(fmtDay(d.date, { weekday: "long", day: "numeric", month: "long" }))}</b></a>
-    <span class="s-meta">${t.people}: ${esc(toneLabel(d.public_sentiment))} · ${t.outlets}: ${esc(toneLabel(d.outlet_sentiment))} · ${t.storiesOf(num(d.stories))}</span></li>`).join("");
+    <span class="s-meta">${t.people}: ${esc(toneLabel(d.public_sentiment))} · ${t.outlets}: ${esc(toneLabel(d.outlet_sentiment))} · ${t.storiesOf(num(d.stories))}${mediaLink(d.date)}${d.date < new Date().toISOString().slice(0, 10) ? ` · <a href="daily/${lang}/${esc(d.date)}.pdf">${t.pdf}</a>` : ""}</span></li>`).join("");
   return `
   <section class="tsec" aria-labelledby="h-daily">
     <div class="sec-head"><div><h2 id="h-daily">${t.briefsTitle}</h2><p class="sub">${t.briefsSub}</p></div>

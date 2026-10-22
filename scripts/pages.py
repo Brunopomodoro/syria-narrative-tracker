@@ -71,7 +71,7 @@ W = {   # the words on the static pages
            "privacyDesc": "How the Syria Narrative Tracker handles public posts: posts by individuals are read only in aggregate and are never stored, quoted or linked.",
            "supportDesc": "How to support the Syria Narrative Tracker, an independent, open project following what Syrians say online, in Arabic and English.",
            "contactDesc": "Write to the Syria Narrative Tracker: questions, corrections, data requests and ideas for working together, through a short form.",
-           "contents": "Contents", "glanceWeek": "The week at a glance", "glanceMonth": "The month at a glance", "partPeople": "What people said",
+           "glanceDay": "The day at a glance", "contents": "Contents", "glanceWeek": "The week at a glance", "glanceMonth": "The month at a glance", "partPeople": "What people said",
            "partMedia": "What the media and experts said", "compareHow": "How they compare", "overallPicture": "The overall picture",
            "watchAll": "What to watch", "watchPeople": "In what people say", "watchMedia": "In the media and experts' view",
            "partMethod": "Sources and method", "mediaSources": "Reports and articles drawn on ({n})", "fullPage": "Full page with sources",
@@ -116,7 +116,7 @@ W = {   # the words on the static pages
            "privacyDesc": "كيف يتعامل متتبّع السرديات السورية مع المنشورات العامة: تُقرأ منشورات الأفراد إجمالاً فقط، ولا تُخزَّن ولا تُقتبس ولا يُربط إليها.",
            "supportDesc": "كيف تدعم متتبّع السرديات السورية، وهو مشروع مستقل ومفتوح يتابع ما يقوله السوريون على الإنترنت بالعربية والإنجليزية.",
            "contactDesc": "راسِل متتبّع السرديات السورية: أسئلة وتصحيحات وطلبات بيانات وأفكار للتعاون، عبر نموذج قصير.",
-           "contents": "المحتويات", "glanceWeek": "الأسبوع باختصار", "glanceMonth": "الشهر باختصار", "partPeople": "ما قاله الناس",
+           "glanceDay": "اليوم باختصار", "contents": "المحتويات", "glanceWeek": "الأسبوع باختصار", "glanceMonth": "الشهر باختصار", "partPeople": "ما قاله الناس",
            "partMedia": "ما قاله الإعلام والخبراء", "compareHow": "كيف تتقاطع الصورتان", "overallPicture": "الصورة العامة",
            "watchAll": "ما يستحق المتابعة", "watchPeople": "في ما يقوله الناس", "watchMedia": "في قراءة الإعلام والخبراء",
            "partMethod": "المصادر والمنهجية", "mediaSources": "التقارير والمقالات المعتمدة ({n})", "fullPage": "الصفحة الكاملة مع المصادر",
@@ -659,6 +659,29 @@ def media_pending(end: str, lang: str) -> str:
     return f'<p class="pending">{esc(W[lang]["mediaPending"])}</p>' if recent else ""
 
 
+def day_media(date: str, lang: str, root: str = "../../") -> dict | None:
+    """The media half of a daily brief, from that day's Media and experts brief: what the media and experts said in
+    each area, how it compares with what people said, and the reports drawn on. None when there is none."""
+    import experts as X                              # imported here: experts imports this module
+    a = archive._load(X.PERIODS / f"{date}.json", None)
+    if not a or a.get("kind") != "day":
+        return None
+    w, xw, o = W[lang], X.WORDS[lang], a["overall"]
+    tr = lambda f: X.tr(o, f, lang)
+    body = [f'<h3>{esc(X.plain(tr("title")))}</h3>', f'<p class="lede"><strong>{xw["lede"]}:</strong> {X.linked(tr("lede") or "", a)}</p>']
+    for area in X.DOMAINS:
+        if tr(area):
+            body.append(f'<h4>{esc(xw["areas"][area])}</h4><p>{X.linked(tr(area), a)}</p>')
+    if tr("syrians"):
+        body.append(f'<h4>{w["compareHow"]}</h4><p>{X.linked(tr("syrians"), a)}</p>')
+    body.append(f'<p class="full">→ <a href="{root}experts/{lang}/{date}.html">{w["fullPage"]}</a></p>')
+    items = X.cited_items(a, o)
+    sources = (f'<h3>{w["mediaSources"].format(n=num(len(items), lang))}</h3><ul class="srcs">' + "".join(
+        f'<li>{esc(i["org"])}: <a href="{esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{esc(i.get("lang") or "en")}" '
+        f'dir="{"rtl" if i.get("lang") in X.RTL else "ltr"}">{esc(i["title"])}</a></li>' for i in items) + "</ul>") if items else ""
+    return {"media": "".join(body), "sources": sources + f'<p class="sub">{esc(xw["note"])}</p>'}
+
+
 def report_parts(parts: list, lang: str) -> str:
     """Numbered report parts with a contents list: parts are (id, title, html, css class); empty ones are left out."""
     parts = [p for p in parts if p[2]]
@@ -1103,18 +1126,23 @@ def daily_body(cfg: dict, s: dict, lang: str) -> str:
         items.append(f'<li><b><a href="../../stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
                      f'<span class="sub">{esc(theme_label(cfg, e.get("theme", "other"), lang))} · {tone_txt}{w["outlets"]} {signed(e.get("sentiment") or 0, lang)} · {pct(e["max_share"], lang)}</span>'
                      f'<br>{esc(t(e, "summary", lang))}</li>')
-    parts = ['<article class="report">',
-             f"<p class=\"eyebrow\"><a href=\"index.html\">{w['dailies']}</a> · {esc(fmt_date(date, lang))}</p>",
-             f"<h1>{esc(title)}</h1>",
-             f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {w['asOf']} {esc(fmt_date(s['last'].get('generated_at', ''), lang, True))}</p>",
-             share_bar(cfg, lang, f"daily/{lang}/{date}.html", title,
-                       tags=hashtags.select(cfg, lang, [x["theme"] for x in s["themes"]], [t(e, "title", lang) for e in s["stories"]])),
-             f"<section class=\"findings\"><h2>{w['dailyMood']}</h2><p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p></section>",
-             f"<section class=\"numbers\"><h2>{w['dayNumbers']}</h2>{kpis}" + (f'<div class="charts"><figure><figcaption>{w["chartThemes"]}</figcaption>{bars}</figure></div>' if bars else "") + "</section>",
-             f"<section class=\"stories\"><h2>{w['storiesOfDay']}</h2><ol>{''.join(items)}</ol></section>",
-             expert_link(lang, f"{date}.html", w["xDay"]),
-             f"<p class=\"sub\">{esc(w['storyNote'])}</p></article>"]
-    return "\n".join(parts)
+    # one brief, one PDF: the day at a glance, what people said, what the media and experts said, sources and method
+    has_pdf = (DAILY / lang / f"{date}.pdf").exists()   # made by report_pdf.py once the day is over, which then redraws this page
+    head = ['<article class="report">',
+            f"<p class=\"eyebrow\"><a href=\"index.html\">{w['dailies']}</a> · {esc(fmt_date(date, lang))}</p>",
+            f"<h1>{esc(title)}</h1>",
+            f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {w['asOf']} {esc(fmt_date(s['last'].get('generated_at', ''), lang, True))}</p>",
+            share_bar(cfg, lang, f"daily/{lang}/{date}.html", title, pdf=f"{date}.pdf" if has_pdf else None,
+                      tags=hashtags.select(cfg, lang, [x["theme"] for x in s["themes"]], [t(e, "title", lang) for e in s["stories"]]))]
+    glance = f"<p><strong>{esc(mood)}</strong> {esc(t(ov, 'brief', lang))}</p>"
+    people = (f"<section class=\"numbers\"><h3>{w['dayNumbers']}</h3>{kpis}" + (f'<div class="charts"><figure><figcaption>{w["chartThemes"]}</figcaption>{bars}</figure></div>' if bars else "") + "</section>"
+              + f"<section class=\"stories\"><h3>{w['storiesOfDay']}</h3><ol>{''.join(items)}</ol></section>")
+    m = day_media(date, lang)
+    body = report_parts([("glance", w["glanceDay"], glance, ""),
+                         ("people", w["partPeople"], people, ""),
+                         ("media", w["partMedia"], m["media"] if m else "", ""),
+                         ("method", w["partMethod"], (m["sources"] if m else "") + f"<p class=\"sub\">{esc(w['storyNote'])}</p>", "")], lang)
+    return "\n".join(head) + body + "</article>"
 
 
 def write_daily_pages(cfg: dict, dates: list) -> int:
@@ -1144,7 +1172,8 @@ def write_daily_listing(cfg: dict) -> None:
         for d in sorted(days, key=lambda d: d["date"], reverse=True)[:90]:
             tone = f"{w['people']} {signed(d['public_sentiment'], lang)}" if d.get("public_sentiment") is not None else ""
             tone += (" · " if tone else "") + (f"{w['outlets']} {signed(d['outlet_sentiment'], lang)}" if d.get("outlet_sentiment") is not None else "")
-            items.append(f"""<li><a href="{esc(d['date'])}.html">{esc(fmt_date(d['date'], lang))}</a><span class="meta">{tone} · {num(int(d.get('stories') or 0), lang)} {w['stories'].lower() if lang == 'en' else w['stories']}</span></li>""")
+            pdf = f' · <a href="{esc(d["date"])}.pdf">{w["pdf"]}</a>' if (DAILY / lang / f"{d['date']}.pdf").exists() else ""
+            items.append(f"""<li><a href="{esc(d['date'])}.html">{esc(fmt_date(d['date'], lang))}</a><span class="meta">{tone} · {num(int(d.get('stories') or 0), lang)} {w['stories'].lower() if lang == 'en' else w['stories']}{pdf}</span></li>""")
         write(DAILY / lang / "index.html", page(cfg, lang, w["dailies"], w["dailySub"],
                                                 f"<h1>{w['dailies']}</h1><p class=\"sub\">{esc(w['dailySub'])}</p><ul class=\"list\">{''.join(items)}</ul>",
                                                 f"daily/{lang}/index.html", f"daily/{other}/index.html", kind="website"))
@@ -1650,8 +1679,9 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_monthly_listing(cfg, reviews)
     write_monthly_feeds(cfg, reviews)
     today = str(latest.get("generated_at") or "")[:10]
-    if today:
-        write_daily_pages(cfg, [today])   # the day's brief, refreshed on every update
+    if today:                             # the day's brief, refreshed on every update, and yesterday's, which now
+        yesterday = (dt.date.fromisoformat(today) - dt.timedelta(days=1)).isoformat()   # gets its PDF link
+        write_daily_pages(cfg, [yesterday, today])
     write_daily_listing(cfg)
     write_sitemap(cfg, digests, reviews)
     write_privacy_pages(cfg)

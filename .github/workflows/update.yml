@@ -59,7 +59,7 @@ jobs:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
         run: python scripts/pipeline.py
 
-      - name: Report PDFs (only when a monthly report or weekly digest is new)
+      - name: Report and daily brief PDFs (only those new or changed)
         if: steps.gap.outputs.skip != 'true'
         run: python scripts/report_pdf.py
 

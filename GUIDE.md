@@ -572,7 +572,7 @@ Stories open ordered by how much ordinary people talk about them (**Most discuss
 
 `scripts/browser_check.py` opens the main pages and every tab of the app in a real browser, in English and Arabic, at desktop and phone width. It looks for script errors, failed requests, sideways scrolling on phones and "undefined" or "NaN" on screen; the weekly task runs it too.
 
-Report PDFs are remade when their page has changed since the PDF was made. A fingerprint of each page is kept in `data/pdf_state.json`, because file times on GitHub's runners are all the same after a fresh checkout. Long page titles drop the site's name, and descriptions are cut at about 160 characters at a word boundary, so search results show them whole. The Support page stays out of search engines until donations are switched on.
+Report PDFs are remade when the report on their page has changed since the PDF was made, ignoring the menu and footer around it. Daily briefs are one page and one PDF too: the day at a glance, what people said, what the media and experts said, and sources and method. Each gets its PDF once the day is over. Briefs from the last 30 days are remade when they change; older ones are made only if missing, so the repository doesn't fill up with PDFs. A fingerprint of each page is kept in `data/pdf_state.json`, because file times on GitHub's runners are all the same after a fresh checkout. Long page titles drop the site's name, and descriptions are cut at about 160 characters at a word boundary, so search results show them whole. The Support page stays out of search engines until donations are switched on.
 
 ### What to watch
 
