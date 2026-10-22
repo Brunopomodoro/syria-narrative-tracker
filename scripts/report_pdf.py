@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """PDF copies of the monthly reports and weekly digests, made with the Chrome that GitHub's runners (and most
-computers) already have: a .pdf next to each page. A PDF is remade when its page is newer. Free, no Python
-packages. Without a Chrome or Chromium on the machine it prints a warning and does nothing.
+computers) already have: a .pdf next to each page. A PDF is remade when its page has changed since the PDF was made
+(a fingerprint of each page is kept in data/pdf_state.json; file times are no use on GitHub, where a fresh checkout
+gives every file the same time). Free, no Python packages. Without a Chrome or Chromium on the machine it prints a warning and does nothing.
 
 Usage:  python scripts/report_pdf.py [--all]
 """
 import glob
+import hashlib
+import json
 import os
 import pathlib
 import shutil
@@ -39,14 +42,22 @@ def main() -> int:
     if not binary:
         print("No Chrome or Chromium found; PDFs not made (they are made on GitHub's runners).")
         return 0
-    made = 0
+    made, state_file = 0, ROOT / "data" / "pdf_state.json"
+    try:
+        state = json.loads(state_file.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        state = {}
     for page in sorted((ROOT / "monthly").glob("*/20??-??.html")) + sorted((ROOT / "weekly").glob("*/20??-W??.html")):
-        out = page.with_suffix(".pdf")
-        if not everything and out.exists() and out.stat().st_mtime >= page.stat().st_mtime:
+        out, key = page.with_suffix(".pdf"), str(page.relative_to(ROOT))
+        print_hash = hashlib.sha256(page.read_bytes()).hexdigest()[:16]
+        if not everything and out.exists() and state.get(key) == print_hash:
             continue
         ok = render(binary, page, out)
         print(f"{'ok  ' if ok else 'FAIL'} {out.relative_to(ROOT)}")
+        if ok:
+            state[key] = print_hash
         made += ok
+    state_file.write_text(json.dumps(state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     print(f"{made} PDF(s) written.")
     return 0
 

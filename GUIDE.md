@@ -563,6 +563,15 @@ The period's Media and experts analysis is written first, as soon as the period 
 
 Stories open ordered by how much ordinary people talk about them (**Most discussed by people**): the percentage beside each story is its share of what people posted, outlets not counted, and "Everything else" shows the rest of people's posts. The other orders are a click away: **Most discussed overall** (people's and outlets' posts together, the share used in the trends, reports and data files), **Most negative** and **Biggest gap**. Outlet posts still count in the analysis as context, since most comments react to them.
 
+### Weekly site check: health, SEO and security
+
+`scripts/site_check.py` checks the built site in the repository, with no network and no extra packages, and prints a report. A weekly scheduled task runs it, fixes the small safe issues and reports the rest. You can also run it any time with the maintenance task `site-check`.
+- **Health:** broken internal links and files, raw link markup, data and feeds that don't parse, an update older than 8 hours, report PDFs not remade after their page changed, very large pages, "undefined" or "NaN" in page text.
+- **SEO:** titles and descriptions (present, unique, short enough for search results), canonical and English/Arabic hreflang links (present and pointing at each other), one heading per page, social image, page language, structured data, the sitemap (complete, no hidden pages), robots.txt, image alt text, the IndexNow key.
+- **Security:** a Content-Security-Policy on every page, scripts only from the site itself, no inline scripts on static pages, new-tab links with `rel="noopener"`, no `http://` resources, forms over https, no secrets or personal email addresses in the repository, workflows with pinned actions and declared permissions, pinned Python packages, the private validation folder untracked.
+
+Report PDFs are remade when their page has changed since the PDF was made. A fingerprint of each page is kept in `data/pdf_state.json`, because file times on GitHub's runners are all the same after a fresh checkout. Long page titles drop the site's name, and descriptions are cut at about 160 characters at a word boundary, so search results show them whole. The Support page stays out of search engines until donations are switched on.
+
 ### What to watch
 
 Above the stories, the home page lists up to five things worth keeping an eye on, worked out by `scripts/watch.py` from the numbers of the last updates, with no extra Claude call:

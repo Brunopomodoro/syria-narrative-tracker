@@ -141,7 +141,7 @@ def month_stats(cfg: dict, month: str) -> dict | None:
 REVIEW_PROMPT = """You are a careful, neutral analyst writing the monthly review of the Syria Narrative Tracker, which follows what is said about Syria online (public posts in Arabic, Kurdish and English from Telegram channels, news feeds, YouTube comments, Reddit, X and Bluesky). The review is also sent as a newsletter to researchers, journalists and people who follow Syria closely, so it must stand on its own.
 
 You receive the month's numbers, the weekly digests, the stories the tracker followed and, for some stories, coordination signals. The report is read by donors, NGOs, think tanks and journalists who may have one minute or ten. Write:
-- "title": a headline for the month (not clickbait; what defined the month).
+- "title": a headline for the month of at most 70 characters (not clickbait; what defined the month).
 - "key_findings": 4 to 6 one-sentence findings that a busy reader can take away on their own: the executive summary. Each states one thing that happened in the discussion and, where useful, the number behind it.
 - "paragraphs": 5 short paragraphs of 2 to 3 sentences each, so the whole report fits on two printed pages: the arc of the month and what dominated the discussion; how the themes moved against the previous month, when that is known; where people's reactions and outlet coverage differed; where communities or languages framed things differently, and which stories carried signs of coordination; what faded and what emerged. Use the numbers when they matter, sparingly.
 - "highlights": 6 to 8 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.

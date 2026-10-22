@@ -101,7 +101,7 @@ def week_stats(cfg: dict, week: str) -> dict | None:
 DIGEST_PROMPT = """You are a careful, neutral analyst writing the weekly brief of the Syria Narrative Tracker, which follows what is said about Syria online (public posts in Arabic, Kurdish and English from Telegram channels, news feeds, YouTube comments, Reddit and X). Readers are researchers, journalists and people who follow Syria closely.
 
 You receive the week's numbers and the stories the tracker followed. Write:
-- "title": a headline for the week (not clickbait; what defined the week).
+- "title": a headline for the week of at most 70 characters (not clickbait; what defined the week).
 - "key_points": 3 to 5 one-sentence points a busy reader can take away on their own, the week at a glance; when the media and experts' analysis is given, one of them sets what people talked about against what the media and experts focused on.
 - "paragraphs": 3 to 5 short paragraphs: what dominated the discussion and how it moved; where people's reactions and outlet coverage differed; where communities or languages framed things differently; what was new or faded. Use the numbers when they matter (shares, tones, changes from the week before), sparingly.
 - "highlights": 3 to 6 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
