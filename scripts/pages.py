@@ -68,6 +68,9 @@ W = {   # the words on the static pages
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
            "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media and experts", "sourcesTitle": "Sources", "expertsLatest": "In Media and experts",
+           "pvmTitle": "People and the media", "pvmPeople": "What people talked about most", "pvmMedia": "What the media and experts focused on",
+           "pvmGap": "What people raised that the media and experts barely covered", "pvmBrief": "Media and experts in brief", "pvmRead": "Read the full analysis and its sources",
+           "pvmShare": "{p} of people's posts on average", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. Media and experts: our analysis of Syrian and international media, think tanks and international organisations.",
            "xDay": "What the media and experts said that day", "xWeek": "This week in Media and experts: our analysis of Syrian and international reporting and research",
            "xArea": "The expert view on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
     "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
@@ -102,6 +105,9 @@ W = {   # the words on the static pages
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
            "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "الإعلام والخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في «الإعلام والخبراء»",
+           "pvmTitle": "الناس والإعلام", "pvmPeople": "ما تحدث عنه الناس أكثر من غيره", "pvmMedia": "ما ركّز عليه الإعلام والخبراء",
+           "pvmGap": "ما أثاره الناس ولم يتناوله الإعلام والخبراء إلا قليلاً", "pvmBrief": "الإعلام والخبراء باختصار", "pvmRead": "اقرأ التحليل الكامل ومصادره",
+           "pvmShare": "{p} من منشورات الناس في المتوسط", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام والخبراء: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
            "xDay": "ما قاله الإعلام والخبراء في ذلك اليوم", "xWeek": "هذا الأسبوع في «الإعلام والخبراء»: تحليلنا للتغطية والأبحاث السورية والدولية",
            "xArea": "قراءة الخبراء في {area} هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
 }
@@ -138,7 +144,7 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .ev{border-inline-start:2px solid var(--rule);padding:4px 0 4px 16px;margin:16px 0}html[dir=rtl] .ev{padding:4px 16px 4px 0}
 .ev.key{border-inline-start:3px solid var(--brass)}.ev h3{margin:2px 0 6px;font-size:1.12rem}.ev p{margin:0 0 6px}.evd{font-size:.88rem}.ev .xlink{margin:6px 0 0;font-size:.9rem}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
-.report .rmeta{margin-top:-6px}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.report .rmeta{margin-top:-6px}.pvm-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}.pvm-cols h3{margin-top:10px}@media (max-width:640px){.pvm-cols{grid-template-columns:1fr}}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
 .charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
@@ -544,6 +550,35 @@ def archive_key(e: dict) -> str:
 
 # ----------------------------------------------------------------- weekly digest pages and feeds
 
+def people_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str = "../../") -> str:
+    """"People and the media": what ordinary people talked about most next to what the Media and experts analysis of
+    the same week or month focused on, what people raised that the media barely covered, and the analysis in brief.
+    Empty when the period has no analysis yet (the page is rewritten when it is written)."""
+    import experts as X                              # imported here: experts imports this module
+    a = archive._load(X.PERIODS / f"{pid}.json", None)
+    if not a:
+        return ""
+    w, o = W[lang], a["overall"]
+    people = []
+    for e in X.people_stories(start, end, None, 5):
+        title = esc(e["title_ar"] if lang == "ar" and e.get("title_ar") else e["title"])
+        link = f'<a href="{root}stories/{lang}/{esc(e["key"])}.html">{title}</a>' if e.get("key") else title
+        people.append(f'<li>{link} <span class="sub">{esc(w["pvmShare"].format(p=pct(e["average"], lang)))}</span></li>')
+    media = [f'<li><a href="{root}experts/{lang}/{X.page_name(pid, area)}"><b>{esc(X.WORDS[lang]["areas"][area])}:</b> '
+             f'{esc(X.plain(X.tr(a["overall"] if area == "overall" else a["areas"][area], "title", lang)))}</a></li>'
+             for area in X.AREAS if area == "overall" or area in a["areas"]]
+    parts = [f'<section class="pvm"><h2>{w["pvmTitle"]}</h2><div class="pvm-cols">',
+             f'<div><h3>{w["pvmPeople"]}</h3><ol>{"".join(people)}</ol></div>' if people else "",
+             f'<div><h3>{w["pvmMedia"]}</h3><ul>{"".join(media)}</ul></div></div>']
+    gaps = X.tr(o, "blind_spots", lang) or []
+    if gaps:
+        parts.append(f'<h3>{w["pvmGap"]}</h3><ul>' + "".join(f"<li>{X.linked(x, a)}</li>" for x in gaps) + "</ul>")
+    parts.append(f'<h3>{w["pvmBrief"]}</h3><p>{X.linked(X.tr(o, "lede", lang) or "", a)}</p>'
+                 f'<p class="xlink">→ <a href="{root}experts/{lang}/{X.page_name(pid, "overall")}">{w["pvmRead"]}</a></p>'
+                 f'<p class="sub">{esc(w["pvmNote"])}</p></section>')
+    return "".join(parts)
+
+
 def weekly_body(cfg: dict, d: dict, lang: str) -> str:
     w, s = W[lang], d.get("stats") or {}
     paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
@@ -556,6 +591,8 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
                        tags=hashtags.select(cfg, lang, [x["theme"] for x in sorted(s.get("themes") or [], key=lambda x: -x.get("share", 0))],
                                             [t(d, "title", lang)] + [t(h, "title", lang) for h in d.get("highlights") or []])),
              '<section class="analysis">' + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>"]
+    pvm = people_media(cfg, d["week"], d["from"], d["to"], lang)
+    parts.append(pvm)
     hl = d.get("highlights") or []
     if hl:
         items = []
@@ -582,7 +619,8 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
         parts.append(f"<h2>{w['dailyTone']}</h2><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
         parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
-    parts.append(expert_link(lang, f"{d['week']}.html", w["xWeek"]))
+    if not pvm:
+        parts.append(expert_link(lang, f"{d['week']}.html", w["xWeek"]))
     parts.append(f"<p class=\"sub\">{esc(w['note'])}</p></article>")
     return "\n".join(parts)
 
@@ -648,6 +686,7 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
         parts.append(f"<section class=\"findings\"><h2>{w['keyFindings']}</h2><ol>" + "".join(f"<li>{esc(x)}</li>" for x in findings) + "</ol></section>")
     paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
     parts.append(f"<section class=\"analysis\"><h2>{w['analysis']}</h2>" + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>")
+    parts.append(people_media(cfg, d["month"], d.get("from") or f"{d['month']}-01", d.get("to") or f"{d['month']}-31", lang, root))
     hl = d.get("highlights") or []
     if hl:
         items = []

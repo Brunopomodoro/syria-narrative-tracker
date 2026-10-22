@@ -1407,13 +1407,14 @@ def main() -> int:
     record_quality("published", status, raw, posts, sample, narratives, usage, cost, retried, filled, cfg.get("model", ""))
     log(f"Saved {len(narratives)} narratives.")
 
-    # the weekly digest (when a week has just ended) and the static pages; neither may fail the run
+    # Media and experts first (new reports, then a daily brief or a week's or month's analysis when due), then the
+    # weekly digest and monthly review, which compare with it, and the static pages; none may fail the run
+    experts.update(cfg, log)
+    if experts.maybe_generate(cfg, state, log):
+        save_json(state_path, state)
     if weekly.maybe_generate(cfg, state, log):
         save_json(state_path, state)
     if monthly.maybe_generate(cfg, state, log):
-        save_json(state_path, state)
-    experts.update(cfg, log)                    # the expert view's library: new reports and articles, one line each
-    if experts.maybe_generate(cfg, state, log):  # and its weekly analysis, once a week has ended
         save_json(state_path, state)
     try:
         pages.publish(cfg, latest)

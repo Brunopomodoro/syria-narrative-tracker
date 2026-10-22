@@ -408,12 +408,13 @@ def period_range(pid: str) -> tuple[str, str]:
     return f"{pid}-01", last.isoformat()
 
 
-def syrian_stories(start: str, end: str, themes: tuple | None = None, limit: int = 12) -> list:
+def people_stories(start: str, end: str, themes: tuple | None = None, limit: int = 12) -> list:
     """What ordinary Syrians talked about in a period (optionally only some themes), from people's own posts and
-    comments only, not outlets: the tracker's stories ranked by the attention people gave them, with the highest
-    share of people's posts each reached and the average tone of people's reactions. Stories that were almost
-    only outlets are left out."""
+    comments only, not outlets: the tracker's stories ranked by the attention people gave them, each with the highest
+    share of people's posts it reached and the average tone of people's reactions. Stories that were almost only
+    outlets are left out."""
     agg: dict = {}
+    runs = 0
     for day in archive.all_days():
         if not start <= day <= end:
             continue
@@ -421,13 +422,15 @@ def syrian_stories(start: str, end: str, themes: tuple | None = None, limit: int
             people = (run.get("stats") or {}).get("public_posts") or 0
             if not people:
                 continue
+            runs += 1
             for n in run.get("narratives") or []:
                 if themes and n.get("theme") not in themes:
                     continue
                 pv = int(n.get("public_volume") or 0)
                 key = n.get("key") or n.get("id")
-                e = agg.setdefault(key, {"title": n.get("title", ""), "theme": n.get("theme", ""), "peak": 0.0, "attention": 0.0,
-                                         "posts": 0, "tones": [], "runs": 0, "summary": n.get("summary", ""), "reaction": ""})
+                e = agg.setdefault(key, {"key": n.get("key") or "", "title": n.get("title", ""), "title_ar": n.get("title_ar", ""),
+                                         "theme": n.get("theme", ""), "peak": 0.0, "attention": 0.0, "posts": 0, "tones": [],
+                                         "runs": 0, "summary": n.get("summary", ""), "reaction": ""})
                 e["peak"] = max(e["peak"], pv / people)
                 e["attention"] += pv / people
                 e["posts"] += pv
@@ -437,9 +440,36 @@ def syrian_stories(start: str, end: str, themes: tuple | None = None, limit: int
                 if n.get("public_reaction"):
                     e["reaction"] = n["public_reaction"]
     rows = sorted((e for e in agg.values() if e["posts"] >= 5), key=lambda e: e["attention"], reverse=True)[:limit]
+    for e in rows:
+        e["tone"] = round(sum(e["tones"]) / len(e["tones"]), 2) if e["tones"] else None
+        e["average"] = e["attention"] / runs     # its average share of people's posts over the whole period
+    return rows
+
+
+def syrian_stories(start: str, end: str, themes: tuple | None = None, limit: int = 12) -> list:
+    """people_stories() as lines for the analysis prompts."""
     return [f"- {e['title']} (theme {e['theme']}, up to {e['peak']:.0%} of people's posts, seen in {e['runs']} updates, people's tone "
-            f"{(round(sum(e['tones']) / len(e['tones']), 2) if e['tones'] else 'n/a')}): {e['summary'][:200]} People's reactions: {e['reaction'][:200]}"
-            for e in rows]
+            f"{e['tone'] if e['tone'] is not None else 'n/a'}): {e['summary'][:200]} People's reactions: {e['reaction'][:200]}"
+            for e in people_stories(start, end, themes, limit)]
+
+
+def media_brief(pid: str) -> str:
+    """What the media and experts said in a week or month, from its analysis, as text for the tracker's own weekly
+    digest and monthly review (links reduced to names). Empty when the period has no analysis."""
+    a = archive._load(PERIODS / f"{pid}.json", None)
+    if not a:
+        return ""
+    o = a["overall"]
+    lines = [f"Overall: {plain(o.get('title', ''))}. {plain(o.get('lede', ''))}"]
+    for area in DOMAINS:
+        d = a["areas"].get(area)
+        if d:
+            lines.append(f"{area.capitalize()}: {plain(d.get('title', ''))}. {plain(d.get('lede', ''))}")
+    if o.get("syrians"):
+        lines.append(f"Compared with what people said: {plain(o['syrians'])}")
+    if o.get("blind_spots"):
+        lines.append("What people discussed that the media and experts barely covered: " + " ".join(plain(o["blind_spots"])))
+    return "\n".join(lines)
 
 
 def ask(cfg: dict, system: str, msg: str, schema: dict, max_tokens: int = 10000) -> tuple[dict, dict]:
@@ -618,7 +648,10 @@ def generate(cfg: dict, pid: str, log=print) -> dict | None:
     write_listing(cfg)
     digest = archive._load(archive.DATA / "weekly" / f"{pid}.json", None) if kind == "week" else None
     if digest:
-        pages.write_weekly_pages(cfg, digest)    # the tracker's weekly digest now links here
+        pages.write_weekly_pages(cfg, digest)    # the tracker's weekly digest shows this analysis
+    review = archive._load(archive.DATA / "monthly" / f"{pid}.json", None) if kind == "month" else None
+    if review:
+        pages.write_monthly_pages(cfg, review)   # and so does the monthly review
     log(f"  experts {pid}: {len(areas)} area analyses and the overall one written ({usage['input_tokens']}/{usage['output_tokens']} tokens)")
     return a
 
@@ -670,12 +703,9 @@ def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
     if now.hour >= 3:
         due.append(yesterday)                      # the daily brief of yesterday, if the 2:30 UTC job (experts-daily.yml) missed it
     week = weekly.week_of(now.date() - dt.timedelta(days=7))
-    digest_done = week in {x.get("week") for x in archive._load(archive.DATA / "weekly" / "index.json", [])}
-    if digest_done or now.hour >= 20:
-        due.append(week)
+    due.append(week)                               # as soon as the week has ended: the weekly digest waits for it
     month = (now.date().replace(day=1) - dt.timedelta(days=1)).strftime("%Y-%m")
-    if now.day >= 2:
-        due.append(month)
+    due.append(month)                              # from the 1st: the monthly review waits for it
     changed = False
     for pid in due:
         if pid in done or int(attempts.get(pid, 0)) >= 3:

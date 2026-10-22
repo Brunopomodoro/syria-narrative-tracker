@@ -14,8 +14,8 @@ on:
           - backfill-themes             # give themes to archived stories that have none (uses Claude, a few cents)
           - backfill-archive            # rebuild the archive from the git history of the results (free)
           - rebuild-pages               # rebuild every story page, daily brief, digest and report page, listing, feed and the sitemap from the archive (free)
-          - backfill-weekly             # write the weekly digest of every completed week that has none (uses Claude, a few cents each)
-          - backfill-monthly            # write the monthly review of every completed month that has none (uses Claude, about 15 cents each)
+          - backfill-weekly             # write the weekly digest of every completed week that has none, or rewrite the week in 'period' (a few cents each)
+          - backfill-monthly            # write the monthly review of every completed month that has none, or rewrite the month in 'period' (about 15 cents each)
           - brand                       # remake the logo files: icons, preview cards, wordmarks (free; after changing the name or tagline)
           - social-check                # check the Facebook and X keys and show the latest posts of each kind; posts nothing (free)
           - backfill-arabic             # translate Arabic text that past updates left out, then rebuild the pages (a cent or two)
@@ -33,7 +33,7 @@ on:
         type: string
         default: "300"
       period:
-        description: "experts-daily, -weekly, -monthly only: the day (2026-10-18), week (2026-W42) or month (2026-10) to (re)write; empty: the last complete one"
+        description: "experts-daily/-weekly/-monthly and backfill-weekly/-monthly only: the day (2026-10-18), week (2026-W42) or month (2026-10) to (re)write; empty: the last complete one"
         type: string
         default: ""
       names:
@@ -100,8 +100,8 @@ jobs:
             backfill-themes)           python scripts/backfill_themes.py ;;
             backfill-archive)          python scripts/backfill_archive.py ;;
             rebuild-pages)             python scripts/rebuild_pages.py ;;
-            backfill-weekly)           python scripts/weekly.py ;;
-            backfill-monthly)          python scripts/monthly.py ;;
+            backfill-weekly)           python scripts/weekly.py $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
+            backfill-monthly)          python scripts/monthly.py $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
             brand)                     pip install -q fonttools uharfbuzz && python scripts/brand.py ;;
             social-check)              python scripts/social.py --preview ;;
             backfill-arabic)           python scripts/backfill_arabic.py && python scripts/rebuild_pages.py ;;
