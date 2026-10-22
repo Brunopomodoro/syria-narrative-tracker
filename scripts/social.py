@@ -13,6 +13,12 @@ What has been posted is recorded in data/social.json, so nothing goes out twice,
 again at the next update. At most `per_run` posts go out per update and network (monthly first, then weekly, then
 daily), so a day with several reports spreads them out. Settings under `facebook:` and `x:` in config.yaml.
 
+On X every post is paid for, so posting keeps to a monthly budget (`monthly_budget_usd` / `cost_per_post_usd` posts
+a month). The reports come first; what the budget leaves after the reports still to come this month goes to story
+posts: one story at a time, at the hours Syrians are most online (Damascus time), spread evenly over the rest of
+the month. A story post has no link (X shows posts with links to fewer people): the story's title, how people and
+the media feel about it, what people are saying, and a few hashtags.
+
 Usage:  python scripts/social.py              post what is due
         python scripts/social.py --dry-run    check the token and print what would be posted, post nothing
         python scripts/social.py --preview    print the latest daily, weekly and monthly posts, due or not
@@ -56,7 +62,9 @@ def settings(cfg: dict, network: str = "facebook") -> dict:
     s = {"enabled": True, "first_lang": "ar", "per_run": 1, "daily": True, "weekly": True, "monthly": True,
          "daily_after_utc": 4, "api_version": "", "languages": ["ar", "en"], "max_tags": 4}
     if network == "x":
-        s["per_run"] = 2
+        s.update({"per_run": 2, "max_tags": 3, "daily_languages": ["ar"], "monthly_budget_usd": 10, "cost_per_post_usd": 0.10,
+                  "stories": True, "story_language": "ar", "story_hours": [20, 13, 17, 22, 9], "utc_offset": 3,
+                  "max_stories_per_day": 5, "story_gap_hours": 1.5, "story_repeat_hours": 48, "story_min_voices": 5})
     s.update(cfg.get(network) or {})
     return s
 
@@ -291,7 +299,8 @@ def due(cfg: dict, state: dict, now: dt.datetime, network: str = "facebook") -> 
     if s["daily"] and now.hour >= int(s["daily_after_utc"]):
         yesterday = (now.date() - dt.timedelta(days=1)).isoformat()
         if yesterday in archive.all_days():
-            out += [("daily", yesterday, lang) for lang in langs if not done("daily", yesterday, lang)]
+            dlangs = [x for x in langs if x in s.get("daily_languages", langs)] if network == "x" else langs
+            out += [("daily", yesterday, lang) for lang in dlangs if not done("daily", yesterday, lang)]
     return [x if network == "x" else x[:2] for x in out]
 
 
@@ -300,6 +309,173 @@ def archive_parse(iso: str | None) -> dt.datetime | None:
         return dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
     except (TypeError, ValueError):
         return None
+
+
+# ---------------------------------------------------------------- X: the budget and the story posts
+
+STORY_WORDS = {"en": {"people": "People", "outlets": "Media", "voices": "voices", "split": "People and the media do not see this one the same way.",
+                      "more": "Full analysis: link in bio"},
+               "ar": {"people": "مزاج الناس", "outlets": "وسائل الإعلام", "voices": "عدد الأصوات", "split": "الناس ووسائل الإعلام لا يرون هذه القصة بالعين نفسها.",
+                      "more": "التحليل الكامل: الرابط في التعريف"}}
+
+
+def budget_posts(s: dict) -> int:
+    """How many posts the monthly budget pays for."""
+    cost = float(s.get("cost_per_post_usd") or 0)
+    return int(float(s.get("monthly_budget_usd") or 0) / cost + 1e-9) if cost > 0 else 10 ** 6
+
+
+def sent_this_month(xs: dict, now: dt.datetime) -> int:
+    """Posts made on X this calendar month (UTC): reports and stories; skipped reports cost nothing."""
+    month = now.strftime("%Y-%m")
+    reports = sum(1 for v in (xs.get("posted") or {}).values() if v.get("id") and str(v.get("at", "")).startswith(month))
+    return reports + sum(1 for v in xs.get("story_posts") or [] if str(v.get("at", "")).startswith(month))
+
+
+def month_days_left(now: dt.datetime) -> list:
+    """The dates from today to the end of the month."""
+    d, out = now.date(), []
+    while d.month == now.month:
+        out.append(d)
+        d += dt.timedelta(days=1)
+    return out
+
+
+def reports_to_come(cfg: dict, state: dict, now: dt.datetime) -> int:
+    """Report posts still to make this month: those due now, each later day's daily brief and each later Monday's
+    weekly digest, so story posts never use the budget the reports need."""
+    s = settings(cfg, "x")
+    langs = [x for x in s["languages"] if x in ("ar", "en")]
+    dlangs = [x for x in langs if x in s["daily_languages"]]
+    posted = (state.get("x") or {}).get("posted") or {}
+    n = len(due(cfg, state, now, "x"))
+    for d in month_days_left(now):
+        brief = (d - dt.timedelta(days=1)).isoformat()            # the brief posted on day d is the one for the day before
+        if s["daily"] and (d > now.date() or now.hour < int(s["daily_after_utc"])):
+            n += sum(1 for lang in dlangs if f"daily:{brief}:{lang}" not in posted)
+        if s["weekly"] and d > now.date() and d.weekday() == 0:
+            n += len(langs)
+    return n
+
+
+def story_allowance(cfg: dict, state: dict, now: dt.datetime) -> dict:
+    """Today's share of the story posts the budget leaves: what is left after the reports to come, spread evenly
+    over the days left in the month."""
+    s, xs = settings(cfg, "x"), state.get("x") or {}
+    total, sent = budget_posts(s), sent_this_month(xs, now)
+    today = local_now(s, now).date().isoformat()
+    done_today = [p for p in xs.get("story_posts") or [] if str(p.get("slot", "")).startswith(today)]
+    reserve = reports_to_come(cfg, state, now)
+    left = total - sent - reserve
+    pool = left + len(done_today)
+    per_day = min(int(s["max_stories_per_day"]), max(0, round(pool / len(month_days_left(now))))) if left > 0 else len(done_today)
+    return {"budget": total, "sent": sent, "reserve": reserve, "left": max(0, left), "today": per_day, "done_today": len(done_today)}
+
+
+def local_now(s: dict, now: dt.datetime) -> dt.datetime:
+    return now + dt.timedelta(hours=float(s.get("utc_offset") or 0))
+
+
+def story_slot(cfg: dict, state: dict, now: dt.datetime) -> str | None:
+    """The story slot open now ("YYYY-MM-DD HH", Damascus time), or None. Today's allowance takes the first hours
+    of `story_hours` (the busiest first) and posts at them in time order; a slot stays open two hours, so a late
+    update still posts, but a missed slot is not made up later."""
+    s, xs = settings(cfg, "x"), state.get("x") or {}
+    allow = story_allowance(cfg, state, now)
+    local = local_now(s, now)
+    hours = sorted(int(h) for h in (s["story_hours"] or [])[: allow["today"]])
+    open_now = [h for h in hours if h <= local.hour + local.minute / 60 < h + 2]
+    if not open_now:
+        return None
+    slot = f"{local.date().isoformat()} {open_now[-1]:02d}"
+    posts = xs.get("story_posts") or []
+    if any(p.get("slot") == slot for p in posts):
+        return None
+    last = max((archive_parse(p.get("at")) for p in posts if archive_parse(p.get("at"))), default=None)
+    if last and now - last < dt.timedelta(hours=float(s["story_gap_hours"])):
+        return None
+    return slot
+
+
+def outlet_tone(n: dict):
+    vals = [v for v in (n.get("outlet_tone") or {}).values() if isinstance(v, (int, float))]
+    return sum(vals) / len(vals) if vals else n.get("sentiment")
+
+
+def story_candidates(cfg: dict, state: dict, now: dt.datetime) -> list:
+    """The current stories worth a post, best first. Stories that people (not only outlets) talk about come first,
+    then those where people and the media disagree, and new ones. Not posted in the last `story_repeat_hours`."""
+    s, xs = settings(cfg, "x"), state.get("x") or {}
+    lang = s["story_language"]
+    recent = {p.get("key") for p in xs.get("story_posts") or []
+              if (t := archive_parse(p.get("at"))) and now - t < dt.timedelta(hours=float(s["story_repeat_hours"]))}
+    latest_data = archive._load(pages.DATA / "latest.json", {}) or {}
+    out = []
+    for n in latest_data.get("narratives") or []:
+        key, voices = n.get("key") or "", int(n.get("public_volume") or 0)
+        if (not key or key in recent or n.get("theme", "other") == "other" or voices < int(s["story_min_voices"])
+                or not pages.t(n, "title", lang) or not (pages.ROOT / "stories" / lang / f"{key}.html").exists()):
+            continue
+        people, media = n.get("public_sentiment"), outlet_tone(n)
+        gap = abs(people - media) if isinstance(people, (int, float)) and isinstance(media, (int, float)) else 0
+        first = archive_parse(n.get("first_seen"))
+        score = voices * (0.5 + voices / max(1, int(n.get("volume") or voices)))
+        score *= (1.5 if gap >= 0.4 else 1) * (1.3 if first and now - first < dt.timedelta(hours=24) else 1)
+        out.append((score, n, gap))
+    return [(n, gap) for score, n, gap in sorted(out, key=lambda x: -x[0])]
+
+
+def compose_story(cfg: dict, n: dict, gap: float, lang: str) -> dict:
+    """A story post without a link: the title, the mood of people (and of the media when the two differ), what people
+    say, the hashtags and where to read more; at most 280 by X's count."""
+    w = STORY_WORDS[lang]
+    title = str(pages.t(n, "title", lang) or "")
+    people = f"{w['people']}: {pages.tone_label(n.get('public_sentiment'), lang)} · {w['voices']}: {pages.num(n.get('public_volume') or 0, lang)}"
+    if lang == "en":
+        people = f"{w['people']}: {pages.tone_label(n.get('public_sentiment'), lang)} ({pages.num(n.get('public_volume') or 0, lang)} {w['voices']})"
+    lines = [people]
+    if gap >= 0.4:
+        lines.append(f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}")
+    head = title + ("\n" + w["split"] if gap >= 0.4 else "")
+    body = str(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang) or "")
+    tags = hashtags.select(cfg, lang, [n.get("theme", "")], [title])[: int(settings(cfg, "x")["max_tags"])]
+    def build(text_body: str, n_tags: int) -> str:
+        parts = [head, "\n".join(lines)] + ([text_body] if text_body else []) + [w["more"]]
+        return "\n\n".join(parts) + ("\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
+    n_tags = len(tags)
+    room = 280 - x_len(build("", n_tags)) - 2
+    text_body = clip(body, room) if room > 40 else ""
+    while text_body and x_len(build(text_body, n_tags)) > 280:
+        text_body = clip(text_body, len(text_body) - 20) if len(text_body) > 60 else ""
+    while n_tags and x_len(build(text_body, n_tags)) > 280:
+        n_tags -= 1
+    return {"key": n.get("key"), "text": build(text_body, n_tags)}
+
+
+def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
+    s, xs = settings(cfg, "x"), state.setdefault("x", {})
+    slot = story_slot(cfg, state, now)
+    if not slot or not s["stories"]:
+        return
+    if sent_this_month(xs, now) >= budget_posts(s):
+        return
+    cands = story_candidates(cfg, state, now)
+    if not cands:
+        return
+    post = compose_story(cfg, *cands[0], s["story_language"])
+    try:
+        res = x_call("POST", "tweets", keys, {"text": post["text"]})
+    except Exception as e:  # noqa: BLE001
+        xs["last_error"] = {"at": now.isoformat(timespec="seconds"), "item": f"story:{post['key']}", "error": x_explain(e)}
+        print(f"X: story {post['key']} not posted. {x_explain(e)}")
+        return
+    pid = (res.get("data") or {}).get("id")
+    posts = xs.setdefault("story_posts", [])
+    posts.append({"key": post["key"], "slot": slot, "id": pid, "at": now.isoformat(timespec="seconds")})
+    cutoff = (now - dt.timedelta(days=40)).isoformat()
+    xs["story_posts"] = [p for p in posts if str(p.get("at", "")) >= cutoff]
+    xs.pop("last_error", None)
+    print(f"X: posted story {post['key']} ({pid}) for the {slot}:00 slot.")
 
 
 # ---------------------------------------------------------------- the Graph API
@@ -396,6 +572,13 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         for kind, ident, lang in items:
             post = compose_x(cfg, kind, ident, lang)
             print(f"\n===== {kind} {ident} {lang} ({x_len(post['text']) if post else 0}/280)\n{post['text'] if post else '(no report)'}")
+        a = story_allowance(cfg, state, now)
+        print(f"\n######## X budget\n{a['budget']} posts a month (${s['monthly_budget_usd']} at ${s['cost_per_post_usd']} a post); "
+              f"{a['sent']} made this month, {a['reserve']} kept for the reports still to come, {a['left']} left for stories; "
+              f"today {a['done_today']} of {a['today']} story posts made. Story slot open now: {story_slot(cfg, state, now) or 'none'}.")
+        for n, gap in story_candidates(cfg, state, now)[:3]:
+            post = compose_story(cfg, n, gap, s["story_language"])
+            print(f"\n===== story {post['key']} ({x_len(post['text'])}/280)\n{post['text']}")
         return
     if not s["enabled"] or not keys:
         return
@@ -405,6 +588,9 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         post = compose_x(cfg, kind, ident, lang)
         if not post:
             continue
+        if sent_this_month(xs, now) >= budget_posts(s):
+            print(f"X: the monthly budget of {budget_posts(s)} posts is used up; {post['key']} waits.")
+            return
         try:
             res = x_call("POST", "tweets", keys, {"text": post["text"]})
         except Exception as e:  # noqa: BLE001
@@ -416,6 +602,7 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         xs.pop("last_error", None)
         print(f"X: posted {post['key']} ({pid}).")
     trim(posted)
+    run_x_story(cfg, state, now, keys)
 
 
 def main() -> int:
@@ -434,7 +621,8 @@ def main() -> int:
         base = [("daily", (now.date() - dt.timedelta(days=1)).isoformat())]
         base += [(k, x["month" if k == "monthly" else "week"]) for k in ("weekly", "monthly") if (x := latest(k))]
         preview_fb = base
-        preview_x = [(k, i, lang) for k, i in base for lang in settings(cfg, "x")["languages"]]
+        sx = settings(cfg, "x")
+        preview_x = [(k, i, lang) for k, i in base for lang in sx["languages"] if k != "daily" or lang in sx["daily_languages"]]
     if args.only in (None, "facebook"):
         run_facebook(cfg, state, now, preview_fb, check)
     if args.only in (None, "x"):

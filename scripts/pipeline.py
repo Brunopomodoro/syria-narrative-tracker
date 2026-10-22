@@ -1350,6 +1350,7 @@ def main() -> int:
         "signal_catalog": [{k: s[k] for k in ("id", "label", "label_ar")} for s in signals.CATALOG],
         "newsletter_url": str(cfg.get("newsletter_url") or "").strip(),
         "support_on": pages.support_on(cfg),
+        "x_profile": pages.x_profile(cfg),
         "sources": status,
         "source_names_ar": source_names_ar(cfg),
         "cost_usd": cost,

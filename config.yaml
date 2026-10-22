@@ -26,6 +26,9 @@ monthly_review: true
 # The sign-up page of your newsletter service (for example a Buttondown page), once you
 # have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
 newsletter_url: ""
+# The site's X account. Shown as "Follow on X" in the footer of every page, and listed as the site's profile
+# for search engines. Leave empty to hide it.
+x_profile_url: "https://x.com/Silentocean2p"
 
 # Arabic glossary: the Arabic to use for terms that keep coming back. Every prompt that writes Arabic gets this list,
 # and after each update any whole word or phrase under "avoid" is replaced with "ar" in the Arabic texts. Add a line whenever you
@@ -305,14 +308,31 @@ facebook:
   daily_after_utc: 4
   api_version: ""
 
-# Posting the reports to the tracker's X account (GUIDE.md, "Posting to X"). Nothing is posted until the four
-# X_ secrets exist. Each report is one post per language in `languages`; X charges per post, so [ar] halves the
-# cost. per_run: the most posts per update. max_tags: the most hashtags on a post.
+# Posting to the tracker's X account (GUIDE.md, "Posting to X"). Nothing is posted until the four X_ secrets exist.
+# X charges per post, so posting keeps to monthly_budget_usd: at cost_per_post_usd a post that pays for
+# budget/cost posts a month (set cost_per_post_usd to the price shown in the X Developer Console).
+# Reports come first: the weekly and monthly ones in each of `languages`, the daily brief in `daily_languages`.
+# What is left goes to story posts in story_language: no link, the story's title, how people and the media feel,
+# what people say, and hashtags. At most max_stories_per_day, at story_hours (Damascus time, busiest first; a
+# day with an allowance of 2 posts at the first two), at least story_gap_hours apart, and the same story not
+# again within story_repeat_hours. Only stories with at least story_min_voices comments from people.
+# per_run: the most report posts per update. max_tags: the most hashtags on a post.
 x:
   enabled: true
   languages: [ar, en]
+  daily_languages: [ar]
+  monthly_budget_usd: 10
+  cost_per_post_usd: 0.10
+  stories: true
+  story_language: ar
+  story_hours: [20, 13, 17, 22, 9]
+  utc_offset: 3
+  max_stories_per_day: 5
+  story_gap_hours: 1.5
+  story_repeat_hours: 48
+  story_min_voices: 5
   per_run: 2
-  max_tags: 4
+  max_tags: 3
   daily: true
   weekly: true
   monthly: true

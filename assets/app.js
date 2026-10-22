@@ -157,7 +157,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", tagline: "what Syrians are saying online", contact: "Contact",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", tagline: "what Syrians are saying online", contact: "Contact",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -308,7 +308,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -411,7 +411,8 @@ function applyLang() {
   if (tlLink) { tlLink.textContent = t.timeline; tlLink.href = `timeline/${state.lang}.html`; }
   const conLink = $("#contact-link");
   if (conLink) { conLink.textContent = t.contact; conLink.href = `contact/${state.lang}.html`; }
-  $("#footer").innerHTML = `${esc(t.footer)} · <a href="privacy/${state.lang}.html">${t.privacy}</a>` + (sup ? ` · <a href="support/${state.lang}.html">${t.support}</a>` : "") + ` · <a href="contact/${state.lang}.html">${t.contact}</a> · <a href="sources/${state.lang}.html">${t.sourcesTitle}</a>`;
+  $("#footer").innerHTML = `${esc(t.footer)} · <a href="privacy/${state.lang}.html">${t.privacy}</a>` + (sup ? ` · <a href="support/${state.lang}.html">${t.support}</a>` : "") + ` · <a href="contact/${state.lang}.html">${t.contact}</a> · <a href="sources/${state.lang}.html">${t.sourcesTitle}</a>`
+    + (/^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(state.latest?.x_profile || "") ? ` · <a href="${esc(state.latest.x_profile)}" rel="me noopener">${t.followX}</a>` : "");
 }
 
 /* tone */
