@@ -68,6 +68,11 @@ W = {   # the words on the static pages
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
            "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media and experts", "sourcesTitle": "Sources", "expertsLatest": "In Media and experts",
+           "contents": "Contents", "glanceWeek": "The week at a glance", "glanceMonth": "The month at a glance", "partPeople": "What people said",
+           "partMedia": "What the media and experts said", "compareHow": "How they compare", "overallPicture": "The overall picture",
+           "watchAll": "What to watch", "watchPeople": "In what people say", "watchMedia": "In the media and experts' view",
+           "partMethod": "Sources and method", "mediaSources": "Reports and articles drawn on ({n})", "fullPage": "Full page with sources",
+           "mediaPending": "The Media and experts analysis of this period is not written yet; this report is updated when it is.",
            "pvmTitle": "People and the media", "pvmPeople": "What people talked about most", "pvmMedia": "What the media and experts focused on",
            "pvmGap": "What people raised that the media and experts barely covered", "pvmBrief": "Media and experts in brief", "pvmRead": "Read the full analysis and its sources",
            "pvmShare": "{p} of people's posts on average", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. Media and experts: our analysis of Syrian and international media, think tanks and international organisations.",
@@ -105,6 +110,11 @@ W = {   # the words on the static pages
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
            "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "الإعلام والخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في «الإعلام والخبراء»",
+           "contents": "المحتويات", "glanceWeek": "الأسبوع باختصار", "glanceMonth": "الشهر باختصار", "partPeople": "ما قاله الناس",
+           "partMedia": "ما قاله الإعلام والخبراء", "compareHow": "كيف تتقاطع الصورتان", "overallPicture": "الصورة العامة",
+           "watchAll": "ما يستحق المتابعة", "watchPeople": "في ما يقوله الناس", "watchMedia": "في قراءة الإعلام والخبراء",
+           "partMethod": "المصادر والمنهجية", "mediaSources": "التقارير والمقالات المعتمدة ({n})", "fullPage": "الصفحة الكاملة مع المصادر",
+           "mediaPending": "لم يُكتب بعد تحليل «الإعلام والخبراء» لهذه الفترة؛ ويُحدَّث هذا التقرير حين يُكتب.",
            "pvmTitle": "الناس والإعلام", "pvmPeople": "ما تحدث عنه الناس أكثر من غيره", "pvmMedia": "ما ركّز عليه الإعلام والخبراء",
            "pvmGap": "ما أثاره الناس ولم يتناوله الإعلام والخبراء إلا قليلاً", "pvmBrief": "الإعلام والخبراء باختصار", "pvmRead": "اقرأ التحليل الكامل ومصادره",
            "pvmShare": "{p} من منشورات الناس في المتوسط", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام والخبراء: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
@@ -144,7 +154,9 @@ td.n{font-variant-numeric:tabular-nums;white-space:nowrap}.bar{position:relative
 .ev{border-inline-start:2px solid var(--rule);padding:4px 0 4px 16px;margin:16px 0}html[dir=rtl] .ev{padding:4px 16px 4px 0}
 .ev.key{border-inline-start:3px solid var(--brass)}.ev h3{margin:2px 0 6px;font-size:1.12rem}.ev p{margin:0 0 6px}.evd{font-size:.88rem}.ev .xlink{margin:6px 0 0;font-size:.9rem}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:.85rem}
-.report .rmeta{margin-top:-6px}.pvm-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}.pvm-cols h3{margin-top:10px}@media (max-width:640px){.pvm-cols{grid-template-columns:1fr}}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.report .rmeta{margin-top:-6px}.pvm-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}.pvm-cols h3{margin-top:10px}@media (max-width:640px){.pvm-cols{grid-template-columns:1fr}}
+.toc{border:1px solid var(--rule);border-radius:8px;padding:10px 16px;margin:16px 0}.toc b{font-size:.9rem}.toc ol{margin:6px 0 0;padding-inline-start:20px;columns:2;column-gap:28px;font-size:.92rem}.toc li{margin:2px 0}
+.part{margin-top:28px}.part>h2{border-bottom:2px solid var(--brass);padding-bottom:4px}.part h4{margin:12px 0 4px;font-size:.98rem}.area{margin-top:18px}.area .full{font-size:.88rem}.srcs li{margin-bottom:4px}.pending{color:var(--muted);font-style:italic}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
 .charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
@@ -154,7 +166,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 @page{size:A4;margin:10mm 12mm}
 @media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.share,footer,.chip,.print-hide,.wk-text,.top nav{display:none!important}.top{padding:0 0 5pt;margin:0 0 10pt;border-bottom:1px solid #bbb}.top .brand{font-size:9.5pt;color:#000}.top .brand .mark{width:14pt;height:14pt}.purl{display:block;color:#555;font-size:8.5pt}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
 .kpis{grid-template-columns:repeat(6,1fr);gap:6pt}.kpi{padding:5pt 8pt;border-color:#bbb}.kpi b{font-size:12pt}.kpi span,.kpi .delta{font-size:7.5pt}.charts{grid-template-columns:1fr 1fr;gap:8pt}.charts figure{padding:5pt 8pt;border-color:#bbb}.charts figcaption{font-size:9pt}
-.analysis{column-count:2;column-gap:16pt}.analysis h2{column-span:all}.weeks ul{column-count:2;column-gap:16pt}section,figure,.kpi,table,li{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}}
+.analysis{column-count:2;column-gap:16pt}.analysis h2,.analysis h3{column-span:all}.toc{padding:4pt 8pt;margin:6pt 0}.toc ol{font-size:8.5pt}.part{margin-top:12pt}.part.media{break-before:page}.part>h2{font-size:13pt}h2,h3,h4{break-after:avoid}.srcs{column-count:2;column-gap:16pt;font-size:8pt}.area .full{display:none}.weeks ul{column-count:2;column-gap:16pt}section,figure,.kpi,table,li{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}}
 """
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">'
@@ -550,49 +562,107 @@ def archive_key(e: dict) -> str:
 
 # ----------------------------------------------------------------- weekly digest pages and feeds
 
-def people_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str = "../../") -> str:
-    """"People and the media": what ordinary people talked about most next to what the Media and experts analysis of
-    the same week or month focused on, what people raised that the media barely covered, and the analysis in brief.
-    Empty when the period has no analysis yet (the page is rewritten when it is written)."""
+def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str = "../../") -> dict | None:
+    """The media half of a weekly or monthly report, from the period's Media and experts analysis: the comparison with
+    what ordinary people said, the analysis itself (overall, then each area), what the media and experts say to watch,
+    and the reports drawn on. None when the period has no analysis yet (the report is redrawn when it is written)."""
     import experts as X                              # imported here: experts imports this module
     a = archive._load(X.PERIODS / f"{pid}.json", None)
     if not a:
-        return ""
-    w, o = W[lang], a["overall"]
+        return None
+    w, xw, o = W[lang], X.WORDS[lang], a["overall"]
+    tr = lambda d, f: X.tr(d, f, lang)
+    paras = lambda text: "".join(f"<p>{X.linked(x, a)}</p>" for x in str(text or "").split("\n") if x.strip())
+    # comparison: what people talked about next to what the media and experts focused on
     people = []
     for e in X.people_stories(start, end, None, 5):
         title = esc(e["title_ar"] if lang == "ar" and e.get("title_ar") else e["title"])
         link = f'<a href="{root}stories/{lang}/{esc(e["key"])}.html">{title}</a>' if e.get("key") else title
         people.append(f'<li>{link} <span class="sub">{esc(w["pvmShare"].format(p=pct(e["average"], lang)))}</span></li>')
-    media = [f'<li><a href="{root}experts/{lang}/{X.page_name(pid, area)}"><b>{esc(X.WORDS[lang]["areas"][area])}:</b> '
-             f'{esc(X.plain(X.tr(a["overall"] if area == "overall" else a["areas"][area], "title", lang)))}</a></li>'
-             for area in X.AREAS if area == "overall" or area in a["areas"]]
-    parts = [f'<section class="pvm"><h2>{w["pvmTitle"]}</h2><div class="pvm-cols">',
-             f'<div><h3>{w["pvmPeople"]}</h3><ol>{"".join(people)}</ol></div>' if people else "",
-             f'<div><h3>{w["pvmMedia"]}</h3><ul>{"".join(media)}</ul></div></div>']
-    gaps = X.tr(o, "blind_spots", lang) or []
-    if gaps:
-        parts.append(f'<h3>{w["pvmGap"]}</h3><ul>' + "".join(f"<li>{X.linked(x, a)}</li>" for x in gaps) + "</ul>")
-    parts.append(f'<h3>{w["pvmBrief"]}</h3><p>{X.linked(X.tr(o, "lede", lang) or "", a)}</p>'
-                 f'<p class="xlink">→ <a href="{root}experts/{lang}/{X.page_name(pid, "overall")}">{w["pvmRead"]}</a></p>'
-                 f'<p class="sub">{esc(w["pvmNote"])}</p></section>')
-    return "".join(parts)
+    areas = [x for x in X.DOMAINS if x in a["areas"]]
+    media = [f'<li><a href="#{x}"><b>{esc(xw["areas"][x])}:</b> {esc(X.plain(tr(a["areas"][x], "title")))}</a></li>' for x in areas]
+    compare = (f'<div class="pvm-cols"><div><h3>{w["pvmPeople"]}</h3><ol>{"".join(people)}</ol></div>'
+               f'<div><h3>{w["pvmMedia"]}</h3><ul>{"".join(media)}</ul></div></div>')
+    if tr(o, "syrians"):
+        compare += f'<h3>{w["compareHow"]}</h3>{paras(tr(o, "syrians"))}'
+    if tr(o, "blind_spots"):
+        compare += f'<h3>{w["pvmGap"]}</h3><ul>' + "".join(f"<li>{X.linked(x, a)}</li>" for x in tr(o, "blind_spots")) + "</ul>"
+    compare += f'<p class="sub">{esc(w["pvmNote"])}</p>'
+    # the analysis: overall, then each area
+    body = [f'<h3>{w["overallPicture"]}: {esc(X.plain(tr(o, "title")))}</h3>',
+            f'<p class="lede"><strong>{xw["lede"]}:</strong> {X.linked(tr(o, "lede") or "", a)}</p>',
+            '<div class="analysis">' + "".join(f"<p>{X.linked(x, a)}</p>" for x in tr(o, "findings") or []) + "</div>"]
+    for x in areas:
+        d = a["areas"][x]
+        part = [f'<div class="area" id="{x}"><h3>{esc(xw["areas"][x])}: {esc(X.plain(tr(d, "title")))}</h3>',
+                f'<p class="lede"><strong>{xw["lede"]}:</strong> {X.linked(tr(d, "lede") or "", a)}</p>',
+                '<div class="analysis">' + "".join(f"<p>{X.linked(y, a)}</p>" for y in tr(d, "findings") or []) + "</div>"]
+        for f, label in (("agree", xw["agree"]), ("disagree", xw["disagree"])):
+            if tr(d, f):
+                part.append(f"<h4>{label}</h4>{paras(tr(d, f))}")
+        if tr(d, "recommendations"):
+            part.append(f'<h4>{xw["recs"]}</h4><ul>' + "".join(f"<li>{X.linked(y, a)}</li>" for y in tr(d, "recommendations")) + "</ul>")
+        part.append(f'<p class="full">→ <a href="{root}experts/{lang}/{X.page_name(pid, x)}">{w["fullPage"]}</a></p></div>')
+        body.append("".join(part))
+    # the reports drawn on, once each
+    seen, items = set(), []
+    for d in [o, *[a["areas"][x] for x in areas]]:
+        for i in X.cited_items(a, d):
+            if i["id"] not in seen:
+                seen.add(i["id"])
+                items.append(i)
+    sources = (f'<h3>{w["mediaSources"].format(n=num(len(items), lang))}</h3><ul class="srcs">' + "".join(
+        f'<li>{esc(i["org"])}: <a href="{esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{esc(i.get("lang") or "en")}" '
+        f'dir="{"rtl" if i.get("lang") in X.RTL else "ltr"}">{esc(i["title"])}</a> <span class="sub">{esc(fmt_date(i["date"], lang))}</span></li>'
+        for i in items) + f'</ul><p class="sub">{esc(xw["note"])}</p>') if items else f'<p class="sub">{esc(xw["note"])}</p>'
+    return {"compare": compare, "media": "".join(body), "watch": [X.linked(x, a) for x in tr(o, "watch") or []], "sources": sources}
+
+
+def media_pending(end: str, lang: str) -> str:
+    """The note shown while a period's Media and experts analysis is being written: only in the days right after the
+    period ends (older periods, from before that section existed, have no comparison at all)."""
+    try:
+        recent = (dt.datetime.now(dt.timezone.utc).date() - dt.date.fromisoformat(end[:10])).days <= 3
+    except ValueError:
+        recent = False
+    return f'<p class="pending">{esc(W[lang]["mediaPending"])}</p>' if recent else ""
+
+
+def report_parts(parts: list, lang: str) -> str:
+    """Numbered report parts with a contents list: parts are (id, title, html, css class); empty ones are left out."""
+    parts = [p for p in parts if p[2]]
+    toc = f'<nav class="toc" aria-label="{W[lang]["contents"]}"><b>{W[lang]["contents"]}</b><ol>' + "".join(
+        f'<li><a href="#{pid}">{esc(title)}</a></li>' for pid, title, _, _ in parts) + "</ol></nav>"
+    return toc + "".join(f'<section class="part {cls}" id="{pid}"><h2>{num(n, lang)}. {esc(title)}</h2>{html}</section>'
+                         for n, (pid, title, html, cls) in enumerate(parts, 1))
+
+
+def watch_part(lang: str, people: list, media: list | None) -> str:
+    """What to watch: people's side (plain text) and the media and experts' side (HTML with links to the sources)."""
+    w = W[lang]
+    out = ""
+    if people:
+        out += f'<h3>{w["watchPeople"]}</h3><ul>' + "".join(f"<li>{esc(x)}</li>" for x in people) + "</ul>"
+    if media:
+        out += f'<h3>{w["watchMedia"]}</h3><ul>' + "".join(f"<li>{x}</li>" for x in media) + "</ul>"
+    return out
 
 
 def weekly_body(cfg: dict, d: dict, lang: str) -> str:
+    """The weekly report: what people said and what the media and experts said, in one page and one PDF."""
     w, s = W[lang], d.get("stats") or {}
     paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
-    parts = ['<article class="report">',
-             f"<p class=\"eyebrow\"><a href=\"index.html\">{w['digests']}</a> · {w['week']} {esc(d['week'])} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</p>",
-             f"<h1>{esc(t(d, 'title', lang))}</h1>",
-             f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(site_url(cfg).replace('https://', ''))}</span></p>",
-             share_bar(cfg, lang, f"weekly/{lang}/{d['week']}.html", f"{t(d, 'title', lang)}, {w['week']} {d['week']}",
-                       pdf=f"{d['week']}.pdf", feed="feed-ar.xml" if lang == "ar" else "feed.xml",
-                       tags=hashtags.select(cfg, lang, [x["theme"] for x in sorted(s.get("themes") or [], key=lambda x: -x.get("share", 0))],
-                                            [t(d, "title", lang)] + [t(h, "title", lang) for h in d.get("highlights") or []])),
-             '<section class="analysis">' + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>"]
-    pvm = people_media(cfg, d["week"], d["from"], d["to"], lang)
-    parts.append(pvm)
+    head = ['<article class="report">',
+            f"<p class=\"eyebrow\"><a href=\"index.html\">{w['digests']}</a> · {w['week']} {esc(d['week'])} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))}</p>",
+            f"<h1>{esc(t(d, 'title', lang))}</h1>",
+            f"<p class=\"sub rmeta\">{esc(site_title(cfg, lang))} · {esc(fmt_date(d['from'], lang))} – {esc(fmt_date(d['to'], lang))} · <span dir=\"ltr\">{esc(site_url(cfg).replace('https://', ''))}</span></p>",
+            share_bar(cfg, lang, f"weekly/{lang}/{d['week']}.html", f"{t(d, 'title', lang)}, {w['week']} {d['week']}",
+                      pdf=f"{d['week']}.pdf", feed="feed-ar.xml" if lang == "ar" else "feed.xml",
+                      tags=hashtags.select(cfg, lang, [x["theme"] for x in sorted(s.get("themes") or [], key=lambda x: -x.get("share", 0))],
+                                           [t(d, "title", lang)] + [t(h, "title", lang) for h in d.get("highlights") or []]))]
+    points = d.get("key_points_ar" if lang == "ar" else "key_points") or d.get("key_points") or []
+    glance = "<ol>" + "".join(f"<li>{esc(x)}</li>" for x in points) + "</ol>" if points else ""
+    people = ['<div class="analysis">' + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</div>"]
     hl = d.get("highlights") or []
     if hl:
         items = []
@@ -600,11 +670,8 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
             key = h.get("key") or ""
             title = esc(t(h, "title", lang))
             link = f'<a href="../../stories/{lang}/{esc(key)}.html">{title}</a>' if key else title
-            items.append(f"<li><b>{link}</b>{(': ' if lang == 'en' else ': ')}{esc(t(h, 'why', lang))}</li>")
-        parts.append(f"<h2>{w['highlights']}</h2><ul>{''.join(items)}</ul>")
-    watch = d.get("watch_ar" if lang == "ar" else "watch") or []
-    if watch:
-        parts.append(f"<h2>{w['watchNext']}</h2><ul>" + "".join(f"<li>{esc(x)}</li>" for x in watch) + "</ul>")
+            items.append(f"<li><b>{link}</b>: {esc(t(h, 'why', lang))}</li>")
+        people.append(f"<h3>{w['highlights']}</h3><ul>{''.join(items)}</ul>")
     themes = s.get("themes") or []
     if themes:
         mx = max([x.get("share", 0) for x in themes] + [0.05])
@@ -612,17 +679,23 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
 <td class="n">{pct(x.get('share', 0), lang)}{(' <span class="sub">(' + pts(x['change'], lang) + ')</span>') if x.get('change') is not None else ''}</td>
 <td class="n">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td><td class="n">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
                        for x in themes)
-        parts.append(f"<h2>{w['themeTable']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+        people.append(f"<h3>{w['themeTable']}</h3><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
     days = s.get("days") or []
     if days:
         rows = "".join(f"<tr><td class=\"n\">{esc(fmt_date(x['date'], lang))}</td><td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
-        parts.append(f"<h2>{w['dailyTone']}</h2><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
-        parts.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
-    if not pvm:
-        parts.append(expert_link(lang, f"{d['week']}.html", w["xWeek"]))
-    parts.append(f"<p class=\"sub\">{esc(w['note'])}</p></article>")
-    return "\n".join(parts)
+        people.append(f"<h3>{w['dailyTone']}</h3><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
+        people.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
+    m = report_media(cfg, d["week"], d["from"], d["to"], lang)
+    pending = media_pending(d["to"], lang)
+    method = (m["sources"] if m else "") + f'<p class="sub">{esc(w["note"])}</p>'
+    body = report_parts([("glance", w["glanceWeek"], glance, ""),
+                         ("people", w["partPeople"], "".join(people), ""),
+                         ("compare", w["pvmTitle"], m["compare"] if m else pending, ""),
+                         ("media", w["partMedia"], m["media"] if m else "", "media"),
+                         ("watch", w["watchAll"], watch_part(lang, d.get("watch_ar" if lang == "ar" else "watch") or [], m["watch"] if m else None), ""),
+                         ("method", w["partMethod"], method, "")], lang)
+    return "\n".join(head) + body + "</article>"
 
 
 def write_weekly_pages(cfg: dict, digest: dict) -> None:
@@ -676,17 +749,17 @@ def subscribe_link(cfg: dict, lang: str) -> str:
     return f'<p><a class="chip" href="{esc(url)}" rel="noopener">{W[lang]["subscribe"]}</a></p>' if url.startswith("https://") else ""
 
 
-def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolute: str = "") -> list:
-    """The report's text sections as HTML; absolute links when a site address is given (for the feeds)."""
+def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolute: str = "", named: bool = False):
+    """The report's text sections as HTML, in order, or by name (named=True); absolute links when a site address is
+    given (for the feeds)."""
     w, s = W[lang], d.get("stats") or {}
     root = absolute + "/" if absolute else base
-    parts = []
+    blocks = {}
     findings = d.get("key_findings_ar" if lang == "ar" else "key_findings") or d.get("key_findings") or []
     if findings:
-        parts.append(f"<section class=\"findings\"><h2>{w['keyFindings']}</h2><ol>" + "".join(f"<li>{esc(x)}</li>" for x in findings) + "</ol></section>")
+        blocks["findings"] = (f"<section class=\"findings\"><h2>{w['keyFindings']}</h2><ol>" + "".join(f"<li>{esc(x)}</li>" for x in findings) + "</ol></section>")
     paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
-    parts.append(f"<section class=\"analysis\"><h2>{w['analysis']}</h2>" + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>")
-    parts.append(people_media(cfg, d["month"], d.get("from") or f"{d['month']}-01", d.get("to") or f"{d['month']}-31", lang, root))
+    blocks["analysis"] = (f"<section class=\"analysis\"><h2>{w['analysis']}</h2>" + "".join(f"<p>{esc(p)}</p>" for p in paras) + "</section>")
     hl = d.get("highlights") or []
     if hl:
         items = []
@@ -695,10 +768,10 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
             title = esc(t(h, "title", lang))
             link = f'<a href="{root}stories/{lang}/{esc(key)}.html">{title}</a>' if key else title
             items.append(f"<li><b>{link}</b>{(': ' if lang == 'en' else ': ')}{esc(t(h, 'why', lang))}</li>")
-        parts.append(f"<section class=\"stories\"><h2>{w['monthHighlights']}</h2><ol>{''.join(items)}</ol></section>")
+        blocks["highlights"] = (f"<section class=\"stories\"><h2>{w['monthHighlights']}</h2><ol>{''.join(items)}</ol></section>")
     watch = d.get("watch_ar" if lang == "ar" else "watch") or []
     if watch:
-        parts.append(f"<section><h2>{w['watchMonth']}</h2><ul>" + "".join(f"<li>{esc(x)}</li>" for x in watch) + "</ul></section>")
+        blocks["watch"] = (f"<section><h2>{w['watchMonth']}</h2><ul>" + "".join(f"<li>{esc(x)}</li>" for x in watch) + "</ul></section>")
     flagged = d.get("flagged") or []
     if flagged:
         import signals as SIG
@@ -709,7 +782,7 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
             names = ", ".join(cat[i["id"]]["label_ar" if lang == "ar" else "label"] if i["id"] in cat else i["id"] for i in sig.get("items") or [])
             items.append(f'<li><b><a href="{root}stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
                          f'<span class="sub">{w["level"]}: {w["sigLevels"].get(sig.get("level"), "")}; {esc(names)}</span></li>')
-        parts.append(f"<section><h2>{w['flaggedTitle']}</h2><ul>{''.join(items)}</ul><p class=\"sub\">{esc(w['sigNote'])}</p></section>")
+        blocks["flagged"] = (f"<section><h2>{w['flaggedTitle']}</h2><ul>{''.join(items)}</ul><p class=\"sub\">{esc(w['sigNote'])}</p></section>")
     digests = d.get("digests") or []
     if digests:
         items = []
@@ -718,7 +791,7 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
             text = ('<span class="wk-text"><br>' + esc(first) + "</span>") if first else ""
             items.append(f'<li><b><a href="{root}weekly/{lang}/{esc(x["week"])}.html">{esc(t(x, "title", lang))}</a></b> '
                          f'<span class="sub">{esc(fmt_date(x.get("from", ""), lang))} – {esc(fmt_date(x.get("to", ""), lang))}</span>{text}</li>')
-        parts.append(f"<section class=\"weeks\"><h2>{w['weeksBrief']}</h2><ul>{''.join(items)}</ul></section>")
+        blocks["digests"] = (f"<section class=\"weeks\"><h2>{w['weeksBrief']}</h2><ul>{''.join(items)}</ul></section>")
     themes = s.get("themes") or []
     if themes:
         mx = max([x.get("share", 0) for x in themes] + [0.05])
@@ -727,15 +800,15 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
 <td class="n">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td><td class="n">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
                        for x in themes)
         change_note = f" <span class=\"sub\">({w['vsLastMonth']})</span>" if any(x.get("change") is not None for x in themes) else ""
-        parts.append(f"<section><h2>{w['themeTableMonth']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}{change_note}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div></section>")
+        blocks["themes"] = (f"<section><h2>{w['themeTableMonth']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}{change_note}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div></section>")
     weeks = s.get("weeks") or []
     if weeks:
         rows = "".join(f"<tr><td class=\"n\">{esc(x['week'])}</td><td class=\"n\">{esc(fmt_date(x['from'], lang))} – {esc(fmt_date(x['to'], lang))}</td>"
                        f"<td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
                        f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in weeks)
-        parts.append(f"<section class=\"print-hide\"><h2>{w['weeklyTone']}</h2><div class=\"tw\"><table><thead><tr><th>{w['weekCol']}</th><th>{w['daysCol']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>"
+        blocks["weeks"] = (f"<section class=\"print-hide\"><h2>{w['weeklyTone']}</h2><div class=\"tw\"><table><thead><tr><th>{w['weekCol']}</th><th>{w['daysCol']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>"
                      f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p></section>")
-    return parts
+    return blocks if named else list(blocks.values())
 
 
 def svg_theme_bars(cfg: dict, themes: list, lang: str) -> str:
@@ -863,10 +936,23 @@ def monthly_body(cfg: dict, d: dict, lang: str) -> str:
     lines = svg_tone_weeks(s.get("weeks") or [], lang)
     if lines:
         charts.append(f'<figure><figcaption>{w["chartTone"]}</figcaption>{lines}<p class="legend"><span><i></i>{w["people"]}</span><span><i class="b"></i>{w["outlets"]}</span></p></figure>')
-    sections = monthly_sections(cfg, d, lang)
-    numbers = f'<section class="numbers"><h2>{w["inNumbers"]}</h2>{kpi_tiles(cfg, d, lang)}' + (f'<div class="charts">{"".join(charts)}</div>' if charts else "") + "</section>"
-    body = sections[:1] + [numbers] + sections[1:] if sections and 'class="findings"' in sections[0] else [numbers] + sections
-    return "\n".join(['<article class="report">'] + head + body + [about_report(cfg, d, lang), "</article>"])
+    # one report, one PDF: at a glance, what people said, the comparison, what the media and experts said, what to
+    # watch, sources and method
+    blocks = monthly_sections(cfg, d, lang, named=True)
+    sub = lambda h: h.replace("<h2>", "<h3>").replace("</h2>", "</h3>")
+    numbers = f'<section class="numbers"><h3>{w["inNumbers"]}</h3>{kpi_tiles(cfg, d, lang)}' + (f'<div class="charts">{"".join(charts)}</div>' if charts else "") + "</section>"
+    glance = sub(blocks.get("findings", "")).replace(f"<h3>{w['keyFindings']}</h3>", "") + numbers
+    analysis = blocks.get("analysis", "").replace(f"<h2>{w['analysis']}</h2>", "")
+    people = analysis + "".join(sub(blocks[k]) for k in ("highlights", "flagged", "digests", "themes", "weeks") if k in blocks)
+    m = report_media(cfg, d["month"], d.get("from") or f"{d['month']}-01", d.get("to") or f"{d['month']}-31", lang)
+    pending = media_pending(d.get("to") or f"{d['month']}-28", lang)
+    body = report_parts([("glance", w["glanceMonth"], glance, ""),
+                         ("people", w["partPeople"], people, ""),
+                         ("compare", w["pvmTitle"], m["compare"] if m else pending, ""),
+                         ("media", w["partMedia"], m["media"] if m else "", "media"),
+                         ("watch", w["watchAll"], watch_part(lang, d.get("watch_ar" if lang == "ar" else "watch") or [], m["watch"] if m else None), ""),
+                         ("method", w["partMethod"], (m["sources"] if m else "") + sub(about_report(cfg, d, lang)), "")], lang)
+    return "\n".join(['<article class="report">'] + head) + body + "</article>"
 
 
 def monthly_email_html(cfg: dict, d: dict, lang: str) -> str:

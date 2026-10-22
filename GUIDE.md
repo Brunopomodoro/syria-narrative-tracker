@@ -546,9 +546,18 @@ The **Media and experts** tab (formerly the Media and experts; pages under `expe
 
 Every prompt that writes Arabic carries the same style rules (`scripts/arabic.py`): write as a Syrian newsroom editor would rather than translate, verb-first sentences where natural, correct agreement, a neutral register, Syrian month names, «» quotation marks, no transliterated English jargon. It also carries the glossary `arabic_terms` in `config.yaml`, the Arabic to use for terms that keep coming back. After each update the Arabic texts are tidied automatically, at no cost: straight and curly quotes become «», Gregorian month names next to a date become Syrian ones (أكتوبر → تشرين الأول), digits become Arabic-Indic like the rest of the site, and any whole word or phrase listed under `avoid` in the glossary is replaced. When you see a term translated badly, add a line to `arabic_terms` (with the bad form under `avoid` if it should be replaced automatically); the weekly quality review also lists doubtful Arabic phrases for you to approve as glossary lines. Names of people and places are fixed the same way in `names`.
 
-### Reports: people and the media together
+### Reports: people and the media in one report
 
-The weekly digest and the monthly report cover both halves of the site. Each has a **People and the media** section: the five stories ordinary people talked about most (by people's share of posts) next to what the Media and experts analysis of the same week or month focused on, what people raised that the media and experts barely covered, and that analysis in brief with a link to it. The digest's and the report's own text compares the two as well. For that, the week's (or month's) Media and experts analysis is written first, as soon as the period has ended, and the digest waits for it until 20:00 UTC on the Monday (the monthly report until the 2nd) before going ahead without it. The Reports tab links each week and month to both parts and its PDF, and a page is redrawn, PDF included, when its analysis arrives later. To rewrite one week or month, run the maintenance task `backfill-weekly` or `backfill-monthly` with `period`.
+Each weekly and monthly report is one page and one PDF covering both halves of the site, ordered from the quickest read to the most detailed, with a contents list at the top:
+
+1. **At a glance:** 3 to 5 key points (the monthly report adds the month in numbers and charts), one of them comparing people and the media.
+2. **What people said:** the tracker's analysis, the stories that mattered, themes and tone (the monthly report adds the weeks, and stories with coordination signals).
+3. **People and the media:** the five stories ordinary people talked about most (average share of people's posts, outlets not counted) next to what the media and experts focused on, how the two compare, and what people raised that the media and experts barely covered.
+4. **What the media and experts said:** the period's Media and experts analysis in full: the overall picture, then security, economy and governance, each with findings, where sources agree and differ, and recommendations. In the PDF it starts on a new page.
+5. **What to watch:** from what people say, and from the media and experts' view.
+6. **Sources and method:** every report and article drawn on, linked, and how the report is made.
+
+The period's Media and experts analysis is written first, as soon as the period has ended, and the report's own text compares with it; the weekly report waits for it until 20:00 UTC on the Monday (the monthly until the 2nd). If it comes later, the report and its PDF are redrawn. Periods from before Media and experts existed have no comparison. To rewrite one week or month, run `backfill-weekly` or `backfill-monthly` with `period`.
 
 ### Story order on the home page
 

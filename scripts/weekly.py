@@ -102,6 +102,7 @@ DIGEST_PROMPT = """You are a careful, neutral analyst writing the weekly brief o
 
 You receive the week's numbers and the stories the tracker followed. Write:
 - "title": a headline for the week (not clickbait; what defined the week).
+- "key_points": 3 to 5 one-sentence points a busy reader can take away on their own, the week at a glance; when the media and experts' analysis is given, one of them sets what people talked about against what the media and experts focused on.
 - "paragraphs": 3 to 5 short paragraphs: what dominated the discussion and how it moved; where people's reactions and outlet coverage differed; where communities or languages framed things differently; what was new or faded. Use the numbers when they matter (shares, tones, changes from the week before), sparingly.
 - "highlights": 3 to 6 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
 - "watch": 2 to 4 short points on what to watch next week, grounded in the stories, not speculation.
@@ -116,7 +117,7 @@ In the Arabic text, write the names of foreign organisations, outlets, think tan
 def digest_schema() -> dict:
     strs = {"type": "array", "items": {"type": "string"}}
     obj = lambda props: {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
-    return obj({"title": {"type": "string"}, "title_ar": {"type": "string"}, "paragraphs": strs, "paragraphs_ar": strs,
+    return obj({"title": {"type": "string"}, "title_ar": {"type": "string"}, "key_points": strs, "key_points_ar": strs, "paragraphs": strs, "paragraphs_ar": strs,
                 "highlights": {"type": "array", "items": obj({"key": {"type": "string"}, "title": {"type": "string"}, "title_ar": {"type": "string"},
                                                               "why": {"type": "string"}, "why_ar": {"type": "string"}})},
                 "watch": strs, "watch_ar": strs})
@@ -175,7 +176,8 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
             used.add(h["key"]); highlights.append(h)
     d["highlights"] = highlights[:6]
     digest = {"week": week, "from": s["from"], "to": s["to"], "generated_at": dt.datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-              "model": model, "title": d["title"], "title_ar": d["title_ar"], "paragraphs": d["paragraphs"], "paragraphs_ar": d["paragraphs_ar"],
+              "model": model, "title": d["title"], "title_ar": d["title_ar"], "key_points": d.get("key_points") or [], "key_points_ar": d.get("key_points_ar") or [],
+              "paragraphs": d["paragraphs"], "paragraphs_ar": d["paragraphs_ar"],
               "highlights": d["highlights"], "watch": d["watch"], "watch_ar": d["watch_ar"],
               "stats": {k: s[k] for k in ("days", "posts", "runs", "public_sentiment", "outlet_sentiment", "prev_public_sentiment", "themes", "events")},
               "usage": {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}}
