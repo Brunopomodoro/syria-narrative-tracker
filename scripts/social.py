@@ -200,9 +200,9 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
         ov = s["overall"]
         mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
         head = f"{LABEL['daily'][lang]} · {pages.fmt_date(ident, lang)}"
-        body = (f"{mood}. " if mood else "") + str(pages.t(ov, "brief", lang) or "")
+        body = (f"{mood}. " if mood else "") + no_scores(pages.t(ov, "brief", lang))
         themes, titles = [x["theme"] for x in s["themes"]], [pages.t(e, "title", lang) for e in s["stories"]]
-        link = url(cfg, f"daily/{lang}/{ident}.html")
+        link, lead = url(cfg, f"daily/{lang}/{ident}.html"), []
     elif kind in ("weekly", "monthly"):
         d = archive._load(pages.DATA / kind / f"{ident}.json", None)
         if not d:
@@ -211,8 +211,8 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
         head = f"{LABEL[kind][lang]} · {when}\n{pages.t(d, 'title', lang)}"
         findings = d.get("key_findings_ar" if lang == "ar" else "key_findings") or d.get("key_findings") or []
         points = d.get("key_points_ar" if lang == "ar" else "key_points") or d.get("key_points") or []   # the weekly report's key points
-        lead = findings if kind == "monthly" else points
-        body = str(lead[0]) if lead else str((d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [""])[0])
+        lead = [str(x) for x in (findings if kind == "monthly" else points) if not has_score(x)]   # scores mean nothing on X
+        body = lead[0] if lead else no_scores((d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [""])[0])
         themes = [x["theme"] for x in sorted((d.get("stats") or {}).get("themes") or [], key=lambda x: -x.get("share", 0))]
         titles = [pages.t(d, "title", lang)] + [pages.t(h, "title", lang) for h in d.get("highlights") or []]
         link = url(cfg, f"{kind}/{lang}/{ident}.html")
@@ -221,7 +221,8 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
     tags = hashtags.select(cfg, lang, themes, titles)[: int(settings(cfg, "x").get("max_tags") or 4)]
     tag_text = lambda n: " ".join("#" + t for t in tags[:n])  # noqa: E731
     facts = {"what": LABEL[kind][lang], "period": head.split("\n")[0].split(" · ", 1)[-1], "headline": head.split("\n", 1)[-1] if "\n" in head else "",
-             "main_point": body, "top_stories": titles[1:4] if kind != "daily" else titles[:3]}
+             "main_point": body, "other_points": lead[1:3] if kind != "daily" else [],
+             "top_stories": titles[1:4] if kind != "daily" else titles[:3]}
     words = rewrite(cfg, state, lang, facts, 280 - 23 - x_len(tag_text(2)) - 6, lines=4)
     if words:
         n = len(tags)
@@ -342,6 +343,9 @@ talking to people, not a press release or a bot.
   open and neutral, never leading or implying blame (not "will this go unpunished?").
 - Only what the material says. No new facts, names, numbers or causes. Every number you use must be in the material,
   written in digits, never in words (so it can be checked).
+- Never use tone scores or the site's measures (numbers like -0.15 or +0.20, "points", "tone", "sentiment",
+  "voices counted"): say the mood in plain words ("a little less gloomy", "angrier than the news"). A count of
+  comments, if you use one, is "94 comments" (in Arabic ٩٤ تعليقاً, with the right noun for the number).
 - It reports what people SAY, not what is true: attribute ("many say", "commenters are split", "the mood is").
 - Never name or quote an individual commenter. Talk about people in aggregate ("people", "commenters", "voices").
 - Neutral: no side taken, no insult, no slur, no word that carries a judgement the material does not; no sarcasm about
@@ -361,6 +365,28 @@ DIGITS_IN = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬", "0123456789.,")
 
 def numbers(text: str) -> set:
     return set(re.findall(r"\d+(?:[.,]\d+)*", str(text).translate(DIGITS_IN)))
+
+
+SCORE = re.compile(r"(?<![\d.,])[-+−]?0[.,]\d+|\d+\s*-?\s*(?:points?|نقطة|نقاط)\b", re.I)
+
+
+def has_score(text: str) -> bool:
+    """A tone score (-0.15, +0.20, "a 33-point gap"): the site's measure, which means nothing to readers on X."""
+    return bool(SCORE.search(str(text or "").translate(DIGITS_IN)))
+
+
+def no_scores(text: str) -> str:
+    """The text without its sentences that carry a tone score."""
+    return " ".join(x for x in re.split(r"(?<=[.!?؟])\s+", str(text or "")) if not has_score(x)).strip()
+
+
+def comments(n: int, lang: str) -> str:
+    """"94 comments" / "٩٤ تعليقاً", with the Arabic noun that goes with the number."""
+    if lang != "ar":
+        return f"{n:,} comment{'s' if n != 1 else ''}"
+    k = n % 100
+    noun = "تعليقات" if 3 <= k <= 10 else "تعليقاً" if 11 <= k <= 99 else "تعليق"
+    return f"{pages.num(n, 'ar')} {noun}"
 
 
 def allowed_numbers(text: str) -> set:
@@ -429,6 +455,8 @@ def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, li
             if cut and x_len(cut) >= room * 0.5 and cut.count("\n") < lines * 2 and not numbers(cut) - allowed:
                 return cut
             problem = f"it was {x_len(text)} characters; the limit is {target}. Write a shorter one"
+        elif has_score(text):
+            problem = "it used a tone score or points; say the mood in plain words, with no score"
         elif extra:
             problem = f"it used numbers that are not in the material ({', '.join(sorted(extra))}). Use only the material's numbers, or none"
         elif text:
@@ -449,8 +477,8 @@ def remember(state: dict, text: str) -> None:
 
 # ---------------------------------------------------------------- X: the budget and the story posts
 
-STORY_WORDS = {"en": {"people": "People", "outlets": "Media", "voices": "voices"},
-               "ar": {"people": "مزاج الناس", "outlets": "وسائل الإعلام", "voices": "عدد الأصوات"}}
+STORY_WORDS = {"en": {"people": "People's mood", "outlets": "The media's"},
+               "ar": {"people": "مزاج الناس", "outlets": "مزاج وسائل الإعلام"}}
 
 
 def budget_posts(s: dict) -> int:
@@ -586,19 +614,19 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, 
     of the media when the two differ), a sentence of what people say, and the hashtags."""
     w = STORY_WORDS[lang]
     title = str(pages.t(n, "title", lang) or "")
-    voices = pages.num(n.get("public_volume") or 0, lang)
+    count = int(n.get("public_volume") or 0)
     mood = pages.tone_label(n.get("public_sentiment"), lang)
-    people = f"{w['people']}: {mood} · {w['voices']}: {voices}" if lang == "ar" else f"{w['people']}: {mood} ({voices} {w['voices']})"
+    people = f"{w['people']}: {mood} ({comments(count, lang)})"
     head = [title, people] + ([f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}"] if gap >= 0.4 else [])
-    body = str(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang) or "")
+    body = no_scores(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang))
     tags = hashtags.select(cfg, lang, [n.get("theme", "")], [title])[: int(settings(cfg, "x")["max_tags"])]
     def build(text_body: str, n_tags: int) -> str:
         out = "\n".join(head) + ("\n\n" + text_body if text_body else "")
         return out + ("\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
     fits = lambda text: x_len(text) <= 280 and rows(text) <= max_rows  # noqa: E731
     n_tags = len(tags)
-    facts = {"story": title, "what_happened": pages.t(n, "summary", lang), "what_people_say": body,
-             "people_mood": mood, "voices_counted": n.get("public_volume") or 0,
+    facts = {"story": title, "what_happened": no_scores(pages.t(n, "summary", lang)), "what_people_say": body,
+             "people_mood": mood, "comments_from_people": comments(count, lang),
              "media_mood": pages.tone_label(outlet_tone(n), lang) if gap >= 0.4 else "about the same as people's",
              "feelings": (n.get("emotions_ar") if lang == "ar" else n.get("emotions")) or []}
     words = rewrite(cfg, state, lang, facts, 280 - x_len(" ".join("#" + t for t in tags[:2])) - 2, lines=max_rows - 2)
