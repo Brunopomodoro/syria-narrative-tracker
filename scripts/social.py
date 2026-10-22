@@ -342,7 +342,7 @@ talking to people, not a press release or a bot.
 - Never name or quote an individual commenter. Talk about people in aggregate ("people", "commenters", "voices").
 - Neutral: no side taken, no insult, no slur, no word that carries a judgement the material does not; no sarcasm about
   victims; no hype, no clickbait, no emojis, no hashtags, no links, no long dash.
-- At most {room} characters.
+- Short: at most {words} words ({room} characters) in all. Two or three short sentences is ideal.
 - Do not open the same way as these recent posts: {recent}
 Language: {language}.{rules}
 
@@ -353,48 +353,83 @@ DIGITS_IN = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬", "0123456789.,")
 
 
 def numbers(text: str) -> set:
-    return set(re.findall(r"\d+(?:[.,]\d+)?", str(text).translate(DIGITS_IN)))
+    return set(re.findall(r"\d+(?:[.,]\d+)*", str(text).translate(DIGITS_IN)))
+
+
+def allowed_numbers(text: str) -> set:
+    """The numbers of the material, plus their rounded forms: 18,368 also allows 18 (as in "18 thousand")."""
+    out = numbers(text)
+    out |= {n.split(",")[0] for n in out if "," in n} | {n.split(".")[0] for n in out if "." in n}
+    return out
+
+
+def fit_sentences(text: str, room: int) -> str:
+    """The whole sentences (and lines) of text that fit in room by X's count; "" when not even the first does."""
+    out = ""
+    for part in re.split(r"(?<=[.!?؟])[ ]+|(?=\n)", text):
+        joined = (out + (" " if out and not part.startswith("\n") else "") + part).strip()
+        if x_len(joined) > room:
+            break
+        out = joined
+    return out
 
 
 def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, lines: int = 4) -> str | None:
     """The words of a post written by Claude from `facts`, or None (switched off, no key, a failure, or a draft that
-    breaks a rule), in which case the caller uses its plain format."""
+    breaks a rule twice), in which case the caller uses its plain format. A draft that runs long is cut to its whole
+    sentences when enough is left; otherwise Claude gets one more try, told what was wrong."""
     s = settings(cfg, "x")
     if not s.get("rewrite") or not P.secret("ANTHROPIC_API_KEY") or room < 60:
         return None
     recent = [t.split("\n", 1)[0][:80] for t in ((state or {}).get("x") or {}).get("recent_texts") or []][-6:]
-    prompt = VOICE.format(lines=lines, room=room, recent=json.dumps(recent, ensure_ascii=False) if recent else "(none yet)",
+    target = int(room * 0.8)                          # some margin: models count characters loosely
+    prompt = VOICE.format(lines=lines, room=target, words=max(12, target // 6),
+                          recent=json.dumps(recent, ensure_ascii=False) if recent else "(none yet)",
                           language="Arabic, for Syrian readers" if lang == "ar" else "English",
                           rules=arabic.rules() if lang == "ar" else "", facts=json.dumps(facts, ensure_ascii=False, indent=1))
     schema = {"type": "object", "additionalProperties": False, "required": ["text"], "properties": {"text": {"type": "string"}}}
-    try:
-        import anthropic
-        client = anthropic.Anthropic(api_key=P.secret("ANTHROPIC_API_KEY"))
-        with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=3000,
-                                    output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
-                                    messages=[{"role": "user", "content": prompt}]) as stream:
-            resp = stream.get_final_message()
-        cost = P.estimate_cost(cfg.get("model", ""), {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens})
-        if state is not None:
-            spent = state.setdefault("x", {}).setdefault("rewrite_usd", {})
-            month = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m")
-            spent[month] = round(spent.get(month, 0) + cost, 4)
-            for k in sorted(spent)[:-3]:
-                spent.pop(k)
-        text = str(P.extract_json("".join(b.text for b in resp.content if b.type == "text")).get("text") or "")
-    except Exception as e:  # noqa: BLE001  (the plain format goes out instead)
-        print(f"X: the rewrite failed ({type(e).__name__}); the plain format is used.")
-        return None
-    text = re.sub(r"https?://\S+|#\S+", "", text)
-    text = text.replace(" — ", "، " if lang == "ar" else ", ").replace("—", "-")
-    text = re.sub(r"[ \t]+", " ", re.sub(r"\n{3,}", "\n\n", text)).strip()
-    if lang == "ar":
-        text = arabic.tidy(text)
-    extra = numbers(text) - numbers(json.dumps(facts, ensure_ascii=False))
-    if not text or extra or x_len(text) > room or text.count("\n") >= lines * 2:
-        print(f"X: the rewrite was dropped ({'numbers not in the material: ' + ', '.join(sorted(extra)) if extra else 'too long or empty'}).")
-        return None
-    return text
+    allowed = allowed_numbers(json.dumps(facts, ensure_ascii=False))
+    feedback = ""
+    for _ in range(2):
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=P.secret("ANTHROPIC_API_KEY"))
+            with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=3000,
+                                        output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
+                                        messages=[{"role": "user", "content": prompt + feedback}]) as stream:
+                resp = stream.get_final_message()
+            cost = P.estimate_cost(cfg.get("model", ""), {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens})
+            if state is not None:
+                spent = state.setdefault("x", {}).setdefault("rewrite_usd", {})
+                month = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m")
+                spent[month] = round(spent.get(month, 0) + cost, 4)
+                for k in sorted(spent)[:-3]:
+                    spent.pop(k)
+            text = str(P.extract_json("".join(b.text for b in resp.content if b.type == "text")).get("text") or "")
+        except Exception as e:  # noqa: BLE001  (the plain format goes out instead)
+            print(f"X: the rewrite failed ({type(e).__name__}); the plain format is used.")
+            return None
+        text = re.sub(r"https?://\S+", "", text)
+        text = re.sub(r"#(\w+)", lambda m: m.group(1).replace("_", " "), text)      # a hashtag in the words: keep the word
+        text = text.replace(" — ", "، " if lang == "ar" else ", ").replace("—", "-")
+        text = re.sub(r"[ \t]+", " ", re.sub(r"\n{3,}", "\n\n", text)).strip()
+        if lang == "ar":
+            text = arabic.tidy(text)
+        extra = numbers(text) - allowed
+        if x_len(text) > room or text.count("\n") >= lines * 2:
+            cut = fit_sentences(text, room)
+            if cut and x_len(cut) >= room * 0.5 and cut.count("\n") < lines * 2 and not numbers(cut) - allowed:
+                return cut
+            problem = f"it was {x_len(text)} characters; the limit is {target}. Write a shorter one"
+        elif extra:
+            problem = f"it used numbers that are not in the material ({', '.join(sorted(extra))}). Use only the material's numbers, or none"
+        elif text:
+            return text
+        else:
+            problem = "it was empty"
+        print(f"X: a rewrite was rejected ({problem}).")
+        feedback = f"\n\nYour last draft was rejected: {problem}.\nThe rejected draft: {text}"
+    return None
 
 
 def remember(state: dict, text: str) -> None:
