@@ -570,6 +570,8 @@ Stories open ordered by how much ordinary people talk about them (**Most discuss
 - **SEO:** titles and descriptions (present, unique, short enough for search results), canonical and English/Arabic hreflang links (present and pointing at each other), one heading per page, social image, page language, structured data, the sitemap (complete, no hidden pages), robots.txt, image alt text, the IndexNow key.
 - **Security:** a Content-Security-Policy on every page, scripts only from the site itself, no inline scripts on static pages, new-tab links with `rel="noopener"`, no `http://` resources, forms over https, no secrets or personal email addresses in the repository, workflows with pinned actions and declared permissions, pinned Python packages, the private validation folder untracked.
 
+`scripts/browser_check.py` opens the main pages and every tab of the app in a real browser, in English and Arabic, at desktop and phone width. It looks for script errors, failed requests, sideways scrolling on phones and "undefined" or "NaN" on screen; the weekly task runs it too.
+
 Report PDFs are remade when their page has changed since the PDF was made. A fingerprint of each page is kept in `data/pdf_state.json`, because file times on GitHub's runners are all the same after a fresh checkout. Long page titles drop the site's name, and descriptions are cut at about 160 characters at a word boundary, so search results show them whole. The Support page stays out of search engines until donations are switched on.
 
 ### What to watch
