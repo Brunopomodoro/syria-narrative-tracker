@@ -75,12 +75,19 @@ arabic_terms:
   - {en: "cost of living", ar: "غلاء المعيشة"}
 
 # Names the analysis must spell a fixed way; they are added to its instructions. "wrong" lists Arabic misspellings
-# seen before, each replaced by "fix" in every text the analysis writes. Add a name whenever one comes out wrong.
+# seen before, each replaced by "fix" in every Arabic text the site writes (stories, digests, reports, Media and
+# experts), in the order listed. Add a name whenever one comes out wrong.
 names:
   - en: "Mihrac Ural (Ali Kayali)"
-    ar: "معراج أورال (علي كيالي)"
-    fix: "معراج أورال"
-    wrong: ["ميهراج أورال", "ميهراج اورال", "ميخرتش أورال", "ميخرتش اورال", "مهراج أورال", "مهراج اورال", "ميهراش أورال", "ميهراش اورال", "ميهراك أورال", "ميهراك اورال"]
+    ar: "معراج اورال (علي كيالي)"
+    fix: "معراج اورال"
+    wrong: ["محرز الأورال", "محرز الاورال", "محرز أورال", "محرز اورال", "مِحراج أورال", "مِحراج اورال", "محراج أورال", "محراج اورال",
+            "مِهراج أورال", "مِهراج اورال", "مهرج أورال", "مهرج اورال", "ميهراج أورال", "ميهراج اورال", "ميخرتش أورال", "ميخرتش اورال",
+            "مهراج أورال", "مهراج اورال", "ميهراش أورال", "ميهراش اورال", "ميهراك أورال", "ميهراك اورال", "معراج الأورال", "معراج أورال"]
+  - en: "Ural"
+    ar: "اورال"
+    fix: "اورال"
+    wrong: ["أورال"]
   - en: "ReliefWeb"
     ar: "ReliefWeb"
     fix: "ReliefWeb"

@@ -1,6 +1,6 @@
 """Arabic text quality: the writing rules added to every prompt that writes Arabic, the glossary of fixed terms from
-config.yaml ("arabic_terms"), and the fixes applied to every generated Arabic text afterwards (quotation marks,
-Syrian month names, digits, and the glossary's known wrong forms). No call to Claude.
+config.yaml ("arabic_terms"), and the fixes applied to every generated Arabic text afterwards (names spelt as in
+config.yaml "names", quotation marks, Syrian month names, digits, and the glossary's known wrong forms). No call to Claude.
 
   rules()   the style rules and the glossary, to append to a prompt
   tidy(v)   fix a generated text (or list or dict of texts); English text is left as it is
@@ -14,6 +14,7 @@ LATIN = re.compile("[A-Za-z]")
 L = "ء-يٮ-ۓۺ-ۿ"      # Arabic letters, without Arabic punctuation and digits
 D = "0-9٠-٩"                              # Western and Arabic-Indic digits
 _TERMS: list | None = None
+_NAMES: list | None = None
 
 STYLE = """Arabic style, for every Arabic text you write:
 - Write it as an editor at a Syrian newsroom would write it for Syrian readers, not as a translation of the English: rebuild each sentence in natural Arabic order, start with the verb where Arabic would, and link ideas with و، ف، إذ، بينما، في حين instead of chains of short English-shaped sentences.
@@ -39,9 +40,29 @@ def terms() -> list:
     return _TERMS
 
 
+def name_fixes() -> list:
+    """(wrong, right) spellings of names from config.yaml "names", in the order listed, read once."""
+    global _NAMES
+    if _NAMES is None:
+        try:
+            import yaml
+            cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8")) or {}
+            _NAMES = [(w, n["fix"]) for n in cfg.get("names") or [] if n.get("fix") for w in n.get("wrong") or [] if w]
+        except Exception:  # noqa: BLE001
+            _NAMES = []
+    return _NAMES
+
+
 def rules() -> str:
     glossary = "\n".join(f"- {t['en']}: {t['ar']}" for t in terms())
-    return "\n\n" + STYLE + ("\n\nArabic glossary (English term: the Arabic to use):\n" + glossary if glossary else "")
+    try:
+        import yaml
+        names = [n for n in (yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8")) or {}).get("names") or [] if n.get("en") and n.get("ar")]
+    except Exception:  # noqa: BLE001
+        names = []
+    spelling = "\n".join(f"- {n['en']}: {n['ar']}" for n in names)
+    return ("\n\n" + STYLE + ("\n\nArabic glossary (English term: the Arabic to use):\n" + glossary if glossary else "")
+            + ("\n\nSpell these names exactly as given (English: Arabic):\n" + spelling if spelling else ""))
 
 
 MONTHS = {"يناير": "كانون الثاني", "فبراير": "شباط", "مارس": "آذار", "أبريل": "نيسان", "إبريل": "نيسان", "ابريل": "نيسان",
@@ -75,6 +96,8 @@ def tidy(v):
         return {k: tidy(x) for k, x in v.items()}
     if not isinstance(v, str) or not is_arabic(v):
         return v
+    for wrong, right in name_fixes():                # names spelt a fixed way (also in the weekly and monthly texts)
+        v = v.replace(wrong, right)
     for t in terms():
         if "/" in t["ar"]:
             continue                                # a choice of forms: the prompt handles it, no automatic fix
