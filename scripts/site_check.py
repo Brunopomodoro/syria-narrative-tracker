@@ -145,18 +145,22 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         stale.append(f"data/latest.json unreadable: {e}")
     R.add("Health", "An update in the last 8 hours", stale)
-    import hashlib
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from report_pdf import RECENT_DAYS, fingerprint as pdf_fingerprint
     try:
         made = json.loads((ROOT / "data" / "pdf_state.json").read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001
         made = {}
     old_pdf = []
-    for p in list(ROOT.glob("weekly/*/20??-W??.html")) + list(ROOT.glob("monthly/*/20??-??.html")):
+    today = dt.datetime.now(dt.timezone.utc).date()
+    recent_days = [p for p in ROOT.glob("daily/*/20??-??-??.html")
+                   if (today - dt.timedelta(days=RECENT_DAYS)).isoformat() <= p.stem < today.isoformat()]
+    for p in list(ROOT.glob("weekly/*/20??-W??.html")) + list(ROOT.glob("monthly/*/20??-??.html")) + recent_days:
         if not p.with_suffix(".pdf").exists():
             old_pdf.append(f"{rel(p)}: no PDF")
-        elif made.get(rel(p)) != hashlib.sha256(p.read_bytes()).hexdigest()[:16]:
+        elif made.get(rel(p)) != pdf_fingerprint(p):
             old_pdf.append(f"{rel(p)}: page changed since its PDF was made (remade at the next update)")
-    R.add("Health", "Report PDFs present and remade after their page changed", old_pdf)
+    R.add("Health", "Report and daily brief PDFs present and remade after their report changed", old_pdf)
 
     # ---------------------------------------------------------------- SEO
     titles, no_title, long_title, no_desc, bad_desc, canon, hreflang, h1s, og, lang, ld = (defaultdict(list), [], [], [], [], [], [], [], [], [], [])
