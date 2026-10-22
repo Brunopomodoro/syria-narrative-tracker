@@ -19,6 +19,10 @@ posts: one story at a time, at the hours Syrians are most online (Damascus time)
 the month. A story post has no link (X shows posts with links to fewer people) and is short enough to show in full in the
 timeline: the story's title, how people and the media feel about it, a sentence of what people say, and hashtags.
 
+The words of each X post are written by Claude from the report's or story's own text, as a person would post it
+(`rewrite: true` under `x:`; about a cent a post). The link and hashtags are added afterwards, and a draft that
+brings in a number not in the material, is too long, or fails in any way is dropped for the plain format.
+
 Usage:  python scripts/social.py              post what is due
         python scripts/social.py --dry-run    check the token and print what would be posted, post nothing
         python scripts/social.py --preview    print the latest daily, weekly and monthly posts, due or not
@@ -40,6 +44,7 @@ import urllib.parse
 import requests
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import arabic  # noqa: E402
 import archive  # noqa: E402
 import hashtags  # noqa: E402
 import pages  # noqa: E402
@@ -64,7 +69,8 @@ def settings(cfg: dict, network: str = "facebook") -> dict:
     if network == "x":
         s.update({"per_run": 2, "max_tags": 3, "daily_languages": ["ar"], "monthly_budget_usd": 10, "cost_per_post_usd": 0.10,
                   "stories": True, "story_language": "ar", "story_hours": [20, 13, 17, 22, 9], "utc_offset": 3,
-                  "max_stories_per_day": 5, "story_gap_hours": 1.5, "story_repeat_hours": 48, "story_min_voices": 5})
+                  "max_stories_per_day": 5, "story_gap_hours": 1.5, "story_repeat_hours": 48, "story_min_voices": 5,
+                  "rewrite": True})
     s.update(cfg.get(network) or {})
     return s
 
@@ -183,7 +189,7 @@ def x_len(text: str) -> int:
     return n
 
 
-def compose_x(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
+def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = None) -> dict | None:
     """One post on X for a report in one language: the label and date, the headline (and, for the daily brief, the
     mood and as much of the brief as fits), the link and the hashtags that fit; at most 280 by X's count."""
     w = WORDS[lang]
@@ -213,6 +219,15 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
     else:
         return None
     tags = hashtags.select(cfg, lang, themes, titles)[: int(settings(cfg, "x").get("max_tags") or 4)]
+    tag_text = lambda n: " ".join("#" + t for t in tags[:n])  # noqa: E731
+    facts = {"what": LABEL[kind][lang], "period": head.split("\n")[0].split(" · ", 1)[-1], "headline": head.split("\n", 1)[-1] if "\n" in head else "",
+             "main_point": body, "top_stories": titles[1:4] if kind != "daily" else titles[:3]}
+    words = rewrite(cfg, state, lang, facts, 280 - 23 - x_len(tag_text(2)) - 6, lines=4)
+    if words:
+        n = len(tags)
+        while n > 1 and x_len(f"{words}\n\n{link}\n\n{tag_text(n)}") > 280:
+            n -= 1
+        return {"key": f"{kind}:{ident}:{lang}", "text": f"{words}\n\n{link}\n\n{tag_text(n)}", "words": words}
     def build(text_body: str, n_tags: int) -> str:
         parts = [head] + ([text_body] if text_body else []) + [link]
         out = "\n\n".join(parts)
@@ -309,6 +324,84 @@ def archive_parse(iso: str | None) -> dt.datetime | None:
         return dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
     except (TypeError, ValueError):
         return None
+
+
+# ---------------------------------------------------------------- X: posts in a human voice
+
+VOICE = """You write the posts of Syrian Pulse (syrianpulse.org) on X. The site reads public posts and comments about Syria
+every few hours and reports what Syrians are saying online: the stories, the mood of ordinary people, and how it differs
+from the media's. Write ONE post from the material below, the way a sharp, warm Syrian observer would post it: a person
+talking to people, not a press release or a bot.
+
+- Open with a hook: the most striking or human thing in the material, a contrast, or a short question. Never open with a
+  label such as "Daily brief:" or "Story:".
+- Plain, natural, specific words; short sentences; at most {lines} short lines in all. It may end with a question that
+  invites replies, when that fits.
+- Only what the material says. No new facts, names, numbers or causes. Every number you use must be in the material.
+- It reports what people SAY, not what is true: attribute ("many say", "commenters are split", "the mood is").
+- Never name or quote an individual commenter. Talk about people in aggregate ("people", "commenters", "voices").
+- Neutral: no side taken, no insult, no slur, no word that carries a judgement the material does not; no sarcasm about
+  victims; no hype, no clickbait, no emojis, no hashtags, no links, no long dash.
+- At most {room} characters.
+- Do not open the same way as these recent posts: {recent}
+Language: {language}.{rules}
+
+The material (JSON):
+{facts}"""
+
+DIGITS_IN = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬", "0123456789.,")
+
+
+def numbers(text: str) -> set:
+    return set(re.findall(r"\d+(?:[.,]\d+)?", str(text).translate(DIGITS_IN)))
+
+
+def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, lines: int = 4) -> str | None:
+    """The words of a post written by Claude from `facts`, or None (switched off, no key, a failure, or a draft that
+    breaks a rule), in which case the caller uses its plain format."""
+    s = settings(cfg, "x")
+    if not s.get("rewrite") or not P.secret("ANTHROPIC_API_KEY") or room < 60:
+        return None
+    recent = [t.split("\n", 1)[0][:80] for t in ((state or {}).get("x") or {}).get("recent_texts") or []][-6:]
+    prompt = VOICE.format(lines=lines, room=room, recent=json.dumps(recent, ensure_ascii=False) if recent else "(none yet)",
+                          language="Arabic, for Syrian readers" if lang == "ar" else "English",
+                          rules=arabic.rules() if lang == "ar" else "", facts=json.dumps(facts, ensure_ascii=False, indent=1))
+    schema = {"type": "object", "additionalProperties": False, "required": ["text"], "properties": {"text": {"type": "string"}}}
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=P.secret("ANTHROPIC_API_KEY"))
+        with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=3000,
+                                    output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
+                                    messages=[{"role": "user", "content": prompt}]) as stream:
+            resp = stream.get_final_message()
+        cost = P.estimate_cost(cfg.get("model", ""), {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens})
+        if state is not None:
+            spent = state.setdefault("x", {}).setdefault("rewrite_usd", {})
+            month = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m")
+            spent[month] = round(spent.get(month, 0) + cost, 4)
+            for k in sorted(spent)[:-3]:
+                spent.pop(k)
+        text = str(P.extract_json("".join(b.text for b in resp.content if b.type == "text")).get("text") or "")
+    except Exception as e:  # noqa: BLE001  (the plain format goes out instead)
+        print(f"X: the rewrite failed ({type(e).__name__}); the plain format is used.")
+        return None
+    text = re.sub(r"https?://\S+|#\S+", "", text)
+    text = text.replace(" — ", "، " if lang == "ar" else ", ").replace("—", "-")
+    text = re.sub(r"[ \t]+", " ", re.sub(r"\n{3,}", "\n\n", text)).strip()
+    if lang == "ar":
+        text = arabic.tidy(text)
+    extra = numbers(text) - numbers(json.dumps(facts, ensure_ascii=False))
+    if not text or extra or x_len(text) > room or text.count("\n") >= lines * 2:
+        print(f"X: the rewrite was dropped ({'numbers not in the material: ' + ', '.join(sorted(extra)) if extra else 'too long or empty'}).")
+        return None
+    return text
+
+
+def remember(state: dict, text: str) -> None:
+    """Keep the last few posts, so the next rewrite opens differently."""
+    recent = state.setdefault("x", {}).setdefault("recent_texts", [])
+    recent.append(text)
+    del recent[:-8]
 
 
 # ---------------------------------------------------------------- X: the budget and the story posts
@@ -445,7 +538,7 @@ def rows(text: str, width: int = 50) -> int:
     return sum(max(1, -(-len(line) // width)) for line in text.split("\n"))
 
 
-def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8) -> dict:
+def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, state: dict | None = None) -> dict:
     """A story post without a link, short enough to show in full in the timeline: the title, the mood of people (and
     of the media when the two differ), a sentence of what people say, and the hashtags."""
     w = STORY_WORDS[lang]
@@ -461,6 +554,18 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8) 
         return out + ("\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
     fits = lambda text: x_len(text) <= 280 and rows(text) <= max_rows  # noqa: E731
     n_tags = len(tags)
+    facts = {"story": title, "what_happened": pages.t(n, "summary", lang), "what_people_say": body,
+             "people_mood": mood, "voices_counted": n.get("public_volume") or 0,
+             "media_mood": pages.tone_label(outlet_tone(n), lang) if gap >= 0.4 else "about the same as people's",
+             "feelings": (n.get("emotions_ar") if lang == "ar" else n.get("emotions")) or []}
+    words = rewrite(cfg, state, lang, facts, 280 - x_len(" ".join("#" + t for t in tags[:2])) - 2, lines=max_rows - 2)
+    if words:
+        k = n_tags
+        while k > 1 and not fits(words + "\n\n" + " ".join("#" + t for t in tags[:k])):
+            k -= 1
+        text = words + "\n\n" + " ".join("#" + t for t in tags[:k])
+        if fits(text):
+            return {"key": n.get("key"), "text": text, "words": words}
     cuts = [clip_clause(body, limit) for limit in range(150, 39, -10)]
     whole = [c for c in cuts if not c.endswith("…") and fits(build(c, n_tags))]     # a whole sentence or clause
     cut = [c for c in cuts if fits(build(c, n_tags))]
@@ -480,7 +585,7 @@ def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
     cands = story_candidates(cfg, state, now)
     if not cands:
         return
-    post = compose_story(cfg, *cands[0], s["story_language"])
+    post = compose_story(cfg, *cands[0], s["story_language"], state=state)
     try:
         res = x_call("POST", "tweets", keys, {"text": post["text"]})
     except Exception as e:  # noqa: BLE001
@@ -490,6 +595,7 @@ def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
     pid = (res.get("data") or {}).get("id")
     posts = xs.setdefault("story_posts", [])
     posts.append({"key": post["key"], "slot": slot, "id": pid, "at": now.isoformat(timespec="seconds")})
+    remember(state, post.get("words") or post["text"])
     cutoff = (now - dt.timedelta(days=40)).isoformat()
     xs["story_posts"] = [p for p in posts if str(p.get("at", "")) >= cutoff]
     xs.pop("last_error", None)
@@ -592,14 +698,15 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         if not items:
             print("Nothing is due.")
         for kind, ident, lang in items:
-            post = compose_x(cfg, kind, ident, lang)
+            post = compose_x(cfg, kind, ident, lang, state)
             print(f"\n===== {kind} {ident} {lang} ({x_len(post['text']) if post else 0}/280)\n{post['text'] if post else '(no report)'}")
-        a = story_allowance(cfg, state, now)
+        a, xs_state = story_allowance(cfg, state, now), state.get("x") or {}
         print(f"\n######## X budget\n{a['budget']} posts a month (${s['monthly_budget_usd']} at ${s['cost_per_post_usd']} a post); "
               f"{a['sent']} made this month, {a['reserve']} kept for the reports still to come, {a['left']} left for stories; "
-              f"today {a['done_today']} of {a['today']} story posts made. Story slot open now: {story_slot(cfg, state, now) or 'none'}.")
+              f"today {a['done_today']} of {a['today']} story posts made. Story slot open now: {story_slot(cfg, state, now) or 'none'}. "
+              f"Rewrites: {'on' if s.get('rewrite') else 'off'}, ${(xs_state.get('rewrite_usd') or {}).get(now.strftime('%Y-%m'), 0)} this month.")
         for n, gap in story_candidates(cfg, state, now)[:3]:
-            post = compose_story(cfg, n, gap, s["story_language"])
+            post = compose_story(cfg, n, gap, s["story_language"], state=state)
             print(f"\n===== story {post['key']} ({x_len(post['text'])}/280)\n{post['text']}")
         return
     if not s["enabled"] or not keys:
@@ -607,7 +714,7 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
     xs = state.setdefault("x", {})
     posted = xs.setdefault("posted", {})
     for kind, ident, lang in items[: int(s["per_run"])]:
-        post = compose_x(cfg, kind, ident, lang)
+        post = compose_x(cfg, kind, ident, lang, state)
         if not post:
             continue
         if sent_this_month(xs, now) >= budget_posts(s):
@@ -621,6 +728,7 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
             return
         pid = (res.get("data") or {}).get("id")
         posted[post["key"]] = {"id": pid, "at": now.isoformat(timespec="seconds")}
+        remember(state, post.get("words") or post["text"])
         xs.pop("last_error", None)
         print(f"X: posted {post['key']} ({pid}).")
     trim(posted)
