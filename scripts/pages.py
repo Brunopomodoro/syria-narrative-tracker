@@ -68,6 +68,9 @@ W = {   # the words on the static pages
            "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
            "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media and experts", "sourcesTitle": "Sources", "expertsLatest": "In Media and experts",
+           "privacyDesc": "How the Syria Narrative Tracker handles public posts: posts by individuals are read only in aggregate and are never stored, quoted or linked.",
+           "supportDesc": "How to support the Syria Narrative Tracker, an independent, open project following what Syrians say online, in Arabic and English.",
+           "contactDesc": "Write to the Syria Narrative Tracker: questions, corrections, data requests and ideas for working together, through a short form.",
            "contents": "Contents", "glanceWeek": "The week at a glance", "glanceMonth": "The month at a glance", "partPeople": "What people said",
            "partMedia": "What the media and experts said", "compareHow": "How they compare", "overallPicture": "The overall picture",
            "watchAll": "What to watch", "watchPeople": "In what people say", "watchMedia": "In the media and experts' view",
@@ -110,6 +113,9 @@ W = {   # the words on the static pages
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
            "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "الإعلام والخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في «الإعلام والخبراء»",
+           "privacyDesc": "كيف يتعامل متتبّع السرديات السورية مع المنشورات العامة: تُقرأ منشورات الأفراد إجمالاً فقط، ولا تُخزَّن ولا تُقتبس ولا يُربط إليها.",
+           "supportDesc": "كيف تدعم متتبّع السرديات السورية، وهو مشروع مستقل ومفتوح يتابع ما يقوله السوريون على الإنترنت بالعربية والإنجليزية.",
+           "contactDesc": "راسِل متتبّع السرديات السورية: أسئلة وتصحيحات وطلبات بيانات وأفكار للتعاون، عبر نموذج قصير.",
            "contents": "المحتويات", "glanceWeek": "الأسبوع باختصار", "glanceMonth": "الشهر باختصار", "partPeople": "ما قاله الناس",
            "partMedia": "ما قاله الإعلام والخبراء", "compareHow": "كيف تتقاطع الصورتان", "overallPicture": "الصورة العامة",
            "watchAll": "ما يستحق المتابعة", "watchPeople": "في ما يقوله الناس", "watchMedia": "في قراءة الإعلام والخبراء",
@@ -271,10 +277,27 @@ def t(n: dict, field: str, lang: str):
 
 # ----------------------------------------------------------------- the page frame
 
+def snippet(text: str, limit: int = 160) -> str:
+    """A meta description search results show whole: at most `limit` characters, cut at a word with an ellipsis."""
+    text = re.sub(r"\s+", " ", str(text or "")).strip()
+    if len(text) <= limit:
+        return text
+    cut = text[:limit - 1].rsplit(" ", 1)[0].rstrip(" ,.;:،؛")
+    return cut + "…"
+
+
+def page_title(title: str, site: str, limit: int = 70) -> str:
+    """The page's <title>: the page's own title and the site's name, or the page's title alone when both would be
+    longer than search results show."""
+    full = f"{title} · {site}"
+    return full if len(full) <= limit or title == site else title
+
+
 def page(cfg: dict, lang: str, title: str, description: str, body: str, path: str, alt_path: str, root: str = "../../",
          updated: str | None = None, kind: str = "article", image: str | None = None, jsonld: dict | None = None,
          noindex: bool = False, csp: str | None = None) -> str:
     w, base = W[lang], site_url(cfg)
+    description = snippet(description)
     image = image or ("assets/og-ar.png" if lang == "ar" else "assets/og.png")
     other = "en" if lang == "ar" else "ar"
     canonical = f"{base}/{path}" if base else path
@@ -289,7 +312,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {csp or CSP}
 <meta name="referrer" content="no-referrer">
-<title>{esc(title)} · {esc(site_title(cfg, lang))}</title>
+<title>{esc(page_title(title, site_title(cfg, lang)))}</title>
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{esc(canonical)}">{'<meta name="robots" content="noindex, follow">' if noindex else ''}
 <link rel="alternate" hreflang="{lang}" href="{esc(canonical)}"><link rel="alternate" hreflang="{other}" href="{esc(alt)}">
@@ -1150,6 +1173,10 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
                 urls.append((f"{base}/daily/{lang}/{date}.html", date, "yearly", "0.4"))
     for lang in LANGS:
         urls.append((f"{base}/sources/{lang}.html", today, "monthly", "0.5"))
+        urls.append((f"{base}/contact/{lang}.html", today, "yearly", "0.3"))
+        urls.append((f"{base}/privacy/{lang}.html", today, "yearly", "0.2"))
+        if support_on(cfg):
+            urls.append((f"{base}/support/{lang}.html", today, "yearly", "0.3"))
         urls.append((f"{base}/timeline/{lang}.html", today, "weekly", "0.8"))
     import experts                                   # imported here: experts imports this module
     urls += experts.sitemap_urls(base)
@@ -1409,7 +1436,7 @@ def write_contact_pages(cfg: dict) -> None:
     for lang in LANGS:
         other = "ar" if lang == "en" else "en"
         w = W[lang]
-        write(ROOT / "contact" / f"{lang}.html", page(cfg, lang, w["contact"], w["contact"], contact_body(cfg, lang),
+        write(ROOT / "contact" / f"{lang}.html", page(cfg, lang, w["contact"], w["contactDesc"], contact_body(cfg, lang),
                                                    f"contact/{lang}.html", f"contact/{other}.html", root="../", kind="website", csp=csp))
         sent = ('<h1>شكراً لك</h1><p>وصلت رسالتك. سنقرؤها ونرد عليك قريباً.</p><p><a href="../ar/">العودة إلى المتتبّع</a></p>' if lang == "ar" else
                 '<h1>Thank you</h1><p>Your message has been sent. We will read it and reply soon.</p><p><a href="../">Back to the tracker</a></p>')
@@ -1420,14 +1447,15 @@ def write_contact_pages(cfg: dict) -> None:
 def write_support_pages(cfg: dict) -> None:
     for lang in LANGS:
         other = "ar" if lang == "en" else "en"
-        write(ROOT / "support" / f"{lang}.html", page(cfg, lang, W[lang]["support"], W[lang]["support"], support_body(cfg, lang),
-                                                   f"support/{lang}.html", f"support/{other}.html", root="../", kind="website"))
+        write(ROOT / "support" / f"{lang}.html", page(cfg, lang, W[lang]["support"], W[lang]["supportDesc"], support_body(cfg, lang),
+                                                   f"support/{lang}.html", f"support/{other}.html", root="../", kind="website",
+                                                   noindex=not support_on(cfg)))   # kept out of search until donations are switched on
 
 
 def write_privacy_pages(cfg: dict) -> None:
     for lang in LANGS:
         other = "ar" if lang == "en" else "en"
-        write(ROOT / "privacy" / f"{lang}.html", page(cfg, lang, W[lang]["privacy"], W[lang]["privacy"], privacy_body(cfg, lang),
+        write(ROOT / "privacy" / f"{lang}.html", page(cfg, lang, W[lang]["privacy"], W[lang]["privacyDesc"], privacy_body(cfg, lang),
                                                    f"privacy/{lang}.html", f"privacy/{other}.html", root="../", kind="website"))
 
 

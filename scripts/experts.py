@@ -349,7 +349,7 @@ def cited_items(a: dict, d: dict) -> list:
 AREA_PROMPT = """You are a careful, neutral analyst writing for the Syria Narrative Tracker. You receive the reports and articles that Syrian and international media, think tanks and international organisations, writing in several languages, published about one area of Syrian affairs ({area}) over one period, each with its organisation, type and a one-line summary, and the stories in that area that ordinary Syrians talked about online over the same period (from the tracker, counting only people's own posts and comments, not outlets: the share of what people said and the tone of their reactions, -1 to +1).
 
 Write a one-page analysis of the {area} picture as the media and experts see it:
-- "title": a short, specific headline (not "Security analysis").
+- "title": a short, specific headline of at most 60 characters (not "Security analysis").
 - "lede": 2-3 sentences: the main finding of the period.
 - "findings": 6 to 9 paragraphs of 4-5 sentences on the main developments, arguments and findings, grouped by subject, attributed to who says them; for each subject give the context a reader needs, the evidence or figures the sources cite, and how different sources interpret it.
 - "agree" and "disagree": 3-4 sentences each on where the sources broadly agree and where they differ, naming who holds which view; empty string when the items do not show it.
@@ -362,7 +362,7 @@ Rules: attribute every claim ("Crisis Group argues ...", "UN agencies report ...
 OVERALL_PROMPT = """You are a careful, neutral analyst writing for the Syria Narrative Tracker. You receive three analyses of how the media and experts saw Syria over one period (security, economy, governance), each written from Syrian and international media, think tanks and international organisations writing in several languages, and the main stories ordinary Syrians talked about online over the same period (from the tracker, counting only people's own posts and comments, not outlets).
 
 Write the overall analysis, one page:
-- "title": a short, specific headline for the period.
+- "title": a short, specific headline for the period, at most 60 characters.
 - "lede": 2-3 sentences: the period as the media and experts saw it, as a whole.
 - "findings": 6 to 8 paragraphs of 4-5 sentences that connect the three areas: the threads that run across them, the overall direction the sources describe, where Syrian, regional and international views are divided, and what that means for the coming period.
 - "syrians": two paragraphs of 4-5 sentences on how the media and expert view as a whole compares with what ordinary Syrians were saying, and what the comparison reveals.
@@ -374,7 +374,7 @@ Rules: attribute claims; {leaning} add nothing that is not in the material; neve
 DAY_PROMPT = """You are a careful, neutral analyst writing for the Syria Narrative Tracker. You receive the reports and articles that Syrian and international media, think tanks and international organisations, writing in several languages, published about Syria on one day, each with its organisation, type, area and a one-line summary, and the stories ordinary Syrians talked about online that day (from the tracker, counting only people's own posts and comments, not outlets: the share of what people said and the tone of their reactions, -1 to +1).
 
 Write a short daily brief of what the media and experts said:
-- "title": a short, specific headline for the day.
+- "title": a short, specific headline for the day, at most 60 characters.
 - "lede": 3 sentences: what stood out.
 - "security", "economy", "governance": for each area with items, 5-6 sentences on what the sources said, with the context and figures they give and who says what; an empty string for an area with none.
 - "syrians": 4-6 sentences comparing this with what ordinary Syrians said that day, including what they discussed that the media and experts did not cover.
