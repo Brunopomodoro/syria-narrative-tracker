@@ -340,7 +340,8 @@ talking to people, not a press release or a bot.
   هيك، مو، كتير). English: plain international English; no slang (no folks, guys, gonna).
 - End with a question only sometimes (about one post in three, and not when the recent posts did). A question must be
   open and neutral, never leading or implying blame (not "will this go unpunished?").
-- Only what the material says. No new facts, names, numbers or causes. Every number you use must be in the material.
+- Only what the material says. No new facts, names, numbers or causes. Every number you use must be in the material,
+  written in digits, never in words (so it can be checked).
 - It reports what people SAY, not what is true: attribute ("many say", "commenters are split", "the mood is").
 - Never name or quote an individual commenter. Talk about people in aggregate ("people", "commenters", "voices").
 - Neutral: no side taken, no insult, no slur, no word that carries a judgement the material does not; no sarcasm about
@@ -352,6 +353,9 @@ Language: {language}.{rules}
 The material (JSON):
 {facts}"""
 
+NUMBER_WORDS = re.compile(r"(?<![\w])(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|"
+                          r"twenty|thirty|forty|fifty|hundred|thousand|dozens?|اثنان|اثنين|ثلاثة|ثلاث|أربعة|أربع|خمسة|خمس|ستة|ست|"
+                          r"سبعة|سبع|ثمانية|ثماني|تسعة|تسع|عشرة|عشر|عشرين|ثلاثين|مئة|مائة|ألف)(?![\w])", re.I)
 DIGITS_IN = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬", "0123456789.,")
 
 
@@ -418,7 +422,8 @@ def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, li
         text = re.sub(r"[ \t]+", " ", re.sub(r"\n{3,}", "\n\n", text)).strip()
         if lang == "ar":
             text = arabic.tidy(text)
-        extra = numbers(text) - allowed
+        words = NUMBER_WORDS.findall(text)
+        extra = (numbers(text) - allowed) | set(words)
         if x_len(text) > room or text.count("\n") >= lines * 2:
             cut = fit_sentences(text, room)
             if cut and x_len(cut) >= room * 0.5 and cut.count("\n") < lines * 2 and not numbers(cut) - allowed:
