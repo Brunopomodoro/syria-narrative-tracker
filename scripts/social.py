@@ -562,7 +562,11 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         if keys:
             try:
                 me = x_call("GET", "users/me", keys)
-                print(f"Keys work: they can post as @{(me.get('data') or {}).get('username')}.")
+                user = (me.get("data") or {}).get("username") or ""
+                print(f"Keys work: they can post as @{user}.")
+                profile = pages.x_profile(cfg).rsplit("/", 1)[-1]
+                if profile and user.lower() != profile.lower():
+                    print(f"Warning: the site links to @{profile} (x_profile_url in config.yaml), but the keys post as @{user}.")
             except Exception as e:  # noqa: BLE001
                 print(f"Key check failed. {x_explain(e)}")
         else:
