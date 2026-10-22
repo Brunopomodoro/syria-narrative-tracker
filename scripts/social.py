@@ -16,8 +16,8 @@ daily), so a day with several reports spreads them out. Settings under `facebook
 On X every post is paid for, so posting keeps to a monthly budget (`monthly_budget_usd` / `cost_per_post_usd` posts
 a month). The reports come first; what the budget leaves after the reports still to come this month goes to story
 posts: one story at a time, at the hours Syrians are most online (Damascus time), spread evenly over the rest of
-the month. A story post has no link (X shows posts with links to fewer people): the story's title, how people and
-the media feel about it, what people are saying, and a few hashtags.
+the month. A story post has no link (X shows posts with links to fewer people) and is short enough to show in full in the
+timeline: the story's title, how people and the media feel about it, a sentence of what people say, and hashtags.
 
 Usage:  python scripts/social.py              post what is due
         python scripts/social.py --dry-run    check the token and print what would be posted, post nothing
@@ -313,10 +313,8 @@ def archive_parse(iso: str | None) -> dt.datetime | None:
 
 # ---------------------------------------------------------------- X: the budget and the story posts
 
-STORY_WORDS = {"en": {"people": "People", "outlets": "Media", "voices": "voices", "split": "People and the media do not see this one the same way.",
-                      "more": "Full analysis: link in bio"},
-               "ar": {"people": "مزاج الناس", "outlets": "وسائل الإعلام", "voices": "عدد الأصوات", "split": "الناس ووسائل الإعلام لا يرون هذه القصة بالعين نفسها.",
-                      "more": "التحليل الكامل: الرابط في التعريف"}}
+STORY_WORDS = {"en": {"people": "People", "outlets": "Media", "voices": "voices"},
+               "ar": {"people": "مزاج الناس", "outlets": "وسائل الإعلام", "voices": "عدد الأصوات"}}
 
 
 def budget_posts(s: dict) -> int:
@@ -425,29 +423,49 @@ def story_candidates(cfg: dict, state: dict, now: dt.datetime) -> list:
     return [(n, gap) for score, n, gap in sorted(out, key=lambda x: -x[0])]
 
 
-def compose_story(cfg: dict, n: dict, gap: float, lang: str) -> dict:
-    """A story post without a link: the title, the mood of people (and of the media when the two differ), what people
-    say, the hashtags and where to read more; at most 280 by X's count."""
+def clip_clause(text: str, limit: int) -> str:
+    """As much of the text as fits in limit characters, cut after a whole sentence or, failing that, a whole clause
+    (at a comma, semicolon or colon), so a post does not end mid-thought; an ellipsis only when no clause fits."""
+    text = re.sub(r"\s+", " ", str(text or "")).strip()
+    if len(text) <= limit:
+        return text
+    for pattern in (r"(?<=[.!?؟])\s+", r"(?<=[،,؛;:])\s+"):
+        out = ""
+        for part in re.split(pattern, text):
+            if len(out) + len(part) + 1 > limit:
+                break
+            out = (out + " " + part).strip()
+        if len(out) >= limit * 0.4:
+            return out.rstrip("،,؛;:") + ("" if out[-1:] in ".!?؟" else ("." if pattern.startswith("(?<=[،") else ""))
+    return clip(text, limit)
+
+
+def rows(text: str, width: int = 50) -> int:
+    """About how many lines the post takes on a phone; X folds longer posts behind "Show more", hiding the hashtags."""
+    return sum(max(1, -(-len(line) // width)) for line in text.split("\n"))
+
+
+def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8) -> dict:
+    """A story post without a link, short enough to show in full in the timeline: the title, the mood of people (and
+    of the media when the two differ), a sentence of what people say, and the hashtags."""
     w = STORY_WORDS[lang]
     title = str(pages.t(n, "title", lang) or "")
-    people = f"{w['people']}: {pages.tone_label(n.get('public_sentiment'), lang)} · {w['voices']}: {pages.num(n.get('public_volume') or 0, lang)}"
-    if lang == "en":
-        people = f"{w['people']}: {pages.tone_label(n.get('public_sentiment'), lang)} ({pages.num(n.get('public_volume') or 0, lang)} {w['voices']})"
-    lines = [people]
-    if gap >= 0.4:
-        lines.append(f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}")
-    head = title + ("\n" + w["split"] if gap >= 0.4 else "")
+    voices = pages.num(n.get("public_volume") or 0, lang)
+    mood = pages.tone_label(n.get("public_sentiment"), lang)
+    people = f"{w['people']}: {mood} · {w['voices']}: {voices}" if lang == "ar" else f"{w['people']}: {mood} ({voices} {w['voices']})"
+    head = [title, people] + ([f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}"] if gap >= 0.4 else [])
     body = str(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang) or "")
     tags = hashtags.select(cfg, lang, [n.get("theme", "")], [title])[: int(settings(cfg, "x")["max_tags"])]
     def build(text_body: str, n_tags: int) -> str:
-        parts = [head, "\n".join(lines)] + ([text_body] if text_body else []) + [w["more"]]
-        return "\n\n".join(parts) + ("\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
+        out = "\n".join(head) + ("\n\n" + text_body if text_body else "")
+        return out + ("\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
+    fits = lambda text: x_len(text) <= 280 and rows(text) <= max_rows  # noqa: E731
     n_tags = len(tags)
-    room = 280 - x_len(build("", n_tags)) - 2
-    text_body = clip(body, room) if room > 40 else ""
-    while text_body and x_len(build(text_body, n_tags)) > 280:
-        text_body = clip(text_body, len(text_body) - 20) if len(text_body) > 60 else ""
-    while n_tags and x_len(build(text_body, n_tags)) > 280:
+    cuts = [clip_clause(body, limit) for limit in range(150, 39, -10)]
+    whole = [c for c in cuts if not c.endswith("…") and fits(build(c, n_tags))]     # a whole sentence or clause
+    cut = [c for c in cuts if fits(build(c, n_tags))]
+    text_body = whole[0] if whole else cut[0] if cut else ""
+    while n_tags > 1 and not fits(build(text_body, n_tags)):
         n_tags -= 1
     return {"key": n.get("key"), "text": build(text_body, n_tags)}
 
