@@ -17,8 +17,8 @@ const T = {
     expAreas: { overall: "Overall", security: "Security", economy: "Economy", governance: "Governance" },
     expNone: "The first analyses are written after the first full week of collection.",
     expNote: "Written automatically by an AI model from the titles and short summaries of the reports, which are linked on each page. It describes what the reports say, not what is true. Most sources are based outside Syria, and paywalled outlets are missing: this is the international and regional expert view, not the whole picture.",
-    reportsTitle: "Reports", reportsSub: "Written for sharing. Each monthly report is a one-page briefing on what was said about Syria online that month: the numbers, the stories that mattered, where people and outlets differed, and what to watch. It comes as a web page and a PDF, in English and Arabic. The weekly digests are shorter and faster, also with a PDF, and the daily briefs cover a single day. Every page has share links and a print layout.",
-    readReport: "Read the report", pdf: "PDF", reportFeed: "Monthly feed", digestFeed: "Weekly feed", noReports: "The first monthly report is written after the first complete month.",
+    reportsTitle: "Reports", reportsSub: "Written for sharing. Each monthly report is a short briefing on the month: what ordinary Syrians talked about and how they reacted, set against what the media and experts focused on, with the numbers, the stories that mattered and what to watch. It comes as a web page and a PDF, in English and Arabic. The weekly digests are shorter and faster, also with a PDF, and the daily briefs cover a single day. Every page has share links and a print layout.",
+    readReport: "Read the report", mediaPart: "What the media and experts said", pdf: "PDF", reportFeed: "Monthly feed", digestFeed: "Weekly feed", noReports: "The first monthly report is written after the first complete month.",
     intro: "Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true.", switchTo: "العربية", switchLang: "ar",
     loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
     nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
@@ -171,8 +171,8 @@ const T = {
     expAreas: { overall: "نظرة شاملة", security: "الأمن", economy: "الاقتصاد", governance: "الحوكمة" },
     expNone: "تُكتب أولى التحليلات بعد أول أسبوع كامل من الجمع.",
     expNote: "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من عناوين التقارير وملخصاتها القصيرة، مع روابط إليها في كل صفحة. وهو يصف ما تقوله التقارير، لا ما هو صحيح. معظم المصادر خارج سوريا، والمنصات المدفوعة غير مشمولة: هذه قراءة الخبراء الدوليين والإقليميين، لا الصورة كاملة.",
-    reportsTitle: "التقارير", reportsSub: "كُتبت لتُشارَك. كل تقرير شهري إحاطة من صفحة واحدة عمّا قيل عن سوريا على الإنترنت في ذلك الشهر: الأرقام، والقصص التي كانت الأهم، وأين اختلف الناس عن وسائل الإعلام، وما يجب متابعته. يتوفر كصفحة على الموقع وكملف PDF، بالعربية والإنجليزية. الملخصات الأسبوعية أقصر وأسرع، ولها PDF أيضاً، والموجزات اليومية تغطي يوماً واحداً. لكل صفحة روابط مشاركة وتنسيق للطباعة.",
-    readReport: "اقرأ التقرير", pdf: "PDF", reportFeed: "خلاصة التقارير الشهرية", digestFeed: "خلاصة الملخصات الأسبوعية", noReports: "يُكتب أول تقرير شهري بعد اكتمال أول شهر.",
+    reportsTitle: "التقارير", reportsSub: "كُتبت لتُشارَك. كل تقرير شهري إحاطة قصيرة عن الشهر: ما تحدث عنه السوريون العاديون وكيف تفاعلوا، مقارنةً بما ركّز عليه الإعلام والخبراء، مع الأرقام والقصص الأهم وما يجب متابعته. يتوفر كصفحة على الموقع وكملف PDF، بالعربية والإنجليزية. الملخصات الأسبوعية أقصر وأسرع، ولها PDF أيضاً، والموجزات اليومية تغطي يوماً واحداً. لكل صفحة روابط مشاركة وتنسيق للطباعة.",
+    readReport: "اقرأ التقرير", mediaPart: "ما قاله الإعلام والخبراء", pdf: "PDF", reportFeed: "خلاصة التقارير الشهرية", digestFeed: "خلاصة الملخصات الأسبوعية", noReports: "يُكتب أول تقرير شهري بعد اكتمال أول شهر.",
     intro: "يتابع متتبّع السرديات السورية ما يُقال عن سوريا على الإنترنت، ويتجدّد تلقائياً على مدار اليوم. يقرأ منشورات عامة بالعربية والكردية والإنجليزية من قنوات تيليغرام والمواقع الإخبارية ويوتيوب وريديت وإكس، ويستخدم الذكاء الاصطناعي لتجميعها في قصص ووصف تفاعل الناس ووسائل الإعلام معها. يعرض الموقع ما يُقال، لا ما هو صحيح.", switchTo: "English", switchLang: "en",
     loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
     nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
@@ -1011,11 +1011,13 @@ function dailyHTML() {
     <ul class="hl">${items}</ul>
   </section>`;
 }
+// The Media and experts analysis of a week or month, linked next to its report when it exists.
+const mediaLink = (id) => (state.experts.index || []).some(x => x.id === id) ? ` · <a href="experts/${state.lang}/${esc(id)}.html">${L().mediaPart}</a>` : "";
 function monthlyHTML() {
   const t = L(), list = (state.monthly || []).slice().reverse(), lang = state.lang;
   const items = list.map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
     return `<li><a href="monthly/${lang}/${esc(d.month)}.html" dir="auto"><b>${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</b></a>
-    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="monthly/${lang}/${esc(d.month)}.html">${t.readReport}</a> · <a href="monthly/${lang}/${esc(d.month)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="monthly/${lang}/${esc(d.month)}.html">${t.readReport}</a>${mediaLink(d.month)} · <a href="monthly/${lang}/${esc(d.month)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
   return `
   <section class="tsec" aria-labelledby="h-monthly">
     <div class="sec-head"><div><h2 id="h-monthly">${t.monthlyTitle}</h2><p class="sub">${t.monthlySub}</p></div>
@@ -1028,7 +1030,7 @@ function weeklyHTML() {
   if (!list.length) return "";
   const items = list.slice(0, 8).map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
     return `<li><a href="weekly/${lang}/${esc(d.week)}.html" dir="auto">${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</a>
-    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="weekly/${lang}/${esc(d.week)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))}${mediaLink(d.week)} · <a href="weekly/${lang}/${esc(d.week)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
   return `
   <section class="tsec" aria-labelledby="h-weekly">
     <div class="sec-head"><div><h2 id="h-weekly">${t.weeklyTitle}</h2><p class="sub">${t.weeklySub}</p></div>
@@ -1401,7 +1403,7 @@ function render() {
   $("#updated").innerHTML = !checked ? "" : stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
   if (state.view === "about") { $("#app").innerHTML = aboutHTML(); bindAbout(); loadMethod(); return; }
   if (state.view === "trends") { $("#app").innerHTML = trendsHTML(); bindTrends(); drawTrends(); loadIndex(); return; }
-  if (state.view === "reports") { $("#app").innerHTML = reportsHTML(); loadIndex(); return; }
+  if (state.view === "reports") { $("#app").innerHTML = reportsHTML(); loadIndex(); loadExperts(); return; }
   if (state.view === "experts") { $("#app").innerHTML = expertsHTML(); bindExperts(); loadExperts(); return; }
   if (state.view === "data") { $("#app").innerHTML = dataHTML(); bindData(); loadIndex(); loadExports(); return; }
   usedFallback = false;
@@ -1529,7 +1531,7 @@ async function loadExperts() {
   S.loading = true;
   S.index = await getJSON("data/experts/analyses/index.json").catch(() => []);
   S.loaded = true; S.loading = false;
-  if (state.view === "experts") render();
+  if (state.view === "experts" || state.view === "reports") render();
 }
 function expertPeriodHTML(x) {
   const t = L(), lang = state.lang, day = (d) => fmtDay(d, { day: "numeric", month: "long" });
