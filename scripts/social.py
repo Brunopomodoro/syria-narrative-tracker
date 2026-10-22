@@ -335,15 +335,18 @@ talking to people, not a press release or a bot.
 
 - Open with a hook: the most striking or human thing in the material, a contrast, or a short question. Never open with a
   label such as "Daily brief:" or "Story:".
-- Plain, natural, specific words; short sentences; at most {lines} short lines in all. It may end with a question that
-  invites replies, when that fits.
+- Plain, natural, specific words; short sentences; at most {lines} short lines in all.
+- Arabic: simple Modern Standard Arabic, as a Syrian journalist writes on social media; no dialect words (no شو، فين،
+  هيك، مو، كتير). English: plain international English; no slang (no folks, guys, gonna).
+- End with a question only sometimes (about one post in three, and not when the recent posts did). A question must be
+  open and neutral, never leading or implying blame (not "will this go unpunished?").
 - Only what the material says. No new facts, names, numbers or causes. Every number you use must be in the material.
 - It reports what people SAY, not what is true: attribute ("many say", "commenters are split", "the mood is").
 - Never name or quote an individual commenter. Talk about people in aggregate ("people", "commenters", "voices").
 - Neutral: no side taken, no insult, no slur, no word that carries a judgement the material does not; no sarcasm about
   victims; no hype, no clickbait, no emojis, no hashtags, no links, no long dash.
 - Short: at most {words} words ({room} characters) in all. Two or three short sentences is ideal.
-- Do not open the same way as these recent posts: {recent}
+- Do not open (or close) the same way as these recent posts: {recent}
 Language: {language}.{rules}
 
 The material (JSON):
@@ -381,7 +384,7 @@ def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, li
     s = settings(cfg, "x")
     if not s.get("rewrite") or not P.secret("ANTHROPIC_API_KEY") or room < 60:
         return None
-    recent = [t.split("\n", 1)[0][:80] for t in ((state or {}).get("x") or {}).get("recent_texts") or []][-6:]
+    recent = [t[:200] for t in ((state or {}).get("x") or {}).get("recent_texts") or []][-6:]
     target = int(room * 0.8)                          # some margin: models count characters loosely
     prompt = VOICE.format(lines=lines, room=target, words=max(12, target // 6),
                           recent=json.dumps(recent, ensure_ascii=False) if recent else "(none yet)",
