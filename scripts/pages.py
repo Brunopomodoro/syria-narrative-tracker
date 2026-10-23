@@ -163,7 +163,8 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 .report .rmeta{margin-top:-6px}.pvm-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}.pvm-cols h3{margin-top:10px}@media (max-width:640px){.pvm-cols{grid-template-columns:1fr}}
 .toc{border:1px solid var(--rule);border-radius:8px;padding:10px 16px;margin:16px 0}.toc b{font-size:.9rem}.toc ol{margin:6px 0 0;padding-inline-start:20px;columns:2;column-gap:28px;font-size:.92rem}.toc li{margin:2px 0}
 .part{margin-top:28px}.part>h2{border-bottom:2px solid var(--brass);padding-bottom:4px}.part h4{margin:12px 0 4px;font-size:.98rem}.area{margin-top:18px}.area .full{font-size:.88rem}.srcs li{margin-bottom:4px}.pending{color:var(--muted);font-style:italic}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
-.follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:28px 0 8px;padding:14px 18px;border:1px solid var(--brass);border-radius:12px;background:var(--wash)}.follow p{margin:0;flex:1 1 320px}.follow .btn{background:var(--brass);color:#fff;border-radius:999px;padding:7px 18px;text-decoration:none;font-weight:600;white-space:nowrap}.follow .btn:hover{color:#fff;opacity:.9}
+.follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:28px 0 8px;padding:14px 18px;border:1px solid var(--brass);border-radius:12px;background:var(--wash)}.follow p{margin:0;flex:1 1 320px}.follow .btn{background:var(--brass);color:#fff;border-radius:999px;padding:7px 18px;text-decoration:none;font-weight:600;white-space:nowrap}.follow .btn:hover{color:#fff;opacity:.9}.follow .btns{display:flex;flex-wrap:wrap;gap:8px}.follow .btn.alt{background:transparent;color:var(--brass);border:1px solid var(--brass)}.follow .btn.alt:hover{color:var(--brass)}
+.opts{border:0;padding:0;margin:0;display:grid;gap:8px}.opts legend{font-weight:600;font-size:.92rem;margin-bottom:6px;padding:0}.opt-row{display:flex!important;grid-template-columns:none!important;gap:10px!important;align-items:flex-start;font-weight:400!important}.opt-row input{margin-top:6px}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
 .charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
@@ -365,7 +366,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a href="{esc(x_profile(cfg))}" rel="me noopener">{w["followX"]}</a>') if x_profile(cfg) else ''}</footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a href="{esc(x_profile(cfg))}" rel="me noopener">{w["followX"]}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
 </div>
 </body>
 </html>
@@ -831,7 +832,7 @@ def fmt_month(month: str, lang: str) -> str:
 
 
 def subscribe_link(cfg: dict, lang: str) -> str:
-    url = str(cfg.get("newsletter_url") or "").strip()
+    url = newsletter_url(cfg, lang)
     return f'<p><a class="chip" href="{esc(url)}" rel="noopener">{W[lang]["subscribe"]}</a></p>' if url.startswith("https://") else ""
 
 
@@ -983,8 +984,8 @@ def share_bar(cfg: dict, lang: str, path: str, title: str, pdf: str | None = Non
         f'<a href="{fb}" target="_blank" rel="noopener">Facebook</a>',
         f'<a href="https://t.me/share/url?url={q(url)}&amp;text={q(tg)}" target="_blank" rel="noopener">Telegram</a>',
         f'<a href="https://wa.me/?text={q(text + " " + url)}" target="_blank" rel="noopener">WhatsApp</a>']
-    nl = str(cfg.get("newsletter_url") or "").strip()
-    if nl.startswith("https://"):
+    nl = newsletter_url(cfg, lang)
+    if nl:
         links.append(f'<a href="{esc(nl)}" rel="noopener">{w["subscribe"]}</a>')
     if feed:
         links.append(f'<a href="../../{esc(feed)}">RSS</a>')
@@ -1388,7 +1389,21 @@ def privacy_body(cfg: dict, lang: str) -> str:
             ("Data deletion", "Neither the tracker nor its Facebook app holds personal data about you, so there is nothing to delete. If you have ever connected the app to your Facebook account, you can remove it under Facebook Settings → Apps and websites → Remove." + (f" For any question or request, write to us through {c}." if c else "")),
         ]
         head = f"<h1>Privacy</h1><p class=\"sub\">Last updated: {esc(fmt_date(PRIVACY_UPDATED, lang))}</p>"
-    return head + "".join(f'<h2 id="{"deletion" if i == 3 else "s" + str(i)}">{esc(h)}</h2><p>{body}</p>' for i, (h, body) in enumerate(sections))
+    if newsletter_on(cfg):                      # the newsletter keeps subscribers' addresses, with Brevo
+        brevo = "https://www.brevo.com/legal/privacypolicy/"
+        sections.insert(1, ("النشرة البريدية", "إذا اشتركت في النشرة البريدية فإن عنوان بريدك واختياراتك (الموجز اليومي أو الأسبوعي أو الشهري، واللغة) يحفظها مزوّد البريد "
+                                                f'<a href="{brevo}" rel="noopener">Brevo</a> (فرنسا، الاتحاد الأوروبي)، لا هذا الموقع. نستخدم عنوانك فقط لإرسال ما اخترته، ولا نشاركه مع أحد. '
+                                                "يُفعَّل الاشتراك فقط بعد أن تؤكده من رسالة نرسلها إليك، ويمكنك إلغاؤه في أي وقت من الرابط في أسفل كل رسالة، فيُحذف عنوانك من قوائم الإرسال. "
+                                                "يسجّل Brevo فتح الرسائل والنقر على روابطها لأغراض إحصائية؛ لا نستخدم ذلك لتتبّع أي شخص.")
+                        if lang == "ar" else
+                        ("Newsletter", "If you subscribe to the newsletter, your email address and your choices (daily, weekly or monthly, and the language) are kept by our mailing service, "
+                                       f'<a href="{brevo}" rel="noopener">Brevo</a> (France, EU), not by this site. We use your address only to send you what you chose and never share it. '
+                                       "A subscription starts only after you confirm it from an email we send you, and you can unsubscribe at any time with the link at the bottom of every email, "
+                                       "which takes your address off the mailing lists. Brevo records whether emails are opened and links clicked, for statistics; we do not use this to track anyone."))
+        last = sections[-1]
+        sections[-1] = (last[0], last[1] + (" إذا اشتركت في النشرة البريدية وأردت حذف عنوانك نهائياً، فألغِ اشتراكك من أي رسالة أو اكتب لنا." if lang == "ar" else
+                                            " If you subscribed to the newsletter and want your address deleted for good, unsubscribe from any email or write to us."))
+    return head + "".join(f'<h2 id="{"deletion" if i == len(sections) - 1 else "s" + str(i)}">{esc(h)}</h2><p>{body}</p>' for i, (h, body) in enumerate(sections))
 
 
 SUPPORT_PLATFORMS = [("open_collective", "Open Collective"), ("github_sponsors", "GitHub Sponsors"), ("kofi", "Ko-fi"), ("paypal", "PayPal"), ("other", None)]
@@ -1408,8 +1423,10 @@ def support_on(cfg: dict) -> bool:
     return bool(support_links(cfg))
 
 
-FOLLOW_WORDS = {"en": {"head": "Follow us on X", "text": "The daily brief every morning, and the stories Syrians are talking about, in your feed.", "btn": "Follow"},
-                "ar": {"head": "تابعنا على X", "text": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك.", "btn": "تابع"}}
+FOLLOW_WORDS = {"en": {"head": "Follow us", "text": "The daily brief every morning, and the stories Syrians are talking about, on X or by email.",
+                       "headX": "Follow us on X", "textX": "The daily brief every morning, and the stories Syrians are talking about, in your feed.", "btn": "Follow"},
+                "ar": {"head": "تابعنا", "text": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، على X أو بالبريد.",
+                       "headX": "تابعنا على X", "textX": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك.", "btn": "تابع"}}
 FOLLOW_PATHS = ("daily/", "weekly/", "monthly/", "stories/", "experts/")
 
 
@@ -1418,9 +1435,11 @@ def follow_box(cfg: dict, lang: str) -> str:
     u = x_profile(cfg)
     if not u:
         return ""
-    w, handle = FOLLOW_WORDS[lang], "@" + u.rsplit("/", 1)[-1]
-    return (f'<aside class="follow"><p><b>{w["head"]}</b> {w["text"]}</p>'
-            f'<a class="btn" href="{esc(u)}" rel="me noopener">{w["btn"]} <bdi dir="ltr">{esc(handle)}</bdi></a></aside>')
+    w, handle, mail = FOLLOW_WORDS[lang], "@" + u.rsplit("/", 1)[-1], newsletter_on(cfg)
+    return (f'<aside class="follow"><p><b>{w["head" if mail else "headX"]}</b> {w["text" if mail else "textX"]}</p>'
+            f'<span class="btns"><a class="btn" href="{esc(u)}" rel="me noopener">{w["btn"]} <bdi dir="ltr">{esc(handle)}</bdi></a>'
+            + (f'<a class="btn alt" href="{esc(newsletter_url(cfg, lang))}">{NEWS_WORDS[lang]["byEmail"]}</a>' if newsletter_on(cfg) else "")
+            + '</span></aside>')
 
 
 def x_profile(cfg: dict) -> str:
@@ -1519,6 +1538,80 @@ def contact_body(cfg: dict, lang: str) -> str:
 <label>{labels[3]}<textarea name="message" required maxlength="5000"></textarea></label>
 <button type="submit">{labels[4]}</button>
 </form><p class="sub">{note}</p>"""
+
+
+NEWS_WORDS = {
+    "en": {"title": "Get the reports by email", "nav": "Newsletter", "desc": "The daily brief, the weekly digest and the monthly report of the Syria Narrative Tracker in your inbox: you choose which, and in which language.",
+           "lede": "Choose what you would like to receive. Every email has the main points and a link to the full report and its PDF. It is free, and you can unsubscribe with one click in any email.",
+           "email": "Your email", "what": "What would you like to receive?", "lang": "In which language?",
+           "kinds": {"daily": ("The daily brief", "every morning: what Syrians said online yesterday, and what the media and experts said"),
+                     "weekly": ("The weekly digest", "every Monday: the week in brief, people and the media compared"),
+                     "monthly": ("The monthly report", "early each month: the month's findings, with charts")},
+           "langs": {"ar": "Arabic", "en": "English", "both": "Both"}, "send": "Subscribe",
+           "note": "We will send you an email to confirm. Your address is kept by our mailing service, Brevo, used only to send you what you chose, and never shared. Details on the <a href=\"../privacy/{lang}.html\">privacy page</a>.",
+           "off": "The newsletter is being set up. Until then you can follow the reports on X or by RSS.",
+           "check": ("Check your inbox", "We have sent you an email. Click the link in it to confirm your subscription (if it is not there, look in your spam folder). The link works for 3 days."),
+           "done": ("You are subscribed", "Thank you. The next report you chose will arrive in your inbox. To change your choices, fill in the form again; to stop, use the unsubscribe link in any email."),
+           "error": ("Something went wrong", "Your subscription could not be completed. The link may have expired, or the address may be wrong. Please try again."),
+           "back": "Back to the tracker", "again": "Back to the form", "byEmail": "By email"},
+    "ar": {"title": "احصل على التقارير بالبريد الإلكتروني", "nav": "النشرة البريدية", "desc": "الموجز اليومي والملخص الأسبوعي والتقرير الشهري لمتتبّع السرديات السورية في بريدك: تختار ما تريد، وباللغة التي تريد.",
+           "lede": "اختر ما تودّ استلامه. في كل رسالة أبرز النقاط ورابط إلى التقرير كاملاً وملفه بصيغة PDF. الاشتراك مجاني، ويمكنك إلغاؤه بنقرة واحدة من أي رسالة.",
+           "email": "بريدك الإلكتروني", "what": "ماذا تودّ أن تستلم؟", "lang": "بأي لغة؟",
+           "kinds": {"daily": ("الموجز اليومي", "كل صباح: ما قاله السوريون على الإنترنت أمس، وما قاله الإعلام والخبراء"),
+                     "weekly": ("الملخص الأسبوعي", "كل يوم اثنين: الأسبوع باختصار، ومقارنة بين الناس ووسائل الإعلام"),
+                     "monthly": ("التقرير الشهري", "مطلع كل شهر: نتائج الشهر مع الرسوم البيانية")},
+           "langs": {"ar": "العربية", "en": "الإنجليزية", "both": "كلتاهما"}, "send": "اشترك",
+           "note": "سنرسل إليك رسالة لتأكيد الاشتراك. يحتفظ بعنوانك مزوّد البريد Brevo، ويُستخدم فقط لإرسال ما اخترته، ولا يُشارَك مع أحد. التفاصيل في <a href=\"../privacy/{lang}.html\">صفحة الخصوصية</a>.",
+           "off": "النشرة البريدية قيد الإعداد. إلى ذلك الحين يمكنك متابعة التقارير على X أو عبر RSS.",
+           "check": ("تفقّد بريدك", "أرسلنا إليك رسالة. انقر الرابط فيها لتأكيد اشتراكك (وإن لم تجدها فابحث في مجلد الرسائل غير المرغوب فيها). يعمل الرابط ثلاثة أيام."),
+           "done": ("تم اشتراكك", "شكراً لك. سيصلك التقرير التالي الذي اخترته في بريدك. لتغيير اختياراتك املأ النموذج من جديد، وللتوقف استخدم رابط إلغاء الاشتراك في أي رسالة."),
+           "error": ("حدث خطأ", "تعذّر إتمام اشتراكك. ربما انتهت صلاحية الرابط أو كان العنوان غير صحيح. يُرجى المحاولة مرة أخرى."),
+           "back": "العودة إلى المتتبّع", "again": "العودة إلى النموذج", "byEmail": "بالبريد"},
+}
+
+
+def newsletter_on(cfg: dict) -> bool:
+    return bool((cfg.get("newsletter") or {}).get("enabled"))
+
+
+def newsletter_url(cfg: dict, lang: str) -> str:
+    """The sign-up page (when the newsletter is on), else the newsletter service page set in newsletter_url, else ""."""
+    if newsletter_on(cfg):
+        return f"{site_url(cfg)}/subscribe/{lang}.html"
+    url = str(cfg.get("newsletter_url") or "").strip()
+    return url if url.startswith("https://") else ""
+
+
+def subscribe_body(cfg: dict, lang: str) -> str:
+    w, base = NEWS_WORDS[lang], site_url(cfg)
+    head = f"<h1>{esc(w['title'])}</h1><p>{esc(w['lede'])}</p>"
+    if not newsletter_on(cfg):
+        return head + f"<p class=\"sub\">{esc(w['off'])}</p>"
+    kinds = "".join(f'<label class="opt-row"><input type="checkbox" name="{k}" value="1"{" checked" if k != "daily" else ""}><span><b>{esc(t)}</b> <span class="opt">{esc(d)}</span></span></label>'
+                    for k, (t, d) in w["kinds"].items())
+    langs = "".join(f'<label class="opt-row"><input type="radio" name="lang" value="{k}"{" checked" if k == lang else ""}><span>{esc(t)}</span></label>' for k, t in w["langs"].items())
+    return head + f"""<form class="cform" action="{esc(base)}/api/subscribe" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="page" value="{lang}">
+<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label>{esc(w['email'])}<input type="email" name="email" required maxlength="200" autocomplete="email" dir="ltr"></label>
+<fieldset class="opts"><legend>{esc(w['what'])}</legend>{kinds}</fieldset>
+<fieldset class="opts"><legend>{esc(w['lang'])}</legend>{langs}</fieldset>
+<button type="submit">{esc(w['send'])}</button>
+</form><p class="sub">{w['note'].format(lang=lang)}</p>"""
+
+
+def write_subscribe_pages(cfg: dict) -> None:
+    csp = CSP.replace("form-action 'none'", "form-action 'self'")
+    for lang in LANGS:
+        other, w = "ar" if lang == "en" else "en", NEWS_WORDS[lang]
+        home = "../ar/" if lang == "ar" else "../"
+        write(ROOT / "subscribe" / f"{lang}.html", page(cfg, lang, w["title"], w["desc"], subscribe_body(cfg, lang),
+                                                     f"subscribe/{lang}.html", f"subscribe/{other}.html", root="../", kind="website", csp=csp))
+        for key in ("check", "done", "error"):                # where the sign-up service sends people back
+            h, text = w[key]
+            link = f'<a href="{lang}.html">{w["again"]}</a>' if key == "error" else f'<a href="{home}">{w["back"]}</a>'
+            write(ROOT / "subscribe" / f"{lang}-{key}.html", page(cfg, lang, h, h, f"<h1>{esc(h)}</h1><p>{esc(text)}</p><p>{link}</p>",
+                                                               f"subscribe/{lang}-{key}.html", f"subscribe/{other}-{key}.html", root="../", kind="website", noindex=True))
 
 
 def write_contact_pages(cfg: dict) -> None:
@@ -1740,6 +1833,7 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_privacy_pages(cfg)
     write_support_pages(cfg)
     write_contact_pages(cfg)
+    write_subscribe_pages(cfg)
     write_sources_pages(cfg)
     write_timeline_pages(cfg)
     prerender_index(cfg, latest)

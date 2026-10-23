@@ -76,6 +76,12 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # the X posts are written in a human voice (about a cent each)
         run: python scripts/social.py
 
+      - name: Send the newsletter (once Brevo is set up and newsletter.enabled is true; every hour)
+        continue-on-error: true
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: python scripts/newsletter.py
+
       - name: Save results
         env:
           SKIPPED: ${{ steps.gap.outputs.skip }}
@@ -83,7 +89,7 @@ jobs:
           git config user.name "narrative-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ "$SKIPPED" = "true" ]; then
-            git add data/social.json        # an hour without an update: only the record of posts can change
+            git add data/social.json data/newsletter.json 2>/dev/null || git add data/social.json   # an hour without an update: only the records of posts and emails change
             msg="Social posts"
           else
             git add -A
