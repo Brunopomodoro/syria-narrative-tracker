@@ -28,7 +28,7 @@ monthly_review: true
 newsletter_url: ""
 # The site's X account. Shown as "Follow on X" in the footer of every page, and listed as the site's profile
 # for search engines. Leave empty to hide it.
-x_profile_url: "https://x.com/Syrianpulseorg"
+x_profile_url: "https://x.com/SyrianPulseOrg"
 
 # Arabic glossary: the Arabic to use for terms that keep coming back. Every prompt that writes Arabic gets this list,
 # and after each update any whole word or phrase under "avoid" is replaced with "ar" in the Arabic texts. Add a line whenever you
@@ -319,9 +319,14 @@ facebook:
 # per_run: the most report posts per update. max_tags: the most hashtags on a post.
 # rewrite: Claude writes the words of each post in a human voice from the material (about a cent a post, so about
 # $2 a month on the Claude bill); a draft with a number not in the material, or too long, falls back to the plain format.
+# images: each post carries an image card (headline, people's and the media's mood in words, the account), drawn
+# with Chrome (scripts/cards.py). link_in_reply: the post goes out without its link, and the link follows at once
+# in a reply (posts with links reach fewer people); the reply is the paid link post, the main post costs the plain price.
 x:
   enabled: true
   rewrite: true
+  images: true
+  link_in_reply: true
   languages: [ar, en]
   daily_languages: [ar]
   monthly_budget_usd: 15

@@ -71,7 +71,7 @@ def settings(cfg: dict, network: str = "facebook") -> dict:
                   "cost_per_link_post_usd": 0.20,
                   "stories": True, "story_language": "ar", "story_hours": [20, 13, 17, 22, 9], "utc_offset": 3,
                   "max_stories_per_day": 5, "story_gap_hours": 1.5, "story_repeat_hours": 48, "story_min_voices": 5,
-                  "rewrite": True})
+                  "rewrite": True, "images": True, "link_in_reply": True})
     s.update(cfg.get(network) or {})
     return s
 
@@ -190,6 +190,15 @@ def x_len(text: str) -> int:
     return n
 
 
+CARD_WORDS = {"en": {"most": "Most discussed", "comments": "from people"}, "ar": {"most": "الأكثر نقاشاً", "comments": "من الناس"}}
+
+
+def themes_line(cfg: dict, themes: list, lang: str) -> str:
+    """"Most discussed: Society and daily life 15% · Israel and the south 9%" for a card."""
+    top = [x for x in themes if x.get("theme") != "other" and x.get("share")][:3]
+    return f"{CARD_WORDS[lang]['most']}: " + " · ".join(f"{pages.theme_label(cfg, x['theme'], lang)} {pages.pct(x['share'], lang)}" for x in top) if top else ""
+
+
 def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = None) -> dict | None:
     """One post on X for a report in one language: the label and date, the headline (and, for the daily brief, the
     mood and as much of the brief as fits), the link and the hashtags that fit; at most 280 by X's count."""
@@ -204,6 +213,8 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
         body = (f"{mood}. " if mood else "") + no_scores(pages.t(ov, "brief", lang))
         themes, titles = [x["theme"] for x in s["themes"]], [pages.t(e, "title", lang) for e in s["stories"]]
         link, lead = url(cfg, f"daily/{lang}/{ident}.html"), []
+        card = {"eyebrow": head, "title": titles[0] if titles else "", "people": s.get("public_sentiment"), "media": s.get("outlet_sentiment"),
+                "line": themes_line(cfg, s["themes"], lang)}
     elif kind in ("weekly", "monthly"):
         d = archive._load(pages.DATA / kind / f"{ident}.json", None)
         if not d:
@@ -217,21 +228,27 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
         themes = [x["theme"] for x in sorted((d.get("stats") or {}).get("themes") or [], key=lambda x: -x.get("share", 0))]
         titles = [pages.t(d, "title", lang)] + [pages.t(h, "title", lang) for h in d.get("highlights") or []]
         link = url(cfg, f"{kind}/{lang}/{ident}.html")
+        st = d.get("stats") or {}
+        card = {"eyebrow": head.split("\n")[0], "title": pages.t(d, "title", lang), "people": st.get("public_sentiment"),
+                "media": st.get("outlet_sentiment"), "line": themes_line(cfg, sorted(st.get("themes") or [], key=lambda x: -x.get("share", 0)), lang)}
     else:
         return None
+    inline = not settings(cfg, "x").get("link_in_reply")      # otherwise the link goes in a reply, where it does not cut the reach
+    shown = link if inline else ""
     tags = hashtags.select(cfg, lang, themes, titles)[: int(settings(cfg, "x").get("max_tags") or 4)]
     tag_text = lambda n: " ".join("#" + t for t in tags[:n])  # noqa: E731
     facts = {"what": LABEL[kind][lang], "period": head.split("\n")[0].split(" · ", 1)[-1], "headline": head.split("\n", 1)[-1] if "\n" in head else "",
              "main_point": body, "other_points": lead[1:3] if kind != "daily" else [],
              "top_stories": titles[1:4] if kind != "daily" else titles[:3]}
-    words = rewrite(cfg, state, lang, facts, 280 - 23 - x_len(tag_text(2)) - 6, lines=4)
+    joined = lambda wd, n: "\n\n".join([wd] + ([shown] if shown else []) + ([tag_text(n)] if n else []))  # noqa: E731
+    words = rewrite(cfg, state, lang, facts, 280 - (23 if shown else 0) - x_len(tag_text(2)) - 6, lines=4)
     if words:
         n = len(tags)
-        while n > 1 and x_len(f"{words}\n\n{link}\n\n{tag_text(n)}") > 280:
+        while n > 1 and x_len(joined(words, n)) > 280:
             n -= 1
-        return {"key": f"{kind}:{ident}:{lang}", "text": f"{words}\n\n{link}\n\n{tag_text(n)}", "words": words}
+        return {"key": f"{kind}:{ident}:{lang}", "text": joined(words, n), "words": words, "link": link, "card": card, "lang": lang}
     def build(text_body: str, n_tags: int) -> str:
-        parts = [head] + ([text_body] if text_body else []) + [link]
+        parts = [head] + ([text_body] if text_body else []) + ([shown] if shown else [])
         out = "\n\n".join(parts)
         return out + ("\n\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
     n_tags = len(tags)
@@ -243,7 +260,7 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
         text_body = clip(text_body, len(text_body) - 20) if len(text_body) > 60 else ""
     while n_tags and x_len(build(text_body, n_tags)) > 280:
         n_tags -= 1
-    return {"key": f"{kind}:{ident}:{lang}", "text": build(text_body, n_tags)}
+    return {"key": f"{kind}:{ident}:{lang}", "text": build(text_body, n_tags), "link": link, "card": card, "lang": lang}
 
 
 def oauth1_header(method: str, link: str, keys: dict, params: dict | None = None) -> str:
@@ -270,6 +287,72 @@ def x_call(method: str, path: str, keys: dict, body: dict | None = None) -> dict
         detail = data.get("detail") or data.get("title") or (data.get("errors") or [{}])[0].get("message") or ""
         raise RuntimeError(f"X said: HTTP {r.status_code} {detail}".strip())
     return data
+
+
+X_UPLOAD = "https://api.x.com/2/media/upload"
+READ_MORE = {"en": "Full analysis", "ar": "التحليل الكامل"}
+
+
+def x_upload(keys: dict, png: pathlib.Path) -> str:
+    """Upload an image; returns its media id. Multipart: only the oauth_ parameters are signed."""
+    with open(png, "rb") as fh:
+        r = requests.post(X_UPLOAD, files={"media": (png.name, fh, "image/png")}, data={"media_category": "tweet_image", "media_type": "image/png"},
+                          timeout=60, headers={"Authorization": oauth1_header("POST", X_UPLOAD, keys)})
+    try:
+        data = r.json()
+    except ValueError:
+        data = {}
+    if r.status_code >= 400:
+        detail = data.get("detail") or data.get("title") or (data.get("errors") or [{}])[0].get("message") or ""
+        raise RuntimeError(f"X said: HTTP {r.status_code} {detail}".strip())
+    mid = (data.get("data") or {}).get("id") or data.get("media_id_string")
+    if not mid:
+        raise RuntimeError("X gave no media id")
+    return str(mid)
+
+
+def card_image(cfg: dict, post: dict, keys: dict | None) -> str | None:
+    """Draw the post's card and upload it; the media id, or None (no Chrome, no card, or the upload failed: the post
+    then goes out without an image)."""
+    if not settings(cfg, "x").get("images") or not post.get("card") or not keys:
+        return None
+    import tempfile
+    import cards
+    with tempfile.TemporaryDirectory() as tmp:
+        png = pathlib.Path(tmp) / "card.png"
+        if not cards.render(cfg, post["card"], post.get("lang") or "ar", png):
+            print("X: the card was not drawn; the post goes out without an image.")
+            return None
+        try:
+            return x_upload(keys, png)
+        except Exception as e:  # noqa: BLE001
+            print(f"X: the card was not uploaded ({x_explain(e)}); the post goes out without an image.")
+            return None
+
+
+def expected_cost(s: dict, post: dict) -> float:
+    """The post, plus the reply that carries its link."""
+    return post_cost(s, post["text"]) + (float(s["cost_per_link_post_usd"]) if s.get("link_in_reply") and post.get("link") else 0.0)
+
+
+def publish(cfg: dict, keys: dict, post: dict) -> dict:
+    """The post (with its card when there is one), then its link in a reply. Raises if the post fails; a failed reply
+    is reported and the post kept. Returns {"id", "reply", "usd"}."""
+    s = settings(cfg, "x")
+    body = {"text": post["text"]}
+    media = card_image(cfg, post, keys)
+    if media:
+        body["media"] = {"media_ids": [media]}
+    pid = (x_call("POST", "tweets", keys, body).get("data") or {}).get("id")
+    cost, reply = post_cost(s, post["text"]), None
+    if s.get("link_in_reply") and post.get("link") and pid:
+        try:
+            text = f"{READ_MORE[post.get('lang') or 'ar']}: {post['link']}"
+            reply = (x_call("POST", "tweets", keys, {"text": text, "reply": {"in_reply_to_tweet_id": pid}}).get("data") or {}).get("id")
+            cost += post_cost(s, text)
+        except Exception as e:  # noqa: BLE001
+            print(f"X: the link reply to {pid} failed. {x_explain(e)}")
+    return {"id": pid, "reply": reply, "usd": round(cost, 4), "image": bool(media)}
 
 
 def x_explain(e: Exception) -> str:
@@ -528,8 +611,10 @@ def story_allowance(cfg: dict, state: dict, now: dt.datetime) -> dict:
     (each with its link) buy this month's story posts, which are spread evenly over the month's days."""
     s, xs = settings(cfg, "x"), state.get("x") or {}
     budget, spent = float(s["monthly_budget_usd"]), spent_this_month(xs, s, now)
-    price = float(s["cost_per_link_post_usd"] if s.get("story_links", True) else s["cost_per_post_usd"])
-    reserve = round(reports_to_come(cfg, state, now) * float(s["cost_per_link_post_usd"]), 4)
+    plain, linked = float(s["cost_per_post_usd"]), float(s["cost_per_link_post_usd"])
+    report_price = plain + linked if s.get("link_in_reply") else linked          # with its link in a reply: two posts
+    price = (report_price if s.get("story_links", True) else plain)
+    reserve = round(reports_to_come(cfg, state, now) * report_price, 4)
     left = max(0.0, budget - spent - reserve)
     month, today = now.strftime("%Y-%m"), local_now(s, now).date().isoformat()
     stories = [p for p in xs.get("story_posts") or [] if str(p.get("at", "")).startswith(month)]
@@ -618,6 +703,13 @@ def rows(text: str, width: int = 50) -> int:
     return sum(max(1, -(-len(line) // width)) for line in text.split("\n"))
 
 
+def story_card(cfg: dict, n: dict, lang: str) -> dict:
+    count = int(n.get("public_volume") or 0)
+    when = pages.fmt_date(dt.datetime.now(dt.timezone.utc).date().isoformat(), lang)
+    return {"eyebrow": f"{pages.theme_label(cfg, n.get('theme', 'other'), lang)} · {when}", "title": str(pages.t(n, "title", lang) or ""),
+            "people": n.get("public_sentiment"), "media": outlet_tone(n), "line": f"{comments(count, lang)} {CARD_WORDS[lang]['comments']}"}
+
+
 def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, state: dict | None = None) -> dict:
     """A story post, short enough to show in full in the timeline: the words (a rewrite, or the title, the mood of
     people and of the media when the two differ, and a sentence of what people say), the link to the story's page and
@@ -631,7 +723,8 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, 
     head = [title, people] + ([f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}"] if gap >= 0.4 else [])
     body = no_scores(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang))
     tags = hashtags.select(cfg, lang, [n.get("theme", "")], [title])[: int(settings(cfg, "x")["max_tags"])]
-    link = url(cfg, f"stories/{lang}/{key}.html") if settings(cfg, "x").get("story_links", True) else ""
+    full = url(cfg, f"stories/{lang}/{key}.html") if settings(cfg, "x").get("story_links", True) else ""
+    link = "" if settings(cfg, "x").get("link_in_reply") else full        # in a reply, where it does not cut the reach
     def tail(n_tags: int) -> str:
         parts = ([link] if link else []) + ([" ".join("#" + t for t in tags[:n_tags])] if n_tags else [])
         return ("\n\n" + "\n".join(parts)) if parts else ""
@@ -643,20 +736,20 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, 
              "people_mood": mood, "comments_from_people": comments(count, lang),
              "media_mood": pages.tone_label(outlet_tone(n), lang) if gap >= 0.4 else "about the same as people's",
              "feelings": (n.get("emotions_ar") if lang == "ar" else n.get("emotions")) or []}
-    words = rewrite(cfg, state, lang, facts, 280 - x_len(tail(2)), lines=max_rows - (4 if link else 2))
+    words = rewrite(cfg, state, lang, facts, 280 - x_len(tail(2)), lines=max_rows - (4 if link else 3))
     if words:
         k = n_tags
         while k > 1 and not fits(words + tail(k)):
             k -= 1
         if fits(words + tail(k)):
-            return {"key": key, "text": words + tail(k), "words": words}
+            return {"key": key, "text": words + tail(k), "words": words, "link": full, "card": story_card(cfg, n, lang), "lang": lang}
     cuts = [clip_clause(body, limit) for limit in range(150, 39, -10)]
     whole = [c for c in cuts if not c.endswith("…") and fits(build(c, n_tags))]     # a whole sentence or clause
     cut = [c for c in cuts if fits(build(c, n_tags))]
     text_body = whole[0] if whole else cut[0] if cut else ""
     while n_tags > 1 and not fits(build(text_body, n_tags)):
         n_tags -= 1
-    return {"key": key, "text": build(text_body, n_tags)}
+    return {"key": key, "text": build(text_body, n_tags), "link": full, "card": story_card(cfg, n, lang), "lang": lang}
 
 
 def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
@@ -668,18 +761,17 @@ def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
     if not cands:
         return
     post = compose_story(cfg, *cands[0], s["story_language"], state=state)
-    cost = post_cost(s, post["text"])
-    if spent_this_month(xs, s, now) + cost > float(s["monthly_budget_usd"]) + 1e-9:
+    if spent_this_month(xs, s, now) + expected_cost(s, post) > float(s["monthly_budget_usd"]) + 1e-9:
         return
     try:
-        res = x_call("POST", "tweets", keys, {"text": post["text"]})
+        res = publish(cfg, keys, post)
     except Exception as e:  # noqa: BLE001
         xs["last_error"] = {"at": now.isoformat(timespec="seconds"), "item": f"story:{post['key']}", "error": x_explain(e)}
         print(f"X: story {post['key']} not posted. {x_explain(e)}")
         return
-    pid = (res.get("data") or {}).get("id")
+    pid = res["id"]
     posts = xs.setdefault("story_posts", [])
-    posts.append({"key": post["key"], "slot": slot, "id": pid, "at": now.isoformat(timespec="seconds"), "usd": cost})
+    posts.append({"key": post["key"], "slot": slot, "id": pid, "reply": res["reply"], "at": now.isoformat(timespec="seconds"), "usd": res["usd"]})
     remember(state, post.get("words") or post["text"])
     cutoff = (now - dt.timedelta(days=40)).isoformat()
     xs["story_posts"] = [p for p in posts if str(p.get("at", "")) >= cutoff]
@@ -782,18 +874,29 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
             print("X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN and X_ACCESS_TOKEN_SECRET are not all set; nothing would be posted.")
         if not items:
             print("Nothing is due.")
+        def show(title: str, post: dict | None) -> None:
+            if not post:
+                print(f"\n===== {title}\n(no report)")
+                return
+            reply = f"\n  ↳ reply: {READ_MORE[post.get('lang') or 'ar']}: {post['link']}" if s.get("link_in_reply") and post.get("link") else ""
+            card = f"\n  [card: {post['card'].get('eyebrow')} | {post['card'].get('title')} | {post['card'].get('line')}]" if s.get("images") and post.get("card") else ""
+            print(f"\n===== {title} ({x_len(post['text'])}/280)\n{post['text']}{reply}{card}")
+        tested = False
         for kind, ident, lang in items:
             post = compose_x(cfg, kind, ident, lang, state)
-            print(f"\n===== {kind} {ident} {lang} ({x_len(post['text']) if post else 0}/280)\n{post['text'] if post else '(no report)'}")
+            show(f"{kind} {ident} {lang}", post)
+            if keys and post and not tested and s.get("images"):     # draw and upload one card (nothing is posted)
+                tested = True
+                mid = card_image(cfg, post, keys)
+                print(f"  Card test: {'drawn and uploaded, media id ' + mid if mid else 'failed (see above)'}.")
         a, xs_state = story_allowance(cfg, state, now), state.get("x") or {}
         print(f"\n######## X budget\n${a['budget']:g} a month (a post costs ${s['cost_per_post_usd']}, ${s['cost_per_link_post_usd']} with a link); "
               f"${a['spent']:.2f} spent this month, ${a['reserve']:.2f} kept for the reports still to come, ${a['left']:.2f} left for stories "
-              f"({a['stories_left']} story posts at ${a['story_price']}); today {a['done_today']} of {a['today']} story posts made. "
+              f"({a['stories_left']} story posts at ${a['story_price']:.3f} with the link reply); today {a['done_today']} of {a['today']} story posts made. "
               f"Story slot open now: {story_slot(cfg, state, now) or 'none'}. "
               f"Rewrites: {'on' if s.get('rewrite') else 'off'}, ${(xs_state.get('rewrite_usd') or {}).get(now.strftime('%Y-%m'), 0)} this month.")
         for n, gap in story_candidates(cfg, state, now)[:3]:
-            post = compose_story(cfg, n, gap, s["story_language"], state=state)
-            print(f"\n===== story {post['key']} ({x_len(post['text'])}/280)\n{post['text']}")
+            show(f"story {n.get('key')}", compose_story(cfg, n, gap, s["story_language"], state=state))
         return
     if not s["enabled"] or not keys:
         return
@@ -803,18 +906,17 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         post = compose_x(cfg, kind, ident, lang, state)
         if not post:
             continue
-        cost = post_cost(s, post["text"])
-        if spent_this_month(xs, s, now) + cost > float(s["monthly_budget_usd"]) + 1e-9:
+        if spent_this_month(xs, s, now) + expected_cost(s, post) > float(s["monthly_budget_usd"]) + 1e-9:
             print(f"X: the monthly budget of ${s['monthly_budget_usd']} is used up; {post['key']} waits.")
             return
         try:
-            res = x_call("POST", "tweets", keys, {"text": post["text"]})
+            res = publish(cfg, keys, post)
         except Exception as e:  # noqa: BLE001
             xs["last_error"] = {"at": now.isoformat(timespec="seconds"), "item": post["key"], "error": x_explain(e)}
             print(f"X: {post['key']} not posted. {x_explain(e)} It is tried again at the next update.")
             return
-        pid = (res.get("data") or {}).get("id")
-        posted[post["key"]] = {"id": pid, "at": now.isoformat(timespec="seconds"), "usd": cost}
+        pid = res["id"]
+        posted[post["key"]] = {"id": pid, "reply": res["reply"], "at": now.isoformat(timespec="seconds"), "usd": res["usd"]}
         remember(state, post.get("words") or post["text"])
         xs.pop("last_error", None)
         print(f"X: posted {post['key']} ({pid}).")
