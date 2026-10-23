@@ -35,7 +35,7 @@ def fingerprint(page: pathlib.Path) -> str:
     start, end = text.find("<article"), text.rfind("</article>")
     report = text[start:end] if 0 <= start < end else text
     report = re.sub(r'<div class="share".*?</div>', "", report, flags=re.S)   # the share buttons (and the PDF link) are not printed
-    return hashlib.sha256((report + print_style(text)).encode()).hexdigest()[:16]
+    return hashlib.sha256((report + print_style(text) + PAGE_MODE).encode()).hexdigest()[:16]
 
 
 def chrome() -> str | None:
@@ -49,10 +49,38 @@ def chrome() -> str | None:
     return None
 
 
+# One long page instead of A4 pages: the print copy lays the report out at the printed width, measures it and sets
+# the page to its height. Past MAX_MM (PDF readers handle pages up to about 5 m) the report falls back to A4 pages.
+PAGE_MODE = "single"
+MAX_MM = 5000
+SINGLE = """<style>@page{size:210mm 297mm;margin:12mm}html,body{width:186mm!important;margin:0!important}</style>
+<script>
+addEventListener("load", () => document.fonts.ready.then(() => {
+  const mm = document.documentElement.scrollHeight * 25.4 / 96 + 24 + 8;
+  if (mm <= %d) {
+    const s = document.createElement("style");
+    s.textContent = "@page{size:210mm " + Math.ceil(mm) + "mm;margin:12mm}";
+    document.head.appendChild(s);
+  }
+}));
+</script>""" % MAX_MM
+
+
 def render(binary: str, page: pathlib.Path, out: pathlib.Path) -> bool:
+    src = page
+    if PAGE_MODE == "single":
+        text = page.read_text(encoding="utf-8")
+        text = re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>', "", text, count=1)   # the measuring script must run
+        text = text.replace("@media print{", "@media all{")       # lay the screen out as the printed page, to measure it
+        src = page.with_name(f".{page.stem}.print.html")         # beside the page, so its links to assets still work
+        src.write_text(text.replace("</head>", SINGLE + "</head>", 1), encoding="utf-8")
     cmd = [binary, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars", "--run-all-compositor-stages-before-draw",
-           "--virtual-time-budget=10000", "--no-pdf-header-footer", f"--print-to-pdf={out}", page.resolve().as_uri()]
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+           "--virtual-time-budget=10000", "--no-pdf-header-footer", f"--print-to-pdf={out}", src.resolve().as_uri()]
+    try:
+        subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    finally:
+        if src != page:
+            src.unlink(missing_ok=True)
     return out.exists() and out.stat().st_size > 1000
 
 
@@ -71,7 +99,7 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone.utc).date()
     recent = (today - dt.timedelta(days=RECENT_DAYS)).isoformat()
     days = [p for p in sorted((ROOT / "daily").glob("*/20??-??-??.html")) if p.stem < today.isoformat()]
-    layout = hashlib.sha256(print_style(days[-1].read_text(encoding="utf-8")).encode()).hexdigest()[:16] if days else ""
+    layout = hashlib.sha256((PAGE_MODE + print_style(days[-1].read_text(encoding="utf-8"))).encode()).hexdigest()[:16] if days else ""
     if layout != state.get("_layout"):             # a new print layout: older daily briefs are remade too
         recent = ""
     for page in sorted((ROOT / "monthly").glob("*/20??-??.html")) + sorted((ROOT / "weekly").glob("*/20??-W??.html")) + days:
