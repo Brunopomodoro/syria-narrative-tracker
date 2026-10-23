@@ -326,9 +326,9 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
          updated: str | None = None, kind: str = "article", image: str | None = None, jsonld: dict | None = None,
          noindex: bool = False, csp: str | None = None) -> str:
     w, base = W[lang], site_url(cfg)
-    if path.startswith(FOLLOW_PATHS) and "</article>" in body and not path.endswith("index.html"):
+    if path.startswith(FOLLOW_PATHS) and not path.endswith("index.html"):    # the follow invitation ends every report and story
         i = body.rfind("</article>")
-        body = body[:i] + follow_box(cfg, lang) + body[i:]
+        body = body[:i] + follow_box(cfg, lang) + body[i:] if i >= 0 else body + follow_box(cfg, lang)
     description = snippet(description)
     image = image or ("assets/og-ar.png" if lang == "ar" else "assets/og.png")
     other = "en" if lang == "ar" else "ar"

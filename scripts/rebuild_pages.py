@@ -58,6 +58,12 @@ def main() -> int:
     pages.write_support_pages(cfg)
     pages.write_contact_pages(cfg)
     pages.write_sources_pages(cfg)
+    import experts                                    # the Media and experts pages use the same page frame
+    for e in archive._load(experts.INDEX, []):
+        a = archive._load(experts.PERIODS / f"{e['id']}.json", None)
+        if a:
+            experts.write_pages(cfg, a)
+    experts.write_listing(cfg)
     pages.write_timeline_pages(cfg)
     pages.prerender_index(cfg, latest)
     print(f"{written} story pages, {len(index) or len(pages.load_story_index())} stories in the index, {daily} daily briefs, {len(digests)} digests, {len(reviews)} monthly reports.")
