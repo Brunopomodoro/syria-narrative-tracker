@@ -1,0 +1,36 @@
+name: Deploy newsletter worker
+
+# Puts the newsletter sign-up (worker/newsletter.js) on Cloudflare at www.syrianpulse.org/api/*. Run it by hand once
+# the secrets below exist (GUIDE.md, "Newsletter by email"), and again after changing the worker.
+#   CLOUDFLARE_API_TOKEN   a token with "Edit Cloudflare Workers" for the account and the syrianpulse.org zone
+#   CLOUDFLARE_ACCOUNT_ID  the account id (Cloudflare dashboard, right-hand column of the domain's overview)
+#   BREVO_API_KEY          the Brevo API key (the same secret the newsletter sending uses)
+# The signing secret for confirmation links is made fresh at every deploy (links sent before it stop working).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+
+      - name: Deploy and set the secrets
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$BREVO_API_KEY" ]; then
+            echo "CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID and BREVO_API_KEY must all be set as repository secrets."; exit 1
+          fi
+          sender=$(awk '/^newsletter:/{f=1;next} f&&/^[^ #]/{f=0} f&&/sender_email:/{sub(/^[^:]*: *"?/,""); sub(/".*$/,""); print}' ../config.yaml)
+          npx --yes wrangler@3.114.0 deploy --var "SENDER_EMAIL:$sender"
+          printf '%s' "$BREVO_API_KEY" | npx --yes wrangler@3.114.0 secret put BREVO_API_KEY
+          openssl rand -hex 32 | tr -d '\n' | npx --yes wrangler@3.114.0 secret put NEWSLETTER_SECRET
+          echo "Deployed. Test: open https://www.syrianpulse.org/subscribe/en.html and sign up."

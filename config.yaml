@@ -26,6 +26,19 @@ monthly_review: true
 # The sign-up page of your newsletter service (for example a Buttondown page), once you
 # have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
 newsletter_url: ""
+# The site's own newsletter (GUIDE.md, "Newsletter by email"): a sign-up page (subscribe/en.html, subscribe/ar.html)
+# where readers choose the daily brief, the weekly digest and/or the monthly report, in Arabic, English or both. The
+# list and the sending are with Brevo (free up to 300 emails a day); the sign-up form goes through a small Cloudflare
+# Worker (worker/). Leave enabled: false until Brevo and the Worker are set up; then the sign-up links appear.
+# sender_email: an address on a domain authenticated in Brevo. daily_after_utc: yesterday's brief is sent once the
+# media and experts analysis of the day is in, or from this hour (UTC) at the latest.
+newsletter:
+  enabled: false
+  sender_email: "newsletter@syrianpulse.org"
+  daily: true
+  weekly: true
+  monthly: true
+  daily_after_utc: 5
 # The site's X account. Shown as "Follow on X" in the footer of every page, and listed as the site's profile
 # for search engines. Leave empty to hide it.
 x_profile_url: "https://x.com/SyrianPulseOrg"

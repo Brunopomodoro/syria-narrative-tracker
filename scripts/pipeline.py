@@ -1348,7 +1348,7 @@ def main() -> int:
         "narratives": narratives,
         "themes": [{k: t[k] for k in ("id", "label", "label_ar")} for t in themes],
         "signal_catalog": [{k: s[k] for k in ("id", "label", "label_ar")} for s in signals.CATALOG],
-        "newsletter_url": str(cfg.get("newsletter_url") or "").strip(),
+        "newsletter_url": pages.newsletter_url(cfg, "en"),
         "support_on": pages.support_on(cfg),
         "x_profile": pages.x_profile(cfg),
         "sources": status,

@@ -1,0 +1,12 @@
+# The newsletter sign-up Worker (worker/newsletter.js). Deployed by the "Deploy newsletter worker" workflow, which
+# also sets the secrets and takes SENDER_EMAIL from config.yaml. GUIDE.md, "Newsletter by email".
+name = "syrianpulse-newsletter"
+main = "newsletter.js"
+compatibility_date = "2026-10-01"
+routes = [{ pattern = "www.syrianpulse.org/api/*", zone_name = "syrianpulse.org" }]
+
+[vars]
+SITE = "https://www.syrianpulse.org"
+SENDER_EMAIL = "newsletter@syrianpulse.org"
+SENDER_NAME_EN = "Syria Narrative Tracker"
+SENDER_NAME_AR = "متتبّع السرديات السورية"

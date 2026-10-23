@@ -57,6 +57,7 @@ def main() -> int:
     pages.write_privacy_pages(cfg)
     pages.write_support_pages(cfg)
     pages.write_contact_pages(cfg)
+    pages.write_subscribe_pages(cfg)
     pages.write_sources_pages(cfg)
     import experts                                    # the Media and experts pages use the same page frame
     for e in archive._load(experts.INDEX, []):
