@@ -157,7 +157,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", tagline: "what Syrians are saying online", contact: "Contact",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -308,7 +308,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -841,6 +841,7 @@ const NS = "http://www.w3.org/2000/svg";
 const sv = (tag, attrs = {}, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; };
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
 const fmtDay = (d, o = { day: "numeric", month: "short" }) => fmt(d + "T12:00:00Z", o);   // midday: the date never shifts when shown in Damascus time
+const axisWord = (v) => ({ "-1": L().axisNeg, "0": L().axisNeu, "1": L().axisPos })[String(v)] || "";   // a tone axis in words, not scores
 const signed = (v) => Number(v).toLocaleString(L().locale, { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: "exceptZero" });
 const themeLabel = (id) => { const th = (state.trends.index?.themes || state.latest?.themes || []).find(x => x.id === id); return th ? (rtl() && th.label_ar ? th.label_ar : th.label) : id; };
 const kindLabel = (id) => L().kindsLong[id] || L().kinds[id] || id;
@@ -872,7 +873,7 @@ const hideTip = () => { $("#tip").hidden = true; };
 /* a line chart on a day axis: several series, optional band between the first two, optional event markers */
 function lineChart(box, o) {
   const days = o.days, n = days.length, w = Math.max(240, box.clientWidth || 600), h = o.height || 220;
-  const pad = { l: o.compact ? 26 : 34, r: o.compact ? 30 : 44, t: 12, b: 22 };
+  const pad = { l: o.fmtY ? (o.compact ? 26 : 34) : (o.compact ? 48 : 60), r: o.compact ? 30 : 44, t: 12, b: 22 };   // tone charts: words on the axis
   const min = o.range ? o.range[0] : -1, max = o.range ? o.range[1] : 1;
   const x = (i) => n > 1 ? pad.l + i * (w - pad.l - pad.r) / (n - 1) : (pad.l + w - pad.r) / 2;
   const y = (v) => pad.t + (1 - (v - min) / (max - min)) * (h - pad.t - pad.b);
@@ -881,7 +882,7 @@ function lineChart(box, o) {
   for (const v of ticks) {
     if (v < min || v > max) continue;
     svg.appendChild(sv("line", { x1: pad.l, x2: w - pad.r, y1: y(v), y2: y(v), class: v === 0 && min < 0 ? "zero" : "grid" }));
-    if (!o.compact || v === 0 || v === max || v === min) svg.appendChild(sv("text", { x: pad.l - 6, y: y(v) + 4, "text-anchor": "end", class: "axis" }, o.fmtY ? o.fmtY(v) : signed(v)));
+    if (!o.compact || v === 0 || v === max || v === min) svg.appendChild(sv("text", { x: pad.l - 6, y: y(v) + 4, "text-anchor": "end", class: "axis" }, o.fmtY ? o.fmtY(v) : axisWord(v)));
   }
   const step = Math.max(1, Math.ceil(n / (o.compact ? 3 : 6)));
   for (let i = 0; i < n; i += step) svg.appendChild(sv("text", { x: x(i), y: h - 6, "text-anchor": i === 0 ? "start" : "middle", class: "axis" }, fmtDay(days[i].date)));
@@ -914,7 +915,7 @@ function lineChart(box, o) {
     if (last < 0) continue;
     const c = sv("circle", { cx: x(last), cy: y(s.values[last]), class: "end " + (s.cls || "") });
     svg.appendChild(c);
-    if (s.endLabel !== false) svg.appendChild(sv("text", { x: x(last) + 8, y: y(s.values[last]) + 4, class: "endlbl" }, o.fmtY ? o.fmtY(s.values[last]) : signed(s.values[last])));
+    if (s.endLabel !== false) svg.appendChild(sv("text", { x: x(last) + 8, y: y(s.values[last]) + 4, class: "endlbl" }, o.fmtY ? o.fmtY(s.values[last]) : toneLabel(s.values[last])));
   }
   const xh = sv("line", { x1: 0, x2: 0, y1: pad.t, y2: h - pad.b, class: "xh", visibility: "hidden" });
   svg.appendChild(xh);
@@ -924,7 +925,7 @@ function lineChart(box, o) {
   const focus = (i, cx, cy) => {
     cur = i;
     xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
-    const rows = o.series.filter(s => has(s.values[i])).map(s => ({ cls: s.cls, value: o.fmtY ? o.fmtY(s.values[i]) : signed(s.values[i]), label: s.label }));
+    const rows = o.series.filter(s => has(s.values[i])).map(s => ({ cls: s.cls, value: o.fmtY ? o.fmtY(s.values[i]) : toneLabel(s.values[i]), label: s.label }));
     for (const r of (o.extraRows ? o.extraRows(i) : [])) rows.push(r);
     showTip(cx, cy, fmtDay(days[i].date, { weekday: "short", day: "numeric", month: "short", year: "numeric" }), rows);
   };
@@ -1062,7 +1063,7 @@ function drawTrends() {
   if (!idx || state.view !== "trends") return;
   const days = periodDays();
   if (!days.length) return;
-  const themes = (idx.themes || []).map(x => x.id), pct = (v) => pctText(v), tone = (v) => has(v) ? signed(v) : "";
+  const themes = (idx.themes || []).map(x => x.id), pct = (v) => pctText(v), tone = (v) => has(v) ? toneLabel(v) : "";
   const th = S.theme && themes.includes(S.theme) ? S.theme : "";
   // the chosen theme is named in every section heading, so the focus is visible without scrolling back up
   const focus = (id, title) => { const h = $(`#h-${id}`); if (h) h.textContent = th ? `${title}: ${themeLabel(th)}` : title; };
@@ -1114,7 +1115,7 @@ function drawTrends() {
         m.appendChild(c);
         const strip = el("div", "strip");
         strip.style.gridTemplateColumns = `repeat(${days.length}, minmax(0, 1fr))`;
-        for (const d of days) { const i = el("i"); const v = d.themes[id] ? toneOf(d.themes[id]) : null; if (has(v)) i.style.background = toneColor(v); i.title = `${fmtDay(d.date)}: ${has(v) ? signed(v) : "–"}`; strip.appendChild(i); }
+        for (const d of days) { const i = el("i"); const v = d.themes[id] ? toneOf(d.themes[id]) : null; if (has(v)) i.style.background = toneColor(v); i.title = `${fmtDay(d.date)}: ${has(v) ? toneLabel(v) : "–"}`; strip.appendChild(i); }
         m.appendChild(strip);
         box.appendChild(m);
         lineChart(c, { days, height: th ? 200 : 84, compact: !th, range: [0, max], ticks: [0, max], fmtY: pct, label: themeLabel(id),
@@ -1164,7 +1165,7 @@ function drawTrends() {
       const m = el("div", "m"), h3 = el("h3", "", g.label(s.k)), pts = s.values.filter(has);
       m.appendChild(h3);
       if (pts.length < 2) { m.appendChild(el("p", "sub", t.notEnough)); g.box.appendChild(m); continue; }
-      h3.appendChild(el("span", "", signed(pts[pts.length - 1])));
+      h3.appendChild(el("span", "", toneLabel(pts[pts.length - 1])));
       const c = el("div", "chart");
       m.appendChild(c);
       g.box.appendChild(m);

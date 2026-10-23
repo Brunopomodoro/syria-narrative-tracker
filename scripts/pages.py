@@ -252,6 +252,34 @@ def tone_label(v, lang: str) -> str:
     return w[0] if v <= -0.5 else w[1] if v <= -0.15 else w[2] if v < 0.15 else w[3] if v < 0.5 else w[4]
 
 
+def tone_words(v, lang: str) -> str:
+    """A tone in words, lower case after a label ("People: leaning negative")."""
+    label = tone_label(v, lang)
+    return label[0].lower() + label[1:] if lang == "en" else label
+
+
+TONE_CHANGE = {"en": {"same": "About the same as the previous {p}", "up": "More positive than the previous {p}",
+                      "down": "More negative than the previous {p}", "up_s": "Slightly more positive than the previous {p}",
+                      "down_s": "Slightly more negative than the previous {p}", "share": "of the discussion"},
+               "ar": {"same": "مشابه تقريباً لـ{p} السابق", "up": "أكثر إيجابية من {p} السابق", "down": "أكثر سلبية من {p} السابق",
+                      "up_s": "أكثر إيجابية قليلاً من {p} السابق", "down_s": "أكثر سلبية قليلاً من {p} السابق", "share": "من النقاش"}}
+# Added to every prompt that writes report text: the tone scale is the site's measure, which readers do not know.
+NO_SCORES = """
+
+Tone in the material is measured from -1 (very negative) to +1 (very positive). Never quote these scores, their
+changes or "points" of tone in the text (not "-0.15", not "from -0.20 to -0.15", not "a 33-point gap"): say it in plain
+words ("slightly less negative than last week", "far angrier than the coverage", "mostly neutral"). Counts and shares
+of the discussion (posts, stories, per cent) may be given as numbers."""
+AXIS_WORDS = {"en": {-1: "Negative", 0: "Neutral", 1: "Positive"}, "ar": {-1: "سلبي", 0: "محايد", 1: "إيجابي"}}
+
+
+def tone_change(d: float, lang: str, period: str = "month") -> str:
+    """A change of tone in words: about the same, (slightly) more positive or negative than the period before."""
+    p = period if lang == "en" else {"month": "الشهر", "week": "الأسبوع", "day": "اليوم"}.get(period, period)
+    k = "same" if abs(d) < 0.05 else ("up" if d > 0 else "down") + ("_s" if abs(d) < 0.15 else "")
+    return TONE_CHANGE[lang][k].format(p=p)
+
+
 def tone_color(v) -> str:
     """The same neutral-to-red / neutral-to-green mix as the website."""
     v = max(-1.0, min(1.0, float(v or 0)))
@@ -488,8 +516,8 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
     theme = n.get("theme", "other")
     pub, out = n.get("public_sentiment"), n.get("sentiment")
     first = n.get("first_seen") or (runs[0][0] if runs else when)
-    tone = f"""<div class="tone"><span><i style="background:{tone_color(pub) if pub is not None else 'var(--faint)'}"></i>{w['people']}: <b>{esc(tone_label(pub, lang))}</b>{(' (' + signed(pub, lang) + ')') if pub is not None else ''}</span>
-<span><i class="o"></i>{w['outlets']}: <b>{esc(tone_label(out, lang))}</b> ({signed(out or 0, lang)})</span></div>"""
+    tone = f"""<div class="tone"><span><i style="background:{tone_color(pub) if pub is not None else 'var(--faint)'}"></i>{w['people']}: <b>{esc(tone_label(pub, lang))}</b></span>
+<span><i class="o"></i>{w['outlets']}: <b>{esc(tone_label(out, lang))}</b></span></div>"""
     n_runs = len(runs) or 1
     parts = [f"""<p class="eyebrow"><a href="index.html">{w['listing']}</a> · <a href="../../{'ar/' if lang == 'ar' else ''}#trends">{esc(theme_label(cfg, theme, lang))}</a> · {w['firstSeen']} {esc(fmt_date(first, lang))} · {w['seenIn']} {num(n_runs, lang)} {w['update1'] if n_runs == 1 else w['updates']}</p>""",
              f"<h1>{esc(t(n, 'title', lang))}</h1>", tone, share_bar(cfg, lang, f"stories/{lang}/{key}.html", str(t(n, "title", lang)), tags=hashtags.select(cfg, lang, [theme], [t(n, "title", lang)])),
@@ -523,7 +551,7 @@ def story_body(cfg: dict, n: dict, runs: list, lang: str, when: str) -> str:
         parts.append(f"<h2>{w['where']}</h2><p>{src}{(', ' if src and rest else '') + esc(', '.join(rest))}</p>")
     if runs:
         rows = "".join(f"<tr><td class=\"n\">{esc(fmt_date(r[0], lang, True))}</td><td class=\"n\">{pct(r[1], lang)}</td>"
-                       f"<td class=\"n\">{signed(r[2], lang) if r[2] is not None else '–'}</td><td class=\"n\">{signed(r[3] or 0, lang)}</td></tr>"
+                       f"<td>{esc(tone_label(r[2], lang)) if r[2] is not None else '–'}</td><td>{esc(tone_label(r[3] or 0, lang))}</td></tr>"
                        for r in reversed(runs[-40:]))
         parts.append(f"<h2>{w['overtime']}</h2><div class=\"tw\"><table><thead><tr><th>{w['update']}</th><th>{w['share']}</th><th>{w['people']}</th><th>{w['outlets']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
     parts.append(related_stories(cfg, key, theme, lang))
@@ -731,13 +759,13 @@ def weekly_body(cfg: dict, d: dict, lang: str) -> str:
         mx = max([x.get("share", 0) for x in themes] + [0.05])
         rows = "".join(f"""<tr><td>{esc(theme_label(cfg, x['theme'], lang))}</td><td><div class="bar"><i style="width:{round(x.get('share', 0) / mx * 100)}%"></i></div></td>
 <td class="n">{pct(x.get('share', 0), lang)}{(' <span class="sub">(' + pts(x['change'], lang) + ')</span>') if x.get('change') is not None else ''}</td>
-<td class="n">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td><td class="n">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
+<td>{esc(tone_label(x['public_sentiment'], lang)) if x.get('public_sentiment') is not None else '–'}</td><td>{esc(tone_label(x['outlet_sentiment'], lang)) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
                        for x in themes)
         people.append(f"<h3>{w['themeTable']}</h3><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
     days = s.get("days") or []
     if days:
-        rows = "".join(f"<tr><td class=\"n\">{esc(fmt_date(x['date'], lang))}</td><td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
-                       f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
+        rows = "".join(f"<tr><td class=\"n\">{esc(fmt_date(x['date'], lang))}</td><td>{esc(tone_label(x['public_sentiment'], lang)) if x.get('public_sentiment') is not None else '–'}</td>"
+                       f"<td>{esc(tone_label(x['outlet_sentiment'], lang)) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in days)
         people.append(f"<h3>{w['dailyTone']}</h3><div class=\"tw\"><table><thead><tr><th></th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>")
         people.append(f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p>")
     m = report_media(cfg, d["week"], d["from"], d["to"], lang)
@@ -851,15 +879,15 @@ def monthly_sections(cfg: dict, d: dict, lang: str, base: str = "../../", absolu
         mx = max([x.get("share", 0) for x in themes] + [0.05])
         rows = "".join(f"""<tr><td>{esc(theme_label(cfg, x['theme'], lang))}</td><td><div class="bar"><i style="width:{round(x.get('share', 0) / mx * 100)}%"></i></div></td>
 <td class="n">{pct(x.get('share', 0), lang)}{(' <span class="sub">(' + pts(x['change'], lang) + ')</span>') if x.get('change') is not None else ''}</td>
-<td class="n">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td><td class="n">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
+<td>{esc(tone_label(x['public_sentiment'], lang)) if x.get('public_sentiment') is not None else '–'}</td><td>{esc(tone_label(x['outlet_sentiment'], lang)) if x.get('outlet_sentiment') is not None else '–'}</td><td class="n">{num(int(x.get('stories') or 0), lang)}</td></tr>"""
                        for x in themes)
         change_note = f" <span class=\"sub\">({w['vsLastMonth']})</span>" if any(x.get("change") is not None for x in themes) else ""
         blocks["themes"] = (f"<section><h2>{w['themeTableMonth']}</h2><div class=\"tw\"><table><thead><tr><th>{w['theme']}</th><th></th><th>{w['share']}{change_note}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['stories']}</th></tr></thead><tbody>{rows}</tbody></table></div></section>")
     weeks = s.get("weeks") or []
     if weeks:
         rows = "".join(f"<tr><td class=\"n\">{esc(x['week'])}</td><td class=\"n\">{esc(fmt_date(x['from'], lang))} – {esc(fmt_date(x['to'], lang))}</td>"
-                       f"<td class=\"n\">{signed(x['public_sentiment'], lang) if x.get('public_sentiment') is not None else '–'}</td>"
-                       f"<td class=\"n\">{signed(x['outlet_sentiment'], lang) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in weeks)
+                       f"<td>{esc(tone_label(x['public_sentiment'], lang)) if x.get('public_sentiment') is not None else '–'}</td>"
+                       f"<td>{esc(tone_label(x['outlet_sentiment'], lang)) if x.get('outlet_sentiment') is not None else '–'}</td><td class=\"n\">{num(int(x.get('posts') or 0), lang)}</td></tr>" for x in weeks)
         blocks["weeks"] = (f"<section class=\"print-hide\"><h2>{w['weeklyTone']}</h2><div class=\"tw\"><table><thead><tr><th>{w['weekCol']}</th><th>{w['daysCol']}</th><th>{w['people']}</th><th>{w['outlets']}</th><th>{w['posts']}</th></tr></thead><tbody>{rows}</tbody></table></div>"
                      f"<p class=\"sub\">{esc(w['postsNote'].format(n=num(int(cfg.get('max_posts') or 300), lang), h=num(int(cfg.get('window_hours') or 24), lang)))}</p></section>")
     return blocks if named else list(blocks.values())
@@ -896,7 +924,7 @@ def svg_tone_weeks(weeks: list, lang: str) -> str:
     pts_ = [x for x in weeks if x.get("public_sentiment") is not None or x.get("outlet_sentiment") is not None]
     if len(pts_) < 2:
         return ""
-    width, height, left, right, top, bottom = 640, 230, 46, 96, 12, 36
+    width, height, left, right, top, bottom = 640, 230, 64, 96, 12, 36
     w_ = W[lang]
     n = len(pts_)
     x_of = lambda i: left + i * (width - left - right) / (n - 1)
@@ -905,7 +933,7 @@ def svg_tone_weeks(weeks: list, lang: str) -> str:
     for v in (-1, -0.5, 0, 0.5, 1):
         y = y_of(v)
         out.append(f'<line x1="{left}" x2="{width - right}" y1="{y:.1f}" y2="{y:.1f}" stroke="currentColor" stroke-opacity="{0.35 if v == 0 else 0.12}" stroke-width="1"/>'
-                   f'<text x="{left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="11" fill="currentColor" opacity=".7">{signed(v, lang) if v else "0"}</text>')
+                   f'<text x="{left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="11" fill="currentColor" opacity=".7">{AXIS_WORDS[lang].get(v, "")}</text>')
     for i, x in enumerate(pts_):
         out.append(f'<text x="{x_of(i):.1f}" y="{height - 12}" text-anchor="middle" font-size="11" fill="currentColor" opacity=".8">{esc(x["week"][5:] if lang != "ar" else ar_digits(x["week"][6:]))}</text>')
     for key, style, label in (("public_sentiment", "stroke:currentColor", w_["people"]), ("outlet_sentiment", "stroke:var(--brass)", w_["outlets"])):
@@ -924,11 +952,11 @@ def kpi_tiles(cfg: dict, d: dict, lang: str) -> str:
     def delta(cur, prev):
         if cur is None or prev is None:
             return ""
-        return f'<span class="delta">{signed(cur - prev, lang)} {w["vsPrev"]}</span>'
+        return f'<span class="delta">{esc(tone_change(cur - prev, lang, "month"))}</span>'
     def label(v):
         return esc(tone_label(v, lang)) if v is not None else "–"
-    tiles = [(label(s.get("public_sentiment")), f"{w['peopleTone']} ({signed(s['public_sentiment'], lang)})" if s.get("public_sentiment") is not None else w["peopleTone"], delta(s.get("public_sentiment"), s.get("prev_public_sentiment"))),
-             (label(s.get("outlet_sentiment")), f"{w['outletTone']} ({signed(s['outlet_sentiment'], lang)})" if s.get("outlet_sentiment") is not None else w["outletTone"], delta(s.get("outlet_sentiment"), s.get("prev_outlet_sentiment"))),
+    tiles = [(label(s.get("public_sentiment")), w["peopleTone"], delta(s.get("public_sentiment"), s.get("prev_public_sentiment"))),
+             (label(s.get("outlet_sentiment")), w["outletTone"], delta(s.get("outlet_sentiment"), s.get("prev_outlet_sentiment"))),
              (num(int(s.get("stories_total") or 0), lang), w["storiesN"], ""), (num(int(s.get("posts") or 0), lang), w["postIdx"], ""),
              (num(int(s.get("runs") or 0), lang), w["updatesN"], ""), (num(int(s.get("days") or 0), lang), w["daysN"], "")]
     return '<div class="kpis">' + "".join(f"<div class=\"kpi\"><b>{v}</b><span>{lbl}</span>{dl}</div>" for v, lbl, dl in tiles) + "</div>"
@@ -1114,17 +1142,17 @@ def daily_body(cfg: dict, s: dict, lang: str) -> str:
     date = s["date"]
     title = f"{w['daily']} · {fmt_date(date, lang)}"
     mood = ov.get("public_mood_ar" if lang == "ar" else "public_mood") or ov.get("mood_ar" if lang == "ar" else "mood") or ""
-    tiles = [(esc(tone_label(s["public_sentiment"], lang)), f"{w['peopleTone']}" + (f" ({signed(s['public_sentiment'], lang)})" if s["public_sentiment"] is not None else "")),
-             (esc(tone_label(s["outlet_sentiment"], lang)), f"{w['outletTone']}" + (f" ({signed(s['outlet_sentiment'], lang)})" if s["outlet_sentiment"] is not None else "")),
+    tiles = [(esc(tone_label(s["public_sentiment"], lang)), w["peopleTone"]),
+             (esc(tone_label(s["outlet_sentiment"], lang)), w["outletTone"]),
              (num(len(s["stories"]), lang), w["storiesN"]), (num(int(s["posts"]), lang), w["postIdx"]), (num(int(s["runs"]), lang), w["updatesN"])]
     kpis = '<div class="kpis">' + "".join(f"<div class=\"kpi\"><b>{v}</b><span>{lbl}</span></div>" for v, lbl in tiles) + "</div>"
     bars = svg_theme_bars(cfg, s["themes"], lang)
     items = []
     for e in s["stories"]:
         p = e.get("public_sentiment")
-        tone_txt = f"{w['people']} {signed(p, lang)} · " if p is not None else ""
+        tone_txt = f"{w['people']}: {tone_words(p, lang)} · " if p is not None else ""
         items.append(f'<li><b><a href="../../stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
-                     f'<span class="sub">{esc(theme_label(cfg, e.get("theme", "other"), lang))} · {tone_txt}{w["outlets"]} {signed(e.get("sentiment") or 0, lang)} · {pct(e["max_share"], lang)}</span>'
+                     f'<span class="sub">{esc(theme_label(cfg, e.get("theme", "other"), lang))} · {tone_txt}{w["outlets"]}: {tone_words(e.get("sentiment") or 0, lang)} · {pct(e["max_share"], lang)} {TONE_CHANGE[lang]["share"]}</span>'
                      f'<br>{esc(t(e, "summary", lang))}</li>')
     # one brief, one PDF: the day at a glance, what people said, what the media and experts said, sources and method
     has_pdf = (DAILY / lang / f"{date}.pdf").exists()   # made by report_pdf.py once the day is over, which then redraws this page
@@ -1170,8 +1198,8 @@ def write_daily_listing(cfg: dict) -> None:
         w, other = W[lang], "ar" if lang == "en" else "en"
         items = []
         for d in sorted(days, key=lambda d: d["date"], reverse=True)[:90]:
-            tone = f"{w['people']} {signed(d['public_sentiment'], lang)}" if d.get("public_sentiment") is not None else ""
-            tone += (" · " if tone else "") + (f"{w['outlets']} {signed(d['outlet_sentiment'], lang)}" if d.get("outlet_sentiment") is not None else "")
+            tone = f"{w['people']}: {tone_words(d['public_sentiment'], lang)}" if d.get("public_sentiment") is not None else ""
+            tone += (" · " if tone else "") + (f"{w['outlets']}: {tone_words(d['outlet_sentiment'], lang)}" if d.get("outlet_sentiment") is not None else "")
             pdf = f' · <a href="{esc(d["date"])}.pdf">{w["pdf"]}</a>' if (DAILY / lang / f"{d['date']}.pdf").exists() else ""
             items.append(f"""<li><a href="{esc(d['date'])}.html">{esc(fmt_date(d['date'], lang))}</a><span class="meta">{tone} · {num(int(d.get('stories') or 0), lang)} {w['stories'].lower() if lang == 'en' else w['stories']}{pdf}</span></li>""")
         write(DAILY / lang / "index.html", page(cfg, lang, w["dailies"], w["dailySub"],
