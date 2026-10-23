@@ -53,9 +53,30 @@ def chrome() -> str | None:
 # the page to its height. Past MAX_MM (PDF readers handle pages up to about 5 m) the report falls back to A4 pages.
 PAGE_MODE = "single"
 MAX_MM = 5000
-SINGLE = """<style>@page{size:210mm 297mm;margin:12mm}html,body{width:186mm!important;margin:0!important}</style>
+SINGLE = """<style>@page{size:210mm 297mm;margin:12mm}html,body{width:186mm!important;margin:0!important}
+/* easy on the eye: one column, larger type, clear bands for the numbered parts, a line between stories */
+*{columns:auto!important;column-count:auto!important}
+body{font-size:10.5pt!important;line-height:1.55!important}
+h1{font-size:21pt!important}
+.toc{padding:8pt 12pt!important;margin:10pt 0 4pt!important}.toc ol{font-size:10pt!important;columns:2!important}.toc a{color:#7a5c1e!important;text-decoration:underline!important}
+.part{margin-top:22pt!important}
+.part{position:relative}.part>h2{font-size:14pt!important;background:#f3ecdc;border-inline-start:5pt solid #a07a2c;border-bottom:0!important;padding:6pt 90pt 6pt 10pt!important;margin:0 0 10pt!important}
+[dir=rtl] .part>h2{padding:6pt 10pt 6pt 90pt!important}
+.part>.up{position:absolute;top:9pt;inset-inline-end:10pt;font-size:8.5pt;color:#7a5c1e;text-decoration:none}
+h3{font-size:12pt!important;margin:14pt 0 6pt!important;color:#5a4416}
+p{margin:0 0 7pt!important}
+.stories li,.list li{padding:6pt 0 7pt!important;margin:0!important;border-bottom:.5pt solid #ddd}
+.stories li:last-child,.list li:last-child{border-bottom:0}
+.kpis{margin-bottom:8pt}</style>
 <script>
 addEventListener("load", () => document.fonts.ready.then(() => {
+  const up = document.documentElement.lang === "ar" ? "↑ المحتويات" : "↑ Contents";
+  if (document.querySelector(".toc")) {
+    const toc = document.querySelector(".toc"); toc.id = toc.id || "contents";
+    document.querySelectorAll(".part > h2").forEach(h => {
+      const a = document.createElement("a"); a.className = "up"; a.href = "#" + toc.id; a.textContent = up; h.after(a);   // outside the heading, so the bookmark reads cleanly
+    });
+  }
   const mm = document.documentElement.scrollHeight * 25.4 / 96 + 24 + 8;
   if (mm <= %d) {
     const s = document.createElement("style");
@@ -75,7 +96,8 @@ def render(binary: str, page: pathlib.Path, out: pathlib.Path) -> bool:
         src = page.with_name(f".{page.stem}.print.html")         # beside the page, so its links to assets still work
         src.write_text(text.replace("</head>", SINGLE + "</head>", 1), encoding="utf-8")
     cmd = [binary, "--headless=new", "--disable-gpu", "--no-sandbox", "--hide-scrollbars", "--run-all-compositor-stages-before-draw",
-           "--virtual-time-budget=10000", "--no-pdf-header-footer", f"--print-to-pdf={out}", src.resolve().as_uri()]
+           "--virtual-time-budget=10000", "--no-pdf-header-footer", "--generate-pdf-document-outline",   # bookmarks from the headings
+           f"--print-to-pdf={out}", src.resolve().as_uri()]
     try:
         subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     finally:
