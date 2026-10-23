@@ -784,7 +784,8 @@ def body(cfg: dict, a: dict, area: str, lang: str) -> str:
              f'<p class="eyebrow"><a href="index.html">{w["title"]}</a> · {w["areas"][area]} · {period_label(a, lang)}</p>',
              f'<h1>{P.esc(tr(d, "title", lang))}</h1>',
              f'<p class="sub rmeta">{P.esc(w["stats"].format(n=P.num(d.get("count", 0), lang), o=P.num(d.get("orgs", 0), lang)))}</p>',
-             P.share_bar(cfg, lang, f"experts/{lang}/{page_name(a['id'], area)}", f"{tr(d, 'title', lang)} · {w['title']}: {w['areas'][area]}"),
+             P.share_bar(cfg, lang, f"experts/{lang}/{page_name(a['id'], area)}", f"{tr(d, 'title', lang)} · {w['title']}: {w['areas'][area]}",
+                         pdf=report_pdf(a, lang)),
              f'<p class="lede"><strong>{w["lede"]}:</strong> {linked(tr(d, "lede", lang), a)}</p>',
              f'<h2>{w["findings"]}</h2>' + "".join(f"<p>{linked(x, a)}</p>" for x in tr(d, "findings", lang) or [])]
     for f, label in (("agree", w["agree"]), ("disagree", w["disagree"])):
@@ -810,13 +811,22 @@ def body(cfg: dict, a: dict, area: str, lang: str) -> str:
     return "\n".join(parts)
 
 
+def report_pdf(a: dict, lang: str) -> str | None:
+    """The PDF of the whole report this analysis belongs to (the daily brief, weekly digest or monthly report, which
+    carry the people's and the media's halves together), relative to an experts page; None until it exists."""
+    folder = {"day": "daily", "week": "weekly", "month": "monthly"}.get(a.get("kind"))
+    if folder and (archive.ROOT / folder / lang / f"{a['id']}.pdf").exists():
+        return f"../../{folder}/{lang}/{a['id']}.pdf"
+    return None
+
+
 def day_body(cfg: dict, a: dict, lang: str) -> str:
     w, P, d = WORDS[lang], pages, a["overall"]
     parts = ['<article class="report">',
              f'<p class="eyebrow"><a href="index.html">{w["title"]}</a> · {w["daily"]} · {period_label(a, lang)}</p>',
              f'<h1>{P.esc(tr(d, "title", lang))}</h1>',
              f'<p class="sub rmeta">{P.esc(w["stats"].format(n=P.num(d.get("count", 0), lang), o=P.num(d.get("orgs", 0), lang)))}</p>',
-             P.share_bar(cfg, lang, f"experts/{lang}/{a['id']}.html", f"{tr(d, 'title', lang)} · {w['title']}: {w['daily']}"),
+             P.share_bar(cfg, lang, f"experts/{lang}/{a['id']}.html", f"{tr(d, 'title', lang)} · {w['title']}: {w['daily']}", pdf=report_pdf(a, lang)),
              f'<p class="lede"><strong>{w["lede"]}:</strong> {linked(tr(d, "lede", lang), a)}</p>']
     for area in DOMAINS:
         if tr(d, area, lang):
