@@ -3,238 +3,130 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-10-22T23:24:04Z",
- "checked_at": "2026-10-22T23:24:04Z",
+ "generated_at": "2026-10-23T04:24:20Z",
+ "checked_at": "2026-10-23T04:24:20Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1723,
-  "relevant": 1146,
-  "posts_analyzed": 811,
-  "public_posts": 571,
+  "collected": 1779,
+  "relevant": 1139,
+  "posts_analyzed": 815,
+  "public_posts": 575,
   "outlet_posts": 240,
   "reactions_posts": 0,
   "unique_posts": 800,
   "sources_ok": 48,
   "sources_total": 49,
   "platforms": {
-   "news": 45,
-   "telegram": 195,
-   "bluesky": 178,
-   "youtube": 359,
-   "reddit": 23
+   "news": 46,
+   "telegram": 194,
+   "youtube": 370,
+   "reddit": 21,
+   "bluesky": 169
   },
   "languages": {
-   "ar": 552,
-   "en": 246,
-   "ku": 2
+   "ar": 538,
+   "en": 257,
+   "ku": 5
   }
  },
  "overall": {
   "sentiment": -0.05,
-  "mood": "Watchful",
-  "mood_ar": "متحفز",
-  "public_sentiment": -0.25,
+  "mood": "Tense",
+  "mood_ar": "متوتر",
+  "public_sentiment": -0.35,
   "public_mood": "Anxious",
   "public_mood_ar": "قلق",
-  "brief": "Coverage centered on the Rankous anti-ISIS raid, continuing Israeli incursions and the killing of a disabled man in Daraa, diplomatic flurry (Jordan, UAE, US envoy), and a Daraa drug-smuggling bust. Public reaction mixed anger at Israeli strikes with mockery of government claims about ISIS operations and cynicism about daily hardships like fuel and electricity shortages. Many Arabic commenters expressed religious sentiment and fatalism, while Kurdish and English posts highlighted Kurdish education and north-east grievances separately.",
-  "brief_ar": "تركزت التغطية على عملية رنكوس ضد داعش، واستمرار التوغلات الإسرائيلية ومقتل شاب من ذوي الهمم في درعا، إلى جانب حراك دبلوماسي مكثف (الأردن، الإمارات، المبعوث الأمريكي)، وضبط عملية تهريب مخدرات في درعا. مزج تفاعل الناس بين الغضب من الاعتداءات الإسرائيلية والسخرية من روايات الحكومة حول عمليات داعش والتشكيك في الخدمات اليومية كالوقود والكهرباء، بينما عبّر كثير من المعلقين العرب عن مشاعر دينية واستسلام للقدر، في حين أبرزت المنشورات الكردية والإنجليزية مظالم شمال شرق سوريا والتعليم الكردي بشكل منفصل.",
-  "rest": "Many unassigned posts are religious greetings and prayers, scattered local news (sports, culture, infrastructure projects), personal travel and documentation questions, and unrelated foreign chatter (Turkish traffic videos, F1 commentary, random political tangents) with no clear Syria narrative.",
-  "rest_ar": "تضم المنشورات غير المصنفة غالباً تحيات دينية وأدعية، وأخباراً محلية متفرقة (رياضة، ثقافة، مشاريع بنية تحتية)، وأسئلة شخصية عن السفر والأوراق الثبوتية، وأحاديث أجنبية غير متصلة (فيديوهات مرورية تركية، تعليقات عن الفورمولا ١، واستطرادات سياسية عشوائية) دون رواية سورية واضحة.",
-  "rest_share": 0.678
+  "brief": "Discourse this cycle centers on the Rankous anti-ISIS raid, continuing Israeli incursions and the killing of a disabled man in Daraa, drug-smuggling interdiction in Daraa, Houthi-Saudi tensions, and Syrian-Jordanian diplomacy. Public commenters show frustration with government security capacity, anger at Israeli actions, and sectarian sniping around the Sarout controversy, while official outlets emphasize diplomacy and services restoration. Many public posts are off-topic entertainment, local color, or unrelated international content.",
+  "brief_ar": "تتركز النقاشات في هذه الدورة حول عملية الأمن الداخلي ضد خلية داعش في رنكوس، واستمرار التوغلات الإسرائيلية ومقتل شاب من ذوي الإعاقة في درعا، وضبط عملية تهريب مخدرات في درعا، والتوتر الحوثي السعودي، والدبلوماسية السورية الأردنية. يُظهر المعلقون إحباطاً من قدرة الحكومة الأمنية وغضباً من الأفعال الإسرائيلية وتراشقاً طائفياً حول قضية الساروت، بينما تركز وسائل الإعلام الرسمية على الدبلوماسية واستعادة الخدمات. كثير من المنشورات العامة بعيدة عن الموضوع، ترفيهية أو محلية أو أخبار دولية غير مرتبطة مباشرة.",
+  "rest": "Many unassigned posts are religious greetings and Friday blessings, YouTube comments on unrelated food-tour and street videos in Damascus, Kurdish-language music and cultural comments, Turkish traffic-accident video reactions, and scattered personal remarks with no clear narrative connection.",
+  "rest_ar": "تتوزع المنشورات غير المصنفة بين تحيات دينية ودعوات يوم الجمعة، وتعليقات يوتيوب على فيديوهات جولات طعام وشوارع دمشق غير المرتبطة بالأخبار، وتعليقات موسيقية وثقافية كردية، وتفاعلات على فيديو حادث سير تركي، وملاحظات شخصية متفرقة بلا رابط واضح بقصة محددة.",
+  "rest_share": 0.664
  },
  "narratives": [
-  {
-   "id": "rankous-isis-operation",
-   "key": "2026-10-22-rankous-isis-operation",
-   "theme": "security",
-   "title": "Internal Security kills two officers in Rankous anti-ISIS raid",
-   "title_ar": "مقتل عنصرين من الأمن الداخلي في عملية رنكوس ضد داعش",
-   "summary": "Syrian Internal Security Forces, with General Intelligence, raided an ISIS cell in Rankous, Damascus countryside, on 22 October. Two officers were killed and five wounded; five militants died and several were arrested with weapons and explosive belts seized. Officials framed it as part of an ongoing anti-ISIS campaign.",
-   "summary_ar": "نفذت قوى الأمن الداخلي السوري بالتعاون مع جهاز الاستخبارات العامة، في ٢٢ تشرين الأول، عملية ضد خلية داعش في بلدة رنكوس بريف دمشق، أسفرت عن مقتل عنصرين من الأمن وإصابة خمسة، ومقتل خمسة من الخلية واعتقال آخرين وضبط أسلحة وأحزمة ناسفة. واعتبرت السلطات العملية جزءاً من حملة مستمرة ضد التنظيم.",
-   "detail": "Official and independent outlets (SANA, Al-Ikhbariya, Syria TV, North Press) widely reported the clash, describing it as the latest in a series of operations against ISIS cells near Damascus this month. State media framed it as proof of security forces' resolve, while a funeral for one slain officer was covered sympathetically. Public reaction split sharply: some mourned the officers and prayed for Syria's safety, while many commenters mocked the narrative, calling it theatrical or questioning why ISIS cells persist under the new government, with some accusing authorities of complicity or staging. Kurdish-run outlets covered it factually, noting a separate Qamishli funeral for a security member unrelated to this operation.",
-   "detail_ar": "غطت وسائل الإعلام الرسمية والمستقلة (سانا، الإخبارية السورية، تلفزيون سوريا، نورث برس) الاشتباك على نطاق واسع، واعتبرته امتداداً لسلسلة عمليات ضد خلايا داعش قرب دمشق هذا الشهر. وصورت وسائل الإعلام الرسمية العملية دليلاً على حزم قوى الأمن، كما غطيت مراسم تشييع أحد الشهداء بتعاطف. انقسم تفاعل الجمهور بشكل حاد؛ فبينما ناح البعض الضحايا ودعا بالأمان لسوريا، سخر كثيرون من الرواية ووصفوها بالمسرحية، وتساءلوا عن استمرار وجود خلايا داعش في ظل الحكومة الجديدة، واتهم البعض السلطات بالتواطؤ أو التلفيق. وغطت وسائل الإعلام الكردية الحدث بشكل موضوعي، مشيرة إلى تشييع منفصل في قامشلو لعنصر أمن آخر غير مرتبط بهذه العملية.",
-   "public_reaction": "Reaction split between mourning for the fallen officers and widespread mockery or suspicion that the government staged or exaggerated the operation, with some accusing authorities of harboring extremists.",
-   "public_reaction_ar": "انقسم تفاعل الناس بين الحزن على عناصر الأمن القتلى والسخرية الواسعة أو الشك في أن الحكومة لفّقت العملية أو بالغت فيها، مع اتهام بعضهم السلطات بإيواء متطرفين.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.3,
-   "outlet_tone": {
-    "official": -0.1,
-    "independent": -0.2,
-    "kurdish": -0.1,
-    "regional": -0.2,
-    "aggregator": -0.1
-   },
-   "public_tone": {
-    "ar": -0.35,
-    "en": -0.1
-   },
-   "emotions": [
-    "grief",
-    "suspicion",
-    "mockery"
-   ],
-   "emotions_ar": [
-    "حزن",
-    "شك",
-    "سخرية"
-   ],
-   "framings": [
-    "Official framing as security success",
-    "Public framing as theater or cover-up",
-    "Condolences for fallen officers"
-   ],
-   "framings_ar": [
-    "تأطير رسمي كإنجاز أمني",
-    "تأطير شعبي كمسرحية أو تغطية",
-    "تعازٍ بالعناصر القتلى"
-   ],
-   "flags": [
-    "Repeated near-identical copy across many outlets",
-    "Unverified claims of staging circulating in comments"
-   ],
-   "flags_ar": [
-    "تكرار نص شبه متطابق عبر وسائل إعلام عديدة",
-    "ادعاءات لم يُتحقق منها حول التلفيق تنتشر في التعليقات"
-   ],
-   "volume": 63,
-   "public_volume": 50,
-   "share": 0.078,
-   "engagement": 9456,
-   "platforms": {
-    "telegram": 9,
-    "news": 4,
-    "bluesky": 20,
-    "youtube": 27
-   },
-   "languages": {
-    "ar": 38,
-    "en": 22
-   },
-   "public_languages": {
-    "ar": 31,
-    "en": 16
-   },
-   "kinds": {
-    "regional": 3,
-    "kurdish": 3,
-    "official": 2,
-    "independent": 3,
-    "aggregator": 2
-   },
-   "sources": [
-    "YouTube comments",
-    "Bluesky posts",
-    "North Press Agency (EN)",
-    "Google News - Syria (EN)",
-    "France 24 Arabic - French public broadcaster",
-    "Al-Hadath - Saudi-owned"
-   ],
-   "examples": [
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142060",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Hadath - Saudi-owned",
-     "url": "https://t.me/alhadath/51973",
-     "platform": "telegram"
-    },
-    {
-     "source": "Syria Plus (SY+) - news platform",
-     "url": "https://t.me/sy_platform/40664",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-22T08:56:28Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
   {
    "id": "israel-quneitra-daraa-incursions",
    "key": "2026-09-28-israel-quneitra-daraa-incursions",
    "theme": "israel-south",
    "title": "Israeli forces kill disabled man in Daraa, incursions continue in Quneitra",
-   "title_ar": "إسرائيل تقتل شاباً من ذوي الهمم في درعا واستمرار التوغلات في القنيطرة",
-   "summary": "Israeli forces shot dead a young man with a disability in the village of Jamla, western Daraa, during an overnight raid on 22 October. Israeli troops also demolished an abandoned house in Hamidiya, Quneitra, and conducted patrols, searches and a temporary checkpoint. Syria's foreign ministry condemned the killing and UN deputy envoy Claudio Cordone called it a violation of sovereignty.",
-   "summary_ar": "قتلت القوات الإسرائيلية شاباً من ذوي الهمم في قرية جملة بريف درعا الغربي خلال توغل ليلي في ٢٢ تشرين الأول، كما فجرت منزلاً مهجوراً في الحميدية بريف القنيطرة ونفذت دوريات وتفتيشاً وحاجزاً مؤقتاً. أدانت وزارة الخارجية السورية الحادثة واعتبر نائب المبعوث الأممي كلاوديو كوردوني ذلك انتهاكاً للسيادة.",
-   "detail": "State, independent and international outlets reported the killing extensively, noting the victim had Down syndrome per North Press and was shot and left wounded for hours. Daraa 24 documented a wider pattern of incursions, bulldozing of olive groves, and a temporary checkpoint on the Tarnaja road. Syria's foreign ministry held Israel fully responsible and called for international action; UN officials condemned the killing. Public reaction on English-language platforms was angry, framing it as part of systemic Israeli expansionism and occupation, while Arabic commenters expressed grief and prayers; some skeptical comments questioned why Syria's government does not respond militarily. Kurdish-run outlets covered it factually alongside other Quneitra incidents, including gunfire and fortification work.",
-   "detail_ar": "غطت وسائل الإعلام الرسمية والمستقلة والدولية الحادثة بشكل واسع، مشيرة إلى أن الضحية مصاب بمتلازمة داون بحسب نورث برس وأنه أُطلق عليه النار وتُرك جريحاً لساعات. ووثقت درعا ٢٤ نمطاً أوسع من التوغلات وتجريف بساتين الزيتون وإقامة حاجز مؤقت على طريق طرنجة. حمّلت وزارة الخارجية السورية إسرائيل المسؤولية الكاملة ودعت لتحرك دولي، فيما أدان مسؤولون أمميون الحادثة. جاء تفاعل الجمهور على المنصات الناطقة بالإنجليزية غاضباً، واعتبره جزءاً من توسع واحتلال إسرائيلي ممنهج، بينما عبّر المعلقون العرب عن الحزن والدعاء، وتساءل بعضهم بشكل متشكك عن سبب عدم رد الحكومة السورية عسكرياً. غطت وسائل الإعلام الكردية الحادثة بشكل موضوعي إلى جانب حوادث أخرى في القنيطرة شملت إطلاق نار وأعمال تحصين.",
-   "public_reaction": "Widespread anger and grief across Arabic and English audiences, with international solidarity messages; some commenters criticized Syrian authorities for perceived passivity toward Israeli incursions.",
-   "public_reaction_ar": "غضب وحزن واسعان بين الجمهورين العربي والإنجليزي مع رسائل تضامن دولية، بينما انتقد بعض المعلقين السلطات السورية لما وصفوه بالسلبية تجاه التوغلات الإسرائيلية.",
-   "sentiment": -0.5,
+   "title_ar": "قوات إسرائيلية تقتل شاباً من ذوي الإعاقة في درعا واستمرار التوغلات في القنيطرة",
+   "summary": "Israeli forces killed Moaz Salama al-Baeer, a man with disabilities, during a nighttime incursion into Jamla village, Daraa, around October 21-22. Israeli troops also demolished an abandoned house in Hamidiyeh, Quneitra, razed olive groves near Sayda, and set up checkpoints. Syria's Foreign Ministry and UN officials condemned the killing; protests were called in Daraa.",
+   "summary_ar": "قتلت القوات الإسرائيلية معاذ سلامة البعير، وهو من ذوي الاحتياجات الخاصة، خلال توغل ليلي في قرية جملة بدرعا حوالي ٢١-٢٢ تشرين الأول. كما فجرت القوات الإسرائيلية منزلاً مهجوراً في الحميدية بالقنيطرة، وجرّفت بساتين زيتون قرب صيدا، ونصبت حواجز مؤقتة. أدانت وزارة الخارجية السورية ومسؤولون أمميون الحادثة، ودُعي لوقفات احتجاجية في درعا.",
+   "detail": "Daraa 24 and other independent outlets detailed a 24-hour escalation: killing in Jamla, home demolition in Hamidiyeh, a temporary checkpoint on the Tarnaja road, bulldozing of olive trees near Sayda, and shelling near Abidin. The UN deputy special envoy Claudio Cordone condemned the killing and demanded Israel respect Syrian sovereignty; Syria's Foreign Ministry held Israel fully responsible. Kurdish outlets (North Press) also reported the Down syndrome detail, noting the victim was left wounded for hours before dying. English aggregators (Times of Israel, MEE) covered it internationally, with Israeli army claiming he posed a threat. Activists called for a protest in Daraa. Public anger is intense, with some blaming the government for failing to defend sovereignty, others mourning the victim, and some mocking state rhetoric as empty.",
+   "detail_ar": "فصّلت درعا ٢٤ ووسائل إعلام مستقلة أخرى تصعيداً استمر ٢٤ ساعة: القتل في جملة، وتفجير منزل في الحميدية، ونصب حاجز مؤقت على طريق طرنجة، وتجريف أشجار زيتون قرب صيدا، وقصف قرب عابدين. أدان نائب المبعوث الأممي كلاوديو كوردوني الحادثة وطالب إسرائيل باحترام السيادة السورية، وحمّلت وزارة الخارجية السورية إسرائيل المسؤولية الكاملة. نقلت وسائل إعلام في شمال شرق سوريا (نورث برس) تفاصيل إضافية عن إصابة الضحية بمتلازمة داون وتركه جريحاً لساعات قبل وفاته. تناولت مجاميع إعلامية إنجليزية (تايمز أوف إسرائيل، ميدل إيست آي) الخبر دولياً، ونقلت رواية الجيش الإسرائيلي بأنه شكّل تهديداً. دعا ناشطون لوقفة احتجاجية في درعا. الغضب الشعبي شديد، إذ يلوم البعض الحكومة لفشلها في الدفاع عن السيادة، بينما ينعى آخرون الضحية ويسخر بعضهم من الخطاب الرسمي باعتباره فارغاً.",
+   "public_reaction": "Public reaction is strongly angry and grieving, with many mourning the victim and mocking Syrian government claims of sovereignty as hollow given the lack of military response; some also link the incident to broader distrust of the transitional authorities.",
+   "public_reaction_ar": "تفاعل الجمهور غاضب وحزين للغاية، إذ ينعى كثيرون الضحية ويسخرون من ادعاءات الحكومة السورية بشأن السيادة باعتبارها خطاباً جوفاء في ظل غياب أي رد عسكري، كما يربط البعض الحادثة بعدم ثقة أوسع بالسلطة الانتقالية.",
+   "sentiment": -0.4,
    "public_sentiment": -0.55,
    "outlet_tone": {
-    "official": -0.5,
-    "independent": -0.5,
-    "kurdish": -0.45,
-    "regional": -0.4,
-    "aggregator": -0.4
+    "official": -0.3,
+    "independent": -0.4,
+    "kurdish": -0.4,
+    "regional": -0.35,
+    "aggregator": -0.3
    },
    "public_tone": {
-    "ar": -0.5,
-    "en": -0.6
+    "ar": -0.6,
+    "en": -0.4
    },
    "emotions": [
     "anger",
     "grief",
-    "outrage"
+    "contempt",
+    "helplessness"
    ],
    "emotions_ar": [
     "غضب",
     "حزن",
-    "سخط"
+    "احتقار",
+    "عجز"
    ],
    "framings": [
-    "Official framing as violation of sovereignty",
-    "International framing as occupation expansionism",
-    "Public frustration at lack of military response"
+    "Official condemnation of sovereignty violation",
+    "Public mockery of lack of military response",
+    "International framing of disabled civilian killing"
    ],
    "framings_ar": [
-    "تأطير رسمي كانتهاك للسيادة",
-    "تأطير دولي كتوسع احتلالي",
-    "إحباط شعبي من غياب الرد العسكري"
+    "إدانة رسمية لانتهاك السيادة",
+    "سخرية شعبية من غياب الرد العسكري",
+    "تأطير دولي لمقتل مدني من ذوي الإعاقة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 62,
-   "public_volume": 30,
-   "share": 0.076,
-   "engagement": 41325,
+   "volume": 101,
+   "public_volume": 65,
+   "share": 0.124,
+   "engagement": 46143,
    "platforms": {
+    "news": 9,
     "telegram": 27,
-    "news": 5,
-    "bluesky": 15,
-    "youtube": 15
+    "youtube": 58,
+    "bluesky": 7
    },
    "languages": {
-    "ar": 43,
-    "en": 19
+    "ar": 86,
+    "en": 15
    },
    "public_languages": {
-    "en": 12,
-    "ar": 18
+    "ar": 60,
+    "en": 5
    },
    "kinds": {
-    "independent": 21,
+    "independent": 22,
+    "aggregator": 6,
     "regional": 2,
-    "kurdish": 4,
-    "aggregator": 3,
-    "official": 2
+    "kurdish": 5,
+    "official": 1
    },
    "sources": [
-    "Bluesky posts",
     "YouTube comments",
     "Daraa 24 - local, Daraa",
-    "Sawt al-Asima - local, Damascus",
+    "Bluesky posts",
     "Google News - Syria (EN)",
-    "Syria TV - opposition-origin broadcaster"
+    "Sawt al-Asima - local, Damascus",
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
@@ -261,170 +153,109 @@
    }
   },
   {
-   "id": "barrack-sharaa-meeting",
-   "key": "2026-10-21-barrack-sharaa-meeting",
-   "theme": "international",
-   "title": "Syria-Jordan talks in Aqaba and US envoy meeting in Damascus",
-   "title_ar": "محادثات سورية أردنية في العقبة ولقاء المبعوث الأمريكي في دمشق",
-   "summary": "Syrian Foreign Minister Asaad al-Shaibani met Jordan's King Abdullah II and FM Ayman Safadi in Aqaba on 22 October, discussing the Supreme Coordination Council session set for 8-9 November in Damascus. Separately, US envoy Tom Barrack met President al-Sharaa in Damascus. Both sides emphasized cooperation on energy, water, transport and food security while condemning Israeli attacks.",
-   "summary_ar": "التقى وزير الخارجية أسعد الشيباني الملك عبد الله الثاني ونظيره الأردني أيمن الصفدي في العقبة يوم ٢٢ تشرين الأول، لبحث التحضير لاجتماع مجلس التنسيق الأعلى المقرر في دمشق يومي ٨ و٩ تشرين الثاني. وفي سياق منفصل التقى المبعوث الأمريكي توم باراك الرئيس الشرع في دمشق. وأكد الطرفان على التعاون في الطاقة والمياه والنقل والأمن الغذائي مع إدانة الاعتداءات الإسرائيلية.",
-   "detail": "Official statements (SANA, Anadolu, Al-Watan, North Press) detailed a joint Syrian-Jordanian statement affirming strategic partnership plans and condemning Israeli incursions. Google News aggregators also noted Shaibani's meeting with King Abdullah reaffirming the Suwayda roadmap. Levant24 separately reported Barrack's Damascus meeting with Sharaa amid regional tensions, linking it to broader US-brokered trilateral efforts involving Jordan. Coverage overall is largely official and diplomatic, with little critical public commentary; one post noted Turkish officials' skepticism that current stability is only temporary pending formal legal guarantees.",
-   "detail_ar": "فصّلت بيانات رسمية (سانا، الأناضول، الوطن، نورث برس) بياناً سورياً أردنياً مشتركاً يؤكد خطط الشراكة الاستراتيجية ويدين التوغلات الإسرائيلية. كما أشارت مواقع تجميع الأخبار إلى لقاء الشيباني بالملك عبد الله وتأكيده خارطة طريق السويداء. وتناول ليفانت٢٤ بشكل منفصل لقاء باراك بالرئيس الشرع في دمشق وسط التوترات الإقليمية، رابطاً ذلك بجهود ثلاثية أمريكية أردنية أوسع. اتسمت التغطية عموماً بطابع رسمي ودبلوماسي مع قلة التعليقات الشعبية النقدية، باستثناء منشور أشار إلى تشكك مسؤول تركي في أن الاستقرار الحالي مؤقت ريثما تُضمن ضمانات قانونية رسمية.",
-   "public_reaction": "Public reaction was muted and mostly limited to repost of diplomatic statements, with occasional skepticism about the durability of regional agreements.",
-   "public_reaction_ar": "كان التفاعل الشعبي محدوداً واقتصر غالباً على إعادة نشر البيانات الدبلوماسية، مع تشكك عرضي في استدامة الاتفاقات الإقليمية.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.05,
+   "id": "rankous-isis-operation",
+   "key": "2026-10-22-rankous-isis-operation",
+   "theme": "security",
+   "title": "Internal Security kills two officers in Rankous anti-ISIS raid",
+   "title_ar": "مقتل عنصرين من الأمن الداخلي في عملية رنكوس ضد داعش",
+   "summary": "Syrian Internal Security Forces, with General Intelligence, raided an ISIS-linked cell in Rankous, west of Damascus, on October 22. Two security personnel were killed and five wounded; five alleged militants died and three were arrested, with weapons and explosive belts seized. Officials framed it as part of an ongoing anti-ISIS campaign; a funeral for a slain officer was held.",
+   "summary_ar": "نفذت قوى الأمن الداخلي بالتعاون مع جهاز الاستخبارات العامة عملية ضد خلية موالية لتنظيم داعش في بلدة رنكوس غربي دمشق يوم ٢٢ تشرين الأول، أسفرت عن مقتل عنصرين من الأمن وإصابة خمسة، ومقتل خمسة من عناصر الخلية واعتقال ثلاثة، مع ضبط أسلحة وأحزمة ناسفة. اعتبرت السلطات العملية جزءاً من حملة مستمرة ضد داعش، وشُيّع أحد الشهداء.",
+   "detail": "State and independent outlets widely reported the clash, citing the Interior Ministry's account that the cell refused to surrender and opened fire first. Coverage largely converged on casualty figures (two security dead, five wounded; five militants killed, three arrested). Kurdish outlets (North Press, ANHA) carried near-identical wire reports. Public reaction is sharply divided: many commenters mock the government's security performance, question whether this was truly ISIS or a local/factional dispute (some citing rumored tension between factions), and some praise the forces as martyrs while others call them illegitimate. A handful voice sectarian claims that ISIS is an Iranian proxy. No major shift from previous snapshot except funeral coverage and competing rumors about the clash's real cause.",
+   "detail_ar": "تناولت وسائل الإعلام الرسمية والمستقلة الاشتباك على نطاق واسع، نقلاً عن رواية وزارة الداخلية بأن عناصر الخلية رفضوا تسليم أنفسهم وأطلقوا النار أولاً. تقاربت التغطية في حصيلة الضحايا (عنصران من الأمن قتلا و٥ جرحى، و٥ من المسلحين قتلوا و٣ اعتُقلوا). نقلت وسائل الإعلام في شمال شرق سوريا (نورث برس، هاوار) تقارير شبه متطابقة. ينقسم تفاعل الجمهور بشدة؛ إذ يسخر كثيرون من أداء الحكومة الأمني، ويشكك البعض في كون الحادثة فعلاً تخص داعش أم خلافاً محلياً أو فصائلياً (مع إشارات إلى خلاف مزعوم بين فصائل)، بينما يمتدح آخرون العناصر كشهداء ويصفهم غيرهم بعدم الشرعية. كما يردد بعضهم ادعاءات طائفية بأن داعش أداة إيرانية. لا تغيير جوهري عن التحديث السابق سوى تغطية التشييع والشائعات المتنافسة حول سبب الاشتباك الحقيقي.",
+   "public_reaction": "Public comments are divided between mockery of the authorities' security competence, sectarian accusations linking ISIS to Iran, doubts that this was a genuine ISIS cell versus an internal dispute, and some supportive prayers for the fallen officers.",
+   "public_reaction_ar": "تنقسم تعليقات الجمهور بين السخرية من كفاءة السلطات الأمنية، واتهامات طائفية تربط داعش بإيران، وشكوك في كون الحادثة تخص خلية داعشية حقيقية أم خلافاً داخلياً، وبعض الدعوات المتعاطفة مع العناصر القتلى.",
+   "sentiment": -0.2,
+   "public_sentiment": -0.3,
    "outlet_tone": {
-    "official": 0.4,
-    "independent": 0.3,
-    "kurdish": 0.3,
-    "regional": 0.3,
-    "aggregator": 0.2
+    "independent": -0.15,
+    "kurdish": -0.1,
+    "regional": -0.1,
+    "aggregator": -0.1
    },
    "public_tone": {
-    "ar": 0.1,
-    "en": 0.0
-   },
-   "emotions": [
-    "hope",
-    "caution"
-   ],
-   "emotions_ar": [
-    "أمل",
-    "حذر"
-   ],
-   "framings": [
-    "Official framing as strategic partnership progress",
-    "Skeptical framing of stability as temporary"
-   ],
-   "framings_ar": [
-    "تأطير رسمي كتقدم في الشراكة الاستراتيجية",
-    "تأطير متشكك للاستقرار كأمر مؤقت"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 32,
-   "public_volume": 7,
-   "share": 0.039,
-   "engagement": 16602,
-   "platforms": {
-    "news": 5,
-    "telegram": 20,
-    "bluesky": 7
-   },
-   "languages": {
-    "ar": 20,
-    "en": 12
-   },
-   "public_languages": {
-    "en": 5,
-    "ar": 2
-   },
-   "kinds": {
-    "official": 5,
-    "regional": 1,
-    "aggregator": 4,
-    "independent": 11,
-    "kurdish": 4
-   },
-   "sources": [
-    "Bluesky posts",
-    "Google News - Syria (AR)",
-    "Levant24 - Syria news (EN)",
-    "SANA - state news agency (EN)",
-    "Syria TV - opposition-origin broadcaster",
-    "North Press Agency (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/96802",
-     "platform": "telegram"
-    },
-    {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/188700",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/237048",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-21T14:51:54Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "israeli-jets-syria-iraq-overflight",
-   "key": "2026-10-22-israeli-jets-syria-iraq-overflight",
-   "theme": "israel-south",
-   "title": "Israeli fighter jets cross Syrian and Iraqi airspace toward Iran",
-   "title_ar": "مقاتلات إسرائيلية تعبر أجواء سوريا والعراق في مهمة قرب إيران",
-   "summary": "Dozens of Israeli fighter jets reportedly flew low over western rural Damascus and crossed Syrian and Iraqi airspace on a mission near Iran around 19-22 October. Social media users mocked the lack of Syrian or Iraqi air defense response, with heated debate over sovereignty and regional alliances.",
-   "summary_ar": "حلقت عشرات المقاتلات الإسرائيلية على علو منخفض فوق ريف دمشق الغربي وعبرت أجواء سوريا والعراق في مهمة قرب إيران بين ١٩ و٢٢ تشرين الأول. سخر مستخدمو وسائل التواصل من غياب رد دفاعي جوي سوري أو عراقي، وسط جدل حاد حول السيادة والتحالفات الإقليمية.",
-   "detail": "Multiple YouTube videos captured low-flying jets over Damascus countryside, drawing a flood of comments ranging from prayers for Syria's safety to bitter mockery about lost sovereignty and weakened air defenses since the fall of the former regime. Some commenters framed the flights as proof Syria and Iraq have become a corridor for Israeli operations against Iran, while others joked about the absurdity of complaints given the lack of capability to respond. A few expressed hope for eventual confrontation, and others criticized Gulf states' perceived complicity with Western and Israeli interests. No official outlet statement specifically addressed these overflights in the batch.",
-   "detail_ar": "رصدت عدة مقاطع يوتيوب طيراناً حربياً إسرائيلياً يحلق بعلو منخفض فوق ريف دمشق، ما أثار سيلاً من التعليقات تراوحت بين الدعاء لسلامة سوريا والسخرية المريرة من فقدان السيادة وضعف الدفاع الجوي منذ سقوط النظام السابق. واعتبر بعض المعلقين أن هذا التحليق دليل على تحول سوريا والعراق إلى ممر لعمليات إسرائيلية ضد إيران، بينما سخر آخرون من عبثية الشكوى في ظل غياب القدرة على الرد. وعبّر قلة عن أمل بمواجهة مقبلة، بينما انتقد آخرون ما وصفوه بتواطؤ دول خليجية مع المصالح الغربية والإسرائيلية. لم تصدر أي وسيلة إعلام رسمية تعليقاً محدداً على هذا التحليق ضمن هذه الدفعة.",
-   "public_reaction": "Strong mix of bitter mockery, resignation and anger over perceived loss of sovereignty, alongside some hopeful or defiant comments about future resistance.",
-   "public_reaction_ar": "مزيج قوي من السخرية المريرة والاستسلام والغضب من فقدان السيادة المتصور، إلى جانب تعليقات متفائلة أو متحدية حول مقاومة مستقبلية.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.4,
-   "outlet_tone": {},
-   "public_tone": {
-    "ar": -0.4,
+    "ar": -0.35,
     "en": -0.1
    },
    "emotions": [
+    "anger",
     "mockery",
-    "humiliation",
-    "anger"
+    "grief",
+    "doubt"
    ],
    "emotions_ar": [
+    "غضب",
     "سخرية",
-    "إذلال",
-    "غضب"
+    "حزن",
+    "شك"
    ],
    "framings": [
-    "Public framing as loss of sovereignty",
-    "Mocking framing of weak state capacity"
+    "Official framing as counter-terrorism success",
+    "Public skepticism about true cause of clash",
+    "Sectarian framing of ISIS origins"
    ],
    "framings_ar": [
-    "تأطير شعبي كفقدان للسيادة",
-    "تأطير ساخر لضعف قدرة الدولة"
+    "تأطير رسمي كنجاح في مكافحة الإرهاب",
+    "شكوك شعبية حول السبب الحقيقي للاشتباك",
+    "تأطير طائفي لأصل تنظيم داعش"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 26,
-   "public_volume": 26,
-   "share": 0.032,
-   "engagement": 39,
+   "flags": [
+    "Unverified claims about internal factional dispute disguised as ISIS operation",
+    "Copy-paste wire coverage across outlets"
+   ],
+   "flags_ar": [
+    "ادعاءات لم يتحقق منها حول خلاف فصائلي داخلي متنكر كعملية ضد داعش",
+    "تغطية منسوخة متطابقة عبر عدة وسائل إعلام"
+   ],
+   "volume": 66,
+   "public_volume": 53,
+   "share": 0.081,
+   "engagement": 12632,
    "platforms": {
-    "youtube": 26
+    "news": 5,
+    "telegram": 8,
+    "youtube": 26,
+    "bluesky": 24
    },
    "languages": {
-    "ar": 25,
-    "en": 1
+    "ar": 40,
+    "en": 23
    },
    "public_languages": {
-    "ar": 25,
-    "en": 1
+    "ar": 32,
+    "en": 18
    },
-   "kinds": {},
+   "kinds": {
+    "aggregator": 4,
+    "regional": 2,
+    "kurdish": 3,
+    "independent": 4
+   },
    "sources": [
-    "YouTube comments"
+    "YouTube comments",
+    "Bluesky posts",
+    "Google News - Syria (AR)",
+    "North Press Agency (EN)",
+    "Google News - Syria (EN)",
+    "Halab Today TV - opposition-origin, Aleppo"
    ],
    "examples": [
     {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=8nugBnPSAdI",
-     "platform": "youtube"
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142060",
+     "platform": "telegram"
+    },
+    {
+     "source": "Syria Plus (SY+) - news platform",
+     "url": "https://t.me/sy_platform/40664",
+     "platform": "telegram"
+    },
+    {
+     "source": "France 24 Arabic - French public broadcaster",
+     "url": "https://t.me/france24_ar/22302",
+     "platform": "telegram"
     }
    ],
-   "first_seen": "2026-10-22T23:24:04Z",
+   "first_seen": "2026-10-22T08:56:28Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -437,75 +268,78 @@
    "theme": "international",
    "title": "Houthi attack on Saudi King Fahd Airport draws Syrian condemnation",
    "title_ar": "هجوم حوثي على مطار الملك فهد يستدعي إدانة سورية",
-   "summary": "A Houthi attack on Saudi Arabia's King Fahd International Airport in Dammam killed one or two people and injured several others on 22 October. Syria's foreign ministry strongly condemned the attack and expressed solidarity with Riyadh. The Saudi-led coalition also reported intercepting multiple drones and missiles targeting Najran, Riyadh and Medina.",
-   "summary_ar": "أسفر هجوم حوثي على مطار الملك فهد الدولي في الدمام عن مقتل شخص أو شخصين وإصابة عدة آخرين في ٢٢ تشرين الأول. أدانت وزارة الخارجية السورية الهجوم بشدة وأعربت عن تضامنها مع الرياض، فيما أعلن التحالف بقيادة السعودية اعتراض عدة طائرات مسيّرة وصواريخ استهدفت نجران والرياض والمدينة المنورة.",
-   "detail": "Official SANA statements and multiple regional outlets (Anadolu, Asharq, Al-Hadath) reported both the airport attack and the coalition's interception claims across several Saudi cities. Syria's condemnation emphasized solidarity with Saudi Arabia and rejection of attacks on civilian infrastructure. The coalition also denied Houthi claims of threats to civilian and tribal gatherings in Yemen, calling them disinformation. Public reaction was limited mostly to aggregator-style reposting of breaking updates; little direct Syrian public commentary appeared beyond official-aligned channels.",
-   "detail_ar": "نقلت بيانات سانا الرسمية ووسائل إعلام إقليمية عدة (الأناضول، الشرق، الحدث) خبر الهجوم على المطار إلى جانب ادعاءات التحالف باعتراض عدة طائرات وصواريخ استهدفت مدناً سعودية. شددت إدانة سوريا على التضامن مع السعودية ورفض استهداف المنشآت المدنية. كما نفى التحالف ادعاءات الحوثيين بتهديد تجمعات مدنية وقبلية في اليمن، واصفاً إياها بالتضليل. اقتصر تفاعل الجمهور غالباً على إعادة نشر التحديثات العاجلة دون تعليقات سورية مباشرة واسعة خارج القنوات المقربة من الرسمية.",
-   "public_reaction": "Minimal direct public commentary; mostly repost of breaking-news updates with little emotional engagement from Syrian audiences.",
-   "public_reaction_ar": "تفاعل جماهيري محدود ومباشر؛ اقتصر غالباً على إعادة نشر التحديثات العاجلة دون انخراط عاطفي يُذكر من الجمهور السوري.",
-   "sentiment": -0.3,
+   "summary": "A Houthi attack on Saudi Arabia's King Fahd International Airport in Dammam killed at least one person and wounded others on October 22. Syria's Foreign Ministry strongly condemned the strike and voiced solidarity with Riyadh, as the Saudi-led coalition reported intercepting multiple ballistic missiles and drones targeting Riyadh, Najran and other areas over the following day.",
+   "summary_ar": "أسفر هجوم حوثي استهدف مطار الملك فهد الدولي في الدمام يوم ٢٢ تشرين الأول عن مقتل شخص على الأقل وإصابة آخرين. أدانت وزارة الخارجية السورية الهجوم بشدة وأعربت عن تضامنها مع الرياض، في وقت أعلن فيه التحالف بقيادة السعودية اعتراض عدة صواريخ باليستية وطائرات مسيّرة استهدفت الرياض ونجران ومناطق أخرى خلال اليوم التالي.",
+   "detail": "Saudi-owned and Turkish regional outlets (Asharq, Anadolu, TRT) extensively covered coalition statements on intercepted drones and missiles, while the coalition denied Houthi claims of threats against Saudi tribal and civilian gatherings. Syria's state media (SANA, Al-Ikhbariya) and independent outlets (Shaam, Halab Today) prominently carried the Foreign Ministry's condemnation and solidarity message, framing it as part of Syria's broader diplomatic realignment with Gulf states. Public reaction is limited and largely consists of reposted news items with little independent commentary; some commenters pray for an end to the Yemen war while others dismiss Houthi media claims as lies.",
+   "detail_ar": "غطت وسائل الإعلام السعودية والإقليمية التركية (الشرق، الأناضول، TRT) بشكل موسع بيانات التحالف حول اعتراض الطائرات المسيّرة والصواريخ، بينما نفى التحالف ادعاءات الحوثيين بتهديد تجمعات قبلية ومدنية سعودية. نقلت وسائل الإعلام الرسمية السورية (سانا، الإخبارية) والمستقلة (شام، حلب اليوم) على نطاق واسع إدانة وزارة الخارجية وتضامنها، في إطار إعادة تموضع سوريا الدبلوماسي مع دول الخليج. التفاعل الشعبي محدود ويتكون غالباً من إعادة نشر الأخبار دون تعليق مستقل يذكر؛ يدعو بعض المعلقين لإنهاء حرب اليمن بينما يرفض آخرون تصريحات الإعلام الحوثي باعتبارها أكاذيب.",
+   "public_reaction": "Limited and mostly consists of repost of news with occasional prayers for peace in Yemen or dismissal of Houthi claims as propaganda.",
+   "public_reaction_ar": "محدود ويتكون غالباً من إعادة نشر الأخبار مع بعض الدعوات لإحلال السلام في اليمن أو رفض تصريحات الحوثيين باعتبارها دعاية.",
+   "sentiment": -0.1,
    "public_sentiment": -0.1,
    "outlet_tone": {
-    "official": -0.3,
-    "independent": -0.25,
-    "kurdish": -0.1,
-    "regional": -0.2
+    "official": -0.15,
+    "independent": -0.1,
+    "kurdish": -0.05,
+    "regional": -0.1
    },
    "public_tone": {
     "ar": -0.1
    },
    "emotions": [
     "condemnation",
-    "solidarity"
+    "solidarity",
+    "weary"
    ],
    "emotions_ar": [
     "إدانة",
-    "تضامن"
+    "تضامن",
+    "تعب"
    ],
    "framings": [
-    "Solidarity with Saudi Arabia",
-    "Coalition denial of Houthi disinformation claims"
+    "Official condemnation and Gulf solidarity framing",
+    "Coalition denial of Houthi claims as propaganda"
    ],
    "framings_ar": [
-    "التضامن مع السعودية",
-    "نفي التحالف لادعاءات تضليل حوثية"
+    "تأطير رسمي للإدانة والتضامن الخليجي",
+    "نفي التحالف لادعاءات الحوثيين كدعاية"
    ],
    "flags": [
-    "Coordinated near-identical statements across state and regional outlets"
+    "Repeated near-identical coalition statements across multiple outlets"
    ],
    "flags_ar": [
-    "رسائل منسّقة شبه متطابقة عبر الوسائل الرسمية والإقليمية"
+    "بيانات متطابقة تقريباً للتحالف عبر عدة وسائل إعلام"
    ],
-   "volume": 24,
+   "volume": 28,
    "public_volume": 9,
-   "share": 0.03,
-   "engagement": 5058,
+   "share": 0.034,
+   "engagement": 10174,
    "platforms": {
-    "news": 3,
-    "telegram": 12,
-    "bluesky": 8,
-    "youtube": 1
+    "telegram": 15,
+    "news": 4,
+    "bluesky": 9
    },
    "languages": {
-    "ar": 22,
-    "en": 2
+    "ar": 25,
+    "en": 3
    },
    "public_languages": {
-    "ar": 9
+    "ar": 8,
+    "en": 1
    },
    "kinds": {
-    "independent": 5,
-    "regional": 5,
+    "regional": 4,
     "kurdish": 2,
-    "official": 3
+    "official": 7,
+    "independent": 5,
+    "aggregator": 1
    },
    "sources": [
     "Bluesky posts",
+    "Al-Ikhbariya Syria - state TV",
     "Asharq News - Saudi-owned",
-    "Syria TV - opposition-origin",
-    "Anadolu Agency - Turkish state news agency (AR)",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
-    "SANA website - state news agency (AR)"
+    "SANA website - state news agency (AR)",
+    "Shaam News Network - opposition-origin",
+    "ANHA (Hawar) - north-east administration news agency (AR)"
    ],
    "examples": [
     {
@@ -532,85 +366,192 @@
    }
   },
   {
+   "id": "barrack-sharaa-meeting",
+   "key": "2026-10-21-barrack-sharaa-meeting",
+   "theme": "international",
+   "title": "Syria-Jordan talks in Aqaba and US envoy meeting in Damascus",
+   "title_ar": "محادثات سورية أردنية في العقبة ولقاء المبعوث الأمريكي في دمشق",
+   "summary": "Jordan's King Abdullah II met Syrian Foreign Minister Asaad al-Shaibani in Aqaba on October 22, discussing bilateral ties and a Supreme Coordination Council session set for November 8-9 in Damascus. Separately, US envoy Tom Barrack met President al-Sharaa in Damascus amid regional tensions, as outlets framed Syria pursuing a diplomatic track alongside economic ministerial calls with the UAE and others.",
+   "summary_ar": "التقى الملك الأردني عبدالله الثاني وزير الخارجية السوري أسعد الشيباني في العقبة يوم ٢٢ تشرين الأول، وبحثا العلاقات الثنائية والتحضير لاجتماع مجلس التنسيق الأعلى في دمشق يومي ٨ و٩ تشرين الثاني. وفي سياق منفصل، التقى المبعوث الأمريكي توم باراك الرئيس الشرع في دمشق وسط توترات إقليمية، في وقت تتابع فيه دمشق مساراً دبلوماسياً إلى جانب اتصالات اقتصادية مع الإمارات ودول أخرى.",
+   "detail": "State and independent outlets reported the Aqaba meeting extensively, noting Jordan's reaffirmed support for Syrian sovereignty and rejection of Israeli attacks, and plans for cooperation on energy, water, transport and food security. A joint Syrian-Jordanian statement emphasized a strategic partnership roadmap. The US envoy's meeting with al-Sharaa was covered more briefly by Levant24 and public posts, framed as part of a tripartite roadmap involving Jordan, Syria and the US. Separately, Shaibani held calls with UAE's Abdullah bin Zayed. Public reaction is muted and mostly limited to brief reposting of official statements, with little overt sentiment either way; some skeptics question whether diplomacy translates into real change given continuing Israeli strikes.",
+   "detail_ar": "غطت وسائل الإعلام الرسمية والمستقلة اجتماع العقبة بشكل مكثف، مشيرة إلى تجديد الأردن دعمه لسيادة سوريا ورفضه الهجمات الإسرائيلية، وخطط للتعاون في الطاقة والمياه والنقل والأمن الغذائي. أكد بيان مشترك سوري أردني خارطة طريق لشراكة استراتيجية. غطت ليفانت٢٤ ومنشورات عامة لقاء المبعوث الأمريكي بالرئيس الشرع بإيجاز أكبر، في إطار خارطة طريق ثلاثية تجمع الأردن وسوريا والولايات المتحدة. كما أجرى الشيباني اتصالاً مع عبدالله بن زايد. تفاعل الجمهور محدود ويقتصر غالباً على إعادة نشر البيانات الرسمية دون مشاعر واضحة، مع تشكيك بعض المعلقين في جدوى الدبلوماسية في ظل استمرار الضربات الإسرائيلية.",
+   "public_reaction": "Public engagement is limited mostly to repost of official statements with little independent commentary; a few skeptical voices question whether diplomatic talks will change the situation on the ground given continuing Israeli incursions.",
+   "public_reaction_ar": "يقتصر تفاعل الجمهور غالباً على إعادة نشر البيانات الرسمية دون تعليق مستقل يذكر، مع تشكيك بعض الأصوات في قدرة المحادثات الدبلوماسية على تغيير الواقع الميداني في ظل استمرار التوغلات الإسرائيلية.",
+   "sentiment": 0.2,
+   "public_sentiment": 0.0,
+   "outlet_tone": {
+    "official": 0.3,
+    "independent": 0.2,
+    "kurdish": 0.2,
+    "regional": 0.1,
+    "aggregator": 0.1
+   },
+   "public_tone": {
+    "ar": 0.0,
+    "en": 0.1
+   },
+   "emotions": [
+    "hope",
+    "skepticism"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "تشكك"
+   ],
+   "framings": [
+    "Official framing as strategic partnership progress",
+    "Skeptical framing of diplomacy vs continued strikes"
+   ],
+   "framings_ar": [
+    "تأطير رسمي كتقدم في شراكة استراتيجية",
+    "تأطير متشكك للدبلوماسية مقابل استمرار الضربات"
+   ],
+   "flags": [
+    "Extensive copy-paste of near-identical official statements across outlets"
+   ],
+   "flags_ar": [
+    "نسخ واسع لبيانات رسمية شبه متطابقة عبر عدة وسائل إعلام"
+   ],
+   "volume": 22,
+   "public_volume": 7,
+   "share": 0.027,
+   "engagement": 8773,
+   "platforms": {
+    "telegram": 10,
+    "news": 5,
+    "bluesky": 7
+   },
+   "languages": {
+    "ar": 18,
+    "en": 4
+   },
+   "public_languages": {
+    "ar": 5,
+    "en": 2
+   },
+   "kinds": {
+    "official": 1,
+    "regional": 1,
+    "independent": 7,
+    "aggregator": 3,
+    "kurdish": 3
+   },
+   "sources": [
+    "Bluesky posts",
+    "Google News - Syria (AR)",
+    "Syria TV - opposition-origin",
+    "North Press Agency - Qamishli-based (AR)",
+    "Syria Plus (SY+) - news platform",
+    "Al-Ikhbariya Syria - state TV"
+   ],
+   "examples": [
+    {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/96806",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/237064",
+     "platform": "telegram"
+    },
+    {
+     "source": "Syria Plus (SY+) - news platform",
+     "url": "https://t.me/sy_platform/40661",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-21T14:51:54Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
    "id": "economy-cost-of-living",
    "key": "2026-10-10-economy-cost-of-living",
    "theme": "economy",
    "title": "Fuel shortages and electricity sabotage continue to strain Syrians",
-   "title_ar": "استمرار أزمة الوقود وتخريب الكهرباء يرهقان السوريين",
-   "summary": "Theft and sabotage of power lines near Homs caused fires and blackouts across several areas on 22 October, per the Syrian Electricity Company. Meanwhile Aleppo faced diesel shortages with officials promising improvement within 48 hours after Aramco shipments arrived. Public commenters voiced frustration over daily price rises and unreliable services.",
-   "summary_ar": "تسببت أعمال سرقة وتخريب لخطوط التوتر قرب حمص بحرائق وانقطاع الكهرباء عن عدة مناطق يوم ٢٢ تشرين الأول بحسب الشركة السورية للكهرباء. وفي الوقت ذاته عانت حلب من نقص المازوت مع وعود رسمية بتحسن خلال ٤٨ ساعة بعد وصول شحنات أرامكو. عبّر معلقون عن إحباطهم من ارتفاع الأسعار اليومي وتذبذب الخدمات.",
-   "detail": "State and independent outlets (SANA, Al-Ikhbariya, Syria TV, Enab Baladi, Halab Today) reported the Homs electricity sabotage and Aleppo fuel crisis in near-identical terms, with officials promising repairs and incoming diesel shipments. Al-Watan separately posted a standalone headline asking ",
-   "detail_ar": "نقلت وسائل الإعلام الرسمية والمستقلة (سانا، الإخبارية السورية، تلفزيون سوريا، عنب بلدي، حلب اليوم) خبر تخريب كهرباء حمص وأزمة وقود حلب بصيغ شبه متطابقة، مع وعود رسمية بالإصلاح ووصول شحنات مازوت. ونشرت الوطن عنواناً منفصلاً يتساءل لماذا ترتفع الأسعار يومياً، ما يعكس إحباطاً شعبياً متكرراً من الغلاء وتذبذب الخدمات رغم الوعود الرسمية بالتحسن.",
-   "public_reaction": "Public commenters expressed weary frustration over persistent fuel shortages, electricity cuts and rising prices, with some mocking official promises of quick fixes.",
-   "public_reaction_ar": "عبّر المعلقون عن إحباط متعب من استمرار نقص الوقود وانقطاع الكهرباء وارتفاع الأسعار، وسخر بعضهم من الوعود الرسمية بحلول سريعة.",
+   "title_ar": "استمرار نقص الوقود وتخريب الكهرباء يرهقان السوريين",
+   "summary": "Sabotage of medium-voltage cables near Homs cut electricity to several neighborhoods on October 22, later restored by repair crews. Separately, Aleppo faced a diesel shortage with queues and black-market sales, with officials promising improvement by October 23 via new fuel shipments. Al-Watan asked why prices keep rising daily.",
+   "summary_ar": "أدى تخريب كابلات التوتر المتوسط قرب حمص إلى انقطاع الكهرباء عن عدة أحياء يوم ٢٢ تشرين الأول، وأعادت ورشات الصيانة التيار لاحقاً. وفي حلب، عانت المدينة من نقص المازوت وطوابير وبيع في السوق السوداء، مع وعود رسمية بتحسن الوضع بحلول ٢٣ تشرين الأول عبر شحنات وقود جديدة. وتساءلت صحيفة الوطن عن أسباب الارتفاع اليومي للأسعار.",
+   "detail": "SANA and the Syrian Electricity Company attributed the Homs outage to theft and sabotage of cables from the south Homs station, causing a fire; power was restored the same day. In Aleppo, officials (Youssef al-Shibli) said diesel supplies were improving after an Aramco-linked tanker connection, forecasting stabilization within 48 hours, while gasoline was already available. Public commenters mock the government over black-market diesel sales and persistent power cuts, with some recalling years of repeated promises. Enab Baladi and Independent Arabia flagged broader wage-versus-inflation concerns. No major change from the previous snapshot beyond repeated restoration/outage cycle and continued diesel queue frustration.",
+   "detail_ar": "عزت سانا والشركة السورية للكهرباء انقطاع التيار في حمص إلى سرقة وتخريب الكابلات المنطلقة من محطة جنوب حمص، ما تسبب بحريق، وأُعيد التيار في اليوم نفسه. وفي حلب، أكد مسؤولون (يوسف الشبلي) تحسن إمدادات المازوت بعد ربط باخرة تابعة لأرامكو، متوقعين استقراراً خلال ٤٨ ساعة، مع توفر البنزين بالفعل. يسخر المعلقون من الحكومة بسبب بيع المازوت في السوق السوداء واستمرار انقطاع الكهرباء، ويستذكر البعض سنوات من الوعود المتكررة. أشارت عنب بلدي وإندبندنت عربية إلى مخاوف أوسع بشأن عجز الرواتب عن مواجهة الغلاء. لا تغيير جوهري عن التحديث السابق سوى تكرار دورة الانقطاع والإصلاح واستمرار إحباط طوابير المازوت.",
+   "public_reaction": "Commenters express exasperation and sarcasm over repeated power cuts, diesel queues, and black-market fuel sales, with some directly blaming government mismanagement.",
+   "public_reaction_ar": "يعبّر المعلقون عن ضيق وسخرية من تكرار انقطاع الكهرباء وطوابير المازوت وبيعه في السوق السوداء، ويحمّل بعضهم الحكومة مسؤولية سوء الإدارة مباشرة.",
    "sentiment": -0.1,
-   "public_sentiment": -0.4,
+   "public_sentiment": -0.45,
    "outlet_tone": {
-    "official": -0.1,
-    "independent": -0.15
+    "official": 0.0,
+    "independent": -0.1
    },
    "public_tone": {
-    "ar": -0.4
+    "ar": -0.45
    },
    "emotions": [
     "frustration",
-    "weariness"
+    "exasperation",
+    "weary hope"
    ],
    "emotions_ar": [
     "إحباط",
-    "تعب"
+    "ضيق",
+    "أمل متعب"
    ],
    "framings": [
-    "Official framing as temporary technical issue",
-    "Public framing as chronic failure"
+    "Official framing as sabotage/theft, not mismanagement",
+    "Public framing as chronic government failure"
    ],
    "framings_ar": [
-    "تأطير رسمي كمشكلة تقنية مؤقتة",
-    "تأطير شعبي كفشل مزمن"
+    "تأطير رسمي كسرقة وتخريب وليس سوء إدارة",
+    "تأطير شعبي كفشل حكومي مزمن"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 16,
-   "public_volume": 3,
-   "share": 0.02,
-   "engagement": 17702,
+   "volume": 21,
+   "public_volume": 4,
+   "share": 0.026,
+   "engagement": 31042,
    "platforms": {
-    "telegram": 10,
+    "telegram": 14,
     "news": 3,
-    "youtube": 3
+    "youtube": 4
    },
    "languages": {
-    "ar": 16
+    "ar": 21
    },
    "public_languages": {
-    "ar": 3
+    "ar": 4
    },
    "kinds": {
-    "official": 3,
-    "independent": 10
+    "independent": 9,
+    "official": 6,
+    "kurdish": 1,
+    "aggregator": 1
    },
    "sources": [
     "YouTube comments",
-    "Al-Watan - Damascus daily newspaper",
-    "Syria TV - opposition-origin",
-    "Halab Today TV - opposition-origin, Aleppo",
     "SANA - state news agency (AR)",
-    "Sawt Dimashq - local, Damascus"
+    "Syria TV - opposition-origin broadcaster",
+    "Al-Watan - Damascus daily newspaper",
+    "Al-Ikhbariya Syria - state TV",
+    "Halab Today TV - opposition-origin, Aleppo"
    ],
    "examples": [
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142061",
-     "platform": "telegram"
-    },
     {
      "source": "Syria TV - opposition-origin broadcaster",
      "url": "https://t.me/TelevisionSyria/96807",
      "platform": "telegram"
     },
     {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/237056",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142061",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (AR)",
+     "url": "https://t.me/sana_gov/188714",
      "platform": "telegram"
     }
    ],
@@ -626,68 +567,66 @@
    "key": "2026-10-22-daraa-drug-smuggling",
    "theme": "security",
    "title": "Daraa anti-narcotics operation foils balloon drug smuggling to Jordan",
-   "title_ar": "إحباط عملية تهريب مخدرات بالبالونات نحو الأردن في درعا",
-   "summary": "Syria's anti-narcotics administration foiled a major smuggling attempt in Daraa on 22 October, seizing 641,000 narcotic pills, 29 helium cylinders and balloons prepared to send the shipment toward Jordan. Officials say the operation followed days of surveillance, with investigations ongoing to identify those involved.",
-   "summary_ar": "أحبطت إدارة مكافحة المخدرات في سوريا محاولة تهريب ضخمة في درعا يوم ٢٢ تشرين الأول، وضبطت ٦٤١ ألف حبة مخدرة و٢٩ أسطوانة هيليوم وبالونات مُعدة لإرسال الشحنة نحو الأردن. وأفادت السلطات بأن العملية جاءت بعد أيام من الرصد والتتبع، فيما تتواصل التحقيقات لتحديد المتورطين.",
-   "detail": "Numerous outlets across all categories (SANA, North Press, Daraa 24, Shaam, Levant24) reported nearly identical details of the bust, framing it as evidence of expanding counter-narcotics capacity near the Jordanian border. No outlet offered critical or opposing framing; coverage was largely factual and congratulatory of security forces. Public reaction was minimal, with little visible public commentary distinguishing this story from general security reporting.",
-   "detail_ar": "نقلت وسائل إعلام عديدة من جميع الفئات (سانا، نورث برس، درعا ٢٤، شام، ليفانت٢٤) تفاصيل شبه متطابقة عن العملية، واعتبرتها دليلاً على تنامي قدرات مكافحة المخدرات قرب الحدود الأردنية. لم تقدم أي وسيلة إعلام تأطيراً نقدياً أو معارضاً؛ واتسمت التغطية بطابع وقائعي وتهنئة لقوى الأمن. كان التفاعل الشعبي محدوداً جداً دون تعليقات شعبية واضحة تميز هذه القصة عن التغطية الأمنية العامة.",
+   "title_ar": "عملية مكافحة مخدرات في درعا تحبط تهريب مخدرات إلى الأردن عبر البالونات",
+   "summary": "Syria's Anti-Narcotics Administration in Daraa foiled a major smuggling attempt toward Jordan on October 22, seizing 641,000 narcotic pills, 29 helium cylinders and balloon equipment after days of surveillance. Officials said investigations into the smuggling network are ongoing.",
+   "summary_ar": "أحبطت إدارة مكافحة المخدرات في درعا يوم ٢٢ تشرين الأول محاولة تهريب كبيرة باتجاه الأردن، وضبطت ٦٤١ ألف حبة مخدرة و٢٩ أسطوانة هيليوم ومعدات بالونات بعد أيام من الرصد والتتبع. وأكد المسؤولون استمرار التحقيقات لملاحقة شبكة التهريب.",
+   "detail": "The operation was reported almost identically across state, independent, Kurdish and English-language outlets, citing the Interior Ministry's statement on the seized quantities and ongoing investigation into the network behind the attempt. North Press and SANA both emphasized the Jordan-bound destination. No substantial dissenting or alternative framing appeared; the story is largely factual and uncontroversial compared to others this cycle, with minimal public engagement beyond repost of the news.",
+   "detail_ar": "نُقلت العملية بشكل شبه متطابق عبر وسائل الإعلام الرسمية والمستقلة وفي شمال شرق سوريا والإنجليزية، نقلاً عن بيان وزارة الداخلية حول الكميات المضبوطة واستمرار التحقيق في الشبكة المسؤولة عن المحاولة. أكدت نورث برس وسانا كلاهما أن الوجهة كانت الأردن. لم يظهر تأطير مختلف أو معارض يُذكر؛ تُعد القصة إخبارية بحتة وغير مثيرة للجدل مقارنة بغيرها هذه الدورة، مع تفاعل شعبي محدود يقتصر على إعادة نشر الخبر.",
    "public_reaction": "",
    "public_reaction_ar": "",
-   "sentiment": 0.3,
+   "sentiment": 0.1,
    "public_sentiment": null,
    "outlet_tone": {
-    "official": 0.3,
-    "independent": 0.3,
-    "kurdish": 0.3,
-    "aggregator": 0.2
+    "official": 0.2,
+    "independent": 0.15,
+    "kurdish": 0.15,
+    "aggregator": 0.1
    },
    "public_tone": {},
    "emotions": [
-    "relief",
-    "approval"
+    "relief"
    ],
    "emotions_ar": [
-    "ارتياح",
-    "استحسان"
+    "ارتياح"
    ],
    "framings": [
-    "Official framing as security success"
+    "Official framing as security success protecting Jordan border"
    ],
    "framings_ar": [
-    "تأطير رسمي كإنجاز أمني"
+    "تأطير رسمي كنجاح أمني يحمي الحدود الأردنية"
    ],
    "flags": [
-    "Near-identical copy-paste coverage across many outlets"
+    "Extensive identical wire-style reporting across outlets"
    ],
    "flags_ar": [
-    "تغطية شبه متطابقة منسوخة عبر وسائل إعلام عديدة"
+    "تغطية متطابقة إلى حد كبير عبر عدة وسائل إعلام"
    ],
-   "volume": 15,
+   "volume": 14,
    "public_volume": 0,
-   "share": 0.018,
-   "engagement": 11314,
+   "share": 0.017,
+   "engagement": 13467,
    "platforms": {
-    "telegram": 14,
+    "telegram": 13,
     "news": 1
    },
    "languages": {
     "en": 4,
-    "ar": 11
+    "ar": 10
    },
    "public_languages": {},
    "kinds": {
-    "kurdish": 5,
+    "kurdish": 4,
     "independent": 8,
-    "aggregator": 1,
-    "official": 1
+    "official": 1,
+    "aggregator": 1
    },
    "sources": [
-    "North Press Agency - Qamishli-based (AR)",
-    "North Press Agency (EN)",
     "Daraa 24 - local, Daraa",
-    "Shaam News Network - opposition-origin",
+    "North Press Agency (EN)",
+    "North Press Agency - Qamishli-based (AR)",
     "Syria Plus (SY+) - news platform",
-    "Google News - Syria (AR)"
+    "Sawt al-Asima - local, Damascus",
+    "Levant24 - Syria news (EN)"
    ],
    "examples": [
     {
@@ -714,91 +653,73 @@
    }
   },
   {
-   "id": "north-east-returns-integration",
-   "key": "2026-10-20-north-east-returns-integration",
-   "theme": "northeast-kurdish",
-   "title": "North-east integration talks and Kurdish-language education grievances continue",
-   "title_ar": "استمرار ملفات الاندماج في شمال شرق سوريا ومطالب التعليم الكردي",
-   "summary": "A children's event in Tal Tamr protested restrictions on Kurdish-language education and demanded constitutional recognition, while Hasakah's governor met finance and education ministers on integrating institutions. A UN rapporteur warned returning Kurdish families in Afrin still lack healthcare and infrastructure.",
-   "summary_ar": "نظّم مركز الثقافة والفن في تل تمر فعالية للأطفال احتجاجاً على تقييد تعليم اللغة الكردية وطالب بالاعتراف الدستوري بها، فيما التقى محافظ الحسكة وزيري المالية والتربية لبحث اندماج المؤسسات. وحذّر مقرر أممي من أن العائلات الكردية العائدة إلى عفرين لا تزال تفتقر إلى الرعاية الصحية والبنية التحتية.",
-   "detail": "ANHA (Hawar) reported the Tal Tamr event demanding constitutional recognition of Kurdish language rights for children's education, reflecting ongoing tension over curriculum integration with Damascus. Separately, Hasakah's governor discussed institutional integration and financial/educational coordination with national ministries, and the information ministry met the governor to discuss media coverage emphasizing ",
-   "detail_ar": "نقلت وكالة هاوار فعالية تل تمر التي طالبت بالاعتراف الدستوري بحق الأطفال بالتعلم باللغة الكردية، في سياق توتر مستمر حول دمج المناهج مع دمشق. كما بحث محافظ الحسكة اندماج المؤسسات والتنسيق المالي والتعليمي مع الوزارات الوطنية، والتقى وزير الإعلام المحافظ لبحث تعزيز الإعلام في إطار التوحيد الوطني. وحذر مقرر أممي من استمرار نقص الخدمات الصحية والبنية التحتية للعائلات الكردية العائدة إلى عفرين، محذراً من أن العودة وحدها لا تكفي حلاً دائماً للنزوح. وطالب اتحاد الطلبة السوريين بتخفيف أعباء النقل، بينما شكا سكان الرقة من قرار منع الدراجات النارية.",
-   "public_reaction": "Kurdish-language posts emphasize ongoing demands for constitutional recognition and concerns about returnees' living conditions, distinct from Arabic-language coverage focused on administrative integration.",
-   "public_reaction_ar": "تؤكد المنشورات الناطقة بالكردية استمرار المطالبة بالاعتراف الدستوري والقلق من أوضاع العائدين المعيشية، بشكل مختلف عن التغطية العربية التي تركز على الاندماج الإداري.",
+   "id": "israeli-jets-syria-iraq-overflight",
+   "key": "2026-10-22-israeli-jets-syria-iraq-overflight",
+   "theme": "israel-south",
+   "title": "Israeli fighter jets cross Syrian and Iraqi airspace toward Iran",
+   "title_ar": "طائرات إسرائيلية تعبر الأجواء السورية والعراقية باتجاه إيران",
+   "summary": "Israeli fighter jets flew over Syrian and Iraqi airspace toward Iran around October 19, with reports of further overflights seen over Damascus countryside this week. Syrian public commenters widely noted the absence of Syrian air defense response, expressing frustration over lost sovereignty and military capacity since the fall of the former regime.",
+   "summary_ar": "حلّقت مقاتلات إسرائيلية في الأجواء السورية والعراقية باتجاه إيران حوالي ١٩ تشرين الأول، مع رصد تحليقات إضافية فوق ريف دمشق هذا الأسبوع. عبّر معلقون سوريون كثيرون عن غياب أي رد من الدفاع الجوي السوري، وسط إحباط من فقدان السيادة والقدرة العسكرية منذ سقوط النظام السابق.",
+   "detail": "Public posts (mostly YouTube comments reacting to videos of low-flying warplanes over rural Damascus) show intense frustration: many ask where Syria's air defenses or military are, lament the dismantling of the army, and mock the new authorities for failing to respond to repeated violations of airspace. Some commenters frame this as proof Syria has lost sovereignty entirely since the transition; others see it as deliberate restraint pending broader regional outcomes. A Turkish-language post noted Israeli jets crossing Syrian/Iraqi airspace toward Iran on October 19. No comparable outlet coverage was found, making this largely a public-driven narrative distinct from the already-tracked incursion story, focused specifically on the symbolic humiliation of unchallenged overflights.",
+   "detail_ar": "تُظهر المنشورات العامة (معظمها تعليقات يوتيوب على مقاطع لطائرات حربية تحلق منخفضة فوق ريف دمشق) إحباطاً شديداً؛ إذ يتساءل كثيرون عن مكان الدفاعات الجوية أو الجيش السوري، ويأسفون على تفكيك الجيش، ويسخرون من فشل السلطات الجديدة في الرد على الانتهاكات المتكررة للأجواء. يرى بعض المعلقين في ذلك دليلاً على فقدان السيادة كلياً منذ الانتقال، بينما يعتبره آخرون ضبط نفس متعمداً بانتظار نتائج إقليمية أوسع. أشار منشور بالتركية إلى عبور طائرات إسرائيلية الأجواء السورية والعراقية باتجاه إيران في ١٩ تشرين الأول. لم تُرصد تغطية إعلامية مماثلة، ما يجعل هذه القصة مدفوعة بشكل شعبي بالدرجة الأولى ومتمايزة عن قصة التوغلات، وتركز تحديداً على الإذلال الرمزي للتحليقات دون رد.",
+   "public_reaction": "Overwhelmingly frustrated and humiliated reaction, with widespread mockery of the lack of Syrian air defense and sarcastic comments about sovereignty being a hollow slogan.",
+   "public_reaction_ar": "تفاعل شعبي غالبه الإحباط والشعور بالإذلال، مع سخرية واسعة من غياب الدفاع الجوي السوري وتعليقات ساخرة تعتبر السيادة شعاراً فارغاً.",
    "sentiment": 0.0,
-   "public_sentiment": -0.1,
-   "outlet_tone": {
-    "kurdish": -0.1
-   },
+   "public_sentiment": -0.5,
+   "outlet_tone": {},
    "public_tone": {
+    "ar": -0.5,
     "en": -0.1
    },
    "emotions": [
-    "concern",
-    "determination"
+    "humiliation",
+    "frustration",
+    "anger"
    ],
    "emotions_ar": [
-    "قلق",
-    "إصرار"
+    "إذلال",
+    "إحباط",
+    "غضب"
    ],
    "framings": [
-    "Kurdish framing as rights and recognition struggle",
-    "Official framing as administrative integration"
+    "Public framing as loss of sovereignty",
+    "Some framing as deliberate restraint"
    ],
    "framings_ar": [
-    "تأطير كردي كنضال من أجل الحقوق والاعتراف",
-    "تأطير رسمي كاندماج إداري"
+    "تأطير شعبي كفقدان للسيادة",
+    "تأطير آخر كضبط نفس متعمد"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 11,
-   "public_volume": 5,
-   "share": 0.014,
-   "engagement": 987,
+   "public_volume": 11,
+   "share": 0.013,
+   "engagement": 11,
    "platforms": {
-    "telegram": 5,
-    "news": 1,
-    "bluesky": 5
+    "bluesky": 3,
+    "youtube": 8
    },
    "languages": {
-    "ar": 9,
-    "en": 2
+    "en": 3,
+    "ar": 8
    },
    "public_languages": {
-    "ar": 4,
-    "en": 1
+    "en": 3,
+    "ar": 8
    },
-   "kinds": {
-    "independent": 1,
-    "kurdish": 4,
-    "official": 1
-   },
+   "kinds": {},
    "sources": [
-    "Bluesky posts",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
-    "Al-Watan - Damascus daily newspaper",
-    "SANA website - state news agency (AR)",
-    "North Press Agency - Qamishli-based (AR)",
-    "North Press Agency (EN)"
+    "YouTube comments",
+    "Bluesky posts"
    ],
    "examples": [
     {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/204075",
-     "platform": "telegram"
-    },
-    {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/84342",
-     "platform": "telegram"
-    },
-    {
-     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/83316",
-     "platform": "telegram"
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=7XRg_j9iWrU",
+     "platform": "youtube"
     }
    ],
-   "first_seen": "2026-10-20T23:54:10Z",
+   "first_seen": "2026-10-22T23:24:04Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -810,22 +731,22 @@
    "key": "2026-10-22-transitional-justice-court",
    "theme": "justice",
    "title": "Fourth Criminal Court details transitional justice process, Assad case to Interpol",
-   "title_ar": "محكمة الجنايات الرابعة توضح مسار العدالة الانتقالية وإحالة ملف الأسد إلى الإنتربول",
-   "summary": "The head of Damascus's Fourth Criminal Court, Judge Fakhreddine al-Uryan, said on 22 October that Bashar al-Assad was convicted based on evidence of direct command responsibility. Syria has sent court rulings against Assad and his brother Maher to Interpol, though Russia's refusal to extradite Assad remains an obstacle. Rights groups and civil society call for transparency in ongoing trials.",
-   "summary_ar": "قال رئيس محكمة الجنايات الرابعة في دمشق القاضي فخر الدين العريان في ٢٢ تشرين الأول إن إدانة بشار الأسد استندت إلى أدلة على مسؤوليته المباشرة عن إصدار الأوامر. وأرسلت سوريا أحكام القضاء بحق الأسد وشقيقه ماهر إلى الإنتربول، رغم أن رفض روسيا تسليم الأسد لا يزال عقبة. وتطالب منظمات حقوقية ومجتمع مدني بالشفافية في المحاكمات الجارية.",
-   "detail": "TRT Arabi detailed the court's reasoning on Assad's conviction, while Bluesky posts noted the Interpol referral and Russia's extradition refusal as a major obstacle. Enab Baladi reported on rights assessments of trials involving Najib, Assad and Hassoun, and Syria TV highlighted the Syrian Network for Human Rights' observations on procedural gaps. Syria Plus outlined specific demands: full publication of verdicts, open hearings, independent monitoring, defense access to evidence, victim compensation and judicial independence. Public commentary was limited but generally supportive of accountability efforts, tempered by skepticism about Russia's role.",
-   "detail_ar": "فصّل تي آر تي عربي أسباب حكم إدانة الأسد، بينما أشارت منشورات على بلوسكاي إلى إحالة الملف إلى الإنتربول ورفض روسيا تسليمه كعقبة رئيسية. ونشرت عنب بلدي تقييماً حقوقياً لمحاكمات نجيب والأسد وحسون، وأبرز تلفزيون سوريا ملاحظات الشبكة السورية لحقوق الإنسان حول الثغرات الإجرائية. وحددت سوريا بلس مطالب واضحة: نشر الأحكام كاملة، علنية الجلسات، مراقبة مستقلة، تمكين الدفاع من الاطلاع على الأدلة، تعويض الضحايا واستقلال القضاء. كان التعليق الشعبي محدوداً لكنه داعم عموماً لجهود المحاسبة مع تشكك في دور روسيا.",
-   "public_reaction": "Limited but supportive public reaction toward accountability, with skepticism about Russia blocking extradition.",
-   "public_reaction_ar": "تفاعل شعبي محدود لكنه داعم لجهود المحاسبة، مع تشكك في عرقلة روسيا لتسليم الأسد.",
+   "title_ar": "محكمة الجنايات الرابعة توضح مسار العدالة الانتقالية وإحالة قضية الأسد إلى الإنتربول",
+   "summary": "The Fourth Criminal Court's chief judge said Bashar al-Assad's conviction rested on evidence of his direct role in ordering crimes, as Syria sent court rulings against Assad and his brother Maher to Interpol. Russia's refusal to extradite Assad remains a major obstacle, while rights groups call for transparency in ongoing trials.",
+   "summary_ar": "أوضح رئيس محكمة الجنايات الرابعة أن إدانة بشار الأسد استندت إلى أدلة على دوره المباشر في إصدار أوامر ارتكاب الجرائم، فيما أرسلت سوريا أحكاماً قضائية بحق الأسد وشقيقه ماهر إلى الإنتربول. ويبقى رفض روسيا تسليم الأسد عقبة رئيسية، في حين تطالب منظمات حقوقية بالشفافية في المحاكمات الجارية.",
+   "detail": "TRT Arabi detailed the court's reasoning on Assad's command responsibility. North Press reported the Fourth Criminal Court has ruled in four transitional justice cases and is examining about 61 others. Reuters-style reports via public posts noted Russia's refusal to extradite Assad as the key obstacle to accountability. Enab Baladi flagged a rights report assessing trial procedures for Najib, Assad and Hassoun. Syria Plus outlined demands for full publication of verdicts, open hearings, independent monitoring, and defense access to evidence. A Lebanese military court separately sentenced Suleiman al-Assad, barring him from carrying arms for life. Public reaction is limited but generally supportive of accountability efforts, tempered by skepticism that Russia will ever hand over Assad.",
+   "detail_ar": "فصّلت TRT عربي تعليل المحكمة بشأن مسؤولية الأسد القيادية. ونقلت نورث برس أن محكمة الجنايات الرابعة أصدرت أحكاماً في أربع قضايا للعدالة الانتقالية وتنظر في نحو ٦١ قضية أخرى. أشارت منشورات عامة إلى رفض روسيا تسليم الأسد كعقبة رئيسية أمام المحاسبة. ورصدت عنب بلدي تقريراً حقوقياً يقيّم إجراءات محاكمات نجيب والأسد وحسون. وحددت سوريا بلس مطالب بنشر الأحكام كاملة وعلنية الجلسات والمراقبة المستقلة وتمكين الدفاع من الاطلاع على الأدلة. وأصدرت محكمة عسكرية لبنانية منفصلة حكماً بحق سليمان الأسد بمنعه من حمل السلاح مدى الحياة. التفاعل الشعبي محدود لكنه داعم عموماً لجهود المحاسبة، مع تشكك في احتمال تسليم روسيا للأسد يوماً ما.",
+   "public_reaction": "Limited public commentary, generally supportive of accountability but skeptical Russia will ever extradite Assad.",
+   "public_reaction_ar": "تفاعل شعبي محدود، داعم عموماً لجهود المحاسبة لكنه متشكك في احتمال تسليم روسيا للأسد.",
    "sentiment": 0.1,
-   "public_sentiment": 0.05,
+   "public_sentiment": 0.0,
    "outlet_tone": {
     "independent": 0.1,
     "regional": 0.1
    },
    "public_tone": {
-    "ar": 0.05,
-    "en": 0.1
+    "ar": 0.0,
+    "en": 0.0
    },
    "emotions": [
     "hope",
@@ -836,26 +757,25 @@
     "تشكك"
    ],
    "framings": [
-    "Framing as justice progress",
-    "Framing as obstructed by Russia"
+    "Official framing as justice progress",
+    "Skeptical framing on Russia obstruction"
    ],
    "framings_ar": [
-    "تأطير كتقدم في العدالة",
-    "تأطير كمعرقل بفعل روسيا"
+    "تأطير رسمي كتقدم في العدالة",
+    "تأطير متشكك حول عرقلة روسيا"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 7,
+   "volume": 6,
    "public_volume": 3,
-   "share": 0.009,
-   "engagement": 1096,
+   "share": 0.007,
+   "engagement": 1238,
    "platforms": {
     "telegram": 3,
-    "news": 1,
     "bluesky": 3
    },
    "languages": {
-    "ar": 5,
+    "ar": 4,
     "en": 2
    },
    "public_languages": {
@@ -864,14 +784,13 @@
    },
    "kinds": {
     "regional": 1,
-    "independent": 3
+    "independent": 2
    },
    "sources": [
     "Bluesky posts",
     "TRT Arabi - Turkish public broadcaster",
     "Enab Baladi - independent (AR)",
-    "Syria Plus (SY+) - news platform",
-    "Syria TV - opposition-origin"
+    "Syria Plus (SY+) - news platform"
    ],
    "examples": [
     {
@@ -900,61 +819,63 @@
   {
    "id": "saroot-chants-controversy",
    "key": "2026-10-20-saroot-chants-controversy",
-   "theme": "society",
+   "theme": "justice",
    "title": "Sarout chants controversy ignites nationwide anger and sectarian blame",
-   "title_ar": "جدل هتافات مسيئة للساروت يثير غضباً واسعاً واتهامات طائفية",
-   "summary": "Insults against the late icon of the Syrian revolution Abdul Baset Sarout, reportedly chanted alongside praise of singer Omar al-Souma, sparked widespread public anger. Justice Minister Mazhar al-Weis condemned the insults as a moral crime inciting sedition, and pledged accountability for those involved.",
-   "summary_ar": "أثارت هتافات مسيئة للشهيد عبد الباسط الساروت، رمز الثورة السورية، إلى جانب مديح للمطرب عمر السومة، غضباً شعبياً واسعاً. ووصف وزير العدل مظهر الويس الإساءة بأنها جريمة أخلاقية تثير الفتنة، متعهداً بمحاسبة المتورطين.",
-   "detail": "Levant24 and Sawt al-Asima reported the controversy, with the justice minister publicly defending Sarout's legacy as a national and revolutionary symbol and warning of legal consequences. YouTube comments showed strong emotional reaction, with many praying for Sarout and cursing those who insulted him, reflecting the chant's symbolic weight tied to the revolution's memory. No clear sectarian breakdown was visible in the posts, though the minister's language warned against using such incidents to incite discord.",
-   "detail_ar": "نقلت ليفانت٢٤ وصوت العاصمة تفاصيل الجدل، مع دفاع وزير العدل علناً عن إرث الساروت بوصفه رمزاً وطنياً وثورياً وتحذيره من عواقب قانونية. أظهرت تعليقات يوتيوب رد فعل عاطفياً قوياً، إذ دعا كثيرون للساروت ولعنوا من أساء إليه، ما يعكس الثقل الرمزي للهتاف المرتبط بذاكرة الثورة. لم يظهر تفصيل طائفي واضح في المنشورات، رغم تحذير الوزير من استغلال الحادثة لإثارة الفتنة.",
-   "public_reaction": "Strong emotional public reaction defending Sarout's memory, with anger directed at those who insulted him and calls for accountability.",
-   "public_reaction_ar": "تفاعل شعبي عاطفي قوي دفاعاً عن ذكرى الساروت، مع غضب موجه لمن أساء إليه ودعوات للمحاسبة.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.3,
+   "title_ar": "جدل هتافات مسيئة للساروت يشعل غضباً وطنياً وتراشقاً طائفياً",
+   "summary": "Reports of insulting chants against the late Abdul Baset al-Sarout, a symbol of the anti-Assad uprising, sparked widespread public outrage. Justice Minister Mazhar al-Weis publicly honored Sarout and warned that insulting his legacy constitutes incitement, vowing accountability for those involved.",
+   "summary_ar": "أثارت تقارير عن هتافات مسيئة بحق الشهيد عبد الباسط الساروت، رمز الثورة ضد الأسد، غضباً شعبياً واسعاً. وكرّم وزير العدل مظهر الويس الساروت علناً، محذراً من أن الإساءة لرمزيته تشكل تحريضاً على الفتنة، ومتعهداً بمحاسبة المتورطين.",
+   "detail": "Levant24 reported the controversy sparking public outrage, while Sawt al-Asima carried the justice minister's statement calling Sarout an eternal revolutionary symbol and warning that insults amount to a moral crime inciting sedition, promising legal accountability. YouTube comments are split: some condemn the insults and call for divine retribution against those responsible, mourning Sarout as a revolutionary icon, while others mock him, noting he later joined ISIS, and accuse defenders of being regime remnants. This split reveals ongoing societal rifts over how to remember revolution-era figures, with explicit sectarian/factional framing on both sides.",
+   "detail_ar": "نقلت ليفانت٢٤ احتدام الجدل وغضب الرأي العام، بينما نقل صوت العاصمة تصريح وزير العدل الذي وصف الساروت برمز ثوري ووطني خالد، محذراً من أن الإساءة إليه جريمة أخلاقية تحرّض على الفتنة، ومتعهداً بالمحاسبة القانونية. تنقسم تعليقات يوتيوب بين من يدين الإساءة ويدعو بالانتقام الإلهي ممن تسبب بها، ناعياً الساروت كأيقونة ثورية، ومن يسخر منه مذكّراً بانضمامه لاحقاً إلى داعش ومتهماً المدافعين عنه بأنهم من بقايا النظام. يكشف هذا الانقسام عن شروخ مجتمعية مستمرة حول كيفية تذكر رموز حقبة الثورة، مع تأطير طائفي وفصائلي صريح من الجانبين.",
+   "public_reaction": "Deeply polarized: some mourn Sarout as a martyr deserving of respect and divine justice for his detractors, while others mock the outrage by recalling his later ISIS affiliation, accusing defenders of hypocrisy.",
+   "public_reaction_ar": "تفاعل منقسم بعمق: ينعى البعض الساروت كشهيد يستحق الاحترام ويدعون بالعدالة الإلهية ضد من أساء إليه، بينما يسخر آخرون من الغضب مذكّرين بانضمامه لاحقاً إلى داعش، متهمين المدافعين عنه بالنفاق.",
+   "sentiment": -0.1,
+   "public_sentiment": -0.2,
    "outlet_tone": {
-    "independent": -0.2
+    "independent": -0.1
    },
    "public_tone": {
-    "ar": -0.3
+    "ar": -0.2
    },
    "emotions": [
     "anger",
     "grief",
-    "loyalty"
+    "contempt",
+    "division"
    ],
    "emotions_ar": [
     "غضب",
     "حزن",
-    "وفاء"
+    "احتقار",
+    "انقسام"
    ],
    "framings": [
-    "Official framing as moral crime and sedition risk",
-    "Public framing as defense of revolutionary memory"
+    "Official framing as sacred revolutionary symbol needing protection",
+    "Critical framing recalling his ISIS affiliation"
    ],
    "framings_ar": [
-    "تأطير رسمي كجريمة أخلاقية وخطر فتنة",
-    "تأطير شعبي كدفاع عن ذاكرة الثورة"
+    "تأطير رسمي كرمز ثوري مقدس يجب حمايته",
+    "تأطير نقدي يذكّر بانضمامه إلى داعش"
    ],
    "flags": [
-    "Risk of sectarian incitement flagged by officials"
+    "Sectarian/factional incitement in comment exchanges"
    ],
    "flags_ar": [
-    "تحذير رسمي من خطر التحريض الطائفي"
+    "تحريض طائفي وفصائلي في تبادل التعليقات"
    ],
-   "volume": 5,
-   "public_volume": 3,
-   "share": 0.006,
-   "engagement": 1580,
+   "volume": 6,
+   "public_volume": 4,
+   "share": 0.007,
+   "engagement": 1632,
    "platforms": {
     "telegram": 2,
-    "youtube": 3
+    "youtube": 4
    },
    "languages": {
     "en": 1,
-    "ar": 4
+    "ar": 5
    },
    "public_languages": {
-    "ar": 3
+    "ar": 4
    },
    "kinds": {
     "independent": 2
@@ -1251,7 +1172,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al Arabiya - Saudi-owned",
@@ -1278,8 +1199,8 @@
    "name": "Anadolu Agency - Turkish state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 3
+   "fetched": 19,
+   "recent": 2
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
@@ -1293,7 +1214,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "France 24 Arabic - French public broadcaster",
@@ -1356,14 +1277,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 45
+   "recent": 51
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 43
+   "recent": 12
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1376,8 +1297,8 @@
    "name": "Syria TV - opposition-origin",
    "platform": "news",
    "ok": true,
-   "fetched": 60,
-   "recent": 49
+   "fetched": 59,
+   "recent": 53
   },
   {
    "name": "Sky News Arabia - UAE-based",
@@ -1404,29 +1325,29 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 529,
-   "recent": 529
+   "fetched": 577,
+   "recent": 577
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 237,
-   "recent": 178
+   "fetched": 240,
+   "recent": 169
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 20
+   "recent": 19
   },
   {
    "name": "Reddit r/Kurdistan comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 15,
-   "recent": 3
+   "recent": 2
   },
   {
    "name": "X posts",
@@ -1582,18 +1503,18 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.4048,
+ "cost_usd": 0.4078,
  "watch": [
   {
-   "type": "falling",
-   "id": "rankous-isis-operation",
-   "key": "2026-10-22-rankous-isis-operation",
-   "title": "Internal Security kills two officers in Rankous anti-ISIS raid",
-   "title_ar": "مقتل عنصرين من الأمن الداخلي في عملية رنكوس ضد داعش",
-   "share": 0.078,
-   "from": 0.1,
-   "to": -0.3,
-   "hours": 14
+   "type": "rising",
+   "id": "israel-quneitra-daraa-incursions",
+   "key": "2026-09-28-israel-quneitra-daraa-incursions",
+   "title": "Israeli forces kill disabled man in Daraa, incursions continue in Quneitra",
+   "title_ar": "قوات إسرائيلية تقتل شاباً من ذوي الإعاقة في درعا واستمرار التوغلات في القنيطرة",
+   "share": 0.124,
+   "from": 0.068,
+   "to": 0.124,
+   "updates": 2
   }
  ]
 }
