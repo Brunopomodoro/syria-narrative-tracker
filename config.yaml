@@ -312,8 +312,8 @@ facebook:
 # X charges per post, so posting keeps to monthly_budget_usd: at cost_per_post_usd a post that pays for
 # budget/cost posts a month (set cost_per_post_usd to the price shown in the X Developer Console).
 # Reports come first: the weekly and monthly ones in each of `languages`, the daily brief in `daily_languages`.
-# What is left goes to story posts in story_language: no link, the story's title, how people and the media feel,
-# what people say, and hashtags. At most max_stories_per_day, at story_hours (Damascus time, busiest first; a
+# What is left goes to story posts in story_language: what people say and how they feel, the link to the story's
+# page (story_links: false leaves it out), and hashtags. At most max_stories_per_day, at story_hours (Damascus time, busiest first; a
 # day with an allowance of 2 posts at the first two), at least story_gap_hours apart, and the same story not
 # again within story_repeat_hours. Only stories with at least story_min_voices comments from people.
 # per_run: the most report posts per update. max_tags: the most hashtags on a post.
@@ -327,6 +327,7 @@ x:
   monthly_budget_usd: 10
   cost_per_post_usd: 0.10
   stories: true
+  story_links: true
   story_language: ar
   story_hours: [20, 13, 17, 22, 9]
   utc_offset: 3

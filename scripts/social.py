@@ -16,8 +16,8 @@ daily), so a day with several reports spreads them out. Settings under `facebook
 On X every post is paid for, so posting keeps to a monthly budget (`monthly_budget_usd` / `cost_per_post_usd` posts
 a month). The reports come first; what the budget leaves after the reports still to come this month goes to story
 posts: one story at a time, at the hours Syrians are most online (Damascus time), spread evenly over the rest of
-the month. A story post has no link (X shows posts with links to fewer people) and is short enough to show in full in the
-timeline: the story's title, how people and the media feel about it, a sentence of what people say, and hashtags.
+the month. A story post is short enough to show in full in the timeline: what people say about the story and how they feel
+compared with the media, the link to the story's page (`story_links: false` under `x:` leaves it out), and hashtags.
 
 The words of each X post are written by Claude from the report's or story's own text, as a person would post it
 (`rewrite: true` under `x:`; about a cent a post). The link and hashtags are added afterwards, and a draft that
@@ -606,13 +606,16 @@ def clip_clause(text: str, limit: int) -> str:
 
 def rows(text: str, width: int = 50) -> int:
     """About how many lines the post takes on a phone; X folds longer posts behind "Show more", hiding the hashtags."""
+    text = re.sub(r"https?://\S+", "x" * 23, text)          # X shows a link shortened, on one line
     return sum(max(1, -(-len(line) // width)) for line in text.split("\n"))
 
 
 def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, state: dict | None = None) -> dict:
-    """A story post without a link, short enough to show in full in the timeline: the title, the mood of people (and
-    of the media when the two differ), a sentence of what people say, and the hashtags."""
+    """A story post, short enough to show in full in the timeline: the words (a rewrite, or the title, the mood of
+    people and of the media when the two differ, and a sentence of what people say), the link to the story's page and
+    the hashtags."""
     w = STORY_WORDS[lang]
+    key = n.get("key") or ""
     title = str(pages.t(n, "title", lang) or "")
     count = int(n.get("public_volume") or 0)
     mood = pages.tone_label(n.get("public_sentiment"), lang)
@@ -620,30 +623,32 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, 
     head = [title, people] + ([f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}"] if gap >= 0.4 else [])
     body = no_scores(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang))
     tags = hashtags.select(cfg, lang, [n.get("theme", "")], [title])[: int(settings(cfg, "x")["max_tags"])]
+    link = url(cfg, f"stories/{lang}/{key}.html") if settings(cfg, "x").get("story_links", True) else ""
+    def tail(n_tags: int) -> str:
+        parts = ([link] if link else []) + ([" ".join("#" + t for t in tags[:n_tags])] if n_tags else [])
+        return ("\n\n" + "\n".join(parts)) if parts else ""
     def build(text_body: str, n_tags: int) -> str:
-        out = "\n".join(head) + ("\n\n" + text_body if text_body else "")
-        return out + ("\n" + " ".join("#" + t for t in tags[:n_tags]) if n_tags else "")
+        return "\n".join(head) + ("\n\n" + text_body if text_body else "") + tail(n_tags)
     fits = lambda text: x_len(text) <= 280 and rows(text) <= max_rows  # noqa: E731
     n_tags = len(tags)
     facts = {"story": title, "what_happened": no_scores(pages.t(n, "summary", lang)), "what_people_say": body,
              "people_mood": mood, "comments_from_people": comments(count, lang),
              "media_mood": pages.tone_label(outlet_tone(n), lang) if gap >= 0.4 else "about the same as people's",
              "feelings": (n.get("emotions_ar") if lang == "ar" else n.get("emotions")) or []}
-    words = rewrite(cfg, state, lang, facts, 280 - x_len(" ".join("#" + t for t in tags[:2])) - 2, lines=max_rows - 2)
+    words = rewrite(cfg, state, lang, facts, 280 - x_len(tail(2)), lines=max_rows - (4 if link else 2))
     if words:
         k = n_tags
-        while k > 1 and not fits(words + "\n\n" + " ".join("#" + t for t in tags[:k])):
+        while k > 1 and not fits(words + tail(k)):
             k -= 1
-        text = words + "\n\n" + " ".join("#" + t for t in tags[:k])
-        if fits(text):
-            return {"key": n.get("key"), "text": text, "words": words}
+        if fits(words + tail(k)):
+            return {"key": key, "text": words + tail(k), "words": words}
     cuts = [clip_clause(body, limit) for limit in range(150, 39, -10)]
     whole = [c for c in cuts if not c.endswith("…") and fits(build(c, n_tags))]     # a whole sentence or clause
     cut = [c for c in cuts if fits(build(c, n_tags))]
     text_body = whole[0] if whole else cut[0] if cut else ""
     while n_tags > 1 and not fits(build(text_body, n_tags)):
         n_tags -= 1
-    return {"key": n.get("key"), "text": build(text_body, n_tags)}
+    return {"key": key, "text": build(text_body, n_tags)}
 
 
 def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
