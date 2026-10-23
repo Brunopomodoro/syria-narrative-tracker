@@ -22,13 +22,20 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 RECENT_DAYS = 30
 
 
+def print_style(text: str) -> str:
+    """The page's print layout (its @media print rules)."""
+    start = text.find("@media print{")
+    return text[start:text.find("</style>", start)] if start >= 0 else ""
+
+
 def fingerprint(page: pathlib.Path) -> str:
-    """A fingerprint of the report itself (the <article>), so a change to the menu or footer remakes no PDF."""
+    """A fingerprint of the report itself (the <article>) and of the print layout, so a change to the menu or footer
+    remakes no PDF, while a change to the layout of the printed page remakes them all."""
     text = page.read_text(encoding="utf-8", errors="replace")
     start, end = text.find("<article"), text.rfind("</article>")
     report = text[start:end] if 0 <= start < end else text
     report = re.sub(r'<div class="share".*?</div>', "", report, flags=re.S)   # the share buttons (and the PDF link) are not printed
-    return hashlib.sha256(report.encode()).hexdigest()[:16]
+    return hashlib.sha256((report + print_style(text)).encode()).hexdigest()[:16]
 
 
 def chrome() -> str | None:
@@ -64,6 +71,9 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone.utc).date()
     recent = (today - dt.timedelta(days=RECENT_DAYS)).isoformat()
     days = [p for p in sorted((ROOT / "daily").glob("*/20??-??-??.html")) if p.stem < today.isoformat()]
+    layout = hashlib.sha256(print_style(days[-1].read_text(encoding="utf-8")).encode()).hexdigest()[:16] if days else ""
+    if layout != state.get("_layout"):             # a new print layout: older daily briefs are remade too
+        recent = ""
     for page in sorted((ROOT / "monthly").glob("*/20??-??.html")) + sorted((ROOT / "weekly").glob("*/20??-W??.html")) + days:
         out, key = page.with_suffix(".pdf"), str(page.relative_to(ROOT))
         print_hash = fingerprint(page)
@@ -79,6 +89,7 @@ def main() -> int:
         if ok:
             state[key] = print_hash
         made += ok
+    state["_layout"] = layout
     state_file.write_text(json.dumps(state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     if new_reports:                                 # pages show their PDF link once the PDF exists
         sys.path.insert(0, str(ROOT / "scripts"))
