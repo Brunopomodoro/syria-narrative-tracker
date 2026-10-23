@@ -13,8 +13,8 @@ What has been posted is recorded in data/social.json, so nothing goes out twice,
 again at the next update. At most `per_run` posts go out per update and network (monthly first, then weekly, then
 daily), so a day with several reports spreads them out. Settings under `facebook:` and `x:` in config.yaml.
 
-On X every post is paid for, so posting keeps to a monthly budget (`monthly_budget_usd` / `cost_per_post_usd` posts
-a month). The reports come first; what the budget leaves after the reports still to come this month goes to story
+On X every post is paid for (much more when it carries a link), so posting keeps to a monthly budget in dollars
+(`monthly_budget_usd`, with `cost_per_post_usd` and `cost_per_link_post_usd`). The reports come first; what the budget leaves after the reports still to come this month goes to story
 posts: one story at a time, at the hours Syrians are most online (Damascus time), spread evenly over the rest of
 the month. A story post is short enough to show in full in the timeline: what people say about the story and how they feel
 compared with the media, the link to the story's page (`story_links: false` under `x:` leaves it out), and hashtags.
@@ -67,7 +67,8 @@ def settings(cfg: dict, network: str = "facebook") -> dict:
     s = {"enabled": True, "first_lang": "ar", "per_run": 1, "daily": True, "weekly": True, "monthly": True,
          "daily_after_utc": 4, "api_version": "", "languages": ["ar", "en"], "max_tags": 4}
     if network == "x":
-        s.update({"per_run": 2, "max_tags": 3, "daily_languages": ["ar"], "monthly_budget_usd": 10, "cost_per_post_usd": 0.10,
+        s.update({"per_run": 2, "max_tags": 3, "daily_languages": ["ar"], "monthly_budget_usd": 10, "cost_per_post_usd": 0.015,
+                  "cost_per_link_post_usd": 0.20,
                   "stories": True, "story_language": "ar", "story_hours": [20, 13, 17, 22, 9], "utc_offset": 3,
                   "max_stories_per_day": 5, "story_gap_hours": 1.5, "story_repeat_hours": 48, "story_min_voices": 5,
                   "rewrite": True})
@@ -481,17 +482,19 @@ STORY_WORDS = {"en": {"people": "People's mood", "outlets": "The media's"},
                "ar": {"people": "مزاج الناس", "outlets": "مزاج وسائل الإعلام"}}
 
 
-def budget_posts(s: dict) -> int:
-    """How many posts the monthly budget pays for."""
-    cost = float(s.get("cost_per_post_usd") or 0)
-    return int(float(s.get("monthly_budget_usd") or 0) / cost + 1e-9) if cost > 0 else 10 ** 6
+def post_cost(s: dict, text: str) -> float:
+    """What X charges for a post: much more when it carries a link."""
+    return float(s["cost_per_link_post_usd"] if re.search(r"https?://", text or "") else s["cost_per_post_usd"])
 
 
-def sent_this_month(xs: dict, now: dt.datetime) -> int:
-    """Posts made on X this calendar month (UTC): reports and stories; skipped reports cost nothing."""
+def spent_this_month(xs: dict, s: dict, now: dt.datetime) -> float:
+    """Dollars spent on X posts this calendar month (UTC). Older records without a price: report posts always had a
+    link, the first story posts had none; skipped reports cost nothing."""
     month = now.strftime("%Y-%m")
-    reports = sum(1 for v in (xs.get("posted") or {}).values() if v.get("id") and str(v.get("at", "")).startswith(month))
-    return reports + sum(1 for v in xs.get("story_posts") or [] if str(v.get("at", "")).startswith(month))
+    reports = sum(float(v.get("usd", s["cost_per_link_post_usd"])) for v in (xs.get("posted") or {}).values()
+                  if v.get("id") and str(v.get("at", "")).startswith(month))
+    stories = sum(float(v.get("usd", s["cost_per_post_usd"])) for v in xs.get("story_posts") or [] if str(v.get("at", "")).startswith(month))
+    return round(reports + stories, 4)
 
 
 def month_days_left(now: dt.datetime) -> list:
@@ -521,17 +524,22 @@ def reports_to_come(cfg: dict, state: dict, now: dt.datetime) -> int:
 
 
 def story_allowance(cfg: dict, state: dict, now: dt.datetime) -> dict:
-    """Today's share of the story posts the budget leaves: what is left after the reports to come, spread evenly
-    over the days left in the month."""
+    """Today's share of the story posts the budget leaves: the dollars left after the report posts still to come
+    (each with its link) buy this month's story posts, which are spread evenly over the month's days."""
     s, xs = settings(cfg, "x"), state.get("x") or {}
-    total, sent = budget_posts(s), sent_this_month(xs, now)
-    today = local_now(s, now).date().isoformat()
-    done_today = [p for p in xs.get("story_posts") or [] if str(p.get("slot", "")).startswith(today)]
-    reserve = reports_to_come(cfg, state, now)
-    left = total - sent - reserve
-    pool = left + len(done_today)
-    per_day = min(int(s["max_stories_per_day"]), max(0, round(pool / len(month_days_left(now))))) if left > 0 else len(done_today)
-    return {"budget": total, "sent": sent, "reserve": reserve, "left": max(0, left), "today": per_day, "done_today": len(done_today)}
+    budget, spent = float(s["monthly_budget_usd"]), spent_this_month(xs, s, now)
+    price = float(s["cost_per_link_post_usd"] if s.get("story_links", True) else s["cost_per_post_usd"])
+    reserve = round(reports_to_come(cfg, state, now) * float(s["cost_per_link_post_usd"]), 4)
+    left = max(0.0, budget - spent - reserve)
+    month, today = now.strftime("%Y-%m"), local_now(s, now).date().isoformat()
+    stories = [p for p in xs.get("story_posts") or [] if str(p.get("at", "")).startswith(month)]
+    done_today = sum(1 for p in stories if str(p.get("slot", "")).startswith(today))
+    quota = len(stories) + int(left / price + 1e-9) if price > 0 else len(stories)
+    days = len(month_days_left(now)) + now.day - 1
+    target = int(quota * now.day / days + 0.5)                   # where an even spread should be by the end of today
+    per_day = min(int(s["max_stories_per_day"]), max(done_today, target - (len(stories) - done_today)))
+    return {"budget": budget, "spent": spent, "reserve": reserve, "left": round(left, 2), "story_price": price,
+            "stories_left": int(left / price + 1e-9) if price > 0 else 0, "today": per_day, "done_today": done_today}
 
 
 def local_now(s: dict, now: dt.datetime) -> dt.datetime:
@@ -656,12 +664,13 @@ def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
     slot = story_slot(cfg, state, now)
     if not slot or not s["stories"]:
         return
-    if sent_this_month(xs, now) >= budget_posts(s):
-        return
     cands = story_candidates(cfg, state, now)
     if not cands:
         return
     post = compose_story(cfg, *cands[0], s["story_language"], state=state)
+    cost = post_cost(s, post["text"])
+    if spent_this_month(xs, s, now) + cost > float(s["monthly_budget_usd"]) + 1e-9:
+        return
     try:
         res = x_call("POST", "tweets", keys, {"text": post["text"]})
     except Exception as e:  # noqa: BLE001
@@ -670,7 +679,7 @@ def run_x_story(cfg: dict, state: dict, now: dt.datetime, keys: dict) -> None:
         return
     pid = (res.get("data") or {}).get("id")
     posts = xs.setdefault("story_posts", [])
-    posts.append({"key": post["key"], "slot": slot, "id": pid, "at": now.isoformat(timespec="seconds")})
+    posts.append({"key": post["key"], "slot": slot, "id": pid, "at": now.isoformat(timespec="seconds"), "usd": cost})
     remember(state, post.get("words") or post["text"])
     cutoff = (now - dt.timedelta(days=40)).isoformat()
     xs["story_posts"] = [p for p in posts if str(p.get("at", "")) >= cutoff]
@@ -777,9 +786,10 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
             post = compose_x(cfg, kind, ident, lang, state)
             print(f"\n===== {kind} {ident} {lang} ({x_len(post['text']) if post else 0}/280)\n{post['text'] if post else '(no report)'}")
         a, xs_state = story_allowance(cfg, state, now), state.get("x") or {}
-        print(f"\n######## X budget\n{a['budget']} posts a month (${s['monthly_budget_usd']} at ${s['cost_per_post_usd']} a post); "
-              f"{a['sent']} made this month, {a['reserve']} kept for the reports still to come, {a['left']} left for stories; "
-              f"today {a['done_today']} of {a['today']} story posts made. Story slot open now: {story_slot(cfg, state, now) or 'none'}. "
+        print(f"\n######## X budget\n${a['budget']:g} a month (a post costs ${s['cost_per_post_usd']}, ${s['cost_per_link_post_usd']} with a link); "
+              f"${a['spent']:.2f} spent this month, ${a['reserve']:.2f} kept for the reports still to come, ${a['left']:.2f} left for stories "
+              f"({a['stories_left']} story posts at ${a['story_price']}); today {a['done_today']} of {a['today']} story posts made. "
+              f"Story slot open now: {story_slot(cfg, state, now) or 'none'}. "
               f"Rewrites: {'on' if s.get('rewrite') else 'off'}, ${(xs_state.get('rewrite_usd') or {}).get(now.strftime('%Y-%m'), 0)} this month.")
         for n, gap in story_candidates(cfg, state, now)[:3]:
             post = compose_story(cfg, n, gap, s["story_language"], state=state)
@@ -793,8 +803,9 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
         post = compose_x(cfg, kind, ident, lang, state)
         if not post:
             continue
-        if sent_this_month(xs, now) >= budget_posts(s):
-            print(f"X: the monthly budget of {budget_posts(s)} posts is used up; {post['key']} waits.")
+        cost = post_cost(s, post["text"])
+        if spent_this_month(xs, s, now) + cost > float(s["monthly_budget_usd"]) + 1e-9:
+            print(f"X: the monthly budget of ${s['monthly_budget_usd']} is used up; {post['key']} waits.")
             return
         try:
             res = x_call("POST", "tweets", keys, {"text": post["text"]})
@@ -803,7 +814,7 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
             print(f"X: {post['key']} not posted. {x_explain(e)} It is tried again at the next update.")
             return
         pid = (res.get("data") or {}).get("id")
-        posted[post["key"]] = {"id": pid, "at": now.isoformat(timespec="seconds")}
+        posted[post["key"]] = {"id": pid, "at": now.isoformat(timespec="seconds"), "usd": cost}
         remember(state, post.get("words") or post["text"])
         xs.pop("last_error", None)
         print(f"X: posted {post['key']} ({pid}).")
