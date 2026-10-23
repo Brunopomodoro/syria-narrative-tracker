@@ -320,7 +320,7 @@ facebook:
 # rewrite: Claude writes the words of each post in a human voice from the material (about a cent a post, so about
 # $2 a month on the Claude bill); a draft with a number not in the material, or too long, falls back to the plain format.
 x:
-  enabled: true
+  enabled: false              # paused by the owner (2026-10-23); set to true to resume
   rewrite: true
   languages: [ar, en]
   daily_languages: [ar]
