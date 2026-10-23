@@ -218,7 +218,7 @@ def generate(cfg: dict, month: str, log=print) -> dict | None:
         raise RuntimeError("ANTHROPIC_API_KEY secret is missing")
     client = anthropic.Anthropic(api_key=key)
     model = cfg.get("model", "claude-sonnet-5")
-    resp = client.messages.create(model=model, max_tokens=12000, system=REVIEW_PROMPT + arabic.rules(),
+    resp = client.messages.create(model=model, max_tokens=12000, system=REVIEW_PROMPT + pages.NO_SCORES + arabic.rules(),
                                   messages=[{"role": "user", "content": build_message(cfg, s)}],
                                   output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": review_schema()}})
     text = "".join(b.text for b in resp.content if b.type == "text")

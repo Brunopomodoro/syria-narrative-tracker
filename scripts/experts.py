@@ -608,7 +608,7 @@ def generate(cfg: dict, pid: str, log=print) -> dict | None:
                                     ensure_ascii=False) for i in mine) +
                "\n\nWHAT ORDINARY SYRIANS SAID IN THIS AREA (people's own posts and comments on the Syria Narrative Tracker; outlets not counted)\n" +
                ("\n".join(syrian_stories(start, end, AREA_THEMES[area])) or "(no stories in this area)"))
-        d, u = ask(cfg, AREA_PROMPT.replace("{area}", area).replace("{leaning}", LEANING) + LINKS, msg, area_schema(), max_tokens=20000)
+        d, u = ask(cfg, AREA_PROMPT.replace("{area}", area).replace("{leaning}", LEANING) + LINKS + pages.NO_SCORES, msg, area_schema(), max_tokens=20000)
         ids = {i["id"]: i for i in mine}
         d["item_ids"] = [x for x in d.get("item_ids") or [] if x in ids][:15]
         d["count"] = len(mine)
@@ -621,7 +621,7 @@ def generate(cfg: dict, pid: str, log=print) -> dict | None:
         return None
     summary = "\n\n".join(f"{area.upper()}\n{d['title']}\n{d['lede']}\n" + "\n".join(d["findings"]) + f"\nCompared with what people said: {d['syrians']}"
                           for area, d in areas.items())
-    overall, u = ask(cfg, OVERALL_PROMPT.replace("{leaning}", LEANING) + KEEP_LINKS, f"Period: {pid} ({start} to {end}).\n\nTHE THREE ANALYSES\n{summary}\n\nWHAT ORDINARY SYRIANS SAID "
+    overall, u = ask(cfg, OVERALL_PROMPT.replace("{leaning}", LEANING) + KEEP_LINKS + pages.NO_SCORES, f"Period: {pid} ({start} to {end}).\n\nTHE THREE ANALYSES\n{summary}\n\nWHAT ORDINARY SYRIANS SAID "
                                           f"(people's own posts and comments on the Syria Narrative Tracker; outlets not counted)\n" + "\n".join(syrian_stories(start, end, None, 15)), area_schema(True), max_tokens=20000)
     usage = {k: usage[k] + u[k] for k in usage}
     overall["count"], overall["orgs"] = len(items), len({i["org"] for i in items})
@@ -667,7 +667,7 @@ def generate_day(cfg: dict, date: str, log=print) -> dict | None:
            "\n".join(json.dumps({"id": i["id"], "org": i["org"], "type": i["kind"], "language": i.get("lang", "en"), "area": i["domain"], "title": i["title"], "summary": i.get("summary", "")},
                                 ensure_ascii=False) for i in items) +
            "\n\nWHAT ORDINARY SYRIANS SAID THAT DAY (people's own posts and comments on the Syria Narrative Tracker; outlets not counted)\n" + ("\n".join(syrian_stories(date, date, None, 12)) or "(no tracker data)"))
-    d, usage = ask(cfg, DAY_PROMPT.replace("{leaning}", LEANING) + LINKS, msg, day_schema(), max_tokens=12000)
+    d, usage = ask(cfg, DAY_PROMPT.replace("{leaning}", LEANING) + LINKS + pages.NO_SCORES, msg, day_schema(), max_tokens=12000)
     ids = {i["id"]: i for i in items}
     d["item_ids"] = [x for x in d.get("item_ids") or [] if x in ids][:12]
     d["count"], d["orgs"] = len(items), len({i["org"] for i in items})
