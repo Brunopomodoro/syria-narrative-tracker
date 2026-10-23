@@ -35,7 +35,7 @@ def fingerprint(page: pathlib.Path) -> str:
     start, end = text.find("<article"), text.rfind("</article>")
     report = text[start:end] if 0 <= start < end else text
     report = re.sub(r'<div class="share".*?</div>', "", report, flags=re.S)   # the share buttons (and the PDF link) are not printed
-    return hashlib.sha256((report + print_style(text) + PAGE_MODE).encode()).hexdigest()[:16]
+    return hashlib.sha256((report + print_style(text) + PAGE_MODE + SINGLE).encode()).hexdigest()[:16]
 
 
 def chrome() -> str | None:
@@ -121,7 +121,7 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone.utc).date()
     recent = (today - dt.timedelta(days=RECENT_DAYS)).isoformat()
     days = [p for p in sorted((ROOT / "daily").glob("*/20??-??-??.html")) if p.stem < today.isoformat()]
-    layout = hashlib.sha256((PAGE_MODE + print_style(days[-1].read_text(encoding="utf-8"))).encode()).hexdigest()[:16] if days else ""
+    layout = hashlib.sha256((PAGE_MODE + SINGLE + print_style(days[-1].read_text(encoding="utf-8"))).encode()).hexdigest()[:16] if days else ""
     if layout != state.get("_layout"):             # a new print layout: older daily briefs are remade too
         recent = ""
     for page in sorted((ROOT / "monthly").glob("*/20??-??.html")) + sorted((ROOT / "weekly").glob("*/20??-W??.html")) + days:
