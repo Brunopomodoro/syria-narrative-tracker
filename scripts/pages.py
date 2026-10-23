@@ -163,6 +163,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 .report .rmeta{margin-top:-6px}.pvm-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}.pvm-cols h3{margin-top:10px}@media (max-width:640px){.pvm-cols{grid-template-columns:1fr}}
 .toc{border:1px solid var(--rule);border-radius:8px;padding:10px 16px;margin:16px 0}.toc b{font-size:.9rem}.toc ol{margin:6px 0 0;padding-inline-start:20px;columns:2;column-gap:28px;font-size:.92rem}.toc li{margin:2px 0}
 .part{margin-top:28px}.part>h2{border-bottom:2px solid var(--brass);padding-bottom:4px}.part h4{margin:12px 0 4px;font-size:.98rem}.area{margin-top:18px}.area .full{font-size:.88rem}.srcs li{margin-bottom:4px}.pending{color:var(--muted);font-style:italic}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
+.follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:28px 0 8px;padding:14px 18px;border:1px solid var(--brass);border-radius:12px;background:var(--wash)}.follow p{margin:0;flex:1 1 320px}.follow .btn{background:var(--brass);color:#fff;border-radius:999px;padding:7px 18px;text-decoration:none;font-weight:600;white-space:nowrap}.follow .btn:hover{color:#fff;opacity:.9}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
 .charts{display:grid;grid-template-columns:1fr;gap:16px}.charts figure{margin:0;border:1px solid var(--rule);border-radius:8px;padding:12px 14px}.charts figcaption{font-weight:500;font-size:.92rem;margin-bottom:8px}.charts svg{display:block;max-width:100%;height:auto}.charts figure:only-child{grid-column:1/-1;max-width:680px}
@@ -172,7 +173,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 @page{size:A4;margin:10mm 12mm}
 @media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.share,footer,.chip,.print-hide,.wk-text,.top nav{display:none!important}.top{padding:0 0 5pt;margin:0 0 10pt;border-bottom:1px solid #bbb}.top .brand{font-size:9.5pt;color:#000}.top .brand .mark{width:14pt;height:14pt}.purl{display:block;color:#555;font-size:8.5pt}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
 .kpis{grid-template-columns:repeat(6,1fr);gap:6pt}.kpi{padding:5pt 8pt;border-color:#bbb}.kpi b{font-size:12pt}.kpi span,.kpi .delta{font-size:7.5pt}.charts{grid-template-columns:1fr 1fr;gap:8pt}.charts figure{padding:5pt 8pt;border-color:#bbb}.charts figcaption{font-size:9pt}
-.analysis{column-count:2;column-gap:16pt}.analysis h2,.analysis h3{column-span:all}.toc{padding:4pt 8pt;margin:6pt 0}.toc ol{font-size:8.5pt}.part{margin-top:12pt}.part>h2{font-size:13pt}h2,h3,h4{break-after:avoid}p,li{orphans:2;widows:2}.srcs{column-count:2;column-gap:16pt;font-size:8pt}.area .full{display:none}.weeks ul{column-count:2;column-gap:16pt}figure,.kpi,.kpis,tr{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}}
+.analysis{column-count:2;column-gap:16pt}.analysis h2,.analysis h3{column-span:all}.toc{padding:4pt 8pt;margin:6pt 0}.toc ol{font-size:8.5pt}.part{margin-top:12pt}.part>h2{font-size:13pt}h2,h3,h4{break-after:avoid}p,li{orphans:2;widows:2}.srcs{column-count:2;column-gap:16pt;font-size:8pt}.area .full{display:none}.weeks ul{column-count:2;column-gap:16pt}figure,.kpi,.kpis,tr{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}.follow{border-color:#bbb;background:none;padding:6pt 10pt}.follow .btn{background:none;color:#000;border:1px solid #bbb;padding:2pt 8pt}}
 """
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">'
@@ -325,6 +326,9 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
          updated: str | None = None, kind: str = "article", image: str | None = None, jsonld: dict | None = None,
          noindex: bool = False, csp: str | None = None) -> str:
     w, base = W[lang], site_url(cfg)
+    if path.startswith(FOLLOW_PATHS) and "</article>" in body and not path.endswith("index.html"):
+        i = body.rfind("</article>")
+        body = body[:i] + follow_box(cfg, lang) + body[i:]
     description = snippet(description)
     image = image or ("assets/og-ar.png" if lang == "ar" else "assets/og.png")
     other = "en" if lang == "ar" else "ar"
@@ -1402,6 +1406,21 @@ def support_links(cfg: dict) -> list:
 
 def support_on(cfg: dict) -> bool:
     return bool(support_links(cfg))
+
+
+FOLLOW_WORDS = {"en": {"head": "Follow us on X", "text": "The daily brief every morning, and the stories Syrians are talking about, in your feed.", "btn": "Follow"},
+                "ar": {"head": "تابعنا على X", "text": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك.", "btn": "تابع"}}
+FOLLOW_PATHS = ("daily/", "weekly/", "monthly/", "stories/", "experts/")
+
+
+def follow_box(cfg: dict, lang: str) -> str:
+    """The invitation to follow the site on X, at the end of every report, brief and story page (and in their PDFs)."""
+    u = x_profile(cfg)
+    if not u:
+        return ""
+    w, handle = FOLLOW_WORDS[lang], "@" + u.rsplit("/", 1)[-1]
+    return (f'<aside class="follow"><p><b>{w["head"]}</b> {w["text"]}</p>'
+            f'<a class="btn" href="{esc(u)}" rel="me noopener">{w["btn"]} <bdi dir="ltr">{esc(handle)}</bdi></a></aside>')
 
 
 def x_profile(cfg: dict) -> str:

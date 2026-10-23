@@ -157,7 +157,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", followHead: "The daily brief and the stories Syrians are talking about, in your X feed.", followBtn: "Follow", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -308,7 +308,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", followHead: "الموجز اليومي والقصص التي يتحدث عنها السوريون، في صفحتك على X.", followBtn: "تابع", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -401,6 +401,13 @@ function applyLang() {
   }
   $("#intro").textContent = t.intro;
   $("#intro").hidden = state.view !== "home";
+  const xu = state.latest?.x_profile || "";                          // the follow invitation under the introduction
+  if (/^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(xu)) {
+    let fx = $("#follow-x");
+    if (!fx) { fx = document.createElement("p"); fx.id = "follow-x"; fx.className = "follow-x"; $("#intro").after(fx); }
+    fx.innerHTML = `${esc(t.followHead)} <a class="btn" href="${esc(xu)}" rel="me noopener">${esc(t.followBtn)} <bdi dir="ltr">@${esc(xu.split("/").pop())}</bdi></a>`;
+    fx.hidden = state.view !== "home";
+  }
   const b = $("#lang-btn");
   b.textContent = t.switchTo;
   b.setAttribute("lang", t.switchLang);
