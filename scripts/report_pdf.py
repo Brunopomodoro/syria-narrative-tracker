@@ -55,7 +55,7 @@ def main() -> int:
     if not binary:
         print("No Chrome or Chromium found; PDFs not made (they are made on GitHub's runners).")
         return 0
-    made, state_file, new_days = 0, ROOT / "data" / "pdf_state.json", set()
+    made, state_file, new_days, new_reports = 0, ROOT / "data" / "pdf_state.json", set(), set()
     try:
         state = json.loads(state_file.read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001
@@ -71,6 +71,8 @@ def main() -> int:
             continue
         is_new = not out.exists()
         ok = render(binary, page, out)
+        if ok and is_new:
+            new_reports.add(page.stem)
         if ok and is_new and page.parent.parent.name == "daily":
             new_days.add(page.stem)
         print(f"{'ok  ' if ok else 'FAIL'} {out.relative_to(ROOT)}")
@@ -78,13 +80,20 @@ def main() -> int:
             state[key] = print_hash
         made += ok
     state_file.write_text(json.dumps(state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
-    if new_days:                                    # daily pages show their PDF link once the PDF exists
+    if new_reports:                                 # pages show their PDF link once the PDF exists
         sys.path.insert(0, str(ROOT / "scripts"))
+        import archive
+        import experts
         import pages
         import pipeline
         cfg = pipeline.load_config()
-        pages.write_daily_pages(cfg, sorted(new_days))
-        pages.write_daily_listing(cfg)
+        if new_days:
+            pages.write_daily_pages(cfg, sorted(new_days))
+            pages.write_daily_listing(cfg)
+        for ident in sorted(new_reports):           # the media and experts pages of the same day, week or month
+            a = archive._load(experts.PERIODS / f"{ident}.json", None)
+            if a:
+                experts.write_pages(cfg, a)
     print(f"{made} PDF(s) written.")
     return 0
 
