@@ -309,8 +309,8 @@ facebook:
   api_version: ""
 
 # Posting to the tracker's X account (GUIDE.md, "Posting to X"). Nothing is posted until the four X_ secrets exist.
-# X charges per post, so posting keeps to monthly_budget_usd: at cost_per_post_usd a post that pays for
-# budget/cost posts a month (set cost_per_post_usd to the price shown in the X Developer Console).
+# X charges per post, much more for a post with a link (October 2026: $0.015, and $0.20 with a link; check the
+# X Developer Console and correct the two prices below if they change). Posting keeps to monthly_budget_usd.
 # Reports come first: the weekly and monthly ones in each of `languages`, the daily brief in `daily_languages`.
 # What is left goes to story posts in story_language: what people say and how they feel, the link to the story's
 # page (story_links: false leaves it out), and hashtags. At most max_stories_per_day, at story_hours (Damascus time, busiest first; a
@@ -320,12 +320,13 @@ facebook:
 # rewrite: Claude writes the words of each post in a human voice from the material (about a cent a post, so about
 # $2 a month on the Claude bill); a draft with a number not in the material, or too long, falls back to the plain format.
 x:
-  enabled: false              # paused by the owner (2026-10-23); set to true to resume
+  enabled: true
   rewrite: true
   languages: [ar, en]
   daily_languages: [ar]
   monthly_budget_usd: 10
-  cost_per_post_usd: 0.10
+  cost_per_post_usd: 0.015
+  cost_per_link_post_usd: 0.20
   stories: true
   story_links: true
   story_language: ar
