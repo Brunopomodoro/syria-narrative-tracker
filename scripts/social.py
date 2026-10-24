@@ -465,12 +465,7 @@ def no_scores(text: str) -> str:
 
 
 def comments(n: int, lang: str) -> str:
-    """"94 comments" / "٩٤ تعليقاً", with the Arabic noun that goes with the number."""
-    if lang != "ar":
-        return f"{n:,} comment{'s' if n != 1 else ''}"
-    k = n % 100
-    noun = "تعليقات" if 3 <= k <= 10 else "تعليقاً" if 11 <= k <= 99 else "تعليق"
-    return f"{pages.num(n, 'ar')} {noun}"
+    return pages.comments_text(n, lang)
 
 
 def allowed_numbers(text: str) -> set:
