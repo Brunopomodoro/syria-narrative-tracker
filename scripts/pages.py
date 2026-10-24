@@ -316,6 +316,33 @@ def snippet(text: str, limit: int = 160) -> str:
     return cut + "…"
 
 
+def comments_text(n: int, lang: str) -> str:
+    """"94 comments" / "٩٤ تعليقاً", with the Arabic noun that goes with the number."""
+    if lang != "ar":
+        return f"{n:,} comment{'s' if n != 1 else ''}"
+    k = n % 100
+    noun = "تعليقات" if 3 <= k <= 10 else "تعليقاً" if 11 <= k <= 99 else "تعليق"
+    return f"{num(n, 'ar')} {noun}"
+
+
+SEO_WORDS = {"en": {"react": "Syrians react", "online": "Syrians online"}, "ar": {"react": "تفاعل السوريين", "online": "السوريون على الإنترنت"}}
+
+
+def story_search_text(n: dict, lang: str) -> tuple:
+    """(title, description) of a story page for search results: what only this site has, how Syrians reacted, first.
+    "Syrians react: <headline>" and "Syrians online: leaning negative (94 comments). <what people say>"; the plain
+    headline and summary for a story without reactions from people."""
+    title, summary = str(t(n, "title", lang) or ""), str(t(n, "summary", lang) or "")
+    count, tone = int(n.get("public_volume") or 0), n.get("public_sentiment")
+    if not count or tone is None:
+        return title, summary
+    w = SEO_WORDS[lang]
+    label = tone_label(tone, lang)
+    label = label[0].lower() + label[1:] if lang == "en" else label
+    reaction = str(t(n, "public_reaction", lang) or summary)
+    return f"{w['react']}: {title}", f"{w['online']}: {label} ({comments_text(count, lang)}). {reaction}"
+
+
 def page_title(title: str, site: str, limit: int = 70) -> str:
     """The page's <title>: the page's own title and the site's name, or the page's title alone when both would be
     longer than search results show."""
@@ -588,8 +615,8 @@ def write_story_pages(cfg: dict, latest: dict, narratives: list | None = None, c
         for lang in LANGS:
             other = "ar" if lang == "en" else "en"
             body = story_body(cfg, n, runs, lang, when)
-            desc = str(t(n, "summary", lang) or "")[:200]
-            title = str(t(n, "title", lang) or key)
+            title, desc = story_search_text(n, lang)
+            title = title or key
             if str(n.get("title") or "").strip().lower() in shared:   # the date tells same-named stories apart in search results
                 title = f"{title} ({fmt_date(key[:10], lang)})"
             write(STORIES / lang / f"{key}.html",
