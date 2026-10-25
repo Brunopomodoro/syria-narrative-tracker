@@ -146,7 +146,8 @@ jobs:
             echo "No changes to save."
           else
             git commit -m "Maintenance: ${{ inputs.task }} $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase
+            # another run may have saved meanwhile: on a clash in the generated files, this run's newer version wins
+            git pull --rebase || { git rebase --abort; git pull --rebase -X theirs; }
             git push
             python scripts/indexnow.py || true   # tell search engines which pages changed
           fi
