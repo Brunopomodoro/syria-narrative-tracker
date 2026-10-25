@@ -190,7 +190,7 @@ def x_len(text: str) -> int:
     return n
 
 
-CARD_WORDS = {"en": {"most": "Most discussed", "comments": "from people"}, "ar": {"most": "الأكثر نقاشاً", "comments": "من الناس"}}
+CARD_WORDS = {"en": {"most": "Most discussed", "comments": "How Syrians reacted online"}, "ar": {"most": "الأكثر نقاشاً", "comments": "كيف تفاعل السوريون على الإنترنت"}}
 
 
 def themes_line(cfg: dict, themes: list, lang: str) -> str:
@@ -223,7 +223,7 @@ def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = 
         head = f"{LABEL[kind][lang]} · {when}\n{pages.t(d, 'title', lang)}"
         findings = d.get("key_findings_ar" if lang == "ar" else "key_findings") or d.get("key_findings") or []
         points = d.get("key_points_ar" if lang == "ar" else "key_points") or d.get("key_points") or []   # the weekly report's key points
-        lead = [str(x) for x in (findings if kind == "monthly" else points) if not has_score(x)]   # scores mean nothing on X
+        lead = [str(x) for x in (findings if kind == "monthly" else points) if not has_score(x) and not has_count(x)]   # no scores or counts on X
         body = lead[0] if lead else no_scores((d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or [""])[0])
         themes = [x["theme"] for x in sorted((d.get("stats") or {}).get("themes") or [], key=lambda x: -x.get("share", 0))]
         titles = [pages.t(d, "title", lang)] + [pages.t(h, "title", lang) for h in d.get("highlights") or []]
@@ -428,8 +428,9 @@ talking to people, not a press release or a bot.
 - Only what the material says. No new facts, names, numbers or causes. Every number you use must be in the material,
   written in digits, never in words (so it can be checked).
 - Never use tone scores or the site's measures (numbers like -0.15 or +0.20, "points", "tone", "sentiment",
-  "voices counted"): say the mood in plain words ("a little less gloomy", "angrier than the news"). A count of
-  comments, if you use one, is "94 comments" (in Arabic ٩٤ تعليقاً, with the right noun for the number).
+  "voices counted"): say the mood in plain words ("a little less gloomy", "angrier than the news").
+- Never say how many comments, posts, voices, updates or analyses there were, or how much was collected (not "94
+  comments", not "18,368 posts", not "a few comments"): talk about what people say, not how many said it.
 - It reports what people SAY, not what is true: attribute ("many say", "commenters are split", "the mood is").
 - Never name or quote an individual commenter. Talk about people in aggregate ("people", "commenters", "voices").
 - Neutral: no side taken, no insult, no slur, no word that carries a judgement the material does not; no sarcasm about
@@ -452,6 +453,16 @@ def numbers(text: str) -> set:
 
 
 SCORE = re.compile(r"(?<![\d.,])[-+−]?0[.,]\d+|\d+\s*-?\s*(?:points?|نقطة|نقاط)\b", re.I)
+
+
+COUNT = re.compile(r"\d[\d,.]*\s*(?:comments?|posts?|voices?|updates?|analys[ie]s|reactions?|replies)\b|"
+                   r"\d[\d,.]*\s*(?:تعليق|منشور|صوت|أصوات|تحديث|تحليل|رد|ردود|تفاعل)|"
+                   r"(?:التعليقات|المنشورات|الأصوات)\s+ال(?:ثلاث|أربع|خمس|ست|سبع|ثماني|تسع|عشر)", re.I)
+
+
+def has_count(text: str) -> bool:
+    """A count of what the tracker collected ("94 comments", "18,368 posts"), which posts on X leave out."""
+    return bool(COUNT.search(str(text or "").translate(DIGITS_IN)))
 
 
 def has_score(text: str) -> bool:
@@ -531,11 +542,13 @@ def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, li
         extra = (numbers(text) - allowed) | set(words)
         if x_len(text) > room or text.count("\n") >= lines * 2:
             cut = fit_sentences(text, room)
-            if cut and x_len(cut) >= room * 0.5 and cut.count("\n") < lines * 2 and not numbers(cut) - allowed:
+            if cut and x_len(cut) >= room * 0.5 and cut.count("\n") < lines * 2 and not numbers(cut) - allowed and not has_count(cut):
                 return cut
             problem = f"it was {x_len(text)} characters; the limit is {target}. Write a shorter one"
         elif has_score(text):
             problem = "it used a tone score or points; say the mood in plain words, with no score"
+        elif has_count(text):
+            problem = "it said how many comments, posts or analyses there were; leave every such count out"
         elif extra:
             problem = f"it used numbers that are not in the material ({', '.join(sorted(extra))}). Use only the material's numbers, or none"
         elif text:
@@ -699,10 +712,9 @@ def rows(text: str, width: int = 50) -> int:
 
 
 def story_card(cfg: dict, n: dict, lang: str) -> dict:
-    count = int(n.get("public_volume") or 0)
     when = pages.fmt_date(dt.datetime.now(dt.timezone.utc).date().isoformat(), lang)
     return {"eyebrow": f"{pages.theme_label(cfg, n.get('theme', 'other'), lang)} · {when}", "title": str(pages.t(n, "title", lang) or ""),
-            "people": n.get("public_sentiment"), "media": outlet_tone(n), "line": f"{comments(count, lang)} {CARD_WORDS[lang]['comments']}"}
+            "people": n.get("public_sentiment"), "media": outlet_tone(n), "line": CARD_WORDS[lang]["comments"]}
 
 
 def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, state: dict | None = None) -> dict:
@@ -712,9 +724,8 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, 
     w = STORY_WORDS[lang]
     key = n.get("key") or ""
     title = str(pages.t(n, "title", lang) or "")
-    count = int(n.get("public_volume") or 0)
     mood = pages.tone_label(n.get("public_sentiment"), lang)
-    people = f"{w['people']}: {mood} ({comments(count, lang)})"
+    people = f"{w['people']}: {mood}"
     head = [title, people] + ([f"{w['outlets']}: {pages.tone_label(outlet_tone(n), lang)}"] if gap >= 0.4 else [])
     body = no_scores(pages.t(n, "public_reaction", lang) or pages.t(n, "summary", lang))
     tags = hashtags.select(cfg, lang, [n.get("theme", "")], [title])[: int(settings(cfg, "x")["max_tags"])]
@@ -728,7 +739,7 @@ def compose_story(cfg: dict, n: dict, gap: float, lang: str, max_rows: int = 8, 
     fits = lambda text: x_len(text) <= 280 and rows(text) <= max_rows  # noqa: E731
     n_tags = len(tags)
     facts = {"story": title, "what_happened": no_scores(pages.t(n, "summary", lang)), "what_people_say": body,
-             "people_mood": mood, "comments_from_people": comments(count, lang),
+             "people_mood": mood,
              "media_mood": pages.tone_label(outlet_tone(n), lang) if gap >= 0.4 else "about the same as people's",
              "feelings": (n.get("emotions_ar") if lang == "ar" else n.get("emotions")) or []}
     words = rewrite(cfg, state, lang, facts, 280 - x_len(tail(2)), lines=max_rows - (4 if link else 3))
