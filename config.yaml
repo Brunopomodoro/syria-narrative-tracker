@@ -328,7 +328,8 @@ facebook:
 # What is left goes to story posts in story_language: what people say and how they feel, the link to the story's
 # page (story_links: false leaves it out), and hashtags. At most max_stories_per_day, at story_hours (Damascus time, busiest first; a
 # day with an allowance of 2 posts at the first two), at least story_gap_hours apart, and the same story not
-# again within story_repeat_hours. Only stories with at least story_min_voices comments from people.
+# again within story_repeat_hours. Posting is in English only (languages, daily_languages, story_language); the
+# story hours (Damascus time) suit Europe's afternoon and evening and the US morning and midday. Only stories with at least story_min_voices comments from people.
 # per_run: the most report posts per update. max_tags: the most hashtags on a post.
 # rewrite: Claude writes the words of each post in a human voice from the material (about a cent a post, so about
 # $2 a month on the Claude bill); a draft with a number not in the material, or too long, falls back to the plain format.
@@ -340,15 +341,15 @@ x:
   rewrite: true
   images: true
   link_in_reply: true
-  languages: [ar, en]
-  daily_languages: [ar]
+  languages: [en]
+  daily_languages: [en]
   monthly_budget_usd: 15
   cost_per_post_usd: 0.015
   cost_per_link_post_usd: 0.20
   stories: true
   story_links: true
-  story_language: ar
-  story_hours: [20, 13, 17, 22, 9]
+  story_language: en
+  story_hours: [20, 17, 22, 15, 12]
   utc_offset: 3
   max_stories_per_day: 5
   story_gap_hours: 1.5
