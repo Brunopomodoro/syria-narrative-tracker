@@ -48,7 +48,7 @@ W = {   # the words on the static pages
            "note": "Written automatically by an AI model from the week's public posts. It describes what was said, not what is true.",
            "storyNote": "Analysis generated automatically by an AI model from public posts. It describes what is being said, not what is true. Individuals are never named, quoted or linked.",
            "tone": ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
-           "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", "followX": "Follow on X",
+           "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", "followX": "Follow on X", "followFb": "Follow on Facebook",
            "feedTitle": "Syria Narrative Tracker: weekly digest", "feedDesc": "A weekly written summary of what is being said about Syria online.",
            "review": "Monthly report", "reviews": "Monthly reports", "month": "Month", "monthHighlights": "The stories that mattered", "watchMonth": "What to watch next month",
            "weeksBrief": "The weeks in brief", "flaggedTitle": "Stories that carried signs of coordination", "themeTableMonth": "Themes this month", "vsLastMonth": "vs last month",
@@ -93,7 +93,7 @@ W = {   # the words on the static pages
            "note": "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الأسبوع العامة، ويصف ما قيل لا ما هو صحيح.",
            "storyNote": "تحليل مولَّد تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات عامة، يصف ما يُقال لا ما هو صحيح. لا يُذكر الأفراد ولا يُقتبس كلامهم ولا تُربط منشوراتهم.",
            "tone": ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
-           "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", "followX": "تابعنا على X",
+           "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", "followX": "تابعنا على X", "followFb": "تابعنا على فيسبوك",
            "feedTitle": "متتبّع السرديات السورية: الملخص الأسبوعي", "feedDesc": "ملخص مكتوب أسبوعياً لما يُقال عن سوريا على الإنترنت.",
            "review": "التقرير الشهري", "reviews": "التقارير الشهرية", "month": "الشهر", "monthHighlights": "القصص التي كانت الأهم", "watchMonth": "ما يجب متابعته الشهر المقبل",
            "weeksBrief": "الأسابيع باختصار", "flaggedTitle": "قصص حملت مؤشرات تنسيق", "themeTableMonth": "مواضيع هذا الشهر", "vsLastMonth": "مقارنة بالشهر الماضي",
@@ -163,7 +163,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 .report .rmeta{margin-top:-6px}.pvm-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}.pvm-cols h3{margin-top:10px}@media (max-width:640px){.pvm-cols{grid-template-columns:1fr}}
 .toc{border:1px solid var(--rule);border-radius:8px;padding:10px 16px;margin:16px 0}.toc b{font-size:.9rem}.toc ol{margin:6px 0 0;padding-inline-start:20px;columns:2;column-gap:28px;font-size:.92rem}.toc li{margin:2px 0}
 .part{margin-top:28px}.part>h2{border-bottom:2px solid var(--brass);padding-bottom:4px}.part h4{margin:12px 0 4px;font-size:.98rem}.area{margin-top:18px}.area .full{font-size:.88rem}.srcs li{margin-bottom:4px}.pending{color:var(--muted);font-style:italic}.cform{display:grid;gap:14px;max-width:560px;margin:18px 0}.cform label{display:grid;gap:5px;font-weight:600;font-size:.92rem}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:8px;padding:9px 12px}.cform textarea{min-height:160px;resize:vertical}.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:1px}.cform button{justify-self:start;font:inherit;font-weight:600;background:var(--brass);color:#fff;border:0;border-radius:999px;padding:9px 22px;cursor:pointer}.cform .opt{font-weight:400;color:var(--muted)}.hp{display:none}.give{display:flex;flex-wrap:wrap;gap:10px}.give .chip{font-size:1rem;padding:6px 16px;background:var(--brass);color:#fff;border-color:var(--brass);text-decoration:none}.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}.share a{border:1px solid var(--rule);border-radius:999px;padding:3px 12px;font-size:.84rem;text-decoration:none;color:var(--ink)}.share a:hover{border-color:var(--brass)}.share a.pdf{background:var(--brass);color:#fff;border-color:var(--brass)}
-.follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:28px 0 8px;padding:14px 18px;border:1px solid var(--brass);border-radius:12px;background:var(--wash)}.follow p{margin:0;flex:1 1 320px}.follow .btn{background:var(--brass);color:#fff;border-radius:999px;padding:7px 18px;text-decoration:none;font-weight:600;white-space:nowrap}.follow .btn:hover{color:#fff;opacity:.9}.follow .btns{display:flex;flex-wrap:wrap;gap:8px}.follow .btn.alt{background:transparent;color:var(--brass);border:1px solid var(--brass)}.follow .btn.alt:hover{color:var(--brass)}
+.follow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:28px 0 8px;padding:14px 18px;border:1px solid var(--brass);border-radius:12px;background:var(--wash)}.follow p{margin:0;flex:1 1 320px}.follow .btns{display:flex;flex-wrap:wrap;gap:8px}.follow .btn{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);border:1px solid var(--brass);border-radius:999px;padding:7px 16px 7px 13px;text-decoration:none;font-weight:600;font-size:.92rem;white-space:nowrap;transition:background .15s,color .15s}[dir=rtl] .follow .btn{padding:7px 13px 7px 16px}.follow .btn svg{width:16px;height:16px;fill:var(--brass);flex:none}.follow .btn:hover{background:var(--brass);color:#fff}.follow .btn:hover svg{fill:#fff}footer .soc{display:inline-flex;vertical-align:-3px;margin-inline-start:6px}footer .soc svg{width:15px;height:15px;fill:currentColor}footer .soc:hover{color:var(--brass)}
 .opts{border:0;padding:0;margin:0;display:grid;gap:8px}.opts legend{font-weight:600;font-size:.92rem;margin-bottom:6px;padding:0}.opt-row{display:flex!important;grid-template-columns:none!important;gap:10px!important;align-items:flex-start;font-weight:400!important}.opt-row input{margin-top:6px}
 .report h2{margin-top:30px}.findings ol{padding-inline-start:22px}.findings li{margin-bottom:8px}.report ol li{margin-bottom:8px}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 18px}.kpi{border:1px solid var(--rule);border-radius:8px;padding:10px 14px}.kpi b{display:block;font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25}.kpi span{color:var(--muted);font-size:.82rem}.kpi .delta{display:block;font-size:.8rem}
@@ -174,7 +174,7 @@ footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);color:v
 @page{size:A4;margin:10mm 12mm}
 @media print{body{font-size:9.5pt;line-height:1.35;background:#fff;color:#000}.wrap{max-width:none;padding:0}.share,footer,.chip,.print-hide,.wk-text,.top nav{display:none!important}.top{padding:0 0 5pt;margin:0 0 10pt;border-bottom:1px solid #bbb}.top .brand{font-size:9.5pt;color:#000}.top .brand .mark{width:14pt;height:14pt}.purl{display:block;color:#555;font-size:8.5pt}.eyebrow{display:block;margin:0 0 4pt}h1{font-size:18pt;margin-bottom:4pt}h2{font-size:11.5pt;margin:10pt 0 4pt}.report h2{margin-top:10pt}p{margin:0 0 4pt}li{margin-bottom:2pt}.report .stories ol{column-count:2;column-gap:16pt}
 .kpis{grid-template-columns:repeat(6,1fr);gap:6pt}.kpi{padding:5pt 8pt;border-color:#bbb}.kpi b{font-size:12pt}.kpi span,.kpi .delta{font-size:7.5pt}.charts{grid-template-columns:1fr 1fr;gap:8pt}.charts figure{padding:5pt 8pt;border-color:#bbb}.charts figcaption{font-size:9pt}
-.analysis{column-count:2;column-gap:16pt}.analysis h2,.analysis h3{column-span:all}.toc{padding:4pt 8pt;margin:6pt 0}.toc ol{font-size:8.5pt}.part{margin-top:12pt}.part>h2{font-size:13pt}h2,h3,h4{break-after:avoid}p,li{orphans:2;widows:2}.srcs{column-count:2;column-gap:16pt;font-size:8pt}.area .full{display:none}.weeks ul{column-count:2;column-gap:16pt}figure,.kpi,.kpis,tr{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}.follow{border-color:#bbb;background:none;padding:6pt 10pt}.follow .btn{background:none;color:#000;border:1px solid #bbb;padding:2pt 8pt}}
+.analysis{column-count:2;column-gap:16pt}.analysis h2,.analysis h3{column-span:all}.toc{padding:4pt 8pt;margin:6pt 0}.toc ol{font-size:8.5pt}.part{margin-top:12pt}.part>h2{font-size:13pt}h2,h3,h4{break-after:avoid}p,li{orphans:2;widows:2}.srcs{column-count:2;column-gap:16pt;font-size:8pt}.area .full{display:none}.weeks ul{column-count:2;column-gap:16pt}figure,.kpi,.kpis,tr{break-inside:avoid}a{text-decoration:none;color:inherit}.tw{overflow:visible}table{font-size:8.5pt}th,td{padding:2pt 6pt 2pt 0}.bar{min-width:50px}.about-report{font-size:8pt;margin-top:12pt;padding-top:6pt}.sub{font-size:8.5pt}svg text{fill:#000}.follow{border-color:#bbb;background:none;padding:6pt 10pt}.follow .btn{background:none;color:#000;border:1px solid #bbb;padding:2pt 8pt}.follow .btn svg{fill:#555;width:10pt;height:10pt}}
 """
 
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">'
@@ -393,7 +393,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a href="{esc(x_profile(cfg))}" rel="me noopener">{w["followX"]}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a class="soc" href="{esc(fb_profile(cfg))}" rel="me noopener" aria-label="{w["followFb"]}" title="{w["followFb"]}">{ICON_FB}</a>') if fb_profile(cfg) else ''}{(f'<a class="soc" href="{esc(x_profile(cfg))}" rel="me noopener" aria-label="{w["followX"]}" title="{w["followX"]}">{ICON_X}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
 </div>
 </body>
 </html>
@@ -1347,7 +1347,7 @@ def home_jsonld(cfg: dict, lang: str) -> str:
     data = [
         {"@context": "https://schema.org", "@type": "WebSite", "name": site_title(cfg, lang), "url": home, "inLanguage": lang,
          "description": HOME_TEXT[lang]["desc"], "publisher": ld_publisher(cfg, lang)},
-        {"@context": "https://schema.org", **ld_publisher(cfg, lang), "sameAs": [u for u in [str(cfg.get("doi") or "").strip(), x_profile(cfg)] if u.startswith("https://")]},
+        {"@context": "https://schema.org", **ld_publisher(cfg, lang), "sameAs": [u for u in [str(cfg.get("doi") or "").strip(), x_profile(cfg), fb_profile(cfg)] if u.startswith("https://")]},
         {"@context": "https://schema.org", "@type": "Dataset", "name": "Syria Narrative Tracker: stories, themes and tone of online discussion about Syria",
          "alternateName": "متتبّع السرديات السورية",
          "description": "Stories found in public online discussion about Syria (Telegram, news sites, YouTube, Reddit, Bluesky, X), in Arabic, "
@@ -1450,23 +1450,37 @@ def support_on(cfg: dict) -> bool:
     return bool(support_links(cfg))
 
 
-FOLLOW_WORDS = {"en": {"head": "Follow us", "text": "The daily brief every morning, and the stories Syrians are talking about, on X or by email.",
-                       "headX": "Follow us on X", "textX": "The daily brief every morning, and the stories Syrians are talking about, in your feed.", "btn": "Follow"},
-                "ar": {"head": "تابعنا", "text": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، على X أو بالبريد.",
-                       "headX": "تابعنا على X", "textX": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك.", "btn": "تابع"}}
+FOLLOW_WORDS = {"en": {"head": "Follow us", "text": "The daily brief every morning, and the stories Syrians are talking about, in your feed or your inbox.",
+                       "textFeed": "The daily brief every morning, and the stories Syrians are talking about, in your feed."},
+                "ar": {"head": "تابعنا", "text": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك أو بريدك.",
+                       "textFeed": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك."}}
 FOLLOW_PATHS = ("daily/", "weekly/", "monthly/", "stories/", "experts/")
 
 
+ICON_X = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg>'
+ICON_FB = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>'
+ICON_MAIL = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-7.4 5.2a1 1 0 0 1-1.2 0zM5.7 7l6.3 4.4L18.3 7z"/></svg>'
+
+
 def follow_box(cfg: dict, lang: str) -> str:
-    """The invitation to follow the site on X, at the end of every report, brief and story page (and in their PDFs)."""
-    u = x_profile(cfg)
-    if not u:
+    """The invitation to follow the site, at the end of every report, brief and story page (and in their PDFs): matching
+    buttons with each platform's mark, Facebook first on Arabic pages (where most readers are), X first on English ones,
+    then the newsletter."""
+    x, fb, mail = x_profile(cfg), fb_profile(cfg), newsletter_on(cfg)
+    if not (x or fb or mail):
         return ""
-    w, handle, mail = FOLLOW_WORDS[lang], "@" + u.rsplit("/", 1)[-1], newsletter_on(cfg)
-    return (f'<aside class="follow"><p><b>{w["head" if mail else "headX"]}</b> {w["text" if mail else "textX"]}</p>'
-            f'<span class="btns"><a class="btn" href="{esc(u)}" rel="me noopener">{w["btn"]} <bdi dir="ltr">{esc(handle)}</bdi></a>'
-            + (f'<a class="btn alt" href="{esc(newsletter_url(cfg, lang))}">{NEWS_WORDS[lang]["byEmail"]}</a>' if newsletter_on(cfg) else "")
-            + '</span></aside>')
+    w, ww = FOLLOW_WORDS[lang], W[lang]
+    btn_x = f'<a class="btn" href="{esc(x)}" rel="me noopener">{ICON_X}<span>{ww["followX"]}</span></a>' if x else ""
+    btn_fb = f'<a class="btn" href="{esc(fb)}" rel="me noopener">{ICON_FB}<span>{ww["followFb"]}</span></a>' if fb else ""
+    btns = (btn_fb + btn_x) if lang == "ar" else (btn_x + btn_fb)
+    btns += f'<a class="btn" href="{esc(newsletter_url(cfg, lang))}">{ICON_MAIL}<span>{NEWS_WORDS[lang]["byEmail"]}</span></a>' if mail else ""
+    return f'<aside class="follow"><p><b>{w["head"]}</b> {w["text" if mail else "textFeed"]}</p><span class="btns">{btns}</span></aside>'
+
+
+def fb_profile(cfg: dict) -> str:
+    """The site's Facebook Page (config.yaml facebook_page_url), or "" when none is set."""
+    u = str(cfg.get("facebook_page_url") or "").strip()
+    return u if re.fullmatch(r"https://(www\.)?facebook\.com/(profile\.php\?id=\d{5,20}|[A-Za-z0-9.\-]{3,80}/?)", u) else ""
 
 
 def x_profile(cfg: dict) -> str:
