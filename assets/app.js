@@ -157,7 +157,7 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", followHead: "The daily brief and the stories Syrians are talking about, in your X feed.", followBtn: "Follow", byEmail: "By email", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", followFb: "Follow on Facebook", followHead: "The daily brief and the stories Syrians are talking about, in your feed:", followBtn: "Follow", byEmail: "By email", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
@@ -308,7 +308,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", followHead: "الموجز اليومي والقصص التي يتحدث عنها السوريون، في صفحتك على X.", followBtn: "تابع", byEmail: "بالبريد", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", followFb: "تابعنا على فيسبوك", followHead: "الموجز اليومي والقصص التي يتحدث عنها السوريون، في صفحتك:", followBtn: "تابع", byEmail: "بالبريد", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -401,13 +401,16 @@ function applyLang() {
   }
   $("#intro").textContent = t.intro;
   $("#intro").hidden = state.view !== "home";
-  const xu = state.latest?.x_profile || "";                          // the follow invitation under the introduction
-  if (/^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(xu)) {
+  const xu = /^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(state.latest?.x_profile || "") ? state.latest.x_profile : "";
+  const fu = /^https:\/\/(www\.)?facebook\.com\//.test(state.latest?.fb_profile || "") ? state.latest.fb_profile : "";
+  const nl = /\/subscribe\/(en|ar)\.html$/.test(String(state.latest?.newsletter_url || ""));
+  if (xu || fu || nl) {                                               // the follow invitation under the introduction
     let fx = $("#follow-x");
     if (!fx) { fx = document.createElement("p"); fx.id = "follow-x"; fx.className = "follow-x"; $("#intro").after(fx); }
-    const nl = String(state.latest?.newsletter_url || "");
-    fx.innerHTML = `${esc(t.followHead)} <a class="btn" href="${esc(xu)}" rel="me noopener">${esc(t.followBtn)} <bdi dir="ltr">@${esc(xu.split("/").pop())}</bdi></a>`
-      + (/\/subscribe\/(en|ar)\.html$/.test(nl) ? ` <a class="btn alt" href="subscribe/${state.lang}.html">${esc(t.byEmail)}</a>` : "");
+    const bx = xu ? `<a class="btn" href="${esc(xu)}" rel="me noopener">${ICON.x}<span>${esc(t.followX)}</span></a>` : "";
+    const bf = fu ? `<a class="btn" href="${esc(fu)}" rel="me noopener">${ICON.fb}<span>${esc(t.followFb)}</span></a>` : "";
+    fx.innerHTML = `<span>${esc(t.followHead)}</span>` + (state.lang === "ar" ? bf + bx : bx + bf)
+      + (nl ? `<a class="btn" href="subscribe/${state.lang}.html">${ICON.mail}<span>${esc(t.byEmail)}</span></a>` : "");
     fx.hidden = state.view !== "home";
   }
   const b = $("#lang-btn");
@@ -421,7 +424,8 @@ function applyLang() {
   const conLink = $("#contact-link");
   if (conLink) { conLink.textContent = t.contact; conLink.href = `contact/${state.lang}.html`; }
   $("#footer").innerHTML = `${esc(t.footer)} · <a href="privacy/${state.lang}.html">${t.privacy}</a>` + (sup ? ` · <a href="support/${state.lang}.html">${t.support}</a>` : "") + ` · <a href="contact/${state.lang}.html">${t.contact}</a> · <a href="sources/${state.lang}.html">${t.sourcesTitle}</a>`
-    + (/^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(state.latest?.x_profile || "") ? ` · <a href="${esc(state.latest.x_profile)}" rel="me noopener">${t.followX}</a>` : "");
+    + ((fu || xu) ? " · " : "") + (fu ? `<a class="soc" href="${esc(fu)}" rel="me noopener" aria-label="${esc(t.followFb)}" title="${esc(t.followFb)}">${ICON.fb}</a>` : "")
+    + (xu ? `<a class="soc" href="${esc(xu)}" rel="me noopener" aria-label="${esc(t.followX)}" title="${esc(t.followX)}">${ICON.x}</a>` : "");
 }
 
 /* tone */
@@ -850,6 +854,7 @@ const NS = "http://www.w3.org/2000/svg";
 const sv = (tag, attrs = {}, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; };
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
 const fmtDay = (d, o = { day: "numeric", month: "short" }) => fmt(d + "T12:00:00Z", o);   // midday: the date never shifts when shown in Damascus time
+const ICON = { x: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg>', fb: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z"/></svg>', mail: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-7.4 5.2a1 1 0 0 1-1.2 0zM5.7 7l6.3 4.4L18.3 7z"/></svg>' };   // the platforms' marks for the follow links
 const axisWord = (v) => ({ "-1": L().axisNeg, "0": L().axisNeu, "1": L().axisPos })[String(v)] || "";   // a tone axis in words, not scores
 const signed = (v) => Number(v).toLocaleString(L().locale, { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: "exceptZero" });
 const themeLabel = (id) => { const th = (state.trends.index?.themes || state.latest?.themes || []).find(x => x.id === id); return th ? (rtl() && th.label_ar ? th.label_ar : th.label) : id; };

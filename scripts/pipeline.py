@@ -1351,6 +1351,7 @@ def main() -> int:
         "newsletter_url": pages.newsletter_url(cfg, "en"),
         "support_on": pages.support_on(cfg),
         "x_profile": pages.x_profile(cfg),
+        "fb_profile": pages.fb_profile(cfg),
         "sources": status,
         "source_names_ar": source_names_ar(cfg),
         "cost_usd": cost,
