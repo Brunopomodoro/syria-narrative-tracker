@@ -985,18 +985,27 @@ def social_item(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
 def write_social_feeds(cfg: dict, now: dt.datetime) -> None:
     """feed-social-ar.xml and feed-social.xml: the latest daily briefs (once the day's media analysis is in, or 6 hours
     after the day ends), weekly digests and monthly reports, each item a post ready to publish. GUIDE.md, "Facebook
-    through Zapier"."""
+    through Zapier". Posts added by hand go in data/social_extra.json, each with its time ("at"): a report again
+    ("report": [kind, ident]) or a text of its own ("title", "text", "link"), and a "guid" that is new to the feed."""
     from email.utils import format_datetime
     from xml.sax.saxutils import escape
     reports = [("daily", d) for d in archive.all_days()[-12:] if d < now.date().isoformat()]
     for kind in ("weekly", "monthly"):
         reports += [(kind, x["month" if kind == "monthly" else "week"]) for x in (archive._load(pages.DATA / kind / "index.json", []) or [])[-4:]]
+    extra = archive._load(pages.DATA / "social_extra.json", []) or []   # posts added by hand, each at its own time
     for lang in ("ar", "en"):
         items = [i for k, ident in reports if (i := social_item(cfg, k, ident, lang)) and i["at"] <= now]
+        for e in extra:
+            at = archive_parse(e.get("at"))
+            if e.get("lang") != lang or not at or at > now:
+                continue
+            item = social_item(cfg, *e["report"], lang) if e.get("report") else {"title": e["title"], "text": e["text"], "link": e["link"]}
+            if item:
+                items.append({**item, "at": at, "guid": e.get("guid") or item["link"]})
         items.sort(key=lambda i: i["at"], reverse=True)
         w, base = SOCIAL_WORDS[lang], pages.site_url(cfg)
         name = "feed-social-ar.xml" if lang == "ar" else "feed-social.xml"
-        body = "".join(f"""<item><title>{escape(i['title'])}</title><link>{escape(i['link'])}</link><guid isPermaLink="true">{escape(i['link'])}</guid>
+        body = "".join(f"""<item><title>{escape(i['title'])}</title><link>{escape(i['link'])}</link><guid isPermaLink="false">{escape(i.get('guid') or i['link'])}</guid>
 <pubDate>{format_datetime(i['at'])}</pubDate><description><![CDATA[{i['text'].replace(']]>', ']] >')}]]></description></item>
 """ for i in items[:20])
         xml = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{escape(w["title"])}</title><link>{escape(base)}/</link>'
