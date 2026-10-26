@@ -313,8 +313,11 @@ support:
 # until the FB_PAGE_ID and FB_PAGE_TOKEN secrets exist. first_lang: the language shown first in each post
 # (its page is the link preview). per_run: the most posts per update. daily_after_utc: yesterday's brief
 # goes out at the first update after this hour (4 UTC = 7:00 in Damascus). api_version: empty uses the app's.
+# feed_images: the feeds of ready-made posts (feed-social-ar.xml, feed-social.xml) whose items carry an image card,
+# for photo posts on the Facebook Page through Zapier (GUIDE.md, "Facebook through Zapier").
 facebook:
   enabled: true
+  feed_images: [ar]
   first_lang: ar
   per_run: 1
   daily: true

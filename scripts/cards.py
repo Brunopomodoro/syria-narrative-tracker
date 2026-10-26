@@ -57,7 +57,8 @@ def meter(label: str, v, lang: str) -> str:
 def card_html(cfg: dict, spec: dict, lang: str) -> str:
     w = WORDS[lang]
     handle = pages.x_profile(cfg).rsplit("/", 1)[-1]
-    account = (f"@{handle} · " if handle else "") + pages.site_url(cfg).replace("https://", "").replace("www.", "")
+    domain = pages.site_url(cfg).replace("https://", "").replace("www.", "")
+    account = spec.get("account") or ((f"@{handle} · " if handle else "") + domain)   # Facebook cards show the site only
     rows = meter(w["people"], spec.get("people"), lang) + meter(w["media"], spec.get("media"), lang)
     return (f'<!doctype html><html lang="{lang}" dir="{"rtl" if lang == "ar" else "ltr"}"><head><meta charset="utf-8">{pages.FONTS}<style>{CSS}</style></head>'
             f'<body><div class="card"><div class="brand">{brand.mark_svg("#8A6420", "#F7F1E3")}<span>{html.escape(pages.site_title(cfg, lang))}</span></div>'

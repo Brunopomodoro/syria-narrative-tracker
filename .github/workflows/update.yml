@@ -89,7 +89,7 @@ jobs:
           git config user.name "narrative-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ "$SKIPPED" = "true" ]; then
-            git add data/social.json feed-social.xml feed-social-ar.xml 2>/dev/null || git add data/social.json   # an hour without an update: only the posts' records and feeds change
+            git add -A data/social.json feed-social.xml feed-social-ar.xml cards 2>/dev/null || git add data/social.json   # an hour without an update: only the posts' records, feeds and cards change
             git add data/newsletter.json 2>/dev/null || true
             msg="Social posts"
           else

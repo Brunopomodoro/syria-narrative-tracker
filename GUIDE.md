@@ -509,6 +509,8 @@ To post them to the Facebook Page with **Zapier** (free plan: 100 posts a month,
 3. **Action:** search **Facebook Pages**, event **Create Page Post**. Connect your Facebook account (it must be an admin of the Page) and allow Zapier to post for the Page. Choose the Page. **Message:** pick the feed item's **Description**. **Link URL:** pick the item's **Link** (Facebook then shows the page's preview card).
 4. **Test step** (this publishes one post to the Page; delete it afterwards if you like), then **Publish** the Zap.
 
+**With a picture.** Each item of the Arabic feed carries an image card (`cards/ar/…png`: the headline and the mood of people and the media, drawn with Chrome by `scripts/cards.py`; `feed_images` under `facebook:` in config.yaml sets the languages). To post it as a photo with the text as its caption (photo posts reach more people than link posts), use the Facebook Pages action that uploads a photo (**Create Page Photo**, sometimes shown as "Upload Photo") instead of **Create Page Post**: **Photo / Photo URL:** the item's **Enclosure URL** (or **Media Content URL**); **Caption / Message:** the item's **Description**. The link to the full report is in the caption.
+
 From then on, Zapier checks the feed every 15 minutes and posts each new item once. To post in English too, make a second Zap with `feed-social.xml`.
 
 ### Hashtags on the share links

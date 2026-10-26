@@ -956,6 +956,7 @@ def social_item(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
         body = [no_scores(pages.t(s["overall"], "brief", lang))]
         listed = (w["stories"], [str(pages.t(e, "title", lang)) for e in s["stories"][:3]])
         themes, titles = [x["theme"] for x in s["themes"]], [pages.t(e, "title", lang) for e in s["stories"]]
+        shares = s["themes"]
     else:
         d = archive._load(pages.DATA / kind / f"{ident}.json", None)
         if not d:
@@ -967,7 +968,8 @@ def social_item(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
         lead = (d.get("key_findings_ar" if lang == "ar" else "key_findings") if kind == "monthly" else d.get("key_points_ar" if lang == "ar" else "key_points")) or []
         body = []
         listed = (w["points"], [str(x) for x in lead if not has_score(x) and not has_count(x)][:3])
-        themes = [x["theme"] for x in sorted(st.get("themes") or [], key=lambda x: -x.get("share", 0))]
+        shares = sorted(st.get("themes") or [], key=lambda x: -x.get("share", 0))
+        themes = [x["theme"] for x in shares]
         titles = [title] + [pages.t(h, "title", lang) for h in d.get("highlights") or []]
     if not at:
         return None
@@ -979,14 +981,49 @@ def social_item(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
     if listed[1]:
         parts.append(listed[0] + ":\n" + "\n".join(f"• {x}" for x in listed[1]))
     parts += [f"{w['more']} {link}", tags, w["note"]]
-    return {"title": f"{head}: {title}", "text": "\n\n".join(p for p in parts if p), "link": link, "at": at}
+    card = {"eyebrow": head, "title": title, "people": people, "media": media, "line": themes_line(cfg, shares, lang)}
+    return {"title": f"{head}: {title}", "text": "\n\n".join(p for p in parts if p), "link": link, "at": at,
+            "card": card, "slug": f"{kind}-{ident}"}
+
+
+def add_images(cfg: dict, items: list, lang: str, base: str) -> None:
+    """Give each feed item an image: its card (cards/<lang>/<kind>-<ident>.png, drawn once with Chrome by
+    scripts/cards.py), a hand-added post's own image, or the site's preview image. Cards no longer in the feed are
+    removed, so the folder stays small."""
+    import cards
+    folder = pages.ROOT / "cards" / lang
+    folder.mkdir(parents=True, exist_ok=True)
+    keep = set()
+    for i in items:
+        if i.get("card") and i.get("slug"):
+            png = folder / f"{i['slug']}.png"
+            if png.exists() or cards.render(cfg, {**i["card"], "account": base.replace("https://", "").replace("www.", "")}, lang, png):
+                keep.add(png.name)
+                i["image"] = f"{base}/cards/{lang}/{png.name}"
+        if not i.get("image"):
+            i["image"] = f"{base}/assets/{'og-ar' if lang == 'ar' else 'og'}.png"
+        elif not str(i["image"]).startswith("http"):
+            i["image"] = f"{base}/{str(i['image']).lstrip('/')}"
+    for png in folder.glob("*.png"):
+        if png.name not in keep:
+            png.unlink()
+
+
+def media(i: dict) -> str:
+    """The item's image, as an RSS enclosure and a Media RSS element (Zapier offers either)."""
+    from xml.sax.saxutils import escape
+    if not i.get("image"):
+        return ""
+    u = escape(i["image"])
+    return f'<enclosure url="{u}" length="0" type="image/png"/><media:content url="{u}" medium="image" type="image/png"/>'
 
 
 def write_social_feeds(cfg: dict, now: dt.datetime) -> None:
     """feed-social-ar.xml and feed-social.xml: the latest daily briefs (once the day's media analysis is in, or 6 hours
     after the day ends), weekly digests and monthly reports, each item a post ready to publish. GUIDE.md, "Facebook
     through Zapier". Posts added by hand go in data/social_extra.json, each with its time ("at"): a report again
-    ("report": [kind, ident]) or a text of its own ("title", "text", "link"), and a "guid" that is new to the feed."""
+    ("report": [kind, ident]) or a text of its own ("title", "text", "link", and optionally "card" and "slug" for its
+    image card, or "image"), and a "guid" that is new to the feed."""
     from email.utils import format_datetime
     from xml.sax.saxutils import escape
     reports = [("daily", d) for d in archive.all_days()[-12:] if d < now.date().isoformat()]
@@ -999,16 +1036,20 @@ def write_social_feeds(cfg: dict, now: dt.datetime) -> None:
             at = archive_parse(e.get("at"))
             if e.get("lang") != lang or not at or at > now:
                 continue
-            item = social_item(cfg, *e["report"], lang) if e.get("report") else {"title": e["title"], "text": e["text"], "link": e["link"]}
+            item = social_item(cfg, *e["report"], lang) if e.get("report") else {"title": e["title"], "text": e["text"], "link": e["link"], "image": e.get("image"),
+                                                                                         "card": e.get("card"), "slug": e.get("slug")}
             if item:
                 items.append({**item, "at": at, "guid": e.get("guid") or item["link"]})
         items.sort(key=lambda i: i["at"], reverse=True)
+        items = items[:20]
         w, base = SOCIAL_WORDS[lang], pages.site_url(cfg)
+        if lang in (settings(cfg, "facebook").get("feed_images") or []):
+            add_images(cfg, items, lang, base)
         name = "feed-social-ar.xml" if lang == "ar" else "feed-social.xml"
         body = "".join(f"""<item><title>{escape(i['title'])}</title><link>{escape(i['link'])}</link><guid isPermaLink="false">{escape(i.get('guid') or i['link'])}</guid>
-<pubDate>{format_datetime(i['at'])}</pubDate><description><![CDATA[{i['text'].replace(']]>', ']] >')}]]></description></item>
-""" for i in items[:20])
-        xml = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{escape(w["title"])}</title><link>{escape(base)}/</link>'
+<pubDate>{format_datetime(i['at'])}</pubDate><description><![CDATA[{i['text'].replace(']]>', ']] >')}]]></description>{media(i)}</item>
+""" for i in items)
+        xml = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>{escape(w["title"])}</title><link>{escape(base)}/</link>'
                f'<description>{escape(w["title"])}</description><language>{lang}</language>\n{body}</channel></rss>\n')
         path = pages.ROOT / name
         if not path.exists() or path.read_text(encoding="utf-8") != xml:
