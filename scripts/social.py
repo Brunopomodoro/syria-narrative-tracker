@@ -930,6 +930,82 @@ def run_x(cfg: dict, state: dict, now: dt.datetime, preview: list | None, check:
     run_x_story(cfg, state, now, keys)
 
 
+# ---------------------------------------------------------------- the social feeds (for Zapier and the like)
+
+SOCIAL_WORDS = {"en": {"title": "Syria Narrative Tracker: posts", "stories": "Top stories", "points": "Key points", "people": "People's mood",
+                       "media": "The media", "more": "The full analysis and the PDF on the site:", "note": "An automatic summary of what is said online, not of what is true."},
+                "ar": {"title": "متتبّع السرديات السورية: منشورات", "stories": "أبرز القصص", "points": "أبرز النقاط", "people": "مزاج الناس",
+                       "media": "وسائل الإعلام", "more": "التحليل الكامل وملف PDF على الموقع:", "note": "ملخص آلي لما يُقال على الإنترنت، لا لما هو صحيح."}}
+
+
+def social_item(cfg: dict, kind: str, ident: str, lang: str) -> dict | None:
+    """A ready-to-post text for one report in one language (for a Facebook Page through Zapier): the label and date,
+    the headline, the mood of people and the media in words, the brief or the key points, the top stories, hashtags
+    and the link. No tone scores and no counts. {"title", "text", "link", "at"}; None when the report is not ready."""
+    w = SOCIAL_WORDS[lang]
+    if kind == "daily":
+        s = pages.daily_summary(cfg, archive.load_day(ident))
+        if not s or not s["stories"]:
+            return None
+        a = archive._load(pages.DATA / "experts" / "analyses" / f"{ident}.json", None)
+        end = dt.datetime.fromisoformat(ident).replace(tzinfo=dt.timezone.utc) + dt.timedelta(days=1)
+        at = archive_parse(a.get("generated_at")) if a else end + dt.timedelta(hours=6)    # once the media half is in
+        head = f"{LABEL['daily'][lang]} · {pages.fmt_date(ident, lang)}"
+        title = str(pages.t(s["stories"][0], "title", lang) or "")
+        people, media = s.get("public_sentiment"), s.get("outlet_sentiment")
+        body = [no_scores(pages.t(s["overall"], "brief", lang))]
+        listed = (w["stories"], [str(pages.t(e, "title", lang)) for e in s["stories"][:3]])
+        themes, titles = [x["theme"] for x in s["themes"]], [pages.t(e, "title", lang) for e in s["stories"]]
+    else:
+        d = archive._load(pages.DATA / kind / f"{ident}.json", None)
+        if not d:
+            return None
+        at = archive_parse(d.get("generated_at"))
+        when = (f"{pages.fmt_date(d['from'], lang)} – {pages.fmt_date(d['to'], lang)}" if kind == "weekly" else pages.fmt_month(ident, lang))
+        head, title, st = f"{LABEL[kind][lang]} · {when}", str(pages.t(d, "title", lang) or ""), d.get("stats") or {}
+        people, media = st.get("public_sentiment"), st.get("outlet_sentiment")
+        lead = (d.get("key_findings_ar" if lang == "ar" else "key_findings") if kind == "monthly" else d.get("key_points_ar" if lang == "ar" else "key_points")) or []
+        body = []
+        listed = (w["points"], [str(x) for x in lead if not has_score(x) and not has_count(x)][:3])
+        themes = [x["theme"] for x in sorted(st.get("themes") or [], key=lambda x: -x.get("share", 0))]
+        titles = [title] + [pages.t(h, "title", lang) for h in d.get("highlights") or []]
+    if not at:
+        return None
+    mood = " · ".join(x for x in ((f"{w['people']}: {pages.tone_label(people, lang)}" if people is not None else ""),
+                                  (f"{w['media']}: {pages.tone_label(media, lang)}" if media is not None else "")) if x)
+    link = url(cfg, f"{kind}/{lang}/{ident}.html")
+    tags = " ".join("#" + t for t in hashtags.select(cfg, lang, themes, titles)[:5])
+    parts = [head, title] + ([mood] if mood else []) + [x for x in body if x]
+    if listed[1]:
+        parts.append(listed[0] + ":\n" + "\n".join(f"• {x}" for x in listed[1]))
+    parts += [f"{w['more']} {link}", tags, w["note"]]
+    return {"title": f"{head}: {title}", "text": "\n\n".join(p for p in parts if p), "link": link, "at": at}
+
+
+def write_social_feeds(cfg: dict, now: dt.datetime) -> None:
+    """feed-social-ar.xml and feed-social.xml: the latest daily briefs (once the day's media analysis is in, or 6 hours
+    after the day ends), weekly digests and monthly reports, each item a post ready to publish. GUIDE.md, "Facebook
+    through Zapier"."""
+    from email.utils import format_datetime
+    from xml.sax.saxutils import escape
+    reports = [("daily", d) for d in archive.all_days()[-12:] if d < now.date().isoformat()]
+    for kind in ("weekly", "monthly"):
+        reports += [(kind, x["month" if kind == "monthly" else "week"]) for x in (archive._load(pages.DATA / kind / "index.json", []) or [])[-4:]]
+    for lang in ("ar", "en"):
+        items = [i for k, ident in reports if (i := social_item(cfg, k, ident, lang)) and i["at"] <= now]
+        items.sort(key=lambda i: i["at"], reverse=True)
+        w, base = SOCIAL_WORDS[lang], pages.site_url(cfg)
+        name = "feed-social-ar.xml" if lang == "ar" else "feed-social.xml"
+        body = "".join(f"""<item><title>{escape(i['title'])}</title><link>{escape(i['link'])}</link><guid isPermaLink="true">{escape(i['link'])}</guid>
+<pubDate>{format_datetime(i['at'])}</pubDate><description><![CDATA[{i['text'].replace(']]>', ']] >')}]]></description></item>
+""" for i in items[:20])
+        xml = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{escape(w["title"])}</title><link>{escape(base)}/</link>'
+               f'<description>{escape(w["title"])}</description><language>{lang}</language>\n{body}</channel></rss>\n')
+        path = pages.ROOT / name
+        if not path.exists() or path.read_text(encoding="utf-8") != xml:
+            path.write_text(xml, encoding="utf-8")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="check the keys and print what would be posted; post nothing")
@@ -954,6 +1030,11 @@ def main() -> int:
         run_x(cfg, state, now, preview_x, check)
     if not check and json.dumps(state, sort_keys=True) != before:
         save_state(state)
+    if not args.dry_run:
+        try:
+            write_social_feeds(cfg, now)
+        except Exception as e:  # noqa: BLE001  (posting never fails because of the feeds)
+            print(f"Social feeds not written: {e}")
     return 0
 
 
