@@ -499,6 +499,18 @@ Once set up, the tracker posts to its X account, in English: yesterday's daily b
 
 **If posting stops**, the update log says why: no credits left (add credits), keys rejected (copy them again), or read-only (step 5). To pause, set `enabled: false` under `x:`.
 
+### Facebook through Zapier
+
+The site publishes two feeds of ready-made posts: `https://www.syrianpulse.org/feed-social-ar.xml` (Arabic) and `feed-social.xml` (English). Each item is one post for each daily brief (once the day's media and experts analysis is in, about 6:00 Damascus time), weekly digest and monthly report: the label and date, the headline, the mood of people and of the media in words, the brief or the key points, the top stories, the link and a few hashtags (no tone scores, no counts). `scripts/social.py` rewrites them every hour.
+
+To post them to the Facebook Page with **Zapier** (free plan: 100 posts a month, about 36 needed):
+1. Sign up at https://zapier.com and click **Create → Zaps**.
+2. **Trigger:** search **RSS by Zapier**, event **New Item in Feed**, Feed URL `https://www.syrianpulse.org/feed-social-ar.xml`. Click **Test trigger**: it shows the newest item.
+3. **Action:** search **Facebook Pages**, event **Create Page Post**. Connect your Facebook account (it must be an admin of the Page) and allow Zapier to post for the Page. Choose the Page. **Message:** pick the feed item's **Description**. **Link URL:** pick the item's **Link** (Facebook then shows the page's preview card).
+4. **Test step** (this publishes one post to the Page; delete it afterwards if you like), then **Publish** the Zap.
+
+From then on, Zapier checks the feed every 15 minutes and posts each new item once. To post in English too, make a second Zap with `feed-social.xml`.
+
 ### Hashtags on the share links
 
 The X, Facebook and Telegram links in the share bar of every daily brief, weekly digest, monthly report and story page carry hashtags chosen from the page: the tags that go on every share (`#Syria`, and `#سوريا` on Arabic pages), then the places and names found in the page's story titles (Hasakah, Aleppo, the Golan, the SDF, Captagon and so on, each in the page's language), then the tags of the page's main themes, then `#SyrianPulse`. The list is cut to what fits in a post on X, and X gets all of it, Telegram all of it under the text, and Facebook the first tag (its share dialog takes one). WhatsApp messages carry none.
