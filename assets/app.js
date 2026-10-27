@@ -11,13 +11,13 @@ if (window.top !== window.self) {
 const T = {
   en: {
     title: "Syria Narrative Tracker", about: "About", home: "Mood gap", trends: "Trends", data: "Data", reports: "Reports", experts: "Topic gap",
-    timeline: "Timeline", expTitle: "Topic gap: what Syrians talk about, compared with what the media cover", expSub: "What ordinary Syrians discuss online, set against what Syrian and international media, think tanks and international organisations report on Syria's security, economy and governance: what both cover, where their priorities differ, and what people raise that the media barely cover. From the media analysis in each daily, weekly and monthly report.",
+    timeline: "Timeline", expTitle: "What Syrians talk about, compared with what the media cover.", expSub: "What ordinary Syrians discuss online, set against what Syrian and international media, think tanks and international organisations report on Syria's security, economy and governance: what both cover, where their priorities differ, and what people raise that the media barely cover. From the media analysis in each daily, weekly and monthly report.",
     expLatestDay: "Latest day", expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "All media analyses", allSources: "All the sources the site uses",
     gapBlind: "What people raised that the media barely covered", gapFull: "The full media analysis, with its sources", gapNone: "No comparison for this period.",
     gapReport: { day: "In the daily report", week: "In the weekly report", month: "In the monthly report" },
-    homeMeasure: "Mood gap: how Syrians feel about each story, compared with how outlets report it.",
-    media: "Media coverage", medTitle: "Media coverage: what Syrian and international media report", medDayCard: "Daily analysis",
+    homeMeasure: "How Syrians feel about each story, compared with how outlets report it.",
+    media: "Media coverage", medTitle: "What Syrian and international media report on security, the economy and governance.", medDayCard: "Daily analysis",
     medSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, with links to every report and article drawn on. A short analysis every day; one page per area and an overall one every week and every month. How it compares with what Syrians discuss is on the Topic gap tab.",
     gapMeasured: "Measured: each area's share of attention", gapLast7: "Last 7 days", gapLast30: "Last 30 days", gapSince: (d) => `Since ${d}`,
     gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference",
@@ -176,13 +176,13 @@ const T = {
   },
   ar: {
     title: "متتبّع السرديات السورية", about: "حول الموقع", home: "مزاج الشارع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "اهتمامات الشارع",
-    timeline: "الخط الزمني", expTitle: "اهتمامات الشارع: ما يشغل السوريين، وما يشغل الإعلام", expSub: "ما يناقشه السوريون العاديون على الإنترنت، مقارنةً بما تنشره وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا: ما يتناوله الطرفان، وأين تختلف أولوياتهما، وما يثيره الناس ولا يغطيه الإعلام إلا قليلاً. مأخوذ من تحليل الإعلام في كل تقرير يومي وأسبوعي وشهري.",
+    timeline: "الخط الزمني", expTitle: "ما يشغل السوريين، وما يشغل الإعلام.", expSub: "ما يناقشه السوريون العاديون على الإنترنت، مقارنةً بما تنشره وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا: ما يتناوله الطرفان، وأين تختلف أولوياتهما، وما يثيره الناس ولا يغطيه الإعلام إلا قليلاً. مأخوذ من تحليل الإعلام في كل تقرير يومي وأسبوعي وشهري.",
     expLatestDay: "آخر يوم", expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
     expAll: "كل تحليلات الإعلام", allSources: "كل المصادر التي يعتمدها الموقع",
     gapBlind: "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", gapFull: "تحليل الإعلام كاملاً مع مصادره", gapNone: "لا مقارنة لهذه الفترة.",
     gapReport: { day: "في التقرير اليومي", week: "في التقرير الأسبوعي", month: "في التقرير الشهري" },
-    homeMeasure: "مزاج الشارع: كيف يشعر السوريون تجاه كل قصة، وكيف تنقلها وسائل الإعلام.",
-    media: "التغطية الإعلامية", medTitle: "التغطية الإعلامية: ما تنشره وسائل الإعلام السورية والدولية", medDayCard: "التحليل اليومي",
+    homeMeasure: "كيف يشعر السوريون تجاه كل قصة، وكيف تنقلها وسائل الإعلام.",
+    media: "التغطية الإعلامية", medTitle: "ما تنشره وسائل الإعلام السورية والدولية عن الأمن والاقتصاد والحوكمة.", medDayCard: "التحليل اليومي",
     medSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مع روابط إلى كل تقرير ومقال يستند إليه. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. أما المقارنة بما يناقشه السوريون ففي تبويب «اهتمامات الشارع».",
     gapMeasured: "بالأرقام: نصيب كل مجال من الاهتمام", gapLast7: "آخر ٧ أيام", gapLast30: "آخر ٣٠ يوماً", gapSince: (d) => `منذ ${d}`,
     gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق",
@@ -1412,6 +1412,8 @@ function aboutHTML() {
 function bindAbout() { bindCopy(); }
 
 /* =================== page =================== */
+// the same header on the Mood gap, Topic gap and Media coverage tabs: the tab's name, then a line on what it measures
+const tabHead = (name, line, id, sub) => `<div class="tabhead"><p class="tabname">${name}</p><h2 class="tabline" id="${id}">${line}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}</div>`;
 function heroHTML() {
   const t = L(), D = state.latest, o = D.overall || {}, st = D.stats || {}, h = num(D.window_hours || 24);
   const pub = has(o.public_sentiment) && (st.public_posts || 0) > 0;
@@ -1424,7 +1426,7 @@ function heroHTML() {
   return `
   <div class="hero">
     <!--notice-->
-    <p class="measure">${t.homeMeasure}</p>
+    ${tabHead(t.home, t.homeMeasure, "h-mood")}
     <p class="eyebrow">${pub ? t.nowPeople : t.nowOutlets}</p>
     <p class="mood" dir="auto" style="--tone:${toneColor(tone)}">${esc(word)}</p>
     ${brief ? `<p class="brief" dir="auto">${esc(brief)}</p>` : ""}
@@ -1614,7 +1616,7 @@ function gapMeasureHTML(G) {
 }
 function expertsHTML() {
   const t = L(), S = state.experts, lang = state.lang;
-  const head = `<h2 id="h-experts">${t.expTitle}</h2><p class="sub">${t.expSub}</p>`;
+  const head = tabHead(t.experts, t.expTitle, "h-experts", t.expSub);
   if (!S.loaded) return `<section class="experts" aria-labelledby="h-experts">${head}<p>${t.loadingMethod}</p></section>`;
   const N = S.newest || {};
   return `
@@ -1644,7 +1646,7 @@ function mediaPeriodHTML(x) {
 }
 function mediaHTML() {
   const t = L(), S = state.experts, lang = state.lang;
-  const head = `<h2 id="h-media">${t.medTitle}</h2><p class="sub">${t.medSub}</p>`;
+  const head = tabHead(t.media, t.medTitle, "h-media", t.medSub);
   if (!S.loaded) return `<section class="experts" aria-labelledby="h-media">${head}<p>${t.loadingMethod}</p></section>`;
   const newest = (kind) => (S.index || []).filter(x => x.kind === kind).sort((a, b) => a.from < b.from ? 1 : -1)[0];
   const today = newest("day"), week = newest("week"), month = newest("month");
