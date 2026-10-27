@@ -180,15 +180,19 @@
   .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: .85rem; margin-top: 10px; }
   .chart-legend span { display: inline-flex; align-items: center; gap: 7px; }
   .k-line { width: 18px; height: 2px; background: var(--ink); display: inline-block; border-radius: 1px; }
-  .gtab { width: 100%; border-collapse: collapse; font-size: .92rem; margin: 6px 0 4px; }
-  .gtab th, .gtab td { text-align: start; padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
-  .gtab th { font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 500; }
-  .gtab td:nth-child(2), .gtab td:nth-child(3) { width: 30%; white-space: nowrap; }
-  .gbar { display: inline-block; height: 9px; max-width: 70%; border-radius: 4px; vertical-align: middle; margin-inline-end: 6px; }
+  .gareas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px 20px; margin: 8px 0 6px; }
+  .garea { padding: 12px 0 10px; border-top: 1px solid var(--rule); }
+  .ghead { margin-bottom: 8px; }
+  .ghead b { display: block; font-weight: 600; }
+  .ghead span { display: block; color: var(--muted); font-size: .85rem; }
+  .grow { display: grid; grid-template-columns: 4.2em 1fr 3em; align-items: center; gap: 10px; font-size: .9rem; margin: 4px 0; }
+  .glbl { color: var(--muted); }
+  .gval { text-align: end; font-variant-numeric: tabular-nums; }
+  .gtrack { display: block; height: 10px; background: var(--wash); border-radius: 5px; overflow: hidden; }
+  .gbar { display: block; height: 100%; border-radius: 5px; }
   .gbar.gp, .chart-legend i.gp { background: var(--brass); }
   .gbar.gm, .chart-legend i.gm { background: var(--neu); }
   .chart-legend i.gp, .chart-legend i.gm { width: 12px; height: 9px; border-radius: 3px; display: inline-block; }
-  @media (max-width: 560px) { .gtab th:nth-child(4), .gtab td:nth-child(4) { display: none; } .gtab td:nth-child(2), .gtab td:nth-child(3) { white-space: normal; } }
   .k-line.outlets { background: var(--faint); }
   .k-line.focus { background: var(--brass); }
   .k-line.ctx { background: var(--faint); height: 1.5px; }
@@ -458,6 +462,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="assets/app.js?v=20261028e"></script>
+<script src="assets/app.js?v=20261028g"></script>
 </body>
 </html>

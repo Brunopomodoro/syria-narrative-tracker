@@ -79,7 +79,7 @@ W = {   # the words on the static pages
            "pvmTitle": "Topic gap: people and the media", "pvmPeople": "What people talked about most", "pvmMedia": "What the media focused on",
            "pvmGap": "What people raised that the media barely covered", "pvmBrief": "The media in brief", "pvmRead": "Read the full analysis and its sources",
            "pvmShare": "{p} of people's posts on average",
-           "gapTitle": "Measured: each area's share of attention", "gapArea": "Area", "gapPeople": "People's posts", "gapMedia": "Media reports", "gapDiff": "Difference",
+           "gapTitle": "Measured: each area's share of attention", "gapArea": "Area", "gapPeople": "People's posts", "gapMedia": "Media reports", "gapDiff": "Difference", "gapPeopleShort": "People", "gapMediaShort": "Media",
            "gapAreas": {"security": "Security", "economy": "Economy and daily life", "governance": "Governance and politics"},
            "gapWords": {"same": "About the same", "people": "More from people", "people2": "Much more from people", "media": "More from the media", "media2": "Much more from the media"},
            "gapNote": "Share of people's own posts and comments on the tracker's stories in each area (outlets not counted), next to the share of the media reports filed under each area, over {a} to {b}: {np} post analyses and {nm} reports. Areas group the tracker's themes: security (security, Israel and the south, the coast, Suwayda); economy and daily life (economy, refugees, society); governance and politics (governance, justice, the north-east, international relations).", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. The media: our analysis of Syrian and international media, think tanks and international organisations.",
@@ -128,7 +128,7 @@ W = {   # the words on the static pages
            "pvmTitle": "اهتمامات الشارع واهتمامات الإعلام", "pvmPeople": "ما تحدث عنه الناس أكثر من غيره", "pvmMedia": "ما ركّز عليه الإعلام",
            "pvmGap": "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", "pvmBrief": "الإعلام باختصار", "pvmRead": "اقرأ التحليل الكامل ومصادره",
            "pvmShare": "{p} من منشورات الناس في المتوسط",
-           "gapTitle": "بالأرقام: نصيب كل مجال من الاهتمام", "gapArea": "المجال", "gapPeople": "منشورات الناس", "gapMedia": "تقارير الإعلام", "gapDiff": "الفرق",
+           "gapTitle": "بالأرقام: نصيب كل مجال من الاهتمام", "gapArea": "المجال", "gapPeople": "منشورات الناس", "gapMedia": "تقارير الإعلام", "gapDiff": "الفرق", "gapPeopleShort": "الناس", "gapMediaShort": "الإعلام",
            "gapAreas": {"security": "الأمن", "economy": "الاقتصاد والحياة اليومية", "governance": "الحوكمة والسياسة"},
            "gapWords": {"same": "متقارب", "people": "أكثر لدى الناس", "people2": "أكثر بكثير لدى الناس", "media": "أكثر في الإعلام", "media2": "أكثر بكثير في الإعلام"},
            "gapNote": "حصة منشورات الناس وتعليقاتهم على قصص المتتبّع في كل مجال (من دون وسائل الإعلام)، مقابل حصة تقارير الإعلام المصنّفة في كل مجال، من {a} إلى {b}: {np} تحليلاً لمنشورات و{nm} تقريراً. تجمع المجالات مواضيع المتتبّع: الأمن (الأمن، إسرائيل والجنوب، الساحل، السويداء)؛ الاقتصاد والحياة اليومية (الاقتصاد، اللاجئون، المجتمع)؛ الحوكمة والسياسة (الحوكمة، العدالة، الشمال الشرقي، العلاقات الدولية).", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
@@ -145,7 +145,7 @@ html[lang=ar]{--sans:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif
 a{color:inherit;text-decoration-color:var(--brass);text-underline-offset:3px}a:hover{color:var(--brass)}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 40px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:22px 0 18px;border-bottom:1px solid var(--rule);margin-bottom:34px}
-.top .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;text-decoration:none;color:var(--ink)}.top .brand .mark{width:26px;height:26px;flex:none}.purl{display:none}.top nav{display:flex;gap:8px 13px;color:var(--muted);font-size:.85rem;flex-wrap:wrap;align-items:baseline}.top nav a{text-decoration:none}
+.top .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;text-decoration:none;color:var(--ink)}.top .brand .mark{width:26px;height:26px;flex:none}.purl{display:none}.gareas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 20px;margin:8px 0 6px}.garea{padding:10px 0 8px;border-top:1px solid var(--rule)}.ghead{margin-bottom:6px}.ghead b{display:block;font-weight:600}.ghead span{display:block;color:var(--muted);font-size:.85rem}.grow{display:grid;grid-template-columns:4.2em 1fr 3em;align-items:center;gap:10px;font-size:.9rem;margin:4px 0}.glbl{color:var(--muted)}.gval{text-align:end;font-variant-numeric:tabular-nums}.gtrack{display:block;height:10px;background:#EEE6D3;border-radius:5px;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}.gbar{display:block;height:100%;border-radius:5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.gbar.gp{background:#8A6420}.gbar.gm{background:#A7ABA3}.top nav{display:flex;gap:8px 13px;color:var(--muted);font-size:.85rem;flex-wrap:wrap;align-items:baseline}.top nav a{text-decoration:none}
 .top .lang{border:1px solid var(--rule);border-radius:999px;padding:2px 12px;color:var(--ink)}
 .eyebrow{color:var(--muted);font-size:.9rem;margin:0 0 10px}h1{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.25;margin:0 0 14px}
 h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:34px 0 10px}p{margin:0 0 14px;max-width:68ch}.sub{color:var(--muted);font-size:.9rem}
@@ -725,21 +725,19 @@ def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str
 
 
 def gap_table(gap: dict, lang: str) -> str:
-    """The topic gap measured (experts.topic_gap): each area's share of people's posts and of media reports, as paired
-    bars, with the difference in words."""
+    """The topic gap measured (experts.topic_gap): one block per area with the difference in words, then people's and
+    the media's share as bars on the same 0-100% scale (the Topic gap tab draws the same)."""
     w = W[lang]
     def word(d):
         return w["gapWords"]["same" if abs(d) < 0.04 else ("people" if d > 0 else "media") + ("2" if abs(d) >= 0.10 else "")]
-    def bar(v, colour):
-        return (f'<span style="display:inline-block;height:9px;width:{max(1, round(v * 100))}%;max-width:100%;background:{colour};'
-                f'border-radius:4px;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact"></span>')
-    rows = "".join(
-        f'<tr><td>{esc(w["gapAreas"][a])}</td><td style="min-width:120px">{bar(x["people"], "#8A6420")} {pct(x["people"], lang)}</td>'
-        f'<td style="min-width:120px">{bar(x["media"], "#A7ABA3")} {pct(x["media"], lang)}</td><td>{esc(word(x["people"] - x["media"]))}</td></tr>'
-        for a, x in gap["areas"].items())
+    def row(label, v, cls):
+        return (f'<div class="grow"><span class="glbl">{label}</span><span class="gtrack"><span class="gbar {cls}" '
+                f'style="width:{max(1, round(v * 100))}%"></span></span><span class="gval">{pct(v, lang)}</span></div>')
+    blocks = "".join(f'<div class="garea"><div class="ghead"><b>{esc(w["gapAreas"][a])}</b><span>{esc(word(x["people"] - x["media"]))}</span></div>'
+                     f'{row(w["gapPeopleShort"], x["people"], "gp")}{row(w["gapMediaShort"], x["media"], "gm")}</div>'
+                     for a, x in gap["areas"].items())
     note = w["gapNote"].format(a=fmt_date(gap["from"], lang), b=fmt_date(gap["to"], lang), np=num(gap["people_posts"], lang), nm=num(gap["media_items"], lang))
-    return (f'<h3>{w["gapTitle"]}</h3><div class="tw"><table><thead><tr><th>{w["gapArea"]}</th><th>{w["gapPeople"]}</th><th>{w["gapMedia"]}</th>'
-            f'<th>{w["gapDiff"]}</th></tr></thead><tbody>{rows}</tbody></table></div><p class="sub">{esc(note)}</p>')
+    return f'<h3>{w["gapTitle"]}</h3><div class="gareas">{blocks}</div><p class="sub">{esc(note)}</p>'
 
 
 def media_pending(end: str, lang: str) -> str:
