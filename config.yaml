@@ -315,9 +315,16 @@ support:
 # goes out at the first update after this hour (4 UTC = 7:00 in Damascus). api_version: empty uses the app's.
 # feed_images: the feeds of ready-made posts (feed-social-ar.xml, feed-social.xml) whose items carry an image card,
 # for photo posts on the Facebook Page through Zapier (GUIDE.md, "Facebook through Zapier").
+# stories_per_day: story posts added to the feeds each day (in feed_story_languages), besides the reports, at the
+# first hours of story_hours (Damascus time, utc_offset 3): what people say about a current story and how they feel,
+# written by Claude in a human voice (about a cent a post). Zapier's free plan posts 100 items a month: the reports
+# take about 36, so 2 stories a day fit; 3 or more need a paid Zapier plan.
 facebook:
   enabled: true
   feed_images: [ar]
+  stories_per_day: 2
+  story_hours: [21, 14, 18]
+  feed_story_languages: [ar]
   first_lang: ar
   per_run: 1
   daily: true

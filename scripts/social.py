@@ -65,7 +65,8 @@ NOTE = "ملخص آلي لما يُقال على الإنترنت، لا لما 
 
 def settings(cfg: dict, network: str = "facebook") -> dict:
     s = {"enabled": True, "first_lang": "ar", "per_run": 1, "daily": True, "weekly": True, "monthly": True,
-         "daily_after_utc": 4, "api_version": "", "languages": ["ar", "en"], "max_tags": 4}
+         "daily_after_utc": 4, "api_version": "", "languages": ["ar", "en"], "max_tags": 4,
+         "stories_per_day": 0, "story_hours": [21, 14, 18], "utc_offset": 3, "feed_story_languages": ["ar"]}
     if network == "x":
         s.update({"per_run": 2, "max_tags": 3, "daily_languages": ["ar"], "monthly_budget_usd": 10, "cost_per_post_usd": 0.015,
                   "cost_per_link_post_usd": 0.20,
@@ -413,7 +414,7 @@ def archive_parse(iso: str | None) -> dt.datetime | None:
 
 # ---------------------------------------------------------------- X: posts in a human voice
 
-VOICE = """You write the posts of Syrian Pulse (syrianpulse.org) on X. The site reads public posts and comments about Syria
+VOICE = """You write the posts of Syrian Pulse (syrianpulse.org) on {network}. The site reads public posts and comments about Syria
 every few hours and reports what Syrians are saying online: the stories, the mood of ordinary people, and how it differs
 from the media's. Write ONE post from the material below, the way a sharp, warm Syrian observer would post it: a person
 talking to people, not a press release or a bot.
@@ -497,16 +498,17 @@ def fit_sentences(text: str, room: int) -> str:
     return out
 
 
-def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, lines: int = 4) -> str | None:
+def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, lines: int = 4, network: str = "x") -> str | None:
     """The words of a post written by Claude from `facts`, or None (switched off, no key, a failure, or a draft that
     breaks a rule twice), in which case the caller uses its plain format. A draft that runs long is cut to its whole
     sentences when enough is left; otherwise Claude gets one more try, told what was wrong."""
     s = settings(cfg, "x")
     if not s.get("rewrite") or not P.secret("ANTHROPIC_API_KEY") or room < 60:
         return None
-    recent = [t[:200] for t in ((state or {}).get("x") or {}).get("recent_texts") or []][-6:]
+    where = "x" if network == "x" else "fb_feed"                   # Facebook posts keep their own recent texts
+    recent = [t[:200] for t in ((state or {}).get(where) or {}).get("recent_texts") or []][-6:]
     target = int(room * 0.8)                          # some margin: models count characters loosely
-    prompt = VOICE.format(lines=lines, room=target, words=max(12, target // 6),
+    prompt = VOICE.format(network="X" if network == "x" else "Facebook", lines=lines, room=target, words=max(12, target // 6),
                           recent=json.dumps(recent, ensure_ascii=False) if recent else "(none yet)",
                           language="Arabic, for Syrian readers" if lang == "ar" else "English",
                           rules=arabic.rules() if lang == "ar" else "", facts=json.dumps(facts, ensure_ascii=False, indent=1))
@@ -523,7 +525,7 @@ def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, li
                 resp = stream.get_final_message()
             cost = P.estimate_cost(cfg.get("model", ""), {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens})
             if state is not None:
-                spent = state.setdefault("x", {}).setdefault("rewrite_usd", {})
+                spent = state.setdefault(where, {}).setdefault("rewrite_usd", {})
                 month = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m")
                 spent[month] = round(spent.get(month, 0) + cost, 4)
                 for k in sorted(spent)[:-3]:
@@ -560,9 +562,9 @@ def rewrite(cfg: dict, state: dict | None, lang: str, facts: dict, room: int, li
     return None
 
 
-def remember(state: dict, text: str) -> None:
+def remember(state: dict, text: str, where: str = "x") -> None:
     """Keep the last few posts, so the next rewrite opens differently."""
-    recent = state.setdefault("x", {}).setdefault("recent_texts", [])
+    recent = state.setdefault(where, {}).setdefault("recent_texts", [])
     recent.append(text)
     del recent[:-8]
 
@@ -665,16 +667,30 @@ def outlet_tone(n: dict):
     return sum(vals) / len(vals) if vals else n.get("sentiment")
 
 
-def story_candidates(cfg: dict, state: dict, now: dt.datetime) -> list:
+def story_candidates(cfg: dict, state: dict, now: dt.datetime, lang: str | None = None, posts: list | None = None,
+                     pool_hours: float = 0) -> list:
     """The current stories worth a post, best first. Stories that people (not only outlets) talk about come first,
-    then those where people and the media disagree, and new ones. Not posted in the last `story_repeat_hours`."""
+    then those where people and the media disagree, and new ones. Not posted in the last `story_repeat_hours`
+    (on X, or in `posts` when given). From the latest update, and with `pool_hours` also from the updates of that
+    many hours before (each story as the update where people discussed it most), since one update may have few stories."""
     s, xs = settings(cfg, "x"), state.get("x") or {}
-    lang = s["story_language"]
-    recent = {p.get("key") for p in xs.get("story_posts") or []
+    lang = lang or s["story_language"]
+    recent = {p.get("key") for p in (xs.get("story_posts") or [] if posts is None else posts)
               if (t := archive_parse(p.get("at"))) and now - t < dt.timedelta(hours=float(s["story_repeat_hours"]))}
     latest_data = archive._load(pages.DATA / "latest.json", {}) or {}
+    runs = []
+    if pool_hours:
+        since = now - dt.timedelta(hours=pool_hours)
+        for day in ((now - dt.timedelta(days=1)).date().isoformat(), now.date().isoformat()):
+            runs += [r for r in archive.load_day(day).get("runs") or [] if (t := archive_parse(r.get("generated_at"))) and t >= since]
+    pool = {}
+    for run in runs + [latest_data]:                     # each story as the update where people discussed it most
+        for n in run.get("narratives") or []:
+            k = n.get("key") or (archive.story_key(n) if n.get("id") else "")
+            if k and (k not in pool or int(n.get("public_volume") or 0) >= int(pool[k].get("public_volume") or 0)):
+                pool[k] = {**n, "key": k}
     out = []
-    for n in latest_data.get("narratives") or []:
+    for n in pool.values():
         key, voices = n.get("key") or "", int(n.get("public_volume") or 0)
         if (not key or key in recent or n.get("theme", "other") == "other" or voices < int(s["story_min_voices"])
                 or not pages.t(n, "title", lang) or not (pages.ROOT / "stories" / lang / f"{key}.html").exists()):
@@ -1018,18 +1034,76 @@ def media(i: dict) -> str:
     return f'<enclosure url="{u}" length="0" type="image/png"/><media:content url="{u}" medium="image" type="image/png"/>'
 
 
-def write_social_feeds(cfg: dict, now: dt.datetime) -> None:
+FEED_MORE = {"en": "The full analysis on the site:", "ar": "التحليل الكامل على الموقع:"}
+
+
+def feed_story_post(cfg: dict, n: dict, gap: float, lang: str, state: dict) -> dict:
+    """A story post for the Facebook Page: the headline, what people say (written by Claude in a human voice, or the
+    story's summary and reactions), the mood of people and the media in words, the link, hashtags and the note."""
+    w = SOCIAL_WORDS[lang]
+    key, title = n.get("key") or "", str(pages.t(n, "title", lang) or "")
+    people, media = n.get("public_sentiment"), outlet_tone(n)
+    mood = " · ".join(x for x in ((f"{w['people']}: {pages.tone_label(people, lang)}" if people is not None else ""),
+                                  (f"{w['media']}: {pages.tone_label(media, lang)}" if media is not None else "")) if x)
+    summary, reaction = no_scores(pages.t(n, "summary", lang) or ""), no_scores(pages.t(n, "public_reaction", lang) or "")
+    facts = {"story": title, "what_happened": summary, "what_people_say": reaction, "people_mood": pages.tone_label(people, lang),
+             "media_mood": pages.tone_label(media, lang) if gap >= 0.4 else "about the same as people's",
+             "feelings": (n.get("emotions_ar") if lang == "ar" else n.get("emotions")) or []}
+    words = rewrite(cfg, state, lang, facts, 600, lines=6, network="facebook")
+    link = url(cfg, f"stories/{lang}/{key}.html")
+    tags = " ".join("#" + t for t in hashtags.select(cfg, lang, [n.get("theme", "")], [title])[:4])
+    body = [words] if words else [x for x in (summary, reaction) if x and not has_count(x)]
+    parts = [title] + body + ([mood] if mood else []) + [f"{FEED_MORE[lang]} {link}", tags, w["note"]]
+    return {"key": key, "title": title, "text": "\n\n".join(x for x in parts if x), "link": link,
+            "card": story_card(cfg, n, lang), "words": words}
+
+
+def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
+    """Story posts in the feeds of ready-made posts, for the Facebook Page through Zapier: `stories_per_day` a day
+    (under facebook: in config.yaml), at the first hours of its `story_hours` (Damascus time), in each of
+    `feed_story_languages`; the best current story not posted there in the last two days. Each post is kept in
+    data/social.json, so the feed item stays the same until it leaves the feed."""
+    s = settings(cfg, "facebook")
+    per_day = int(s.get("stories_per_day") or 0)
+    if not s["enabled"] or per_day <= 0:
+        return
+    fs = state.setdefault("fb_feed", {})
+    posts = fs.setdefault("story_posts", [])
+    local = local_now(s, now)
+    hours = sorted(int(h) for h in (s.get("story_hours") or [])[:per_day])
+    open_now = [h for h in hours if h <= local.hour + local.minute / 60 < h + 2]     # a late update still posts
+    if not open_now:
+        return
+    slot = f"{local.date().isoformat()} {open_now[-1]:02d}"
+    for lang in s.get("feed_story_languages") or []:
+        if any(p.get("slot") == slot and p.get("lang") == lang for p in posts):
+            continue
+        cands = story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang], pool_hours=24)
+        if not cands:
+            continue
+        post = feed_story_post(cfg, *cands[0], lang, state)
+        tag = slot.replace(" ", "-")
+        posts.append({"key": post["key"], "lang": lang, "slot": slot, "at": now.isoformat(timespec="seconds"), "title": post["title"],
+                      "text": post["text"], "link": post["link"], "card": post["card"], "slug": f"story-{tag}", "guid": f"{post['link']}#fb-{tag}"})
+        remember(state, post["words"] or post["text"], "fb_feed")
+        print(f"Facebook feed: story {post['key']} added for the {slot}:00 slot ({lang}).")
+    cutoff = (now - dt.timedelta(days=10)).isoformat()
+    fs["story_posts"] = [p for p in posts if str(p.get("at", "")) >= cutoff]
+
+
+def write_social_feeds(cfg: dict, now: dt.datetime, state: dict | None = None) -> None:
     """feed-social-ar.xml and feed-social.xml: the latest daily briefs (once the day's media analysis is in, or 6 hours
     after the day ends), weekly digests and monthly reports, each item a post ready to publish. GUIDE.md, "Facebook
     through Zapier". Posts added by hand go in data/social_extra.json, each with its time ("at"): a report again
     ("report": [kind, ident]) or a text of its own ("title", "text", "link", and optionally "card" and "slug" for its
-    image card, or "image"), and a "guid" that is new to the feed."""
+    image card, or "image"), and a "guid" that is new to the feed. Story posts come from run_feed_stories."""
     from email.utils import format_datetime
     from xml.sax.saxutils import escape
     reports = [("daily", d) for d in archive.all_days()[-12:] if d < now.date().isoformat()]
     for kind in ("weekly", "monthly"):
         reports += [(kind, x["month" if kind == "monthly" else "week"]) for x in (archive._load(pages.DATA / kind / "index.json", []) or [])[-4:]]
     extra = archive._load(pages.DATA / "social_extra.json", []) or []   # posts added by hand, each at its own time
+    stories = ((state if state is not None else load_state()).get("fb_feed") or {}).get("story_posts") or []
     for lang in ("ar", "en"):
         items = [i for k, ident in reports if (i := social_item(cfg, k, ident, lang)) and i["at"] <= now]
         for e in extra:
@@ -1040,6 +1114,9 @@ def write_social_feeds(cfg: dict, now: dt.datetime) -> None:
                                                                                          "card": e.get("card"), "slug": e.get("slug")}
             if item:
                 items.append({**item, "at": at, "guid": e.get("guid") or item["link"]})
+        for e in stories:
+            if e.get("lang") == lang and (at := archive_parse(e.get("at"))) and at <= now:
+                items.append({**{k: e.get(k) for k in ("title", "text", "link", "card", "slug", "guid")}, "at": at})
         items.sort(key=lambda i: i["at"], reverse=True)
         items = items[:20]
         w, base = SOCIAL_WORDS[lang], pages.site_url(cfg)
@@ -1078,11 +1155,16 @@ def main() -> int:
         run_facebook(cfg, state, now, preview_fb, check)
     if args.only in (None, "x"):
         run_x(cfg, state, now, preview_x, check)
+    if not check and args.only in (None, "facebook"):
+        try:
+            run_feed_stories(cfg, state, now)
+        except Exception as e:  # noqa: BLE001  (the reports still go out)
+            print(f"Facebook feed: no story post this time ({type(e).__name__}: {e}).")
     if not check and json.dumps(state, sort_keys=True) != before:
         save_state(state)
     if not args.dry_run:
         try:
-            write_social_feeds(cfg, now)
+            write_social_feeds(cfg, now, state)
         except Exception as e:  # noqa: BLE001  (posting never fails because of the feeds)
             print(f"Social feeds not written: {e}")
     return 0
