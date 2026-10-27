@@ -29,6 +29,7 @@ on:
           - words-not-scores            # rewrite the tone scores (-0.15 and so on) in past reports as words, then rebuild the pages (a cent or two a report)
           - newsletter-setup            # make the newsletter's six lists in Brevo (once, after adding BREVO_API_KEY; free)
           - newsletter-check            # the newsletter's lists and subscriber counts, and what would be sent now; sends nothing (free)
+          - audience-snapshot           # rebuild the audience snapshot (audience/en.html and en.pdf) from the whole archive (free)
           - site-check                  # the website's health, SEO and security check (free; printed in the log)
           - quality-report              # the tracker's health over the last 7 days compared with the 7 before (free; printed in the log)
           - validation-sample           # a normal update plus a private sample of posts for a validation study (GUIDE.md); size below
@@ -120,6 +121,7 @@ jobs:
             words-not-scores)          python scripts/words_not_scores.py ;;
             newsletter-setup)          python scripts/newsletter.py setup ;;
             newsletter-check)          python scripts/newsletter.py --preview ;;
+            audience-snapshot)         python scripts/audience.py --report ;;
             site-check)                python scripts/site_check.py ;;
             quality-report)            python scripts/quality_report.py ;;
             validation-sample)         python scripts/pipeline.py --force --validation-sample "${{ inputs.size }}" ;;
