@@ -318,13 +318,17 @@ support:
 # stories_per_day: story posts added to the feeds each day (in feed_story_languages), besides the reports, at the
 # first hours of story_hours (Damascus time, utc_offset 3): what people say about a current story and how they feel,
 # written by Claude in a human voice (about a cent a post). Zapier's free plan posts 100 items a month: the reports
-# take about 36, so 2 stories a day fit; 3 or more need a paid Zapier plan.
+# take about 36, so 2 stories a day fit; 3 or more need a paid Zapier plan. zapier_monthly_limit: the plan's posts a
+# month; a story post is skipped when it would leave too few for the reports still to come that month (0: no check).
+# zapier_cycle_day: the day of the month Zapier's usage resets (Zapier, Settings, Usage).
 facebook:
   enabled: true
   feed_images: [ar]
   stories_per_day: 2
   story_hours: [21, 14, 18]
   feed_story_languages: [ar]
+  zapier_monthly_limit: 100
+  zapier_cycle_day: 1
   first_lang: ar
   per_run: 1
   daily: true
