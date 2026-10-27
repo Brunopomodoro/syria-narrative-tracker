@@ -19,7 +19,8 @@ const T = {
     homeMeasure: "How Syrians feel about each story, compared with how outlets report it.",
     media: "Media coverage", medTitle: "What Syrian and international media report on security, the economy and governance.", medDayCard: "Daily analysis",
     medSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, with links to every report and article drawn on. A short analysis every day; one page per area and an overall one every week and every month. How it compares with what Syrians discuss is on the Topic gap tab.",
-    gapMeasured: "Measured: each area's share of attention", gapLast7: "Last 7 days", gapLast30: "Last 30 days", gapSince: (d) => `Since ${d}`,
+    gapMeasured: "Measured: each area's share of attention", gapPeriod: "Period",
+    gapWins: { last7: "Past week", last30: "Past month", last90: "Past 90 days" }, gapShort: (d) => `Media reports are collected from ${d}, so this period starts there.`,
     gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference", gapPeopleShort: "People", gapMediaShort: "Media",
     gapAreas: { security: "Security", economy: "Economy and daily life", governance: "Governance and politics" },
     gapWords: { same: "About the same", people: "More from people", people2: "Much more from people", media: "More from the media", media2: "Much more from the media" },
@@ -184,7 +185,8 @@ const T = {
     homeMeasure: "كيف يشعر السوريون تجاه كل قصة، وكيف تنقلها وسائل الإعلام.",
     media: "التغطية الإعلامية", medTitle: "ما تنشره وسائل الإعلام السورية والدولية عن الأمن والاقتصاد والحوكمة.", medDayCard: "التحليل اليومي",
     medSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مع روابط إلى كل تقرير ومقال يستند إليه. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. أما المقارنة بما يناقشه السوريون ففي تبويب «اهتمامات الشارع».",
-    gapMeasured: "بالأرقام: نصيب كل مجال من الاهتمام", gapLast7: "آخر ٧ أيام", gapLast30: "آخر ٣٠ يوماً", gapSince: (d) => `منذ ${d}`,
+    gapMeasured: "بالأرقام: نصيب كل مجال من الاهتمام", gapPeriod: "الفترة",
+    gapWins: { last7: "الأسبوع الماضي", last30: "الشهر الماضي", last90: "آخر ٩٠ يوماً" }, gapShort: (d) => `تُجمع تقارير الإعلام منذ ${d}، لذا تبدأ هذه الفترة من ذلك التاريخ.`,
     gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق", gapPeopleShort: "الناس", gapMediaShort: "الإعلام",
     gapAreas: { security: "الأمن", economy: "الاقتصاد والحياة اليومية", governance: "الحوكمة والسياسة" },
     gapWords: { same: "متقارب", people: "أكثر لدى الناس", people2: "أكثر بكثير لدى الناس", media: "أكثر في الإعلام", media2: "أكثر بكثير في الإعلام" },
@@ -1602,18 +1604,22 @@ function gapPeriodHTML(a) {
 }
 // the topic gap measured: each area's share of people's posts next to its share of media reports
 function gapMeasureHTML(G) {
-  const t = L(), wins = [["last7", t.gapLast7, 7], ["last30", t.gapLast30, 30]].filter(([k]) => G && G[k]);
-  // the media reports go back less far than the archive: a window that starts later says so
-  const span = (g) => Math.round((new Date(g.to) - new Date(g.from)) / 864e5) + 1;
+  const t = L(), S = state.experts, wins = ["last7", "last30", "last90"].filter(k => G && G[k]);
   if (!wins.length) return "";
+  if (!wins.includes(S.gapWin)) S.gapWin = wins[0];
+  const g = G[S.gapWin], day = (d) => fmtDay(d, { day: "numeric", month: "long" });
   const word = (d) => t.gapWords[Math.abs(d) < 0.04 ? "same" : (d > 0 ? "people" : "media") + (Math.abs(d) >= 0.10 ? "2" : "")];
   // one block per area: its name and the difference in words, then people's and the media's share on the same 0-100% scale
   const row = (label, v, cls) => `<div class="grow"><span class="glbl">${label}</span><span class="gtrack"><span class="gbar ${cls}" style="width:${Math.max(1, Math.round(v * 100))}%"></span></span><span class="gval">${pctText(v)}</span></div>`;
-  const table = (g) => `<div class="gareas">${Object.entries(g.areas).map(([a, x]) => `<div class="garea"><div class="ghead"><b>${t.gapAreas[a]}</b><span>${word(x.people - x.media)}</span></div>
-    ${row(t.gapPeopleShort, x.people, "gp")}${row(t.gapMediaShort, x.media, "gm")}</div>`).join("")}</div>
-    <p class="sub">${t.gapCounts(fmtDay(g.from, { day: "numeric", month: "long" }), fmtDay(g.to, { day: "numeric", month: "long" }), num(g.people_posts), num(g.media_items))}</p>`;
-  return `<div class="e-period"><h3>${t.gapMeasured}</h3><p class="chart-legend"><span><i class="gp"></i>${t.gapPeople}</span><span><i class="gm"></i>${t.gapMedia}</span></p>
-    ${wins.map(([k, label, days]) => `<h4>${span(G[k]) < days ? t.gapSince(fmtDay(G[k].from, { day: "numeric", month: "long" })) : label}</h4>${table(G[k])}`).join("")}<p class="sub">${t.gapHow}</p></div>`;
+  const blocks = Object.entries(g.areas).map(([a, x]) => `<div class="garea"><div class="ghead"><b>${t.gapAreas[a]}</b><span>${word(x.people - x.media)}</span></div>
+    ${row(t.gapPeopleShort, x.people, "gp")}${row(t.gapMediaShort, x.media, "gm")}</div>`).join("");
+  // the media reports go back less far than the archive: a window that had to start later says so under the bars
+  const nominal = { last7: 7, last30: 30, last90: 90 }[S.gapWin], span = Math.round((new Date(g.to) - new Date(g.from)) / 864e5) + 1;
+  const seg = (k) => `<button data-gapwin="${k}" aria-pressed="${S.gapWin === k}">${t.gapWins[k]}</button>`;
+  return `<div class="e-period"><div class="sec-head"><h3>${t.gapMeasured}</h3><span class="seg" role="group" aria-label="${t.gapPeriod}">${wins.map(seg).join("")}</span></div>
+    <div class="gareas">${blocks}</div>
+    <p class="sub">${t.gapCounts(day(g.from), day(g.to), num(g.people_posts), num(g.media_items))}${span < nominal ? " " + t.gapShort(day(g.from)) : ""}</p>
+    <p class="sub">${t.gapHow}</p></div>`;
 }
 function expertsHTML() {
   const t = L(), S = state.experts, lang = state.lang;
@@ -1661,7 +1667,9 @@ function mediaHTML() {
     <p class="sub">${t.expNote}</p>
   </section>`;
 }
-function bindExperts() {}
+function bindExperts() {
+  document.querySelectorAll("[data-gapwin]").forEach(b => b.addEventListener("click", () => { state.experts.gapWin = b.dataset.gapwin; render(); }));
+}
 async function loadExports() {
   const S = state.dataPage;
   if (S.exports || S.loading) return;
