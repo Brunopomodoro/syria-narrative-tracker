@@ -180,6 +180,15 @@
   .chart-legend { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: .85rem; margin-top: 10px; }
   .chart-legend span { display: inline-flex; align-items: center; gap: 7px; }
   .k-line { width: 18px; height: 2px; background: var(--ink); display: inline-block; border-radius: 1px; }
+  .gtab { width: 100%; border-collapse: collapse; font-size: .92rem; margin: 6px 0 4px; }
+  .gtab th, .gtab td { text-align: start; padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  .gtab th { font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 500; }
+  .gtab td:nth-child(2), .gtab td:nth-child(3) { width: 30%; white-space: nowrap; }
+  .gbar { display: inline-block; height: 9px; max-width: 70%; border-radius: 4px; vertical-align: middle; margin-inline-end: 6px; }
+  .gbar.gp, .chart-legend i.gp { background: var(--brass); }
+  .gbar.gm, .chart-legend i.gm { background: var(--neu); }
+  .chart-legend i.gp, .chart-legend i.gm { width: 12px; height: 9px; border-radius: 3px; display: inline-block; }
+  @media (max-width: 560px) { .gtab th:nth-child(4), .gtab td:nth-child(4) { display: none; } .gtab td:nth-child(2), .gtab td:nth-child(3) { white-space: normal; } }
   .k-line.outlets { background: var(--faint); }
   .k-line.focus { background: var(--brass); }
   .k-line.ctx { background: var(--faint); height: 1.5px; }
@@ -442,6 +451,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="assets/app.js?v=20261028a"></script>
+<script src="assets/app.js?v=20261028b"></script>
 </body>
 </html>
