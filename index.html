@@ -146,6 +146,7 @@
   .themebars .none { color: var(--faint); font-size: .82rem; }
   .chart { position: relative; }
   .chart svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--sans); }
+  .chart svg text { direction: ltr; }   /* the axes run left to right in both languages, so anchor labels the same way */
   .chart .grid { stroke: var(--rule); stroke-width: 1; }
   .chart .zero { stroke: var(--faint); stroke-width: 1; }
   .chart .axis { fill: var(--muted); font-size: 11px; }
@@ -228,6 +229,7 @@
     .themebars .bar { grid-column: 1 / -1; }
     .multiples { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 16px; }
   }
+  @media (max-width: 560px) { .multiples.tones { grid-template-columns: minmax(0, 1fr); } }
   .about-page .langs { margin: 0 0 22px; }
   .intro { max-width: 64ch; margin: 6px 0 30px; color: var(--muted); font-size: 1rem; line-height: 1.65; }
   .pre { padding: 20px 0; border-top: 1px solid var(--rule); }
@@ -462,6 +464,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="assets/app.js?v=20261028h"></script>
+<script src="assets/app.js?v=20261028i"></script>
 </body>
 </html>
