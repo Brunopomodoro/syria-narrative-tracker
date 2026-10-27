@@ -1293,6 +1293,22 @@ def main() -> int:
             record_quality("no_stories", status, raw, posts, sample, usage=usage, cost=cost, retried=True, model=cfg.get("model", ""))
             return 0
         result = result2
+    pub_sent = sum(p["copies"] for p in sample if p["voice"] == "public")
+    pub_linked = sum(n["public_volume"] for n in narratives)
+    if not retried and pub_sent >= 100 and pub_linked < 0.10 * pub_sent:
+        # the reply left almost all of people's posts out of the stories, so the stories would show no reactions
+        # (it happens about once a week); one more try, kept only when it links more of them
+        log(f"  Only {pub_linked} of {pub_sent} people's posts were linked to a story; asking once more...")
+        retried = True
+        result2, usage2 = ask_claude(cfg, msg + "\n\nReminder: list in post_ids every post that belongs to a story, "
+                                     "people's comments as well as outlets' posts.")
+        usage = {k: usage[k] + usage2[k] for k in usage}
+        cost = estimate_cost(cfg.get("model", ""), usage)
+        narratives2 = build_narratives(result2, sample, first_seen, [t["id"] for t in themes])
+        linked2 = sum(n["public_volume"] for n in narratives2)
+        if narratives2 and linked2 > pub_linked:
+            narratives, result = narratives2, result2
+        log(f"  The second reply linked {linked2}; keeping the {'second' if result is result2 else 'first'} (~${cost} in all).")
     signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
     if args.validation_sample:
         write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
