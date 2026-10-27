@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T20:17:08+00:00",
+ "generated_at": "2026-10-27T20:25:56+00:00",
  "from": "2026-09-11",
  "to": "2026-10-27",
  "days": 46,
@@ -57,17 +57,17 @@
  "doubt": {
   "share": 0.362,
   "by_theme": {
+   "northeast-kurdish": 0.549,
+   "international": 0.37,
+   "refugees": 0.029,
+   "economy": 0.358,
+   "israel-south": 0.408,
    "society": 0.178,
    "security": 0.294,
-   "suwayda-druze": 0.145,
-   "refugees": 0.029,
-   "governance": 0.365,
-   "northeast-kurdish": 0.549,
+   "coast-alawite": 0.282,
    "justice": 0.785,
-   "israel-south": 0.408,
-   "economy": 0.358,
-   "international": 0.37,
-   "coast-alawite": 0.282
+   "suwayda-druze": 0.145,
+   "governance": 0.365
   },
   "outlet_mix": {
    "doubt": {
@@ -154,6 +154,42 @@
   }
  ],
  "topic_trend": {
+  "northeast-kurdish": {
+   "people_before": 0.082,
+   "people_after": 0.159,
+   "outlets_before": 0.059,
+   "outlets_after": 0.075,
+   "people_change": 0.929,
+   "outlet_change": 0.267,
+   "fatigue": false
+  },
+  "international": {
+   "people_before": 0.118,
+   "people_after": 0.116,
+   "outlets_before": 0.248,
+   "outlets_after": 0.161,
+   "people_change": -0.012,
+   "outlet_change": -0.351,
+   "fatigue": false
+  },
+  "economy": {
+   "people_before": 0.159,
+   "people_after": 0.117,
+   "outlets_before": 0.248,
+   "outlets_after": 0.168,
+   "people_change": -0.262,
+   "outlet_change": -0.322,
+   "fatigue": false
+  },
+  "israel-south": {
+   "people_before": 0.105,
+   "people_after": 0.215,
+   "outlets_before": 0.111,
+   "outlets_after": 0.277,
+   "people_change": 1.039,
+   "outlet_change": 1.488,
+   "fatigue": false
+  },
   "society": {
    "people_before": 0.276,
    "people_after": 0.095,
@@ -172,6 +208,15 @@
    "outlet_change": 0.195,
    "fatigue": true
   },
+  "justice": {
+   "people_before": 0.016,
+   "people_after": 0.072,
+   "outlets_before": 0.073,
+   "outlets_after": 0.065,
+   "people_change": 3.457,
+   "outlet_change": -0.115,
+   "fatigue": false
+  },
   "suwayda-druze": {
    "people_before": 0.017,
    "people_after": 0.085,
@@ -189,51 +234,6 @@
    "people_change": -0.461,
    "outlet_change": 0.103,
    "fatigue": true
-  },
-  "northeast-kurdish": {
-   "people_before": 0.082,
-   "people_after": 0.159,
-   "outlets_before": 0.059,
-   "outlets_after": 0.075,
-   "people_change": 0.929,
-   "outlet_change": 0.267,
-   "fatigue": false
-  },
-  "justice": {
-   "people_before": 0.016,
-   "people_after": 0.072,
-   "outlets_before": 0.073,
-   "outlets_after": 0.065,
-   "people_change": 3.457,
-   "outlet_change": -0.115,
-   "fatigue": false
-  },
-  "israel-south": {
-   "people_before": 0.105,
-   "people_after": 0.215,
-   "outlets_before": 0.111,
-   "outlets_after": 0.277,
-   "people_change": 1.039,
-   "outlet_change": 1.488,
-   "fatigue": false
-  },
-  "economy": {
-   "people_before": 0.159,
-   "people_after": 0.117,
-   "outlets_before": 0.248,
-   "outlets_after": 0.168,
-   "people_change": -0.262,
-   "outlet_change": -0.322,
-   "fatigue": false
-  },
-  "international": {
-   "people_before": 0.118,
-   "people_after": 0.116,
-   "outlets_before": 0.248,
-   "outlets_after": 0.161,
-   "people_change": -0.012,
-   "outlet_change": -0.351,
-   "fatigue": false
   }
  },
  "half": "2026-10-05",
@@ -252,6 +252,31 @@
   "contempt": 0.019
  },
  "gaps": {
+  "northeast-kurdish": {
+   "people": 0.129,
+   "outlets": 0.069,
+   "gap": 0.061
+  },
+  "international": {
+   "people": 0.117,
+   "outlets": 0.194,
+   "gap": -0.077
+  },
+  "refugees": {
+   "people": 0.018,
+   "outlets": 0.025,
+   "gap": -0.008
+  },
+  "economy": {
+   "people": 0.133,
+   "outlets": 0.199,
+   "gap": -0.066
+  },
+  "israel-south": {
+   "people": 0.173,
+   "outlets": 0.213,
+   "gap": -0.04
+  },
   "society": {
    "people": 0.165,
    "outlets": 0.057,
@@ -262,50 +287,25 @@
    "outlets": 0.115,
    "gap": -0.045
   },
-  "suwayda-druze": {
-   "people": 0.059,
-   "outlets": 0.026,
-   "gap": 0.033
-  },
-  "refugees": {
-   "people": 0.018,
-   "outlets": 0.025,
-   "gap": -0.008
-  },
-  "governance": {
-   "people": 0.077,
-   "outlets": 0.025,
-   "gap": 0.052
-  },
-  "northeast-kurdish": {
-   "people": 0.129,
-   "outlets": 0.069,
-   "gap": 0.061
+  "coast-alawite": {
+   "people": 0.008,
+   "outlets": 0.004,
+   "gap": 0.004
   },
   "justice": {
    "people": 0.051,
    "outlets": 0.068,
    "gap": -0.017
   },
-  "israel-south": {
-   "people": 0.173,
-   "outlets": 0.213,
-   "gap": -0.04
+  "suwayda-druze": {
+   "people": 0.059,
+   "outlets": 0.026,
+   "gap": 0.033
   },
-  "economy": {
-   "people": 0.133,
-   "outlets": 0.199,
-   "gap": -0.066
-  },
-  "international": {
-   "people": 0.117,
-   "outlets": 0.194,
-   "gap": -0.077
-  },
-  "coast-alawite": {
-   "people": 0.008,
-   "outlets": 0.004,
-   "gap": 0.004
+  "governance": {
+   "people": 0.077,
+   "outlets": 0.025,
+   "gap": 0.052
   }
  },
  "languages": {

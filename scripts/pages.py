@@ -145,7 +145,7 @@ html[lang=ar]{--sans:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif
 a{color:inherit;text-decoration-color:var(--brass);text-underline-offset:3px}a:hover{color:var(--brass)}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 40px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:22px 0 18px;border-bottom:1px solid var(--rule);margin-bottom:34px}
-.top .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;text-decoration:none;color:var(--ink)}.top .brand .mark{width:26px;height:26px;flex:none}.purl{display:none}.top nav{display:flex;gap:18px;color:var(--muted);font-size:.88rem;flex-wrap:wrap}.top nav a{text-decoration:none}
+.top .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;text-decoration:none;color:var(--ink)}.top .brand .mark{width:26px;height:26px;flex:none}.purl{display:none}.top nav{display:flex;gap:8px 13px;color:var(--muted);font-size:.85rem;flex-wrap:wrap;align-items:baseline}.top nav a{text-decoration:none}
 .top .lang{border:1px solid var(--rule);border-radius:999px;padding:2px 12px;color:var(--ink)}
 .eyebrow{color:var(--muted);font-size:.9rem;margin:0 0 10px}h1{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1.25;margin:0 0 14px}
 h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:34px 0 10px}p{margin:0 0 14px;max-width:68ch}.sub{color:var(--muted);font-size:.9rem}
