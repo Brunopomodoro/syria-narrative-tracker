@@ -1058,6 +1058,43 @@ def feed_story_post(cfg: dict, n: dict, gap: float, lang: str, state: dict) -> d
             "card": story_card(cfg, n, lang), "words": words}
 
 
+def zapier_cycle(s: dict, now: dt.datetime) -> tuple:
+    """The start and end dates of the current Zapier month: from `zapier_cycle_day` (the day the plan's usage resets,
+    shown in Zapier under Settings, Usage) to the same day of the next month."""
+    day = max(1, min(28, int(s.get("zapier_cycle_day") or 1)))
+    today = now.date()
+    start = today.replace(day=day) if today.day >= day else (today.replace(day=1) - dt.timedelta(days=1)).replace(day=day)
+    end = (start.replace(day=28) + dt.timedelta(days=4)).replace(day=day)
+    return start, end
+
+
+def feed_room(cfg: dict, state: dict, now: dt.datetime, lang: str) -> int:
+    """How many more story posts the feed can carry this Zapier month without going over `zapier_monthly_limit`
+    (100 on the free plan), keeping room for every report still to come: past that, Zapier would pause the Zap and
+    the reports would stop too. Counts the reports, hand-added posts and story posts already in the feed."""
+    s = settings(cfg, "facebook")
+    limit = int(s.get("zapier_monthly_limit") or 0)
+    if limit <= 0:
+        return 10 ** 6
+    start, end = zapier_cycle(s, now)
+    inside = lambda at: at and start <= at.date() and at <= now  # noqa: E731
+    used = 0
+    for kind, ident in [("daily", d) for d in archive.all_days()[-40:] if d >= (start - dt.timedelta(days=2)).isoformat()] + [
+            (k, x["month" if k == "monthly" else "week"]) for k in ("weekly", "monthly") for x in (archive._load(pages.DATA / k / "index.json", []) or [])[-6:]]:
+        item = social_item(cfg, kind, ident, lang)
+        used += bool(item and inside(item["at"]))
+    used += sum(1 for e in archive._load(pages.DATA / "social_extra.json", []) or [] if e.get("lang") == lang and inside(archive_parse(e.get("at"))))
+    used += sum(1 for e in (state.get("fb_feed") or {}).get("story_posts") or [] if e.get("lang") == lang and inside(archive_parse(e.get("at"))))
+    yesterday = (now.date() - dt.timedelta(days=1)).isoformat()
+    brief = social_item(cfg, "daily", yesterday, lang) if yesterday in archive.all_days() else None
+    reserve = (0 if brief and brief["at"] <= now else 1)                           # today's brief, if not out yet
+    d = now.date() + dt.timedelta(days=1)
+    while d < end:
+        reserve += 1 + (d.weekday() == 0) + (d.day == 1)                           # each day's brief, Mondays' digest, the monthly report
+        d += dt.timedelta(days=1)
+    return max(0, limit - used - reserve)
+
+
 def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
     """Story posts in the feeds of ready-made posts, for the Facebook Page through Zapier: `stories_per_day` a day
     (under facebook: in config.yaml), at the first hours of its `story_hours` (Damascus time), in each of
@@ -1077,6 +1114,9 @@ def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
     slot = f"{local.date().isoformat()} {open_now[-1]:02d}"
     for lang in s.get("feed_story_languages") or []:
         if any(p.get("slot") == slot and p.get("lang") == lang for p in posts):
+            continue
+        if feed_room(cfg, state, now, lang) < 1:
+            print(f"Facebook feed: no story post at {slot}:00 ({lang}); the rest of this Zapier month's posts are kept for the reports.")
             continue
         cands = story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang], pool_hours=24)
         if not cands:
