@@ -1,0 +1,469 @@
+{
+ "generated_at": "2026-10-27T10:18:08+00:00",
+ "from": "2026-09-11",
+ "to": "2026-10-27",
+ "days": 46,
+ "story_days": 1094,
+ "stories": 775,
+ "public_posts": 9845,
+ "outlet_posts": 4917,
+ "alignment": {
+  "official": {
+   "label": "State media",
+   "stories": 103,
+   "people": -0.277,
+   "outlets": -0.066,
+   "gap": 0.224,
+   "agree": 0.667,
+   "angrier": 0.534
+  },
+  "independent": {
+   "label": "Independent and private Syrian outlets",
+   "stories": 180,
+   "people": -0.279,
+   "outlets": -0.098,
+   "gap": 0.199,
+   "agree": 0.766,
+   "angrier": 0.602
+  },
+  "regional": {
+   "label": "Arab and regional outlets",
+   "stories": 63,
+   "people": -0.29,
+   "outlets": -0.076,
+   "gap": 0.288,
+   "agree": 0.57,
+   "angrier": 0.612
+  },
+  "kurdish": {
+   "label": "Kurdish outlets",
+   "stories": 133,
+   "people": -0.283,
+   "outlets": -0.067,
+   "gap": 0.253,
+   "agree": 0.59,
+   "angrier": 0.638
+  },
+  "aggregator": {
+   "label": "International news (via Google News)",
+   "stories": 100,
+   "people": -0.279,
+   "outlets": -0.07,
+   "gap": 0.287,
+   "agree": 0.532,
+   "angrier": 0.692
+  }
+ },
+ "doubt": {
+  "share": 0.413,
+  "by_theme": {
+   "society": 0.178,
+   "governance": 0.365,
+   "coast-alawite": 0.282,
+   "economy": 0.359,
+   "justice": 0.785,
+   "refugees": 0.029,
+   "israel-south": 0.68,
+   "suwayda-druze": 0.145,
+   "security": 0.294,
+   "northeast-kurdish": 0.554,
+   "international": 0.37
+  },
+  "outlet_mix": {
+   "doubt": {
+    "kurdish": 0.143,
+    "independent": 0.474,
+    "official": 0.151,
+    "aggregator": 0.13,
+    "regional": 0.101
+   },
+   "other": {
+    "kurdish": 0.2,
+    "official": 0.133,
+    "independent": 0.482,
+    "aggregator": 0.116,
+    "regional": 0.07
+   }
+  }
+ },
+ "platforms": {
+  "youtube": 0.451,
+  "telegram": 0.268,
+  "bluesky": 0.152,
+  "news": 0.069,
+  "x": 0.037,
+  "reddit": 0.023
+ },
+ "video_share": {
+  "international": 0.305,
+  "israel-south": 0.368,
+  "economy": 0.345,
+  "society": 0.73,
+  "justice": 0.333,
+  "security": 0.393,
+  "governance": 0.751,
+  "refugees": 0.386,
+  "northeast-kurdish": 0.538,
+  "suwayda-druze": 0.535
+ },
+ "engagement": {
+  "international": 418.7,
+  "israel-south": 602.1,
+  "economy": 277.3,
+  "society": 89.0,
+  "justice": 279.4,
+  "security": 583.1,
+  "governance": 71.5,
+  "refugees": 198.4,
+  "northeast-kurdish": 57.3,
+  "suwayda-druze": 88.8
+ },
+ "fatigue": [
+  {
+   "key": "2026-10-10-economy-cost-of-living",
+   "title": "Lira slides and diesel shortage anger deepen",
+   "theme": "economy",
+   "days": 10,
+   "first": "2026-10-10",
+   "last": "2026-10-26",
+   "people_change": -0.011,
+   "outlet_change": -0.539,
+   "fatigue": false
+  },
+  {
+   "key": "2026-10-01-israel-south",
+   "title": "Israeli Incursions and Strikes Continue in Southern Syria",
+   "theme": "israel-south",
+   "days": 14,
+   "first": "2026-10-01",
+   "last": "2026-10-14",
+   "people_change": 0.109,
+   "outlet_change": -0.39,
+   "fatigue": false
+  },
+  {
+   "key": "2026-09-28-israel-quneitra-daraa-incursions",
+   "title": "Israeli incursions and military exercises continue in Quneitra and Daraa",
+   "theme": "israel-south",
+   "days": 17,
+   "first": "2026-09-28",
+   "last": "2026-10-26",
+   "people_change": 3.726,
+   "outlet_change": 1.295,
+   "fatigue": false
+  }
+ ],
+ "topic_trend": {
+  "society": {
+   "people_before": 0.276,
+   "people_after": 0.093,
+   "outlets_before": 0.074,
+   "outlets_after": 0.045,
+   "people_change": -0.661,
+   "outlet_change": -0.396,
+   "fatigue": false
+  },
+  "governance": {
+   "people_before": 0.107,
+   "people_after": 0.056,
+   "outlets_before": 0.024,
+   "outlets_after": 0.023,
+   "people_change": -0.475,
+   "outlet_change": -0.039,
+   "fatigue": true
+  },
+  "economy": {
+   "people_before": 0.159,
+   "people_after": 0.114,
+   "outlets_before": 0.248,
+   "outlets_after": 0.163,
+   "people_change": -0.28,
+   "outlet_change": -0.343,
+   "fatigue": false
+  },
+  "justice": {
+   "people_before": 0.016,
+   "people_after": 0.071,
+   "outlets_before": 0.073,
+   "outlets_after": 0.064,
+   "people_change": 3.357,
+   "outlet_change": -0.128,
+   "fatigue": false
+  },
+  "israel-south": {
+   "people_before": 0.105,
+   "people_after": 0.235,
+   "outlets_before": 0.111,
+   "outlets_after": 0.298,
+   "people_change": 1.229,
+   "outlet_change": 1.672,
+   "fatigue": false
+  },
+  "suwayda-druze": {
+   "people_before": 0.017,
+   "people_after": 0.083,
+   "outlets_before": 0.011,
+   "outlets_after": 0.035,
+   "people_change": 3.961,
+   "outlet_change": 2.352,
+   "fatigue": false
+  },
+  "security": {
+   "people_before": 0.095,
+   "people_after": 0.053,
+   "outlets_before": 0.103,
+   "outlets_after": 0.118,
+   "people_change": -0.445,
+   "outlet_change": 0.144,
+   "fatigue": true
+  },
+  "northeast-kurdish": {
+   "people_before": 0.082,
+   "people_after": 0.154,
+   "outlets_before": 0.059,
+   "outlets_after": 0.074,
+   "people_change": 0.864,
+   "outlet_change": 0.259,
+   "fatigue": false
+  },
+  "international": {
+   "people_before": 0.118,
+   "people_after": 0.114,
+   "outlets_before": 0.248,
+   "outlets_after": 0.158,
+   "people_change": -0.034,
+   "outlet_change": -0.361,
+   "fatigue": false
+  }
+ },
+ "half": "2026-10-05",
+ "emotions": {
+  "anger": 0.149,
+  "distrust": 0.069,
+  "fear": 0.068,
+  "grief": 0.066,
+  "pride": 0.047,
+  "mockery": 0.046,
+  "hope": 0.045,
+  "frustration": 0.038,
+  "skepticism": 0.038,
+  "suspicion": 0.023,
+  "joy": 0.021,
+  "contempt": 0.018
+ },
+ "gaps": {
+  "society": {
+   "people": 0.163,
+   "outlets": 0.056,
+   "gap": 0.106
+  },
+  "governance": {
+   "people": 0.076,
+   "outlets": 0.023,
+   "gap": 0.052
+  },
+  "coast-alawite": {
+   "people": 0.008,
+   "outlets": 0.004,
+   "gap": 0.004
+  },
+  "economy": {
+   "people": 0.131,
+   "outlets": 0.196,
+   "gap": -0.065
+  },
+  "justice": {
+   "people": 0.05,
+   "outlets": 0.067,
+   "gap": -0.017
+  },
+  "refugees": {
+   "people": 0.017,
+   "outlets": 0.025,
+   "gap": -0.007
+  },
+  "israel-south": {
+   "people": 0.185,
+   "outlets": 0.226,
+   "gap": -0.04
+  },
+  "suwayda-druze": {
+   "people": 0.058,
+   "outlets": 0.026,
+   "gap": 0.032
+  },
+  "security": {
+   "people": 0.069,
+   "outlets": 0.112,
+   "gap": -0.043
+  },
+  "northeast-kurdish": {
+   "people": 0.126,
+   "outlets": 0.069,
+   "gap": 0.058
+  },
+  "international": {
+   "people": 0.115,
+   "outlets": 0.193,
+   "gap": -0.077
+  }
+ },
+ "languages": {
+  "ar": {
+   "posts": 4609,
+   "tone": -0.28,
+   "topics": {
+    "israel-south": {
+     "share": 0.192,
+     "tone": -0.559
+    },
+    "economy": {
+     "share": 0.153,
+     "tone": -0.433
+    },
+    "society": {
+     "share": 0.147,
+     "tone": -0.077
+    },
+    "international": {
+     "share": 0.127,
+     "tone": -0.212
+    },
+    "governance": {
+     "share": 0.11,
+     "tone": -0.182
+    },
+    "suwayda-druze": {
+     "share": 0.096,
+     "tone": -0.411
+    }
+   }
+  },
+  "en": {
+   "posts": 2367,
+   "tone": -0.161,
+   "topics": {
+    "northeast-kurdish": {
+     "share": 0.368,
+     "tone": -0.2
+    },
+    "israel-south": {
+     "share": 0.243,
+     "tone": -0.301
+    },
+    "international": {
+     "share": 0.121,
+     "tone": -0.103
+    },
+    "justice": {
+     "share": 0.092,
+     "tone": 0.17
+    },
+    "economy": {
+     "share": 0.071,
+     "tone": -0.03
+    },
+    "security": {
+     "share": 0.035,
+     "tone": -0.09
+    }
+   }
+  },
+  "ku": {
+   "posts": 61,
+   "tone": -0.115,
+   "topics": {
+    "northeast-kurdish": {
+     "share": 0.934,
+     "tone": -0.132
+    },
+    "justice": {
+     "share": 0.033,
+     "tone": 0.3
+    },
+    "international": {
+     "share": 0.016,
+     "tone": 0.1
+    },
+    "israel-south": {
+     "share": 0.016,
+     "tone": -0.2
+    }
+   }
+  }
+ },
+ "weeks": [
+  {
+   "week": "2026-W37",
+   "days": 2,
+   "partial": true,
+   "people": null,
+   "outlets": null,
+   "doubt": 0.0,
+   "tired": 0.0
+  },
+  {
+   "week": "2026-W38",
+   "days": 7,
+   "partial": false,
+   "people": -0.327,
+   "outlets": null,
+   "doubt": 0.14,
+   "tired": 0.047
+  },
+  {
+   "week": "2026-W39",
+   "days": 7,
+   "partial": false,
+   "people": -0.024,
+   "outlets": null,
+   "doubt": 0.339,
+   "tired": 0.079
+  },
+  {
+   "week": "2026-W40",
+   "days": 7,
+   "partial": false,
+   "people": -0.15,
+   "outlets": -0.044,
+   "doubt": 0.324,
+   "tired": 0.152
+  },
+  {
+   "week": "2026-W41",
+   "days": 7,
+   "partial": false,
+   "people": -0.265,
+   "outlets": 0.029,
+   "doubt": 0.322,
+   "tired": 0.096
+  },
+  {
+   "week": "2026-W42",
+   "days": 7,
+   "partial": false,
+   "people": -0.107,
+   "outlets": -0.016,
+   "doubt": 0.515,
+   "tired": 0.041
+  },
+  {
+   "week": "2026-W43",
+   "days": 7,
+   "partial": false,
+   "people": -0.359,
+   "outlets": -0.084,
+   "doubt": 0.287,
+   "tired": 0.126
+  },
+  {
+   "week": "2026-W44",
+   "days": 2,
+   "partial": true,
+   "people": -0.538,
+   "outlets": -0.262,
+   "doubt": 0.813,
+   "tired": 0.047
+  }
+ ]
+}

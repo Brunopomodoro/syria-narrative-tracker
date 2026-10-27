@@ -401,6 +401,7 @@ Open **Actions → Maintenance → Run workflow** and pick a task:
 | rebuild-pages | Rebuild every story page, daily brief, digest and report page, the listings, feeds and the sitemap, then the PDFs. Run after changing how pages look. | free |
 | newsletter-setup | Make the newsletter's six lists in Brevo (once, after adding `BREVO_API_KEY`). | free |
 | newsletter-check | Show the newsletter's lists, their subscriber counts and what would be sent now; sends nothing. | free |
+| audience-snapshot | Rebuild the audience snapshot (indicators, report page and PDF) from the whole archive. | free |
 | backfill-themes | Give a theme to archived stories that have none. | a few cents |
 | backfill-weekly | Write the digest of every completed week that has none. | a few cents per week |
 | backfill-monthly | Write the review of every completed month that has none. | about 15 cents per month |
@@ -627,6 +628,21 @@ They are observations about the recent past, not forecasts, and the page says so
 Every story carries measurable signs that its public reaction may be organised rather than spontaneous, computed by `scripts/signals.py` from the posts assigned to the story in that update: copy-paste posting, near-identical posts, a sudden burst, a burst with no outlet coverage in that hour, the same text on several platforms within an hour, a few commenters writing most comments, and regular timing. Each triggered signal is shown under the story with its value, a level (weak, moderate, strong) and its innocent explanation, and the values are in the `stories.csv` downloads (`signal_level`, `signal_count`, `signals`). The About page's "Coordination signals" section documents each one.
 
 Two rules of reading them: they are signals, not proof, since real breaking news, popular slogans and a few devoted commenters produce them too; and they never say who is behind anything. Nobody is identified: commenter concentration is counted from one-way hashes that exist only in memory during the update. The signals get far more informative once Telegram comments are connected (extra A2), which is where most organised activity in the Syrian space happens.
+
+### Audience snapshot: indicators for audience research
+
+`scripts/audience.py` reads the whole archive and draws audience indicators from it: how close each type of outlet
+(state, independent and private Syrian, Arab and regional, Kurdish, international) is to the public mood on the stories
+it covered, how much of people's attention carries doubt about official accounts or media reports, which topics people
+talk about more or less than outlets cover them, signs of fatigue (topics losing people's attention while outlets keep
+covering them, and the weekly share of tired or resigned reactions), platforms and engagement by topic, languages and
+emotions. Each story counts once a day. It writes `data/audience.json` and, with `--report`, a report page at
+`audience/en.html` with an A4 PDF beside it (`audience/en.pdf`), kept out of search engines and not linked from the menu,
+meant to be sent to partners and funders. Rebuild it at any time with the **audience-snapshot** maintenance job (free).
+
+The indicators describe what people say in public online; they are not a sample of Syrians and say nothing about age,
+gender, education, income, people offline, private messaging or Facebook. Closeness to an outlet type's tone is a proxy,
+not a measure of trust. They are meant to sit beside a representative survey and interviews.
 
 ### Validation study: how accurate are the labels?
 
