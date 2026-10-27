@@ -1133,7 +1133,10 @@ def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
     posts = fs.setdefault("story_posts", [])
     local = local_now(s, now)
     hours = sorted(int(h) for h in (s.get("story_hours") or [])[:per_day])
-    open_now = [h for h in hours if h <= local.hour + local.minute / 60 < h + 2]     # a late update still posts
+    hour = local.hour + local.minute / 60
+    # a slot stays open until the next one (the last until midnight): GitHub runs the hourly update only every
+    # two or three hours at busy times, so a short window would often be missed
+    open_now = [h for i, h in enumerate(hours) if h <= hour < (hours[i + 1] if i + 1 < len(hours) else 24)]
     if not open_now:
         return
     slot = f"{local.date().isoformat()} {open_now[-1]:02d}"
