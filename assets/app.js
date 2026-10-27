@@ -17,6 +17,8 @@ const T = {
     gapBlind: "What people raised that the media barely covered", gapFull: "The full media analysis, with its sources", gapNone: "No comparison for this period.",
     gapReport: { day: "In the daily report", week: "In the weekly report", month: "In the monthly report" },
     homeMeasure: "Mood gap: how Syrians feel about each story, compared with how outlets report it.",
+    media: "Media coverage", medTitle: "Media coverage: what Syrian and international media report", medDayCard: "Daily analysis",
+    medSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, with links to every report and article drawn on. A short analysis every day; one page per area and an overall one every week and every month. How it compares with what Syrians discuss is on the Topic gap tab.",
     gapMeasured: "Measured: each area's share of attention", gapLast7: "Last 7 days", gapLast30: "Last 30 days", gapSince: (d) => `Since ${d}`,
     gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference",
     gapAreas: { security: "Security", economy: "Economy and daily life", governance: "Governance and politics" },
@@ -180,6 +182,8 @@ const T = {
     gapBlind: "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", gapFull: "تحليل الإعلام كاملاً مع مصادره", gapNone: "لا مقارنة لهذه الفترة.",
     gapReport: { day: "في التقرير اليومي", week: "في التقرير الأسبوعي", month: "في التقرير الشهري" },
     homeMeasure: "مزاج الشارع: كيف يشعر السوريون تجاه كل قصة، وكيف تنقلها وسائل الإعلام.",
+    media: "التغطية الإعلامية", medTitle: "التغطية الإعلامية: ما تنشره وسائل الإعلام السورية والدولية", medDayCard: "التحليل اليومي",
+    medSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مع روابط إلى كل تقرير ومقال يستند إليه. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. أما المقارنة بما يناقشه السوريون ففي تبويب «اهتمامات الشارع».",
     gapMeasured: "بالأرقام: نصيب كل مجال من الاهتمام", gapLast7: "آخر ٧ أيام", gapLast30: "آخر ٣٠ يوماً", gapSince: (d) => `منذ ${d}`,
     gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق",
     gapAreas: { security: "الأمن", economy: "الاقتصاد والحياة اليومية", governance: "الحوكمة والسياسة" },
@@ -412,7 +416,7 @@ function applyLang() {
   const title = (rtl() ? state.latest?.site_title_ar : state.latest?.site_title) || t.title;
   $("#site-title").textContent = title;
   document.title = `${title}: ${t.tagline}`;
-  for (const [id, word] of [["home", t.home], ["trends", t.trends], ["reports", t.reports], ["experts", t.experts], ["data", t.data], ["about", t.about]]) {
+  for (const [id, word] of [["home", t.home], ["trends", t.trends], ["reports", t.reports], ["experts", t.experts], ["media", t.media], ["data", t.data], ["about", t.about]]) {
     const a = $(`#${id}-link`);
     a.textContent = word;
     if (state.view === id) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
@@ -1438,6 +1442,7 @@ function render() {
   if (state.view === "trends") { $("#app").innerHTML = trendsHTML(); bindTrends(); drawTrends(); loadIndex(); return; }
   if (state.view === "reports") { $("#app").innerHTML = reportsHTML(); loadIndex(); return; }
   if (state.view === "experts") { $("#app").innerHTML = expertsHTML(); bindExperts(); loadExperts(); return; }
+  if (state.view === "media") { $("#app").innerHTML = mediaHTML(); loadExperts(); return; }
   if (state.view === "data") { $("#app").innerHTML = dataHTML(); bindData(); loadIndex(); loadExports(); return; }
   usedFallback = false;
   const typing = document.activeElement?.id === "q", caret = typing ? document.activeElement.selectionStart : 0;
@@ -1571,7 +1576,7 @@ async function loadExperts() {
     if (x) S.newest[kind] = await getJSON(`data/experts/analyses/${x.id}.json`).catch(() => null);
   }));
   S.loaded = true; S.loading = false;
-  if (state.view === "experts") render();
+  if (state.view === "experts" || state.view === "media") render();
 }
 // [Crisis Group](id) in a text: the name, linked to the article it comes from
 const DIGITS_W = { "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9" };
@@ -1623,6 +1628,36 @@ function expertsHTML() {
     <p class="sub">${t.expNote}</p>
   </section>`;
 }
+// the Media coverage tab: the newest daily, weekly and monthly media analyses, a card per area linking to its page
+function mediaPeriodHTML(x) {
+  const t = L(), lang = state.lang, day = (d) => fmtDay(d, { day: "numeric", month: "long" });
+  const label = x.kind === "day" ? fmtDay(x.from, { weekday: "long", day: "numeric", month: "long" }) : x.kind === "week" ? t.expWeek(x.id, day(x.from), day(x.to)) : t.expMonth(fmtDay(x.from, { month: "long", year: "numeric" }));
+  const page = (area) => `experts/${lang}/${x.id}${area === "overall" ? "" : "-" + area}.html`;
+  const card = (area) => {
+    const title = rtl() ? x[`${area}_title_ar`] || x[`${area}_title`] : x[`${area}_title`] || x[`${area}_title_ar`];
+    const lede = rtl() ? x[`${area}_lede_ar`] || x[`${area}_lede`] : x[`${area}_lede`] || x[`${area}_lede_ar`];
+    return `<a class="e-card${area === "overall" ? " e-overall" : ""}" href="${page(area)}"><span class="e-area">${x.kind === "day" ? t.medDayCard : t.expAreas[area]}</span>
+      <span class="e-title" dir="auto">${esc(title || "")}</span><span class="e-lede" dir="auto">${esc(lede || "")}</span></a>`;
+  };
+  return `<div class="e-period"><h3>${{ day: t.expLatestDay, week: t.expLatestWeek, month: t.expLatestMonth }[x.kind]} <span class="sub">· ${esc(label)}</span></h3>
+    <div class="e-cards">${["overall", "security", "economy", "governance"].filter(a => (x.areas || []).includes(a)).map(card).join("")}</div></div>`;
+}
+function mediaHTML() {
+  const t = L(), S = state.experts, lang = state.lang;
+  const head = `<h2 id="h-media">${t.medTitle}</h2><p class="sub">${t.medSub}</p>`;
+  if (!S.loaded) return `<section class="experts" aria-labelledby="h-media">${head}<p>${t.loadingMethod}</p></section>`;
+  const newest = (kind) => (S.index || []).filter(x => x.kind === kind).sort((a, b) => a.from < b.from ? 1 : -1)[0];
+  const today = newest("day"), week = newest("week"), month = newest("month");
+  return `
+  <section class="experts" aria-labelledby="h-media">
+    ${head}
+    ${today ? mediaPeriodHTML(today) : ""}
+    ${week ? mediaPeriodHTML(week) : `<p class="sub">${t.expNone}</p>`}
+    ${month ? mediaPeriodHTML(month) : ""}
+    <p class="e-links"><a href="experts/${lang}/index.html">${t.expAll}</a> · <a href="sources/${lang}.html">${t.allSources}</a></p>
+    <p class="sub">${t.expNote}</p>
+  </section>`;
+}
 function bindExperts() {}
 async function loadExports() {
   const S = state.dataPage;
@@ -1642,7 +1677,7 @@ async function loadMethod() {
 const ABOUT_ANCHORS = ["method", "themes", "sources", "signals", "limits", "accuracy", "prompt", "cite"];
 function viewFromHash() {
   const h = location.hash.replace("#", "");
-  if (["trends", "reports", "experts", "data", "about"].includes(h)) return h;
+  if (["trends", "reports", "experts", "media", "data", "about"].includes(h)) return h;
   return ABOUT_ANCHORS.includes(h) ? "about" : "home";
 }
 const showView = () => { state.view === "home" && !state.latest?.generated_at ? renderEmpty(state.latest?.sources) : render(); };
