@@ -42,6 +42,7 @@ jobs:
           else
             python scripts/experts.py collect
             python scripts/experts.py daily --if-missing
+            python scripts/words_not_scores.py --auto || true   # tone scores in the new brief: in words (free when none)
           fi
 
       - name: Save results

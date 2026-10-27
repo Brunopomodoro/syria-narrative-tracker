@@ -467,16 +467,22 @@ def index_min_runs(cfg: dict) -> int:
     return int((cfg.get("seo") or {}).get("index_min_runs", 2))
 
 
+def off_topic(key: str) -> bool:
+    """A grab-bag of news unrelated to Syria from the tracker's first days (keys like 2026-09-19-unrelated-content):
+    kept in the archive, but not offered to search engines or as a related story."""
+    return "-unrelated-" in key
+
+
 def story_indexable(cfg: dict, key: str, index: dict | None = None) -> bool:
     e = (index if index is not None else load_story_index()).get(key) or {}
-    return int(e.get("runs") or 0) >= index_min_runs(cfg)
+    return int(e.get("runs") or 0) >= index_min_runs(cfg) and not off_topic(key)
 
 
 def related_stories(cfg: dict, key: str, theme: str, lang: str, limit: int = 5) -> str:
     """Links to other stories of the same theme that search engines may index, most recent first."""
     index = load_story_index()
     rows = sorted((e | {"key": k} for k, e in index.items() if k != key and e.get("theme") == theme and theme != "other"
-                   and int(e.get("runs") or 0) >= index_min_runs(cfg)), key=lambda e: e.get("last_seen", ""), reverse=True)[:limit]
+                   and int(e.get("runs") or 0) >= index_min_runs(cfg) and not off_topic(k)), key=lambda e: e.get("last_seen", ""), reverse=True)[:limit]
     if not rows:
         return ""
     items = "".join(f'<li><a href="{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a> <span class="sub">{esc(fmt_date(e.get("last_seen", ""), lang))}</span></li>' for e in rows)

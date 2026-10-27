@@ -57,7 +57,9 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
-        run: python scripts/pipeline.py
+        run: |
+          python scripts/pipeline.py
+          python scripts/words_not_scores.py --auto || true   # a new report quoting tone scores: say them in words (free when none)
 
       - name: Report and daily brief PDFs (only those new or changed)
         if: steps.gap.outputs.skip != 'true'
