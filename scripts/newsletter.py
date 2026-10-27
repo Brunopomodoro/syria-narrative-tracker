@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The newsletter: emails the daily brief, the weekly digest and the monthly report to the readers who signed up for
+"""The newsletter: emails the daily report, the weekly report and the monthly report to the readers who signed up for
 them on subscribe/en.html or subscribe/ar.html (GUIDE.md, "Newsletter by email"). Runs after every update and sends
 each report once per language, through Brevo, to the Brevo list of the readers who chose it:
 
@@ -38,14 +38,14 @@ KINDS = ("daily", "weekly", "monthly")
 FOLDER = "Syrian Pulse newsletter"
 DAILY_LIMIT = 300                          # Brevo's free plan: emails a day
 
-W = {"en": {"daily": "Daily brief", "weekly": "Weekly digest", "monthly": "Monthly report", "points": "The main points",
+W = {"en": {"daily": "Daily report", "weekly": "Weekly report", "monthly": "Monthly report", "points": "The main points",
             "findings": "Key findings", "stories": "The stories that mattered", "people": "What people said",
-            "media": "What the media and experts said", "read": {"daily": "Read the full brief", "weekly": "Read the full digest", "monthly": "Read the full report"},
+            "media": "What the media said", "read": {"daily": "Read the full brief", "weekly": "Read the full digest", "monthly": "Read the full report"},
             "pdf": "Download the PDF", "mood": "People's mood", "media_mood": "The media", "why": "You receive this because you signed up at",
             "change": "Change your choices", "unsub": "Unsubscribe", "note": "An automatic summary of what is said online, not of what is true."},
-     "ar": {"daily": "الموجز اليومي", "weekly": "الملخص الأسبوعي", "monthly": "التقرير الشهري", "points": "أبرز النقاط",
+     "ar": {"daily": "التقرير اليومي", "weekly": "التقرير الأسبوعي", "monthly": "التقرير الشهري", "points": "أبرز النقاط",
             "findings": "أبرز النتائج", "stories": "القصص الأبرز", "people": "ما قاله الناس",
-            "media": "ما قاله الإعلام والخبراء", "read": {"daily": "اقرأ الموجز كاملاً", "weekly": "اقرأ الملخص كاملاً", "monthly": "اقرأ التقرير كاملاً"},
+            "media": "ما قاله الإعلام", "read": {"daily": "اقرأ الموجز كاملاً", "weekly": "اقرأ الملخص كاملاً", "monthly": "اقرأ التقرير كاملاً"},
             "pdf": "تنزيل ملف PDF", "mood": "مزاج الناس", "media_mood": "وسائل الإعلام", "why": "تصلك هذه الرسالة لأنك اشتركت عبر",
             "change": "تغيير اختياراتك", "unsub": "إلغاء الاشتراك", "note": "ملخص آلي لما يُقال على الإنترنت، لا لما هو صحيح."}}
 
@@ -103,8 +103,8 @@ def setup() -> int:
 # ---------------------------------------------------------------- what is due
 
 def due(cfg: dict, state: dict, now: dt.datetime) -> list:
-    """(kind, ident) of the reports to send now: yesterday's daily brief (once the media and experts analysis of the
-    day is in, or from daily_after_utc), the latest weekly digest (within 3 days) and monthly report (within 7)."""
+    """(kind, ident) of the reports to send now: yesterday's daily report (once the media analysis of the
+    day is in, or from daily_after_utc), the latest weekly report (within 3 days) and monthly report (within 7)."""
     s, sent, out = settings(cfg), state.get("sent") or {}, []
     for kind, days in (("monthly", 7), ("weekly", 3)):
         idx = archive._load(pages.DATA / kind / "index.json", []) or []

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Posts the tracker's reports to its Facebook Page and its X account: yesterday's daily brief each morning, each
-weekly digest and each monthly report once written. Runs after every update; each network does nothing until its
+"""Posts the tracker's reports to its Facebook Page and its X account: yesterday's daily report each morning, each
+weekly report and each monthly report once written. Runs after every update; each network does nothing until its
 secrets exist.
 
 Secrets (repository secrets, never in the code):
@@ -53,8 +53,8 @@ import pipeline as P  # noqa: E402
 STATE = pages.DATA / "social.json"
 GRAPH = "https://graph.facebook.com"
 
-LABEL = {"daily": {"en": "Daily brief", "ar": "الموجز اليومي"},
-         "weekly": {"en": "Weekly digest", "ar": "الملخص الأسبوعي"},
+LABEL = {"daily": {"en": "Daily report", "ar": "التقرير اليومي"},
+         "weekly": {"en": "Weekly report", "ar": "التقرير الأسبوعي"},
          "monthly": {"en": "Monthly report", "ar": "التقرير الشهري"}}
 WORDS = {"en": {"stories": "Top stories", "findings": "Key findings", "read": "Read it in full", "pdf": "PDF",
                 "people": "people", "outlets": "outlets"},
@@ -201,7 +201,7 @@ def themes_line(cfg: dict, themes: list, lang: str) -> str:
 
 
 def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = None) -> dict | None:
-    """One post on X for a report in one language: the label and date, the headline (and, for the daily brief, the
+    """One post on X for a report in one language: the label and date, the headline (and, for the daily report, the
     mood and as much of the brief as fits), the link and the hashtags that fit; at most 280 by X's count."""
     w = WORDS[lang]
     if kind == "daily":
@@ -384,7 +384,7 @@ def latest(kind: str) -> dict | None:
 
 def due(cfg: dict, state: dict, now: dt.datetime, network: str = "facebook") -> list:
     """(kind, ident) of the reports to post now, in order: monthly, weekly, daily. Only recent reports count, so
-    switching posting on does not post the whole archive, and a missed daily brief is not posted days late.
+    switching posting on does not post the whole archive, and a missed daily report is not posted days late.
     On X each report is one post per language, so the items are (kind, ident, lang)."""
     s, posted = settings(cfg, network), (state.get(network) or {}).get("posted") or {}
     langs = [x for x in s["languages"] if x in ("ar", "en")] if network == "x" else [None]
@@ -420,7 +420,7 @@ from the media's. Write ONE post from the material below, the way a sharp, warm 
 talking to people, not a press release or a bot.
 
 - Open with a hook: the most striking or human thing in the material, a contrast, or a short question. Never open with a
-  label such as "Daily brief:" or "Story:".
+  label such as "Daily report:" or "Story:".
 - Plain, natural, specific words; short sentences; at most {lines} short lines in all.
 - Arabic: simple Modern Standard Arabic, as a Syrian journalist writes on social media; no dialect words (no شو، فين،
   هيك، مو، كتير). English: plain international English; no slang (no folks, guys, gonna).
@@ -600,8 +600,8 @@ def month_days_left(now: dt.datetime) -> list:
 
 
 def reports_to_come(cfg: dict, state: dict, now: dt.datetime) -> int:
-    """Report posts still to make this month: those due now, each later day's daily brief and each later Monday's
-    weekly digest, so story posts never use the budget the reports need."""
+    """Report posts still to make this month: those due now, each later day's daily report and each later Monday's
+    weekly report, so story posts never use the budget the reports need."""
     s = settings(cfg, "x")
     langs = [x for x in s["languages"] if x in ("ar", "en")]
     dlangs = [x for x in langs if x in s["daily_languages"]]
@@ -1097,7 +1097,7 @@ def feed_room(cfg: dict, state: dict, now: dt.datetime, lang: str) -> int:
 
 def feed_recent(cfg: dict, state: dict, now: dt.datetime, lang: str) -> tuple:
     """What the Page has carried lately, so a story post brings something new: the stories it posted or that led a
-    daily brief, a hand-added post or a story post in the last three days, and the topics of the last day's story
+    daily report, a hand-added post or a story post in the last three days, and the topics of the last day's story
     posts and brief."""
     keys, themes = set(), set()
     for e in (state.get("fb_feed") or {}).get("story_posts") or []:
@@ -1164,8 +1164,8 @@ def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
 
 
 def write_social_feeds(cfg: dict, now: dt.datetime, state: dict | None = None) -> None:
-    """feed-social-ar.xml and feed-social.xml: the latest daily briefs (once the day's media analysis is in, or 6 hours
-    after the day ends), weekly digests and monthly reports, each item a post ready to publish. GUIDE.md, "Facebook
+    """feed-social-ar.xml and feed-social.xml: the latest daily reports (once the day's media analysis is in, or 6 hours
+    after the day ends), weekly reports and monthly reports, each item a post ready to publish. GUIDE.md, "Facebook
     through Zapier". Posts added by hand go in data/social_extra.json, each with its time ("at"): a report again
     ("report": [kind, ident]) or a text of its own ("title", "text", "link", and optionally "card" and "slug" for its
     image card, or "image"), and a "guid" that is new to the feed. Story posts come from run_feed_stories."""

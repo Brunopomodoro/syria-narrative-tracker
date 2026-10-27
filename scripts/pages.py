@@ -4,8 +4,8 @@ Static pages for the Syria Narrative Tracker, written by the pipeline after ever
 
   stories/en/<key>.html, stories/ar/<key>.html   a permanent page per story, with its full latest analysis and its history
   stories/en/index.html, stories/ar/index.html   the recent stories, by day
-  weekly/en/<week>.html, weekly/ar/<week>.html   the weekly digests (text from scripts/weekly.py)
-  feed.xml, feed-ar.xml                          RSS feeds of the weekly digests
+  weekly/en/<week>.html, weekly/ar/<week>.html   the weekly reports (text from scripts/weekly.py)
+  feed.xml, feed-ar.xml                          RSS feeds of the weekly reports
   sitemap.xml, robots.txt                        for search engines
   index.html                                     the crawlable block between <!--prerender--> and <!--/prerender-->
 
@@ -36,27 +36,27 @@ MONTHS_AR = ["كانون الثاني", "شباط", "آذار", "نيسان", "�
 MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 W = {   # the words on the static pages
-    "en": {"tracker": "Tracker", "trends": "Trends", "data": "Data", "about": "About", "switch": "العربية",
+    "en": {"tracker": "Mood gap", "trends": "Trends", "data": "Data", "about": "About", "switch": "العربية",
            "people": "People", "outlets": "Outlets", "reacting": "How people are reacting", "framed": "How it's framed", "watch": "Watch for:",
            "sigTitle": "Signs of coordination:", "sigLevels": {"none": "none", "low": "weak", "medium": "moderate", "high": "strong"},
            "sigNote": "Measured signals, not proof: real breaking news, popular slogans and a few devoted commenters produce them too. The About page explains each one.",
            "where": "Sources", "overtime": "Over time", "update": "Update", "share": "Share of discussion", "firstSeen": "First seen", "lastSeen": "Last seen",
            "updates": "updates", "update1": "update", "story": "Story", "theme": "Theme", "emotions": "Emotions", "listing": "Stories", "listingSub": "Every story the tracker has followed in the last 30 days, by the day it was last seen. Older stories are in the downloads on the Data page.",
-           "allStories": "All recent stories", "digest": "Weekly digest", "digests": "Weekly digests", "week": "Week", "highlights": "The week's stories", "watchNext": "What to watch",
+           "allStories": "All recent stories", "digest": "Weekly report", "digests": "Weekly reports", "week": "Week", "highlights": "The week's stories", "watchNext": "What to watch",
            "themeTable": "Themes this week", "dailyTone": "Tone by day", "stories": "Stories", "posts": "Posts analysed", "vsLast": "vs last week",
            "postsNote": "Each update analyses a sample of up to {n} posts from the previous {h} hours, so one post can be counted in several updates. Compare days with each other rather than reading the figures as numbers of posts.",
            "note": "Written automatically by an AI model from the week's public posts. It describes what was said, not what is true.",
            "storyNote": "Analysis generated automatically by an AI model from public posts. It describes what is being said, not what is true. Individuals are never named, quoted or linked.",
            "tone": ["Strongly negative", "Leaning negative", "Mostly neutral", "Leaning positive", "Strongly positive", "No reactions yet"],
            "footer": "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", "followX": "Follow on X", "followFb": "Follow on Facebook",
-           "feedTitle": "Syria Narrative Tracker: weekly digest", "feedDesc": "A weekly written summary of what is being said about Syria online.",
+           "feedTitle": "Syria Narrative Tracker: weekly report", "feedDesc": "A weekly written summary of what is being said about Syria online.",
            "review": "Monthly report", "reviews": "Monthly reports", "month": "Month", "monthHighlights": "The stories that mattered", "watchMonth": "What to watch next month",
            "weeksBrief": "The weeks in brief", "flaggedTitle": "Stories that carried signs of coordination", "themeTableMonth": "Themes this month", "vsLastMonth": "vs last month",
            "weeklyTone": "Tone by week", "weekCol": "Week", "daysCol": "Days", "readOnline": "Read online", "subscribe": "Subscribe by email", "level": "Level",
-           "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly digests. It describes what was said, not what is true.",
-           "daily": "Daily brief", "dailies": "Daily briefs", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
+           "monthNote": "Written automatically by an AI model from the month's public posts and the tracker's weekly reports. It describes what was said, not what is true.",
+           "daily": "Daily report", "dailies": "Daily reports", "dailySub": "One page per day: the last update's summary, the day's tone and numbers, and every story of the day with its analysis. Built from the archive; no model call.",
            "dailyMood": "The day in a word", "dayNumbers": "The day in numbers", "storiesOfDay": "The day's stories", "asOf": "as of the last update,",
-           "reportsTab": "Reports", "expertsTab": "Media and experts", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
+           "reportsTab": "Reports", "expertsTab": "Topic gap", "reportLabel": "Monthly report", "keyFindings": "Key findings", "inNumbers": "The month in numbers", "analysis": "Analysis",
            "aboutReport": "About this report", "privacy": "Privacy", "support": "Support", "related": "Related stories", "contact": "Contact", "shareIt": "Share", "pdf": "Download PDF", "cite": "Cite as",
            "peopleTone": "People's tone", "outletTone": "Outlets' tone", "vsPrev": "vs previous month", "postIdx": "post analyses", "updatesN": "updates", "storiesN": "stories followed", "daysN": "days covered",
            "chartThemes": "Share of discussion by theme", "chartTone": "Tone by week: people and outlets (−1 to +1)",
@@ -65,43 +65,43 @@ W = {   # the words on the static pages
            "citeText": "{site} ({year}). Monthly report, {month}. {url}",
            "platformNames": {"telegram": "Telegram channels", "telegram_comments": "Telegram comments", "telegram_groups": "Telegram groups", "news": "News sites", "youtube": "YouTube comments", "reddit": "Reddit", "x": "X", "bluesky": "Bluesky", "threads": "Threads", "instagram": "Instagram"},
            "langNames": {"ar": "Arabic", "ku": "Kurdish", "en": "English", "other": "other"},
-           "feedTitleMonthly": "Syria Narrative Tracker: monthly review", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
+           "feedTitleMonthly": "Syria Narrative Tracker: monthly report", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
-           "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media and experts", "sourcesTitle": "Sources", "expertsLatest": "In Media and experts",
+           "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media analysis", "sourcesTitle": "Sources", "expertsLatest": "In the media",
            "privacyDesc": "How the Syria Narrative Tracker handles public posts: posts by individuals are read only in aggregate and are never stored, quoted or linked.",
            "supportDesc": "How to support the Syria Narrative Tracker, an independent, open project following what Syrians say online, in Arabic and English.",
            "contactDesc": "Write to the Syria Narrative Tracker: questions, corrections, data requests and ideas for working together, through a short form.",
            "glanceDay": "The day at a glance", "contents": "Contents", "glanceWeek": "The week at a glance", "glanceMonth": "The month at a glance", "partPeople": "What people said",
-           "partMedia": "What the media and experts said", "compareHow": "How they compare", "overallPicture": "The overall picture",
-           "watchAll": "What to watch", "watchPeople": "In what people say", "watchMedia": "In the media and experts' view",
+           "partMedia": "What the media said", "compareHow": "How they compare", "overallPicture": "The overall picture",
+           "watchAll": "What to watch", "watchPeople": "In what people say", "watchMedia": "In the media's view",
            "partMethod": "Sources and method", "mediaSources": "Reports and articles drawn on ({n})", "fullPage": "Full page with sources",
-           "mediaPending": "The Media and experts analysis of this period is not written yet; this report is updated when it is.",
-           "pvmTitle": "People and the media", "pvmPeople": "What people talked about most", "pvmMedia": "What the media and experts focused on",
-           "pvmGap": "What people raised that the media and experts barely covered", "pvmBrief": "Media and experts in brief", "pvmRead": "Read the full analysis and its sources",
-           "pvmShare": "{p} of people's posts on average", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. Media and experts: our analysis of Syrian and international media, think tanks and international organisations.",
-           "xDay": "What the media and experts said that day", "xWeek": "This week in Media and experts: our analysis of Syrian and international reporting and research",
-           "xArea": "The expert view on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
-    "ar": {"tracker": "المتتبّع", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
+           "mediaPending": "The media analysis of this period is not written yet; this report is updated when it is.",
+           "pvmTitle": "Topic gap: people and the media", "pvmPeople": "What people talked about most", "pvmMedia": "What the media focused on",
+           "pvmGap": "What people raised that the media barely covered", "pvmBrief": "The media in brief", "pvmRead": "Read the full analysis and its sources",
+           "pvmShare": "{p} of people's posts on average", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. The media: our analysis of Syrian and international media, think tanks and international organisations.",
+           "xDay": "What the media said that day", "xWeek": "This week in the media: our analysis of Syrian and international reporting and research",
+           "xArea": "The media on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
+    "ar": {"tracker": "فجوة المزاج", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
            "people": "الناس", "outlets": "وسائل الإعلام", "reacting": "كيف يتفاعل الناس", "framed": "كيف تُقدَّم القصة", "watch": "انتبه إلى:",
            "sigTitle": "مؤشرات التنسيق:", "sigLevels": {"none": "لا شيء", "low": "ضعيفة", "medium": "متوسطة", "high": "قوية"},
            "sigNote": "مؤشرات مقيسة لا أدلة: الأخبار العاجلة الحقيقية والشعارات الشائعة وقلة من المعلّقين المتحمسين تنتجها أيضاً. تشرح صفحة «حول» كل مؤشر.",
            "where": "المصادر", "overtime": "مع الوقت", "update": "التحديث", "share": "الحصة من النقاش", "firstSeen": "أول ظهور", "lastSeen": "آخر ظهور",
            "updates": "تحديثاً", "update1": "تحديث واحد", "story": "قصة", "theme": "الموضوع", "emotions": "المشاعر", "listing": "القصص", "listingSub": "كل قصة تابعها المتتبّع خلال آخر ٣٠ يوماً، حسب يوم آخر ظهور لها. القصص الأقدم في ملفات التنزيل على صفحة البيانات.",
-           "allStories": "كل القصص الحديثة", "digest": "الملخص الأسبوعي", "digests": "الملخصات الأسبوعية", "week": "الأسبوع", "highlights": "قصص الأسبوع", "watchNext": "ما يجب متابعته",
+           "allStories": "كل القصص الحديثة", "digest": "التقرير الأسبوعي", "digests": "التقارير الأسبوعية", "week": "الأسبوع", "highlights": "قصص الأسبوع", "watchNext": "ما يجب متابعته",
            "themeTable": "مواضيع هذا الأسبوع", "dailyTone": "النبرة حسب اليوم", "stories": "القصص", "posts": "المنشورات المحلَّلة", "vsLast": "مقارنة بالأسبوع الماضي",
            "postsNote": "يحلّل كل تحديث عيّنة تصل إلى {n} منشور من الساعات الـ{h} السابقة، لذا قد يُحتسب المنشور الواحد في أكثر من تحديث. قارن الأيام ببعضها بدلاً من قراءة الأرقام كأعداد منشورات.",
            "note": "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الأسبوع العامة، ويصف ما قيل لا ما هو صحيح.",
            "storyNote": "تحليل مولَّد تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات عامة، يصف ما يُقال لا ما هو صحيح. لا يُذكر الأفراد ولا يُقتبس كلامهم ولا تُربط منشوراتهم.",
            "tone": ["سلبي جداً", "يميل إلى السلبية", "محايد غالباً", "يميل إلى الإيجابية", "إيجابي جداً", "لا تفاعل بعد"],
            "footer": "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", "followX": "تابعنا على X", "followFb": "تابعنا على فيسبوك",
-           "feedTitle": "متتبّع السرديات السورية: الملخص الأسبوعي", "feedDesc": "ملخص مكتوب أسبوعياً لما يُقال عن سوريا على الإنترنت.",
+           "feedTitle": "متتبّع السرديات السورية: التقرير الأسبوعي", "feedDesc": "ملخص مكتوب أسبوعياً لما يُقال عن سوريا على الإنترنت.",
            "review": "التقرير الشهري", "reviews": "التقارير الشهرية", "month": "الشهر", "monthHighlights": "القصص التي كانت الأهم", "watchMonth": "ما يجب متابعته الشهر المقبل",
            "weeksBrief": "الأسابيع باختصار", "flaggedTitle": "قصص حملت مؤشرات تنسيق", "themeTableMonth": "مواضيع هذا الشهر", "vsLastMonth": "مقارنة بالشهر الماضي",
            "weeklyTone": "النبرة حسب الأسبوع", "weekCol": "الأسبوع", "daysCol": "الأيام", "readOnline": "اقرأ على الموقع", "subscribe": "اشترك بالبريد الإلكتروني", "level": "المستوى",
-           "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن الملخصات الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
-           "daily": "الموجز اليومي", "dailies": "الموجزات اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
+           "monthNote": "كُتبت تلقائياً بواسطة نموذج ذكاء اصطناعي من منشورات الشهر العامة ومن التقارير الأسبوعية للمتتبّع، وتصف ما قيل لا ما هو صحيح.",
+           "daily": "التقرير اليومي", "dailies": "التقارير اليومية", "dailySub": "صفحة واحدة لكل يوم: ملخص آخر تحديث، ونبرة اليوم وأرقامه، وكل قصص اليوم مع تحليلها. تُبنى من الأرشيف من دون استدعاء النموذج.",
            "dailyMood": "اليوم في كلمة", "dayNumbers": "اليوم بالأرقام", "storiesOfDay": "قصص اليوم", "asOf": "حتى آخر تحديث،",
-           "reportsTab": "التقارير", "expertsTab": "الإعلام والخبراء", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
+           "reportsTab": "التقارير", "expertsTab": "فجوة المواضيع", "reportLabel": "تقرير شهري", "keyFindings": "أبرز النتائج", "inNumbers": "الشهر بالأرقام", "analysis": "التحليل",
            "aboutReport": "عن هذا التقرير", "privacy": "الخصوصية", "support": "ادعمنا", "related": "قصص ذات صلة", "contact": "اتصل بنا", "shareIt": "مشاركة", "pdf": "تنزيل PDF", "cite": "للاستشهاد",
            "peopleTone": "نبرة الناس", "outletTone": "نبرة وسائل الإعلام", "vsPrev": "مقارنة بالشهر السابق", "postIdx": "تحليلات منشورات", "updatesN": "تحديثاً", "storiesN": "قصة متابَعة", "daysN": "يوماً مغطّى",
            "chartThemes": "الحصة من النقاش حسب الموضوع", "chartTone": "النبرة حسب الأسبوع: الناس ووسائل الإعلام (من −١ إلى +١)",
@@ -112,20 +112,20 @@ W = {   # the words on the static pages
            "langNames": {"ar": "العربية", "ku": "الكردية", "en": "الإنجليزية", "other": "أخرى"},
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
-           "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "الإعلام والخبراء", "sourcesTitle": "المصادر", "expertsLatest": "في «الإعلام والخبراء»",
+           "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "تحليل الإعلام", "sourcesTitle": "المصادر", "expertsLatest": "في الإعلام",
            "privacyDesc": "كيف يتعامل متتبّع السرديات السورية مع المنشورات العامة: تُقرأ منشورات الأفراد إجمالاً فقط، ولا تُخزَّن ولا تُقتبس ولا يُربط إليها.",
            "supportDesc": "كيف تدعم متتبّع السرديات السورية، وهو مشروع مستقل ومفتوح يتابع ما يقوله السوريون على الإنترنت بالعربية والإنجليزية.",
            "contactDesc": "راسِل متتبّع السرديات السورية: أسئلة وتصحيحات وطلبات بيانات وأفكار للتعاون، عبر نموذج قصير.",
            "glanceDay": "اليوم باختصار", "contents": "المحتويات", "glanceWeek": "الأسبوع باختصار", "glanceMonth": "الشهر باختصار", "partPeople": "ما قاله الناس",
-           "partMedia": "ما قاله الإعلام والخبراء", "compareHow": "كيف تتقاطع الصورتان", "overallPicture": "الصورة العامة",
-           "watchAll": "ما يستحق المتابعة", "watchPeople": "في ما يقوله الناس", "watchMedia": "في قراءة الإعلام والخبراء",
+           "partMedia": "ما قاله الإعلام", "compareHow": "كيف تتقاطع الصورتان", "overallPicture": "الصورة العامة",
+           "watchAll": "ما يستحق المتابعة", "watchPeople": "في ما يقوله الناس", "watchMedia": "في قراءة الإعلام",
            "partMethod": "المصادر والمنهجية", "mediaSources": "التقارير والمقالات المعتمدة ({n})", "fullPage": "الصفحة الكاملة مع المصادر",
-           "mediaPending": "لم يُكتب بعد تحليل «الإعلام والخبراء» لهذه الفترة؛ ويُحدَّث هذا التقرير حين يُكتب.",
-           "pvmTitle": "الناس والإعلام", "pvmPeople": "ما تحدث عنه الناس أكثر من غيره", "pvmMedia": "ما ركّز عليه الإعلام والخبراء",
-           "pvmGap": "ما أثاره الناس ولم يتناوله الإعلام والخبراء إلا قليلاً", "pvmBrief": "الإعلام والخبراء باختصار", "pvmRead": "اقرأ التحليل الكامل ومصادره",
-           "pvmShare": "{p} من منشورات الناس في المتوسط", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام والخبراء: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
-           "xDay": "ما قاله الإعلام والخبراء في ذلك اليوم", "xWeek": "هذا الأسبوع في «الإعلام والخبراء»: تحليلنا للتغطية والأبحاث السورية والدولية",
-           "xArea": "قراءة الخبراء في {area} هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
+           "mediaPending": "لم يُكتب بعد «تحليل الإعلام» لهذه الفترة؛ ويُحدَّث هذا التقرير حين يُكتب.",
+           "pvmTitle": "فجوة المواضيع: الناس والإعلام", "pvmPeople": "ما تحدث عنه الناس أكثر من غيره", "pvmMedia": "ما ركّز عليه الإعلام",
+           "pvmGap": "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", "pvmBrief": "الإعلام باختصار", "pvmRead": "اقرأ التحليل الكامل ومصادره",
+           "pvmShare": "{p} من منشورات الناس في المتوسط", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
+           "xDay": "ما قاله الإعلام في ذلك اليوم", "xWeek": "هذا الأسبوع في «تحليل الإعلام»: تحليلنا للتغطية والأبحاث السورية والدولية",
+           "xArea": "{area} في الإعلام هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
 }
 
 CSS = """
@@ -389,7 +389,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <body>
 <div class="wrap">
 <header class="top"><a class="brand" href="{root}{'ar/' if lang == 'ar' else ''}">{brand.inline_mark()}<span>{esc(site_title(cfg, lang))}</span></a><span class="purl" dir="ltr">{esc(base.replace('https://', ''))}</span>
-<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}experts/{lang}/index.html">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}timeline/{lang}.html">{TIMELINE_WORDS[lang]['nav']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
+<nav><a href="{root}{'ar/' if lang == 'ar' else ''}">{w['tracker']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#experts">{w['expertsTab']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#trends">{w['trends']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#reports">{w['reportsTab']}</a><a href="{root}timeline/{lang}.html">{TIMELINE_WORDS[lang]['nav']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#data">{w['data']}</a><a href="{root}{'ar/' if lang == 'ar' else ''}#about">{w['about']}</a>{(f'<a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''}<a href="{root}contact/{lang}.html">{w['contact']}</a><a class="lang" lang="{other}" href="{root}{alt_path}">{w['switch']}</a></nav></header>
 <main>
 {body}
 </main>
@@ -423,7 +423,7 @@ def ld_publisher(cfg: dict, lang: str) -> dict:
 
 def ld_article(cfg: dict, lang: str, kind: str, headline: str, description: str, path: str, published: str, modified: str,
                about: str = "", image: str | None = None) -> dict:
-    """Article (stories, daily briefs) or Report (weekly digests, monthly reports)."""
+    """Article (stories, daily reports) or Report (weekly reports, monthly reports)."""
     base = site_url(cfg)
     out = {"@context": "https://schema.org", "@type": kind, "headline": str(headline)[:110], "description": str(description)[:300],
            "inLanguage": lang, "url": f"{base}/{path}", "mainEntityOfPage": f"{base}/{path}",
@@ -657,11 +657,11 @@ def archive_key(e: dict) -> str:
     return f"{str(e.get('first_seen', ''))[:10]}-{e['id']}"
 
 
-# ----------------------------------------------------------------- weekly digest pages and feeds
+# ----------------------------------------------------------------- weekly report pages and feeds
 
 def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str = "../../") -> dict | None:
-    """The media half of a weekly or monthly report, from the period's Media and experts analysis: the comparison with
-    what ordinary people said, the analysis itself (overall, then each area), what the media and experts say to watch,
+    """The media half of a weekly or monthly report, from the period's media analysis: the comparison with
+    what ordinary people said, the analysis itself (overall, then each area), what the media say to watch,
     and the reports drawn on. None when the period has no analysis yet (the report is redrawn when it is written)."""
     import experts as X                              # imported here: experts imports this module
     a = archive._load(X.PERIODS / f"{pid}.json", None)
@@ -670,7 +670,7 @@ def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str
     w, xw, o = W[lang], X.WORDS[lang], a["overall"]
     tr = lambda d, f: X.tr(d, f, lang)
     paras = lambda text: "".join(f"<p>{X.linked(x, a)}</p>" for x in str(text or "").split("\n") if x.strip())
-    # comparison: what people talked about next to what the media and experts focused on
+    # comparison: what people talked about next to what the media focused on
     people = []
     for e in X.people_stories(start, end, None, 5):
         title = esc(e["title_ar"] if lang == "ar" and e.get("title_ar") else e["title"])
@@ -716,7 +716,7 @@ def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str
 
 
 def media_pending(end: str, lang: str) -> str:
-    """The note shown while a period's Media and experts analysis is being written: only in the days right after the
+    """The note shown while a period's media analysis is being written: only in the days right after the
     period ends (older periods, from before that section existed, have no comparison at all)."""
     try:
         recent = (dt.datetime.now(dt.timezone.utc).date() - dt.date.fromisoformat(end[:10])).days <= 3
@@ -726,7 +726,7 @@ def media_pending(end: str, lang: str) -> str:
 
 
 def day_media(date: str, lang: str, root: str = "../../") -> dict | None:
-    """The media half of a daily brief, from that day's Media and experts brief: what the media and experts said in
+    """The media half of a daily report, from that day's media analysis: what the media said in
     each area, how it compares with what people said, and the reports drawn on. None when there is none."""
     import experts as X                              # imported here: experts imports this module
     a = archive._load(X.PERIODS / f"{date}.json", None)
@@ -758,7 +758,7 @@ def report_parts(parts: list, lang: str) -> str:
 
 
 def watch_part(lang: str, people: list, media: list | None) -> str:
-    """What to watch: people's side (plain text) and the media and experts' side (HTML with links to the sources)."""
+    """What to watch: people's side (plain text) and the media's side (HTML with links to the sources)."""
     w = W[lang]
     out = ""
     if people:
@@ -769,7 +769,7 @@ def watch_part(lang: str, people: list, media: list | None) -> str:
 
 
 def weekly_body(cfg: dict, d: dict, lang: str) -> str:
-    """The weekly report: what people said and what the media and experts said, in one page and one PDF."""
+    """The weekly report: what people said and what the media said, in one page and one PDF."""
     w, s = W[lang], d.get("stats") or {}
     paras = d.get("paragraphs_ar" if lang == "ar" else "paragraphs") or d.get("paragraphs") or []
     head = ['<article class="report">',
@@ -1056,7 +1056,7 @@ def monthly_body(cfg: dict, d: dict, lang: str) -> str:
     lines = svg_tone_weeks(s.get("weeks") or [], lang)
     if lines:
         charts.append(f'<figure><figcaption>{w["chartTone"]}</figcaption>{lines}<p class="legend"><span><i></i>{w["people"]}</span><span><i class="b"></i>{w["outlets"]}</span></p></figure>')
-    # one report, one PDF: at a glance, what people said, the comparison, what the media and experts said, what to
+    # one report, one PDF: at a glance, what people said, the comparison, what the media said, what to
     # watch, sources and method
     blocks = monthly_sections(cfg, d, lang, named=True)
     sub = lambda h: h.replace("<h2>", "<h3>").replace("</h2>", "</h3>")
@@ -1142,7 +1142,7 @@ def load_reviews() -> list:
     return archive._load(MONTHLY_DATA_DIR / "index.json", [])
 
 
-# ----------------------------------------------------------------- daily briefs
+# ----------------------------------------------------------------- daily reports
 
 DAILY = ROOT / "daily"
 
@@ -1192,7 +1192,7 @@ def daily_body(cfg: dict, s: dict, lang: str) -> str:
         items.append(f'<li><b><a href="../../stories/{lang}/{esc(e["key"])}.html">{esc(t(e, "title", lang))}</a></b> '
                      f'<span class="sub">{esc(theme_label(cfg, e.get("theme", "other"), lang))} · {tone_txt}{w["outlets"]}: {tone_words(e.get("sentiment") or 0, lang)} · {pct(e["max_share"], lang)} {TONE_CHANGE[lang]["share"]}</span>'
                      f'<br>{esc(t(e, "summary", lang))}</li>')
-    # one brief, one PDF: the day at a glance, what people said, what the media and experts said, sources and method
+    # one brief, one PDF: the day at a glance, what people said, what the media said, sources and method
     has_pdf = (DAILY / lang / f"{date}.pdf").exists()   # made by report_pdf.py once the day is over, which then redraws this page
     head = ['<article class="report">',
             f"<p class=\"eyebrow\"><a href=\"index.html\">{w['dailies']}</a> · {esc(fmt_date(date, lang))}</p>",
@@ -1289,7 +1289,7 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
 
 
 def expert_prerender(lang: str) -> str:
-    """The newest Expert view pages (daily brief, week, month) as plain links for the crawlable home block."""
+    """The newest Expert view pages (daily report, week, month) as plain links for the crawlable home block."""
     index = archive._load(archive.DATA / "experts" / "analyses" / "index.json", [])
     rows = []
     for kind in ("day", "week", "month"):
@@ -1336,10 +1336,10 @@ def prerender_index(cfg: dict, latest: dict) -> bool:
 
 HOME_TEXT = {
     "en": {"title": "Syria Narrative Tracker: what Syrians are saying online",
-           "desc": "What Syrians say online, updated through the day, set against what the media and experts say. "
-                   "Daily briefs, weekly and monthly reports, open data."},
+           "desc": "What Syrians say online, updated through the day, set against what the media say. "
+                   "Daily reports, weekly and monthly reports, open data."},
     "ar": {"title": "متتبّع السرديات السورية: ماذا يقول السوريون على الإنترنت",
-           "desc": "ما يقوله السوريون على الإنترنت، يتجدّد على مدار اليوم، مقارنةً بما يقوله الإعلام والخبراء. "
+           "desc": "ما يقوله السوريون على الإنترنت، يتجدّد على مدار اليوم، مقارنةً بما يقوله الإعلام. "
                    "موجز يومي وتقارير أسبوعية وشهرية وبيانات مفتوحة."},
 }
 
@@ -1424,7 +1424,7 @@ def privacy_body(cfg: dict, lang: str) -> str:
         head = f"<h1>Privacy</h1><p class=\"sub\">Last updated: {esc(fmt_date(PRIVACY_UPDATED, lang))}</p>"
     if newsletter_on(cfg):                      # the newsletter keeps subscribers' addresses, with Brevo
         brevo = "https://www.brevo.com/legal/privacypolicy/"
-        sections.insert(1, ("النشرة البريدية", "إذا اشتركت في النشرة البريدية فإن عنوان بريدك واختياراتك (الموجز اليومي أو الأسبوعي أو الشهري، واللغة) يحفظها مزوّد البريد "
+        sections.insert(1, ("النشرة البريدية", "إذا اشتركت في النشرة البريدية فإن عنوان بريدك واختياراتك (التقرير اليومي أو الأسبوعي أو الشهري، واللغة) يحفظها مزوّد البريد "
                                                 f'<a href="{brevo}" rel="noopener">Brevo</a> (فرنسا، الاتحاد الأوروبي)، لا هذا الموقع. نستخدم عنوانك فقط لإرسال ما اخترته، ولا نشاركه مع أحد. '
                                                 "يُفعَّل الاشتراك فقط بعد أن تؤكده من رسالة نرسلها إليك، ويمكنك إلغاؤه في أي وقت من الرابط في أسفل كل رسالة، فيُحذف عنوانك من قوائم الإرسال. "
                                                 "يسجّل Brevo فتح الرسائل والنقر على روابطها لأغراض إحصائية؛ لا نستخدم ذلك لتتبّع أي شخص.")
@@ -1456,10 +1456,10 @@ def support_on(cfg: dict) -> bool:
     return bool(support_links(cfg))
 
 
-FOLLOW_WORDS = {"en": {"head": "Follow us", "text": "The daily brief every morning, and the stories Syrians are talking about, in your feed or your inbox.",
-                       "textFeed": "The daily brief every morning, and the stories Syrians are talking about, in your feed."},
-                "ar": {"head": "تابعنا", "text": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك أو بريدك.",
-                       "textFeed": "الموجز اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك."}}
+FOLLOW_WORDS = {"en": {"head": "Follow us", "text": "The daily report every morning, and the stories Syrians are talking about, in your feed or your inbox.",
+                       "textFeed": "The daily report every morning, and the stories Syrians are talking about, in your feed."},
+                "ar": {"head": "تابعنا", "text": "التقرير اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك أو بريدك.",
+                       "textFeed": "التقرير اليومي كل صباح، والقصص التي يتحدث عنها السوريون، في صفحتك."}}
 FOLLOW_PATHS = ("daily/", "weekly/", "monthly/", "stories/", "experts/")
 
 
@@ -1588,11 +1588,11 @@ def contact_body(cfg: dict, lang: str) -> str:
 
 
 NEWS_WORDS = {
-    "en": {"title": "Get the reports by email", "nav": "Newsletter", "desc": "The daily brief, the weekly digest and the monthly report of the Syria Narrative Tracker in your inbox: you choose which, and in which language.",
+    "en": {"title": "Get the reports by email", "nav": "Newsletter", "desc": "The daily report, the weekly report and the monthly report of the Syria Narrative Tracker in your inbox: you choose which, and in which language.",
            "lede": "Choose what you would like to receive. Every email has the main points and a link to the full report and its PDF. It is free, and you can unsubscribe with one click in any email.",
            "email": "Your email", "what": "What would you like to receive?", "lang": "In which language?",
-           "kinds": {"daily": ("The daily brief", "every morning: what Syrians said online yesterday, and what the media and experts said"),
-                     "weekly": ("The weekly digest", "every Monday: the week in brief, people and the media compared"),
+           "kinds": {"daily": ("The daily report", "every morning: what Syrians said online yesterday, and what the media said"),
+                     "weekly": ("The weekly report", "every Monday: the week in brief, people and the media compared"),
                      "monthly": ("The monthly report", "early each month: the month's findings, with charts")},
            "langs": {"ar": "Arabic", "en": "English", "both": "Both"}, "send": "Subscribe",
            "note": "We will send you an email to confirm. Your address is kept by our mailing service, Brevo, used only to send you what you chose, and never shared. Details on the <a href=\"../privacy/{lang}.html\">privacy page</a>.",
@@ -1601,11 +1601,11 @@ NEWS_WORDS = {
            "done": ("You are subscribed", "Thank you. The next report you chose will arrive in your inbox. To change your choices, fill in the form again; to stop, use the unsubscribe link in any email."),
            "error": ("Something went wrong", "Your subscription could not be completed. The link may have expired, or the address may be wrong. Please try again."),
            "back": "Back to the tracker", "again": "Back to the form", "byEmail": "By email"},
-    "ar": {"title": "احصل على التقارير بالبريد الإلكتروني", "nav": "النشرة البريدية", "desc": "الموجز اليومي والملخص الأسبوعي والتقرير الشهري لمتتبّع السرديات السورية في بريدك: تختار ما تريد، وباللغة التي تريد.",
+    "ar": {"title": "احصل على التقارير بالبريد الإلكتروني", "nav": "النشرة البريدية", "desc": "التقرير اليومي والتقرير الأسبوعي والتقرير الشهري لمتتبّع السرديات السورية في بريدك: تختار ما تريد، وباللغة التي تريد.",
            "lede": "اختر ما تودّ استلامه. في كل رسالة أبرز النقاط ورابط إلى التقرير كاملاً وملفه بصيغة PDF. الاشتراك مجاني، ويمكنك إلغاؤه بنقرة واحدة من أي رسالة.",
            "email": "بريدك الإلكتروني", "what": "ماذا تودّ أن تستلم؟", "lang": "بأي لغة؟",
-           "kinds": {"daily": ("الموجز اليومي", "كل صباح: ما قاله السوريون على الإنترنت أمس، وما قاله الإعلام والخبراء"),
-                     "weekly": ("الملخص الأسبوعي", "كل يوم اثنين: الأسبوع باختصار، ومقارنة بين الناس ووسائل الإعلام"),
+           "kinds": {"daily": ("التقرير اليومي", "كل صباح: ما قاله السوريون على الإنترنت أمس، وما قاله الإعلام"),
+                     "weekly": ("التقرير الأسبوعي", "كل يوم اثنين: الأسبوع باختصار، ومقارنة بين الناس ووسائل الإعلام"),
                      "monthly": ("التقرير الشهري", "مطلع كل شهر: نتائج الشهر مع الرسوم البيانية")},
            "langs": {"ar": "العربية", "en": "الإنجليزية", "both": "كلتاهما"}, "send": "اشترك",
            "note": "سنرسل إليك رسالة لتأكيد الاشتراك. يحتفظ بعنوانك مزوّد البريد Brevo، ويُستخدم فقط لإرسال ما اخترته، ولا يُشارَك مع أحد. التفاصيل في <a href=\"../privacy/{lang}.html\">صفحة الخصوصية</a>.",
@@ -1692,8 +1692,8 @@ def write_privacy_pages(cfg: dict) -> None:
 # ----------------------------------------------------------------- the index of every source the site uses
 
 SOURCES_WORDS = {
-    "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the media, think tanks and organisations behind Media and experts.",
-           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "Media and experts: Syrian and international media, think tanks and organisations",
+    "en": {"title": "Sources", "sub": "Every source the site reads: the channels, sites and platforms the tracker follows for what Syrians and Syrian outlets say, and the media, think tanks and organisations behind Media analysis.",
+           "tracker": "The tracker: what Syrians and Syrian outlets say", "experts": "Media analysis: Syrian and international media, think tanks and organisations",
            "telegram": "Telegram channels", "news": "News sites", "youtube": "YouTube", "reddit": "Reddit", "bluesky": "Bluesky", "x": "X",
            "ytSearch": "Comments under the videos found by these searches", "ytChannels": "and under the newest videos of these channels",
            "search": "Posts found by keyword searches", "comments": "Telegram comments and reactions on the channels above, through a Telegram account",
@@ -1703,8 +1703,8 @@ SOURCES_WORDS = {
            "langs": {"en": "English", "ar": "Arabic", "fr": "French", "de": "German", "tr": "Turkish", "he": "Hebrew", "ru": "Russian",
                      "fa": "Persian", "zh": "Chinese", "es": "Spanish", "it": "Italian"},
            "note": "Posts by individuals are read only in aggregate: they are never stored, quoted or linked. The list changes as sources are added or stop working; every change to the tracker's sources is recorded in the method changelog on the About page."},
-    "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، ووسائل الإعلام ومراكز الأبحاث والمنظمات التي يستند إليها قسم «الإعلام والخبراء».",
-           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "الإعلام والخبراء: وسائل إعلام سورية ودولية ومراكز أبحاث ومنظمات",
+    "ar": {"title": "المصادر", "sub": "كل المصادر التي يقرؤها الموقع: القنوات والمواقع والمنصات التي يتابعها المتتبّع لمعرفة ما يقوله السوريون ووسائل الإعلام السورية، ووسائل الإعلام ومراكز الأبحاث والمنظمات التي يستند إليها قسم «تحليل الإعلام».",
+           "tracker": "المتتبّع: ما يقوله السوريون ووسائل الإعلام السورية", "experts": "الإعلام: وسائل إعلام سورية ودولية ومراكز أبحاث ومنظمات",
            "telegram": "قنوات تيليغرام", "news": "مواقع إخبارية", "youtube": "يوتيوب", "reddit": "ريديت", "bluesky": "بلوسكاي", "x": "إكس",
            "ytSearch": "التعليقات على الفيديوهات التي تُظهرها عمليات البحث هذه", "ytChannels": "وعلى أحدث فيديوهات هذه القنوات",
            "search": "منشورات تُظهرها عمليات بحث بالكلمات المفتاحية", "comments": "تعليقات تيليغرام وتفاعلاته على القنوات أعلاه، عبر حساب تيليغرام",
@@ -1796,7 +1796,7 @@ def write_sources_pages(cfg: dict) -> None:
 TIMELINE_WORDS = {
     "en": {"title": "Timeline since the fall of the Assad government", "nav": "Timeline",
            "sub": "The main political, security and economic events in Syria since 8 December 2024, each in a sentence or two with the sources it was checked against. From September 2026, each event links to what Syrians were saying that day on the tracker.",
-           "all": "All", "key": "Key event", "sources": "Sources", "said": "What Syrians said that day", "experts": "Media and experts that week",
+           "all": "All", "key": "Key event", "sources": "Sources", "said": "What Syrians said that day", "experts": "The media that week",
            "areas": {"security": "Security", "economy": "Economy", "governance": "Governance"},
            "regions": {"national": "Nationwide", "south": "South", "coast": "Coast", "suwayda": "Suwayda", "northeast": "North-east", "aleppo": "Aleppo",
                        "damascus": "Damascus", "central": "Central Syria", "east": "East", "international": "International"},
@@ -1804,7 +1804,7 @@ TIMELINE_WORDS = {
            "updated": "Last checked"},
     "ar": {"title": "الخط الزمني منذ سقوط حكومة الأسد", "nav": "الخط الزمني",
            "sub": "أبرز الأحداث السياسية والأمنية والاقتصادية في سوريا منذ 8 كانون الأول 2024، كل حدث في جملة أو جملتين مع المصادر التي جرى التحقق منها. ومنذ أيلول 2026 يرتبط كل حدث بما كان السوريون يقولونه في ذلك اليوم على المتتبّع.",
-           "all": "الكل", "key": "حدث مفصلي", "sources": "المصادر", "said": "ما قاله السوريون في ذلك اليوم", "experts": "الإعلام والخبراء في ذلك الأسبوع",
+           "all": "الكل", "key": "حدث مفصلي", "sources": "المصادر", "said": "ما قاله السوريون في ذلك اليوم", "experts": "الإعلام في ذلك الأسبوع",
            "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"},
            "regions": {"national": "على مستوى البلاد", "south": "الجنوب", "coast": "الساحل", "suwayda": "السويداء", "northeast": "شمال شرق سوريا", "aleppo": "حلب",
                        "damascus": "دمشق", "central": "وسط سوريا", "east": "الشرق", "international": "دولي"},

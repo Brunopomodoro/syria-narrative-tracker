@@ -4,9 +4,9 @@ A website that updates itself every hour with the main narratives in public Syri
 
 It reads Arabic, Kurdish and English posts from about 50 sources: Telegram channels (official, independent, opposition-origin, Kurdish-run, local, minority-community and regional outlets), news sites, YouTube comments (by search and under selected channels), Reddit, X and, optionally, Telegram comments and groups, Bluesky, Threads and Instagram hashtag posts.
 
-- `index.html` is the website (Tracker, Trends, Reports, Data and About pages); `stories/`, `daily/`, `weekly/` and `monthly/` hold the generated story pages, daily briefs, weekly digests and monthly reports, each with share links and a print layout (digests and reports also as PDFs, made by `scripts/report_pdf.py` with the Chrome on GitHub's runners); `feed.xml` and `feed-ar.xml` are the digest feeds, `feed-monthly.xml` and `feed-monthly-ar.xml` the report feeds (full text, for newsletter services)
+- `index.html` is the website (Tracker, Trends, Reports, Data and About pages); `stories/`, `daily/`, `weekly/` and `monthly/` hold the generated story pages, daily reports, weekly reports and monthly reports, each with share links and a print layout (digests and reports also as PDFs, made by `scripts/report_pdf.py` with the Chrome on GitHub's runners); `feed.xml` and `feed-ar.xml` are the digest feeds, `feed-monthly.xml` and `feed-monthly-ar.xml` the report feeds (full text, for newsletter services)
 - `assets/logo.svg` is the logo (a speech bubble carrying a pulse line) and `assets/logo-wordmark*.svg` the logo with the name; `scripts/brand.py` draws them and makes every file derived from them: the preview card shown when a page is shared (`assets/og.png`, `og-ar.png`), the icons, the PNG copies for documents
-- `scripts/social.py` posts yesterday's daily brief, each weekly digest and each monthly report to the tracker's Facebook Page and X account once their secrets are set (GUIDE.md, "Posting to Facebook", "Posting to X")
+- `scripts/social.py` posts yesterday's daily report, each weekly report and each monthly report to the tracker's Facebook Page and X account once their secrets are set (GUIDE.md, "Posting to Facebook", "Posting to X")
 - `config.yaml` holds your settings and sources (the only file you normally edit)
 - `scripts/pipeline.py` collects posts, asks Claude to find narratives, and writes `data/` (including `data/snapshots/`, the full analysis of every hour, which the website opens when you click a past hour), `data/stories.json` and `data/headlines.json` (what the website's search box looks through: stories from the past 14 days and outlet headlines from the past 7 days; posts by individuals are never stored)
 - `.github/workflows/update.yml` runs the pipeline every hour on GitHub Actions
@@ -29,7 +29,7 @@ Everything the tracker produces is in `data/` and can be downloaded or read dire
 - `data/methodology.json`: sources, themes, sampling settings, model, the exact analysis instructions, and the method changelog.
 - `data/latest.json`, `data/history.json`, `data/snapshots/`, `data/stories.json`, `data/headlines.json`: what the live site uses (the last 14 days).
 
-- `data/weekly/`: the weekly digests (text in both languages and the week's numbers).
+- `data/weekly/`: the weekly reports (text in both languages and the week's numbers).
 - `data/validation.json`: the results of the validation study, once one has been run (GUIDE.md, "Validation study").
 
 Posts by individuals are never stored; the archive holds analyses and outlet headlines only. Licence: CC BY 4.0 (`LICENSE-DATA.md`); citation details in `CITATION.cff` and on the website's Data page.

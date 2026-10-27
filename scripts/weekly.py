@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Weekly digest: once a new ISO week has started, a written summary of the week that just ended,
+Weekly report: once a new ISO week has started, a written summary of the week that just ended,
 from the archive, written by Claude in English and Arabic, with the week's theme table computed here.
 
   data/weekly/<week>.json    the digest text and the week's numbers
@@ -102,12 +102,12 @@ DIGEST_PROMPT = """You are a careful, neutral analyst writing the weekly brief o
 
 You receive the week's numbers and the stories the tracker followed. Write:
 - "title": a headline for the week of at most 70 characters (not clickbait; what defined the week).
-- "key_points": 3 to 5 one-sentence points a busy reader can take away on their own, the week at a glance; when the media and experts' analysis is given, one of them sets what people talked about against what the media and experts focused on.
+- "key_points": 3 to 5 one-sentence points a busy reader can take away on their own, the week at a glance; when the media's analysis is given, one of them sets what people talked about against what the media focused on.
 - "paragraphs": 3 to 5 short paragraphs: what dominated the discussion and how it moved; where people's reactions and outlet coverage differed; where communities or languages framed things differently; what was new or faded. Use the numbers when they matter (shares, tones, changes from the week before), sparingly.
 - "highlights": 3 to 6 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
 - "watch": 2 to 4 short points on what to watch next week, grounded in the stories, not speculation.
 Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare days or weeks with each other; never present them as numbers of posts or of people.
-You also receive what the media and experts said over the same period: the site's Media and experts analysis of Syrian and international media, think tanks and international organisations. Use it to compare: in one of the paragraphs, set what ordinary people talked about against what the media and experts focused on, naming concrete gaps in both directions (what people raised that the media barely covered, and what the media stressed that people hardly discussed). Do not summarise the media analysis itself, attribute anything taken from it to "the media and experts" or to the source it names, and skip the comparison when no analysis is given.
+You also receive what the media said over the same period: the site's media analysis of Syrian and international media, think tanks and international organisations. Use it to compare: in one of the paragraphs, set what ordinary people talked about against what the media focused on, naming concrete gaps in both directions (what people raised that the media barely covered, and what the media stressed that people hardly discussed). Do not summarise the media analysis itself, attribute anything taken from it to "the media" or to the source it names, and skip the comparison when no analysis is given.
 Some stories carry "Coordination signals": measured signs (copy-paste, near-identical posts, bursts, the same text on several platforms, few commenters writing most comments, regular timing) that the reaction may be organised. Mention them in the paragraphs or "watch" as signs to look into, never as proof of a campaign, and never guess who is behind them.
 Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation).
 Do not use the long dash (—); use commas, colons or parentheses instead.
@@ -148,7 +148,7 @@ def build_message(cfg: dict, s: dict) -> str:
         if sig.get("items"):
             lines.append(f"    Coordination signals ({sig.get('level')}): " + ", ".join(f"{i['id']}={i['value']}" for i in sig["items"]))
     import experts
-    lines += ["", "WHAT THE MEDIA AND EXPERTS SAID THIS WEEK (the site's Media and experts analysis):", experts.media_brief(s["week"]) or "(no analysis for this week)"]
+    lines += ["", "WHAT THE MEDIA SAID THIS WEEK (the site's media analysis):", experts.media_brief(s["week"]) or "(no analysis for this week)"]
     return "\n".join(lines)
 
 
@@ -204,7 +204,7 @@ def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
     attempts = state.get("weekly_attempts") or {}
     if last in done or not cfg.get("weekly_digest", True) or int(attempts.get(last, 0)) >= 3:
         return False
-    import experts                                  # the digest compares with the week's Media and experts analysis:
+    import experts                                  # the digest compares with the week's media analysis:
     if (cfg.get("experts") or {}).get("enabled", True) and dt.datetime.now(UTC).hour < 20 \
             and last not in {x.get("id") for x in archive._load(experts.INDEX, [])}:
         return False                                # wait for it, until 20:00 UTC on the Monday

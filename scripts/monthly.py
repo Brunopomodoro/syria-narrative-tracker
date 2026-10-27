@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Monthly review: once a new month has started, a written review of the month that just ended,
-from the archive and the weekly digests, written by Claude in English and Arabic, with the month's
+from the archive and the weekly reports, written by Claude in English and Arabic, with the month's
 theme table, tone by week and the stories that carried coordination signals computed here.
 
   data/monthly/<YYYY-MM>.json   the review text and the month's numbers
@@ -61,7 +61,7 @@ def _theme_table(cfg: dict, ds: list) -> dict:
 
 def month_stats(cfg: dict, month: str) -> dict | None:
     """The month's numbers from the archive: themes with the change from the month before, tone by week,
-    the stories of the month, the ones that carried coordination signals, and the weekly digests."""
+    the stories of the month, the ones that carried coordination signals, and the weekly reports."""
     start, end = month_range(month)
     index = archive._load(archive.ARCHIVE / "index.json", {})
     days = [d for d in index.get("days") or [] if start <= d["date"] <= end and d.get("runs")]
@@ -140,14 +140,14 @@ def month_stats(cfg: dict, month: str) -> dict | None:
 
 REVIEW_PROMPT = """You are a careful, neutral analyst writing the monthly review of the Syria Narrative Tracker, which follows what is said about Syria online (public posts in Arabic, Kurdish and English from Telegram channels, news feeds, YouTube comments, Reddit, X and Bluesky). The review is also sent as a newsletter to researchers, journalists and people who follow Syria closely, so it must stand on its own.
 
-You receive the month's numbers, the weekly digests, the stories the tracker followed and, for some stories, coordination signals. The report is read by donors, NGOs, think tanks and journalists who may have one minute or ten. Write:
+You receive the month's numbers, the weekly reports, the stories the tracker followed and, for some stories, coordination signals. The report is read by donors, NGOs, think tanks and journalists who may have one minute or ten. Write:
 - "title": a headline for the month of at most 70 characters (not clickbait; what defined the month).
 - "key_findings": 4 to 6 one-sentence findings that a busy reader can take away on their own: the executive summary. Each states one thing that happened in the discussion and, where useful, the number behind it.
 - "paragraphs": 5 short paragraphs of 2 to 3 sentences each, so the whole report fits on two printed pages: the arc of the month and what dominated the discussion; how the themes moved against the previous month, when that is known; where people's reactions and outlet coverage differed; where communities or languages framed things differently, and which stories carried signs of coordination; what faded and what emerged. Use the numbers when they matter, sparingly.
 - "highlights": 6 to 8 of the given stories that mattered most, each with its "key" exactly as given, its title, and one sentence on why it mattered.
 - "watch": 3 to 5 short points on what to watch next month, grounded in the stories, not speculation.
 Volume figures are post analyses: each update analyses a sample of posts from the previous day, so one post can be counted in several updates. Use them only to compare weeks or months with each other; never present them as numbers of posts or of people.
-You also receive what the media and experts said over the same period: the site's Media and experts analysis of Syrian and international media, think tanks and international organisations. Use it to compare: in one key finding and one of the paragraphs, set what ordinary people talked about against what the media and experts focused on, naming concrete gaps in both directions (what people raised that the media barely covered, and what the media stressed that people hardly discussed). Do not summarise the media analysis itself, attribute anything taken from it to "the media and experts" or to the source it names, and skip the comparison when no analysis is given.
+You also receive what the media said over the same period: the site's media analysis of Syrian and international media, think tanks and international organisations. Use it to compare: in one key finding and one of the paragraphs, set what ordinary people talked about against what the media focused on, naming concrete gaps in both directions (what people raised that the media barely covered, and what the media stressed that people hardly discussed). Do not summarise the media analysis itself, attribute anything taken from it to "the media" or to the source it names, and skip the comparison when no analysis is given.
 Coordination signals are measured signs (copy-paste, near-identical posts, bursts, the same text on several platforms, few commenters writing most comments, regular timing) that a reaction may be organised. Report them as signs to look into, never as proof of a campaign, and never guess who is behind them.
 Rules: describe, never endorse; attribute claims to who made them; add no facts that are not in the material; never name or describe private individuals; note when something rests on few posts. Tone runs from -1 (anger, fear, grief) to +1 (hope, pride). Every text field is written twice: in English and, in the field ending in "_ar", in natural Modern Standard Arabic for Syrian readers (not a word-for-word translation).
 Do not use the long dash (—); use commas, colons or parentheses instead.
@@ -185,7 +185,7 @@ def build_message(cfg: dict, s: dict) -> str:
     lines += ["", "Tone by week (people / outlets / post analyses):"]
     lines += [f"- {w['week']} ({w['from']} to {w['to']}): {tone(w['public_sentiment'])} / {tone(w['outlet_sentiment'])} / {w['posts']}" for w in s["weeks"]]
     if s["digests"]:
-        lines += ["", "The weekly digests of the month (title, then the opening paragraph):"]
+        lines += ["", "The weekly reports of the month (title, then the opening paragraph):"]
         for d in s["digests"]:
             lines.append(f"- {d['week']}: {d.get('title', '')}")
             if d.get("paragraphs"):
@@ -202,7 +202,7 @@ def build_message(cfg: dict, s: dict) -> str:
             sig = e["signals"]
             lines.append(f"- [{e['key']}] {e['title']}: {sig.get('level')}: " + ", ".join(f"{i['id']}={i['value']}" for i in sig.get("items") or []))
     import experts
-    lines += ["", "WHAT THE MEDIA AND EXPERTS SAID THIS MONTH (the site's Media and experts analysis):", experts.media_brief(s["month"]) or "(no analysis for this month)"]
+    lines += ["", "WHAT THE MEDIA SAID THIS MONTH (the site's media analysis):", experts.media_brief(s["month"]) or "(no analysis for this month)"]
     return "\n".join(lines)
 
 
@@ -260,7 +260,7 @@ def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
     attempts = state.get("monthly_attempts") or {}
     if last in done or not cfg.get("monthly_review", True) or int(attempts.get(last, 0)) >= 3:
         return False
-    import experts                                  # the review compares with the month's Media and experts analysis:
+    import experts                                  # the review compares with the month's media analysis:
     if (cfg.get("experts") or {}).get("enabled", True) and today.day < 2 \
             and last not in {x.get("id") for x in archive._load(experts.INDEX, [])}:
         return False                                # wait for it, until the 2nd
