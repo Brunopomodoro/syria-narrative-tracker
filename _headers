@@ -3,9 +3,12 @@
 # Cloudflare, add the same headers once as a Cloudflare Transform Rule
 # (Rules > Transform Rules > Modify Response Header). See README.md "Security".
 #
-# The policy mirrors the <meta> tag in index.html and the generated pages, and
-# adds what a meta tag cannot: frame-ancestors, so the site can never be
-# framed by another site.
+# Every page carries its own full policy in a <meta> tag (the contact and
+# subscribe pages allow their forms, the app its script). The header adds only
+# what a meta tag cannot, frame-ancestors (the site can never be framed by
+# another site), and rules that hold for every page. Browsers apply both
+# policies, so a stricter header (form-action 'none', for one) would break the
+# contact and newsletter forms.
 
 /*
   X-Content-Type-Options: nosniff
@@ -15,7 +18,7 @@
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: frame-ancestors 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests
 
 /data/*
   Cache-Control: public, max-age=300
