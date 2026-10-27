@@ -1196,7 +1196,7 @@ function drawTrends() {
     const series = g.keys.map(k => ({ k, values: days.map(d => { const v = g.val(d, k); return has(v) ? v : null; }) }));
     const ctx = days.map(d => { const v = g.ctx(d); return has(v) ? v : null; });
     if (S.tables.has(g.id)) { dataTable(g.box, [t.dateCol, ...g.keys.map(g.label), g.all], days.map((d, i) => [fmtDay(d.date), ...series.map(s => tone(s.values[i])), tone(ctx[i])])); continue; }
-    g.box.className = "multiples"; g.box.textContent = "";
+    g.box.className = "multiples tones"; g.box.textContent = "";
     for (const s of series) {
       const m = el("div", "m"), h3 = el("h3", "", g.label(s.k)), pts = s.values.filter(has);
       m.appendChild(h3);
@@ -1206,7 +1206,7 @@ function drawTrends() {
       m.appendChild(c);
       g.box.appendChild(m);
       lineChart(c, { days, height: 96, compact: true, ticks: [-1, 0, 1], label: g.label(s.k),
-                     series: [{ values: s.values, cls: "focus", label: g.label(s.k) }, { values: ctx, cls: "ctx", label: g.all, endLabel: false }] });
+                     series: [{ values: s.values, cls: "focus", label: g.label(s.k), endLabel: false }, { values: ctx, cls: "ctx", label: g.all, endLabel: false }] });   // the latest tone is in the heading
     }
     const lg = el("div", "chart-legend");
     for (const [cls, word] of [["focus", th ? themeLabel(th) : g.id === "lang" ? t.people : t.outlets], ["ctx", g.all]]) { const s = el("span"); s.appendChild(el("i", "k-line " + cls)); s.appendChild(el("span", "", word)); lg.appendChild(s); }
