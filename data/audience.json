@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T20:12:49+00:00",
+ "generated_at": "2026-10-27T20:17:08+00:00",
  "from": "2026-09-11",
  "to": "2026-10-27",
  "days": 46,
@@ -57,17 +57,17 @@
  "doubt": {
   "share": 0.362,
   "by_theme": {
-   "coast-alawite": 0.282,
    "society": 0.178,
-   "international": 0.37,
+   "security": 0.294,
+   "suwayda-druze": 0.145,
+   "refugees": 0.029,
+   "governance": 0.365,
    "northeast-kurdish": 0.549,
    "justice": 0.785,
    "israel-south": 0.408,
-   "suwayda-druze": 0.145,
    "economy": 0.358,
-   "security": 0.294,
-   "refugees": 0.029,
-   "governance": 0.365
+   "international": 0.37,
+   "coast-alawite": 0.282
   },
   "outlet_mix": {
    "doubt": {
@@ -163,14 +163,32 @@
    "outlet_change": -0.386,
    "fatigue": false
   },
-  "international": {
-   "people_before": 0.118,
-   "people_after": 0.116,
-   "outlets_before": 0.248,
-   "outlets_after": 0.161,
-   "people_change": -0.012,
-   "outlet_change": -0.351,
+  "security": {
+   "people_before": 0.095,
+   "people_after": 0.054,
+   "outlets_before": 0.103,
+   "outlets_after": 0.123,
+   "people_change": -0.433,
+   "outlet_change": 0.195,
+   "fatigue": true
+  },
+  "suwayda-druze": {
+   "people_before": 0.017,
+   "people_after": 0.085,
+   "outlets_before": 0.011,
+   "outlets_after": 0.036,
+   "people_change": 4.074,
+   "outlet_change": 2.405,
    "fatigue": false
+  },
+  "governance": {
+   "people_before": 0.107,
+   "people_after": 0.058,
+   "outlets_before": 0.024,
+   "outlets_after": 0.026,
+   "people_change": -0.461,
+   "outlet_change": 0.103,
+   "fatigue": true
   },
   "northeast-kurdish": {
    "people_before": 0.082,
@@ -199,15 +217,6 @@
    "outlet_change": 1.488,
    "fatigue": false
   },
-  "suwayda-druze": {
-   "people_before": 0.017,
-   "people_after": 0.085,
-   "outlets_before": 0.011,
-   "outlets_after": 0.036,
-   "people_change": 4.074,
-   "outlet_change": 2.405,
-   "fatigue": false
-  },
   "economy": {
    "people_before": 0.159,
    "people_after": 0.117,
@@ -217,23 +226,14 @@
    "outlet_change": -0.322,
    "fatigue": false
   },
-  "security": {
-   "people_before": 0.095,
-   "people_after": 0.054,
-   "outlets_before": 0.103,
-   "outlets_after": 0.123,
-   "people_change": -0.433,
-   "outlet_change": 0.195,
-   "fatigue": true
-  },
-  "governance": {
-   "people_before": 0.107,
-   "people_after": 0.058,
-   "outlets_before": 0.024,
-   "outlets_after": 0.026,
-   "people_change": -0.461,
-   "outlet_change": 0.103,
-   "fatigue": true
+  "international": {
+   "people_before": 0.118,
+   "people_after": 0.116,
+   "outlets_before": 0.248,
+   "outlets_after": 0.161,
+   "people_change": -0.012,
+   "outlet_change": -0.351,
+   "fatigue": false
   }
  },
  "half": "2026-10-05",
@@ -252,20 +252,30 @@
   "contempt": 0.019
  },
  "gaps": {
-  "coast-alawite": {
-   "people": 0.008,
-   "outlets": 0.004,
-   "gap": 0.004
-  },
   "society": {
    "people": 0.165,
    "outlets": 0.057,
    "gap": 0.108
   },
-  "international": {
-   "people": 0.117,
-   "outlets": 0.194,
-   "gap": -0.077
+  "security": {
+   "people": 0.07,
+   "outlets": 0.115,
+   "gap": -0.045
+  },
+  "suwayda-druze": {
+   "people": 0.059,
+   "outlets": 0.026,
+   "gap": 0.033
+  },
+  "refugees": {
+   "people": 0.018,
+   "outlets": 0.025,
+   "gap": -0.008
+  },
+  "governance": {
+   "people": 0.077,
+   "outlets": 0.025,
+   "gap": 0.052
   },
   "northeast-kurdish": {
    "people": 0.129,
@@ -282,30 +292,20 @@
    "outlets": 0.213,
    "gap": -0.04
   },
-  "suwayda-druze": {
-   "people": 0.059,
-   "outlets": 0.026,
-   "gap": 0.033
-  },
   "economy": {
    "people": 0.133,
    "outlets": 0.199,
    "gap": -0.066
   },
-  "security": {
-   "people": 0.07,
-   "outlets": 0.115,
-   "gap": -0.045
+  "international": {
+   "people": 0.117,
+   "outlets": 0.194,
+   "gap": -0.077
   },
-  "refugees": {
-   "people": 0.018,
-   "outlets": 0.025,
-   "gap": -0.008
-  },
-  "governance": {
-   "people": 0.077,
-   "outlets": 0.025,
-   "gap": 0.052
+  "coast-alawite": {
+   "people": 0.008,
+   "outlets": 0.004,
+   "gap": 0.004
   }
  },
  "languages": {

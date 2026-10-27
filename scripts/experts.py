@@ -766,7 +766,7 @@ def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
 # ----------------------------------------------------------------- pages
 
 WORDS = {
-    "en": {"title": "Media analysis", "sub": "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, set against what ordinary Syrians are saying. A short analysis every day; one page per area and an overall one every week and every month. Each is also part of the day's, week's or month's report.",
+    "en": {"title": "Media coverage", "sub": "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, set against what ordinary Syrians are saying. A short analysis every day; one page per area and an overall one every week and every month. Each is also part of the day's, week's or month's report.",
            "week": "Week", "month": "Month", "weeks": "Weekly analyses", "months": "Monthly analyses", "days": "Daily analyses", "daily": "Daily analysis", "weekLink": "This week's analyses",
            "trackerDay": "What Syrians said that day: the tracker's daily report", "trackerWeek": "What Syrians said this week: the tracker's weekly report", "trackerMonth": "What Syrians said this month: the tracker's monthly report", "overall": "Overall", "lede": "In short",
            "findings": "Findings", "syrians": "Compared with what people said", "blind": "What people discussed that the media barely covered",
@@ -777,7 +777,7 @@ WORDS = {
            "others": "The other analyses for this period", "allSources": "All the sources the site uses",
            "note": "Written automatically by an AI model from the titles and short summaries of the reports, which are linked. It describes what the sources say, not what is true. From Syrian outlets only investigations, in-depth reports, analysis and official statements are used, and paywalled outlets are missing: this is not the whole picture.",
            "none": "The first analyses are written after the first full week of collection."},
-    "ar": {"title": "تحليل الإعلام", "sub": "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون العاديون. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. وكلٌّ منها جزء من تقرير اليوم أو الأسبوع أو الشهر.",
+    "ar": {"title": "التغطية الإعلامية", "sub": "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون العاديون. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. وكلٌّ منها جزء من تقرير اليوم أو الأسبوع أو الشهر.",
            "week": "الأسبوع", "month": "الشهر", "weeks": "التحليلات الأسبوعية", "months": "التحليلات الشهرية", "days": "التحليلات اليومية", "daily": "التحليل اليومي", "weekLink": "تحليلات هذا الأسبوع",
            "trackerDay": "ما قاله السوريون في ذلك اليوم: التقرير اليومي للمتتبّع", "trackerWeek": "ما قاله السوريون هذا الأسبوع: التقرير الأسبوعي للمتتبّع", "trackerMonth": "ما قاله السوريون هذا الشهر: التقرير الشهري للمتتبّع", "overall": "نظرة شاملة", "lede": "باختصار",
            "findings": "أبرز ما ورد", "syrians": "مقارنةً بما قاله الناس", "blind": "ما ناقشه الناس ولم يتناوله الإعلام إلا قليلاً",
