@@ -23,7 +23,7 @@ import pages  # noqa: E402
 import pipeline as P  # noqa: E402
 
 DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬−", "0123456789.,-")
-SCORE = re.compile(r"(?<![\d.,])[-+]?0[.,]\d+|[-+]\d[.,]\d+|\b\d+\s*-?\s*(?:points?|pts)\b|\d+\s*(?:نقطة|نقاط)")
+SCORE = re.compile(r"(?<![\d.,])[-+]?0[.,]\d+|[-+]\d[.,]\d+|\b\d+\s*-?\s*(?:points?|pts)\b|(?<!\d)\d{1,3}\s*(?:نقطة|نقاط)")   # not a year: "2026 نقطة تحوّل" is a turning point
 LINK = re.compile(r"\]\([0-9a-f]{14}\)")
 TRIED = archive.DATA / "no_scores_tried.json"
 PROMPT = """Each text below is from a report of the Syria Narrative Tracker and quotes tone scores: the site's measure of

@@ -453,7 +453,7 @@ def numbers(text: str) -> set:
     return set(re.findall(r"\d+(?:[.,]\d+)*", str(text).translate(DIGITS_IN)))
 
 
-SCORE = re.compile(r"(?<![\d.,])[-+−]?0[.,]\d+|\d+\s*-?\s*(?:points?|نقطة|نقاط)\b", re.I)
+SCORE = re.compile(r"(?<![\d.,])[-+−]?0[.,]\d+|(?<!\d)\d{1,3}\s*-?\s*(?:points?|نقطة|نقاط)\b", re.I)
 
 
 COUNT = re.compile(r"\d[\d,.]*\s*(?:comments?|posts?|voices?|updates?|analys[ie]s|reactions?|replies)\b|"
