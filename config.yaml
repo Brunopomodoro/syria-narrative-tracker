@@ -15,7 +15,7 @@ site_url: "https://www.syrianpulse.org"
 # Shown in the citation box on the website. Leave empty until then.
 doi: ""
 
-# A written weekly digest (English and Arabic) after every completed week, with its
+# A written weekly report (English and Arabic) after every completed week, with its
 # own pages and RSS feed. One Claude call a week, a few cents.
 weekly_digest: true
 
@@ -27,11 +27,11 @@ monthly_review: true
 # have one. Shown as "Subscribe by email" on the monthly pages and the Trends page.
 newsletter_url: ""
 # The site's own newsletter (GUIDE.md, "Newsletter by email"): a sign-up page (subscribe/en.html, subscribe/ar.html)
-# where readers choose the daily brief, the weekly digest and/or the monthly report, in Arabic, English or both. The
+# where readers choose the daily report, the weekly report and/or the monthly report, in Arabic, English or both. The
 # list and the sending are with Brevo (free up to 300 emails a day); the sign-up form goes through a small Cloudflare
 # Worker (worker/). Leave enabled: false until Brevo and the Worker are set up; then the sign-up links appear.
 # sender_email: an address on a domain authenticated in Brevo. daily_after_utc: yesterday's brief is sent once the
-# media and experts analysis of the day is in, or from this hour (UTC) at the latest.
+# media analysis of the day is in, or from this hour (UTC) at the latest.
 newsletter:
   enabled: false
   sender_email: "newsletter@syrianpulse.org"
@@ -340,7 +340,7 @@ facebook:
 # Posting to the tracker's X account (GUIDE.md, "Posting to X"). Nothing is posted until the four X_ secrets exist.
 # X charges per post, much more for a post with a link (October 2026: $0.015, and $0.20 with a link; check the
 # X Developer Console and correct the two prices below if they change). Posting keeps to monthly_budget_usd.
-# Reports come first: the weekly and monthly ones in each of `languages`, the daily brief in `daily_languages`.
+# Reports come first: the weekly and monthly ones in each of `languages`, the daily report in `daily_languages`.
 # What is left goes to story posts in story_language: what people say and how they feel, the link to the story's
 # page (story_links: false leaves it out), and hashtags. At most max_stories_per_day, at story_hours (Damascus time, busiest first; a
 # day with an allowance of 2 posts at the first two), at least story_gap_hours apart, and the same story not
@@ -378,7 +378,7 @@ x:
   monthly: true
   daily_after_utc: 4
 
-# Hashtags for the X, Facebook and Telegram share links of daily briefs, weekly digests, monthly reports
+# Hashtags for the X, Facebook and Telegram share links of daily reports, weekly reports, monthly reports
 # and story pages (GUIDE.md). always: on every share, by page language. places: added when one of the
 # spellings under match is in the page's story titles. themes: by theme id, for the page's main themes.
 # brand: added last. max: the most tags on one share. The list is cut to what fits in a post on X.
@@ -583,7 +583,7 @@ method_changelog:
     note: "New Expert view tab: reports and articles about Syria's security, economy and governance from English-language media, think tanks and international organisations, each summarised in one line and linked, and a weekly analysis comparing the expert view with what Syrians were discussing."
     note_ar: "علامة تبويب جديدة «قراءات الخبراء»: تقارير ومقالات عن الأمن والاقتصاد والحوكمة في سوريا من وسائل إعلام ناطقة بالإنجليزية ومراكز أبحاث ومنظمات دولية، يُلخَّص كل منها في سطر مع رابط إليه، وتحليل أسبوعي يقارن قراءات الخبراء بما كان السوريون يناقشونه."
   - date: 2026-10-19
-    note: "Expert view: one page per area (security, economy, governance) and an overall page every week and every month, a short daily brief, and a Sources page listing every source the site uses. The analyses name the documented political leaning, ownership or state funding of the outlets and think tanks they cite."
+    note: "Expert view: one page per area (security, economy, governance) and an overall page every week and every month, a short daily report, and a Sources page listing every source the site uses. The analyses name the documented political leaning, ownership or state funding of the outlets and think tanks they cite."
     note_ar: "قراءات الخبراء: صفحة لكل مجال (الأمن والاقتصاد والحوكمة) وصفحة شاملة كل أسبوع وكل شهر، وموجز يومي قصير، وصفحة مصادر تضم كل ما يعتمده الموقع. وتذكر التحليلات التوجه السياسي أو الملكية أو التمويل الحكومي الموثق لوسائل الإعلام ومراكز الأبحاث التي تستشهد بها."
   - date: 2026-10-19
     note: "Expert view: 33 sources added in French, German, Turkish, Hebrew, Russian, Persian, Chinese, Spanish and Italian (media, think tanks and research centres); each item still summarised in English and Arabic."
@@ -595,17 +595,17 @@ method_changelog:
     note: "Expert view: Mankish Net removed (it entered through a broad search, was labelled a think tank, and its ownership and standards could not be verified). Its one report, on $406 million in Saudi Fund for Development loans, was checked against other outlets and is now cited from Al-Quds Al-Arabi."
     note_ar: "قراءات الخبراء: إزالة موقع مانكيش نت (دخل عبر بحث واسع وصُنّف خطأً مركزَ أبحاث، ولم يمكن التحقق من ملكيته ومعاييره). وجرى التحقق من تقريره الوحيد عن قروض الصندوق السعودي للتنمية بقيمة ٤٠٦ ملايين دولار من وسائل إعلام أخرى، وبات يُستشهد به من القدس العربي."
   - date: 2026-10-20
-    note: "Expert view: the three broad Google News searches now keep only items from a published list of established organisations, each filed under what it is (international organisation, research centre or media); aggregators and unknown sites are left out. The analyses of week 42 and the daily briefs of 18 and 19 October were rewritten without them."
+    note: "Expert view: the three broad Google News searches now keep only items from a published list of established organisations, each filed under what it is (international organisation, research centre or media); aggregators and unknown sites are left out. The analyses of week 42 and the daily reports of 18 and 19 October were rewritten without them."
     note_ar: "قراءات الخبراء: باتت عمليات البحث الواسعة الثلاث في غوغل نيوز تحتفظ فقط بعناصر من قائمة منشورة بجهات راسخة، تُصنَّف كل منها بحسب طبيعتها (منظمة دولية أو مركز أبحاث أو وسيلة إعلام)، وتُستبعد مواقع التجميع والمواقع غير المعروفة. وأُعيدت كتابة تحليلات الأسبوع ٤٢ والموجزين اليوميين ليومي ١٨ و١٩ تشرين الأول من دونها."
   - date: 2026-10-20
-    note: "People vs media: the Expert view becomes Media and experts and now includes Syrian outlets as their own category (only their investigations, in-depth reports, analysis and official statements); its comparison uses only what ordinary people said on the tracker; and the home page orders stories by people's share of posts. The stories, tones and shares the tracker computes are unchanged."
-    note_ar: "الناس مقابل الإعلام: باتت «قراءات الخبراء» قسم «الإعلام والخبراء» ويضم الآن وسائل الإعلام السورية فئةً مستقلة (تحقيقاتها وتقاريرها المعمّقة وتحليلاتها وبياناتها الرسمية فقط)؛ وتعتمد مقارنته على ما قاله الناس العاديون في المتتبّع فقط؛ وترتّب الصفحة الرئيسية القصص بحسب حصتها من منشورات الناس. ولم تتغير القصص والنبرات والحصص التي يحسبها المتتبّع."
+    note: "People vs media: the Expert view becomes Media analysis and now includes Syrian outlets as their own category (only their investigations, in-depth reports, analysis and official statements); its comparison uses only what ordinary people said on the tracker; and the home page orders stories by people's share of posts. The stories, tones and shares the tracker computes are unchanged."
+    note_ar: "الناس مقابل الإعلام: باتت «قراءات الخبراء» قسم «تحليل الإعلام» ويضم الآن وسائل الإعلام السورية فئةً مستقلة (تحقيقاتها وتقاريرها المعمّقة وتحليلاتها وبياناتها الرسمية فقط)؛ وتعتمد مقارنته على ما قاله الناس العاديون في المتتبّع فقط؛ وترتّب الصفحة الرئيسية القصص بحسب حصتها من منشورات الناس. ولم تتغير القصص والنبرات والحصص التي يحسبها المتتبّع."
   - date: 2026-10-22
-    note: "Reports: the weekly digest and the monthly report now set what ordinary people talked about against what the media and experts focused on, with a People and the media section; the Media and experts analysis of a week or month is written first so the report can draw on it."
-    note_ar: "التقارير: باتت الملخصات الأسبوعية والتقارير الشهرية تقارن ما تحدث عنه الناس العاديون بما ركّز عليه الإعلام والخبراء، مع قسم «الناس والإعلام»؛ ويُكتب تحليل «الإعلام والخبراء» للأسبوع أو الشهر أولاً ليستند إليه التقرير."
+    note: "Reports: the weekly report and the monthly report now set what ordinary people talked about against what the media focused on, with a People and the media section; the media analysis of a week or month is written first so the report can draw on it."
+    note_ar: "التقارير: باتت التقارير الأسبوعية والتقارير الشهرية تقارن ما تحدث عنه الناس العاديون بما ركّز عليه الإعلام، مع قسم «الناس والإعلام»؛ ويُكتب «تحليل الإعلام» للأسبوع أو الشهر أولاً ليستند إليه التقرير."
   - date: 2026-10-22
-    note: "One report, one PDF: each weekly and monthly report now holds both halves in six parts: at a glance, what people said, people and the media, what the media and experts said (in full), what to watch, and sources and method. The weekly digest gains 3 to 5 key points."
-    note_ar: "تقرير واحد وملف PDF واحد: بات كل تقرير أسبوعي وشهري يضم الجانبين في ستة أقسام: باختصار، وما قاله الناس، والناس والإعلام، وما قاله الإعلام والخبراء (كاملاً)، وما يستحق المتابعة، والمصادر والمنهجية. ويضيف الملخص الأسبوعي من ٣ إلى ٥ نقاط رئيسية."
+    note: "One report, one PDF: each weekly and monthly report now holds both halves in six parts: at a glance, what people said, people and the media, what the media said (in full), what to watch, and sources and method. The weekly report gains 3 to 5 key points."
+    note_ar: "تقرير واحد وملف PDF واحد: بات كل تقرير أسبوعي وشهري يضم الجانبين في ستة أقسام: باختصار، وما قاله الناس، والناس والإعلام، وما قاله الإعلام (كاملاً)، وما يستحق المتابعة، والمصادر والمنهجية. ويضيف التقرير الأسبوعي من ٣ إلى ٥ نقاط رئيسية."
 # Words used to keep only Syria-related posts from general sources.
 # Only applied to sources below that have "filter: true".
 keywords:

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""PDF copies of the monthly reports, weekly digests and daily briefs, made with the Chrome that GitHub's runners (and most
+"""PDF copies of the monthly reports, weekly reports and daily reports, made with the Chrome that GitHub's runners (and most
 computers) already have: a .pdf next to each page. A PDF is remade when the report on its page has changed since the
 PDF was made (a fingerprint of each report, without the menu and footer around it, is kept in data/pdf_state.json;
-file times are no use on GitHub, where a fresh checkout gives every file the same time). Daily briefs get a PDF once
+file times are no use on GitHub, where a fresh checkout gives every file the same time). Daily reports get a PDF once
 their day is over; those of the last RECENT_DAYS days are remade when they change, older ones only when missing, so
 the repository does not fill with PDFs. Free, no Python packages. Without a Chrome or Chromium on the machine it prints a warning and does nothing.
 
@@ -122,7 +122,7 @@ def main() -> int:
     recent = (today - dt.timedelta(days=RECENT_DAYS)).isoformat()
     days = [p for p in sorted((ROOT / "daily").glob("*/20??-??-??.html")) if p.stem < today.isoformat()]
     layout = hashlib.sha256((PAGE_MODE + SINGLE + print_style(days[-1].read_text(encoding="utf-8"))).encode()).hexdigest()[:16] if days else ""
-    if layout != state.get("_layout"):             # a new print layout: older daily briefs are remade too
+    if layout != state.get("_layout"):             # a new print layout: older daily reports are remade too
         recent = ""
     for page in sorted((ROOT / "monthly").glob("*/20??-??.html")) + sorted((ROOT / "weekly").glob("*/20??-W??.html")) + days:
         out, key = page.with_suffix(".pdf"), str(page.relative_to(ROOT))
@@ -151,7 +151,7 @@ def main() -> int:
         if new_days:
             pages.write_daily_pages(cfg, sorted(new_days))
             pages.write_daily_listing(cfg)
-        for ident in sorted(new_reports):           # the media and experts pages of the same day, week or month
+        for ident in sorted(new_reports):           # the media pages of the same day, week or month
             a = archive._load(experts.PERIODS / f"{ident}.json", None)
             if a:
                 experts.write_pages(cfg, a)

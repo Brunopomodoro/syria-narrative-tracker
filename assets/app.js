@@ -10,15 +10,18 @@ if (window.top !== window.self) {
 /* =================== words =================== */
 const T = {
   en: {
-    title: "Syria Narrative Tracker", about: "About", home: "Tracker", trends: "Trends", data: "Data", reports: "Reports", experts: "Media and experts",
-    timeline: "Timeline", expTitle: "Media and experts", expSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, set against what ordinary Syrians are saying. A short brief every day; one page per area and an overall one every week and every month.",
-    expLatestDay: "Daily brief", expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
-    expAll: "All analyses", allSources: "All the sources the site uses",
+    title: "Syria Narrative Tracker", about: "About", home: "Mood gap", trends: "Trends", data: "Data", reports: "Reports", experts: "Topic gap",
+    timeline: "Timeline", expTitle: "Topic gap: what Syrians talk about, compared with what the media cover", expSub: "What ordinary Syrians discuss online, set against what Syrian and international media, think tanks and international organisations report on Syria's security, economy and governance: what both cover, where their priorities differ, and what people raise that the media barely cover. From the media analysis in each daily, weekly and monthly report.",
+    expLatestDay: "Latest day", expLatestWeek: "This week", expLatestMonth: "This month", expWeek: (w, a, b) => `Week ${w} · ${a} – ${b}`, expMonth: (m) => m,
+    expAll: "All media analyses", allSources: "All the sources the site uses",
+    gapBlind: "What people raised that the media barely covered", gapFull: "The full media analysis, with its sources", gapNone: "No comparison for this period.",
+    gapReport: { day: "In the daily report", week: "In the weekly report", month: "In the monthly report" },
+    homeMeasure: "Mood gap: how Syrians feel about each story, compared with how outlets report it.",
     expAreas: { overall: "Overall", security: "Security", economy: "Economy", governance: "Governance" },
     expNone: "The first analyses are written after the first full week of collection.",
-    expNote: "Written automatically by an AI model from the titles and short summaries of the reports, which are linked on each page. It describes what the reports say, not what is true. Most sources are based outside Syria, and paywalled outlets are missing: this is the international and regional expert view, not the whole picture.",
-    reportsTitle: "Reports", reportsSub: "Written for sharing. Each monthly report is a short briefing on the month: what ordinary Syrians talked about and how they reacted, set against what the media and experts focused on, with the numbers, the stories that mattered and what to watch. It comes as a web page and a PDF, in English and Arabic. The weekly digests are shorter and faster, also with a PDF, and the daily briefs cover a single day. Every page has share links and a print layout.",
-    readReport: "Read the report", mediaPart: "What the media and experts said", pdf: "PDF", reportFeed: "Monthly feed", digestFeed: "Weekly feed", noReports: "The first monthly report is written after the first complete month.",
+    expNote: "Written automatically by an AI model from the titles and short summaries of the reports, which are linked on each page. It describes what the reports say, not what is true. Most sources are based outside Syria, and paywalled outlets are missing: this is the international and regional media view, not the whole picture.",
+    reportsTitle: "Reports", reportsSub: "Written for sharing. Each monthly report is a short briefing on the month: what ordinary Syrians talked about and how they reacted, set against what the media focused on, with the numbers, the stories that mattered and what to watch. It comes as a web page and a PDF, in English and Arabic. The weekly reports are shorter and faster, also with a PDF, and the daily reports cover a single day. Every page has share links and a print layout.",
+    readReport: "Read the report", mediaPart: "What the media said", pdf: "PDF", reportFeed: "Monthly feed", digestFeed: "Weekly feed", noReports: "The first monthly report is written after the first complete month.",
     intro: "Syria Narrative Tracker follows what is being said about Syria online, updated automatically throughout the day. It reads public posts in Arabic, Kurdish and English from Telegram channels, news sites, YouTube, Reddit and X, and uses AI to group them into stories and describe how people and outlets are reacting. It shows what is being said, not whether it is true.", switchTo: "العربية", switchLang: "ar",
     loading: "Loading…", updated: (a) => `Updated ${a}`, stale: (a) => `Last update ${a}; updates may have stopped`,
     nowPeople: "How people are reacting right now", nowOutlets: "How outlets are covering Syria right now",
@@ -86,9 +89,9 @@ const T = {
     kindTitle: "By kind of outlet", kindSub: "Tone of coverage by each kind of outlet, against all outlets (grey). Available from 28 September 2026.",
     notEnough: "Not enough data yet.", people: "People", outlets: "Outlets", allPublic: "All people", allOutlets: "All outlets", share: "Share", stories: "Stories",
     eventsLbl: "Events", shareLbl: "share of discussion", dateCol: "Date", valueCol: "Value",
-    weeklyTitle: "Weekly digests", weeklySub: "A written summary of each week, with the week's theme table. Each digest is a page and a PDF, with share links; also available as an RSS feed.", allDigests: "All digests", feed: "RSS feed", permalink: "Permanent page",
+    weeklyTitle: "Weekly reports", weeklySub: "A written summary of each week, with the week's theme table. Each report is a page and a PDF, with share links; also available as an RSS feed.", allDigests: "All weekly reports", feed: "RSS feed", permalink: "Permanent page",
     monthlyTitle: "Monthly reports", monthlySub: "One page per month: key findings, the month in numbers, the stories that mattered, and what to watch. Print it, send it, or share it from the page.", allReviews: "All reports", subscribe: "Subscribe by email",
-    briefsTitle: "Daily briefs", briefsSub: "One page and one PDF per finished day: the day at a glance, what people said with every story of the day, and what the media and experts said.", allDays: "All days",
+    briefsTitle: "Daily reports", briefsSub: "One page and one PDF per finished day: the day at a glance, what people said with every story of the day, and what the media said.", allDays: "All days",
     storiesOf: (n) => `${n} ${n === "1" ? "story" : "stories"}`,
     /* data */
     dataTitle: "Data", dataSub: "Everything the tracker produces can be downloaded and reused. Licence: CC BY 4.0 (free to use with attribution). Posts by individuals are never stored: the data holds analyses and outlet headlines only.",
@@ -104,8 +107,8 @@ const T = {
       ["data/archive/index.json", "One summary per day, permanent: volume and tone overall, per theme, per language and per kind of outlet; the events list."],
       ["data/archive/YYYY-MM-DD.json", "Every run of that day in full, plus that day's outlet headlines."],
       ["data/exports/index.json", "The list of monthly files with row counts, sizes and column names."],
-      ["data/weekly/YYYY-Www.json", "A weekly digest: the text in both languages and the week's numbers; data/weekly/index.json lists them."],
-      ["data/monthly/YYYY-MM.json", "A monthly review: the text in both languages, the month's numbers, its weekly digests and the stories with coordination signals; data/monthly/index.json lists them."],
+      ["data/weekly/YYYY-Www.json", "A weekly report: the text in both languages and the week's numbers; data/weekly/index.json lists them."],
+      ["data/monthly/YYYY-MM.json", "A monthly review: the text in both languages, the month's numbers, its weekly reports and the stories with coordination signals; data/monthly/index.json lists them."],
       ["data/methodology.json", "Sources, themes, sampling settings, model, the exact analysis instructions and the method changelog."]],
     colsTitle: "Columns", colsSub: "Tones run from −1 (anger, fear, grief) to +1 (hope, pride, celebration); 0 is neutral. Empty cells mean the value does not apply (for example no public posts in the story).",
     columns: {
@@ -130,7 +133,7 @@ const T = {
       ["Analysis.", `The sample is sent to ${m.model} with the instructions shown at the bottom of this page. The model groups posts into stories, files each under one of the fixed themes, scores the tone of outlet coverage and of public reactions from −1 to +1, names emotions, framings and warning signs, and writes every text in English and Arabic. Where a story contains posts from several kinds of outlet or public posts in several languages, tone is also scored per kind and per language. A story that continues from the previous update keeps its id, so it can be followed over time.`],
       ["Checks.", "The model's answer is validated: unknown themes become \"other\", tones are held to the scale, per-group tones are kept only for groups with posts in the story, and each post counts towards at most one story. An update where nothing new was collected is skipped. Every text is generated, and the site says so."],
       ["What to watch.", "A short list above the stories, worked out from the numbers alone, with no extra AI call: a story whose share grew in at least two updates in a row, a new story already at 10% or more, people's tone at least half the scale away from the outlets' tone, people's tone down by more than a third of the scale within 36 hours, or coordination signs at a moderate or strong level two updates running. These are observations about the recent past, not forecasts. Every list is kept in the archive so that it can be checked later."],
-      ["Media and experts.", "A separate tab gives our analysis of what Syrian and international media, think tanks and international organisations, in several languages, say about Syria's security, economy and governance. Their reports and articles are read from the feeds on the Sources page; each new item is filed under one of the three areas, or set aside if it is not substantially about Syria, and summarised in one sentence from its title and excerpt. Syrian outlets are a category of their own, and from them only investigations, in-depth reports, analysis and official statements are used, since the tracker already reads their daily news. Every day the model writes a short brief on the day before, and every week and every month one page per area and an overall page, comparing what the media and experts say with what ordinary Syrians said on the tracker (people's own posts and comments, not outlets). When it cites an outlet or think tank whose political orientation, ownership or state funding is widely documented, it says so. The reports drawn on are linked, never republished."],
+      ["Topic gap and the media analysis.", "The Topic gap tab compares what ordinary Syrians discuss with our analysis of what Syrian and international media, think tanks and international organisations, in several languages, say about Syria's security, economy and governance. Their reports and articles are read from the feeds on the Sources page; each new item is filed under one of the three areas, or set aside if it is not substantially about Syria, and summarised in one sentence from its title and excerpt. Syrian outlets are a category of their own, and from them only investigations, in-depth reports, analysis and official statements are used, since the tracker already reads their daily news. Every day the model writes a short analysis of the day before, and every week and every month one page per area and an overall page; each becomes part of that day's, week's or month's report, comparing what the media say with what ordinary Syrians said on the tracker (people's own posts and comments, not outlets). When it cites an outlet or think tank whose political orientation, ownership or state funding is widely documented, it says so. The reports drawn on are linked, never republished."],
       ["What is stored.", "The analysis of every update, per-day aggregates, and outlet headlines, permanently. Individuals' posts, comments and identifiers are not stored; the fingerprints used to notice that nothing new was posted are one-way hashes."]],
     limits: [
       ["Not a survey.", "The posts are a sample of what is public online, capped per update and balanced across sources. Shares and tones describe that sample, not Syrians as a whole, and small themes rest on few posts."],
@@ -157,22 +160,25 @@ const T = {
     types: { telegram: "Telegram channel", telegram_comments: "Telegram comments", telegram_groups: "Telegram group", news: "News site", youtube: "YouTube comments", x: "X posts", bluesky: "Bluesky posts", threads: "Threads posts", instagram: "Instagram posts", reddit: "Reddit" },
     langs: { ar: "Arabic", ku: "Kurdish", en: "English", other: "Other" },
     langsLine: "Languages in this update:",
-    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", followFb: "Follow on Facebook", followHead: "The daily brief and the stories Syrians are talking about, in your feed:", followBtn: "Follow", byEmail: "By email", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
+    footer: "Summaries are written automatically by an AI model from public posts. They describe what is being said, not what is true.", privacy: "Privacy", support: "Support", followX: "Follow on X", followFb: "Follow on Facebook", followHead: "The daily report and the stories Syrians are talking about, in your feed:", followBtn: "Follow", byEmail: "By email", axisNeg: "Negative", axisNeu: "Neutral", axisPos: "Positive", tagline: "what Syrians are saying online", contact: "Contact",
     emptyTitle: "No results yet",
     emptyBody: "The first update will appear here within the hour.",
     emptySub: "This page checks for new results every 10 minutes.",
     locale: "en-GB"
   },
   ar: {
-    title: "متتبّع السرديات السورية", about: "حول الموقع", home: "المتتبّع", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "الإعلام والخبراء",
-    timeline: "الخط الزمني", expTitle: "الإعلام والخبراء", expSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مقارنةً بما يقوله السوريون العاديون. موجز قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر.",
-    expLatestDay: "الموجز اليومي", expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
-    expAll: "كل التحليلات", allSources: "كل المصادر التي يعتمدها الموقع",
+    title: "متتبّع السرديات السورية", about: "حول الموقع", home: "فجوة المزاج", trends: "الاتجاهات", data: "البيانات", reports: "التقارير", experts: "فجوة المواضيع",
+    timeline: "الخط الزمني", expTitle: "فجوة المواضيع: ما يتحدث عنه السوريون مقارنةً بما يغطيه الإعلام", expSub: "ما يناقشه السوريون العاديون على الإنترنت، مقارنةً بما تنشره وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا: ما يتناوله الطرفان، وأين تختلف أولوياتهما، وما يثيره الناس ولا يغطيه الإعلام إلا قليلاً. مأخوذ من تحليل الإعلام في كل تقرير يومي وأسبوعي وشهري.",
+    expLatestDay: "آخر يوم", expLatestWeek: "هذا الأسبوع", expLatestMonth: "هذا الشهر", expWeek: (w, a, b) => `الأسبوع \u2066${w}\u2069 · ${a} – ${b}`, expMonth: (m) => m,
+    expAll: "كل تحليلات الإعلام", allSources: "كل المصادر التي يعتمدها الموقع",
+    gapBlind: "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", gapFull: "تحليل الإعلام كاملاً مع مصادره", gapNone: "لا مقارنة لهذه الفترة.",
+    gapReport: { day: "في التقرير اليومي", week: "في التقرير الأسبوعي", month: "في التقرير الشهري" },
+    homeMeasure: "فجوة المزاج: كيف يشعر السوريون تجاه كل قصة، مقارنةً بالطريقة التي تنقلها بها وسائل الإعلام.",
     expAreas: { overall: "نظرة شاملة", security: "الأمن", economy: "الاقتصاد", governance: "الحوكمة" },
     expNone: "تُكتب أولى التحليلات بعد أول أسبوع كامل من الجمع.",
-    expNote: "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من عناوين التقارير وملخصاتها القصيرة، مع روابط إليها في كل صفحة. وهو يصف ما تقوله التقارير، لا ما هو صحيح. معظم المصادر خارج سوريا، والمنصات المدفوعة غير مشمولة: هذه قراءة الخبراء الدوليين والإقليميين، لا الصورة كاملة.",
-    reportsTitle: "التقارير", reportsSub: "كُتبت لتُشارَك. كل تقرير شهري إحاطة قصيرة عن الشهر: ما تحدث عنه السوريون العاديون وكيف تفاعلوا، مقارنةً بما ركّز عليه الإعلام والخبراء، مع الأرقام والقصص الأهم وما يجب متابعته. يتوفر كصفحة على الموقع وكملف PDF، بالعربية والإنجليزية. الملخصات الأسبوعية أقصر وأسرع، ولها PDF أيضاً، والموجزات اليومية تغطي يوماً واحداً. لكل صفحة روابط مشاركة وتنسيق للطباعة.",
-    readReport: "اقرأ التقرير", mediaPart: "ما قاله الإعلام والخبراء", pdf: "PDF", reportFeed: "خلاصة التقارير الشهرية", digestFeed: "خلاصة الملخصات الأسبوعية", noReports: "يُكتب أول تقرير شهري بعد اكتمال أول شهر.",
+    expNote: "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من عناوين التقارير وملخصاتها القصيرة، مع روابط إليها في كل صفحة. وهو يصف ما تقوله التقارير، لا ما هو صحيح. معظم المصادر خارج سوريا، والمنصات المدفوعة غير مشمولة: هذه قراءة الإعلام الدولي والإقليمي، لا الصورة كاملة.",
+    reportsTitle: "التقارير", reportsSub: "كُتبت لتُشارَك. كل تقرير شهري إحاطة قصيرة عن الشهر: ما تحدث عنه السوريون العاديون وكيف تفاعلوا، مقارنةً بما ركّز عليه الإعلام، مع الأرقام والقصص الأهم وما يجب متابعته. يتوفر كصفحة على الموقع وكملف PDF، بالعربية والإنجليزية. التقارير الأسبوعية أقصر وأسرع، ولها PDF أيضاً، والتقارير اليومية تغطي يوماً واحداً. لكل صفحة روابط مشاركة وتنسيق للطباعة.",
+    readReport: "اقرأ التقرير", mediaPart: "ما قاله الإعلام", pdf: "PDF", reportFeed: "خلاصة التقارير الشهرية", digestFeed: "خلاصة التقارير الأسبوعية", noReports: "يُكتب أول تقرير شهري بعد اكتمال أول شهر.",
     intro: "يتابع متتبّع السرديات السورية ما يُقال عن سوريا على الإنترنت، ويتجدّد تلقائياً على مدار اليوم. يقرأ منشورات عامة بالعربية والكردية والإنجليزية من قنوات تيليغرام والمواقع الإخبارية ويوتيوب وريديت وإكس، ويستخدم الذكاء الاصطناعي لتجميعها في قصص ووصف تفاعل الناس ووسائل الإعلام معها. يعرض الموقع ما يُقال، لا ما هو صحيح.", switchTo: "English", switchLang: "en",
     loading: "جارٍ التحميل…", updated: (a) => `آخر تحديث ${a}`, stale: (a) => `آخر تحديث ${a}، وربما توقفت التحديثات`,
     nowPeople: "كيف يتفاعل الناس الآن", nowOutlets: "كيف تغطي وسائل الإعلام الشأن السوري الآن",
@@ -239,9 +245,9 @@ const T = {
     kindTitle: "حسب نوع وسيلة الإعلام", kindSub: "نبرة تغطية كل نوع من وسائل الإعلام، مقارنةً بكل وسائل الإعلام (بالرمادي). متوفر منذ ٢٨ أيلول ٢٠٢٦.",
     notEnough: "لا تكفي البيانات بعد.", people: "الناس", outlets: "وسائل الإعلام", allPublic: "كل الناس", allOutlets: "كل وسائل الإعلام", share: "الحصة", stories: "القصص",
     eventsLbl: "الأحداث", shareLbl: "الحصة من النقاش", dateCol: "التاريخ", valueCol: "القيمة",
-    weeklyTitle: "الملخصات الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. كل ملخص صفحة وملف PDF مع روابط مشاركة؛ متوفر أيضاً كخلاصة RSS.", allDigests: "كل الملخصات", feed: "خلاصة RSS", permalink: "صفحة دائمة",
+    weeklyTitle: "التقارير الأسبوعية", weeklySub: "ملخص مكتوب لكل أسبوع مع جدول مواضيع الأسبوع. كل تقرير صفحة وملف PDF مع روابط مشاركة؛ متوفر أيضاً كخلاصة RSS.", allDigests: "كل التقارير الأسبوعية", feed: "خلاصة RSS", permalink: "صفحة دائمة",
     monthlyTitle: "التقارير الشهرية", monthlySub: "صفحة واحدة لكل شهر: أبرز النتائج، والشهر بالأرقام، والقصص التي كانت الأهم، وما يجب متابعته. اطبعه أو أرسله أو شاركه من الصفحة نفسها.", allReviews: "كل التقارير", subscribe: "اشترك بالبريد الإلكتروني",
-    briefsTitle: "الموجزات اليومية", briefsSub: "صفحة واحدة وملف PDF لكل يوم مكتمل: اليوم باختصار، وما قاله الناس مع كل قصص اليوم، وما قاله الإعلام والخبراء.", allDays: "كل الأيام",
+    briefsTitle: "التقارير اليومية", briefsSub: "صفحة واحدة وملف PDF لكل يوم مكتمل: اليوم باختصار، وما قاله الناس مع كل قصص اليوم، وما قاله الإعلام.", allDays: "كل الأيام",
     storiesOf: (n) => { const k = Number(String(n).replace(/[٠-٩]/g, c => "٠١٢٣٤٥٦٧٨٩".indexOf(c))); return `${n} ${k >= 3 && k <= 10 ? "قصص" : "قصة"}`; },
     dataTitle: "البيانات", dataSub: "كل ما ينتجه المتتبّع يمكن تنزيله وإعادة استخدامه. الرخصة: CC BY 4.0 (الاستخدام حر مع ذكر المصدر). لا تُحفظ منشورات الأفراد أبداً؛ تحتوي البيانات على التحليلات وعناوين وسائل الإعلام فقط.",
     dlTitle: "تنزيل فترة زمنية", dlSub: "يُبنى الملف في متصفحك من ملفات الأرشيف اليومية، وهو مطابق للملفات الشهرية أدناه.",
@@ -281,7 +287,7 @@ const T = {
       ["التحليل.", `تُرسل العيّنة إلى ${m.model} مع التعليمات المعروضة في أسفل هذه الصفحة. يجمّع النموذج المنشورات في قصص، ويصنّف كل قصة تحت موضوع ثابت واحد، ويقيس نبرة تغطية وسائل الإعلام ونبرة تفاعل الناس من −١ إلى +١، ويسمّي المشاعر والتأطيرات وعلامات التحذير، ويكتب كل نص بالإنجليزية والعربية. وحين تضم القصة منشورات من أنواع عدة من وسائل الإعلام أو منشورات من الناس بلغات عدة، تُقاس النبرة أيضاً حسب النوع وحسب اللغة. تحتفظ القصة المستمرة من التحديث السابق بمعرّفها، فيمكن تتبّعها مع الوقت.`],
       ["التحقق.", "يُتحقق من إجابة النموذج: تصبح المواضيع غير المعروفة «أخرى»، وتُحصر النبرات ضمن المقياس، وتُحفظ نبرات المجموعات فقط للمجموعات التي لها منشورات في القصة، ويُحسب كل منشور في قصة واحدة على الأكثر. ويُتخطى التحديث الذي لم يجمع شيئاً جديداً. كل النصوص مولَّدة، والموقع يقول ذلك."],
       ["ما يستحق المتابعة.", "قائمة قصيرة فوق القصص تُستخرج من الأرقام وحدها، من دون أي استدعاء إضافي للذكاء الاصطناعي: قصة زادت حصتها في تحديثين متتاليين على الأقل، أو قصة جديدة تبلغ حصتها 10٪ أو أكثر، أو نبرة الناس تبتعد عن نبرة الإعلام نصف المقياس على الأقل، أو نبرة الناس تراجعت أكثر من ثلث المقياس خلال 36 ساعة، أو علامات تنسيق متوسطة أو قوية في تحديثين متتاليين. إنها ملاحظات عن الماضي القريب لا توقعات. تُحفظ كل قائمة في الأرشيف كي يمكن التحقق منها لاحقاً."],
-      ["الإعلام والخبراء.", "تقدّم علامة تبويب مستقلة تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا. تُقرأ تقاريرها ومقالاتها من الخلاصات المدرجة في صفحة المصادر؛ ويُصنَّف كل عنصر جديد في أحد المجالات الثلاثة، أو يُستبعد إن لم يكن عن سوريا أساساً، ويُلخَّص في جملة واحدة من عنوانه ومقتطفه. وتشكّل وسائل الإعلام السورية فئة مستقلة، ولا يُعتمد منها إلا التحقيقات والتقارير المعمّقة والتحليلات والبيانات الرسمية، لأن المتتبّع يقرأ أخبارها اليومية أصلاً. ويكتب النموذج كل يوم موجزاً قصيراً عن اليوم السابق، وكل أسبوع وكل شهر صفحة لكل مجال وصفحة شاملة، ويقارن ما يقوله الإعلام والخبراء بما قاله السوريون العاديون على المتتبّع (منشوراتهم وتعليقاتهم، لا وسائل الإعلام). وحين يستشهد بوسيلة إعلام أو مركز أبحاث معروف التوجه السياسي أو الملكية أو التمويل الحكومي، يذكر ذلك. التقارير المعتمدة مرتبطة بروابط ولا يُعاد نشرها."],
+      ["فجوة المواضيع وتحليل الإعلام.", "تقارن علامة تبويب «فجوة المواضيع» ما يناقشه السوريون العاديون بتحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا. تُقرأ تقاريرها ومقالاتها من الخلاصات المدرجة في صفحة المصادر؛ ويُصنَّف كل عنصر جديد في أحد المجالات الثلاثة، أو يُستبعد إن لم يكن عن سوريا أساساً، ويُلخَّص في جملة واحدة من عنوانه ومقتطفه. وتشكّل وسائل الإعلام السورية فئة مستقلة، ولا يُعتمد منها إلا التحقيقات والتقارير المعمّقة والتحليلات والبيانات الرسمية، لأن المتتبّع يقرأ أخبارها اليومية أصلاً. ويكتب النموذج كل يوم موجزاً قصيراً عن اليوم السابق، وكل أسبوع وكل شهر صفحة لكل مجال وصفحة شاملة، ويقارن ما يقوله الإعلام بما قاله السوريون العاديون على المتتبّع (منشوراتهم وتعليقاتهم، لا وسائل الإعلام). وحين يستشهد بوسيلة إعلام أو مركز أبحاث معروف التوجه السياسي أو الملكية أو التمويل الحكومي، يذكر ذلك. التقارير المعتمدة مرتبطة بروابط ولا يُعاد نشرها."],
       ["ما يُحفظ.", "تحليل كل تحديث، والمجاميع اليومية، وعناوين وسائل الإعلام، بشكل دائم. لا تُحفظ منشورات الأفراد وتعليقاتهم ومعرّفاتهم؛ والبصمات المستخدمة لملاحظة أن لا جديد نُشر هي تجزئات أحادية الاتجاه."]],
     limits: [
       ["ليس استطلاع رأي.", "المنشورات عيّنة مما هو علني على الإنترنت، محدودة في كل تحديث ومتوازنة بين المصادر. الحصص والنبرات تصف هذه العيّنة لا السوريين جميعاً، والمواضيع الصغيرة تستند إلى منشورات قليلة."],
@@ -308,7 +314,7 @@ const T = {
     types: { telegram: "قناة تيليغرام", telegram_comments: "تعليقات تيليغرام", telegram_groups: "مجموعة تيليغرام", news: "موقع إخباري", youtube: "تعليقات يوتيوب", x: "منشورات X", bluesky: "منشورات بلوسكاي", threads: "منشورات ثريدز", instagram: "منشورات إنستغرام", reddit: "ريديت" },
     langs: { ar: "العربية", ku: "الكردية", en: "الإنجليزية", other: "لغات أخرى" },
     langsLine: "لغات المنشورات في هذا التحديث:",
-    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", followFb: "تابعنا على فيسبوك", followHead: "الموجز اليومي والقصص التي يتحدث عنها السوريون، في صفحتك:", followBtn: "تابع", byEmail: "بالبريد", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
+    footer: "تُكتب الملخصات تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من منشورات عامة، وهي تصف ما يُقال، لا ما هو صحيح.", privacy: "الخصوصية", support: "ادعمنا", followX: "تابعنا على X", followFb: "تابعنا على فيسبوك", followHead: "التقرير اليومي والقصص التي يتحدث عنها السوريون، في صفحتك:", followBtn: "تابع", byEmail: "بالبريد", axisNeg: "سلبي", axisNeu: "محايد", axisPos: "إيجابي", tagline: "ماذا يقول السوريون على الإنترنت", contact: "اتصل بنا",
     emptyTitle: "لا نتائج بعد",
     emptyBody: "ستظهر النتائج الأولى هنا خلال ساعة.",
     emptySub: "تتحقق هذه الصفحة من وجود نتائج جديدة كل ١٠ دقائق.",
@@ -1000,7 +1006,7 @@ function trendsHTML() {
   ${sec("kind", t.kindTitle, t.kindSub, body("kind", "multiples"))}
   ${sec("what", t.whatTitle, t.whatSub, body("what", "themebars"))}`;
 }
-/* the Reports tab: monthly reports (page + PDF) and the weekly digests */
+/* the Reports tab: monthly reports (page + PDF) and the weekly reports */
 function reportsHTML() {
   const t = L(), lang = state.lang, loaded = !!state.trends.index;
   const url = String(state.latest.newsletter_url || "").replace(/\/subscribe\/(en|ar)\.html$/, `/subscribe/${lang}.html`);   // the sign-up page in the reader's language
@@ -1019,7 +1025,7 @@ function dailyHTML() {
   const t = L(), lang = state.lang, days = (state.trends.index?.days || []).filter(d => d.runs > 0).slice(-7).reverse();
   if (!days.length) return "";
   const items = days.map(d => `<li><a href="daily/${lang}/${esc(d.date)}.html"><b>${esc(fmtDay(d.date, { weekday: "long", day: "numeric", month: "long" }))}</b></a>
-    <span class="s-meta">${t.people}: ${esc(toneLabel(d.public_sentiment))} · ${t.outlets}: ${esc(toneLabel(d.outlet_sentiment))} · ${t.storiesOf(num(d.stories))}${mediaLink(d.date)}${d.date < new Date().toISOString().slice(0, 10) ? ` · <a href="daily/${lang}/${esc(d.date)}.pdf">${t.pdf}</a>` : ""}</span></li>`).join("");
+    <span class="s-meta">${t.people}: ${esc(toneLabel(d.public_sentiment))} · ${t.outlets}: ${esc(toneLabel(d.outlet_sentiment))} · ${t.storiesOf(num(d.stories))}${d.date < new Date().toISOString().slice(0, 10) ? ` · <a href="daily/${lang}/${esc(d.date)}.pdf">${t.pdf}</a>` : ""}</span></li>`).join("");
   return `
   <section class="tsec" aria-labelledby="h-daily">
     <div class="sec-head"><div><h2 id="h-daily">${t.briefsTitle}</h2><p class="sub">${t.briefsSub}</p></div>
@@ -1027,13 +1033,11 @@ function dailyHTML() {
     <ul class="hl">${items}</ul>
   </section>`;
 }
-// The Media and experts analysis of a week or month, linked next to its report when it exists.
-const mediaLink = (id) => (state.experts.index || []).some(x => x.id === id) ? ` · <a href="experts/${state.lang}/${esc(id)}.html">${L().mediaPart}</a>` : "";
 function monthlyHTML() {
   const t = L(), list = (state.monthly || []).slice().reverse(), lang = state.lang;
   const items = list.map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
     return `<li><a href="monthly/${lang}/${esc(d.month)}.html" dir="auto"><b>${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</b></a>
-    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="monthly/${lang}/${esc(d.month)}.html">${t.readReport}</a>${mediaLink(d.month)} · <a href="monthly/${lang}/${esc(d.month)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="monthly/${lang}/${esc(d.month)}.html">${t.readReport}</a> · <a href="monthly/${lang}/${esc(d.month)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
   return `
   <section class="tsec" aria-labelledby="h-monthly">
     <div class="sec-head"><div><h2 id="h-monthly">${t.monthlyTitle}</h2><p class="sub">${t.monthlySub}</p></div>
@@ -1046,7 +1050,7 @@ function weeklyHTML() {
   if (!list.length) return "";
   const items = list.slice(0, 8).map(d => { const first = (rtl() && d.paragraphs_ar ? d.paragraphs_ar : d.paragraphs || [])[0];
     return `<li><a href="weekly/${lang}/${esc(d.week)}.html" dir="auto">${esc(rtl() && d.title_ar ? d.title_ar : d.title)}</a>
-    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))}${mediaLink(d.week)} · <a href="weekly/${lang}/${esc(d.week)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
+    <span class="s-meta">${esc(fmtDay(d.from))} – ${esc(fmtDay(d.to))} · <a href="weekly/${lang}/${esc(d.week)}.pdf">${t.pdf}</a></span>${first ? `<p class="sub" dir="auto" style="margin-top:6px">${esc(first)}</p>` : ""}</li>`; }).join("");
   return `
   <section class="tsec" aria-labelledby="h-weekly">
     <div class="sec-head"><div><h2 id="h-weekly">${t.weeklyTitle}</h2><p class="sub">${t.weeklySub}</p></div>
@@ -1404,6 +1408,7 @@ function heroHTML() {
   return `
   <div class="hero">
     <!--notice-->
+    <p class="measure">${t.homeMeasure}</p>
     <p class="eyebrow">${pub ? t.nowPeople : t.nowOutlets}</p>
     <p class="mood" dir="auto" style="--tone:${toneColor(tone)}">${esc(word)}</p>
     ${brief ? `<p class="brief" dir="auto">${esc(brief)}</p>` : ""}
@@ -1419,7 +1424,7 @@ function render() {
   $("#updated").innerHTML = !checked ? "" : stale ? `<span class="stale">${t.stale(ago(checked))}</span>` : t.updated(ago(checked));
   if (state.view === "about") { $("#app").innerHTML = aboutHTML(); bindAbout(); loadMethod(); return; }
   if (state.view === "trends") { $("#app").innerHTML = trendsHTML(); bindTrends(); drawTrends(); loadIndex(); return; }
-  if (state.view === "reports") { $("#app").innerHTML = reportsHTML(); loadIndex(); loadExperts(); return; }
+  if (state.view === "reports") { $("#app").innerHTML = reportsHTML(); loadIndex(); return; }
   if (state.view === "experts") { $("#app").innerHTML = expertsHTML(); bindExperts(); loadExperts(); return; }
   if (state.view === "data") { $("#app").innerHTML = dataHTML(); bindData(); loadIndex(); loadExports(); return; }
   usedFallback = false;
@@ -1540,40 +1545,52 @@ async function loadIndex() {
   S.loading = false;
   if (state.view === "trends" || state.view === "data" || state.view === "reports") render();
 }
-/* =================== expert view =================== */
+/* =================== topic gap (the media analysis) =================== */
 async function loadExperts() {
   const S = state.experts;
   if (S.loaded || S.loading) return;
   S.loading = true;
   S.index = await getJSON("data/experts/analyses/index.json").catch(() => []);
+  // the newest day, week and month in full, for their comparison with what people said
+  S.newest = {};
+  await Promise.all(["day", "week", "month"].map(async kind => {
+    const x = (S.index || []).filter(e => e.kind === kind).sort((a, b) => a.from < b.from ? 1 : -1)[0];
+    if (x) S.newest[kind] = await getJSON(`data/experts/analyses/${x.id}.json`).catch(() => null);
+  }));
   S.loaded = true; S.loading = false;
-  if (state.view === "experts" || state.view === "reports") render();
+  if (state.view === "experts") render();
 }
-function expertPeriodHTML(x) {
-  const t = L(), lang = state.lang, day = (d) => fmtDay(d, { day: "numeric", month: "long" });
-  const label = x.kind === "day" ? fmtDay(x.from, { weekday: "long", day: "numeric", month: "long" }) : x.kind === "week" ? t.expWeek(x.id, day(x.from), day(x.to)) : t.expMonth(fmtDay(x.from, { month: "long", year: "numeric" }));
-  const page = (area) => `experts/${lang}/${x.id}${area === "overall" ? "" : "-" + area}.html`;
-  const card = (area) => {
-    const title = rtl() ? x[`${area}_title_ar`] || x[`${area}_title`] : x[`${area}_title`] || x[`${area}_title_ar`];
-    const lede = rtl() ? x[`${area}_lede_ar`] || x[`${area}_lede`] : x[`${area}_lede`] || x[`${area}_lede_ar`];
-    return `<a class="e-card${area === "overall" ? " e-overall" : ""}" href="${page(area)}"><span class="e-area">${x.kind === "day" ? t.expLatestDay : t.expAreas[area]}</span>
-      <span class="e-title" dir="auto">${esc(title || "")}</span><span class="e-lede" dir="auto">${esc(lede || "")}</span></a>`;
-  };
-  return `<div class="e-period"><h3>${{ day: t.expLatestDay, week: t.expLatestWeek, month: t.expLatestMonth }[x.kind]} <span class="sub">· ${esc(label)}</span></h3>
-    <div class="e-cards">${["overall", "security", "economy", "governance"].filter(a => (x.areas || []).includes(a)).map(card).join("")}</div></div>`;
+// [Crisis Group](id) in a text: the name, linked to the article it comes from
+const DIGITS_W = { "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9" };
+function linkedText(text, a) {
+  return esc(text || "").replace(/\[([^\]]+)\]\(([0-9a-f٠-٩]+)\)/g, (m, name, id) => {
+    const item = (a.items || {})[id.replace(/[٠-٩]/g, d => DIGITS_W[d])];
+    return item && /^https:\/\//.test(item.url || "") ? `<a href="${esc(item.url)}" target="_blank" rel="noopener nofollow">${name}</a>` : name;
+  });
+}
+function gapPeriodHTML(a) {
+  const t = L(), lang = state.lang, o = a.overall || {}, day = (d) => fmtDay(d, { day: "numeric", month: "long" });
+  const label = a.kind === "day" ? fmtDay(a.from, { weekday: "long", day: "numeric", month: "long" }) : a.kind === "week" ? t.expWeek(a.id, day(a.from), day(a.to)) : t.expMonth(fmtDay(a.from, { month: "long", year: "numeric" }));
+  const pick = (f) => rtl() ? o[f + "_ar"] || o[f] : o[f] || o[f + "_ar"];
+  const cmp = String(pick("syrians") || "").split("\n").filter(x => x.trim()).map(x => `<p dir="auto">${linkedText(x, a)}</p>`).join("");
+  const blind = (pick("blind_spots") || []).map(x => `<li dir="auto">${linkedText(x, a)}</li>`).join("");
+  const report = a.kind === "day" ? `daily/${lang}/${esc(a.id)}.html#media` : `${a.kind === "week" ? "weekly" : "monthly"}/${lang}/${esc(a.id)}.html#compare`;
+  return `<div class="e-period"><h3>${{ day: t.expLatestDay, week: t.expLatestWeek, month: t.expLatestMonth }[a.kind]} <span class="sub">· ${esc(label)}</span></h3>
+    ${cmp || `<p class="sub">${t.gapNone}</p>`}
+    ${blind ? `<h4>${t.gapBlind}</h4><ul>${blind}</ul>` : ""}
+    <p class="e-links"><a href="${report}">${t.gapReport[a.kind]}</a> · <a href="experts/${lang}/${esc(a.id)}.html">${t.gapFull}</a></p></div>`;
 }
 function expertsHTML() {
   const t = L(), S = state.experts, lang = state.lang;
   const head = `<h2 id="h-experts">${t.expTitle}</h2><p class="sub">${t.expSub}</p>`;
   if (!S.loaded) return `<section class="experts" aria-labelledby="h-experts">${head}<p>${t.loadingMethod}</p></section>`;
-  const newest = (kind) => (S.index || []).filter(x => x.kind === kind).sort((a, b) => a.from < b.from ? 1 : -1)[0];
-  const today = newest("day"), week = newest("week"), month = newest("month");
+  const N = S.newest || {};
   return `
   <section class="experts" aria-labelledby="h-experts">
     ${head}
-    ${today ? expertPeriodHTML(today) : ""}
-    ${week ? expertPeriodHTML(week) : `<p class="sub">${t.expNone}</p>`}
-    ${month ? expertPeriodHTML(month) : ""}
+    ${N.day ? gapPeriodHTML(N.day) : ""}
+    ${N.week ? gapPeriodHTML(N.week) : `<p class="sub">${t.expNone}</p>`}
+    ${N.month ? gapPeriodHTML(N.month) : ""}
     <p class="e-links"><a href="experts/${lang}/index.html">${t.expAll}</a> · <a href="sources/${lang}.html">${t.allSources}</a></p>
     <p class="sub">${t.expNote}</p>
   </section>`;

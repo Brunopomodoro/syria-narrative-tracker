@@ -77,6 +77,41 @@ def rewrite(cfg: dict, texts: dict) -> dict:
     return {x["key"]: x["text"] for x in got if x.get("key") in texts}
 
 
+def sync_indexes() -> int:
+    """The listings (data/weekly/index.json, data/monthly/index.json, the media analyses' index) keep copies of each
+    report's title and opening paragraphs; bring them back in line with the reports, so a text fixed in a report is
+    fixed on the Reports tab too. Returns how many entries changed."""
+    changed = 0
+    for folder, key in ((archive.DATA / "weekly", "week"), (archive.DATA / "monthly", "month")):
+        index = archive._load(folder / "index.json", []) or []
+        for e in index:
+            d = archive._load(folder / f"{e.get(key)}.json", None)
+            if d:
+                new = {k: d[k] for k in e if k != "generated_at" and k in d and d[k] != e[k]}
+                if new:
+                    e.update(new)
+                    changed += 1
+        if changed:
+            archive._save(folder / "index.json", index)
+    index, before = archive._load(experts.INDEX, []) or [], changed
+    for e in index:
+        a = archive._load(experts.PERIODS / f"{e['id']}.json", None)
+        if not a:
+            continue
+        for k in list(e):
+            m = re.fullmatch(r"(overall|security|economy|governance)_(title|lede)(_ar)?", k)
+            src = (a.get("overall") if m and m.group(1) == "overall" else (a.get("areas") or {}).get(m.group(1))) if m else None
+            if src and src.get(m.group(2) + (m.group(3) or "")):
+                v = src[m.group(2) + (m.group(3) or "")]
+                v = experts.plain(v) if m.group(2) == "lede" else v
+                if v != e[k]:
+                    e[k] = v
+                    changed += 1
+    if changed > before:
+        archive._save(experts.INDEX, index)
+    return changed
+
+
 def digest(text: str) -> str:
     return hashlib.sha1(text.encode("utf-8")).hexdigest()[:16]
 
@@ -84,6 +119,9 @@ def digest(text: str) -> str:
 def main() -> int:
     auto = "--auto" in sys.argv[1:]
     cfg = P.load_config()
+    synced = sync_indexes()
+    if synced:
+        print(f"{synced} listing entries brought in line with their reports.")
     if not P.secret("ANTHROPIC_API_KEY"):
         print("ANTHROPIC_API_KEY is not set.")
         return 0 if auto else 1
