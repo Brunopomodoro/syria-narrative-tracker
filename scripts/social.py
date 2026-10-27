@@ -1095,10 +1095,35 @@ def feed_room(cfg: dict, state: dict, now: dt.datetime, lang: str) -> int:
     return max(0, limit - used - reserve)
 
 
+def feed_recent(cfg: dict, state: dict, now: dt.datetime, lang: str) -> tuple:
+    """What the Page has carried lately, so a story post brings something new: the stories it posted or that led a
+    daily brief, a hand-added post or a story post in the last three days, and the topics of the last day's story
+    posts and brief."""
+    keys, themes = set(), set()
+    for e in (state.get("fb_feed") or {}).get("story_posts") or []:
+        if e.get("lang") == lang and (at := archive_parse(e.get("at"))) and now - at < dt.timedelta(hours=72):
+            keys.add(e.get("key"))
+            if now - at < dt.timedelta(hours=24) and e.get("theme"):
+                themes.add(e["theme"])
+    for e in archive._load(pages.DATA / "social_extra.json", []) or []:
+        if e.get("lang") == lang and (at := archive_parse(e.get("at"))) and now - at < dt.timedelta(hours=72):
+            keys.update(re.findall(r"/stories/\w+/([\w-]+)\.html", str(e.get("link") or "")))
+    for back in (1, 2, 3):
+        day = (now.date() - dt.timedelta(days=back)).isoformat()
+        summ = pages.daily_summary(cfg, archive.load_day(day)) if day in archive.all_days() else None
+        if not summ or not summ["stories"]:
+            continue
+        keys.add(summ["stories"][0].get("key"))                   # the brief's headline and card
+        if back == 1:
+            themes.add(summ["stories"][0].get("theme"))
+    return keys, themes
+
+
 def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
     """Story posts in the feeds of ready-made posts, for the Facebook Page through Zapier: `stories_per_day` a day
     (under facebook: in config.yaml), at the first hours of its `story_hours` (Damascus time), in each of
-    `feed_story_languages`; the best current story not posted there in the last two days. Each post is kept in
+    `feed_story_languages`; the best current story the Page has not carried in the last three days (feed_recent),
+    on another topic than the last day's posts when there is one. Each post is kept in
     data/social.json, so the feed item stays the same until it leaves the feed."""
     s = settings(cfg, "facebook")
     per_day = int(s.get("stories_per_day") or 0)
@@ -1118,12 +1143,16 @@ def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
         if feed_room(cfg, state, now, lang) < 1:
             print(f"Facebook feed: no story post at {slot}:00 ({lang}); the rest of this Zapier month's posts are kept for the reports.")
             continue
-        cands = story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang], pool_hours=24)
+        seen, themes = feed_recent(cfg, state, now, lang)
+        cands = [c for c in story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang], pool_hours=24)
+                 if c[0].get("key") not in seen]
+        cands = [c for c in cands if c[0].get("theme") not in themes] or cands       # another topic when there is one
         if not cands:
+            print(f"Facebook feed: no new story for the {slot}:00 slot ({lang}).")
             continue
         post = feed_story_post(cfg, *cands[0], lang, state)
         tag = slot.replace(" ", "-")
-        posts.append({"key": post["key"], "lang": lang, "slot": slot, "at": now.isoformat(timespec="seconds"), "title": post["title"],
+        posts.append({"key": post["key"], "theme": cands[0][0].get("theme"), "lang": lang, "slot": slot, "at": now.isoformat(timespec="seconds"), "title": post["title"],
                       "text": post["text"], "link": post["link"], "card": post["card"], "slug": f"story-{tag}", "guid": f"{post['link']}#fb-{tag}"})
         remember(state, post["words"] or post["text"], "fb_feed")
         print(f"Facebook feed: story {post['key']} added for the {slot}:00 slot ({lang}).")
