@@ -20,7 +20,7 @@ const T = {
     media: "Media coverage", medTitle: "What Syrian and international media report on security, the economy and governance.", medDayCard: "Daily analysis",
     medSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, with links to every report and article drawn on. A short analysis every day; one page per area and an overall one every week and every month. How it compares with what Syrians discuss is on the Topic gap tab.",
     gapMeasured: "Measured: each area's share of attention", gapLast7: "Last 7 days", gapLast30: "Last 30 days", gapSince: (d) => `Since ${d}`,
-    gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference",
+    gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference", gapPeopleShort: "People", gapMediaShort: "Media",
     gapAreas: { security: "Security", economy: "Economy and daily life", governance: "Governance and politics" },
     gapWords: { same: "About the same", people: "More from people", people2: "Much more from people", media: "More from the media", media2: "Much more from the media" },
     gapCounts: (a, b, p, m) => `${a} – ${b}: ${p} post analyses, ${m} media reports.`,
@@ -185,7 +185,7 @@ const T = {
     media: "التغطية الإعلامية", medTitle: "ما تنشره وسائل الإعلام السورية والدولية عن الأمن والاقتصاد والحوكمة.", medDayCard: "التحليل اليومي",
     medSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مع روابط إلى كل تقرير ومقال يستند إليه. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. أما المقارنة بما يناقشه السوريون ففي تبويب «اهتمامات الشارع».",
     gapMeasured: "بالأرقام: نصيب كل مجال من الاهتمام", gapLast7: "آخر ٧ أيام", gapLast30: "آخر ٣٠ يوماً", gapSince: (d) => `منذ ${d}`,
-    gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق",
+    gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق", gapPeopleShort: "الناس", gapMediaShort: "الإعلام",
     gapAreas: { security: "الأمن", economy: "الاقتصاد والحياة اليومية", governance: "الحوكمة والسياسة" },
     gapWords: { same: "متقارب", people: "أكثر لدى الناس", people2: "أكثر بكثير لدى الناس", media: "أكثر في الإعلام", media2: "أكثر بكثير في الإعلام" },
     gapCounts: (a, b, p, m) => `${a} – ${b}: ${p} تحليلاً لمنشورات، و${m} تقريراً إعلامياً.`,
@@ -1607,9 +1607,10 @@ function gapMeasureHTML(G) {
   const span = (g) => Math.round((new Date(g.to) - new Date(g.from)) / 864e5) + 1;
   if (!wins.length) return "";
   const word = (d) => t.gapWords[Math.abs(d) < 0.04 ? "same" : (d > 0 ? "people" : "media") + (Math.abs(d) >= 0.10 ? "2" : "")];
-  const bar = (v, cls) => `<span class="gbar ${cls}" style="width:${Math.max(1, Math.round(v * 100))}%"></span>`;
-  const table = (g) => `<table class="gtab"><thead><tr><th>${t.gapArea}</th><th>${t.gapPeople}</th><th>${t.gapMedia}</th><th>${t.gapDiff}</th></tr></thead><tbody>${
-    Object.entries(g.areas).map(([a, x]) => `<tr><td>${t.gapAreas[a]}</td><td>${bar(x.people, "gp")} ${pctText(x.people)}</td><td>${bar(x.media, "gm")} ${pctText(x.media)}</td><td>${word(x.people - x.media)}</td></tr>`).join("")}</tbody></table>
+  // one block per area: its name and the difference in words, then people's and the media's share on the same 0-100% scale
+  const row = (label, v, cls) => `<div class="grow"><span class="glbl">${label}</span><span class="gtrack"><span class="gbar ${cls}" style="width:${Math.max(1, Math.round(v * 100))}%"></span></span><span class="gval">${pctText(v)}</span></div>`;
+  const table = (g) => `<div class="gareas">${Object.entries(g.areas).map(([a, x]) => `<div class="garea"><div class="ghead"><b>${t.gapAreas[a]}</b><span>${word(x.people - x.media)}</span></div>
+    ${row(t.gapPeopleShort, x.people, "gp")}${row(t.gapMediaShort, x.media, "gm")}</div>`).join("")}</div>
     <p class="sub">${t.gapCounts(fmtDay(g.from, { day: "numeric", month: "long" }), fmtDay(g.to, { day: "numeric", month: "long" }), num(g.people_posts), num(g.media_items))}</p>`;
   return `<div class="e-period"><h3>${t.gapMeasured}</h3><p class="chart-legend"><span><i class="gp"></i>${t.gapPeople}</span><span><i class="gm"></i>${t.gapMedia}</span></p>
     ${wins.map(([k, label, days]) => `<h4>${span(G[k]) < days ? t.gapSince(fmtDay(G[k].from, { day: "numeric", month: "long" })) : label}</h4>${table(G[k])}`).join("")}<p class="sub">${t.gapHow}</p></div>`;
