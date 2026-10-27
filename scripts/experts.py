@@ -321,10 +321,10 @@ def topic_gap(start: str, end: str) -> dict | None:
 
 
 def write_topic_gap() -> None:
-    """data/topic_gap.json: the topic gap over the last 7 and the last 30 days, for the Topic gap tab."""
+    """data/topic_gap.json: the topic gap over the past week, month and 90 days, for the Topic gap tab."""
     today = dt.datetime.now(dt.timezone.utc).date()
     out = {"generated_at": now_iso(), "groups": {a: list(t) for a, t in AREA_THEMES.items()}}
-    for days in (7, 30):
+    for days in (7, 30, 90):
         out[f"last{days}"] = topic_gap((today - dt.timedelta(days=days - 1)).isoformat(), today.isoformat())
     archive._save(TOPIC_GAP, out)
 
