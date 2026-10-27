@@ -17,6 +17,12 @@ const T = {
     gapBlind: "What people raised that the media barely covered", gapFull: "The full media analysis, with its sources", gapNone: "No comparison for this period.",
     gapReport: { day: "In the daily report", week: "In the weekly report", month: "In the monthly report" },
     homeMeasure: "Mood gap: how Syrians feel about each story, compared with how outlets report it.",
+    gapMeasured: "Measured: each area's share of attention", gapLast7: "Last 7 days", gapLast30: "Last 30 days", gapSince: (d) => `Since ${d}`,
+    gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference",
+    gapAreas: { security: "Security", economy: "Economy and daily life", governance: "Governance and politics" },
+    gapWords: { same: "About the same", people: "More from people", people2: "Much more from people", media: "More from the media", media2: "Much more from the media" },
+    gapCounts: (a, b, p, m) => `${a} – ${b}: ${p} post analyses, ${m} media reports.`,
+    gapHow: "People: their own posts and comments on the tracker's stories, outlets not counted. Media: the reports filed under each area, each once. Areas group the tracker's themes: security (security, Israel and the south, the coast, Suwayda); economy and daily life (economy, refugees, society); governance and politics (governance, justice, the north-east, international relations). A difference under 4 points counts as about the same, 10 points or more as much more.",
     expAreas: { overall: "Overall", security: "Security", economy: "Economy", governance: "Governance" },
     expNone: "The first analyses are written after the first full week of collection.",
     expNote: "Written automatically by an AI model from the titles and short summaries of the reports, which are linked on each page. It describes what the reports say, not what is true. Most sources are based outside Syria, and paywalled outlets are missing: this is the international and regional media view, not the whole picture.",
@@ -174,6 +180,12 @@ const T = {
     gapBlind: "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", gapFull: "تحليل الإعلام كاملاً مع مصادره", gapNone: "لا مقارنة لهذه الفترة.",
     gapReport: { day: "في التقرير اليومي", week: "في التقرير الأسبوعي", month: "في التقرير الشهري" },
     homeMeasure: "فجوة المزاج: كيف يشعر السوريون تجاه كل قصة، مقارنةً بالطريقة التي تنقلها بها وسائل الإعلام.",
+    gapMeasured: "بالقياس: حصة كل مجال من الاهتمام", gapLast7: "آخر ٧ أيام", gapLast30: "آخر ٣٠ يوماً", gapSince: (d) => `منذ ${d}`,
+    gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق",
+    gapAreas: { security: "الأمن", economy: "الاقتصاد والحياة اليومية", governance: "الحوكمة والسياسة" },
+    gapWords: { same: "متقارب", people: "أكثر لدى الناس", people2: "أكثر بكثير لدى الناس", media: "أكثر في الإعلام", media2: "أكثر بكثير في الإعلام" },
+    gapCounts: (a, b, p, m) => `${a} – ${b}: ${p} تحليلاً لمنشورات، و${m} تقريراً إعلامياً.`,
+    gapHow: "الناس: منشوراتهم وتعليقاتهم على قصص المتتبّع، من دون وسائل الإعلام. الإعلام: التقارير المصنّفة في كل مجال، كلٌّ منها مرة واحدة. تجمع المجالات مواضيع المتتبّع: الأمن (الأمن، إسرائيل والجنوب، الساحل، السويداء)؛ الاقتصاد والحياة اليومية (الاقتصاد، اللاجئون، المجتمع)؛ الحوكمة والسياسة (الحوكمة، العدالة، الشمال الشرقي، العلاقات الدولية). يُعدّ الفرق دون ٤ نقاط متقارباً، و١٠ نقاط فأكثر أكبر بكثير.",
     expAreas: { overall: "نظرة شاملة", security: "الأمن", economy: "الاقتصاد", governance: "الحوكمة" },
     expNone: "تُكتب أولى التحليلات بعد أول أسبوع كامل من الجمع.",
     expNote: "كُتب تلقائياً بواسطة نموذج ذكاء اصطناعي انطلاقاً من عناوين التقارير وملخصاتها القصيرة، مع روابط إليها في كل صفحة. وهو يصف ما تقوله التقارير، لا ما هو صحيح. معظم المصادر خارج سوريا، والمنصات المدفوعة غير مشمولة: هذه قراءة الإعلام الدولي والإقليمي، لا الصورة كاملة.",
@@ -1551,6 +1563,7 @@ async function loadExperts() {
   if (S.loaded || S.loading) return;
   S.loading = true;
   S.index = await getJSON("data/experts/analyses/index.json").catch(() => []);
+  S.gap = await getJSON("data/topic_gap.json").catch(() => null);
   // the newest day, week and month in full, for their comparison with what people said
   S.newest = {};
   await Promise.all(["day", "week", "month"].map(async kind => {
@@ -1580,6 +1593,20 @@ function gapPeriodHTML(a) {
     ${blind ? `<h4>${t.gapBlind}</h4><ul>${blind}</ul>` : ""}
     <p class="e-links"><a href="${report}">${t.gapReport[a.kind]}</a> · <a href="experts/${lang}/${esc(a.id)}.html">${t.gapFull}</a></p></div>`;
 }
+// the topic gap measured: each area's share of people's posts next to its share of media reports
+function gapMeasureHTML(G) {
+  const t = L(), wins = [["last7", t.gapLast7, 7], ["last30", t.gapLast30, 30]].filter(([k]) => G && G[k]);
+  // the media reports go back less far than the archive: a window that starts later says so
+  const span = (g) => Math.round((new Date(g.to) - new Date(g.from)) / 864e5) + 1;
+  if (!wins.length) return "";
+  const word = (d) => t.gapWords[Math.abs(d) < 0.04 ? "same" : (d > 0 ? "people" : "media") + (Math.abs(d) >= 0.10 ? "2" : "")];
+  const bar = (v, cls) => `<span class="gbar ${cls}" style="width:${Math.max(1, Math.round(v * 100))}%"></span>`;
+  const table = (g) => `<table class="gtab"><thead><tr><th>${t.gapArea}</th><th>${t.gapPeople}</th><th>${t.gapMedia}</th><th>${t.gapDiff}</th></tr></thead><tbody>${
+    Object.entries(g.areas).map(([a, x]) => `<tr><td>${t.gapAreas[a]}</td><td>${bar(x.people, "gp")} ${pctText(x.people)}</td><td>${bar(x.media, "gm")} ${pctText(x.media)}</td><td>${word(x.people - x.media)}</td></tr>`).join("")}</tbody></table>
+    <p class="sub">${t.gapCounts(fmtDay(g.from, { day: "numeric", month: "long" }), fmtDay(g.to, { day: "numeric", month: "long" }), num(g.people_posts), num(g.media_items))}</p>`;
+  return `<div class="e-period"><h3>${t.gapMeasured}</h3><p class="chart-legend"><span><i class="gp"></i>${t.gapPeople}</span><span><i class="gm"></i>${t.gapMedia}</span></p>
+    ${wins.map(([k, label, days]) => `<h4>${span(G[k]) < days ? t.gapSince(fmtDay(G[k].from, { day: "numeric", month: "long" })) : label}</h4>${table(G[k])}`).join("")}<p class="sub">${t.gapHow}</p></div>`;
+}
 function expertsHTML() {
   const t = L(), S = state.experts, lang = state.lang;
   const head = `<h2 id="h-experts">${t.expTitle}</h2><p class="sub">${t.expSub}</p>`;
@@ -1588,6 +1615,7 @@ function expertsHTML() {
   return `
   <section class="experts" aria-labelledby="h-experts">
     ${head}
+    ${gapMeasureHTML(S.gap)}
     ${N.day ? gapPeriodHTML(N.day) : ""}
     ${N.week ? gapPeriodHTML(N.week) : `<p class="sub">${t.expNone}</p>`}
     ${N.month ? gapPeriodHTML(N.month) : ""}

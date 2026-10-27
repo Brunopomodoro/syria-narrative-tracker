@@ -290,6 +290,43 @@ AREA_THEMES = {"security": ("security", "israel-south", "coast-alawite", "suwayd
                "governance": ("governance", "justice", "northeast-kurdish", "international")}
 AREAS = ("overall", *DOMAINS)
 MIN_AREA_ITEMS = 3
+TOPIC_GAP = DATA.parent / "topic_gap.json"
+
+
+def topic_gap(start: str, end: str) -> dict | None:
+    """The topic gap measured: each area's share of what ordinary Syrians posted (people's own posts and comments on
+    the tracker's stories, outlets not counted, each story's theme filed under its area by AREA_THEMES) next to its
+    share of the media reports filed under the three areas (each report once; those set aside as not about Syria are
+    not counted), from start to end (YYYY-MM-DD, inclusive). None when either side has too little to compare."""
+    area_of = {t: a for a, themes in AREA_THEMES.items() for t in themes}
+    items = [i for i in (load_library().get("items") or []) if i.get("domain") in DOMAINS]
+    first = min((str(i.get("date", ""))[:10] for i in items), default=end)
+    start = max(start, first)                        # both sides over the same days: the media library is younger than the archive
+    people = dict.fromkeys(DOMAINS, 0)
+    for day in archive.all_days():
+        if start <= day <= end:
+            for run in archive.load_day(day).get("runs") or []:
+                for n in run.get("narratives") or []:
+                    if n.get("theme") in area_of:
+                        people[area_of[n["theme"]]] += int(n.get("public_volume") or 0)
+    media = dict.fromkeys(DOMAINS, 0)
+    for i in items:
+        if start <= str(i.get("date", ""))[:10] <= end:
+            media[i["domain"]] += 1
+    np, nm = sum(people.values()), sum(media.values())
+    if np < 50 or nm < 10:
+        return None
+    return {"from": start, "to": end, "people_posts": np, "media_items": nm,
+            "areas": {a: {"people": round(people[a] / np, 3), "media": round(media[a] / nm, 3)} for a in DOMAINS}}
+
+
+def write_topic_gap() -> None:
+    """data/topic_gap.json: the topic gap over the last 7 and the last 30 days, for the Topic gap tab."""
+    today = dt.datetime.now(dt.timezone.utc).date()
+    out = {"generated_at": now_iso(), "groups": {a: list(t) for a, t in AREA_THEMES.items()}}
+    for days in (7, 30):
+        out[f"last{days}"] = topic_gap((today - dt.timedelta(days=days - 1)).isoformat(), today.isoformat())
+    archive._save(TOPIC_GAP, out)
 
 LEANING = ("when you cite an outlet or think tank whose political orientation, ownership or state funding is widely documented, say so "
            "briefly and neutrally the first time you name it (for example \"the pro-Israel Middle East Forum\", \"Turkish state-run Anadolu "

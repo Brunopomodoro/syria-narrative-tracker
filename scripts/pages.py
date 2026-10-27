@@ -78,7 +78,11 @@ W = {   # the words on the static pages
            "mediaPending": "The media analysis of this period is not written yet; this report is updated when it is.",
            "pvmTitle": "Topic gap: people and the media", "pvmPeople": "What people talked about most", "pvmMedia": "What the media focused on",
            "pvmGap": "What people raised that the media barely covered", "pvmBrief": "The media in brief", "pvmRead": "Read the full analysis and its sources",
-           "pvmShare": "{p} of people's posts on average", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. The media: our analysis of Syrian and international media, think tanks and international organisations.",
+           "pvmShare": "{p} of people's posts on average",
+           "gapTitle": "Measured: each area's share of attention", "gapArea": "Area", "gapPeople": "People's posts", "gapMedia": "Media reports", "gapDiff": "Difference",
+           "gapAreas": {"security": "Security", "economy": "Economy and daily life", "governance": "Governance and politics"},
+           "gapWords": {"same": "About the same", "people": "More from people", "people2": "Much more from people", "media": "More from the media", "media2": "Much more from the media"},
+           "gapNote": "Share of people's own posts and comments on the tracker's stories in each area (outlets not counted), next to the share of the media reports filed under each area, over {a} to {b}: {np} post analyses and {nm} reports. Areas group the tracker's themes: security (security, Israel and the south, the coast, Suwayda); economy and daily life (economy, refugees, society); governance and politics (governance, justice, the north-east, international relations).", "pvmNote": "People: ordinary Syrians' own posts and comments on the tracker, outlets not counted. The media: our analysis of Syrian and international media, think tanks and international organisations.",
            "xDay": "What the media said that day", "xWeek": "This week in the media: our analysis of Syrian and international reporting and research",
            "xArea": "The media on {area} this week", "areas": {"security": "security", "economy": "the economy", "governance": "governance"}},
     "ar": {"tracker": "فجوة المزاج", "trends": "الاتجاهات", "data": "البيانات", "about": "حول الموقع", "switch": "English",
@@ -123,7 +127,11 @@ W = {   # the words on the static pages
            "mediaPending": "لم يُكتب بعد «تحليل الإعلام» لهذه الفترة؛ ويُحدَّث هذا التقرير حين يُكتب.",
            "pvmTitle": "فجوة المواضيع: الناس والإعلام", "pvmPeople": "ما تحدث عنه الناس أكثر من غيره", "pvmMedia": "ما ركّز عليه الإعلام",
            "pvmGap": "ما أثاره الناس ولم يتناوله الإعلام إلا قليلاً", "pvmBrief": "الإعلام باختصار", "pvmRead": "اقرأ التحليل الكامل ومصادره",
-           "pvmShare": "{p} من منشورات الناس في المتوسط", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
+           "pvmShare": "{p} من منشورات الناس في المتوسط",
+           "gapTitle": "بالقياس: حصة كل مجال من الاهتمام", "gapArea": "المجال", "gapPeople": "منشورات الناس", "gapMedia": "تقارير الإعلام", "gapDiff": "الفرق",
+           "gapAreas": {"security": "الأمن", "economy": "الاقتصاد والحياة اليومية", "governance": "الحوكمة والسياسة"},
+           "gapWords": {"same": "متقارب", "people": "أكثر لدى الناس", "people2": "أكثر بكثير لدى الناس", "media": "أكثر في الإعلام", "media2": "أكثر بكثير في الإعلام"},
+           "gapNote": "حصة منشورات الناس وتعليقاتهم على قصص المتتبّع في كل مجال (من دون وسائل الإعلام)، مقابل حصة تقارير الإعلام المصنّفة في كل مجال، من {a} إلى {b}: {np} تحليلاً لمنشورات و{nm} تقريراً. تجمع المجالات مواضيع المتتبّع: الأمن (الأمن، إسرائيل والجنوب، الساحل، السويداء)؛ الاقتصاد والحياة اليومية (الاقتصاد، اللاجئون، المجتمع)؛ الحوكمة والسياسة (الحوكمة، العدالة، الشمال الشرقي، العلاقات الدولية).", "pvmNote": "الناس: منشورات السوريين العاديين وتعليقاتهم على المتتبّع، من دون وسائل الإعلام. الإعلام: تحليلنا لوسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية.",
            "xDay": "ما قاله الإعلام في ذلك اليوم", "xWeek": "هذا الأسبوع في «تحليل الإعلام»: تحليلنا للتغطية والأبحاث السورية والدولية",
            "xArea": "{area} في الإعلام هذا الأسبوع", "areas": {"security": "الأمن", "economy": "الاقتصاد", "governance": "الحوكمة"}},
 }
@@ -678,7 +686,8 @@ def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str
         people.append(f'<li>{link} <span class="sub">{esc(w["pvmShare"].format(p=pct(e["average"], lang)))}</span></li>')
     areas = [x for x in X.DOMAINS if x in a["areas"]]
     media = [f'<li><a href="#{x}"><b>{esc(xw["areas"][x])}:</b> {esc(X.plain(tr(a["areas"][x], "title")))}</a></li>' for x in areas]
-    compare = (f'<div class="pvm-cols"><div><h3>{w["pvmPeople"]}</h3><ol>{"".join(people)}</ol></div>'
+    gap = X.topic_gap(start, end)
+    compare = ((gap_table(gap, lang) if gap else "") + f'<div class="pvm-cols"><div><h3>{w["pvmPeople"]}</h3><ol>{"".join(people)}</ol></div>'
                f'<div><h3>{w["pvmMedia"]}</h3><ul>{"".join(media)}</ul></div></div>')
     if tr(o, "syrians"):
         compare += f'<h3>{w["compareHow"]}</h3>{paras(tr(o, "syrians"))}'
@@ -713,6 +722,24 @@ def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str
         f'dir="{"rtl" if i.get("lang") in X.RTL else "ltr"}">{esc(i["title"])}</a> <span class="sub">{esc(fmt_date(i["date"], lang))}</span></li>'
         for i in items) + f'</ul><p class="sub">{esc(xw["note"])}</p>') if items else f'<p class="sub">{esc(xw["note"])}</p>'
     return {"compare": compare, "media": "".join(body), "watch": [X.linked(x, a) for x in tr(o, "watch") or []], "sources": sources}
+
+
+def gap_table(gap: dict, lang: str) -> str:
+    """The topic gap measured (experts.topic_gap): each area's share of people's posts and of media reports, as paired
+    bars, with the difference in words."""
+    w = W[lang]
+    def word(d):
+        return w["gapWords"]["same" if abs(d) < 0.04 else ("people" if d > 0 else "media") + ("2" if abs(d) >= 0.10 else "")]
+    def bar(v, colour):
+        return (f'<span style="display:inline-block;height:9px;width:{max(1, round(v * 100))}%;max-width:100%;background:{colour};'
+                f'border-radius:4px;vertical-align:middle;-webkit-print-color-adjust:exact;print-color-adjust:exact"></span>')
+    rows = "".join(
+        f'<tr><td>{esc(w["gapAreas"][a])}</td><td style="min-width:120px">{bar(x["people"], "#8A6420")} {pct(x["people"], lang)}</td>'
+        f'<td style="min-width:120px">{bar(x["media"], "#A7ABA3")} {pct(x["media"], lang)}</td><td>{esc(word(x["people"] - x["media"]))}</td></tr>'
+        for a, x in gap["areas"].items())
+    note = w["gapNote"].format(a=fmt_date(gap["from"], lang), b=fmt_date(gap["to"], lang), np=num(gap["people_posts"], lang), nm=num(gap["media_items"], lang))
+    return (f'<h3>{w["gapTitle"]}</h3><div class="tw"><table><thead><tr><th>{w["gapArea"]}</th><th>{w["gapPeople"]}</th><th>{w["gapMedia"]}</th>'
+            f'<th>{w["gapDiff"]}</th></tr></thead><tbody>{rows}</tbody></table></div><p class="sub">{esc(note)}</p>')
 
 
 def media_pending(end: str, lang: str) -> str:

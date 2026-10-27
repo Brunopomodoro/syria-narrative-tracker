@@ -1428,6 +1428,10 @@ def main() -> int:
     # Media and experts first (new reports, then a daily brief or a week's or month's analysis when due), then the
     # weekly digest and monthly review, which compare with it, and the static pages; none may fail the run
     experts.update(cfg, log)
+    try:
+        experts.write_topic_gap()                    # the Topic gap tab's measure over the last 7 and 30 days
+    except Exception as e:  # noqa: BLE001
+        log(f"  WARN  topic gap not measured: {e}")
     if experts.maybe_generate(cfg, state, log):
         save_json(state_path, state)
     if weekly.maybe_generate(cfg, state, log):
