@@ -2008,7 +2008,8 @@ def how_body(cfg: dict, latest: dict, lang: str) -> str:
             "gap": ({a: x for a, x in gap["areas"].items()} if gap else None), "areas": w["areas"],
             "outputs": [(label, root + href if href else (fb_profile(cfg) if lang == "ar" else x_profile(cfg)) or "") for label, href in w["outputs"]]}
     home = root + ("ar/" if lang == "ar" else "")
-    return (f'<style>{HOW_CSS}</style><article class="how" id="how" data-cfg="{esc(json.dumps(data, ensure_ascii=False))}">'
+    # the style sits inside the article, so the home page's welcome (which takes only the article) gets it too
+    return (f'<article class="how" id="how" data-cfg="{esc(json.dumps(data, ensure_ascii=False))}"><style>{HOW_CSS}</style>'
             f'<p class="tabname">{esc(w["title"])}</p><h1>{esc(w["title"])}</h1><p class="line">{esc(w["line"])}</p>'
             f'<div class="how-stage" hidden aria-hidden="true"></div>'
             f'<div class="how-ctrl" hidden><button type="button" class="pp">{esc(w["pause"])}</button>'
@@ -2018,7 +2019,7 @@ def how_body(cfg: dict, latest: dict, lang: str) -> str:
             f'<p class="limits">{esc(w["limits"])}</p>'
             f'<p class="cta"><a href="{home}">{esc(w["ctaMood"])}</a><a href="{root}daily/{lang}/index.html">{esc(w["ctaReport"])}</a>'
             f'<a href="{home}#about">{esc(w["ctaMethod"])}</a></p></article>'
-            f'<script src="{root}assets/how.js?v=2" defer></script>')
+            f'<script src="{root}assets/how.js?v=3" defer></script>')
 
 
 def write_how_pages(cfg: dict, latest: dict | None = None) -> None:

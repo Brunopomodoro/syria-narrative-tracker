@@ -19,7 +19,8 @@ const T = {
     homeMeasure: "How Syrians feel about each story, compared with how outlets report it.",
     media: "Media coverage", medTitle: "What Syrian and international media report on security, the economy and governance.", medDayCard: "Daily analysis",
     medSub: "Our analysis of what Syrian and international media, think tanks and international organisations say about Syria's security, economy and governance, with links to every report and article drawn on. A short analysis every day; one page per area and an overall one every week and every month. How it compares with what Syrians discuss is on the Topic gap tab.",
-    howLink: "See how it works →",
+    howLink: "See how it works →", howTitle: "How it works",
+    welcomeHead: "New here?", welcomeSub: "How the tracker works, in one minute.", welcomeSkip: "Skip to today's data",
     gapMeasured: "Measured: each area's share of attention", gapPeriod: "Period",
     gapWins: { last7: "Past week", last30: "Past month", last90: "Past 90 days" }, gapShort: (d) => `Media reports are collected from ${d}, so this period starts there.`,
     gapArea: "Area", gapPeople: "People's posts", gapMedia: "Media reports", gapDiff: "Difference", gapPeopleShort: "People", gapMediaShort: "Media",
@@ -186,7 +187,8 @@ const T = {
     homeMeasure: "كيف يشعر السوريون تجاه كل قصة، وكيف تنقلها وسائل الإعلام.",
     media: "التغطية الإعلامية", medTitle: "ما تنشره وسائل الإعلام السورية والدولية عن الأمن والاقتصاد والحوكمة.", medDayCard: "التحليل اليومي",
     medSub: "تحليلنا لما تقوله وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية عن الأمن والاقتصاد والحوكمة في سوريا، مع روابط إلى كل تقرير ومقال يستند إليه. تحليل قصير كل يوم، وصفحة لكل مجال وصفحة شاملة كل أسبوع وكل شهر. أما المقارنة بما يناقشه السوريون ففي تبويب «اهتمامات الشارع».",
-    howLink: "شاهد كيف يعمل ←",
+    howLink: "شاهد كيف يعمل ←", howTitle: "كيف يعمل الموقع",
+    welcomeHead: "زيارتك الأولى؟", welcomeSub: "كيف يعمل الموقع، في دقيقة واحدة.", welcomeSkip: "انتقل إلى بيانات اليوم",
     gapMeasured: "بالأرقام: نصيب كل مجال من الاهتمام", gapPeriod: "الفترة",
     gapWins: { last7: "الأسبوع الماضي", last30: "الشهر الماضي", last90: "آخر ٩٠ يوماً" }, gapShort: (d) => `تُجمع تقارير الإعلام منذ ${d}، لذا تبدأ هذه الفترة من ذلك التاريخ.`,
     gapArea: "المجال", gapPeople: "منشورات الناس", gapMedia: "تقارير الإعلام", gapDiff: "الفرق", gapPeopleShort: "الناس", gapMediaShort: "الإعلام",
@@ -429,6 +431,7 @@ function applyLang() {
   const how = document.createElement("a");                   // the animated walkthrough of how the site works
   how.href = `how/${state.lang}.html`; how.textContent = t.howLink; $("#intro").appendChild(how);
   $("#intro").hidden = state.view !== "home";
+  welcome();
   const xu = /^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(state.latest?.x_profile || "") ? state.latest.x_profile : "";
   const fu = /^https:\/\/(www\.)?facebook\.com\//.test(state.latest?.fb_profile || "") ? state.latest.fb_profile : "";
   const nl = /\/subscribe\/(en|ar)\.html$/.test(String(state.latest?.newsletter_url || ""));
@@ -1420,6 +1423,35 @@ function bindAbout() { bindCopy(); }
 /* =================== page =================== */
 // the same header on the Mood gap, Topic gap and Media coverage tabs: the tab's name, then a line on what it measures
 const tabHead = (name, line, id, sub) => `<div class="tabhead"><p class="tabname">${name}</p><h2 class="tabline" id="${id}">${line}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}</div>`;
+// First-time visitors: the How it works walkthrough at the top of the home page, once, with a way to skip it.
+// Taken from the How it works page itself (how/<lang>.html), so the two never differ; remembered in this browser only.
+const seenHow = () => { try { return localStorage.getItem("snt-how") === "1"; } catch (e) { return false; } };
+const markHow = () => { try { localStorage.setItem("snt-how", "1"); } catch (e) {} };
+async function welcome() {
+  const old = $("#welcome");
+  if (old && old.dataset.lang !== state.lang) old.remove();          // rebuilt in the new language
+  const box = $("#welcome");
+  if (box) { box.hidden = state.view !== "home"; return; }
+  if (state.view !== "home" || state.welcomeClosed || (seenHow() && !state.welcomeOpen)) return;
+  state.welcomeOpen = true;
+  markHow();
+  const t = L(), lang = state.lang, w = document.createElement("section");
+  w.id = "welcome"; w.className = "welcome"; w.dataset.lang = lang; w.setAttribute("aria-label", t.howTitle);
+  w.innerHTML = `<div class="welcome-head"><p><b>${esc(t.welcomeHead)}</b> ${esc(t.welcomeSub)}</p><button type="button" class="welcome-skip">${esc(t.welcomeSkip)}</button></div>`;
+  $("#intro").before(w);
+  w.querySelector(".welcome-skip").addEventListener("click", () => { state.welcomeClosed = true; state.welcomeOpen = false; w.remove(); });
+  try {
+    const page = await (await fetch(`${ROOT}how/${lang}.html`)).text();
+    const doc = new DOMParser().parseFromString(page, "text/html"), art = doc.querySelector("article.how");
+    if (!art || !w.isConnected) return;
+    art.querySelectorAll("h1, .tabname, .cta").forEach((e) => e.remove());
+    w.appendChild(document.importNode(art, true));
+    const src = doc.querySelector('script[src*="how.js"]')?.getAttribute("src") || "../assets/how.js";
+    const sc = document.createElement("script");
+    sc.src = ROOT ? src : src.replace(/^\.\.\//, "");          // the page's paths start one folder down, like the Arabic home
+    w.appendChild(sc);
+  } catch (e) { w.remove(); }
+}
 function heroHTML() {
   const t = L(), D = state.latest, o = D.overall || {}, st = D.stats || {}, h = num(D.window_hours || 24);
   const pub = has(o.public_sentiment) && (st.public_posts || 0) > 0;
