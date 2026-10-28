@@ -106,6 +106,7 @@
   let playing = !reduce, timer = null, started = false;
   function restartBar() {
     clearTimeout(timer);
+    if (!root.isConnected) return;                    // the walkthrough was taken off the page (the home page's welcome closed)
     bar.style.transition = "none"; bar.style.width = "0";
     if (!playing) return;
     bar.getBoundingClientRect();
