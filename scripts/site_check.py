@@ -29,7 +29,7 @@ from xml.etree import ElementTree
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKIP_DIRS = {".git", "node_modules", ".github", "validation"}
-APP_PAGES = {"index.html", "ar/index.html"}        # the app: same-origin scripts allowed; every other page has none
+APP_PAGES = {"index.html", "ar/index.html", "how/en.html", "how/ar.html"}   # the app and the How it works walkthrough: same-origin scripts allowed; every other page has none
 SECRETS = [("Anthropic API key", r"sk-ant-[A-Za-z0-9_\-]{20,}"), ("AWS key", r"AKIA[0-9A-Z]{16}"),
            ("GitHub token", r"gh[pousr]_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{40,}"), ("Slack token", r"xox[baprs]-[A-Za-z0-9-]{10,}"),
            ("Google API key", r"AIza[0-9A-Za-z_\-]{35}"), ("private key", r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),

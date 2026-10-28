@@ -401,7 +401,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a class="soc" href="{esc(fb_profile(cfg))}" rel="me noopener" aria-label="{w["followFb"]}" title="{w["followFb"]}">{ICON_FB}</a>') if fb_profile(cfg) else ''}{(f'<a class="soc" href="{esc(x_profile(cfg))}" rel="me noopener" aria-label="{w["followX"]}" title="{w["followX"]}">{ICON_X}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}how/{lang}.html">{HOW_WORDS[lang]['nav']}</a> · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a class="soc" href="{esc(fb_profile(cfg))}" rel="me noopener" aria-label="{w["followFb"]}" title="{w["followFb"]}">{ICON_FB}</a>') if fb_profile(cfg) else ''}{(f'<a class="soc" href="{esc(x_profile(cfg))}" rel="me noopener" aria-label="{w["followX"]}" title="{w["followX"]}">{ICON_X}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
 </div>
 </body>
 </html>
@@ -1306,6 +1306,7 @@ def write_sitemap(cfg: dict, digests: list, reviews: list | None = None) -> None
         if support_on(cfg):
             urls.append((f"{base}/support/{lang}.html", today, "yearly", "0.3"))
         urls.append((f"{base}/timeline/{lang}.html", today, "weekly", "0.8"))
+        urls.append((f"{base}/how/{lang}.html", today, "weekly", "0.7"))
     import experts                                   # imported here: experts imports this module
     urls += experts.sitemap_urls(base)
     body = "".join(f"<url><loc>{esc(u)}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n" for u, m, c, p in urls[:49000])
@@ -1885,6 +1886,150 @@ def write_timeline_pages(cfg: dict) -> None:
                                                        jsonld=[art, ld_breadcrumbs(cfg, lang, [(w["nav"], path)])]))
 
 
+# ----------------------------------------------------------------- how it works
+
+HOW_WORDS = {
+    "en": {"title": "How it works", "nav": "How it works",
+           "desc": "How the Syria Narrative Tracker works, in six steps: from public posts in Arabic, Kurdish and English to stories, the mood gap, the topic gap and open reports.",
+           "line": "From thousands of public posts a day to what Syrians feel and talk about, set against the media, in six steps.",
+           "play": "Play", "pause": "Pause", "prev": "Previous step", "next": "Next step", "step": "Step",
+           "people": "People", "outlets": "Outlets", "media": "Media", "setAside": "Set aside",
+           "sources": ["Telegram", "YouTube", "Bluesky", "Reddit", "News sites", "Search"],
+           "steps": [
+               ("Collect", "Every few hours the tracker reads public posts and comments about Syria from {sources} sources: Telegram channels, YouTube comments, Bluesky, Reddit and news sites, in Arabic, Kurdish and English.",
+                "{collected} posts collected in the last update"),
+               ("Sort", "Old, off-topic and repeated posts are set aside. The rest are sorted into ordinary people's posts and comments, and outlets' posts, and a sample of up to {max} goes to the analysis, mostly people's.",
+                "{relevant} relevant · {people} from people · {outlets} from outlets"),
+               ("Group into stories", "An AI model (Claude) groups the posts into stories: what happened, and what people say about it. Each story has its own page that follows it over time.",
+                "{stories} stories right now"),
+               ("Mood gap", "For each story the model reads the mood of people's reactions and the tone of each kind of outlet, from negative to positive, and sets them side by side.",
+                "Right now: people {people_mood}, outlets {outlet_mood}"),
+               ("Topic gap", "What people talk about is set against what Syrian and international media, think tanks and international organisations report, area by area.",
+                "Share of attention over the past week"),
+               ("Publish", "Everything becomes a daily, weekly and monthly report with a PDF, posts on Facebook and X, and open data anyone can download and reuse.",
+                "Free and open, in Arabic and English")],
+           "outputs": [("Daily report", "daily/en/index.html"), ("Weekly report", "weekly/en/index.html"), ("Monthly report", "monthly/en/index.html"),
+                       ("Media coverage", "#media"), ("Open data", "#data"), ("Facebook and X", "")],
+           "areas": {"security": "Security", "economy": "Economy and daily life", "governance": "Governance and politics"},
+           "limits": "It shows what is said, not what is true. It is not a survey: people who post online are not a sample of all Syrians, and connected people and the diaspora are over-represented. Individuals are never named, quoted or linked.",
+           "ctaMood": "See the Mood gap", "ctaReport": "Read the latest daily report", "ctaMethod": "The full method"},
+    "ar": {"title": "كيف يعمل الموقع", "nav": "كيف يعمل",
+           "desc": "كيف يعمل متتبّع السرديات السورية في ست خطوات: من المنشورات العامة بالعربية والكردية والإنجليزية إلى القصص ومزاج الشارع واهتماماته والتقارير المفتوحة.",
+           "line": "من آلاف المنشورات العامة كل يوم إلى ما يشعر به السوريون وما يشغلهم، مقارنةً بالإعلام، في ست خطوات.",
+           "play": "تشغيل", "pause": "إيقاف", "prev": "الخطوة السابقة", "next": "الخطوة التالية", "step": "الخطوة",
+           "people": "الناس", "outlets": "وسائل الإعلام", "media": "الإعلام", "setAside": "مستبعد",
+           "sources": ["تيليغرام", "يوتيوب", "بلوسكاي", "ريديت", "مواقع إخبارية", "البحث"],
+           "steps": [
+               ("الجمع", "كل بضع ساعات يقرأ المتتبّع المنشورات والتعليقات العامة عن سوريا من {sources} مصدراً: قنوات تيليغرام وتعليقات يوتيوب وبلوسكاي وريديت والمواقع الإخبارية، بالعربية والكردية والإنجليزية.",
+                "{collected} منشوراً جُمعت في آخر تحديث"),
+               ("الفرز", "تُستبعد المنشورات القديمة والبعيدة عن الموضوع والمكررة، ويُفرز الباقي بين منشورات الناس العاديين وتعليقاتهم ومنشورات وسائل الإعلام، وتذهب عيّنة تصل إلى {max} منشور إلى التحليل، معظمها من الناس.",
+                "{relevant} منشوراً ذا صلة · {people} من الناس · {outlets} من وسائل الإعلام"),
+               ("التجميع في قصص", "يجمع نموذج ذكاء اصطناعي (Claude) المنشورات في قصص: ما الذي حدث، وماذا يقول الناس عنه. ولكل قصة صفحة تتابعها مع الوقت.",
+                "{stories} قصص الآن"),
+               ("مزاج الشارع", "يقرأ النموذج في كل قصة مزاج تفاعل الناس ونبرة كل نوع من وسائل الإعلام، من السلبي إلى الإيجابي، ويضعهما جنباً إلى جنب.",
+                "الآن: الناس {people_mood}، ووسائل الإعلام {outlet_mood}"),
+               ("اهتمامات الشارع", "يُقارَن ما يتحدث عنه الناس بما تنشره وسائل الإعلام السورية والدولية ومراكز الأبحاث والمنظمات الدولية، مجالاً مجالاً.",
+                "نصيب كل مجال من الاهتمام في الأسبوع الماضي"),
+               ("النشر", "يتحول كل ذلك إلى تقرير يومي وأسبوعي وشهري مع ملف PDF، ومنشورات على فيسبوك وX، وبيانات مفتوحة يمكن لأي أحد تنزيلها وإعادة استخدامها.",
+                "مجاني ومفتوح، بالعربية والإنجليزية")],
+           "outputs": [("التقرير اليومي", "daily/ar/index.html"), ("التقرير الأسبوعي", "weekly/ar/index.html"), ("التقرير الشهري", "monthly/ar/index.html"),
+                       ("التغطية الإعلامية", "ar/#media"), ("بيانات مفتوحة", "ar/#data"), ("فيسبوك وX", "")],
+           "areas": {"security": "الأمن", "economy": "الاقتصاد والحياة اليومية", "governance": "الحوكمة والسياسة"},
+           "limits": "يعرض الموقع ما يُقال، لا ما هو صحيح. وهو ليس استطلاعاً: من ينشرون على الإنترنت ليسوا عيّنة من كل السوريين، ويحضر فيه المتصلون بالإنترنت والمغتربون أكثر من غيرهم. ولا يُذكر الأفراد ولا يُقتبس كلامهم ولا تُربط منشوراتهم.",
+           "ctaMood": "مزاج الشارع الآن", "ctaReport": "اقرأ آخر تقرير يومي", "ctaMethod": "المنهجية كاملة"},
+}
+
+HOW_CSS = """
+.how .tabname{margin:0 0 6px;color:var(--brass);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+[dir=rtl] .how .tabname{font-size:.92rem;letter-spacing:0}
+.how h1{font-size:1.9rem;margin:0 0 6px}.how .line{font-family:var(--display);font-size:1.25rem;line-height:1.35;margin:0 0 22px;max-width:40ch}
+.how-stage{position:relative;border:1px solid var(--rule);border-radius:14px;background:#FBF7EE;overflow:hidden;aspect-ratio:2/1;margin:0 0 14px}
+.how-stage svg{position:absolute;inset:0;width:100%;height:100%}
+.how-stage .dot{transition:transform 1.15s cubic-bezier(.2,.7,.2,1),opacity .7s ease}
+.how-stage .lbl{font:600 15px var(--sans);fill:var(--muted)}.how-stage .src{font:500 14px var(--sans);fill:var(--faint)}
+.how-stage .lbl,.how-stage .src,.how-stage .story{transition:opacity .6s ease}
+.how-stage .story{font:600 13px var(--sans);fill:var(--ink)}
+.how-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:4% 6%;opacity:0;transition:opacity .6s ease;pointer-events:none}
+.how-ov.on{opacity:1;pointer-events:auto}
+.how-ov .card{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;width:min(520px,100%);box-shadow:0 6px 24px rgba(26,24,20,.06)}
+.how-meter{display:grid;grid-template-columns:5.2em 1fr;gap:6px 12px;align-items:center;margin:10px 0}
+.how-meter .trk{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,#A3303C,#A7ABA3 50%,#256454)}
+[dir=rtl] .how-meter .trk{background:linear-gradient(270deg,#A3303C,#A7ABA3 50%,#256454)}
+.how-meter .mk{position:absolute;top:50%;width:18px;height:18px;margin:-9px;border-radius:50%;background:#fff;border:4px solid var(--ink);transition:inset-inline-start 1.2s cubic-bezier(.2,.7,.2,1);inset-inline-start:50%}
+.how-meter .w{grid-column:2;font-size:.85rem;color:var(--muted)}
+.how-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--faint);grid-column:2}
+.how-gap{display:grid;gap:8px}.how-gap .a{font-weight:600;font-size:.9rem;margin-top:4px}
+.how-gap .r{display:grid;grid-template-columns:4.6em 1fr 2.8em;gap:8px;align-items:center;font-size:.85rem}
+.how-gap .t{height:9px;border-radius:5px;background:var(--wash);overflow:hidden}.how-gap .b{display:block;height:100%;width:0;border-radius:5px;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.how-gap .p{background:var(--brass)}.how-gap .m{background:var(--neu)}.how-gap .v{text-align:end;font-variant-numeric:tabular-nums}
+.how-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(560px,100%)}
+.how-out a,.how-out span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:64px;padding:8px;border:1px solid var(--rule);border-radius:10px;background:var(--paper);text-decoration:none;color:var(--ink);font-weight:600;font-size:.92rem;transform:scale(.85);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.how-ov.on .how-out a,.how-ov.on .how-out span{transform:none;opacity:1}
+.how-ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+.how-ctrl button{font:inherit;font-size:.85rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.how-ctrl button[aria-current=step]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.how-ctrl .sp{flex:1}
+.how-bar{height:3px;background:var(--rule);border-radius:2px;overflow:hidden;margin:0 0 16px}.how-bar i{display:block;height:100%;width:0;background:var(--brass)}
+.how-steps{list-style:none;padding:0;margin:0 0 22px}
+.how-steps li{padding:12px 0;border-top:1px solid var(--rule)}
+.how-steps h2{font-size:1.15rem;margin:0 0 4px}.how-steps h2 .n{color:var(--brass)}
+.how-steps p{margin:0 0 4px}.how-steps .stat{font-weight:600;color:var(--brass)}
+.how.js .how-steps li{display:none;border:0;padding:0}.how.js .how-steps li.on{display:block}
+.how .limits{font-size:.9rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px}
+.how .cta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.how .cta a{border:1px solid var(--brass);border-radius:999px;padding:7px 16px;text-decoration:none;font-weight:600;color:var(--ink)}
+@media (max-width:560px){.how-stage{aspect-ratio:5/4}.how-stage .src{font-size:24px}.how-stage .lbl{font-size:26px}.how-stage .story{font-size:22px}.how-out{grid-template-columns:repeat(2,1fr)}.how-out a,.how-out span{min-height:48px;font-size:.85rem}.how-ov{padding:3%}.how-ov .card{padding:10px 12px}.how-gap{gap:2px}.how-gap .a{margin-top:2px;font-size:.82rem}.how-gap .r{font-size:.78rem;line-height:1.3}.how-meter{margin:6px 0}}
+@media (prefers-reduced-motion:reduce){.how-stage .dot,.how-meter .mk,.how-gap .b,.how-out a,.how-out span,.how-ov{transition:none}}
+"""
+
+
+def how_body(cfg: dict, latest: dict, lang: str) -> str:
+    """The How it works page: six steps as plain text (all of it readable without scripts), and the data for
+    assets/how.js, which turns them into an animated walkthrough with today's numbers."""
+    w, root = HOW_WORDS[lang], "../"
+    st, ov = latest.get("stats") or {}, latest.get("overall") or {}
+    narr = sorted(latest.get("narratives") or [], key=lambda n: -(n.get("share") or 0))
+    nums = {"sources": num(int(st.get("sources_ok") or 0), lang), "collected": num(int(st.get("collected") or 0), lang),
+            "relevant": num(int(st.get("relevant") or 0), lang), "people": num(int(st.get("public_posts") or 0), lang),
+            "outlets": num(int(st.get("outlet_posts") or 0), lang), "max": num(int(cfg.get("max_posts", 800)), lang),
+            "stories": num(len(narr), lang), "people_mood": tone_label(ov.get("public_sentiment"), lang).lower() if lang == "en" else tone_label(ov.get("public_sentiment"), lang),
+            "outlet_mood": tone_label(ov.get("sentiment"), lang).lower() if lang == "en" else tone_label(ov.get("sentiment"), lang)}
+    gap = (archive._load(DATA / "topic_gap.json", {}) or {}).get("last7")
+    steps = "".join(f'<li data-step="{i}"><h2><span class="n">{num(i + 1, lang)}.</span> {esc(h)}</h2><p>{esc(t.format(**nums))}</p><p class="stat">{esc(x.format(**nums))}</p></li>'
+                    for i, (h, t, x) in enumerate(w["steps"]))
+    title = lambda n: str((n.get("title_ar") if lang == "ar" else n.get("title")) or n.get("title") or "")
+    data = {"rtl": lang == "ar", "people": w["people"], "outlets": w["outlets"], "media": w["media"], "setAside": w["setAside"],
+            "sources": w["sources"], "play": w["play"], "pause": w["pause"], "step": w["step"],
+            "split": [int(st.get("public_posts") or 0), int(st.get("outlet_posts") or 0)],
+            "stories": [{"t": title(n)[:60], "s": round(float(n.get("share") or 0), 3)} for n in narr[:5]],
+            "tone": {"people": ov.get("public_sentiment"), "outlets": ov.get("sentiment")},
+            "toneWords": {"people": tone_label(ov.get("public_sentiment"), lang), "outlets": tone_label(ov.get("sentiment"), lang)},
+            "ends": [W[lang]["tone"][0], W[lang]["tone"][4]],
+            "gap": ({a: x for a, x in gap["areas"].items()} if gap else None), "areas": w["areas"],
+            "outputs": [(label, root + href if href else (fb_profile(cfg) if lang == "ar" else x_profile(cfg)) or "") for label, href in w["outputs"]]}
+    home = root + ("ar/" if lang == "ar" else "")
+    return (f'<style>{HOW_CSS}</style><article class="how" id="how" data-cfg="{esc(json.dumps(data, ensure_ascii=False))}">'
+            f'<p class="tabname">{esc(w["title"])}</p><h1>{esc(w["title"])}</h1><p class="line">{esc(w["line"])}</p>'
+            f'<div class="how-stage" hidden aria-hidden="true"></div>'
+            f'<div class="how-ctrl" hidden><button type="button" class="pp">{esc(w["pause"])}</button>'
+            + "".join(f'<button type="button" data-go="{i}" title="{esc(w["step"])} {i + 1}">{esc(h)}</button>' for i, (h, _, _) in enumerate(w["steps"]))
+            + f'</div><div class="how-bar" hidden><i></i></div>'
+            f'<ol class="how-steps" aria-live="polite">{steps}</ol>'
+            f'<p class="limits">{esc(w["limits"])}</p>'
+            f'<p class="cta"><a href="{home}">{esc(w["ctaMood"])}</a><a href="{root}daily/{lang}/index.html">{esc(w["ctaReport"])}</a>'
+            f'<a href="{home}#about">{esc(w["ctaMethod"])}</a></p></article>'
+            f'<script src="{root}assets/how.js?v=2" defer></script>')
+
+
+def write_how_pages(cfg: dict, latest: dict | None = None) -> None:
+    latest = latest or archive._load(DATA / "latest.json", {}) or {}
+    csp = CSP.replace("script-src 'none'", "script-src 'self'")
+    for lang in LANGS:
+        other, w = "ar" if lang == "en" else "en", HOW_WORDS[lang]
+        write(ROOT / "how" / f"{lang}.html", page(cfg, lang, w["title"], w["desc"], how_body(cfg, latest, lang),
+                                                f"how/{lang}.html", f"how/{other}.html", root="../", kind="website", csp=csp))
+
+
 def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     """Everything the pipeline does after a run: story pages for the run's stories, listings, feeds, sitemap, prerender."""
     update_story_index(latest)
@@ -1908,4 +2053,5 @@ def publish(cfg: dict, latest: dict, narratives: list | None = None) -> None:
     write_subscribe_pages(cfg)
     write_sources_pages(cfg)
     write_timeline_pages(cfg)
+    write_how_pages(cfg, latest)
     prerender_index(cfg, latest)
