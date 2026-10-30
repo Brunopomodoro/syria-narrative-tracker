@@ -1423,11 +1423,12 @@ function bindAbout() { bindCopy(); }
 /* =================== page =================== */
 // the same header on the Mood gap, Topic gap and Media coverage tabs: the tab's name, then a line on what it measures
 const tabHead = (name, line, id, sub) => `<div class="tabhead"><p class="tabname">${name}</p><h2 class="tabline" id="${id}">${line}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}</div>`;
-// First-time visitors to the English home page: a landing screen over it (what the site is, a link to How it works, and
-// the way in), once per browser; the Arabic home opens directly. Not shown on links to a tab (#trends and so on), nor to
-// search engines, which see the page itself.
-const seenLanding = () => { try { return localStorage.getItem("snt-landing") === "1" || localStorage.getItem("snt-how") === "1"; } catch (e) { return false; } };
-const markLanding = () => { try { localStorage.setItem("snt-landing", "1"); } catch (e) {} };
+// Every visit to the English home page opens on a landing screen (what the site is, a link to How it works, and the way
+// in), once per visit: after entering, moving around the site or coming back from another page in the same tab goes
+// straight in (sessionStorage, cleared when the tab is closed). The Arabic home opens directly. Not shown on links to a
+// tab (#trends and so on), nor to search engines, which see the page itself.
+const seenLanding = () => { try { return sessionStorage.getItem("snt-landing") === "1"; } catch (e) { return false; } };
+const markLanding = () => { try { sessionStorage.setItem("snt-landing", "1"); } catch (e) {} };
 function landing() {
   const old = $("#landing");
   if (old) { if (old.dataset.lang === state.lang) return; old.remove(); }
