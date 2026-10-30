@@ -401,7 +401,7 @@ def page(cfg: dict, lang: str, title: str, description: str, body: str, path: st
 <main>
 {body}
 </main>
-<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}how/{lang}.html">{HOW_WORDS[lang]['nav']}</a> · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a class="soc" href="{esc(fb_profile(cfg))}" rel="me noopener" aria-label="{w["followFb"]}" title="{w["followFb"]}">{ICON_FB}</a>') if fb_profile(cfg) else ''}{(f'<a class="soc" href="{esc(x_profile(cfg))}" rel="me noopener" aria-label="{w["followX"]}" title="{w["followX"]}">{ICON_X}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
+<footer>{esc(w['footer'])}{(' · ' + esc(fmt_date(updated, lang, True))) if updated else ''} · <a href="{root}how/{lang}.html">{HOW_WORDS[lang]['nav']}</a> · <a href="{root}privacy/{lang}.html">{w['privacy']}</a>{(f' · <a href="{root}support/{lang}.html">{w["support"]}</a>') if support_on(cfg) else ''} · <a href="{root}contact/{lang}.html">{w['contact']}</a> · <a href="{root}sources/{lang}.html">{SOURCES_WORDS[lang]['title']}</a>{(f' · <a class="soc" href="{esc(fb_profile(cfg))}" rel="me noopener" aria-label="{w["followFb"]}" title="{w["followFb"]}">{ICON_FB}</a>') if fb_profile(cfg) else ''}{(f'{"" if fb_profile(cfg) else " · "}<a class="soc" href="{esc(x_profile(cfg))}" rel="me noopener" aria-label="{w["followX"]}" title="{w["followX"]}">{ICON_X}</a>') if x_profile(cfg) else ''}{(f' · <a href="{root}subscribe/{lang}.html">{NEWS_WORDS[lang]["nav"]}</a>') if newsletter_on(cfg) else ''}</footer>
 </div>
 </body>
 </html>
@@ -2006,7 +2006,7 @@ def how_body(cfg: dict, latest: dict, lang: str) -> str:
             "toneWords": {"people": tone_label(ov.get("public_sentiment"), lang), "outlets": tone_label(ov.get("sentiment"), lang)},
             "ends": [W[lang]["tone"][0], W[lang]["tone"][4]],
             "gap": ({a: x for a, x in gap["areas"].items()} if gap else None), "areas": w["areas"],
-            "outputs": [(label, root + href if href else (fb_profile(cfg) if lang == "ar" else x_profile(cfg)) or "") for label, href in w["outputs"]]}
+            "outputs": [(label, root + href if href else (fb_profile(cfg) or x_profile(cfg) if lang == "ar" else x_profile(cfg)) or "") for label, href in w["outputs"]]}
     home = root + ("ar/" if lang == "ar" else "")
     # the style sits inside the article, so the home page's welcome (which takes only the article) gets it too
     return (f'<article class="how" id="how" data-cfg="{esc(json.dumps(data, ensure_ascii=False))}"><style>{HOW_CSS}</style>'
