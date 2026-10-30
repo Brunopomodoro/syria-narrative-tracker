@@ -1423,14 +1423,15 @@ function bindAbout() { bindCopy(); }
 /* =================== page =================== */
 // the same header on the Mood gap, Topic gap and Media coverage tabs: the tab's name, then a line on what it measures
 const tabHead = (name, line, id, sub) => `<div class="tabhead"><p class="tabname">${name}</p><h2 class="tabline" id="${id}">${line}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}</div>`;
-// First-time visitors: a landing screen over the home page (what the site is, a link to How it works, and the way
-// in), once per browser. Not shown on links to a tab (#trends and so on), nor to search engines, which see the page itself.
+// First-time visitors to the English home page: a landing screen over it (what the site is, a link to How it works, and
+// the way in), once per browser; the Arabic home opens directly. Not shown on links to a tab (#trends and so on), nor to
+// search engines, which see the page itself.
 const seenLanding = () => { try { return localStorage.getItem("snt-landing") === "1" || localStorage.getItem("snt-how") === "1"; } catch (e) { return false; } };
 const markLanding = () => { try { localStorage.setItem("snt-landing", "1"); } catch (e) {} };
 function landing() {
   const old = $("#landing");
   if (old) { if (old.dataset.lang === state.lang) return; old.remove(); }
-  if (state.view !== "home" || location.hash || state.entered || seenLanding() || /bot|crawl|spider|slurp|lighthouse|headlesschrome/i.test(navigator.userAgent)) return;
+  if (state.lang !== "en" || state.view !== "home" || location.hash || state.entered || seenLanding() || /bot|crawl|spider|slurp|lighthouse|headlesschrome/i.test(navigator.userAgent)) return;
   const t = L(), d = document.createElement("div");
   d.id = "landing"; d.className = "landing"; d.dataset.lang = state.lang;
   d.setAttribute("role", "dialog"); d.setAttribute("aria-modal", "true"); d.setAttribute("aria-labelledby", "landing-title");
@@ -1451,7 +1452,7 @@ function landing() {
   document.addEventListener("keydown", onKey);
   d.querySelector(".landing-enter").addEventListener("click", enter);
   d.querySelector(".landing-how").addEventListener("click", markLanding);          // back from How it works, the site opens directly
-  d.querySelector(".landing-lang").addEventListener("click", () => $("#lang-btn").click());
+  d.querySelector(".landing-lang").addEventListener("click", () => { markLanding(); $("#lang-btn").click(); });   // into the Arabic site
   d.querySelector(".landing-enter").focus({ preventScroll: true, focusVisible: false });
 }
 function heroHTML() {
