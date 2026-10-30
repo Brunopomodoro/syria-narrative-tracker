@@ -1436,11 +1436,12 @@ function landing() {
   const t = L(), d = document.createElement("div");
   d.id = "landing"; d.className = "landing"; d.dataset.lang = state.lang;
   d.setAttribute("role", "dialog"); d.setAttribute("aria-modal", "true"); d.setAttribute("aria-labelledby", "landing-title");
-  d.innerHTML = `<div class="landing-in">${$(".brand .mark")?.outerHTML || ""}<h2 id="landing-title">${esc(t.title)}</h2>
+  d.innerHTML = `<div class="landing-in"><div class="landing-copy">${$(".brand .mark")?.outerHTML || ""}<h2 id="landing-title">${esc(t.title)}</h2>
     <p class="landing-text">${esc(t.intro)}</p>
     <p class="landing-go"><button type="button" class="landing-enter">${esc(t.enterSite)}</button><a class="landing-how" href="how/${state.lang}.html">${esc(t.howLink)}</a></p>
-    <button type="button" class="landing-lang" lang="${t.switchLang}">${esc(t.switchTo)}</button></div>`;
+    <button type="button" class="landing-lang" lang="${t.switchLang}">${esc(t.switchTo)}</button></div></div>`;
   document.body.appendChild(d);
+  landingDemo(d);
   document.documentElement.classList.add("landing-open");
   const enter = () => {
     state.entered = true; markLanding();
@@ -1455,6 +1456,25 @@ function landing() {
   d.querySelector(".landing-how").addEventListener("click", markLanding);          // back from How it works, the site opens directly
   d.querySelector(".landing-lang").addEventListener("click", () => { markLanding(); $("#lang-btn").click(); });   // into the Arabic site
   d.querySelector(".landing-enter").focus({ preventScroll: true, focusVisible: false });
+}
+// The How it works walkthrough beside the landing's text, playing on its own (still for visitors who turn off motion).
+// Taken from the How it works page itself (how/<lang>.html), so the two never differ.
+async function landingDemo(d) {
+  try {
+    const page = await (await fetch(`${ROOT}how/${state.lang}.html`)).text();
+    const doc = new DOMParser().parseFromString(page, "text/html"), art = doc.querySelector("article.how");
+    if (!art || !d.isConnected) return;
+    art.querySelectorAll("h1, .tabname, .line, .limits, .cta").forEach((e) => e.remove());
+    const box = document.createElement("div");
+    box.className = "landing-demo"; box.setAttribute("aria-label", L().howTitle);
+    box.appendChild(document.importNode(art, true));
+    d.querySelector(".landing-in").appendChild(box);
+    d.querySelector(".landing-in").classList.add("with-demo");
+    const src = doc.querySelector('script[src*="how.js"]')?.getAttribute("src") || "../assets/how.js";
+    const sc = document.createElement("script");
+    sc.src = ROOT ? src : src.replace(/^\.\.\//, "");          // the page's paths start one folder down, like the Arabic home
+    box.appendChild(sc);
+  } catch (e) {}
 }
 function heroHTML() {
   const t = L(), D = state.latest, o = D.overall || {}, st = D.stats || {}, h = num(D.window_hours || 24);
