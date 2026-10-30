@@ -235,9 +235,31 @@
   .landing { position: fixed; inset: 0; z-index: 50; background: var(--paper); display: flex; align-items: center; justify-content: center; padding: 24px 16px; overflow-y: auto; transition: opacity .35s ease; }
   .landing.out { opacity: 0; pointer-events: none; }
   html.landing-open, html.landing-open body { overflow: hidden; }
-  .landing-in { max-width: 640px; width: 100%; text-align: center; }
-  .landing-in > * { animation: landing-up .7s cubic-bezier(.2,.7,.2,1) both; }
-  .landing-in > :nth-child(2) { animation-delay: .08s; } .landing-in > :nth-child(3) { animation-delay: .16s; } .landing-in > :nth-child(4) { animation-delay: .24s; } .landing-in > :nth-child(5) { animation-delay: .32s; }
+  .landing-in { max-width: 640px; width: 100%; text-align: center; margin: auto; }
+  .landing-in.with-demo { max-width: 1180px; }
+  .landing-demo { margin: 4px 0 0; text-align: start; animation-delay: .3s; }
+  .landing-demo .how-steps { margin-bottom: 0; }
+  .landing-demo .how-steps h2 { font-size: 1.1rem; }
+  .landing-demo .how-ctrl button { font-size: .8rem; padding: 5px 10px; }
+  @media (max-width: 959px) {                 /* phones and tablets: the walkthrough right under the button, the links after it */
+    .landing-in.with-demo { display: flex; flex-direction: column; }
+    .landing-in.with-demo .landing-copy { display: contents; }
+    .landing-in.with-demo .mark { order: 1; width: 56px; height: 56px; margin-bottom: 12px; }
+    .landing-in.with-demo h2 { order: 2; margin-bottom: 12px; }
+    .landing-in.with-demo .landing-text { order: 3; margin-bottom: 20px; }
+    .landing-in.with-demo .landing-go { order: 4; margin-bottom: 22px; }
+    .landing-in.with-demo .landing-how { display: none; }
+    .landing-in.with-demo .landing-demo { order: 5; }
+    .landing-in.with-demo .landing-lang { order: 6; align-self: center; margin-top: 18px; }
+  }
+  @media (min-width: 960px) {
+    .landing-in.with-demo { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 48px; align-items: center; text-align: start; }
+    .landing-in.with-demo .mark { margin: 0 0 18px; }
+    .landing-in.with-demo .landing-go { align-items: flex-start; }
+    .landing-in.with-demo .landing-text { font-size: 1.12rem; }
+  }
+  .landing-copy > *, .landing-demo { animation: landing-up .7s cubic-bezier(.2,.7,.2,1) both; }
+  .landing-copy > :nth-child(2) { animation-delay: .08s; } .landing-copy > :nth-child(3) { animation-delay: .16s; } .landing-copy > :nth-child(4) { animation-delay: .24s; } .landing-copy > :nth-child(5) { animation-delay: .32s; }
   @keyframes landing-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   .landing .mark { width: 72px; height: 72px; display: block; margin: 0 auto 18px; }
   .landing h2 { font-family: var(--display); font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.2; margin: 0 0 18px; }
@@ -247,7 +269,7 @@
   .landing-enter:hover { filter: brightness(1.08); }
   .landing-how { font-weight: 600; color: var(--ink); }
   .landing-lang { font: inherit; font-size: .9rem; border: 1px solid var(--rule); background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 16px; cursor: pointer; }
-  @media (prefers-reduced-motion: reduce) { .landing-in > * { animation: none; } .landing { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .landing-copy > *, .landing-demo { animation: none; } .landing { transition: none; } }
   .pre { padding: 20px 0; border-top: 1px solid var(--rule); }
   .pre h2 { font-size: 1.2rem; }
   .pre li { margin-bottom: 8px; }
@@ -480,6 +502,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="assets/app.js?v=20261030c"></script>
+<script src="assets/app.js?v=20261030d"></script>
 </body>
 </html>
