@@ -232,12 +232,22 @@
   @media (max-width: 560px) { .multiples.tones { grid-template-columns: minmax(0, 1fr); } }
   .about-page .langs { margin: 0 0 22px; }
   .intro { max-width: 64ch; margin: 6px 0 30px; color: var(--muted); font-size: 1rem; line-height: 1.65; }
-  .welcome { margin: 8px 0 30px; padding: 16px 18px 6px; border: 1px solid var(--rule); border-radius: 14px; background: #FBF7EE; }
-  .welcome-head { display: flex; justify-content: space-between; align-items: center; gap: 10px 16px; flex-wrap: wrap; margin-bottom: 12px; }
-  .welcome-head p { margin: 0; font-size: 1.05rem; }
-  .welcome-skip { font: inherit; font-size: .88rem; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 7px 16px; cursor: pointer; }
-  .welcome .how .line { font-size: 1.05rem; margin-bottom: 14px; }
-  .welcome .how .limits { margin-bottom: 8px; }
+  .landing { position: fixed; inset: 0; z-index: 50; background: var(--paper); display: flex; align-items: center; justify-content: center; padding: 24px 16px; overflow-y: auto; transition: opacity .35s ease; }
+  .landing.out { opacity: 0; pointer-events: none; }
+  html.landing-open, html.landing-open body { overflow: hidden; }
+  .landing-in { max-width: 640px; width: 100%; text-align: center; }
+  .landing-in > * { animation: landing-up .7s cubic-bezier(.2,.7,.2,1) both; }
+  .landing-in > :nth-child(2) { animation-delay: .08s; } .landing-in > :nth-child(3) { animation-delay: .16s; } .landing-in > :nth-child(4) { animation-delay: .24s; } .landing-in > :nth-child(5) { animation-delay: .32s; }
+  @keyframes landing-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .landing .mark { width: 72px; height: 72px; display: block; margin: 0 auto 18px; }
+  .landing h2 { font-family: var(--display); font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.2; margin: 0 0 18px; }
+  .landing-text { font-family: var(--display); font-size: clamp(1.05rem, 2.6vw, 1.25rem); line-height: 1.65; margin: 0 0 30px; color: var(--ink); }
+  .landing-go { display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 0 0 34px; }
+  .landing-enter { font: inherit; font-size: 1.05rem; font-weight: 600; border: 0; background: var(--brass); color: #fff; border-radius: 999px; padding: 13px 34px; cursor: pointer; box-shadow: 0 6px 20px rgba(138,100,32,.25); }
+  .landing-enter:hover { filter: brightness(1.08); }
+  .landing-how { font-weight: 600; color: var(--ink); }
+  .landing-lang { font: inherit; font-size: .9rem; border: 1px solid var(--rule); background: transparent; color: var(--muted); border-radius: 999px; padding: 6px 16px; cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { .landing-in > * { animation: none; } .landing { transition: none; } }
   .pre { padding: 20px 0; border-top: 1px solid var(--rule); }
   .pre h2 { font-size: 1.2rem; }
   .pre li { margin-bottom: 8px; }
@@ -470,6 +480,6 @@
   <div id="tip" role="tooltip" hidden></div>
 </div>
 
-<script src="assets/app.js?v=20261029c"></script>
+<script src="assets/app.js?v=20261030a"></script>
 </body>
 </html>

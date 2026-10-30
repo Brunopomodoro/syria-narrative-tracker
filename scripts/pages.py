@@ -2008,7 +2008,7 @@ def how_body(cfg: dict, latest: dict, lang: str) -> str:
             "gap": ({a: x for a, x in gap["areas"].items()} if gap else None), "areas": w["areas"],
             "outputs": [(label, root + href if href else (fb_profile(cfg) or x_profile(cfg) if lang == "ar" else x_profile(cfg)) or "") for label, href in w["outputs"]]}
     home = root + ("ar/" if lang == "ar" else "")
-    # the style sits inside the article, so the home page's welcome (which takes only the article) gets it too
+    # the style sits inside the article, so it travels with it if the article is ever shown elsewhere
     return (f'<article class="how" id="how" data-cfg="{esc(json.dumps(data, ensure_ascii=False))}"><style>{HOW_CSS}</style>'
             f'<p class="tabname">{esc(w["title"])}</p><h1>{esc(w["title"])}</h1><p class="line">{esc(w["line"])}</p>'
             f'<div class="how-stage" hidden aria-hidden="true"></div>'
