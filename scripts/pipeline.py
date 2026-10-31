@@ -836,6 +836,24 @@ def ask_claude(cfg: dict, user_msg: str) -> tuple[dict, dict]:
     raise RuntimeError(f"Claude did not return valid JSON: {last_err}")
 
 
+def claude_refusal(e: Exception) -> str:
+    """Why the Claude API refused a request, in plain words for the run's log, or "" when the error is not a known one
+    (which is then raised as it is, with its traceback)."""
+    if not type(e).__module__.startswith("anthropic"):
+        return ""
+    status, text = getattr(e, "status_code", None), str(e).lower()
+    if "usage limit" in text:
+        return ("the Anthropic account has reached the monthly spend limit set in the Claude Console "
+                "(console.anthropic.com/settings/limits); access returns when it is raised or the month ends.")
+    if status == 401:
+        return "the ANTHROPIC_API_KEY secret was not accepted (a wrong or revoked key)."
+    if status == 402 or "credit balance" in text:
+        return "the Anthropic account is out of credit (console.anthropic.com/settings/billing)."
+    if status in (429, 529) or "overloaded" in text:
+        return "the Claude API is busy (rate limit or overload) even after retrying; the next run tries again."
+    return ""
+
+
 ARABIC_SCRIPT = re.compile(r"[\u0600-\u06FF]")
 AR_FIELDS = ("title", "summary", "detail", "public_reaction", "emotions", "framings", "flags")
 
@@ -1271,7 +1289,14 @@ def main() -> int:
 
     log(f"{len(new_ids)} new posts. Asking Claude ({cfg.get('model')})...")
     msg = build_user_message(sample, latest_prev.get("narratives", []), int(cfg.get("max_chars_per_post", 400)))
-    result, usage = ask_claude(cfg, msg)
+    try:
+        result, usage = ask_claude(cfg, msg)
+    except Exception as e:  # noqa: BLE001
+        why = claude_refusal(e)
+        if not why:
+            raise
+        log(f"Claude refused the request: {why} Nothing is published this run; the previous update stays on the site.")
+        return 1
     cost = estimate_cost(cfg.get("model", ""), usage)
     log(f"Tokens in/out: {usage['input_tokens']}/{usage['output_tokens']}  "
         f"~${cost} this run (~${round(cost * 24 * 30, 2)}/month if every hourly run looked like this)")

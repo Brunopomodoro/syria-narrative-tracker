@@ -333,6 +333,10 @@ The scheduled job inside GitHub can stay as it is; the concurrency setting makes
 
 Facebook comments and TikTok are the biggest missing voices, and neither can be read by a project like this on its own. Meta's **Content Library** (https://developers.facebook.com/docs/content-library-and-api/) gives access to public Facebook and Instagram posts, pages, groups and comments to researchers at academic and non-profit institutions, through an application handled by ICPSR at the University of Michigan. TikTok's **Research API** (https://developers.tiktok.com/products/research-api/) gives public videos and comments to academic researchers in the US, UK and EU. Both require an institutional affiliation, and Meta's data must be analysed inside its own secure environment, so only aggregate results (for example daily volume by keyword) could be exported to this site. A partnership with a university or think tank unlocks both. Scraping Facebook or Instagram through third-party services breaks Meta's terms and is not used here.
 
+### Checks on every change
+
+`.github/workflows/checks.yml` runs on every pull request and on changes to the code on `main`: it looks for Python mistakes (undefined names, unused imports, syntax), checks that the JavaScript parses (the site's scripts and the newsletter worker) and runs `scripts/site_check.py`, failing on any FAIL line. Free, no secrets, about a minute. A red check on a pull request means: fix before merging.
+
 ### G. Testing your sources
 
 **Actions → Maintenance → Run workflow → test-sources** collects from every source without analysing or saving anything, and the log shows an `ok` or `FAIL` line for each. Run it after editing the source lists in `config.yaml`.
@@ -681,6 +685,7 @@ The site has a sitemap, link previews and a crawlable copy of the current analys
 |---|---|
 | Run fails with `authentication_error` or `invalid x-api-key` | The secret is missing or wrong. Redo step 5; the name must be exactly `ANTHROPIC_API_KEY`. |
 | Run fails with `credit balance is too low` | Add credit at platform.claude.com. |
+| Run fails with "Claude refused the request: the Anthropic account has reached the monthly spend limit" | The spend limit you set in the Claude Console is used up. Raise it at console.anthropic.com/settings/limits (or wait for the month to end). Until then the site keeps the last update, and the posts to X and Facebook and the newsletter carry on: when the analysis fails, the steps after it still run and save their records. |
 | Run fails with `not_found_error` mentioning a model | The `model` line in `config.yaml` has a typo. |
 | Run fails at "Save results" with `Permission denied` | Settings → Actions → General → Workflow permissions → choose **Read and write permissions** → Save. Run again. |
 | Run fails with a `yaml` error | `config.yaml` has a spacing mistake. Compare your edit with the entries around it. |

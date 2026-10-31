@@ -19,7 +19,6 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import arabic  # noqa: E402
 import archive  # noqa: E402
 import experts  # noqa: E402
-import pages  # noqa: E402
 import pipeline as P  # noqa: E402
 
 DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩٫٬−", "0123456789.,-")

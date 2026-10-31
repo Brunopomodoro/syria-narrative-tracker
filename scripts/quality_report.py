@@ -126,7 +126,7 @@ def main() -> int:
     print(f"- Posts per update: {fmt(a['relevant'])} relevant, {fmt(a['sent'])} sent to analysis ({fmt(b['sent'])})")
     lo, hi = a["outlet_range"]
     print(f"- Outlet share of the sample: {fmt(a['outlet_share'], True)} ({fmt(b['outlet_share'], True)}), range {fmt(lo, True)}–{fmt(hi, True)}; target at most 30%")
-    print(f"- Languages: " + ", ".join(f"{k} {fmt(v, True)}" for k, v in a["languages"].items()))
+    print("- Languages: " + ", ".join(f"{k} {fmt(v, True)}" for k, v in a["languages"].items()))
     print(f"- Stories per update: {fmt(a['stories'])} ({fmt(b['stories'])}); largest story's share on average: {fmt(a['top_share'], True)} ({fmt(b['top_share'], True)})")
     print(f"- Empty replies retried: {a['retries']} ({b['retries']}); Arabic fields filled in afterwards: {a['arabic_filled']}; "
           f"Arabic still missing in published updates: {a['arabic_gaps']} ({b['arabic_gaps']})")

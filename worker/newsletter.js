@@ -14,6 +14,7 @@ const KINDS = ["daily", "weekly", "monthly"];
 const LIST_PREFIX = "syrianpulse";            // lists are named syrianpulse-<kind>-<lang>, as scripts/newsletter.py makes them
 const TOKEN_DAYS = 3;
 const PER_HOUR = 5;                           // sign-ups per visitor address and hour
+const PER_DAY_TO = 3;                         // confirmation emails per email address and day, whatever the visitor
 
 const WORDS = {
   en: {
@@ -77,15 +78,18 @@ async function readToken(env, token) {
   return data.x > Date.now() / 1000 ? data : null;
 }
 
-async function tooMany(request) {
-  // a light limit per visitor address, kept in the edge cache for an hour
-  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-  const cache = caches.default, id = new Request(`https://ratelimit.invalid/${encodeURIComponent(ip)}`);
+async function tooMany(name, limit, seconds) {
+  // a light counter kept in the edge cache: true once `name` has been counted `limit` times within `seconds`
+  const cache = caches.default, id = new Request(`https://ratelimit.invalid/${name}`);
   const hit = await cache.match(id);
   const n = hit ? Number(await hit.text()) || 0 : 0;
-  if (n >= PER_HOUR) return true;
-  await cache.put(id, new Response(String(n + 1), { headers: { "Cache-Control": "max-age=3600" } }));
+  if (n >= limit) return true;
+  await cache.put(id, new Response(String(n + 1), { headers: { "Cache-Control": `max-age=${seconds}` } }));
   return false;
+}
+
+async function sha256(s) {
+  return b64url(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)));
 }
 
 async function brevo(env, method, path, body) {
@@ -107,7 +111,11 @@ async function subscribe(request, env) {
   const kinds = KINDS.filter((k) => form.get(k));
   const lang = ["ar", "en", "both"].includes(form.get("lang")) ? form.get("lang") : page;
   if (!/^[^\s@<>"]{1,64}@[^\s@<>"]{1,190}\.[a-z]{2,}$/i.test(email) || email.length > 200 || !kinds.length) return back(env, page, "error");
-  if (await tooMany(request)) return back(env, page, "error");
+  // per visitor, and per email address so that changing addresses cannot fill someone's inbox with confirmations
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (await tooMany(`ip/${encodeURIComponent(ip)}`, PER_HOUR, 3600) || await tooMany(`to/${await sha256(email)}`, PER_DAY_TO, 86400)) {
+    return back(env, page, "error");
+  }
   const token = await makeToken(env, { e: email, k: kinds, l: lang, p: page, x: Math.floor(Date.now() / 1000) + TOKEN_DAYS * 86400 });
   const link = `${env.SITE}/api/confirm?t=${encodeURIComponent(token)}&p=${page}`;
   const w = WORDS[page], dir = page === "ar" ? "rtl" : "ltr";
