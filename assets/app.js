@@ -430,7 +430,7 @@ function applyLang() {
   $("#intro").textContent = t.intro + " ";
   const how = document.createElement("a");                   // the animated walkthrough of how the site works
   how.href = `how/${state.lang}.html`; how.textContent = t.howLink; $("#intro").appendChild(how);
-  $("#intro").hidden = state.view !== "home";
+  $("#intro").hidden = state.view !== "home" || state.lang === "en";   // in English the landing screen says this
   landing();
   const xu = /^https:\/\/(x|twitter)\.com\/\w{1,15}$/.test(state.latest?.x_profile || "") ? state.latest.x_profile : "";
   const fu = /^https:\/\/(www\.)?facebook\.com\//.test(state.latest?.fb_profile || "") ? state.latest.fb_profile : "";
