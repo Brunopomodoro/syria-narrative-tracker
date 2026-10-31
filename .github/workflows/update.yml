@@ -44,6 +44,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Collect and analyze
+        id: analyze
         if: steps.gap.outputs.skip != 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -65,7 +66,10 @@ jobs:
         if: steps.gap.outputs.skip != 'true'
         run: python scripts/report_pdf.py
 
+      # The steps below run even when an earlier one failed (Claude unavailable, a PDF that would not print), so
+      # the posts, the newsletter and whatever did work are still saved; the run is still marked as failed.
       - name: Post to Facebook and X (each only once its secrets exist; every hour)
+        if: ${{ !cancelled() }}
         continue-on-error: true
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
@@ -79,19 +83,23 @@ jobs:
         run: python scripts/social.py
 
       - name: Send the newsletter (once Brevo is set up and newsletter.enabled is true; every hour)
+        if: ${{ !cancelled() }}
         continue-on-error: true
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: python scripts/newsletter.py
 
       - name: Save results
+        if: ${{ !cancelled() }}
         env:
-          SKIPPED: ${{ steps.gap.outputs.skip }}
+          ANALYZED: ${{ steps.analyze.outcome }}
         run: |
           git config user.name "narrative-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ "$SKIPPED" = "true" ]; then
-            git add -A data/social.json feed-social.xml feed-social-ar.xml cards 2>/dev/null || git add data/social.json   # an hour without an update: only the posts' records, feeds and cards change
+          if [ "$ANALYZED" != "success" ]; then
+            # an hour without an update (skipped, or the analysis failed and left nothing worth publishing):
+            # only the posts' records, feeds and cards are saved
+            git add -A data/social.json feed-social.xml feed-social-ar.xml cards 2>/dev/null || git add data/social.json
             git add data/newsletter.json 2>/dev/null || true
             msg="Social posts"
           else
@@ -102,8 +110,9 @@ jobs:
             echo "No changes to save."
           else
             git commit -m "$msg $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git stash push --include-untracked -q || true   # files left over by a failed step are not saved, and would block the pull
             # another run may have saved meanwhile: on a clash in the generated files, this run's newer version wins
             git pull --rebase || { git rebase --abort; git pull --rebase -X theirs; }
             git push
-            [ "$SKIPPED" = "true" ] || python scripts/indexnow.py || true   # tell search engines which pages changed
+            [ "$ANALYZED" != "success" ] || python scripts/indexnow.py || true   # tell search engines which pages changed
           fi

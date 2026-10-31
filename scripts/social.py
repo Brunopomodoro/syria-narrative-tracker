@@ -203,7 +203,6 @@ def themes_line(cfg: dict, themes: list, lang: str) -> str:
 def compose_x(cfg: dict, kind: str, ident: str, lang: str, state: dict | None = None) -> dict | None:
     """One post on X for a report in one language: the label and date, the headline (and, for the daily report, the
     mood and as much of the brief as fits), the link and the hashtags that fit; at most 280 by X's count."""
-    w = WORDS[lang]
     if kind == "daily":
         s = pages.daily_summary(cfg, archive.load_day(ident))
         if not s or not s["stories"]:

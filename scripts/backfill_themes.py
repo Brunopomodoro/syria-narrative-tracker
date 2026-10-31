@@ -8,7 +8,6 @@ and downloads are rebuilt. Costs a few cents; runs in GitHub Actions (Actions ->
 
 Usage:  ANTHROPIC_API_KEY=... python scripts/backfill_themes.py
 """
-import json
 import pathlib
 import sys
 

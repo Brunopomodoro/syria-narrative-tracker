@@ -67,7 +67,7 @@ W = {   # the words on the static pages
            "langNames": {"ar": "Arabic", "ku": "Kurdish", "en": "English", "other": "other"},
            "feedTitleMonthly": "Syria Narrative Tracker: monthly report", "feedDescMonthly": "A monthly written review of what is being said about Syria online: what moved, who said what, and the stories that mattered.",
            "prerender": "What people are talking about", "moreStories": "More stories", "readMore": "Read the analysis", "seenIn": "seen in",
-           "home": "Home", "stories": "Stories", "inDetail": "In detail", "expertsTitle": "Media coverage", "sourcesTitle": "Sources", "expertsLatest": "In the media",
+           "home": "Home", "inDetail": "In detail", "expertsTitle": "Media coverage", "sourcesTitle": "Sources", "expertsLatest": "In the media",
            "privacyDesc": "How the Syria Narrative Tracker handles public posts: posts by individuals are read only in aggregate and are never stored, quoted or linked.",
            "supportDesc": "How to support the Syria Narrative Tracker, an independent, open project following what Syrians say online, in Arabic and English.",
            "contactDesc": "Write to the Syria Narrative Tracker: questions, corrections, data requests and ideas for working together, through a short form.",
@@ -116,7 +116,7 @@ W = {   # the words on the static pages
            "langNames": {"ar": "العربية", "ku": "الكردية", "en": "الإنجليزية", "other": "أخرى"},
            "feedTitleMonthly": "متتبّع السرديات السورية: المراجعة الشهرية", "feedDescMonthly": "مراجعة مكتوبة شهرياً لما يُقال عن سوريا على الإنترنت: ما الذي تغيّر، ومن قال ماذا، والقصص التي كانت الأهم.",
            "prerender": "ما الذي يتحدث عنه الناس", "moreStories": "المزيد من القصص", "readMore": "اقرأ التحليل", "seenIn": "ظهرت في",
-           "home": "الرئيسية", "stories": "القصص", "inDetail": "بالتفصيل", "expertsTitle": "التغطية الإعلامية", "sourcesTitle": "المصادر", "expertsLatest": "في الإعلام",
+           "home": "الرئيسية", "inDetail": "بالتفصيل", "expertsTitle": "التغطية الإعلامية", "sourcesTitle": "المصادر", "expertsLatest": "في الإعلام",
            "privacyDesc": "كيف يتعامل متتبّع السرديات السورية مع المنشورات العامة: تُقرأ منشورات الأفراد إجمالاً فقط، ولا تُخزَّن ولا تُقتبس ولا يُربط إليها.",
            "supportDesc": "كيف تدعم متتبّع السرديات السورية، وهو مشروع مستقل ومفتوح يتابع ما يقوله السوريون على الإنترنت بالعربية والإنجليزية.",
            "contactDesc": "راسِل متتبّع السرديات السورية: أسئلة وتصحيحات وطلبات بيانات وأفكار للتعاون، عبر نموذج قصير.",
@@ -1547,7 +1547,7 @@ def support_body(cfg: dict, lang: str) -> str:
                 "<li>قراءة مزيد من المنشورات في كل تحديث، لتقديرات أدقّ للنبرة وقصص أصغر لا تضيع.</li>"
                 "<li>مصادر جديدة، خصوصاً من المناطق التي لا يغطيها المتتبّع جيداً بعد.</li>"
                 "<li>مراجعة بشرية لعيّنات من التحليل بالعربية والكردية، ونسخة كردية من الموقع.</li></ul>")
-        give = "<h2>كيف تدعم</h2>" + (f'<p class="give">' + "".join(f'<a class="chip" href="{esc(u)}" rel="noopener">{esc(l)}</a>' for l, u in links) + "</p>" if links else "<p class=\"sub\">ستظهر طرق الدعم هنا قريباً.</p>")
+        give = "<h2>كيف تدعم</h2>" + ('<p class="give">' + "".join(f'<a class="chip" href="{esc(u)}" rel="noopener">{esc(l)}</a>' for l, u in links) + "</p>" if links else "<p class=\"sub\">ستظهر طرق الدعم هنا قريباً.</p>")
         where = note or ("تذهب المدفوعات إلى صندوق المشروع على Open Collective، حيث تظهر كل دفعة وكل نفقة للعموم." if oc else
                          "تذهب المدفوعات إلى حساب مؤسس المشروع، ولا تُنفق إلا على المشروع. تكاليف كل شهر معروضة في هذه الصفحة.")
         rules = ("<h2>قواعدنا</h2><ul><li>لا يؤثر أي داعم أو ممول على ما ينشره المتتبّع أو كيف يحلّله.</li>"
@@ -1565,7 +1565,7 @@ def support_body(cfg: dict, lang: str) -> str:
             "<li>Reading more posts per update, for steadier tone estimates and fewer small stories missed.</li>"
             "<li>New sources, especially from areas the tracker does not yet cover well.</li>"
             "<li>Human review of samples of the analysis in Arabic and Kurdish, and a Kurdish version of the site.</li></ul>")
-    give = "<h2>How to give</h2>" + (f'<p class="give">' + "".join(f'<a class="chip" href="{esc(u)}" rel="noopener">{esc(l)}</a>' for l, u in links) + "</p>" if links else "<p class=\"sub\">Ways to give will appear here soon.</p>")
+    give = "<h2>How to give</h2>" + ('<p class="give">' + "".join(f'<a class="chip" href="{esc(u)}" rel="noopener">{esc(l)}</a>' for l, u in links) + "</p>" if links else "<p class=\"sub\">Ways to give will appear here soon.</p>")
     where = note or ("Payments go to the project's Open Collective, where every payment and every expense is public." if oc else
                      "Payments go to the account of the project's founder and are spent only on the project. Each month's costs are shown on this page.")
     rules = ("<h2>Our rules</h2><ul><li>No supporter or funder has any say in what the tracker publishes or how it analyses it.</li>"

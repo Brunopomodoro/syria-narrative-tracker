@@ -198,7 +198,6 @@ def maybe_generate(cfg: dict, state: dict, log=print) -> bool:
     """After a run: if a new ISO week has begun since the last digest, write the digest of the week that ended.
     Never raises; a failure is logged and tried again on the next run."""
     today = dt.datetime.now(UTC).date()
-    current = week_of(today)
     last = week_of(today - dt.timedelta(days=7))
     done = {x.get("week") for x in archive._load(WEEKLY_DATA / "index.json", [])}
     attempts = state.get("weekly_attempts") or {}

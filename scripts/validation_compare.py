@@ -111,7 +111,7 @@ def main() -> int:
     if args.note_ar:
         result["note_ar"] = args.note_ar
     (DATA / "validation.json").write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"\nWritten to data/validation.json. Commit that file to show the results on the website's Accuracy section.")
+    print("\nWritten to data/validation.json. Commit that file to show the results on the website's Accuracy section.")
     return 0
 
 

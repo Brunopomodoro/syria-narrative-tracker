@@ -1040,10 +1040,7 @@ def probe(cfg: dict) -> list:
     return out
 
 
-if __name__ == "__main__":
-    import pipeline as P
-    cfg = P.load_config()
-    P.set_name_fixes(cfg)
+def main(cfg: dict) -> None:
     if sys.argv[1:2] == ["probe"]:
         for x in probe(cfg):
             print(x.get("status", "ERR"), x.get("entries", "-"), x.get("recent", "-"), x.get("recent_syria", "-"), x["name"], x["url"][:90], x.get("error", ""))
@@ -1062,3 +1059,17 @@ if __name__ == "__main__":
         print("written" if generate(cfg, sys.argv[2] if sys.argv[2:] else default) else "not written")
     else:
         update(cfg)
+
+
+if __name__ == "__main__":
+    import pipeline as P
+    cfg = P.load_config()
+    P.set_name_fixes(cfg)
+    try:
+        main(cfg)
+    except Exception as e:  # noqa: BLE001
+        why = P.claude_refusal(e)
+        if not why:
+            raise
+        print(f"Claude refused the request: {why}")
+        sys.exit(1)
