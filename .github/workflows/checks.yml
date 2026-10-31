@@ -25,7 +25,11 @@ jobs:
           cache: pip
 
       - name: Install
-        run: pip install -r requirements.txt ruff==0.17.3
+        run: |
+          pip install -r requirements.txt
+          # the linter, pinned and checked against its published hash like the other packages
+          echo "ruff==0.17.3 --hash=sha256:7fa4b0f931cdbcb8a52044f370a3eb429fb42eb88807b0e800fcaa98dd42b24e" > "$RUNNER_TEMP/ruff.txt"
+          pip install --require-hashes -r "$RUNNER_TEMP/ruff.txt"
 
       - name: Python
         run: |
