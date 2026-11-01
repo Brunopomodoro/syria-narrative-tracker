@@ -642,13 +642,15 @@ def local_now(s: dict, now: dt.datetime) -> dt.datetime:
 
 def story_slot(cfg: dict, state: dict, now: dt.datetime) -> str | None:
     """The story slot open now ("YYYY-MM-DD HH", Damascus time), or None. Today's allowance takes the first hours
-    of `story_hours` (the busiest first) and posts at them in time order; a slot stays open two hours, so a late
-    update still posts, but a missed slot is not made up later."""
+    of `story_hours` (the busiest first) and posts at them in time order; a slot stays open until the next one (the
+    last until midnight), because GitHub often runs the hourly job only every few hours and a short window would be
+    missed; a slot not reached before the next one opens is skipped."""
     s, xs = settings(cfg, "x"), state.get("x") or {}
     allow = story_allowance(cfg, state, now)
     local = local_now(s, now)
     hours = sorted(int(h) for h in (s["story_hours"] or [])[: allow["today"]])
-    open_now = [h for h in hours if h <= local.hour + local.minute / 60 < h + 2]
+    ends = hours[1:] + [24]
+    open_now = [h for h, end in zip(hours, ends) if h <= local.hour + local.minute / 60 < end]
     if not open_now:
         return None
     slot = f"{local.date().isoformat()} {open_now[-1]:02d}"
