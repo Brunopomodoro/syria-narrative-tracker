@@ -3,63 +3,166 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-11-02T19:38:59Z",
- "checked_at": "2026-11-02T19:38:59Z",
+ "generated_at": "2026-11-02T23:32:26Z",
+ "checked_at": "2026-11-02T23:32:26Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1523,
-  "relevant": 925,
-  "posts_analyzed": 762,
-  "public_posts": 539,
-  "outlet_posts": 223,
+  "collected": 1480,
+  "relevant": 865,
+  "posts_analyzed": 706,
+  "public_posts": 499,
+  "outlet_posts": 207,
   "reactions_posts": 0,
-  "unique_posts": 743,
+  "unique_posts": 689,
   "sources_ok": 48,
   "sources_total": 49,
   "platforms": {
-   "news": 44,
-   "telegram": 179,
-   "youtube": 326,
-   "reddit": 21,
-   "bluesky": 173
+   "telegram": 166,
+   "news": 41,
+   "bluesky": 164,
+   "youtube": 300,
+   "reddit": 18
   },
   "languages": {
-   "ar": 500,
-   "en": 236,
-   "ku": 6,
+   "ar": 481,
+   "en": 202,
+   "ku": 5,
    "other": 1
   }
  },
  "overall": {
-  "sentiment": 0.05,
+  "sentiment": 0.1,
   "mood": "Mixed",
   "mood_ar": "متباين",
-  "public_sentiment": -0.2,
-  "public_mood": "Weary",
-  "public_mood_ar": "متعب",
-  "brief": "Outlets focused on Lebanese-Syrian talks on refugee returns and border security, the new Druze peace adviser Muzna al-Atrash, continuing floods and landmine deaths, and debate over Syria's possible accession to the Mecca Defence Pact. Public conversation was dominated by anger over extended government working hours without pay rises, mockery and division over the Hama family clashes, continued worry over Israeli incursions in the south, and strong Kurdish-language reactions to Kobani University's merger and Kurdish-education restrictions. Many ordinary commenters expressed fatalistic religious invocations, economic frustration, and skepticism toward both the government and regional defence pacts.",
-  "brief_ar": "ركزت وسائل الإعلام على المباحثات اللبنانية السورية حول عودة اللاجئين وضبط الحدود، وتعيين مزنا الأطرش مستشارة درزية لشؤون السلام، واستمرار السيول وضحايا الألغام، والجدل حول انضمام سوريا إلى اتفاق مكة الدفاعي. أما النقاش الشعبي فطغى عليه الغضب من تمديد دوام الموظفين دون زيادة الرواتب، والسخرية والانقسام حول اشتباكات حماة العائلية، والقلق المستمر من التوغلات الإسرائيلية في الجنوب، وردود فعل كردية قوية على قرار ضم جامعة كوباني وتقييد التعليم بالكردية. عبّر كثير من المعلقين عن دعاء متعب وإحباط اقتصادي وشك في كل من الحكومة وأحلاف المنطقة.",
-  "rest": "Unassigned posts include religious greetings and prayers, entertainment and celebrity news (actors, singers, football matches), everyday municipal updates (street paving, tree planting, tourism fairs), and scattered international items (Yemen, Iran-US talks, Bangladesh protests) not directly tied to a Syria narrative.",
-  "rest_ar": "تضم المنشورات غير المصنفة تهانٍ ودعوات دينية، وأخبار فنية ورياضية (ممثلون، مطربون، مباريات كرة قدم)، وتحديثات بلدية يومية (تعبيد طرق، تشجير، معارض سياحية)، وأخبارًا دولية متفرقة (اليمن، المفاوضات الإيرانية الأميركية، احتجاجات بنغلادش) لا ترتبط مباشرة بأي رواية سورية محددة.",
-  "rest_share": 0.658
+  "public_sentiment": -0.25,
+  "public_mood": "Frustrated",
+  "public_mood_ar": "محبَط",
+  "brief": "Public debate centered on the new 8am-4pm work hours decree, which triggered widespread anger over stagnant wages, alongside continuing anxiety over Israeli incursions in Quneitra and Daraa and strikes near Suwayda. Diplomatic news (Lebanon talks, Mecca pact) and economic/governance initiatives got heavy official coverage but drew less public engagement, except sports results which dominated ordinary conversation. Kurdish-language posts showed separate anger over university mergers and Kurdish-language education limits, rarely overlapping with Arabic discourse. Transitional justice cases against former regime officials drew mixed support and skepticism.",
+  "brief_ar": "تركز النقاش العام حول قرار تمديد ساعات الدوام الرسمي من الثامنة صباحاً حتى الرابعة مساءً، ما أثار غضباً واسعاً بسبب ثبات الرواتب، إلى جانب قلق مستمر من التوغلات الإسرائيلية في القنيطرة ودرعا والضربات قرب السويداء. حظيت الأخبار الدبلوماسية (محادثات لبنان، حلف مكة) والمبادرات الاقتصادية والإدارية بتغطية إعلامية رسمية كثيفة لكنها لم تثر تفاعلاً شعبياً مماثلاً، بخلاف نتائج الرياضة التي سيطرت على أحاديث الناس العاديين. أظهرت المنشورات الكردية غضباً منفصلاً حيال دمج الجامعات والقيود على تعليم اللغة الكردية، نادراً ما تقاطع مع النقاش العربي. أثارت قضايا العدالة الانتقالية ضد ضباط النظام السابق ردود فعل متباينة بين التأييد والتشكيك.",
+  "rest": "Many unassigned posts are football commentary (Al-Ahli Aleppo vs Qamishli Sport, coach criticism), religious greetings and prayers, personal travel vlogs, diaspora chatter, and scattered international news (Houthi attacks, Iran-US talks, Yemen, Ukraine) not directly tied to Syria narratives.",
+  "rest_ar": "تتوزع المنشورات غير المصنفة بين تعليقات رياضية حول مباراة الأهلي حلب وقامشلي سبورت وانتقاد المدرب، وتهانٍ ودعوات دينية، ومدونات سفر شخصية، وأحاديث الجالية، وأخبار دولية متفرقة (هجمات الحوثيين، مفاوضات إيران وأمريكا، اليمن، أوكرانيا) لا ترتبط مباشرة برواية سورية محددة.",
+  "rest_share": 0.732
  },
  "narratives": [
   {
+   "id": "israel-south-incursions",
+   "key": "2026-10-31-israel-south-incursions",
+   "theme": "israel-south",
+   "title": "Israeli incursions, detentions and airstrikes continue in Quneitra, Daraa and Suwayda",
+   "title_ar": "استمرار التوغلات الإسرائيلية والاعتقالات والضربات الجوية في القنيطرة ودرعا والسويداء",
+   "summary": "Israeli forces conducted multiple incursions into villages in Quneitra and Daraa (al-Asbah, al-Ruwayhina, Maarieh, Rasm Abu Shatta) during the reporting period, detaining a young man and setting up temporary checkpoints. Independent and Kurdish outlets documented a record 395 violations in October, while aerial activity and reported airstrikes near Daraa and Suwayda alarmed residents.",
+   "summary_ar": "نفذت القوات الإسرائيلية توغلات متعددة في قرى بريف القنيطرة ودرعا (الأصبح، الرويحينة، معرية، رسم أبو شطة) خلال الفترة المرصودة، واحتجزت شاباً وأقامت حواجز مؤقتة. وثّقت وسائل الإعلام المستقلة والكردية رقماً قياسياً بلغ ٣٩٥ انتهاكاً خلال تشرين الأول، فيما أثار التحليق الجوي وأنباء عن ضربات قرب درعا والسويداء قلق السكان.",
+   "detail": "Syria TV, Daraa 24, Levant24, Enab Baladi and ANHA all reported near-daily Israeli military activity: vehicle incursions, checkpoints, detentions and property destruction across Quneitra and Daraa villages. Enab Baladi and Syria TV cited a report documenting 395 Israeli violations in Syria during October, the highest monthly total since the start of 2026. Separately, YouTube commenters reacted to reports of aerial activity and explosions near Daraa and Suwayda with confusion, fear, and accusations that the government is failing to defend Syrian territory, with some blaming the transitional authorities for 'selling' the south. A minority mock the idea Syria could ever confront Israel militarily. This continues the previous snapshot's narrative with an added monthly violation tally.",
+   "detail_ar": "نقلت تلفزيون سوريا ودرعا24 وLevant24 وعنب بلدي وهاوار نشاطاً عسكرياً إسرائيلياً شبه يومي: توغلات بالمركبات، وحواجز، واعتقالات، وتدمير ممتلكات في قرى القنيطرة ودرعا. واستشهدت عنب بلدي وتلفزيون سوريا بتقرير وثّق 395 انتهاكاً إسرائيلياً في سوريا خلال تشرين الأول، وهو أعلى حصيلة شهرية منذ بداية 2026. من جهة أخرى، تفاعل معلقو يوتيوب مع أنباء عن تحليق جوي وانفجارات قرب درعا والسويداء بين الحيرة والخوف واتهامات للحكومة بالتقصير في الدفاع عن الأراضي السورية، واتهم البعض السلطة الانتقالية بـ«بيع» الجنوب. سخر قلة من فكرة أن تواجه سوريا إسرائيل عسكرياً. يستمر هذا ضمن الرواية السابقة مع إضافة حصيلة الانتهاكات الشهرية.",
+   "public_reaction": "Public reaction ranges from fear and prayers for residents of the south to anger accusing the government of abandoning Daraa, Quneitra and Suwayda to Israeli encroachment, with sharp sectarian and political accusations against the transitional authorities.",
+   "public_reaction_ar": "يتراوح رد الفعل الشعبي بين الخوف والدعاء لأهل الجنوب والغضب الذي يتهم الحكومة بالتخلي عن درعا والقنيطرة والسويداء أمام التمدد الإسرائيلي، مع اتهامات سياسية وطائفية حادة للسلطة الانتقالية.",
+   "sentiment": -0.5,
+   "public_sentiment": -0.6,
+   "outlet_tone": {
+    "independent": -0.5,
+    "kurdish": -0.4,
+    "aggregator": -0.3
+   },
+   "public_tone": {
+    "ar": -0.6,
+    "en": -0.3
+   },
+   "emotions": [
+    "fear",
+    "anger",
+    "helplessness"
+   ],
+   "emotions_ar": [
+    "خوف",
+    "غضب",
+    "عجز"
+   ],
+   "framings": [
+    "Independent/Kurdish outlets frame as escalating violations",
+    "Public frames as government failure or betrayal"
+   ],
+   "framings_ar": [
+    "تؤطر وسائل الإعلام المستقلة والكردية الحدث كانتهاكات متصاعدة",
+    "يؤطره الناس كفشل حكومي أو خيانة"
+   ],
+   "flags": [
+    "unverified claims about extent of airstrikes near Suwayda"
+   ],
+   "flags_ar": [
+    "ادعاءات لم يُتحقق منها حول مدى الضربات قرب السويداء"
+   ],
+   "volume": 66,
+   "public_volume": 49,
+   "share": 0.093,
+   "engagement": 14026,
+   "platforms": {
+    "telegram": 12,
+    "news": 5,
+    "bluesky": 4,
+    "youtube": 44
+   },
+   "languages": {
+    "ar": 57,
+    "en": 8
+   },
+   "public_languages": {
+    "en": 4,
+    "ar": 44
+   },
+   "kinds": {
+    "independent": 13,
+    "aggregator": 2,
+    "kurdish": 1,
+    "official": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Daraa 24 - local, Daraa",
+    "Bluesky posts",
+    "Levant24 - Syria news (EN)",
+    "Syria TV - opposition-origin",
+    "Enab Baladi - independent (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Daraa 24 - local, Daraa",
+     "url": "https://t.me/daraa24_org/28500",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (AR)",
+     "url": "https://t.me/sana_gov/189897",
+     "platform": "telegram"
+    },
+    {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/97558",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-31T09:50:14Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
    "id": "working-hours-decree-anger",
    "key": "2026-11-02-working-hours-decree-anger",
-   "theme": "governance",
+   "theme": "economy",
    "title": "New 8am-4pm work hours decree sparks public anger over pay",
-   "title_ar": "قرار تحديد دوام ٨ صباحاً حتى ٤ مساءً يثير غضباً حول الرواتب",
-   "summary": "Syria's Presidency set administrative public-sector hours at 8am-4pm starting December 1, 2026. State and independent outlets reported the decision neutrally. Public reaction was overwhelmingly negative, with many commenters demanding higher pay to match longer hours.",
-   "summary_ar": "أصدرت الأمانة العامة لرئاسة الجمهورية قراراً يحدد دوام الجهات الإدارية من الثامنة صباحاً حتى الرابعة مساءً اعتباراً من ١ كانون الأول ٢٠٢٦. نقلت وسائل الإعلام الرسمية والمستقلة القرار بحياد، لكن ردود الفعل الشعبية كانت غاضبة إلى حد كبير مطالبة بزيادة الرواتب لتتناسب مع ساعات العمل الأطول.",
-   "detail": "The decree, issued by the General Secretariat of the Presidency, extends daily administrative working hours while leaving economic entities to set their own shift schedules. State media (SANA, Al-Ikhbariya) and independent outlets (Al-Watan, Levant24) reported it factually. On social media and YouTube, public comments were dominated by complaints that salaries (often cited around $90-300 a month) remain far too low to justify longer hours, with some calling the decision unstudied and others mocking officials with phrases like 'حسبنا الله ونعم الوكيل'. Some compared it unfavorably to shorter hours or remote work abroad, while a minority supported it as needed for national recovery. Women with children expressed particular concern about childcare burdens. This is a new narrative this snapshot.",
-   "detail_ar": "نص القرار الصادر عن الأمانة العامة لرئاسة الجمهورية على تمديد ساعات الدوام الإداري اليومي، تاركاً للجهات الاقتصادية تحديد نظام ورديتها. نقلت وسائل الإعلام الرسمية (سانا، الإخبارية السورية) ووسائل مستقلة (الوطن، Levant24) الخبر بحياد. أما على منصات التواصل ويوتيوب فقد طغت الشكاوى من أن الرواتب (التي ذُكرت غالباً بين 90 و300 دولار شهرياً) لا تزال منخفضة جداً لتبرير ساعات أطول، ووصف البعض القرار بأنه غير مدروس بينما سخر آخرون بعبارات مثل «حسبنا الله ونعم الوكيل». قارن البعض الوضع سلباً بساعات أقصر أو عمل عن بعد في الخارج، فيما أيّد أقلية القرار باعتباره ضرورياً للنهوض الوطني. عبّرت موظفات لديهن أطفال عن قلق خاص إزاء أعباء رعاية الأطفال. هذه رواية جديدة في هذا التحديث.",
-   "public_reaction": "Overwhelming anger and sarcasm dominate comments, with widespread demands for salary increases, some mockery of officials, and a smaller minority defending the decision as necessary for rebuilding.",
-   "public_reaction_ar": "يسيطر الغضب والسخرية على التعليقات مع مطالبات واسعة بزيادة الرواتب وسخرية من بعض المسؤولين، في حين دافعت أقلية عن القرار باعتباره ضرورياً لإعادة البناء.",
-   "sentiment": 0.0,
+   "title_ar": "قرار تمديد الدوام الرسمي من ٨ صباحاً حتى ٤ مساءً يثير غضباً بشأن الرواتب",
+   "summary": "The Presidency's General Secretariat issued a decree setting official working hours at 8am-4pm starting December 1, 2026, for administrative public bodies. State and independent outlets reported the decision factually, while commenters reacted with anger over low wages unchanged despite longer hours. Some noted similar hours already exist abroad but demanded matching pay.",
+   "summary_ar": "أصدرت الأمانة العامة لرئاسة الجمهورية قراراً يحدد ساعات الدوام الرسمي من الثامنة صباحاً حتى الرابعة مساءً اعتباراً من أول كانون الأول ٢٠٢٦ للجهات الإدارية العامة. نقلت وسائل الإعلام الرسمية والمستقلة القرار بشكل إخباري، بينما عبّر المعلقون عن غضبهم من بقاء الرواتب متدنية رغم زيادة ساعات العمل. أشار بعضهم إلى أن دولاً أخرى تطبق دواماً مماثلاً لكن برواتب أعلى.",
+   "detail": "The decree, issued by the Presidency's General Secretariat and widely reported by SANA, Daraa 24 and others, standardizes working hours for administrative public bodies while leaving economic sector hours to internal regulations. Public reaction, especially on YouTube comments under related videos, was overwhelmingly negative: many said raising hours without raising salaries (commonly cited around $90-300 per month) is unjust, with some invoking 'حسبنا الله ونعم الوكيل'. A few supported the decision as necessary for state-building and discipline. Some suggested alternatives like staggered shifts or four-day work weeks as practiced in Europe. Women commenters worried about childcare burdens from longer hours. No previous update is noted on wage adjustments accompanying the decree.",
+   "detail_ar": "ينص القرار الصادر عن الأمانة العامة لرئاسة الجمهورية، ونقلته سانا ودرعا24 وغيرها على نطاق واسع، على توحيد ساعات الدوام للجهات الإدارية العامة، تاركاً الجهات ذات الطابع الاقتصادي لأنظمتها الخاصة. جاء رد الفعل الشعبي، خصوصاً في تعليقات يوتيوب على الفيديوهات المرتبطة، سلبياً بشكل كاسح، إذ اعتبر كثيرون أن زيادة الساعات دون زيادة الرواتب (التي يتراوح مستواها بين 90 و300 دولار شهرياً بحسب ما ذكر) ظلم بحق الموظفين، مستخدمين عبارة «حسبنا الله ونعم الوكيل». أيّد قلة القرار باعتباره ضرورياً لبناء الدولة والانضباط، فيما اقترح آخرون بدائل كالمناوبات أو أسبوع عمل من أربعة أيام كما في أوروبا. أعربت معلقات عن قلقهن من أعباء رعاية الأطفال نتيجة طول الدوام. لم يُذكر أي تعديل مرافق على الرواتب.",
+   "public_reaction": "Overwhelming anger and sarcasm dominate comments, with widespread complaints that salaries (often cited as $90-300/month) cannot sustain longer hours; a minority defend the decision as needed for reconstruction.",
+   "public_reaction_ar": "يسيطر الغضب والسخرية على التعليقات، مع شكاوى واسعة من أن الرواتب (التي ذُكرت غالباً بين ٩٠ و٣٠٠ دولار شهرياً) لا تكفي لتحمل ساعات دوام أطول، بينما يدافع قلة عن القرار باعتباره ضرورياً لإعادة الإعمار.",
+   "sentiment": 0.1,
    "public_sentiment": -0.6,
    "outlet_tone": {
     "independent": 0.0
@@ -70,38 +173,37 @@
    "emotions": [
     "anger",
     "frustration",
-    "mockery"
+    "resignation"
    ],
    "emotions_ar": [
     "غضب",
     "إحباط",
-    "سخرية"
+    "استسلام"
    ],
    "framings": [
-    "State framing: administrative reform",
-    "Public framing: exploitation without pay rise"
+    "Outlets report decree as administrative reform",
+    "Public frames it as exploitation without wage increase"
    ],
    "framings_ar": [
-    "تأطير رسمي: إصلاح إداري",
-    "تأطير شعبي: استغلال دون زيادة رواتب"
+    "تقدّم وسائل الإعلام القرار كإصلاح إداري",
+    "يصوره الناس كاستغلال دون زيادة في الأجور"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 56,
-   "public_volume": 52,
-   "share": 0.073,
-   "engagement": 4515,
+   "volume": 51,
+   "public_volume": 47,
+   "share": 0.072,
+   "engagement": 5290,
    "platforms": {
     "telegram": 4,
-    "youtube": 49,
+    "youtube": 45,
     "bluesky": 2
    },
    "languages": {
-    "ar": 54,
-    "en": 1
+    "ar": 51
    },
    "public_languages": {
-    "ar": 51
+    "ar": 47
    },
    "kinds": {
     "independent": 4
@@ -109,10 +211,10 @@
    "sources": [
     "YouTube comments",
     "Bluesky posts",
+    "Sawt Dimashq - local, Damascus",
+    "Euphrates Post - Deir ez-Zor and the east",
     "Daraa 24 - local, Daraa",
-    "Al-Watan - Damascus daily newspaper",
-    "Sawt al-Asima - local, Damascus",
-    "Levant24 - Syria news (EN)"
+    "Sawt al-Asima - local, Damascus"
    ],
    "examples": [
     {
@@ -121,13 +223,13 @@
      "platform": "telegram"
     },
     {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44124",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110043",
      "platform": "telegram"
     },
     {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/204904",
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/44124",
      "platform": "telegram"
     }
    ],
@@ -142,90 +244,90 @@
    "id": "lebanon-delegation-damascus-talks",
    "key": "2026-11-02-lebanon-delegation-damascus-talks",
    "theme": "international",
-   "title": "High-level Lebanese government delegation visits Damascus",
-   "title_ar": "وفد لبناني حكومي رفيع المستوى يزور دمشق",
-   "summary": "A Lebanese delegation led by Deputy PM Tarek Mitri met Foreign Minister Asaad al-Shaibani in Damascus on November 2, 2026, discussing border security, the return of displaced Syrians, and cooperation in education and labor. The visit followed Lebanon's arrest of 99 Syrians for illegal entry.",
-   "summary_ar": "التقى وفد لبناني برئاسة نائب رئيس الوزراء طارق متري وزير الخارجية أسعد الشيباني في دمشق يوم ٢ تشرين الثاني ٢٠٢٦، وتناولت المباحثات ضبط الحدود وعودة النازحين السوريين والتعاون في التعليم والعمل. جاءت الزيارة بعد إعلان الجيش اللبناني توقيف ٩٩ سورياً لدخولهم لبنان بطريقة غير شرعية.",
-   "detail": "State and independent outlets (SANA, Al-Watan, Sawt al-Asima, Al-Ikhbariya) reported the meeting at Tishreen Palace, attended by ministers of education, higher education and social affairs from both countries, focusing on security cooperation, border control, and refugee returns. Enab Baladi and Al-Hadath highlighted the refugee file as the top agenda item. Separately, Daraa 24 and Euphrates Post reported Lebanon's army detaining 99 Syrians for illegal border crossing. Public YouTube comments were largely welcoming of warmer Syrian-Lebanese ties, with some skepticism about the government's priorities ('all show, no protection of borders'), and criticism contrasting ceremonial diplomacy with unresolved issues like floods, the Golan, and Suwayda.",
-   "detail_ar": "نقلت وسائل إعلام رسمية ومستقلة (سانا، الوطن، صوت العاصمة، الإخبارية) اللقاء في قصر تشرين بحضور وزراء التربية والتعليم العالي والشؤون الاجتماعية من الجانبين، وتركزت المباحثات على التعاون الأمني وضبط الحدود وملف عودة النازحين. وأبرزت عنب بلدي والحدث ملف اللاجئين كبند رئيسي. من جهة أخرى، نقلت درعا 24 وفرات بوست توقيف الجيش اللبناني 99 سورياً لدخولهم الحدود بطريقة غير شرعية. رحّب معلقو يوتيوب غالباً بتحسن العلاقات السورية اللبنانية، مع بعض الشك في أولويات الحكومة («كله استقبال وتوديع دون حماية حدود»)، وانتقادات تقارن الدبلوماسية الاحتفالية بقضايا عالقة كالسيول والجولان والسويداء.",
-   "public_reaction": "Mostly warm toward improved Lebanese-Syrian relations, mixed with skepticism that ceremonial diplomacy overshadows unresolved domestic and border issues.",
-   "public_reaction_ar": "غلب الترحيب بتحسن العلاقات السورية اللبنانية، ممزوجاً بشكوك في أن الدبلوماسية الاحتفالية تطغى على قضايا داخلية وحدودية عالقة.",
-   "sentiment": 0.3,
-   "public_sentiment": 0.1,
+   "title": "High-level Lebanese delegation visits Damascus on refugee returns",
+   "title_ar": "وفد لبناني رفيع المستوى يزور دمشق لبحث ملف عودة اللاجئين",
+   "summary": "Lebanese Deputy PM Tarek Mitri led a delegation to Damascus on November 2, meeting Foreign Minister Asaad al-Shaibani and other ministers to discuss Syrian refugees in Lebanon, border security and administrative cooperation. State and independent outlets covered it extensively; public comments were sparse but some voiced resentment toward Lebanon over past treatment of Syrians.",
+   "summary_ar": "قاد نائب رئيس الوزراء اللبناني طارق متري وفداً إلى دمشق في ٢ تشرين الثاني لبحث ملف اللاجئين السوريين في لبنان والتعاون الأمني وضبط الحدود مع وزير الخارجية أسعد الشيباني ووزراء آخرين. غطت وسائل الإعلام الرسمية والمستقلة الزيارة بشكل واسع، بينما كانت التعليقات الشعبية محدودة وعبّر بعضها عن استياء من معاملة لبنان للسوريين سابقاً.",
+   "detail": "The visit, reported by SANA, Shaam, Sawt al-Asima, Anadolu and others, included ministers of education, higher education, social affairs and labor from both sides. Talks covered legal status of Syrians in Lebanon, educational equivalency, security cooperation and border control. This follows earlier contacts on the same file. Separately, the Lebanese army reported detaining 99 Syrians for illegal entry, and a customs dispute at the Masnaa crossing was reported, adding friction to the bilateral relationship. Public comments on Reddit and elsewhere expressed mixed feelings, some bitter about Lebanese treatment of Syrians historically, others noting mutual respect needed.",
+   "detail_ar": "شملت الزيارة، التي نقلتها سانا وشام وصوت العاصمة والأناضول وغيرها، وزراء التربية والتعليم العالي والشؤون الاجتماعية والعمل من الجانبين. تناولت المحادثات الوضع القانوني للسوريين في لبنان ومعادلة الشهادات والتعاون الأمني وضبط الحدود، في استكمال لاتصالات سابقة حول الملف ذاته. في سياق متصل، أعلن الجيش اللبناني توقيف 99 سورياً لدخولهم بطريقة غير شرعية، كما سُجّل خلاف جمركي عند معبر المصنع، ما يضيف توتراً إلى العلاقة الثنائية. عبّرت تعليقات شعبية على موقع Reddit وغيره عن مشاعر متباينة، بين مرارة من معاملة لبنان التاريخية للسوريين ودعوات للاحترام المتبادل.",
+   "public_reaction": "Public comments are limited but show a mix of cynicism toward Lebanese-Syrian relations and some calls for mutual respect, with complaints about past treatment of Syrian refugees.",
+   "public_reaction_ar": "التعليقات الشعبية محدودة لكنها تُظهر مزيجاً من التشكيك في العلاقات اللبنانية السورية ودعوات للاحترام المتبادل، مع شكاوى من سوء معاملة اللاجئين السوريين سابقاً.",
+   "sentiment": 0.2,
+   "public_sentiment": -0.1,
    "outlet_tone": {
     "official": 0.3,
     "independent": 0.2,
-    "regional": 0.2,
+    "regional": 0.1,
     "aggregator": 0.1
    },
    "public_tone": {
-    "ar": 0.1,
-    "en": 0.2
+    "ar": -0.1,
+    "en": 0.1
    },
    "emotions": [
-    "hope",
-    "skepticism"
+    "cautious hope",
+    "resentment"
    ],
    "emotions_ar": [
-    "أمل",
-    "شك"
+    "أمل حذر",
+    "استياء"
    ],
    "framings": [
-    "Official framing: strengthening bilateral ties",
-    "Public framing: ceremonial diplomacy vs real issues"
+    "Official framing as diplomatic cooperation",
+    "Public framing as unresolved grievances over refugee treatment"
    ],
    "framings_ar": [
-    "تأطير رسمي: تعزيز العلاقات الثنائية",
-    "تأطير شعبي: دبلوماسية شكلية مقابل قضايا حقيقية"
+    "تأطير رسمي كتعاون دبلوماسي",
+    "تأطير شعبي كمظالم لم تُحل حول معاملة اللاجئين"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 53,
-   "public_volume": 42,
-   "share": 0.07,
-   "engagement": 9274,
+   "volume": 24,
+   "public_volume": 14,
+   "share": 0.034,
+   "engagement": 7125,
    "platforms": {
     "telegram": 9,
-    "news": 2,
-    "youtube": 35,
-    "bluesky": 7
+    "news": 1,
+    "youtube": 4,
+    "bluesky": 10
    },
    "languages": {
-    "ar": 45,
-    "en": 8
+    "ar": 17,
+    "en": 7
    },
    "public_languages": {
-    "ar": 37,
+    "ar": 9,
     "en": 5
    },
    "kinds": {
-    "independent": 6,
     "regional": 1,
-    "official": 2,
-    "aggregator": 2
+    "independent": 7,
+    "official": 1,
+    "aggregator": 1
    },
    "sources": [
-    "YouTube comments",
     "Bluesky posts",
+    "YouTube comments",
     "Sawt al-Asima - local, Damascus",
-    "Al-Hadath - Saudi-owned",
-    "Euphrates Post - Deir ez-Zor and the east",
-    "Enab Baladi - independent (AR)"
+    "Anadolu Agency - Turkish state news agency (AR)",
+    "Shaam News Network - opposition-origin",
+    "Euphrates Post - Deir ez-Zor and the east"
    ],
    "examples": [
-    {
-     "source": "Al-Hadath - Saudi-owned",
-     "url": "https://t.me/alhadath/52528",
-     "platform": "telegram"
-    },
     {
      "source": "Euphrates Post - Deir ez-Zor and the east",
      "url": "https://t.me/Euphrats_post/110040",
      "platform": "telegram"
     },
     {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/238658",
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/44123",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93635",
      "platform": "telegram"
     }
    ],
@@ -237,234 +339,65 @@
    }
   },
   {
-   "id": "mecca-defense-pact",
-   "key": "2026-11-01-mecca-defense-pact",
-   "theme": "international",
-   "title": "Syria weighs joining the Mecca Defence Pact",
-   "title_ar": "سوريا تدرس الانضمام إلى اتفاق مكة الدفاعي",
-   "summary": "Foreign Minister Asaad al-Shaibani said Damascus is discussing possible accession to the 'Mecca Pact' regional defence arrangement, alongside efforts to resolve disputes with Jordan. The topic was debated on Syrian talk shows with Saudi, Turkish and Qatari guests weighing in on the idea.",
-   "summary_ar": "قال وزير الخارجية أسعد الشيباني إن دمشق تبحث احتمال الانضمام إلى «اتفاق مكة» الدفاعي الإقليمي، إلى جانب جهود لحل الخلافات مع الأردن. وتناول الموضوع برنامج حواري سوري استضاف ضيوفاً سعوديين وأتراكاً وقطريين لمناقشة الفكرة.",
-   "detail": "Bluesky and outlet posts described the Mecca Pact as a potential regional security and defence arrangement Syria is considering alongside Pakistan, Turkey and Gulf states. A televised debate program on Al-Ikhbariya featured Saudi, Turkish and Qatari voices broadly supportive, while the host faced public criticism for interrupting guests. YouTube commenters were deeply divided: some welcomed the idea as strength through alliances, others warned it could drag Syria into unwanted wars (citing Israel, Iran, Houthis) given its weak, war-depleted military, and many pointed out the contradiction of discussing a defence pact while Israeli forces still patrol the Golan and south. Some linked the debate to wider skepticism about Foreign Minister al-Shaibani's substance versus style.",
-   "detail_ar": "وصفت منشورات Bluesky والمنشورات الإعلامية اتفاق مكة بأنه ترتيب أمني ودفاعي إقليمي محتمل تدرسه سوريا إلى جانب باكستان وتركيا ودول الخليج. واستضاف برنامج حواري على الإخبارية السورية ضيوفاً سعوديين وأتراكاً وقطريين أبدوا تأييداً عاماً، بينما تعرض المذيع لانتقادات شعبية بسبب مقاطعته الضيوف. انقسم معلقو يوتيوب بشدة: رحّب بعضهم بالفكرة باعتبارها قوة عبر التحالفات، بينما حذر آخرون من أن تجر سوريا إلى حروب غير مرغوبة (في إشارة إلى إسرائيل وإيران والحوثيين) نظراً لضعف جيشها المنهك من الحرب، وأشار كثيرون إلى التناقض بين مناقشة حلف دفاعي بينما لا تزال القوات الإسرائيلية تجوب الجولان والجنوب. وربط البعض النقاش بشكوك أوسع حول جدية وزير الخارجية الشيباني مقارنة بمظهره الإعلامي.",
-   "public_reaction": "Deeply divided reaction: some see the pact as strategic strength, many others see it as risky, hollow talk given Syria's weak military and ongoing Israeli incursions, with criticism of the host's handling of the debate.",
-   "public_reaction_ar": "انقسم الرأي العام بشدة: رأى البعض في الحلف قوة استراتيجية، بينما اعتبره كثيرون كلاماً فارغاً وخطراً نظراً لضعف الجيش السوري واستمرار التوغلات الإسرائيلية، مع انتقاد طريقة إدارة المذيع للنقاش.",
-   "sentiment": 0.1,
-   "public_sentiment": -0.1,
-   "outlet_tone": {},
-   "public_tone": {
-    "ar": -0.1,
-    "en": 0.0
-   },
-   "emotions": [
-    "skepticism",
-    "hope",
-    "anxiety"
-   ],
-   "emotions_ar": [
-    "شك",
-    "أمل",
-    "قلق"
-   ],
-   "framings": [
-    "Official framing: strategic alliance under discussion",
-    "Public framing: risky and premature given weak military"
-   ],
-   "framings_ar": [
-    "تأطير رسمي: تحالف استراتيجي قيد البحث",
-    "تأطير شعبي: مخاطرة سابقة لأوانها نظراً لضعف الجيش"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 49,
-   "public_volume": 49,
-   "share": 0.064,
-   "engagement": 55,
-   "platforms": {
-    "bluesky": 3,
-    "youtube": 45
-   },
-   "languages": {
-    "en": 4,
-    "ar": 44
-   },
-   "public_languages": {
-    "en": 4,
-    "ar": 44
-   },
-   "kinds": {},
-   "sources": [
-    "YouTube comments",
-    "Bluesky posts"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=0qEznOXtYFE",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-11-01T15:11:57Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "israel-south-incursions",
-   "key": "2026-10-31-israel-south-incursions",
-   "theme": "israel-south",
-   "title": "Israeli incursions, warning signs and detentions continue in Quneitra and Daraa",
-   "title_ar": "استمرار التوغلات الإسرائيلية واللافتات التحذيرية والاعتقالات في القنيطرة ودرعا",
-   "summary": "Israeli patrols repeatedly entered villages in Quneitra and Daraa countryside during late October and early November 2026, setting up checkpoints, detaining and releasing young men, and posting warning signs threatening vehicles. Enab Baladi documented 395 violations in October, the highest monthly toll of 2026.",
-   "summary_ar": "دخلت دوريات إسرائيلية مراراً قرى في ريفي القنيطرة ودرعا خلال أواخر تشرين الأول وأوائل تشرين الثاني ٢٠٢٦، وأقامت حواجز واعتقلت وأفرجت عن شبان ونصبت لافتات تحذيرية تهدد المركبات. وثّقت عنب بلدي ٣٩٥ انتهاكاً خلال تشرين الأول، وهي أعلى حصيلة شهرية منذ بداية ٢٠٢٦.",
-   "detail": "Independent outlets (Daraa 24, Enab Baladi, Syria TV, Levant24) and Kurdish outlet ANHA tracked repeated incursions: patrols in Rasm Shabat, Rweihina, Jabata al-Khashab, Maarieh in the Yarmouk Basin, and Rasm Abu Shatta, some involving detentions later released, others involving searches or roadblocks without detentions. Levant24's daily tracker and Enab Baladi's monthly report put October's violations at 395, described as the highest since the year began. A warning sign in Quneitra countryside was shown torn down by residents in one photo pair. Public comments on YouTube and Reddit showed frustration, religious invocations for protection, accusations the government's silence is shameful, and some conflating Jordanian and Israeli actions. Some commenters mock the idea of Syria defending itself militarily given its weak army.",
-   "detail_ar": "تابعت وسائل إعلام مستقلة (درعا 24، عنب بلدي، تلفزيون سوريا، Levant24) ووكالة هاوار الكردية توغلات متكررة: دوريات في رسم شباط والرويحينة وجباتا الخشب ومعرية في حوض اليرموك ورسم أبو شطة، بعضها شمل اعتقالات أُفرج عنها لاحقاً وأخرى شملت تفتيشاً أو حواجز دون اعتقال. ووضع تتبع Levant24 اليومي وتقرير عنب بلدي الشهري حصيلة تشرين الأول عند 395 انتهاكاً، وهي الأعلى منذ بداية العام. وأظهرت صورتان تمزيق الأهالي للافتة تحذيرية في ريف القنيطرة. أظهرت تعليقات يوتيوب وريديت إحباطاً ودعاءً للحماية واتهامات بأن صمت الحكومة مخجل، مع خلط بعضهم بين الأفعال الأردنية والإسرائيلية، وسخرية البعض من فكرة دفاع سوريا عسكرياً نظراً لضعف جيشها.",
-   "public_reaction": "Public reaction mixes anger and resignation, with frequent religious invocations for protection, frustration at perceived government silence, and some confusion blending Jordanian and Israeli incidents.",
-   "public_reaction_ar": "يمزج التفاعل الشعبي بين الغضب والاستسلام مع دعوات دينية متكررة للحماية وإحباط من صمت الحكومة المتصوَّر، وبعض الخلط بين الحوادث الأردنية والإسرائيلية.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.5,
-   "outlet_tone": {
-    "independent": -0.4,
-    "kurdish": -0.3,
-    "aggregator": -0.3
-   },
-   "public_tone": {
-    "ar": -0.5,
-    "en": -0.3
-   },
-   "emotions": [
-    "anger",
-    "fear",
-    "helplessness"
-   ],
-   "emotions_ar": [
-    "غضب",
-    "خوف",
-    "عجز"
-   ],
-   "framings": [
-    "Independent/opposition outlets: documented violations, record toll",
-    "Public framing: government silence shameful"
-   ],
-   "framings_ar": [
-    "وسائل إعلام مستقلة ومعارضة: توثيق انتهاكات وحصيلة قياسية",
-    "تأطير شعبي: صمت الحكومة مخجل"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 40,
-   "public_volume": 23,
-   "share": 0.052,
-   "engagement": 17792,
-   "platforms": {
-    "news": 4,
-    "telegram": 13,
-    "bluesky": 4,
-    "youtube": 19
-   },
-   "languages": {
-    "ar": 34,
-    "en": 6
-   },
-   "public_languages": {
-    "en": 3,
-    "ar": 20
-   },
-   "kinds": {
-    "aggregator": 2,
-    "independent": 13,
-    "kurdish": 1,
-    "official": 1
-   },
-   "sources": [
-    "YouTube comments",
-    "Daraa 24 - local, Daraa",
-    "Bluesky posts",
-    "Levant24 - Syria news (EN)",
-    "Google News - Syria (AR)",
-    "Enab Baladi - independent (AR)"
-   ],
-   "examples": [
-    {
-     "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28496",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/238653",
-     "platform": "telegram"
-    },
-    {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93640",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-31T09:50:14Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "kobani-anniversary-kurdish-education",
-   "key": "2026-11-01-kobani-anniversary-kurdish-education",
+   "id": "kobani-kurdish-education-protests",
+   "key": "2026-11-02-kobani-kurdish-education-protests",
    "theme": "northeast-kurdish",
    "title": "Kobani University merger and Kurdish-language education restrictions spark protests",
-   "title_ar": "ضم جامعة كوباني واحتجاجات على تقييد التعليم بالكردية",
-   "summary": "Students protested in Qamishli and Kobani against a Syrian Education Ministry decision limiting Kurdish-language instruction to three hours a week and a Higher Education Council decision merging Rojava and Kobani universities into Euphrates and Aleppo universities. Kobani University's council rejected the merger decision.",
-   "summary_ar": "خرج طلاب في القامشلي وكوباني احتجاجاً على قرار وزارة التربية السورية الذي يحصر تدريس اللغة الكردية بثلاث ساعات أسبوعياً، وعلى قرار مجلس التعليم العالي بضم جامعتي روج آفا وكوباني إلى جامعتي الفرات وحلب. ورفض مجلس جامعة كوباني قرار الضم.",
-   "detail": "North-east outlets (ANHA, North Press) and Kurdish-language social posts documented student marches in Qamishli demanding Kurdish-language education rights, and Kobani University's council publicly rejecting its merger into Aleppo University, insisting it would continue its own admissions and academic processes. Turkish-language commenters framed this as part of a broader pattern of Damascus curbing Kurdish rights despite earlier integration promises from SDF commander Mazloum Abdi, who said stability requires Kurdish participation in state institutions. Some commenters accused Abdi of capitulating to Damascus ('teslim etti'), while others defended the integration process as ongoing despite obstruction attempts. This connects to the earlier Kobani anniversary narrative and remains a live, contentious story distinct from general northeast integration talks.",
-   "detail_ar": "وثّقت وسائل إعلام في شمال شرق سوريا (هاوار، نورث برس) ومنشورات باللغة الكردية مسيرات طلابية في القامشلي تطالب بحق التعليم باللغة الكردية، ورفض مجلس جامعة كوباني علناً قرار ضمها إلى جامعة حلب، مؤكداً استمرار قبولها وأنشطتها الأكاديمية الخاصة. وأطّر معلقون باللغة التركية الأمر ضمن نمط أوسع من تقييد دمشق لحقوق الكرد رغم وعود الاندماج السابقة من قائد قسد مظلوم عبدي الذي قال إن الاستقرار يتطلب مشاركة الكرد في مؤسسات الدولة. اتهم بعض المعلقين عبدي بالاستسلام لدمشق («teslim etti»)، بينما دافع آخرون عن استمرار عملية الاندماج رغم محاولات العرقلة. ترتبط هذه القصة بذكرى كوباني السابقة وتبقى رواية حية ومثيرة للجدل منفصلة عن مباحثات الاندماج العامة في الشمال الشرقي.",
-   "public_reaction": "Kurdish-language and Turkish-language commenters express strong anger and distrust toward Damascus's education policy and skepticism toward SDF leadership's handling of integration, framing it differently from Arabic-language audiences who barely engage with this story.",
-   "public_reaction_ar": "عبّر معلقون بالكردية والتركية عن غضب وعدم ثقة قويين تجاه سياسة دمشق التعليمية وشك في تعامل قيادة قسد مع ملف الاندماج، في تأطير مختلف تماماً عن الجمهور الناطق بالعربية الذي كاد لا يتفاعل مع هذه القصة.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.4,
+   "title_ar": "دمج جامعة كوباني وتقييد التعليم باللغة الكردية يثيران احتجاجات",
+   "summary": "Students in Qamishli and across the north-east protested a Syrian Education Ministry decision limiting Kurdish-language instruction to three hours weekly and a decree merging Rojava University with Euphrates University and Kobani University with Aleppo University. The Rojava University council rejected the merger decision, calling it disconnected from local realities.",
+   "summary_ar": "تظاهر طلاب في القامشلي وأنحاء شمال شرق سوريا ضد قرار وزارة التربية السورية بتحديد تعليم اللغة الكردية بثلاث ساعات أسبوعياً، وضد قرار دمج جامعة روج آفا بجامعة الفرات وجامعة كوباني بجامعة حلب. رفض مجلس جامعة روج آفا قرار الدمج ووصفه بأنه بعيد عن واقع المنطقة.",
+   "detail": "North Press, ANHA and Turkish-language Kurdish outlets reported that Rojava University's council issued a statement rejecting the merger as detached from local realities, and that Kobani University separately rejected being attached to Aleppo University. Students in Qamishli held marches demanding Kurdish-language education rights, chanting against the limitation to three weekly hours. Mazloum Abdi, presidential adviser and former SDF commander, said Kurdish participation in state institutions, especially education and security, is essential for Syria's stability, and said integration efforts continue despite attempts to obstruct them. The story continues from the previous snapshot's 'kobani-anniversary-kurdish-education' narrative, now centered more on the university merger decision and active student protests.",
+   "detail_ar": "ذكرت نورث برس وهاوار ووسائل إعلام كردية بالتركية أن مجلس جامعة روج آفا أصدر بياناً يرفض قرار الدمج معتبراً إياه بعيداً عن واقع المنطقة، كما رفضت جامعة كوباني بشكل منفصل إلحاقها بجامعة حلب. نظم طلاب في القامشلي مسيرات للمطالبة بحق التعليم باللغة الكردية، مرددين هتافات ضد تحديده بثلاث ساعات أسبوعياً. وقال مظلوم عبدي، مستشار الرئاسة والقائد السابق لقسد، إن مشاركة الكرد في مؤسسات الدولة، لا سيما في التعليم والأمن، ضرورية لاستقرار سوريا، مؤكداً استمرار جهود الاندماج رغم محاولات عرقلتها. تستمر هذه القصة من رواية التحديث السابق حول «كوباني» والتعليم الكردي، مع تركيز أكبر الآن على قرار دمج الجامعات والاحتجاجات الطلابية الفعلية.",
+   "public_reaction": "Kurdish-language public posts show strong anger and protest mobilization over education restrictions and university mergers, framing it as erasure of Kurdish identity; Turkish-language commenters are divided between sympathy and accusations that Kurdish leadership has been too accommodating to Damascus.",
+   "public_reaction_ar": "تُظهر المنشورات الشعبية باللغة الكردية غضباً شديداً وتعبئة احتجاجية ضد تقييد التعليم ودمج الجامعات، وتؤطر ذلك كمحو للهوية الكردية، بينما ينقسم المعلقون بالتركية بين التعاطف واتهام القيادة الكردية بالتساهل المفرط مع دمشق.",
+   "sentiment": -0.2,
+   "public_sentiment": -0.5,
    "outlet_tone": {},
    "public_tone": {
     "ku": -0.5,
-    "en": -0.3
+    "en": -0.2
    },
    "emotions": [
     "anger",
-    "distrust",
-    "defiance"
+    "defiance",
+    "anxiety"
    ],
    "emotions_ar": [
     "غضب",
-    "انعدام ثقة",
-    "تحدٍ"
+    "تحدٍ",
+    "قلق"
    ],
    "framings": [
-    "Kurdish framing: rights curtailed despite promises",
-    "Turkish-language framing: SDF capitulation to Damascus"
+    "Kurdish outlets and public frame as erosion of Kurdish rights",
+    "Some Turkish-language commenters frame as Kurdish leadership capitulation"
    ],
    "framings_ar": [
-    "تأطير كردي: تقييد الحقوق رغم الوعود",
-    "تأطير ناطق بالتركية: استسلام قسد لدمشق"
+    "تؤطر وسائل الإعلام والجمهور الكردي القرار كتآكل للحقوق الكردية",
+    "يؤطره بعض المعلقين بالتركية كاستسلام من القيادة الكردية"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 25,
-   "public_volume": 24,
-   "share": 0.033,
-   "engagement": 222,
+   "flags": [
+    "protest-related copy-paste slogans in Kurdish posts"
+   ],
+   "flags_ar": [
+    "هتافات احتجاجية منسوخة متكررة في المنشورات الكردية"
+   ],
+   "volume": 19,
+   "public_volume": 18,
+   "share": 0.027,
+   "engagement": 1114,
    "platforms": {
-    "telegram": 1,
-    "bluesky": 17,
-    "youtube": 7
+    "bluesky": 16,
+    "youtube": 2,
+    "telegram": 1
    },
    "languages": {
-    "en": 18,
-    "ku": 5,
-    "ar": 2
+    "en": 12,
+    "ku": 4,
+    "ar": 3
    },
    "public_languages": {
-    "en": 17,
-    "ku": 5,
+    "en": 12,
+    "ku": 4,
     "ar": 2
    },
    "kinds": {
@@ -473,115 +406,21 @@
    "sources": [
     "Bluesky posts",
     "YouTube comments",
-    "Levant24 - Syria news (EN)"
+    "Sawt al-Asima - local, Damascus"
    ],
    "examples": [
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46392",
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/44125",
      "platform": "telegram"
     },
     {
      "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=gklryWapgEQ",
+     "url": "https://www.youtube.com/watch?v=E4Q9ED2_0JM",
      "platform": "youtube"
     }
    ],
-   "first_seen": "2026-11-01T10:52:10Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "deir-ezzor-floods",
-   "key": "2026-11-01-deir-ezzor-floods",
-   "theme": "economy",
-   "title": "Flash floods disrupt eastern and northern Syria",
-   "title_ar": "سيول تعطل مناطق في شرق وشمال سوريا",
-   "summary": "Flash floods affecting over a third of Syria killed at least seven people, including five children, damaged crops, disrupted water supply in Raqqa and Hasakah, and raised fears of landmines shifting into previously cleared areas. Minister Raed al-Saleh and the UN warned of worsening humanitarian needs.",
-   "summary_ar": "خلّفت سيول اجتاحت أكثر من ثلث مساحة سوريا سبعة قتلى على الأقل بينهم خمسة أطفال، وأضرت بالمحاصيل، وقطعت المياه عن أحياء في الرقة والحسكة، وأثارت مخاوف من انجراف الألغام إلى مناطق كانت آمنة. حذّر وزير الطوارئ رائد الصالح والأمم المتحدة من تفاقم الاحتياجات الإنسانية.",
-   "detail": "SANA, Syria TV, Google News aggregator and Al-Ikhbariya reported rising flood death tolls (reaching seven, including five children), with search teams recovering bodies near Tabqa after six days of searching. Civil Defense warned floods could carry landmines and unexploded ordnance into previously safe zones. Water supply to Raqqa city was disrupted by rising Euphrates turbidity, with partial resumption later reported. Minister Raed al-Saleh said floods hit more than a third of the country, compounding war-damaged infrastructure challenges. European soil-moisture data was cited warning of further flood risk. This continues the previous snapshot's flood narrative with updated casualty figures and warnings about landmine displacement.",
-   "detail_ar": "نقلت سانا وتلفزيون سوريا وGoogle News والإخبارية ارتفاع حصيلة قتلى السيول إلى سبعة، بينهم خمسة أطفال، وانتشال فرق البحث جثة قرب الطبقة بعد ستة أيام من البحث. حذّر الدفاع المدني من احتمال انجراف الألغام والذخائر غير المنفجرة إلى مناطق كانت آمنة. تعطلت مياه الشرب في مدينة الرقة بسبب ارتفاع عكارة نهر الفرات مع عودة جزئية لاحقاً للضخ. وقال وزير الطوارئ رائد الصالح إن السيول ضربت أكثر من ثلث مساحة البلاد، ما يفاقم تحديات بنية تحتية مدمَّرة أصلاً بفعل الحرب. واستُشهد ببيانات أوروبية عن رطوبة التربة تحذر من مخاطر سيول إضافية. تستمر هذه الرواية من التحديث السابق مع تحديث أعداد الضحايا وتحذيرات انجراف الألغام.",
-   "public_reaction": "Limited direct public commentary, but general concern over infrastructure fragility and humanitarian strain visible in related posts about reconstruction challenges.",
-   "public_reaction_ar": "كان التعليق الشعبي المباشر محدوداً، لكن القلق العام من هشاشة البنية التحتية والضغط الإنساني ظهر في منشورات متصلة بتحديات إعادة الإعمار.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.2,
-   "outlet_tone": {
-    "official": -0.2,
-    "independent": -0.3,
-    "aggregator": -0.3
-   },
-   "public_tone": {
-    "en": -0.2
-   },
-   "emotions": [
-    "worry",
-    "grief"
-   ],
-   "emotions_ar": [
-    "قلق",
-    "حزن"
-   ],
-   "framings": [
-    "State framing: emergency response ongoing",
-    "Independent framing: worsening humanitarian crisis"
-   ],
-   "framings_ar": [
-    "تأطير رسمي: استمرار الاستجابة الطارئة",
-    "تأطير مستقل: تفاقم الأزمة الإنسانية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 12,
-   "public_volume": 2,
-   "share": 0.016,
-   "engagement": 10329,
-   "platforms": {
-    "news": 5,
-    "telegram": 5,
-    "bluesky": 2
-   },
-   "languages": {
-    "ar": 9,
-    "en": 3
-   },
-   "public_languages": {
-    "en": 1,
-    "ar": 1
-   },
-   "kinds": {
-    "official": 1,
-    "aggregator": 3,
-    "independent": 6
-   },
-   "sources": [
-    "Google News - Syria (EN)",
-    "Bluesky posts",
-    "SANA website - state news agency (AR)",
-    "Syria TV - opposition-origin",
-    "Euphrates Post - Deir ez-Zor and the east",
-    "Syria Plus (SY+) - news platform"
-   ],
-   "examples": [
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/97537",
-     "platform": "telegram"
-    },
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110035",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44122",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-01T15:11:57Z",
+   "first_seen": "2026-11-02T23:32:26Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -594,76 +433,74 @@
    "theme": "security",
    "title": "Armed clashes between two families in Hama's Sawaiq neighborhood",
    "title_ar": "اشتباكات مسلحة بين عائلتين في حي الصواعق بحماة",
-   "summary": "Armed clashes broke out between two families in the Sawaiq neighborhood of Hama on November 2, 2026, involving light and medium weapons and RPGs. Internal security forces deployed to restore calm and pursue those involved, according to state and independent outlets.",
-   "summary_ar": "اندلعت اشتباكات مسلحة بين عائلتين في حي الصواعق بمدينة حماة يوم ٢ تشرين الثاني ٢٠٢٦ استُخدمت فيها أسلحة خفيفة ومتوسطة وقذائف آر بي جي. انتشرت قوى الأمن الداخلي لإعادة الهدوء وملاحقة المتورطين، بحسب وسائل الإعلام الرسمية والمستقلة.",
-   "detail": "Multiple outlets (ANHA, Syria Plus, Syria TV, Al-Ikhbariya, Shaam News) reported near-simultaneously on the clash, describing weapons ranging from light arms to RPGs and explosions heard in the area. Internal security forces were reported deploying quickly to separate the families and arrest those involved. No casualty figures were given in the posts. Public reaction included some matter-of-fact relay comments and no strong public commentary directly tied to this specific post set, though the event fits a pattern of local family disputes escalating to armed violence that recurs in Syrian cities amid weak state authority.",
-   "detail_ar": "نقلت عدة وسائل إعلام (هاوار، سوريا بلس، تلفزيون سوريا، الإخبارية، شام) الخبر بشكل شبه متزامن، واصفة أسلحة تراوحت بين الخفيفة وقذائف آر بي جي وانفجارات سُمعت في المنطقة. أفادت التقارير بانتشار سريع لقوى الأمن الداخلي لفصل العائلتين واعتقال المتورطين. لم تُذكر أي حصيلة إصابات في المنشورات. لم تظهر تعليقات شعبية قوية مرتبطة مباشرة بهذه المجموعة من المنشورات، لكن الحادثة تعكس نمطاً متكرراً من النزاعات العائلية المحلية التي تتصاعد إلى عنف مسلح في ظل ضعف سلطة الدولة.",
+   "summary": "Armed clashes broke out between two families in al-Sawaeq neighborhood, north of Hama, after a dispute linked to a killing at the livestock market, with RPGs and machine guns used. Internal Security Forces intervened, arrested several suspects, confiscated weapons and restored calm, though pursuit of others continues.",
+   "summary_ar": "اندلعت اشتباكات مسلحة بين عائلتين في حي الصواعق شمال حماة إثر خلاف مرتبط بمقتل شخص في سوق المواشي، استُخدمت فيها قذائف آر بي جي ورشاشات. تدخلت قوى الأمن الداخلي واعتقلت عدداً من المتورطين وصادرت أسلحة وأعادت الهدوء، فيما تتواصل ملاحقة آخرين.",
+   "detail": "Multiple outlets (Levant24, Enab Baladi, Al-Watan, Syria TV, Halab Today, ANHA, Syria Plus) reported the clash stemmed from a market dispute escalating into armed confrontation involving RPGs and medium weapons, injuring five people including one critically, and forcing families to flee homes. Internal Security Forces deployed, arrested some involved, confiscated weapons and say pursuit of others continues. This is a continuation of the previous snapshot's story with added detail on casualties and the specific trigger (livestock market killing). No major new developments beyond arrests reported this cycle.",
+   "detail_ar": "نقلت وسائل إعلام متعددة (Levant24 وعنب بلدي والوطن وتلفزيون سوريا وحلب اليوم وهاوار وسوريا بلس) أن الاشتباك نشأ عن خلاف في السوق تصاعد إلى مواجهة مسلحة استُخدمت فيها قذائف آر بي جي وأسلحة متوسطة، ما أدى إلى إصابة خمسة أشخاص أحدهم في حالة حرجة، واضطرار عائلات لمغادرة منازلها. انتشرت قوى الأمن الداخلي واعتقلت بعض المتورطين وصادرت أسلحة، وتتواصل ملاحقة آخرين. يُعد هذا استمراراً للرواية السابقة مع تفاصيل إضافية حول الإصابات والسبب المحدد (مقتل في سوق المواشي). لا تطورات كبرى جديدة غير الاعتقالات في هذه الدورة.",
    "public_reaction": "",
    "public_reaction_ar": "",
    "sentiment": -0.2,
    "public_sentiment": null,
    "outlet_tone": {
-    "official": -0.2,
     "independent": -0.2,
-    "kurdish": -0.3
+    "kurdish": -0.2
    },
    "public_tone": {},
    "emotions": [
     "concern",
-    "alarm"
+    "relief"
    ],
    "emotions_ar": [
     "قلق",
-    "انزعاج"
+    "ارتياح"
    ],
    "framings": [
-    "State framing: security restored quickly",
-    "Kurdish outlet framing: factual incident report"
+    "Outlets frame as localized tribal/family dispute contained by security forces"
    ],
    "framings_ar": [
-    "تأطير رسمي: استعادة سريعة للأمن",
-    "تأطير إعلام كردي: نقل وقائعي للحادثة"
+    "تؤطر وسائل الإعلام الحادثة كخلاف عشائري محلي احتوته قوى الأمن"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 9,
+   "volume": 8,
    "public_volume": 0,
-   "share": 0.012,
-   "engagement": 17568,
+   "share": 0.011,
+   "engagement": 8207,
    "platforms": {
-    "telegram": 9
+    "telegram": 7,
+    "news": 1
    },
    "languages": {
-    "ar": 9
+    "en": 1,
+    "ar": 7
    },
    "public_languages": {},
    "kinds": {
-    "kurdish": 1,
     "independent": 7,
-    "official": 1
+    "kurdish": 1
    },
    "sources": [
-    "Syria TV - opposition-origin broadcaster",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
+    "Levant24 - Syria news (EN)",
+    "Enab Baladi - independent (AR)",
+    "Al-Watan - Damascus daily newspaper",
+    "Syria TV - opposition-origin",
     "Syria Plus (SY+) - news platform",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "Shaam News Network - opposition-origin",
-    "Al-Ikhbariya Syria - state TV"
+    "ANHA (Hawar) - north-east administration news agency (AR)"
    ],
    "examples": [
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/97538",
-     "platform": "telegram"
-    },
     {
      "source": "Halab Today TV - opposition-origin, Aleppo",
      "url": "https://t.me/HalabTodayTV/142467",
      "platform": "telegram"
     },
     {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/238659",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/97550",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Watan - Damascus daily newspaper",
+     "url": "https://t.me/alwatan_sy/204919",
      "platform": "telegram"
     }
    ],
@@ -675,80 +512,159 @@
    }
   },
   {
+   "id": "deir-ezzor-landmine-children-deaths",
+   "key": "2026-11-02-deir-ezzor-landmine-children-deaths",
+   "theme": "security",
+   "title": "Landmine blast kills two girls near Albu Kamal, part of wider mine toll",
+   "title_ar": "انفجار لغم يودي بحياة طفلتين قرب البوكمال ضمن حصيلة أوسع من ضحايا الألغام",
+   "summary": "A landmine from war remnants exploded in Maizileh village near Albu Kamal, killing two girls and injuring two others from the same family on November 2, according to North Press and SANA. The deaths add to a string of mine casualties in Deir ez-Zor countryside, with Civil Defense warning floods could wash unexploded ordnance into previously safe areas.",
+   "summary_ar": "انفجر لغم من مخلفات الحرب في قرية معيزيلة قرب البوكمال، ما أدى إلى مقتل طفلتين وإصابة اثنتين أخريين من العائلة ذاتها في ٢ تشرين الثاني، بحسب نورث برس وسانا. تضاف هذه الحادثة إلى سلسلة ضحايا الألغام في ريف دير الزور، فيما حذر الدفاع المدني من احتمال جرف السيول لمخلفات حربية غير منفجرة إلى مناطق كانت آمنة نسبياً.",
+   "detail": "North Press, SANA, Enab Baladi, Halab Today, Euphrates Post and Syria Plus reported the blast killed two girls from the al-Muhaidi al-Bunasser family and injured two others, with victims taken to Deir ez-Zor and Aisha hospitals. SANA separately reported another mine blast in Albu Kamal killing two people and injuring two more, from 'former regime remnants.' This continues the previous snapshot's landmine story with a new specific incident. Civil Defense separately warned that flash floods could carry landmines and unexploded ordnance into areas previously considered safe, raising broader concern about the scale of unexploded war remnants across eastern Syria.",
+   "detail_ar": "نقلت نورث برس وسانا وعنب بلدي وحلب اليوم وفرات بوست وسوريا بلس أن الانفجار أودى بحياة طفلتين من عائلة المحيدي البوناصر وأصاب اثنتين أخريين، نُقلن إلى مشفى عائشة ومشفى دير الزور الوطني. كما نقلت سانا بشكل منفصل أن انفجار لغم آخر في البوكمال أودى بحياة شخصين وأصاب اثنين من «مخلفات النظام البائد». تستمر هذه القصة من رواية التحديث السابق مع حادثة جديدة محددة. وحذّر الدفاع المدني بشكل منفصل من أن السيول قد تجرف الألغام والذخائر غير المنفجرة إلى مناطق كانت تُعتبر آمنة نسبياً، ما يثير قلقاً أوسع من حجم مخلفات الحرب غير المنفجرة في شرق سوريا.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": -0.6,
+   "public_sentiment": null,
+   "outlet_tone": {
+    "official": -0.5,
+    "independent": -0.6,
+    "kurdish": -0.6
+   },
+   "public_tone": {},
+   "emotions": [
+    "grief",
+    "alarm"
+   ],
+   "emotions_ar": [
+    "حزن",
+    "جزع"
+   ],
+   "framings": [
+    "Outlets frame as recurring toll of war remnants, flood risk compounding danger"
+   ],
+   "framings_ar": [
+    "تؤطر وسائل الإعلام الحادثة كحصيلة متكررة لمخلفات الحرب، مع تفاقم الخطر بفعل السيول"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 8,
+   "public_volume": 0,
+   "share": 0.011,
+   "engagement": 9255,
+   "platforms": {
+    "telegram": 7,
+    "news": 1
+   },
+   "languages": {
+    "en": 1,
+    "ar": 7
+   },
+   "public_languages": {},
+   "kinds": {
+    "kurdish": 2,
+    "independent": 4,
+    "official": 2
+   },
+   "sources": [
+    "North Press Agency (EN)",
+    "North Press Agency - Qamishli-based (AR)",
+    "Enab Baladi - independent (AR)",
+    "Euphrates Post - Deir ez-Zor and the east",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "SANA - state news agency (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142468",
+     "platform": "telegram"
+    },
+    {
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110041",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (AR)",
+     "url": "https://t.me/sana_gov/189911",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-11-02T23:32:26Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
    "id": "muzna-atrash-peace-adviser",
    "key": "2026-11-02-muzna-atrash-peace-adviser",
-   "theme": "suwayda-druze",
-   "title": "Foreign Minister appoints Muzna al-Atrash as peace adviser",
-   "title_ar": "وزير الخارجية يعيّن مزنا الأطرش مستشارة لشؤون السلام",
-   "summary": "Foreign Minister Asaad al-Shaibani appointed Muzna al-Atrash, a media and arts figure from Suwayda born in 1987, as adviser for peace affairs at the ministry. Regional and aggregator outlets framed her as Syria's new Druze adviser, linking the move to Damascus's outreach to the south.",
-   "summary_ar": "عيّن وزير الخارجية أسعد الشيباني مزنا الأطرش، الإعلامية والفنانة المولودة عام ١٩٨٧ في محافظة السويداء، مستشارة لشؤون السلام في الوزارة. وأبرزت وسائل إعلام إقليمية ومواقع تجميع الأخبار كونها مستشارة درزية جديدة، في إطار انفتاح دمشق على الجنوب.",
-   "detail": "Outlets including Sky News Arabia, Al-Monitor via Google News, The National, North Press and Euphrates Post reported on al-Atrash's academic and professional background spanning theater criticism, cinema studies, and media work. Her Druze and Suwayda origin was emphasized as symbolically significant given recent tensions in the south. Public comments (largely on Bluesky and via aggregator shares) treated the appointment mostly as informational news with some framing it as part of outreach to the Druze community following earlier Suwayda unrest. No strong controversy was visible in the posts, though some outlets linked it implicitly to efforts to defuse sectarian tension.",
-   "detail_ar": "نقلت وسائل إعلام من بينها Sky News Arabia وAl-Monitor عبر Google News وThe National ونورث برس وفرات بوست خلفية الأطرش الأكاديمية والمهنية في النقد المسرحي والدراسات السينمائية والإعلام. وشُدد على أصلها الدرزي ومنشئها من السويداء كدلالة رمزية في ظل التوترات الأخيرة في الجنوب. غلب على التعليقات العامة (معظمها على Bluesky وعبر مشاركات مواقع التجميع) الطابع الإخباري مع ربط بعضها ضمناً بجهود تهدئة التوتر الطائفي عقب اضطرابات السويداء السابقة.",
-   "public_reaction": "Reaction was mostly informational sharing rather than strong opinion, with some framing the appointment as a positive outreach gesture to the Druze community.",
-   "public_reaction_ar": "اقتصر التفاعل الشعبي غالباً على مشاركة الخبر دون آراء قوية، مع وصف بعضهم التعيين بأنه بادرة إيجابية تجاه الطائفة الدرزية.",
-   "sentiment": 0.2,
-   "public_sentiment": 0.1,
+   "theme": "governance",
+   "title": "Foreign Minister appoints Muzna al-Atrash as Druze peace adviser amid debate",
+   "title_ar": "وزير الخارجية يعين مزنا الأطرش مستشارة لشؤون السلام وسط جدل",
+   "summary": "Foreign Minister Asaad al-Shaibani appointed Muzna al-Atrash, a Druze figure from Suwayda with a media and arts background, as peace affairs adviser at the ministry. Regional and aggregator outlets profiled her, while some Arabic aggregators noted controversy ('جدل') over the appointment; it aims to support Damascus's outreach to the south.",
+   "summary_ar": "عيّن وزير الخارجية أسعد الشيباني مزنا الأطرش، الشخصية الدرزية من محافظة السويداء ذات الخلفية الإعلامية والفنية، مستشارة لشؤون السلام في الوزارة. تناولت وسائل الإعلام الإقليمية ومواقع التجميع سيرتها، فيما أشارت بعض المواقع العربية إلى «جدل» حول التعيين الذي يهدف إلى دعم انفتاح دمشق على الجنوب.",
+   "detail": "Sky News Arabia, Al-Monitor, North Press and Google News aggregators covered the appointment of Muzna al-Atrash, noting her background spanning media, arts and community/humanitarian work. Al-Monitor's English coverage framed her as Syria's 'new Druze peace adviser,' tying the appointment to Damascus's efforts to assert authority and build trust in the south following tensions in Suwayda. Al-Quds Al-Arabi aggregated reporting mentioning controversy ('جدل') around the appointment without detailing its nature in the posts available. No explicit public reaction posts appeared in this batch beyond outlet coverage.",
+   "detail_ar": "غطت سكاي نيوز عربية وAl-Monitor ونورث برس ومواقع تجميع أخبار جوجل تعيين مزنا الأطرش، مشيرة إلى خلفيتها الإعلامية والفنية والعمل المجتمعي والإنساني. أطرت تغطية Al-Monitor بالإنكليزية التعيين بوصفها «مستشارة درزية جديدة للسلام»، رابطة إياه بجهود دمشق لترسيخ سلطتها وبناء الثقة في الجنوب بعد توترات السويداء. نقلت القدس العربي عن وجود «جدل» حول التعيين دون تفصيل طبيعته في المنشورات المتاحة. لم تظهر في هذه الدفعة تعليقات شعبية صريحة حول الموضوع تتجاوز تغطية وسائل الإعلام.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.1,
+   "public_sentiment": null,
    "outlet_tone": {
-    "independent": 0.1,
     "kurdish": 0.1,
     "regional": 0.2,
-    "aggregator": 0.2
+    "aggregator": 0.0
    },
    "public_tone": {
     "en": 0.1
    },
    "emotions": [
-    "cautious hope"
+    "curiosity",
+    "cautious interest"
    ],
    "emotions_ar": [
-    "أمل حذر"
+    "فضول",
+    "اهتمام حذر"
    ],
    "framings": [
-    "Regional outlets: symbolic Druze outreach",
-    "Kurdish outlets: factual profile"
+    "Regional outlets frame as outreach to Druze community",
+    "Aggregators note unspecified controversy"
    ],
    "framings_ar": [
-    "وسائل إعلام إقليمية: انفتاح رمزي على الدروز",
-    "وسائل إعلام كردية: سرد وقائعي للسيرة"
+    "تؤطر وسائل الإعلام الإقليمية التعيين كانفتاح على المجتمع الدرزي",
+    "تشير مواقع التجميع إلى جدل غير محدد"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 9,
-   "public_volume": 3,
-   "share": 0.012,
-   "engagement": 4052,
+   "volume": 7,
+   "public_volume": 2,
+   "share": 0.01,
+   "engagement": 203,
    "platforms": {
     "news": 4,
-    "telegram": 2,
-    "bluesky": 3
+    "telegram": 1,
+    "bluesky": 2
    },
    "languages": {
-    "ar": 4,
-    "en": 5
+    "ar": 5,
+    "en": 2
    },
    "public_languages": {
-    "en": 3
+    "en": 2
    },
    "kinds": {
     "regional": 1,
     "aggregator": 3,
-    "kurdish": 1,
-    "independent": 1
+    "kurdish": 1
    },
    "sources": [
-    "Bluesky posts",
-    "Google News - Syria (EN)",
-    "Sky News Arabia - UAE-based",
     "Google News - Syria (AR)",
-    "North Press Agency - Qamishli-based (AR)",
-    "Euphrates Post - Deir ez-Zor and the east"
+    "Bluesky posts",
+    "Sky News Arabia - UAE-based",
+    "North Press Agency - Qamishli-based (AR)"
    ],
    "examples": [
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110031",
-     "platform": "telegram"
-    },
     {
      "source": "North Press Agency - Qamishli-based (AR)",
      "url": "https://t.me/npa_syria/84753",
@@ -757,6 +673,11 @@
     {
      "source": "Sky News Arabia - UAE-based",
      "url": "https://www.skynewsarabia.com/middle-east/1902225-%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%8A%D8%A9-%D9%87%D9%8A-%D9%85%D8%B2%D9%86%D8%A7-%D8%A7%D9%84%D8%A3%D8%B7%D8%B1%D8%B4",
+     "platform": "news"
+    },
+    {
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMi7gJBVV95cUxPN3lveGw4d0xKdVpmQ0tZYWU2QU9raHQwZnM1UHFWUmpJT2JQdkgzRExnZ2VfVnNQQ1cyYXpWMWpEd2hPYnRWbTQwUWVhbkFvYUpwdmgxWG5fSkVTd2ZoZ3FmSjZCZk9YRmlxeHdxYlViaGM5TW1RcnFPdkdhbDlVZ29BMUFKUkN3MmlRYWJXOUdlU0J3UDE5UThkNXlQQ2h4RG83Nkp2WUEtY3I4VERJWkx3NTA3X1RjY2ROTW1lTWR0bmlST0hjTm9sNkdNRmR2MWJIZ3JYTzJSOU5lNF9Ea0taMjd4ZkZFcTh2T2ExRENheWsxYldKNmQxT2tGUGV1Xy1VNmlOc1FZVGx0NnQyTUJDRkFabTRVbWxPam5fVFRTaWlkYm85aXczS2RlYUNSVTAtWlZXbWRocmljc3Z0NWRORHJ0M2RFdEZwSWlNYmhXT3hIVFZFaG1melZRaXdrX1F5ZjlMTzh6M0VDNXfSAfMCQVVfeXFMUFB2Vm14V2N4ZU01RzZwZDdLcFNfS1A3UHRael9mM01sYkxlT1J3V09QTGxUNERlWmIwb2ViNHZMUDloM1ZqbnlJR0dxemxvdHN6QWQyQ1FRM3ZCTDFOSnJ3dktCLU1nYzJfRndsTjFERVJiTExTRVRyYlYxdFZ1cktsZndaanpuSXpJTVdpMm1pLWZHbHJHUE40elZzRFVzLVdVNjNaS3BoRGQ0NHhQSzhzQXNmWmNMQlRPbnExdDVuSHk2OXdKUElHX3l0Z2dNRUVKNmM2aTUtdklsYlkwWkV6bUJ4djUxLTVENXhuV0M4RHNiSVNJYXRmYzlTV19LQ3NaRzN4UnBVWTYySFJCeGQ0eEFKRmw3NWl5cE5NY1dfdkk5RElObFBacGRtdUdHVFNMTWxZbnotNlJSY2N0Wno3ZTlDcnRTNVg5SzcwMmotVHUzenZzcWxndVdDcUZwb0hheHEwOU1VNnd5b0s0SFBVOGc?oc=5",
      "platform": "news"
     }
    ],
@@ -768,82 +689,87 @@
    }
   },
   {
-   "id": "landmine-children-deaths-deir-ezzor",
-   "key": "2026-11-02-landmine-children-deaths-deir-ezzor",
-   "theme": "security",
-   "title": "Landmine blast kills four girls from one family near Albu Kamal",
-   "title_ar": "انفجار لغم يقتل أربع فتيات من عائلة واحدة قرب البوكمال",
-   "summary": "A landmine from war remnants exploded in Muayzila village near Albu Kamal, Deir ez-Zor countryside, on November 2, 2026, killing at least two to four girls (reports vary) from the same family and wounding others. Civil Defense warned flood waters are pushing more unexploded ordnance into populated areas.",
-   "summary_ar": "انفجر لغم من مخلفات الحرب في قرية معيزيلة قرب البوكمال بريف دير الزور يوم ٢ تشرين الثاني ٢٠٢٦، ما أسفر عن مقتل فتاتين إلى أربع فتيات (بحسب اختلاف الروايات) من عائلة واحدة وإصابة أخريات. حذّر الدفاع المدني من أن مياه السيول تدفع المزيد من الذخائر غير المنفجرة إلى مناطق مأهولة.",
-   "detail": "Multiple outlets (Enab Baladi, North Press, Syria TV, Euphrates Post, Halab Today, Shaam News, Syria Plus) reported on the blast, with casualty figures varying between two and four girls killed from the same family (identified by some as the al-Buna'sir/Muhaydi clan), and additional wounded transferred to Deir ez-Zor and Aisha hospitals. The explosion is attributed to war remnants, a longstanding hazard in the eastern countryside. Civil Defense separately warned that recent flooding risks displacing landmines into areas previously considered safe, linking this tragedy to the broader flood narrative. No major public commentary was found specifically on this incident in the sampled posts, though it reflects a recurring grim toll in Deir ez-Zor.",
-   "detail_ar": "نقلت وسائل إعلام متعددة (عنب بلدي، نورث برس، تلفزيون سوريا، فرات بوست، حلب اليوم، شام، سوريا بلس) تفاصيل الانفجار، مع تفاوت الحصيلة بين قتل فتاتين إلى أربع فتيات من عائلة واحدة (حُدِّدت من قبل البعض بعائلة البوناصر/محيدي)، ونقل مصابين آخرين إلى مشفيي دير الزور الوطني وعائشة. يُعزى الانفجار إلى مخلفات حرب، وهو خطر قائم منذ زمن في الريف الشرقي. وحذّر الدفاع المدني بشكل منفصل من أن السيول الأخيرة قد تدفع الألغام إلى مناطق كانت تُعتبر آمنة، ما يربط هذه المأساة بسياق السيول الأوسع. لم يُعثر على تعليقات شعبية بارزة محددة حول هذا الحادث ضمن العينة، رغم أنه يعكس حصيلة مأساوية متكررة في دير الزور.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": -0.6,
-   "public_sentiment": null,
+   "id": "transitional-justice-former-officers",
+   "key": "2026-11-02-transitional-justice-former-officers",
+   "theme": "justice",
+   "title": "Transitional justice body names former officers suspected of war crimes",
+   "title_ar": "هيئة العدالة الانتقالية تتهم ضباطاً سابقين بارتكاب جرائم حرب",
+   "summary": "The National Commission for Transitional Justice's accountability director, Radif Mustafa, said former regime general Mohammad Hassan al-Sharif is suspected of war crimes tied to the chemical weapons file, having worked under fugitives Ali Mamlouk and Bassam Hassan. Separately, former political security chief Atef Najib stood trial in Damascus over 2011 Daraa-era torture and killing allegations.",
+   "summary_ar": "قال رديف مصطفى، مدير المساءلة والمحاسبة في الهيئة الوطنية للعدالة الانتقالية، إن اللواء السابق محمد حسان الشريف مشتبه بارتكاب جرائم حرب مرتبطة بملف الكيماوي، بعدما عمل تحت إمرة الفارين علي مملوك وبسام حسن. في سياق متصل، مَثُل عاطف نجيب، الرئيس الأسبق لفرع الأمن السياسي في درعا، أمام القضاء في دمشق بتهم تتعلق بالاعتقال والتعذيب والقتل منذ بدايات احتجاجات ٢٠١١.",
+   "detail": "Shaam News, Syria Plus and Halab Today reported that Radif Mustafa named retired general Mohammad Hassan al-Sharif, born 1950, as suspected of war crimes and crimes against humanity, detailing his role under the chemical weapons committee led by fugitives Ali Mamlouk and Bassam Hassan, including visiting chemical sites and overseeing weapons removal in 2015. Separately, Daraa 24 reported on the ongoing trial of Atef Najib, former Daraa political security chief, whose name is tied to the earliest 2011 protest crackdowns, now facing charges including torture and killing, 15 years later, framed as a test of whether transitional justice can preserve civil peace in Daraa.",
+   "detail_ar": "نقلت شام نيوز وسوريا بلس وحلب اليوم أن رديف مصطفى سمّى اللواء المتقاعد محمد حسان الشريف، المولود عام 1950، كمشتبه بارتكاب جرائم حرب وجرائم ضد الإنسانية، مفصلاً دوره ضمن لجنة الملف الكيماوي بقيادة الفارين علي مملوك وبسام حسن، بما في ذلك زيارة مواقع كيماوية والإشراف على ترحيل الأسلحة عام 2015. في سياق متصل، نقلت درعا24 عن محاكمة جارية لعاطف نجيب، الرئيس الأسبق لفرع الأمن السياسي في درعا، المرتبط اسمه بأولى حملات القمع عام 2011، ويواجه الآن تهماً تشمل التعذيب والقتل بعد 15 عاماً، في ما يُنظر إليه كاختبار لقدرة العدالة الانتقالية على صون السلم الأهلي في درعا.",
+   "public_reaction": "Public comments on related videos show some support for holding former officials accountable, alongside skepticism about selective justice and claims the transitional authorities tolerate other former regime figures.",
+   "public_reaction_ar": "تُظهر التعليقات الشعبية على الفيديوهات ذات الصلة تأييداً لمحاسبة المسؤولين السابقين، إلى جانب تشكيك في انتقائية العدالة واتهامات بتساهل السلطة الانتقالية مع شخصيات أخرى من النظام السابق.",
+   "sentiment": -0.1,
+   "public_sentiment": -0.1,
    "outlet_tone": {
-    "independent": -0.6,
-    "kurdish": -0.5
+    "independent": -0.1
    },
-   "public_tone": {},
+   "public_tone": {
+    "ar": -0.1
+   },
    "emotions": [
-    "grief",
-    "horror"
+    "vindication",
+    "skepticism"
    ],
    "emotions_ar": [
-    "حزن",
-    "فزع"
+    "شعور بالإنصاف",
+    "تشكك"
    ],
    "framings": [
-    "Independent/Kurdish outlets: war remnants still killing children"
+    "Outlets frame as accountability progress",
+    "Public questions consistency of justice process"
    ],
    "framings_ar": [
-    "وسائل إعلام مستقلة وكردية: مخلفات الحرب ما زالت تقتل الأطفال"
+    "تؤطر وسائل الإعلام الأمر كتقدم في المساءلة",
+    "يشكك الجمهور في اتساق مسار العدالة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 8,
-   "public_volume": 0,
+   "volume": 7,
+   "public_volume": 2,
    "share": 0.01,
-   "engagement": 6047,
+   "engagement": 7509,
    "platforms": {
-    "telegram": 8
+    "telegram": 5,
+    "youtube": 2
    },
    "languages": {
-    "ar": 7,
-    "en": 1
+    "ar": 7
    },
-   "public_languages": {},
+   "public_languages": {
+    "ar": 2
+   },
    "kinds": {
-    "independent": 6,
-    "kurdish": 2
+    "official": 1,
+    "independent": 4
    },
    "sources": [
-    "Enab Baladi - independent (AR)",
-    "North Press Agency - Qamishli-based (AR)",
-    "Syria TV - opposition-origin broadcaster",
-    "Euphrates Post - Deir ez-Zor and the east",
-    "Halab Today TV - opposition-origin, Aleppo",
-    "Syria Plus (SY+) - news platform"
+    "YouTube comments",
+    "Al-Ikhbariya Syria - state TV",
+    "Daraa 24 - local, Daraa",
+    "Shaam News Network - opposition-origin",
+    "Syria Plus (SY+) - news platform",
+    "Halab Today TV - opposition-origin, Aleppo"
    ],
    "examples": [
     {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110041",
-     "platform": "telegram"
-    },
-    {
      "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142468",
+     "url": "https://t.me/HalabTodayTV/142464",
      "platform": "telegram"
     },
     {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/97544",
+     "source": "Daraa 24 - local, Daraa",
+     "url": "https://t.me/daraa24_org/28510",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/238690",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-11-02T19:38:59Z",
+   "first_seen": "2026-11-02T23:32:26Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -959,15 +885,15 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 18
+   "fetched": 17,
+   "recent": 17
   },
   {
    "name": "SANA - state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 17,
-   "recent": 17
+   "fetched": 12,
+   "recent": 12
   },
   {
    "name": "Syrian Presidency - official",
@@ -980,8 +906,8 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 17,
-   "recent": 17
+   "fetched": 18,
+   "recent": 18
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -995,7 +921,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 18
+   "recent": 19
   },
   {
    "name": "Enab Baladi - independent (EN)",
@@ -1015,15 +941,15 @@
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 13
+   "fetched": 15,
+   "recent": 15
   },
   {
    "name": "Levant24 - Syria news (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 17
+   "recent": 15
   },
   {
    "name": "Syria TV - opposition-origin broadcaster",
@@ -1078,8 +1004,8 @@
    "name": "North Press Agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 7,
-   "recent": 7
+   "fetched": 8,
+   "recent": 8
   },
   {
    "name": "SDF media center - official",
@@ -1093,7 +1019,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 4
   },
   {
    "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
@@ -1128,7 +1054,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al Mayadeen - Beirut-based",
@@ -1142,21 +1068,21 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "TRT Arabi - Turkish public broadcaster",
    "platform": "telegram",
    "ok": true,
    "fetched": 18,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al-Hadath - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "France 24 Arabic - French public broadcaster",
@@ -1191,14 +1117,14 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 19,
-   "recent": 19
+   "recent": 16
   },
   {
    "name": "Daraa 24 - local, Daraa",
    "platform": "telegram",
    "ok": true,
    "fetched": 15,
-   "recent": 11
+   "recent": 9
   },
   {
    "name": "Sawt al-Asima - local, Damascus",
@@ -1219,14 +1145,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 32
+   "recent": 22
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 41
+   "recent": 40
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1240,7 +1166,7 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 59
+   "recent": 58
   },
   {
    "name": "Sky News Arabia - UAE-based",
@@ -1267,22 +1193,22 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 371,
-   "recent": 371
+   "fetched": 340,
+   "recent": 340
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 214,
-   "recent": 173
+   "fetched": 204,
+   "recent": 164
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 21
+   "recent": 18
   },
   {
    "name": "Reddit r/Kurdistan comments",
@@ -1445,39 +1371,17 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.3876,
+ "cost_usd": 0.3594,
  "watch": [
-  {
-   "type": "falling",
-   "id": "kobani-anniversary-kurdish-education",
-   "key": "2026-11-01-kobani-anniversary-kurdish-education",
-   "title": "Kobani University merger and Kurdish-language education restrictions spark protests",
-   "title_ar": "ضم جامعة كوباني واحتجاجات على تقييد التعليم بالكردية",
-   "share": 0.033,
-   "from": 0.0,
-   "to": -0.4,
-   "hours": 33
-  },
   {
    "type": "gap",
    "id": "working-hours-decree-anger",
    "key": "2026-11-02-working-hours-decree-anger",
    "title": "New 8am-4pm work hours decree sparks public anger over pay",
-   "title_ar": "قرار تحديد دوام ٨ صباحاً حتى ٤ مساءً يثير غضباً حول الرواتب",
-   "share": 0.073,
+   "title_ar": "قرار تمديد الدوام الرسمي من ٨ صباحاً حتى ٤ مساءً يثير غضباً بشأن الرواتب",
+   "share": 0.072,
    "public": -0.6,
-   "outlet": 0.0
-  },
-  {
-   "type": "rising",
-   "id": "lebanon-delegation-damascus-talks",
-   "key": "2026-11-02-lebanon-delegation-damascus-talks",
-   "title": "High-level Lebanese government delegation visits Damascus",
-   "title_ar": "وفد لبناني حكومي رفيع المستوى يزور دمشق",
-   "share": 0.07,
-   "from": 0.006,
-   "to": 0.07,
-   "updates": 2
+   "outlet": 0.1
   }
  ]
 }
