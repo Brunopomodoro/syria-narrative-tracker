@@ -613,7 +613,7 @@ The period's media analysis is written first, as soon as the period has ended, a
 
 ### Story order on the home page
 
-Stories open ordered by how much ordinary people talk about them (**Most discussed by people**): the percentage beside each story is its share of what people posted, outlets not counted, and "Everything else" shows the rest of people's posts. The other orders are a click away: **Most discussed overall** (people's and outlets' posts together, the share used in the trends, reports and data files), **Most negative** and **Biggest gap**. Outlet posts still count in the analysis as context, since most comments react to them.
+Stories open ordered by how much ordinary people talk about them (**Most discussed by people**): the percentage beside each story is its share of what people posted, outlets not counted, and "Everything else" shows the rest of people's posts. The other orders are a click away: **Most discussed overall** (people's and outlets' posts together, the share used in the trends, reports and data files), **Most negative** and **Biggest gap**. Outlet posts still count in the analysis as context, since most comments react to them. Claude lists which posts belong to each story; it is told to list every one, not examples, and when it puts at least two comments of the same YouTube video or Telegram post in one story (and three quarters of that thread's listed comments agree), the thread's other comments join that story too (`join_threads` in `scripts/pipeline.py`, free; the run log says how many). If "Everything else" stays high, the quality log (`data/quality.json`) and the snapshots show the share linked run by run.
 
 ### Weekly site check: health, SEO and security
 

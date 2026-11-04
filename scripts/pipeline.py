@@ -697,7 +697,7 @@ Some outlet posts also carry emoji reaction counts from readers; treat these as 
 Your main job is to understand how ORDINARY PEOPLE are talking and reacting, and how that compares with what outlets say.
 
 Rules:
-- Group posts into 3 to 10 narratives. A regional or international event that Syrians are reacting to (for example an incident involving Israel, Lebanon, Turkey or the Gulf) is a story in its own right; do not leave it out because it is not about Syria itself. A narrative is a specific story or framing (for example "Anger over electricity prices after the new tariff"), not a broad topic like "Politics". An outlet post and the comments reacting to it usually belong to the same narrative. Posts that fit nothing stay unassigned. Never make a catch-all narrative that mixes unrelated stories (for example "Everyday life updates"); leave such posts unassigned instead. Each post id belongs to at most one narrative.
+- Group posts into 3 to 10 narratives. A regional or international event that Syrians are reacting to (for example an incident involving Israel, Lebanon, Turkey or the Gulf) is a story in its own right; do not leave it out because it is not about Syria itself. A narrative is a specific story or framing (for example "Anger over electricity prices after the new tariff"), not a broad topic like "Politics". An outlet post and the comments reacting to it usually belong to the same narrative. Posts that fit nothing stay unassigned. "post_ids" must list EVERY post that belongs to the narrative, not a few examples: all the outlet posts about it and all the public posts and comments reacting to it, however short. Comments under the same video or the same channel post (the same "video:" or "post:" note) usually belong to the narrative that video or post is about. Never make a catch-all narrative that mixes unrelated stories (for example "Everyday life updates"); leave such posts unassigned instead. Each post id belongs to at most one narrative.
 - If a narrative from the previous snapshot is clearly the same ongoing story, reuse its id exactly so trends can be tracked. Otherwise create a new short kebab-case English id.
 - "theme": file every narrative under exactly one of the fixed themes listed below, using its id. Choose the theme the story is mostly about; use "other" only when nothing fits.
 - Describe, never endorse. Attribute claims ("posts claim...", "state media reports...", "commenters argue..."). Never present an unverified claim as fact, and add no facts that are not in the posts.
@@ -1048,8 +1048,44 @@ def weight(p: dict) -> int:
     return p["copies"] if p["voice"] == "public" else 1
 
 
+def join_threads(result: dict, sample: list) -> int:
+    """Comments under the same video or channel post (the same "video:"/"post:" note) are nearly always about the same
+    story, but the reply often lists only some of them. When at least 2 of a thread's comments are in one narrative and
+    at least three quarters of its assigned comments agree, its unassigned comments join that narrative too. Returns how
+    many were added. Uses only this run's sample; nothing is stored."""
+    by_pid = {p["pid"]: p for p in sample}
+    nars = result.get("narratives") or []
+    owner = {}
+    for k, n in enumerate(nars):
+        for i in n.get("post_ids") or []:
+            if i in by_pid and i not in owner:
+                owner[i] = k
+    threads: dict = {}
+    for p in sample:
+        c = str(p.get("context") or "")
+        if p["voice"] == "public" and c.startswith(("video: ", "post: ")) and len(c) > 12:
+            threads.setdefault((p["platform"], c), []).append(p["pid"])
+    added = 0
+    for pids in threads.values():
+        votes = Counter(owner[i] for i in pids if i in owner)
+        if not votes:
+            continue
+        k, top = votes.most_common(1)[0]
+        if top < 2 or top < 0.75 * sum(votes.values()):
+            continue
+        extra = [i for i in pids if i not in owner]
+        if extra:
+            nars[k]["post_ids"] = list(nars[k].get("post_ids") or []) + extra
+            owner.update({i: k for i in extra})
+            added += len(extra)
+    return added
+
+
 def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_ids: list | None = None) -> list:
     by_pid = {p["pid"]: p for p in sample}
+    joined = join_threads(result, sample)
+    if joined:
+        log(f"  {joined} more comments joined the story of the video or post they reply to")
     text_keys = ("title", "title_ar", "summary", "summary_ar", "public_reaction", "public_reaction_ar",
                  "emotions", "emotions_ar", "framings", "framings_ar", "flags", "flags_ar")
     for n in result.get("narratives") or []:
