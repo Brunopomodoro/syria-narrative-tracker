@@ -195,6 +195,8 @@ The starter sources are outlets: what channels and news sites publish. To hear o
 
 The default settings use most of Google's free daily allowance when the job runs every hour: each search term costs 100 units per run, while the `channels:` list under `youtube:` (comments under the newest videos of selected outlets' channels) costs only 2 units per channel plus 1 per video. So add channels freely, but keep search terms to three. No billing account is needed.
 
+Searches return only videos YouTube files under News & Politics (`search_category: 25`); without that, searches for Syria, Damascus or Aleppo bring mostly travel and food vlogs, whose comments belong to no story. Channels in the `channels:` list are read whatever the category.
+
 ### A2. Add Telegram comments, reactions and groups (free, 20 minutes)
 
 This is the richest source of Syrian public opinion: the comment sections under channel posts, the emoji reactions on each post (😡 👍 😢), and open community group chats. It needs a one-time login, which you'll do in your browser with Google Colab (nothing to install).

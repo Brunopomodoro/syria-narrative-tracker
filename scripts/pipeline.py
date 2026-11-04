@@ -230,9 +230,11 @@ def collect_youtube(cfg: dict, since: dt.datetime) -> list:
     out, seen_videos = [], set()
     per_video = int(cfg.get("comments_per_video", 20))
     for term in cfg.get("search_terms", []):
-        s = requests.get("https://www.googleapis.com/youtube/v3/search", timeout=25, params={
-            "part": "snippet", "q": term, "type": "video", "order": "relevance",
-            "publishedAfter": iso(since), "maxResults": max(1, min(50, int(cfg.get("videos_per_term", 4)))), "key": key})
+        params = {"part": "snippet", "q": term, "type": "video", "order": "relevance",
+                  "publishedAfter": iso(since), "maxResults": max(1, min(50, int(cfg.get("videos_per_term", 4)))), "key": key}
+        if cfg.get("search_category"):
+            params["videoCategoryId"] = str(cfg["search_category"])   # 25 = News & Politics: no travel or food vlogs
+        s = requests.get("https://www.googleapis.com/youtube/v3/search", timeout=25, params=params)
         if s.status_code == 403:
             raise RuntimeError("YouTube refused the key (check the key, or the daily quota is used up)")
         s.raise_for_status()

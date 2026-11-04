@@ -932,6 +932,10 @@ rss_feeds:
 youtube:
   enabled: true
   search_terms: ["سوريا|السوريين|دمشق|حلب", "الشارع السوري", "Rojava|Sûriye|Qamişlo|Kobanê|Efrîn"]
+  # Only videos YouTube files under News & Politics (category 25). Without it, searches for Syria, Damascus or Aleppo
+  # return mostly travel and food vlogs, whose comments belong to no story (November 2026: "Everything else" rose
+  # to nearly 90%). Leave empty to search every category.
+  search_category: 25
   videos_per_term: 15         # a search costs the same 100 units whether it returns 8 or 15 videos
   comments_per_video: 50      # 1 unit per video, whatever the number
   # Comments under the newest videos of these channels: 2 units per channel plus 1 per video,
