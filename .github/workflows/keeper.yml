@@ -63,6 +63,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh workflow run update.yml --ref main
+          # an update already running or waiting (the hourly schedule often fires near the keeper's time) makes a second
+          # one pointless and doubles the cost; that update restarts the keeper when it finishes
+          busy=$(gh run list --repo "$GH_REPO" --workflow update.yml --limit 10 --json status -q '[.[] | select(.status != "completed")] | length' || echo 0)
+          if [ "${busy:-0}" -gt 0 ]; then
+            echo "An update is already running or queued; not starting another."
+          else
+            gh workflow run update.yml --ref main
+          fi
           gh workflow run keeper.yml --ref main -f hours="$KEEPER_HOURS"
           gh workflow run brief-timer.yml --ref main   # for the same reason, the daily brief timer is set from here too
