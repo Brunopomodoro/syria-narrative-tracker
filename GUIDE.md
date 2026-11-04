@@ -195,7 +195,7 @@ The starter sources are outlets: what channels and news sites publish. To hear o
 
 The default settings use most of Google's free daily allowance when the job runs every hour: each search term costs 100 units per run, while the `channels:` list under `youtube:` (comments under the newest videos of selected outlets' channels) costs only 2 units per channel plus 1 per video. So add channels freely, but keep search terms to three. No billing account is needed.
 
-Searches return only videos YouTube files under News & Politics (`search_category: 25`); without that, searches for Syria, Damascus or Aleppo bring mostly travel and food vlogs, whose comments belong to no story. Channels in the `channels:` list are read whatever the category.
+Searches return only videos YouTube files under News & Politics (`search_category: 25`); without that, searches for Syria, Damascus or Aleppo bring mostly travel and food vlogs, whose comments belong to no story. Channels in the `channels:` list are read whatever the category. Because that category returns fewer videos, each search asks for up to 40 (`videos_per_term`; the search costs the same 100 units however many it returns, plus 1 unit per video for its comments, about 2,500 units a day at five or six updates).
 
 ### A2. Add Telegram comments, reactions and groups (free, 20 minutes)
 
