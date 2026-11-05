@@ -948,6 +948,10 @@ youtube:
   # return mostly travel and food vlogs, whose comments belong to no story (November 2026: "Everything else" rose
   # to nearly 90%). Leave empty to search every category.
   search_category: 25
+  # Comments found by search are kept only when the comment or its video's title names Syria (the keywords list
+  # below): a news bulletin on football or US politics that merely mentions Syria brings comments about those.
+  # Comments under the channels listed further down are always kept.
+  filter: true
   videos_per_term: 40         # a search costs the same 100 units whether it returns 8 or 40 videos (News & Politics gives fewer per search)
   comments_per_video: 50      # 1 unit per video, whatever the number
   # Comments under the newest videos of these channels: 2 units per channel plus 1 per video,
