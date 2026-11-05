@@ -1249,6 +1249,38 @@ def link_leftovers(cfg: dict, narratives: list, sample: list, usage: dict) -> in
     return linked
 
 
+def place_and_check(cfg: dict, msg: str, result: dict, narratives: list, sample: list, usage: dict, first_seen: dict,
+                    theme_ids: list, retried: bool) -> tuple:
+    """The second pass, then the rerun rule: if more than rerun.rest_above of people's posts are still in no story
+    ("Everything else") and the reply looks thin (fewer than rerun.weak_stories stories, or fewer than
+    rerun.weak_output_tokens written; or above 90% in any case), run the analysis once more, give it the second pass
+    too, and keep the reply that places more of people's posts. Returns (narratives, result, usage, retried, rest_people)."""
+    first_out = usage["output_tokens"]
+    link_leftovers(cfg, narratives, sample, usage)
+    pub_sent = sum(p["copies"] for p in sample if p["voice"] == "public")
+    pub_linked = sum(n["public_volume"] for n in narratives)
+    rest_people = round(1 - pub_linked / pub_sent, 3) if pub_sent else None
+    rr = cfg.get("rerun") or {}
+    weak = len(narratives) < int(rr.get("weak_stories", 6)) or first_out < int(rr.get("weak_output_tokens", 10000))
+    if (retried or pub_sent < 100 or rest_people is None or rest_people <= float(rr.get("rest_above", 0.45))
+            or not (weak or rest_people > 0.9)):
+        return narratives, result, usage, retried, rest_people
+    log(f"  {rest_people:.0%} of people's posts are in no story ({len(narratives)} stories, {first_out} tokens written); asking once more...")
+    result2, usage2 = ask_claude(cfg, msg + "\n\nReminder: list in post_ids every post that belongs to a story, "
+                                 "people's comments as well as outlets' posts.")
+    usage = {k: usage[k] + usage2[k] for k in usage}
+    narratives2 = build_narratives(result2, sample, first_seen, theme_ids)
+    if narratives2:
+        link_leftovers(cfg, narratives2, sample, usage)
+    linked2 = sum(n["public_volume"] for n in narratives2)
+    keep = bool(narratives2) and linked2 > pub_linked
+    if keep:
+        narratives, result, rest_people = narratives2, result2, round(1 - linked2 / pub_sent, 3)
+    log(f"  The second reply placed {linked2} of people's posts; keeping the {'second' if keep else 'first'} "
+        f"({rest_people:.0%} in no story, ~${estimate_cost(cfg.get('model', ''), usage)} in all).")
+    return narratives, result, usage, True, rest_people
+
+
 # ----------------------------------------------------------------- validation study sample
 
 def write_validation_sample(cfg: dict, sample: list, result: dict, narratives: list, n: int) -> None:
@@ -1305,7 +1337,7 @@ def write_validation_sample(cfg: dict, sample: list, result: dict, narratives: l
 # ----------------------------------------------------------------- main
 
 def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narratives=(), usage=None,
-                   cost=0.0, retried=False, arabic_filled=0, model="") -> None:
+                   cost=0.0, retried=False, arabic_filled=0, model="", rest_people=None) -> None:
     """Append this run's health numbers to data/quality.json (kept for 60 days). Counts and source names
     only, never post text. The weekly quality review reads it to spot sources going quiet, a drifting outlet share,
     retries, missing Arabic and rising cost."""
@@ -1331,6 +1363,7 @@ def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narr
             "stories": len(narratives),
             "top_share": shares[0] if shares else None,
             "retried": retried,
+            "rest_people": rest_people,   # share of people's posts in no story ("Everything else"), after the second pass
             "arabic_filled": arabic_filled,
             "tokens_in": (usage or {}).get("input_tokens", 0),
             "tokens_out": (usage or {}).get("output_tokens", 0),
@@ -1443,24 +1476,9 @@ def main() -> int:
             record_quality("no_stories", status, raw, posts, sample, usage=usage, cost=cost, retried=True, model=cfg.get("model", ""))
             return 0
         result = result2
-    pub_sent = sum(p["copies"] for p in sample if p["voice"] == "public")
-    pub_linked = sum(n["public_volume"] for n in narratives)
-    if not retried and pub_sent >= 100 and pub_linked < 0.10 * pub_sent:
-        # the reply left almost all of people's posts out of the stories, so the stories would show no reactions
-        # (it happens about once a week); one more try, kept only when it links more of them
-        log(f"  Only {pub_linked} of {pub_sent} people's posts were linked to a story; asking once more...")
-        retried = True
-        result2, usage2 = ask_claude(cfg, msg + "\n\nReminder: list in post_ids every post that belongs to a story, "
-                                     "people's comments as well as outlets' posts.")
-        usage = {k: usage[k] + usage2[k] for k in usage}
-        cost = estimate_cost(cfg.get("model", ""), usage)
-        narratives2 = build_narratives(result2, sample, first_seen, [t["id"] for t in themes])
-        linked2 = sum(n["public_volume"] for n in narratives2)
-        if narratives2 and linked2 > pub_linked:
-            narratives, result = narratives2, result2
-        log(f"  The second reply linked {linked2}; keeping the {'second' if result is result2 else 'first'} (~${cost} in all).")
-    if link_leftovers(cfg, narratives, sample, usage):
-        cost = estimate_cost(cfg.get("model", ""), usage)
+    narratives, result, usage, retried, rest_people = place_and_check(cfg, msg, result, narratives, sample, usage, first_seen,
+                                                                     [t["id"] for t in themes], retried)
+    cost = estimate_cost(cfg.get("model", ""), usage)
     signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
     if args.validation_sample:
         write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
@@ -1574,7 +1592,7 @@ def main() -> int:
     save_json(history_path, history)
     compact_json(DATA / "stories.json", build_story_index(history))
     save_json(state_path, state)
-    record_quality("published", status, raw, posts, sample, narratives, usage, cost, retried, filled, cfg.get("model", ""))
+    record_quality("published", status, raw, posts, sample, narratives, usage, cost, retried, filled, cfg.get("model", ""), rest_people)
     log(f"Saved {len(narratives)} narratives.")
 
     # Media and experts first (new reports, then a daily brief or a week's or month's analysis when due), then the
