@@ -439,6 +439,10 @@ window_hours: 24
 #                                 competing framings (current setting)
 #   claude-haiku-4-5-20251001  -> about half the cost, less nuanced
 model: "claude-sonnet-5"
+# Second pass: after the analysis, one small request (same model) places the posts left in no story into the stories
+# they belong to, if any. The analysis on its own often lists only a few posts per story, which left most of people's
+# posts under "Everything else". About 10 US cents a run (about $17 a month); false switches it off.
+second_pass: true
 
 # The language the website opens in: "en" (English) or "ar" (Arabic).
 # Everything is written in both; visitors switch with the button at the top.
