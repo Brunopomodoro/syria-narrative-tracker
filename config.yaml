@@ -443,6 +443,14 @@ model: "claude-sonnet-5"
 # they belong to, if any. The analysis on its own often lists only a few posts per story, which left most of people's
 # posts under "Everything else". About 10 US cents a run (about $17 a month); false switches it off.
 second_pass: true
+# One more full analysis (about 40 US cents) when, after the second pass, more than rest_above of people's posts are
+# still in no story ("Everything else") and the reply looks thin: fewer than weak_stories stories, or fewer than
+# weak_output_tokens written (a usual reply is 13,000-17,000). The reply that places more of people's posts is kept.
+# (Above 90% it reruns even when the reply does not look thin.) data/quality.json records rest_people and retried.
+rerun:
+  rest_above: 0.45
+  weak_stories: 6
+  weak_output_tokens: 10000
 
 # The language the website opens in: "en" (English) or "ar" (Arabic).
 # Everything is written in both; visitors switch with the button at the top.
