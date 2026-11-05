@@ -1050,6 +1050,18 @@ def weight(p: dict) -> int:
     return p["copies"] if p["voice"] == "public" else 1
 
 
+def pick_examples(ps: list) -> list:
+    """Up to three linkable outlet posts of a story, one per source, the most engaged first (individuals are never linked)."""
+    examples, seen_src = [], set()
+    for p in sorted(ps, key=lambda p: (p["voice"] == "outlet", p["engagement"]), reverse=True):
+        if p["linkable"] and p["url"].startswith("https://") and p["source"] not in seen_src:
+            examples.append({"source": p["source"], "url": p["url"], "platform": p["platform"]})
+            seen_src.add(p["source"])
+        if len(examples) == 3:
+            break
+    return examples
+
+
 def join_threads(result: dict, sample: list) -> int:
     """Comments under the same video or channel post (the same "video:"/"post:" note) are nearly always about the same
     story, but the reply often lists only some of them. When at least 2 of a thread's comments are in one narrative and
@@ -1112,13 +1124,7 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
         volume = sum(weight(p) for p in ps)
         public_volume = sum(p["copies"] for p in ps if p["voice"] == "public")
         nid = re.sub(r"[^a-z0-9-]", "", re.sub(r"[\s_]+", "-", str(n.get("id", "")).strip().lower()))[:60] or f"n{len(out) + 1}"
-        examples, seen_src = [], set()
-        for p in sorted(ps, key=lambda p: (p["voice"] == "outlet", p["engagement"]), reverse=True):
-            if p["linkable"] and p["url"].startswith("https://") and p["source"] not in seen_src:
-                examples.append({"source": p["source"], "url": p["url"], "platform": p["platform"]})
-                seen_src.add(p["source"])
-            if len(examples) == 3:
-                break
+        examples = pick_examples(ps)
         kinds = Counter(p.get("kind") or "other" for p in ps if p["voice"] == "outlet")
         public_languages = Counter(p.get("lang", "other") for p in ps if p["voice"] == "public")
         theme = str(n.get("theme") or "").strip().lower()
@@ -1160,6 +1166,87 @@ def build_narratives(result: dict, sample: list, known_first_seen: dict, theme_i
         })
     out.sort(key=lambda n: n["volume"], reverse=True)
     return out
+
+
+LEFTOVER_PROMPT = """You sort public posts about Syria into stories that have already been found in them.
+Below are the stories (each with a letter) and then posts that were not yet placed in any story. For each post, decide
+whether it is clearly about one of the stories: an outlet item on that event, or a person reacting to it, commenting on
+it or discussing it, however briefly, sarcastically or in dialect (comments under a video or channel post about the story
+count when they react to it). List only the posts that belong, each with the letter of its story. Leave out posts about
+anything else, religious greetings and prayers with no reference to the story, jokes, and any post you are unsure about:
+a wrong match is worse than a missing one.
+For each story marked "no people's tone yet" that receives people's posts, also give the tone of those people's posts,
+from -1 (anger, fear, grief, contempt) to +1 (hope, pride, celebration), 0 neutral."""
+
+
+def link_leftovers(cfg: dict, narratives: list, sample: list, usage: dict) -> int:
+    """Second pass: the main analysis lists only some of each story's posts (often a few examples), which left most of
+    people's posts under "Everything else". One small request shows Claude the stories and the posts in none of them
+    and asks which story each belongs to, if any; the matches join their stories, whose volumes, shares and
+    breakdowns are counted again. Never fails the update. Returns how many posts were linked."""
+    if not narratives or not cfg.get("second_pass", True):
+        return 0
+    used = {i for n in narratives for i in n.get("post_pids") or []}
+    left = [p for p in sample if p["pid"] not in used]
+    if len(left) < 20:
+        return 0
+    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    stories = "\n".join(f"{letters[k]}: {n.get('title', '')}. {str(n.get('summary', ''))[:300]}"
+                        + (" [no people's tone yet]" if n.get("public_sentiment") is None else "")
+                        for k, n in enumerate(narratives[:len(letters)]))
+    rows = []
+    for p in left:
+        meta = [p["voice"], p["platform"], p["source"]] + ([str(p["context"])[:120]] if p.get("context") else [])
+        rows.append(f"[{p['pid']}] ({' | '.join(meta)}) {p['text'][:220]}")
+    msg = f"STORIES:\n{stories}\n\nPOSTS NOT YET IN A STORY ({len(left)}):\n" + "\n".join(rows)
+    schema = {"type": "object", "additionalProperties": False, "required": ["matches", "tones"], "properties": {
+        "matches": {"type": "array", "items": {"type": "object", "additionalProperties": False, "required": ["post", "story"],
+                                               "properties": {"post": {"type": "string"}, "story": {"type": "string"}}}},
+        "tones": {"type": "array", "items": {"type": "object", "additionalProperties": False, "required": ["story", "public_sentiment"],
+                                             "properties": {"story": {"type": "string"}, "public_sentiment": {"type": "number"}}}}}}
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=secret("ANTHROPIC_API_KEY"))
+        with client.messages.stream(model=cfg.get("model", "claude-sonnet-5"), max_tokens=12000, system=LEFTOVER_PROMPT,
+                                    output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": schema}},
+                                    messages=[{"role": "user", "content": msg}]) as stream:
+            resp = stream.get_final_message()
+        usage["input_tokens"] += resp.usage.input_tokens
+        usage["output_tokens"] += resp.usage.output_tokens
+        reply = extract_json("".join(b.text for b in resp.content if b.type == "text"))
+    except Exception as e:  # noqa: BLE001  (the stories from the main analysis are published as they are)
+        log(f"  Second pass failed ({type(e).__name__}); the stories keep the posts the analysis gave them.")
+        return 0
+    by_pid, left_ids = {p["pid"]: p for p in sample}, {p["pid"] for p in left}
+    added: dict = {}
+    for m in reply.get("matches") or []:
+        pid, letter = str(m.get("post", "")).strip().strip("[]"), str(m.get("story", "")).strip().upper()[:1]
+        k = letters.find(letter) if letter else -1
+        if pid in left_ids and 0 <= k < len(narratives):
+            added.setdefault(k, []).append(pid)
+            left_ids.discard(pid)
+    tones = {str(t.get("story", "")).strip().upper()[:1]: t.get("public_sentiment") for t in reply.get("tones") or []}
+    total = sum(weight(p) for p in sample) or 1
+    for k, pids in added.items():
+        n = narratives[k]
+        n["post_pids"] = list(n.get("post_pids") or []) + pids
+        ps = [by_pid[i] for i in n["post_pids"]]
+        kinds = Counter(p.get("kind") or "other" for p in ps if p["voice"] == "outlet")
+        public_languages = Counter(p.get("lang", "other") for p in ps if p["voice"] == "public")
+        n.update({"volume": sum(weight(p) for p in ps), "public_volume": sum(p["copies"] for p in ps if p["voice"] == "public"),
+                  "engagement": sum(p["engagement"] for p in ps), "platforms": dict(Counter(p["platform"] for p in ps)),
+                  "languages": dict(Counter(p.get("lang", "other") for p in ps)), "public_languages": dict(public_languages),
+                  "kinds": dict(kinds), "sources": [s for s, _ in Counter(p["source"] for p in ps).most_common(6)],
+                  "examples": pick_examples(ps)})
+        n["share"] = round(n["volume"] / total, 3)
+        if n.get("public_sentiment") is None and n["public_volume"] and tones.get(letters[k]) is not None:
+            n["public_sentiment"] = clamp(tones[letters[k]])
+    narratives.sort(key=lambda n: n["volume"], reverse=True)
+    linked = sum(len(v) for v in added.values())
+    people = sum(1 for v in added.values() for i in v if by_pid[i]["voice"] == "public")
+    log(f"  Second pass: {linked} more posts linked to their stories ({people} of them people's), "
+        f"{resp.usage.input_tokens}/{resp.usage.output_tokens} tokens")
+    return linked
 
 
 # ----------------------------------------------------------------- validation study sample
@@ -1372,6 +1459,8 @@ def main() -> int:
         if narratives2 and linked2 > pub_linked:
             narratives, result = narratives2, result2
         log(f"  The second reply linked {linked2}; keeping the {'second' if result is result2 else 'first'} (~${cost} in all).")
+    if link_leftovers(cfg, narratives, sample, usage):
+        cost = estimate_cost(cfg.get("model", ""), usage)
     signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
     if args.validation_sample:
         write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
