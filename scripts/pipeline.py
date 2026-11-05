@@ -204,8 +204,9 @@ def collect_rss(feed: dict) -> list:
 
 # ----------------------------------------------------------------- collectors: public voices
 
-def _youtube_comments(key: str, vid: str, vtitle: str, n: int, source: str) -> list:
-    """Top comments under one video (1 quota unit). Empty when comments are off."""
+def _youtube_comments(key: str, vid: str, vtitle: str, n: int, source: str, filt: bool = False) -> list:
+    """Top comments under one video (1 quota unit). Empty when comments are off. With filt, a comment is kept only
+    when it or the video's title names Syria (config.yaml keywords; the title is in the "video:" context)."""
     c = requests.get("https://www.googleapis.com/youtube/v3/commentThreads", timeout=25, params={
         "part": "snippet", "videoId": vid, "order": "relevance", "textFormat": "plainText",
         "maxResults": max(1, min(100, int(n))), "key": key})
@@ -216,7 +217,7 @@ def _youtube_comments(key: str, vid: str, vtitle: str, n: int, source: str) -> l
         sn = th["snippet"]["topLevelComment"]["snippet"]
         out.append(post("yt:" + th["id"], "youtube", source, sn.get("textOriginal") or sn.get("textDisplay", ""),
                         parse_iso(sn.get("publishedAt", "")), sn.get("likeCount", 0),
-                        f"https://www.youtube.com/watch?v={vid}", True, False, "public", f"video: {vtitle}",
+                        f"https://www.youtube.com/watch?v={vid}", True, filt, "public", f"video: {vtitle}",
                         who_hash((sn.get("authorChannelId") or {}).get("value"))))
     return out
 
@@ -243,7 +244,8 @@ def collect_youtube(cfg: dict, since: dt.datetime) -> list:
             if vid in seen_videos:
                 continue
             seen_videos.add(vid)
-            out += _youtube_comments(key, vid, clean_text(item["snippet"].get("title", ""))[:140], per_video, "YouTube comments")
+            out += _youtube_comments(key, vid, clean_text(item["snippet"].get("title", ""))[:140], per_video, "YouTube comments",
+                                     bool(cfg.get("filter", True)))   # news videos that are not about Syria: their comments are not either
     for ch in cfg.get("channels") or []:
         handle = str(ch.get("handle") or ch.get("name") or "").strip()
         label = ch.get("label") or handle
