@@ -3,47 +3,48 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-11-08T10:39:34Z",
- "checked_at": "2026-11-08T10:39:34Z",
+ "generated_at": "2026-11-08T15:14:17Z",
+ "checked_at": "2026-11-08T15:14:17Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 2023,
-  "relevant": 1320,
-  "posts_analyzed": 807,
-  "public_posts": 567,
+  "collected": 2255,
+  "relevant": 1358,
+  "posts_analyzed": 818,
+  "public_posts": 578,
   "outlet_posts": 240,
   "reactions_posts": 0,
   "unique_posts": 800,
   "sources_ok": 48,
   "sources_total": 49,
   "platforms": {
-   "news": 49,
-   "telegram": 191,
-   "youtube": 354,
-   "reddit": 27,
-   "bluesky": 179
+   "news": 53,
+   "telegram": 187,
+   "youtube": 363,
+   "bluesky": 178,
+   "reddit": 19
   },
   "languages": {
-   "ar": 566,
-   "en": 230,
-   "ku": 4
+   "ar": 591,
+   "en": 205,
+   "ku": 3,
+   "other": 1
   }
  },
  "overall": {
   "sentiment": 0.1,
-  "mood": "Cautious",
-  "mood_ar": "حذر",
-  "public_sentiment": -0.2,
+  "mood": "Mixed",
+  "mood_ar": "متباين",
+  "public_sentiment": -0.1,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "Discussion is dominated by conflicting reports on Syrian military cooperation with Saudi Arabia and possible deployment to Yemen, with Damascus repeatedly denying sending combat troops while commenters argue fiercely over loyalty, sectarian duty and sovereignty. Other major threads include the UAE Loves Syria event in Dubai, a smart electricity meter deal with a Chinese firm, Israeli incursions in Quneitra, new governance appointments, and recurring landmine and flood casualties. Outlets mostly report officially and neutrally, while public reactions range from religious solidarity with Saudi Arabia to mockery and accusations of mercenary behavior.",
-  "brief_ar": "يتصدر النقاش الجدل حول التعاون العسكري السوري مع السعودية واحتمال إرسال قوات لليمن، إذ تكرر دمشق نفيها لإرسال قوات قتالية بينما يتجادل المعلقون حول الولاء والواجب الديني والسيادة الوطنية. من الملفات الأخرى البارزة فعالية «الإمارات تحب سوريا» في دبي، واتفاقية العدادات الذكية مع شركة صينية، والتوغلات الإسرائيلية في القنيطرة، وتعيينات حكومية جديدة، إضافة إلى ضحايا الألغام والفيضانات المتكررة. تميل وسائل الإعلام إلى التغطية الرسمية والمحايدة بينما تتراوح ردود الناس بين التضامن الديني مع السعودية والسخرية والاتهام بالارتزاق.",
-  "rest": "Many unassigned posts are religious greetings, prayers for the dead, weather comments, sports results, unrelated personal exchanges on Reddit about language and citizenship, and scattered local cultural or infrastructure items from Damascus governorate social media.",
-  "rest_ar": "تتكون أغلب المنشورات غير المصنفة من تحيات دينية ودعوات للمتوفين وتعليقات عن الطقس ونتائج رياضية، ونقاشات شخصية متفرقة على Reddit حول اللغة والجنسية، إضافة إلى أخبار ثقافية أو خدمية متفرقة من حسابات محافظة دمشق.",
-  "rest_share": 0.446
+  "brief": "The dominant story is Syria's denial of sending troops to Yemen and Saudi Arabia amid AFP and Reuters reports of deployments, generating intense and polarized public debate. Outlets also covered a Riyadh Houthi attack condemned by Damascus, the 'UAE Loves Syria' Dubai event, a batch of presidential decrees on universities and appointments, a polio outbreak response in Deir ez-Zor, and ongoing Israeli incursions in Quneitra. Public reaction ranges from prayers for Saudi Arabia to accusations of mercenary behavior and anger over Israeli incursions being ignored while Syria allegedly helps fight elsewhere.",
+  "brief_ar": "تتصدر المشهد قصة نفي سوريا إرسال قوات إلى اليمن والسعودية وسط تقارير لفرانس برس ورويترز عن انتشار جنود، ما أثار جدلاً عاماً حاداً ومنقسماً. كما غطت وسائل الإعلام استهداف الحوثيين لمبنى في الرياض الذي أدانته دمشق، وفعالية «الإمارات تحب سوريا» في دبي، وحزمة مراسيم رئاسية بشأن الجامعات والتعيينات، والاستجابة لتفشي شلل الأطفال في دير الزور، والتوغلات الإسرائيلية المستمرة في القنيطرة. تراوحت ردود الناس بين الدعاء للسعودية واتهامات بالارتزاق وغضب من تجاهل التوغل الإسرائيلي بينما تساعد سوريا في جبهات أخرى.",
+  "rest": "Unassigned posts include religious greetings, local service and infrastructure items, weather notes, sports results, cultural and historical features, and scattered foreign or unrelated commentary (knife advertisements, US politics, Doctor Who).",
+  "rest_ar": "تضم المنشورات غير المصنفة تحيات دينية، وأخبار خدمية ومحلية متفرقة، وملاحظات عن الطقس، ونتائج رياضية، ومواد ثقافية وتاريخية، وتعليقات أجنبية متناثرة غير ذات صلة مباشرة (إعلانات سكاكين، سياسة أمريكية، دكتور هو).",
+  "rest_share": 0.352
  },
  "narratives": [
   {
@@ -51,18 +52,17 @@
    "key": "2026-11-06-saudi-syria-military-cooperation",
    "theme": "international",
    "title": "Dispute Over Reports of Syrian Troops Deploying to Saudi Arabia and Yemen",
-   "title_ar": "جدل حول تقارير إرسال قوات سورية إلى السعودية واليمن",
-   "summary": "AFP and Reuters reported conflicting accounts of Syrian troops deploying to Saudi Arabia and possibly Yemen to help fight the Houthis, following President al-Sharaa's visit to Riyadh. A Syrian diplomatic source told SANA this is baseless, saying cooperation is limited to training and advice, though it could evolve into a mutual defense pact or Mecca Alliance membership.",
-   "summary_ar": "نقلت وكالتا فرانس برس ورويترز روايات متضاربة عن إرسال قوات سورية إلى السعودية وربما اليمن لمواجهة الحوثيين، عقب زيارة الرئيس الشرع إلى الرياض. ونفى مصدر دبلوماسي سوري لسانا صحة هذه الأنباء، مؤكداً أن التعاون يقتصر على التدريب والاستشارة مع احتمال تطوره إلى دفاع مشترك أو انضمام لتحالف مكة.",
-   "detail": "The story began with AFP citing Yemeni military and presidential sources that thousands of Syrian troops were heading to Saudi Arabia and Yemen, while Reuters cited Syrian, Saudi and US officials describing only limited trainers and advisers. Syrian state media (SANA) repeatedly quoted a diplomatic source denying any deployment to Yemen, stressing priorities of internal security and reconstruction. US Congressman Joe Wilson praised Syria's alleged military support. Commentary split sharply: many framed support for Saudi Arabia as religious duty to defend the Holy Places, others accused the new government of turning Syrians into mercenaries while Israel occupies southern Syria, and some openly doubted both Syrian and Saudi official denials. Turkish and regional outlets linked this to Syria's possible entry into the 'Mecca Alliance' with Turkey, Saudi Arabia and Pakistan.",
-   "detail_ar": "بدأت القصة عندما نقلت فرانس برس عن مصادر عسكرية ورئاسية يمنية أن آلاف الجنود السوريين يتوجهون إلى السعودية واليمن، بينما نقلت رويترز عن مسؤولين سوريين وسعوديين وأميركيين أن الأمر يقتصر على مدربين ومستشارين محدودين. وكررت وكالة سانا نقلاً عن مصدر دبلوماسي نفي أي إرسال لقوات إلى اليمن، مؤكداً أن أولويات سوريا هي الأمن الداخلي وإعادة الإعمار. وأشاد النائب الأميركي جو ويلسون بما وصفه بالدعم العسكري السوري المزعوم. وانقسمت التعليقات بشكل حاد؛ فمنهم من اعتبر دعم السعودية واجباً دينياً لحماية الأماكن المقدسة، ومنهم من اتهم الحكومة الجديدة بتحويل السوريين إلى مرتزقة بينما تحتل إسرائيل جنوب سوريا، وشكك كثيرون في مصداقية النفي الرسمي السوري والسعودي معاً. وربطت وسائل إعلام تركية وإقليمية الأمر باحتمال انضمام سوريا إلى «تحالف مكة» مع تركيا والسعودية وباكستان.",
-   "public_reaction": "Reactions split between religious framing of defending Saudi Arabia as a duty for Sunni Muslims, anger that Syrian soldiers are being sent abroad while Israel occupies southern Syria, and widespread mockery of both the denials and the competing wire-service reports as contradictory propaganda.",
-   "public_reaction_ar": "انقسمت ردود الفعل بين من اعتبر الدفاع عن السعودية واجباً دينياً على أهل السنة، ومن غضب لإرسال جنود سوريين للخارج بينما تحتل إسرائيل جنوب سوريا، وسخرية واسعة من النفي الرسمي ومن تناقض تقارير وكالات الأنباء.",
-   "sentiment": 0.0,
+   "title_ar": "جدل حول تقارير نشر جنود سوريين في السعودية واليمن",
+   "summary": "AFP and Yemeni sources reported thousands of Syrian troops heading to Saudi Arabia and Yemen to fight the Houthis, while a Syrian diplomatic source denied sending forces to Yemen, describing cooperation with Riyadh as training and advisory. The dispute follows a defense cooperation deal signed during Sharaa's Riyadh visit, amid Houthi missile and drone attacks on Saudi Arabia on November 8.",
+   "summary_ar": "نقلت فرانس برس ومصادر يمنية أن آلاف الجنود السوريين يتجهون إلى السعودية واليمن لقتال الحوثيين، بينما نفى مصدر دبلوماسي سوري إرسال قوات إلى اليمن، واصفاً التعاون مع الرياض بأنه تدريب واستشارة. يأتي الجدل بعد اتفاقية تعاون دفاعي وُقعت خلال زيارة الشرع للرياض، وسط هجمات حوثية بالصواريخ والمسيّرات على السعودية في ٨ تشرين الثاني.",
+   "detail": "Reuters and AFP cited Yemeni military, government and presidential sources saying Syrian troops and drone teams, some linked to Turkey's SADAT, are deploying to support Saudi Arabia and the Aden government against the Houthis. Syria's SANA quoted a diplomatic source denying any deployment to Yemen, saying current agreements focus on training, expertise-sharing and military consultations, while leaving open future escalation to a mutual defense pact or Mecca Alliance membership. Independent and regional outlets (Enab Baladi, Levant24, TRT, Anadolu) covered both the denial and competing claims. Public reaction is highly polarized: many invoke religious duty to defend Saudi Arabia, others mock the move as mercenary work for money while Israel occupies southern Syria unchallenged, and some doubt the reports entirely as Israeli or Western disinformation.",
+   "detail_ar": "نقلت رويترز وفرانس برس عن مصادر عسكرية وحكومية ورئاسية يمنية أن جنوداً سوريين وفرق مسيّرات، بعضها مرتبط بشركة SADAT التركية، تنتشر لدعم السعودية وحكومة عدن ضد الحوثيين. ونقلت سانا عن مصدر دبلوماسي سوري نفياً لإرسال أي قوات إلى اليمن، مؤكداً أن الاتفاقيات الحالية تقتصر على التدريب وتبادل الخبرات والاستشارات العسكرية، مع ترك الباب مفتوحاً لتطور مستقبلي نحو اتفاق دفاع مشترك أو الانضمام لحلف مكة. غطت وسائل الإعلام المستقلة والإقليمية (عنب بلدي، Levant24، TRT، الأناضول) كلا الروايتين. وانقسم الرأي العام بشدة: بين من يستحضر واجب الدفاع عن السعودية دينياً، ومن يسخر من الأمر باعتباره ارتزاقاً مقابل المال بينما تحتل إسرائيل جنوب سوريا دون مواجهة، ومن يشكك أصلاً في صحة التقارير معتبراً إياها تضليلاً إسرائيلياً أو غربياً.",
+   "public_reaction": "Reactions split sharply between religious solidarity with Saudi Arabia, mockery calling fighters mercenaries, and anger that Syria would help abroad while Israeli forces remain inside Syrian territory unchallenged.",
+   "public_reaction_ar": "انقسمت ردود الفعل بشدة بين تضامن ديني مع السعودية، وسخرية من وصف المقاتلين بالمرتزقة، وغضب من مساعدة سوريا الخارج بينما تبقى القوات الإسرائيلية داخل الأراضي السورية دون مواجهة.",
+   "sentiment": -0.1,
    "public_sentiment": -0.2,
    "outlet_tone": {
     "independent": 0.0,
-    "kurdish": 0.0,
     "aggregator": 0.0
    },
    "public_tone": {
@@ -71,72 +71,72 @@
    },
    "emotions": [
     "anger",
-    "suspicion",
+    "doubt",
     "pride",
     "mockery"
    ],
    "emotions_ar": [
     "غضب",
-    "ريبة",
+    "شك",
     "فخر",
     "سخرية"
    ],
    "framings": [
-    "Religious duty to defend the Holy Places",
-    "Sovereignty and mercenary accusations",
-    "Contradictory wire-service reporting",
-    "Geopolitical realignment (Mecca Alliance)"
+    "official denial vs leaked reports",
+    "religious duty framing",
+    "mercenary/exploitation framing",
+    "distraction from Israeli incursions"
    ],
    "framings_ar": [
-    "واجب ديني للدفاع عن الحرمين",
-    "اتهامات بالارتزاق والمساس بالسيادة",
-    "تضارب تقارير وكالات الأنباء",
-    "إعادة اصطفاف جيوسياسي (تحالف مكة)"
+    "نفي رسمي مقابل تسريبات",
+    "إطار الواجب الديني",
+    "إطار الارتزاق والاستغلال",
+    "تحويل الانتباه عن التوغلات الإسرائيلية"
    ],
    "flags": [
-    "Unverified claims from competing wire services",
-    "Sectarian framing in some comments"
+    "unverified claims spreading",
+    "conflicting reports from Reuters/AFP vs official denial"
    ],
    "flags_ar": [
-    "ادعاءات لم يتحقق منها من وكالات أنباء متضاربة",
-    "خطاب طائفي في بعض التعليقات"
+    "ادعاءات لم يتحقق منها تنتشر",
+    "تضارب بين تقارير رويترز وفرانس برس والنفي الرسمي"
    ],
-   "volume": 291,
-   "public_volume": 270,
-   "share": 0.361,
-   "engagement": 18662,
+   "volume": 351,
+   "public_volume": 335,
+   "share": 0.429,
+   "engagement": 15295,
    "platforms": {
-    "telegram": 12,
-    "news": 9,
-    "youtube": 218,
-    "bluesky": 46,
-    "reddit": 2
+    "news": 6,
+    "telegram": 10,
+    "bluesky": 69,
+    "youtube": 254
    },
    "languages": {
-    "en": 81,
-    "ar": 206
+    "en": 111,
+    "ar": 227,
+    "other": 1
    },
    "public_languages": {
-    "ar": 195,
-    "en": 71
+    "en": 102,
+    "ar": 220,
+    "other": 1
    },
    "kinds": {
-    "independent": 13,
-    "kurdish": 1,
-    "aggregator": 7
+    "aggregator": 5,
+    "independent": 11
    },
    "sources": [
     "YouTube comments",
     "Bluesky posts",
     "Google News - Syria (EN)",
-    "Euphrates Post - Deir ez-Zor and the east",
     "Levant24 - Syria news (EN)",
-    "Enab Baladi - independent (AR)"
+    "Euphrates Post - Deir ez-Zor and the east",
+    "Enab Baladi - independent (EN)"
    ],
    "examples": [
     {
      "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110122",
+     "url": "https://t.me/Euphrats_post/110123",
      "platform": "telegram"
     },
     {
@@ -158,167 +158,72 @@
    }
   },
   {
-   "id": "uae-loves-syria-event",
-   "key": "2026-11-07-uae-loves-syria-event",
-   "theme": "international",
-   "title": "Thousands of Syrians Attend 'UAE Loves Syria' Event in Dubai",
-   "title_ar": "آلاف السوريين يحضرون فعالية «الإمارات تحب سوريا» في دبي",
-   "summary": "Thousands of Syrians gathered at Zabeel Park in Dubai for the 'UAE Loves Syria' event, attended by UAE Minister Sheikh Nahyan bin Mubarak. President al-Sharaa addressed the crowd by video, urging diaspora Syrians to help rebuild their country, while artists including Assala Nasri performed.",
-   "summary_ar": "تجمع آلاف السوريين في حديقة زعبيل بدبي لحضور فعالية «الإمارات تحب سوريا»، بحضور الوزير الإماراتي الشيخ نهيان بن مبارك. وخاطب الرئيس الشرع الحشد عبر الفيديو داعياً سوريي المهجر للمساهمة في إعادة إعمار بلادهم، وسط عروض فنية شاركت فيها الفنانة أصالة نصري.",
-   "detail": "State and independent outlets reported over 55,000 participants at the Dubai event, which honored Syrian drama stars and featured cultural performances. President al-Sharaa's recorded remarks emphasized Syrian-Emirati ties and called on expatriates to invest in reconstruction. Public reaction was largely warm and emotional, with many Syrians online expressing gratitude toward the UAE, but some critical commenters accused the government of political theater, noted contradictions with al-Sharaa's past rhetoric, or questioned UAE's regional role, including its intervention in other Arab conflicts.",
-   "detail_ar": "أفادت وسائل إعلام رسمية ومستقلة بمشاركة أكثر من 55 ألف شخص في فعالية دبي التي كرّمت نجوم الدراما السورية وتضمنت عروضاً ثقافية. وشددت كلمة الرئيس الشرع المسجلة على العلاقات السورية الإماراتية، ودعا المغتربين للاستثمار في إعادة الإعمار. وكان التفاعل العام دافئاً وعاطفياً إلى حد كبير مع تعبير كثير من السوريين عن الامتنان للإمارات، لكن بعض المعلقين انتقدوا الحدث بوصفه استعراضاً سياسياً، أو أشاروا إلى تناقض خطاب الرئيس الشرع مع مواقف سابقة، أو شككوا في دور الإمارات الإقليمي في نزاعات عربية أخرى.",
-   "public_reaction": "Many Syrians expressed warmth and gratitude toward the UAE, while a vocal minority mocked the event as political theater or questioned the sincerity of both the Emirati gesture and the president's remarks.",
-   "public_reaction_ar": "عبّر كثير من السوريين عن دفء وامتنان تجاه الإمارات، بينما سخرت فئة من المعلقين من الفعالية باعتبارها استعراضاً سياسياً وشككت في صدق الموقف الإماراتي وخطاب الرئيس.",
-   "sentiment": 0.5,
-   "public_sentiment": 0.2,
-   "outlet_tone": {
-    "independent": 0.4,
-    "aggregator": 0.3
-   },
-   "public_tone": {
-    "ar": 0.2,
-    "en": 0.1
-   },
-   "emotions": [
-    "gratitude",
-    "pride",
-    "skepticism",
-    "mockery"
-   ],
-   "emotions_ar": [
-    "امتنان",
-    "فخر",
-    "تشكك",
-    "سخرية"
-   ],
-   "framings": [
-    "Celebration of Syrian-Emirati friendship",
-    "Skepticism about political theater",
-    "Diaspora engagement in reconstruction"
-   ],
-   "framings_ar": [
-    "احتفاء بالصداقة السورية الإماراتية",
-    "تشكك في كونها استعراضاً سياسياً",
-    "إشراك المهجر في إعادة الإعمار"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 50,
-   "public_volume": 46,
-   "share": 0.062,
-   "engagement": 7865,
-   "platforms": {
-    "telegram": 3,
-    "news": 1,
-    "youtube": 43,
-    "bluesky": 3
-   },
-   "languages": {
-    "en": 2,
-    "ar": 48
-   },
-   "public_languages": {
-    "ar": 45,
-    "en": 1
-   },
-   "kinds": {
-    "independent": 3,
-    "aggregator": 1
-   },
-   "sources": [
-    "YouTube comments",
-    "Bluesky posts",
-    "Levant24 - Syria news (EN)",
-    "Syria Plus (SY+) - news platform",
-    "Google News - Syria (AR)",
-    "Syria TV - opposition-origin broadcaster"
-   ],
-   "examples": [
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/97853",
-     "platform": "telegram"
-    },
-    {
-     "source": "Syria Plus (SY+) - news platform",
-     "url": "https://t.me/sy_platform/41261",
-     "platform": "telegram"
-    },
-    {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46491",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-07T20:14:40Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
    "id": "governance-deputy-appointments",
    "key": "2026-11-08-governance-deputy-appointments",
    "theme": "governance",
-   "title": "President Appoints Deputy Interior and Foreign Ministers",
-   "title_ar": "الرئيس يعيّن معاونين لوزيري الداخلية والخارجية",
-   "summary": "President Ahmad al-Sharaa issued decrees appointing Abdullah Bashir al-Tahli as Assistant Interior Minister for Civil Affairs, and earlier named three deputy foreign ministers for consular, international cooperation and executive affairs. State and independent media covered the appointments extensively.",
-   "summary_ar": "أصدر الرئيس أحمد الشرع مراسيم بتعيين عبد الله بشير الطحلي معاوناً لوزير الداخلية للشؤون المدنية، بعد أن عيّن سابقاً ثلاثة معاونين لوزير الخارجية للشؤون القنصلية والتعاون الدولي والشؤون التنفيذية، وحظيت التعيينات بتغطية واسعة من وسائل الإعلام الرسمية والمستقلة.",
-   "detail": "SANA and nearly all independent outlets reported Decree No. 209 appointing al-Tahli to replace Ziad Fawaz al-Ayesh, who became Deir Ezzor governor in May. Decrees 205-207 had earlier named Mohammad Yaqoub al-Omar, Qutaiba Ali Qadeesh and Abada Khaled Diab as deputy foreign ministers. Coverage was largely factual and neutral, repeating official decree text across channels, indicating routine bureaucratic news rather than contested governance. No substantial public reaction was recorded beyond sharing the official bulletins.",
-   "detail_ar": "تناولت سانا وأغلب وسائل الإعلام المستقلة المرسوم رقم 209 القاضي بتعيين الطحلي خلفاً لزياد فواز العايش الذي أصبح محافظاً لدير الزور في أيار. وكانت المراسيم 205-207 قد عيّنت سابقاً محمد يعقوب العمر وقتيبة علي قاديش وعبادة خالد دياب معاونين لوزير الخارجية. جاءت التغطية إخبارية محايدة في معظمها، مكررة نص المرسوم الرسمي عبر القنوات، ما يشير إلى طابعها الروتيني أكثر من كونها موضع جدل، ولم تُسجَّل تفاعلات جمهورية ملحوظة سوى تداول البيانات الرسمية.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.2,
-   "public_sentiment": null,
+   "title": "President Issues Wave of Decrees: Deputy Ministers and New University Faculties",
+   "title_ar": "الرئيس يصدر سلسلة مراسيم: معاونو وزراء وكليات جامعية جديدة",
+   "summary": "President Sharaa issued decrees appointing Abdullah Bashir al-Tahli as Deputy Interior Minister for Civil Affairs, three deputy foreign ministers, and eight decrees establishing or recognizing university faculties in Idlib, Aleppo, Hama, Latakia, Tartus and the Euphrates University in Albu Kamal. State and independent outlets covered the appointments and new faculties extensively.",
+   "summary_ar": "أصدر الرئيس الشرع مراسيم بتعيين عبد الله بشير الطحلي معاوناً لوزير الداخلية للشؤون المدنية، وثلاثة معاونين لوزير الخارجية، وثمانية مراسيم بإحداث أو اعتماد كليات جامعية في إدلب وحلب وحماة واللاذقية وطرطوس وجامعة الفرات في البوكمال. غطت وسائل الإعلام الرسمية والمستقلة التعيينات والكليات الجديدة على نطاق واسع.",
+   "detail": "State media (SANA, Al-Ikhbariya) and independent outlets (Enab Baladi, Syria TV, Halab Today) reported Decree 209 appointing al-Tahli, replacing Ziad al-Ayesh who became Deir Ezzor governor; decrees 205-207 appointing foreign ministry deputies for consular, international cooperation and executive affairs; and decrees 210-217 establishing new faculties across six university towns, part of a push described by the Higher Education Minister as expanding access outside major cities. Public comments were mostly neutral repostings of official announcements, with some questioning the young age of newly appointed officials and others expressing routine approval or indifference.",
+   "detail_ar": "نقلت وسائل الإعلام الرسمية (سانا، الإخبارية) والمستقلة (عنب بلدي، تلفزيون سوريا، حلب اليوم) المرسوم رقم 209 بتعيين الطحلي خلفاً لزياد العايش الذي عُيّن محافظاً لدير الزور، والمراسيم 205-207 بتعيين معاونين لوزير الخارجية للشؤون القنصلية والتعاون الدولي والشؤون التنفيذية، والمراسيم 210-217 بإحداث كليات جديدة في ست مدن جامعية، في إطار وصفه وزير التعليم العالي بأنه توسيع لفرص التعليم خارج المدن الكبرى. كانت تعليقات الجمهور في معظمها إعادة نشر محايدة للبيانات الرسمية، مع تساؤل البعض عن صغر سن بعض المعينين الجدد وتعبير آخرين عن موافقة روتينية أو عدم اكتراث.",
+   "public_reaction": "Public comments were largely neutral reposts of the decrees, with occasional questioning of appointees' youth and qualifications.",
+   "public_reaction_ar": "كانت تعليقات الجمهور في معظمها إعادة نشر محايدة للمراسيم، مع تساؤل متقطع عن صغر سن المعينين ومؤهلاتهم.",
+   "sentiment": 0.3,
+   "public_sentiment": 0.1,
    "outlet_tone": {
-    "official": 0.3,
-    "independent": 0.2,
-    "aggregator": 0.1
+    "official": 0.4,
+    "independent": 0.3
    },
-   "public_tone": {},
+   "public_tone": {
+    "ar": 0.1
+   },
    "emotions": [
-    "neutral"
+    "neutral",
+    "approval"
    ],
    "emotions_ar": [
-    "حياد"
+    "حياد",
+    "موافقة"
    ],
    "framings": [
-    "Routine institutional appointment news"
+    "routine institution-building framing",
+    "education expansion framing"
    ],
    "framings_ar": [
-    "أخبار تعيينات مؤسسية روتينية"
+    "إطار بناء المؤسسات الروتيني",
+    "إطار توسيع التعليم"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 25,
-   "public_volume": 5,
-   "share": 0.031,
-   "engagement": 27948,
+   "volume": 38,
+   "public_volume": 11,
+   "share": 0.046,
+   "engagement": 49579,
    "platforms": {
-    "telegram": 18,
+    "telegram": 25,
     "news": 2,
-    "bluesky": 5
+    "bluesky": 10,
+    "youtube": 1
    },
    "languages": {
-    "ar": 20,
+    "ar": 33,
     "en": 5
    },
    "public_languages": {
-    "ar": 5
+    "ar": 11
    },
    "kinds": {
-    "official": 8,
-    "independent": 11,
-    "aggregator": 1
+    "independent": 24,
+    "official": 3
    },
    "sources": [
     "Bluesky posts",
-    "Al-Ikhbariya Syria - state TV",
-    "Sawt al-Asima - local, Damascus",
     "Halab Today TV - opposition-origin, Aleppo",
-    "SANA - state news agency (EN)",
-    "Syrian Ministry of Interior - official"
+    "Syria Plus (SY+) - news platform",
+    "Sawt al-Asima - local, Damascus",
+    "Enab Baladi - independent (AR)",
+    "Euphrates Post - Deir ez-Zor and the east"
    ],
    "examples": [
     {
@@ -333,11 +238,192 @@
     },
     {
      "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142643",
+     "url": "https://t.me/HalabTodayTV/142657",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-11-08T10:39:34Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "uae-loves-syria-event",
+   "key": "2026-11-07-uae-loves-syria-event",
+   "theme": "international",
+   "title": "Thousands of Syrians Attend 'UAE Loves Syria' Event in Dubai",
+   "title_ar": "آلاف السوريين يشاركون في فعالية «الإمارات تحب سوريا» بدبي",
+   "summary": "Thousands of Syrians gathered at Zabeel Park in Dubai for the 'UAE Loves Syria' event, attended by UAE Minister Sheikh Nahyan bin Mubarak Al Nahyan, with President Sharaa addressing participants via recorded and video messages. The event featured cultural performances celebrating Syrian heritage.",
+   "summary_ar": "تجمّع آلاف السوريين في حديقة زعبيل بدبي لحضور فعالية «الإمارات تحب سوريا» بحضور وزير التسامح والتعايش الإماراتي الشيخ نهيان بن مبارك آل نهيان، فيما خاطب الرئيس الشرع المشاركين عبر كلمة مسجلة واتصال مرئي. تضمنت الفعالية عروضاً ثقافية احتفاءً بالتراث السوري.",
+   "detail": "State media and independent outlets reported more than 55,000 participants at the Dubai event celebrating Syrian-Emirati ties, with President Sharaa thanking the UAE in a recorded message. Public reaction was largely warm, with many Syrians expressing gratitude and affection toward the UAE and its leadership. However, a significant minority criticized the UAE for allegedly hosting former regime figures and loyalists, calling the celebration contradictory given its past ties to Assad's government, and some accused commenters of being paid to stir discord between the two peoples.",
+   "detail_ar": "ذكرت وسائل الإعلام الرسمية والمستقلة أن أكثر من 55 ألف مشارك حضروا فعالية دبي احتفاءً بالعلاقات السورية الإماراتية، فيما وجّه الرئيس الشرع الشكر للإمارات في كلمة مسجلة. وكان رد الفعل الشعبي دافئاً إلى حد كبير مع تعبير كثير من السوريين عن الامتنان والمحبة تجاه الإمارات وقيادتها. لكن أقلية ملحوظة انتقدت الإمارات لاستضافتها، بحسب زعمهم، شخصيات وموالين للنظام السابق، معتبرين الاحتفال متناقضاً مع علاقاتها السابقة مع حكومة الأسد، واتهم بعضهم المعلقين بأنهم مدفوعون لإثارة الفتنة بين الشعبين.",
+   "public_reaction": "Most comments expressed warmth and gratitude toward the UAE, though a vocal minority criticized it over past ties to Assad-era figures and accused some commenters of being paid to sow discord.",
+   "public_reaction_ar": "عبّرت معظم التعليقات عن محبة وامتنان تجاه الإمارات، بينما انتقدتها أقلية صريحة بسبب علاقاتها السابقة مع شخصيات من عهد الأسد واتهم بعضهم المعلقين بأنهم مدفوعون لإثارة الفتنة.",
+   "sentiment": 0.5,
+   "public_sentiment": 0.3,
+   "outlet_tone": {
+    "independent": 0.4,
+    "aggregator": 0.3
+   },
+   "public_tone": {
+    "ar": 0.3,
+    "en": 0.2
+   },
+   "emotions": [
+    "gratitude",
+    "pride",
+    "division"
+   ],
+   "emotions_ar": [
+    "امتنان",
+    "فخر",
+    "انقسام"
+   ],
+   "framings": [
+    "celebratory diplomacy framing",
+    "critical framing over hosting former regime figures"
+   ],
+   "framings_ar": [
+    "إطار الاحتفاء الدبلوماسي",
+    "إطار نقدي حول استضافة شخصيات من النظام السابق"
+   ],
+   "flags": [
+    "allegations of paid comments"
+   ],
+   "flags_ar": [
+    "اتهامات بتعليقات مدفوعة"
+   ],
+   "volume": 33,
+   "public_volume": 30,
+   "share": 0.04,
+   "engagement": 271,
+   "platforms": {
+    "telegram": 1,
+    "news": 2,
+    "youtube": 25,
+    "bluesky": 4
+   },
+   "languages": {
+    "en": 3,
+    "ar": 29
+   },
+   "public_languages": {
+    "ar": 27,
+    "en": 2
+   },
+   "kinds": {
+    "independent": 1,
+    "aggregator": 2
+   },
+   "sources": [
+    "YouTube comments",
+    "Bluesky posts",
+    "Google News - Syria (AR)",
+    "Levant24 - Syria news (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/46491",
+     "platform": "telegram"
+    },
+    {
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5McTI1U1MwYjRzN3RvOWotY0libVZDVXR2cUlZc1B2Y2FGZ3dETUkxTTZlaWpKR0IxaWZyUU5fN3p2TUNfdi11WXpJWGNvVEdjOWxSNU05YXhpdw?oc=5",
+     "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=d3yXR2t3VaU",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-11-07T20:14:40Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "polio-outbreak-deir-ezzor",
+   "key": "2026-11-08-polio-outbreak-deir-ezzor",
+   "theme": "society",
+   "title": "Health Ministry Confirms Two Polio Cases in Mayadin, Launches Vaccination Response",
+   "title_ar": "وزارة الصحة تؤكد إصابتين بشلل الأطفال في الميادين وتطلق حملة تلقيح",
+   "summary": "Syria's Health Ministry confirmed two polio cases in children in Mayadin, Deir ez-Zor, and held a press conference with WHO and UNICEF representatives. Officials said a vaccination campaign began October 18, vaccinating over 34,000 children under five, with more campaigns planned.",
+   "summary_ar": "أكدت وزارة الصحة السورية إصابة طفلين بفيروس شلل الأطفال في الميادين بدير الزور، وعقدت مؤتمراً صحفياً بمشاركة ممثلي منظمة الصحة العالمية واليونيسف. وأفاد المسؤولون بأن حملة التلقيح بدأت في ١٨ تشرين الأول ولقحت أكثر من ٣٤ ألف طفل دون سن الخامسة، مع التخطيط لحملات إضافية.",
+   "detail": "Health Minister Musab al-Ali said lab tests confirmed polio in two children in Mayadin, east of the Euphrates, and that response measures began before confirmation. WHO's Caroline Clarinval and UNICEF's Meritxell Relaño Arana stressed surveillance, contact tracing and vaccine safety, noting schools mixing does not spread the virus. Officials pledged transparency and additional campaigns. This is a new story since the previous snapshot, reflecting a health emergency response involving multiple ministries and UN agencies. Public comments were minimal but did not display panic; most coverage was outlet-driven with little independent public reaction captured.",
+   "detail_ar": "قال وزير الصحة مصعب العلي إن الفحوصات المخبرية أكدت إصابة طفلين بشلل الأطفال في الميادين شرق الفرات، وأن إجراءات الاستجابة بدأت قبل تأكيد النتائج. وشددت ممثلة منظمة الصحة العالمية كارولين كلارينفال وممثلة اليونيسف ميريتشيل ريلانيو أرانا على أهمية الترصد الوبائي وتتبع المخالطين وسلامة اللقاحات، موضحتين أن الاختلاط في المدارس لا ينشر الفيروس. وتعهد المسؤولون بالشفافية وبحملات إضافية. وهذه قصة جديدة منذ التحديث السابق تعكس استجابة صحية طارئة تشارك فيها عدة وزارات ووكالات أممية. كانت تعليقات الجمهور محدودة ولم تُظهر ذعراً، إذ اقتصرت التغطية غالباً على وسائل الإعلام مع قلة من ردود الفعل الشعبية المستقلة.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.3,
+   "public_sentiment": null,
+   "outlet_tone": {
+    "official": 0.4,
+    "independent": 0.3
+   },
+   "public_tone": {},
+   "emotions": [
+    "concern",
+    "reassurance"
+   ],
+   "emotions_ar": [
+    "قلق",
+    "طمأنة"
+   ],
+   "framings": [
+    "public health transparency framing"
+   ],
+   "framings_ar": [
+    "إطار الشفافية الصحية"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 31,
+   "public_volume": 0,
+   "share": 0.038,
+   "engagement": 29865,
+   "platforms": {
+    "telegram": 31
+   },
+   "languages": {
+    "en": 2,
+    "ar": 29
+   },
+   "public_languages": {},
+   "kinds": {
+    "official": 21,
+    "independent": 10
+   },
+   "sources": [
+    "SANA - state news agency (AR)",
+    "Al-Ikhbariya Syria - state TV",
+    "Al-Watan - Damascus daily newspaper",
+    "SANA - state news agency (EN)",
+    "Syria Plus (SY+) - news platform",
+    "Shaam News Network - opposition-origin"
+   ],
+   "examples": [
+    {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/97877",
+     "platform": "telegram"
+    },
+    {
+     "source": "SANA - state news agency (AR)",
+     "url": "https://t.me/sana_gov/190500",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/239435",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-11-08T15:14:17Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -350,86 +436,84 @@
    "theme": "economy",
    "title": "Syria Signs Deal for 6.5 Million Chinese Smart Electricity Meters",
    "title_ar": "سوريا توقع اتفاقية لتوريد ٦٫٥ مليون عداد كهرباء ذكي صيني",
-   "summary": "Syria's state electricity company signed a deal in Damascus with Chinese firm WASION to supply 6.5 million prepaid smart meters, including 6 million single-phase and 500,000 three-phase units, aimed at modernizing the grid and improving consumption management.",
-   "summary_ar": "وقّعت الشركة السورية للكهرباء في دمشق اتفاقية مع شركة WASION الصينية لتوريد ٦٫٥ مليون عداد ذكي مسبق الدفع، تشمل ٦ ملايين عداد أحادي الطور و٥٠٠ ألف عداد ثلاثي الطور، بهدف تحديث الشبكة وتحسين إدارة الاستهلاك.",
-   "detail": "State media (SANA, Al-Ikhbariya) and independent outlets widely covered the signing, describing it as a step toward digitizing Syria's electricity infrastructure. Officials said the system would let citizens monitor consumption daily. However, public comments on YouTube were skeptical, with some calling it 'a new theft added to the state's achievements' and questioning why meters are not manufactured domestically, citing suspicion of corruption in government contracts. This reflects a wider public distrust of large foreign contracts despite official framing as modernization.",
-   "detail_ar": "غطّت وسائل الإعلام الرسمية (سانا، الإخبارية السورية) والمستقلة توقيع الاتفاقية على نطاق واسع، ووصفتها بأنها خطوة نحو رقمنة البنية التحتية الكهربائية في سوريا. وقال مسؤولون إن النظام سيتيح للمواطنين مراقبة استهلاكهم يومياً. لكن تعليقات الجمهور على يوتيوب جاءت متشككة، إذ وصف البعض الصفقة بأنها «سرقة جديدة تضاف لإنجازات الدولة»، وتساءل آخرون عن سبب عدم تصنيع العدادات محلياً، في إشارة إلى شكوك بالفساد في العقود الحكومية، ما يعكس عدم ثقة عامة بالعقود الأجنبية الكبرى رغم تأطيرها رسمياً كخطوة تحديثية.",
-   "public_reaction": "Public comments were largely skeptical and critical, suspecting corruption and questioning why the meters could not be manufactured in Syria rather than imported.",
-   "public_reaction_ar": "جاءت تعليقات الجمهور متشككة وناقدة في معظمها، مع شكوك بالفساد وتساؤلات حول عدم تصنيع العدادات محلياً بدلاً من استيرادها.",
-   "sentiment": 0.4,
-   "public_sentiment": -0.4,
+   "summary": "Syria's state electricity company signed an agreement in Damascus with Chinese firm WASION to supply 6.5 million prepaid smart meters, including 6 million single-phase and 500,000 three-phase units, aimed at improving energy consumption management. The deal was widely covered by state and independent outlets.",
+   "summary_ar": "وقّعت الشركة السورية للكهرباء في دمشق اتفاقية مع شركة WASION الصينية لتوريد ٦٫٥ مليون عداد ذكي مسبق الدفع، تشمل ٦ ملايين عداد أحادي الطور و٥٠٠ ألف عداد ثلاثي الطور، بهدف تحسين إدارة استهلاك الطاقة. غطت وسائل الإعلام الرسمية والمستقلة الاتفاقية على نطاق واسع.",
+   "detail": "SANA, Sawt al-Asima, Syria Plus, Levant24 and others reported the three-year WASION contract, worth a reported $177 million per some YouTube commentary, intended to boost smart metering efficiency. Public reaction was heavily skeptical and critical: many commenters questioned why Syria imports meters rather than manufacturing locally, accused officials of inflating costs for personal gain, worried the scheme would simply enable new billing without restoring actual electricity supply, and some praised the bidirectional billing idea for solar power users as a missed opportunity.",
+   "detail_ar": "نقلت سانا وصوت العاصمة وسوريا بلس وLevant24 تفاصيل عقد WASION الممتد على ثلاث سنوات، والذي قيل إن قيمته 177 مليون دولار بحسب بعض التعليقات، بهدف رفع كفاءة القياس الذكي. وكان رد الفعل الشعبي متشككاً وناقداً إلى حد كبير: تساءل كثيرون عن سبب استيراد العدادات بدلاً من تصنيعها محلياً، واتهم البعض المسؤولين بتضخيم التكاليف لمصلحتهم الشخصية، وخشي آخرون من أن تكون الخطة مجرد وسيلة لفوترة جديدة دون إعادة التيار الكهربائي فعلياً، فيما أشاد البعض بفكرة العدادات ثنائية الاتجاه لمستخدمي الطاقة الشمسية كفرصة ضائعة.",
+   "public_reaction": "Public reaction was largely skeptical, questioning the cost, suspecting corruption, and asking why Syria imports rather than manufactures meters locally.",
+   "public_reaction_ar": "كان رد الفعل الشعبي متشككاً إلى حد كبير، مع تساؤلات حول التكلفة وشبهات فساد وتساؤل عن سبب استيراد العدادات بدلاً من تصنيعها محلياً.",
+   "sentiment": 0.2,
+   "public_sentiment": -0.3,
    "outlet_tone": {
-    "official": 0.5,
-    "independent": 0.4,
-    "aggregator": 0.3
+    "independent": 0.2
    },
    "public_tone": {
-    "ar": -0.4,
+    "ar": -0.3,
     "en": 0.1
    },
    "emotions": [
-    "skepticism",
-    "cynicism"
+    "suspicion",
+    "frustration",
+    "mockery"
    ],
    "emotions_ar": [
-    "تشكك",
-    "تهكم"
+    "شك",
+    "إحباط",
+    "سخرية"
    ],
    "framings": [
-    "Official framing as modernization",
-    "Public framing as corruption/import dependency"
+    "modernization framing (official)",
+    "corruption/waste framing (public)"
    ],
    "framings_ar": [
-    "تأطير رسمي كخطوة تحديثية",
-    "تأطير شعبي كفساد واعتماد على الاستيراد"
+    "إطار التحديث (الرسمي)",
+    "إطار الفساد والهدر (الجمهور)"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 20,
-   "public_volume": 5,
-   "share": 0.025,
-   "engagement": 19000,
+   "volume": 27,
+   "public_volume": 22,
+   "share": 0.033,
+   "engagement": 4894,
    "platforms": {
-    "telegram": 14,
+    "telegram": 4,
     "news": 1,
-    "youtube": 2,
+    "youtube": 19,
     "bluesky": 3
    },
    "languages": {
-    "ar": 16,
-    "en": 4
+    "ar": 24,
+    "en": 3
    },
    "public_languages": {
-    "ar": 3,
+    "ar": 20,
     "en": 2
    },
    "kinds": {
-    "independent": 9,
-    "official": 5,
-    "aggregator": 1
+    "independent": 5
    },
    "sources": [
+    "YouTube comments",
     "Bluesky posts",
+    "Euphrates Post - Deir ez-Zor and the east",
     "Syria TV - opposition-origin broadcaster",
-    "Al-Watan - Damascus daily newspaper",
-    "Al-Ikhbariya Syria - state TV",
-    "SANA - state news agency (AR)",
-    "YouTube comments"
+    "Sawt al-Asima - local, Damascus",
+    "Levant24 - Syria news (EN)"
    ],
    "examples": [
     {
      "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/97856",
+     "url": "https://t.me/TelevisionSyria/97879",
      "platform": "telegram"
     },
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142647",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110139",
      "platform": "telegram"
     },
     {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/190464",
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/44196",
      "platform": "telegram"
     }
    ],
@@ -441,88 +525,184 @@
    }
   },
   {
-   "id": "landmine-casualties",
-   "key": "2026-11-07-landmine-casualties",
-   "theme": "security",
-   "title": "Landmine and War-Remnant Blasts Continue to Kill and Injure Civilians and Soldiers",
-   "title_ar": "استمرار سقوط ضحايا الألغام ومخلفات الحرب بين المدنيين والجنود",
-   "summary": "Landmines and war remnants continued killing and wounding civilians and army personnel across Daraa, Deir ez-Zor and Raqqa, including a soldier killed clearing mines near Mayadin and children injured near Izraa and Sanamayn. Officials and the Hawar news agency documented dozens of recent incidents.",
-   "summary_ar": "واصلت الألغام ومخلفات الحرب حصد ضحايا من المدنيين وعناصر الجيش في درعا ودير الزور والرقة، بينهم جندي قُتل أثناء تفكيك لغم قرب الميادين وأطفال أصيبوا قرب إزرع والصنمين. ووثّقت وكالة هاوار ومصادر رسمية عشرات الحوادث الأخيرة.",
-   "detail": "Defense Ministry statements via SANA confirmed a soldier killed and another wounded dismantling a mine near Mayadin, while North Press and ANHA (Hawar) reported separate blasts in Daraa's Lajat area and north of Raqqa, killing an engineering corps member. Levant24 and Enab Baladi tracked a rising toll. Public comments were mostly prayers for the dead ('رحمه الله', 'الله يرحمه') rather than policy criticism, reflecting routine mourning for an ongoing, normalized hazard rather than acute public anger.",
-   "detail_ar": "أكدت بيانات وزارة الدفاع عبر سانا مقتل جندي وإصابة آخر أثناء تفكيك لغم قرب الميادين، في حين وثّقت نورث برس ووكالة هاوار انفجارات منفصلة في منطقة اللجاة بدرعا وشمال الرقة أودت بحياة عنصر من فرق الهندسة. وتابعت Levant24 وعنب بلدي ارتفاع الحصيلة. وجاءت تعليقات الجمهور غالباً أدعية للمتوفين («الله يرحمه») أكثر من انتقاد سياسي، ما يعكس حداداً روتينياً على خطر مستمر ومتعارف عليه أكثر من غضب شعبي حاد.",
-   "public_reaction": "Public reaction was largely mourning and religious condolences for victims, with no significant organized criticism visible in the gathered posts.",
-   "public_reaction_ar": "اقتصر التفاعل الجمهوري غالباً على الحداد والدعاء للضحايا، دون ظهور انتقادات منظمة لافتة ضمن المنشورات المجمّعة.",
-   "sentiment": -0.3,
-   "public_sentiment": -0.3,
+   "id": "houthi-attack-riyadh",
+   "key": "2026-11-08-houthi-attack-riyadh",
+   "theme": "international",
+   "title": "Syria Condemns Houthi Attacks on Riyadh Financial District and Aramco Site",
+   "title_ar": "سوريا تدين هجمات الحوثيين على مركز مالي وموقع أرامكو في الرياض",
+   "summary": "The Saudi coalition reported intercepting Houthi cruise and ballistic missiles and drones aimed at Riyadh and southern Saudi Arabia, with limited damage reported at a building in the King Abdullah Financial District and an Aramco facility. Syria's Foreign Ministry condemned the attack and expressed full solidarity with Saudi Arabia, a position echoed by Kuwait and Egypt.",
+   "summary_ar": "أعلن تحالف دعم الشرعية في اليمن اعتراض صواريخ كروز وباليستية ومسيّرات حوثية استهدفت الرياض وجنوب السعودية، مع إبلاغ عن أضرار محدودة في مبنى بمركز الملك عبد الله المالي ومنشأة لأرامكو. أدانت وزارة الخارجية السورية الهجوم وأعربت عن تضامن كامل مع السعودية، وهو موقف رددته الكويت ومصر.",
+   "detail": "Saudi and Yemeni coalition statements said air defenses intercepted multiple missiles and a drone targeting Riyadh and the kingdom's south. Asharq News reported limited damage and no casualties at the Aramco building. Syria's Foreign Ministry, quoted widely across state and independent outlets, condemned the attack and called Saudi security 'an integral part of regional stability,' urging international action. Kuwait and Egypt issued similar solidarity statements. Public reaction, mostly in Arabic and English social media, voiced religious solidarity with Saudi Arabia but some mocked the Syrian government's condemnation as hypocritical given continued Israeli incursions in southern Syria that draw no similar protest.",
+   "detail_ar": "ذكرت بيانات التحالف السعودي اليمني أن الدفاعات الجوية اعترضت عدة صواريخ ومسيّرة استهدفت الرياض وجنوب المملكة. ونقلت وكالة أسواق نيوز وجود أضرار محدودة دون إصابات في مبنى أرامكو. وأدانت وزارة الخارجية السورية، التي تناقلت تصريحاتها وسائل الإعلام الرسمية والمستقلة على نطاق واسع، الهجوم ووصفت أمن السعودية بأنه «جزء لا يتجزأ من استقرار المنطقة»، داعية إلى تحرك دولي. كما أصدرت الكويت ومصر بيانات تضامن مماثلة. وعبّر الجمهور، في منشورات عربية وإنجليزية، عن تضامن ديني مع السعودية، فيما سخر بعضهم من إدانة الحكومة السورية معتبرين أنها لا تتناسب مع صمتها تجاه التوغلات الإسرائيلية المستمرة في جنوب سوريا.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.1,
+   "public_sentiment": null,
    "outlet_tone": {
-    "independent": -0.3,
-    "kurdish": -0.3
+    "official": 0.3,
+    "independent": 0.1,
+    "kurdish": 0.1,
+    "regional": 0.0,
+    "aggregator": 0.0
    },
-   "public_tone": {
-    "ar": -0.2
-   },
+   "public_tone": {},
    "emotions": [
-    "grief",
-    "resignation"
+    "solidarity",
+    "anger",
+    "mockery"
    ],
    "emotions_ar": [
-    "حزن",
-    "استسلام"
+    "تضامن",
+    "غضب",
+    "سخرية"
    ],
    "framings": [
-    "Ongoing war-remnant hazard requiring continued clearance"
+    "Arab solidarity framing",
+    "hypocrisy framing (silence on Israel)"
    ],
    "framings_ar": [
-    "خطر مخلفات الحرب المستمر الذي يتطلب نزعاً متواصلاً"
+    "إطار التضامن العربي",
+    "إطار الازدواجية (الصمت تجاه إسرائيل)"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 18,
-   "public_volume": 13,
-   "share": 0.022,
-   "engagement": 5422,
+   "volume": 15,
+   "public_volume": 0,
+   "share": 0.018,
+   "engagement": 9701,
    "platforms": {
-    "telegram": 5,
-    "bluesky": 3,
-    "youtube": 9
+    "news": 6,
+    "telegram": 9
    },
    "languages": {
-    "ar": 15,
+    "ar": 13,
     "en": 2
    },
-   "public_languages": {
-    "ar": 12
-   },
+   "public_languages": {},
    "kinds": {
-    "independent": 4,
-    "kurdish": 1
+    "independent": 3,
+    "regional": 6,
+    "aggregator": 3,
+    "kurdish": 1,
+    "official": 2
    },
    "sources": [
-    "YouTube comments on Halab Today TV",
-    "Bluesky posts",
-    "Daraa 24 - local, Daraa",
-    "YouTube comments",
-    "Enab Baladi - independent (AR)",
-    "North Press Agency (EN)"
+    "Anadolu Agency - Turkish state news agency (AR)",
+    "Asharq News - Saudi-owned",
+    "Google News - Syria (AR)",
+    "Syria TV - opposition-origin",
+    "Sky News Arabia - UAE-based",
+    "Google News - Syria (EN)"
    ],
    "examples": [
     {
-     "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28571",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/97875",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93705",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142662",
      "platform": "telegram"
     },
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46485",
+     "source": "Anadolu Agency - Turkish state news agency (AR)",
+     "url": "https://t.me/aa_arabic/172798",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-11-07T15:14:11Z",
+   "first_seen": "2026-11-08T15:14:17Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "rifaat-assets-france-committee",
+   "key": "2026-11-08-rifaat-assets-france-committee",
+   "theme": "justice",
+   "title": "Syria and France Form Committee to Manage €54 Million Seized From Rifaat al-Assad",
+   "title_ar": "سوريا وفرنسا تشكلان لجنة لإدارة ٥٤ مليون يورو من أموال رفعت الأسد",
+   "summary": "Syria and France agreed to form a joint governance committee to oversee development projects funded by roughly €54 million in assets confiscated from Rifaat al-Assad, uncle of ousted president Bashar al-Assad. The agreement was reached in Paris between Syrian and French officials.",
+   "summary_ar": "اتفقت سوريا وفرنسا على تشكيل لجنة حوكمة مشتركة للإشراف على مشاريع تنموية تمولها نحو ٥٤ مليون يورو من الأموال المصادرة من رفعت الأسد، عم الرئيس المخلوع بشار الأسد. تم التوصل إلى الاتفاق في باريس بين مسؤولين سوريين وفرنسيين.",
+   "detail": "North Press, TRT Arabi and others reported the agreement between Syria's international cooperation director Qutaiba Qadish and French envoy Jean-François Guillaume, with both sides to exchange project proposals in the coming week. Public reaction was largely positive, with commenters hoping the funds go toward rebuilding schools and hospitals, though several Golan-origin commenters argued the money originally belonged to looted Golan residents who received nothing from a 1974 Sudan conference, and some questioned the scale of the sum compared to the wealth allegedly amassed by the Assad family.",
+   "detail_ar": "نقلت وكالة نورث برس وTRT عربي وغيرها تفاصيل الاتفاق بين مدير التعاون الدولي قتيبة قاديش والمبعوث الفرنسي جان فرانسوا غيوم، على أن يتبادل الجانبان مقترحات المشاريع خلال الأسبوع المقبل. وكان رد الفعل الشعبي إيجابياً إلى حد كبير، مع أمل كثيرين في أن تذهب الأموال لإعادة بناء المدارس والمشافي، رغم أن عدداً من أبناء الجولان جادلوا بأن الأموال تعود أصلاً لأهالي الجولان المنهوبين الذين لم يتلقوا شيئاً من مؤتمر السودان عام 1974، وتساءل آخرون عن حجم المبلغ مقارنة بالثروة التي يُقال إن عائلة الأسد جمعتها.",
+   "public_reaction": "Reaction was mostly positive and hopeful, with some noting the funds' small scale relative to Assad family wealth and others asserting a prior claim by Golan residents.",
+   "public_reaction_ar": "كان رد الفعل إيجابياً ومتفائلاً في معظمه، مع ملاحظة بعضهم أن المبلغ صغير مقارنة بثروة عائلة الأسد، وتأكيد آخرين على حق سابق لأهالي الجولان في هذه الأموال.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.1,
+   "outlet_tone": {
+    "kurdish": 0.3,
+    "regional": 0.3
+   },
+   "public_tone": {
+    "ar": 0.1
+   },
+   "emotions": [
+    "hope",
+    "skepticism"
+   ],
+   "emotions_ar": [
+    "أمل",
+    "تشكك"
+   ],
+   "framings": [
+    "reconstruction framing",
+    "Golan restitution framing"
+   ],
+   "framings_ar": [
+    "إطار إعادة الإعمار",
+    "إطار استرداد حقوق الجولان"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 10,
+   "public_volume": 6,
+   "share": 0.012,
+   "engagement": 807,
+   "platforms": {
+    "telegram": 3,
+    "news": 1,
+    "youtube": 6
+   },
+   "languages": {
+    "en": 1,
+    "ar": 9
+   },
+   "public_languages": {
+    "ar": 6
+   },
+   "kinds": {
+    "kurdish": 2,
+    "regional": 1,
+    "aggregator": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "North Press Agency (EN)",
+    "TRT Arabi - Turkish public broadcaster",
+    "North Press Agency - Qamishli-based (AR)",
+    "Google News - Syria (AR)"
+   ],
+   "examples": [
+    {
+     "source": "TRT Arabi - Turkish public broadcaster",
+     "url": "https://t.me/TRTArabi/46902",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency - Qamishli-based (AR)",
+     "url": "https://t.me/npa_syria/84899",
+     "platform": "telegram"
+    },
+    {
+     "source": "North Press Agency (EN)",
+     "url": "https://t.me/npasyria/35466",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-11-08T15:14:17Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -533,78 +713,84 @@
    "id": "israel-south-incursions",
    "key": "2026-10-31-israel-south-incursions",
    "theme": "israel-south",
-   "title": "Israeli Incursions, Checkpoints and School Raid Continue in Quneitra",
-   "title_ar": "استمرار التوغلات الإسرائيلية ونصب الحواجز واقتحام مدرسة في القنيطرة",
-   "summary": "Israeli forces conducted repeated incursions with armored vehicles into villages in rural Quneitra, including Saida al-Hanout and Samdaniya al-Gharbiya, raiding a school and homes and setting up checkpoints. Outlets and residents reported no casualties but described growing fear among farmers blocked from olive groves and grazing land.",
-   "summary_ar": "نفذت القوات الإسرائيلية توغلات متكررة بآليات عسكرية في قرى ريف القنيطرة، منها صيدا الحانوت والصمدانية الغربية، واقتحمت مدرسة ومنازل ونصبت حواجز. لم تسجَّل إصابات بحسب وسائل الإعلام والسكان، لكنهم أشاروا إلى تصاعد مخاوف المزارعين الممنوعين من الوصول إلى بساتين الزيتون ومراعيهم.",
-   "detail": "Daraa 24, Syria TV, Al-Ikhbariya and Sawt al-Asima documented multiple incursions in a single day: convoys of three to fourteen vehicles entering Saida al-Hanout, Samdaniya, Tarnja and Ain al-Bayda, with troops reportedly breaking into a village school door for unclear reasons. Separately, Aljazeera-sourced reporting (via Google aggregator) described Israeli forces blocking farmers from Yarmouk basin lands during olive harvest season. Independent and official Syrian outlets framed this as ongoing occupation overreach; there was little direct public commentary captured in the dataset specifically on these incursions, though broader anger about Israeli presence surfaces in the Yemen-deployment narrative comments.",
-   "detail_ar": "وثّقت درعا 24 وتلفزيون سوريا والإخبارية السورية وصوت العاصمة عدة توغلات في يوم واحد: أرتال من ثلاث إلى أربع عشرة آلية دخلت صيدا الحانوت والصمدانية وطرنجة وعين البيضة، وأفيد بأن الجنود خلعوا باب مدرسة في إحدى القرى لأسباب غير معروفة. وفي سياق منفصل، أوردت تقارير مصدرها الجزيرة (عبر مجمّع Google) منع مزارعين من الوصول إلى أراضي حوض اليرموك خلال موسم قطاف الزيتون. وأطّرت وسائل الإعلام السورية الرسمية والمستقلة الأمر على أنه استمرار للتعدي الاحتلالي، فيما لم تُسجَّل تعليقات جمهورية مباشرة كثيرة حول هذه التوغلات تحديداً ضمن البيانات المجمّعة، رغم أن غضباً أوسع من الوجود الإسرائيلي يظهر ضمن تعليقات رواية نشر القوات في اليمن.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
+   "title": "Israeli Incursions, School Raids and Checkpoints Continue in Quneitra and Daraa",
+   "title_ar": "استمرار التوغلات الإسرائيلية واقتحام المدارس والحواجز في القنيطرة ودرعا",
+   "summary": "Israeli occupation forces continued incursions into villages in the Quneitra countryside, including al-Asbah and Saida al-Hanouta, and raided a school and homes in southern Syria. Local outlets Daraa 24 and Syria TV documented repeated patrols, with Levant24 tracking cumulative incidents.",
+   "summary_ar": "واصلت قوات الاحتلال الإسرائيلي توغلها في قرى ريف القنيطرة، بينها الأصبح وصيدا الحانوت، كما اقتحمت مدرسة ومنازل في جنوب سوريا. وثقت وسائل الإعلام المحلية مثل درعا ٢٤ وتلفزيون سوريا دوريات متكررة، فيما تابعت Levant24 الحوادث التراكمية.",
+   "detail": "Daraa 24 and Syria TV reported Israeli vehicles entering al-Asbah village and Saida al-Hanouta in southern Quneitra countryside near a base established on Tel al-Ahmar al-Gharbi in 2024, blocking residents' movement before withdrawing. Separately, Anadolu and Google News aggregated reports that Israeli troops stormed a school and raided homes in southern Syria. Levant24's tracker rated incidents as a '6/10' military operation. This continues an ongoing story from the previous snapshot. Public reaction, especially in English-language posts, expressed outrage and framed Israel as an occupying, aggressive power, with some linking it to broader criticism of Gaza and Lebanon policies.",
+   "detail_ar": "نقلت درعا 24 وتلفزيون سوريا دخول مركبات إسرائيلية إلى قرية الأصبح وصيدا الحانوت في جنوب ريف القنيطرة قرب قاعدة أُنشئت على تل الأحمر الغربي عام 2024، ومنع السكان من التنقل قبل الانسحاب. وبشكل منفصل، جمّعت الأناضول وGoogle News تقارير عن اقتحام قوات إسرائيلية مدرسة ومنازل في جنوب سوريا. وصنّف متتبع Levant24 الحادثة بأنها عملية عسكرية بدرجة «6 من 10». تواصل هذه القصة من التحديث السابق. وعبّر الجمهور، خصوصاً في المنشورات الإنجليزية، عن الغضب ووصف إسرائيل بالقوة المحتلة العدوانية، وربط بعضهم ذلك بانتقادات أوسع لسياساتها في غزة ولبنان.",
+   "public_reaction": "Public comments, especially in English, expressed outrage framing Israel as an aggressive occupying power, while some Arabic commenters criticized Syrian authorities for inaction.",
+   "public_reaction_ar": "عبّرت التعليقات، خصوصاً الإنجليزية، عن غضب يصف إسرائيل بالقوة المحتلة العدوانية، بينما انتقد بعض المعلقين العرب تقاعس السلطات السورية عن الرد.",
    "sentiment": -0.4,
-   "public_sentiment": null,
+   "public_sentiment": -0.5,
    "outlet_tone": {
-    "official": -0.3,
     "independent": -0.4,
     "aggregator": -0.3
    },
-   "public_tone": {},
+   "public_tone": {
+    "en": -0.5
+   },
    "emotions": [
-    "fear",
-    "anger"
+    "anger",
+    "frustration",
+    "fear"
    ],
    "emotions_ar": [
-    "خوف",
-    "غضب"
+    "غضب",
+    "إحباط",
+    "خوف"
    ],
    "framings": [
-    "Occupation overreach into civilian life and livelihoods"
+    "occupation/aggression framing",
+    "inaction criticism of transitional government"
    ],
    "framings_ar": [
-    "تعدٍ احتلالي على حياة المدنيين وموارد رزقهم"
+    "إطار الاحتلال والعدوان",
+    "انتقاد تقاعس الحكومة الانتقالية"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 13,
-   "public_volume": 0,
-   "share": 0.016,
-   "engagement": 14619,
+   "volume": 7,
+   "public_volume": 2,
+   "share": 0.009,
+   "engagement": 2987,
    "platforms": {
-    "telegram": 8,
-    "news": 5
+    "telegram": 4,
+    "news": 1,
+    "bluesky": 2
    },
    "languages": {
-    "ar": 10,
-    "en": 3
+    "ar": 3,
+    "en": 4
    },
-   "public_languages": {},
+   "public_languages": {
+    "en": 2
+   },
    "kinds": {
-    "independent": 9,
-    "aggregator": 3,
-    "official": 1
+    "independent": 4,
+    "aggregator": 1
    },
    "sources": [
     "Daraa 24 - local, Daraa",
-    "Syria TV - opposition-origin",
-    "Google News - Syria (EN)",
-    "Sawt al-Asima - local, Damascus",
-    "Google News - Syria (AR)",
-    "Al-Ikhbariya Syria - state TV"
+    "Bluesky posts",
+    "Syria TV - opposition-origin broadcaster",
+    "Levant24 - Syria news (EN)",
+    "Google News - Syria (EN)"
    ],
    "examples": [
     {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/97858",
-     "platform": "telegram"
-    },
-    {
      "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28574",
+     "url": "https://t.me/daraa24_org/28581",
      "platform": "telegram"
     },
     {
-     "source": "Al-Ikhbariya Syria - state TV",
-     "url": "https://t.me/AlekhbariahSY/239385",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/97883",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/46492",
      "platform": "telegram"
     }
    ],
@@ -616,97 +802,171 @@
    }
   },
   {
-   "id": "bukamal-flooding-cold-weather",
-   "key": "2026-11-06-bukamal-flooding-cold-weather",
-   "theme": "society",
-   "title": "Floods Collapse Suweiya Bridge in Albu Kamal, Damage Other Bridges",
-   "title_ar": "السيول تهدم جسر السويعية في البوكمال وتضر جسوراً أخرى",
-   "summary": "Heavy rains and flash floods collapsed the Suweiya bridge in Albu Kamal, Deir ez-Zor province, killing at least one person, with floods also hitting homes and infrastructure in Deir ez-Zor, Latakia and Aleppo. Forecasters warned of continued rain, storms and near-freezing temperatures.",
-   "summary_ar": "تسببت الأمطار الغزيرة والسيول بانهيار جسر السويعية في البوكمال بمحافظة دير الزور، ما أودى بحياة شخص على الأقل، كما ضربت الفيضانات منازل وبنى تحتية في دير الزور واللاذقية وحلب. وحذّرت التوقعات الجوية من استمرار الأمطار والعواصف وانخفاض درجات الحرارة قرب الصفر.",
-   "detail": "TRT Arabi, Enab Baladi and aggregated English outlets confirmed one death from the bridge collapse, while floodwaters also exposed archaeological remains at Palmyra's Tuwaihina site, per SANA. Separate reporting documented a bridge over the Nahr al-Kabir al-Shamali in Latakia countryside damaged, drawing public anger over state infrastructure quality. One widely-shared public comment criticized the state for failing to build bridges that withstand a single rainy season. Weather bulletins forecast temperatures 2-4 degrees below seasonal norms with storms concentrated on the coast and northwest.",
-   "detail_ar": "أكدت TRT عربي وعنب بلدي ووسائل إعلام مجمّعة بالإنجليزية وفاة شخص واحد جراء انهيار الجسر، في حين كشفت مياه السيول أجزاء من موقع الطويحينة الأثري في تدمر بحسب سانا. ووثّقت تقارير منفصلة تضرر جسر فوق نهر الكبير الشمالي في ريف اللاذقية، ما أثار غضباً عاماً من جودة البنية التحتية للدولة. وانتقد تعليق جمهوري متداول عجز الدولة عن بناء جسور تصمد أمام موسم أمطار واحد. وتوقعت نشرات الطقس درجات حرارة أقل من المعدلات الموسمية بـ2 إلى 4 درجات مع عواصف تتركز على الساحل والشمال الغربي.",
-   "public_reaction": "Public comments expressed frustration and anger at perceived state neglect of infrastructure, blaming authorities for bridges collapsing after a single storm, alongside some weary expressions of grief for the person killed.",
-   "public_reaction_ar": "عبّرت تعليقات الجمهور عن إحباط وغضب من إهمال الدولة المفترض للبنية التحتية، محمّلين السلطات مسؤولية انهيار الجسور بعد عاصفة واحدة، إلى جانب تعبيرات حزن متعبة على الضحية.",
+   "id": "landmine-casualties",
+   "key": "2026-11-07-landmine-casualties",
+   "theme": "security",
+   "title": "Landmine Clearance Continues Amid Ongoing Casualties",
+   "title_ar": "استمرار إزالة الألغام وسط استمرار الضحايا",
+   "summary": "Syria's Emergency and Disaster Management Ministry reported 759 landmine clearance operations in October 2026, while a soldier was killed and another wounded defusing a mine near Mayadin. Reports estimate over half a million mines remain in the Palmyra desert, with more than 100 victims recorded.",
+   "summary_ar": "أعلنت وزارة الطوارئ وإدارة الكوارث تنفيذ ٧٥٩ عملية لإزالة مخلفات الحرب خلال تشرين الأول ٢٠٢٦، بينما استشهد جندي وأُصيب آخر أثناء تفكيك لغم قرب الميادين. وتشير تقديرات إلى بقاء أكثر من نصف مليون لغم في بادية تدمر، مع تسجيل أكثر من ١٠٠ ضحية.",
+   "detail": "SANA, Sawt al-Asima and Syria Plus detailed the ministry's monthly report: 476 clearance and survey operations, 168 community risk assessments, 115 contamination assessments, and 171 awareness sessions reaching over 5,300 people. Al Jazeera and Syria Plus separately reported more than half a million mines estimated in the Palmyra desert, posing risks to returning civilians, children and shepherds. The Defense Ministry reported one soldier killed and another seriously wounded defusing former-regime ordnance near Mayadin. This continues as an ongoing story from the previous snapshot with no major shift, reflecting persistent casualties despite clearance efforts.",
+   "detail_ar": "فصّلت سانا وصوت العاصمة وسوريا بلس تقرير الوزارة الشهري: 476 عملية إزالة ومسح ميداني، و168 عملية تقييم مجتمعي، و115 عملية تقييم تلوث، و171 جلسة توعوية استفاد منها أكثر من 5300 شخص. ونقلت الجزيرة وسوريا بلس تقديرات بوجود أكثر من نصف مليون لغم في بادية تدمر، ما يهدد العائدين والأطفال والرعاة. وأعلنت وزارة الدفاع استشهاد جندي وإصابة آخر بجروح بالغة أثناء تفكيك مخلفات النظام البائد قرب الميادين. تستمر هذه القصة من التحديث السابق دون تحول كبير، وتعكس استمرار الضحايا رغم جهود الإزالة.",
+   "public_reaction": "Limited public commentary, though posts reflected ongoing concern about the scale of contamination and the toll on civilians and soldiers.",
+   "public_reaction_ar": "كانت التعليقات الشعبية محدودة، لكنها عكست قلقاً مستمراً من حجم التلوث وثمنه البشري على المدنيين والجنود.",
    "sentiment": -0.2,
-   "public_sentiment": -0.5,
+   "public_sentiment": -0.2,
    "outlet_tone": {
-    "official": 0.0,
     "independent": -0.2,
-    "regional": -0.2,
     "aggregator": -0.2
    },
    "public_tone": {
-    "ar": -0.5,
+    "ar": -0.2,
     "en": -0.2
    },
    "emotions": [
-    "frustration",
-    "grief"
+    "grief",
+    "concern"
    ],
    "emotions_ar": [
-    "إحباط",
-    "حزن"
+    "حزن",
+    "قلق"
    ],
    "framings": [
-    "State infrastructure failure",
-    "Natural disaster response"
+    "humanitarian/clearance progress framing",
+    "continuing danger framing"
    ],
    "framings_ar": [
-    "فشل البنية التحتية للدولة",
-    "الاستجابة للكوارث الطبيعية"
+    "إطار التقدم الإنساني في الإزالة",
+    "إطار الخطر المستمر"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 13,
-   "public_volume": 8,
-   "share": 0.016,
-   "engagement": 3189,
+   "volume": 7,
+   "public_volume": 2,
+   "share": 0.009,
+   "engagement": 1050,
    "platforms": {
     "telegram": 3,
     "news": 2,
-    "bluesky": 3,
-    "youtube": 5
+    "bluesky": 2
    },
    "languages": {
-    "ar": 9,
-    "en": 4
+    "ar": 6,
+    "en": 1
    },
    "public_languages": {
-    "en": 3,
-    "ar": 5
+    "en": 1,
+    "ar": 1
    },
    "kinds": {
-    "regional": 1,
-    "official": 2,
-    "aggregator": 1,
-    "independent": 1
+    "independent": 4,
+    "aggregator": 1
    },
    "sources": [
-    "YouTube comments",
+    "Syria Plus (SY+) - news platform",
     "Bluesky posts",
-    "TRT Arabi - Turkish public broadcaster",
-    "SANA - state news agency (AR)",
-    "Google News - Syria (EN)",
-    "Enab Baladi - independent (AR)"
+    "Sawt al-Asima - local, Damascus",
+    "Google News - Syria (AR)",
+    "Syria TV - opposition-origin"
    ],
    "examples": [
     {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/190471",
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/44201",
      "platform": "telegram"
     },
     {
-     "source": "TRT Arabi - Turkish public broadcaster",
-     "url": "https://t.me/TRTArabi/46899",
+     "source": "Syria Plus (SY+) - news platform",
+     "url": "https://t.me/sy_platform/41274",
      "platform": "telegram"
     },
     {
-     "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93701",
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMiwAJBVV95cUxNQVk1SXh1cXpHTUNqOTVncnVTVVhhdWQ3ZVNIa29nbXYwNkV6azA5Uk40WDJ3LTJzbVphUjlnSktTYUpuWjFkWmQ4QzFvZmZlbXVaNGlSZUxKSkpSaUZ5R2VYTGpYUC0yaWpaZzR5RnBKdDBNQmJ2MHM1U3hfektreUtoUjBQbnFRU2hxM0ZCN1VVQXJmNHNTTmVTalhjejJ4cndsb3RmdFlVbDN6ZFpWSE9saTdjbG5lSHJHRUc2N1pTTHUtV1pBSmU4ZjlZbHFkYW5WNVJsZ3AtWTlOVThmS1JZd1QyRmNDNklsV1A3VTcwZVpoRXlBZEVCMDBHLXdnWk9KMngzNEMxMWlSZ0htemN0c2t2dldXNVBsbGlrMnpkZ0xCOGY3X2psaldIVUxHdzNzejU3VVNQX3JtMzFvTw?oc=5",
+     "platform": "news"
+    }
+   ],
+   "first_seen": "2026-11-07T15:14:11Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "aleppo-amiriya-shooting",
+   "key": "2026-11-08-aleppo-amiriya-shooting",
+   "theme": "security",
+   "title": "Three Killed in Family Dispute Shooting in Aleppo's Amiriya Neighborhood",
+   "title_ar": "مقتل ثلاثة أشخاص بإطلاق نار في نزاع عائلي بحي العامرية في حلب",
+   "summary": "Three people were killed and one wounded in a shooting during a dispute between two families in Aleppo's Amiriya neighborhood on November 8. Internal security forces deployed and imposed a security cordon in response.",
+   "summary_ar": "قُتل ثلاثة أشخاص وأُصيب رابع في إطلاق نار خلال مشاجرة بين عائلتين في حي العامرية بحلب في ٨ تشرين الثاني. انتشرت قوى الأمن الداخلي وفرضت طوقاً أمنياً إثر الحادثة.",
+   "detail": "Shaam News Network, Halab Today TV, Al-Ikhbariya and Syria TV all reported the clash, citing an initial death toll of three with security forces securing the area afterward. No further details on the cause of the dispute were provided by any outlet, and there was minimal direct public comment captured on this specific incident.",
+   "detail_ar": "نقلت شبكة شام نيوز وحلب اليوم والإخبارية وتلفزيون سوريا جميعها الاشتباك، مشيرة إلى حصيلة أولية بثلاثة قتلى مع تأمين قوى الأمن للمنطقة لاحقاً. لم تقدم أي من الوسائل تفاصيل إضافية حول سبب الخلاف، وكانت التعليقات الشعبية المباشرة على هذه الحادثة محدودة جداً.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": -0.4,
+   "public_sentiment": null,
+   "outlet_tone": {
+    "official": -0.3,
+    "independent": -0.4
+   },
+   "public_tone": {},
+   "emotions": [
+    "shock",
+    "concern"
+   ],
+   "emotions_ar": [
+    "صدمة",
+    "قلق"
+   ],
+   "framings": [
+    "local crime/security incident framing"
+   ],
+   "framings_ar": [
+    "إطار الحادث الأمني المحلي"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 6,
+   "public_volume": 0,
+   "share": 0.007,
+   "engagement": 4884,
+   "platforms": {
+    "telegram": 6
+   },
+   "languages": {
+    "ar": 6
+   },
+   "public_languages": {},
+   "kinds": {
+    "independent": 4,
+    "official": 2
+   },
+   "sources": [
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Al-Ikhbariya Syria - state TV",
+    "Shaam News Network - opposition-origin",
+    "Syria TV - opposition-origin broadcaster"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142665",
+     "platform": "telegram"
+    },
+    {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/97880",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/239443",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-11-06T20:56:46Z",
+   "first_seen": "2026-11-08T15:14:17Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -719,64 +979,59 @@
    "theme": "international",
    "title": "Israeli President Tasks Eisenkot with Forming New Government",
    "title_ar": "الرئيس الإسرائيلي يكلف آيزنكوت بتشكيل الحكومة الجديدة",
-   "summary": "Israeli President Isaac Herzog tasked former general Gadi Eisenkot with forming a new government after Knesset consultations, giving him 28 days with a possible 14-day extension. Netanyahu called for a national unity government excluding parties he linked to Hamas and 'radical Islam.'",
-   "summary_ar": "كلّف الرئيس الإسرائيلي إسحاق هرتسوغ الجنرال السابق غادي آيزنكوت رسمياً بتشكيل الحكومة الجديدة بعد مشاورات مع الكتل البرلمانية، ومنحه مهلة ٢٨ يوماً قابلة للتمديد ١٤ يوماً. ودعا نتنياهو إلى حكومة وحدة وطنية تستبعد من وصفهم بأحزاب «حماس والإسلام المتشدد».",
-   "detail": "North Press, Enab Baladi, Levant24, Euphrates Post and Sawt al-Asima all reported the handover following Herzog's consultations. Kurdish outlet ANHA profiled Eisenkot as a hawkish former general critical of Netanyahu's handling of October 7 and Gaza, noting past calls for Israel to exploit changes in Syria while remaining cautious toward its new leadership, a detail Syrian audiences found relevant to future Israeli policy. Public commentary in the gathered posts was limited, with some English-language critical posts framing all Israeli leaders, including Eisenkot, Herzog and Netanyahu, as opposed to Palestinian statehood.",
-   "detail_ar": "نقلت نورث برس وعنب بلدي وLevant24 وفرات بوست وصوت العاصمة خبر التكليف عقب مشاورات هرتسوغ مع الكتل البرلمانية. وقدّمت وكالة هاوار الكردية آيزنكوت كجنرال سابق متشدد انتقد تعامل نتنياهو مع هجوم 7 تشرين الأول وحرب غزة، مشيرة إلى دعواته السابقة لاستثمار التغيرات في سوريا مع الحذر من قيادتها الجديدة، وهو تفصيل رآه الجمهور السوري ذا صلة بسياسة إسرائيل المستقبلية. وكانت التعليقات الجمهورية المحدودة باللغة الإنجليزية تصف جميع القادة الإسرائيليين، بمن فيهم آيزنكوت وهرتسوغ ونتنياهو، بمعارضة قيام دولة فلسطينية.",
-   "public_reaction": "Limited public reaction, mostly critical English-language posts framing Israeli political figures as uniformly hostile to Palestinian statehood regardless of who leads the next government.",
-   "public_reaction_ar": "كان التفاعل الجمهوري محدوداً، ومعظمه منشورات ناقدة بالإنجليزية تصف الشخصيات السياسية الإسرائيلية جميعها بأنها معادية لقيام دولة فلسطينية أياً كان من يقود الحكومة المقبلة.",
+   "summary": "Israeli President Isaac Herzog tasked Gadi Eisenkot with forming the next Israeli government after concluding consultations with Knesset factions, giving him 28 days with a possible 14-day extension. Outlets noted Eisenkot's past remarks on Syria as relevant to his potential policy direction.",
+   "summary_ar": "كلّف الرئيس الإسرائيلي إسحاق هرتسوغ غادي آيزنكوت رسمياً بتشكيل الحكومة الإسرائيلية الجديدة بعد اختتام مشاورات مع الكتل البرلمانية، مانحاً إياه مهلة ٢٨ يوماً قابلة للتمديد ١٤ يوماً. أشارت وسائل الإعلام إلى تصريحات سابقة لآيزنكوت حول سوريا باعتبارها مؤشراً محتملاً على توجهاته.",
+   "detail": "Levant24, Euphrates Post, Sawt al-Asima and Enab Baladi reported the formal tasking of Eisenkot, noting 67 Knesset members recommended him. Levant24 highlighted his past calls for Israel to capitalize on Syria's changing situation while remaining cautious toward the new leadership, and his views on revising policy toward Mount Hermon and Hezbollah. Public commentary specifically on this story was minimal within the dataset, with most related Arabic posts focused on broader Israel-related coverage rather than Eisenkot directly.",
+   "detail_ar": "نقلت Levant24 وفرات بوست وصوت العاصمة وعنب بلدي تكليف آيزنكوت رسمياً، مشيرة إلى أن 67 عضواً في الكنيست أوصوا به. وسلطت Levant24 الضوء على دعواته السابقة لاستغلال إسرائيل للوضع المتغير في سوريا مع الحذر تجاه القيادة الجديدة، وآرائه حول مراجعة السياسة تجاه جبل الشيخ وحزب الله. كانت التعليقات الشعبية المحددة حول هذه القصة محدودة ضمن البيانات، إذ ركزت معظم المنشورات العربية ذات الصلة على التغطية الأوسع المتعلقة بإسرائيل بدلاً من آيزنكوت تحديداً.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
    "sentiment": 0.0,
-   "public_sentiment": -0.3,
+   "public_sentiment": null,
    "outlet_tone": {
-    "independent": 0.0,
+    "independent": -0.1,
     "kurdish": 0.0
    },
-   "public_tone": {
-    "en": -0.3
-   },
+   "public_tone": {},
    "emotions": [
-    "wariness"
+    "uncertainty"
    ],
    "emotions_ar": [
-    "حذر"
+    "ترقب"
    ],
    "framings": [
-    "Implications for Syria of Israeli political change",
-    "Critique of Israeli leadership as uniformly hostile"
+    "implications-for-Syria framing"
    ],
    "framings_ar": [
-    "تداعيات التغيير السياسي الإسرائيلي على سوريا",
-    "نقد القيادة الإسرائيلية باعتبارها معادية بشكل موحّد"
+    "إطار التداعيات على سوريا"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 10,
-   "public_volume": 2,
-   "share": 0.012,
-   "engagement": 6758,
+   "volume": 6,
+   "public_volume": 1,
+   "share": 0.007,
+   "engagement": 7072,
    "platforms": {
-    "telegram": 8,
-    "bluesky": 2
+    "telegram": 5,
+    "bluesky": 1
    },
    "languages": {
-    "ar": 7,
-    "en": 3
+    "en": 2,
+    "ar": 4
    },
    "public_languages": {
-    "en": 1,
     "ar": 1
    },
    "kinds": {
-    "kurdish": 3,
-    "independent": 5
+    "kurdish": 1,
+    "independent": 4
    },
    "sources": [
-    "Bluesky posts",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
     "North Press Agency (EN)",
-    "Enab Baladi - independent (AR)",
     "Euphrates Post - Deir ez-Zor and the east",
-    "Levant24 - Syria news (EN)"
+    "Levant24 - Syria news (EN)",
+    "Sawt al-Asima - local, Damascus",
+    "Enab Baladi - independent (AR)",
+    "Bluesky posts"
    ],
    "examples": [
     {
@@ -790,153 +1045,12 @@
      "platform": "telegram"
     },
     {
-     "source": "Syria Plus (SY+) - news platform",
-     "url": "https://t.me/sy_platform/41262",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-08T00:38:40Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "aleppo-khalidiya-murder",
-   "key": "2026-11-08-aleppo-khalidiya-murder",
-   "theme": "security",
-   "title": "Woman Murdered in Khalidiya, Aleppo; Relative Arrested Within Hours",
-   "title_ar": "مقتل سيدة في حي الخالدية بحلب واعتقال قريبها خلال ساعات",
-   "summary": "Fatima Bazt was found stabbed to death in her home in Aleppo's Khalidiya neighborhood. Interior Ministry security forces arrested a relative within hours, recovering stolen gold jewelry, and the case was referred to the judiciary.",
-   "summary_ar": "عُثر على السيدة فاطمة بظت مقتولة بعدة طعنات داخل منزلها في حي الخالدية بحلب، وألقت قوى الأمن الداخلي القبض على أحد أقاربها خلال ساعات قليلة مع ضبط المصاغ الذهبي المسروق، وأُحيلت القضية إلى القضاء.",
-   "detail": "Multiple independent outlets (Halab Today, Al-Watan, Enab Baladi, Syria Plus) reported the killing and the rapid arrest, crediting Aleppo's criminal investigation branch. The suspect, identified only by initials, was a relative of the victim and was found with stolen gold. Outlets framed the swift police response positively, highlighting improved security capacity. No significant public comment specifically on this case was recorded among the gathered posts beyond basic news-sharing, suggesting limited organic public reaction.",
-   "detail_ar": "تناولت عدة وسائل إعلام مستقلة (حلب اليوم، الوطن، عنب بلدي، سوريا بلس) جريمة القتل والاعتقال السريع، ونسبت الفضل إلى فرع المباحث الجنائية بحلب. وكان المشتبه به، المعروف بأحرف اسمه فقط، قريباً للضحية وعُثر بحوزته على الذهب المسروق. وأبرزت وسائل الإعلام سرعة استجابة الشرطة باعتبارها مؤشراً إيجابياً على تحسن القدرة الأمنية، في حين لم تظهر تعليقات جمهورية ملحوظة حول القضية تحديداً باستثناء تداول الخبر.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.1,
-   "public_sentiment": null,
-   "outlet_tone": {
-    "independent": 0.1
-   },
-   "public_tone": {},
-   "emotions": [
-    "shock",
-    "relief"
-   ],
-   "emotions_ar": [
-    "صدمة",
-    "ارتياح"
-   ],
-   "framings": [
-    "Security forces' quick response as a sign of improved capability"
-   ],
-   "framings_ar": [
-    "استجابة الأمن السريعة كدليل على تحسن القدرات"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 4,
-   "public_volume": 0,
-   "share": 0.005,
-   "engagement": 940,
-   "platforms": {
-    "telegram": 4
-   },
-   "languages": {
-    "ar": 4
-   },
-   "public_languages": {},
-   "kinds": {
-    "independent": 4
-   },
-   "sources": [
-    "Halab Today TV - opposition-origin, Aleppo",
-    "Al-Watan - Damascus daily newspaper",
-    "Enab Baladi - independent (AR)",
-    "Syria Plus (SY+) - news platform"
-   ],
-   "examples": [
-    {
-     "source": "Syria Plus (SY+) - news platform",
-     "url": "https://t.me/sy_platform/41263",
-     "platform": "telegram"
-    },
-    {
      "source": "Enab Baladi - independent (AR)",
-     "url": "https://t.me/enabbaladi/93710",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/205289",
+     "url": "https://t.me/enabbaladi/93709",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-11-08T00:38:40Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "northeast-kurdish-language-rights",
-   "key": "2026-11-08-northeast-kurdish-language-rights",
-   "theme": "northeast-kurdish",
-   "title": "Student Protests Demand Constitutional Recognition of Kurdish Language",
-   "title_ar": "احتجاجات طلابية تطالب بالاعتراف الدستوري باللغة الكردية",
-   "summary": "Students in Hasakah, Kirk Lagi and Rmeilan protested demanding constitutional recognition of Kurdish and education in their mother tongue, rejecting its marginalization in curricula. A tribal adviser affirmed the legitimacy of linguistic rights as a basis for coexistence, according to Hawar news agency.",
-   "summary_ar": "خرج طلاب في الحسكة وكركي لكي ورميلان في احتجاجات تطالب بالاعتراف الدستوري باللغة الكردية والتعليم بها، رافضين تهميشها في المناهج. وأكد مستشار قبلي مشروعية الحقوق اللغوية كركيزة للعيش المشترك بحسب وكالة أنباء هاوار.",
-   "detail": "ANHA (Hawar) reported protests in multiple north-eastern towns over successive days, framing the issue as part of broader demands for decentralization and minority rights within Syria's transitional political process. This connects to the PYD's general council meeting, also covered by Hawar, which reaffirmed support for the 29 January integration agreement and called for a new social contract based on pluralism and equal citizenship. No competing Arabic-language official framing of these specific protests appeared in the dataset, suggesting limited coverage outside Kurdish-run outlets.",
-   "detail_ar": "وثّقت وكالة هاوار احتجاجات في عدة بلدات بشمال شرق سوريا على مدى أيام متتالية، وأطّرت القضية ضمن مطالب أوسع بشأن اللامركزية وحقوق الأقليات في المسار السياسي الانتقالي. ويرتبط ذلك باجتماع المجلس العام لحزب الاتحاد الديمقراطي، الذي غطته هاوار أيضاً، وأكد فيه الحزب دعمه لاتفاقية الاندماج الموقعة في 29 كانون الثاني، ودعا إلى عقد اجتماعي جديد قائم على التعددية والمواطنة المتساوية. ولم يظهر في البيانات المجمّعة تأطير عربي رسمي منافس لهذه الاحتجاجات تحديداً، ما يشير إلى محدودية التغطية خارج وسائل الإعلام التي تديرها الإدارة الكردية.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.0,
-   "public_sentiment": null,
-   "outlet_tone": {
-    "kurdish": 0.2
-   },
-   "public_tone": {},
-   "emotions": [
-    "determination"
-   ],
-   "emotions_ar": [
-    "إصرار"
-   ],
-   "framings": [
-    "Kurdish rights as part of pluralism and decentralization in new Syria"
-   ],
-   "framings_ar": [
-    "الحقوق الكردية كجزء من التعددية واللامركزية في سوريا الجديدة"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 3,
-   "public_volume": 0,
-   "share": 0.004,
-   "engagement": 259,
-   "platforms": {
-    "telegram": 3
-   },
-   "languages": {
-    "ar": 3
-   },
-   "public_languages": {},
-   "kinds": {
-    "kurdish": 3
-   },
-   "sources": [
-    "ANHA (Hawar) - north-east administration news agency (AR)"
-   ],
-   "examples": [
-    {
-     "source": "ANHA (Hawar) - north-east administration news agency (AR)",
-     "url": "https://t.me/HawarNews/84713",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-08T10:39:34Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -1052,15 +1166,15 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
-   "recent": 20
+   "fetched": 19,
+   "recent": 18
   },
   {
    "name": "SANA - state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 18
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Syrian Presidency - official",
@@ -1073,22 +1187,22 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 12,
-   "recent": 12
+   "fetched": 13,
+   "recent": 13
   },
   {
    "name": "Syrian Ministry of Interior - official",
    "platform": "telegram",
    "ok": true,
    "fetched": 7,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "Enab Baladi - independent (AR)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 10
+   "recent": 11
   },
   {
    "name": "Enab Baladi - independent (EN)",
@@ -1101,22 +1215,22 @@
    "name": "Halab Today TV - opposition-origin, Aleppo",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
-   "recent": 20
+   "fetched": 13,
+   "recent": 13
   },
   {
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
-   "recent": 19
+   "fetched": 5,
+   "recent": 5
   },
   {
    "name": "Levant24 - Syria news (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 14
+   "recent": 12
   },
   {
    "name": "Syria TV - opposition-origin broadcaster",
@@ -1129,15 +1243,15 @@
    "name": "Al-Watan - Damascus daily newspaper",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 17
+   "fetched": 13,
+   "recent": 9
   },
   {
    "name": "Syria Plus (SY+) - news platform",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 19
+   "recent": 20
   },
   {
    "name": "Snack Syrian - social and satirical news",
@@ -1157,22 +1271,22 @@
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 6,
-   "recent": 6
+   "fetched": 9,
+   "recent": 9
   },
   {
    "name": "North Press Agency - Qamishli-based (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 16
+   "fetched": 17,
+   "recent": 17
   },
   {
    "name": "North Press Agency (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 18,
-   "recent": 8
+   "recent": 4
   },
   {
    "name": "SDF media center - official",
@@ -1185,8 +1299,8 @@
    "name": "Rudaw Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
-   "recent": 1
+   "fetched": 8,
+   "recent": 0
   },
   {
    "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
@@ -1200,7 +1314,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al Jazeera - Qatar-based",
@@ -1221,7 +1335,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "Al Mayadeen - Beirut-based",
@@ -1241,7 +1355,7 @@
    "name": "TRT Arabi - Turkish public broadcaster",
    "platform": "telegram",
    "ok": true,
-   "fetched": 19,
+   "fetched": 18,
    "recent": 3
   },
   {
@@ -1256,7 +1370,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Arabi21 - London-based",
@@ -1284,69 +1398,69 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 18,
-   "recent": 14
+   "recent": 15
   },
   {
    "name": "Daraa 24 - local, Daraa",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 12
+   "recent": 11
   },
   {
    "name": "Sawt al-Asima - local, Damascus",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 12
+   "recent": 11
   },
   {
    "name": "Sawt Dimashq - local, Damascus",
    "platform": "telegram",
    "ok": true,
    "fetched": 11,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Google News - Syria (AR)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 44
+   "recent": 45
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 35
+   "recent": 33
   },
   {
    "name": "SANA website - state news agency (AR)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 60
+   "recent": 59
   },
   {
    "name": "Syria TV - opposition-origin",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 40
+   "recent": 43
   },
   {
    "name": "Sky News Arabia - UAE-based",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "BBC Arabic",
    "platform": "news",
    "ok": true,
-   "fetched": 25,
+   "fetched": 24,
    "recent": 0
   },
   {
@@ -1360,29 +1474,29 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 778,
-   "recent": 778
+   "fetched": 1038,
+   "recent": 1038
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 225,
-   "recent": 179
+   "fetched": 227,
+   "recent": 178
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 25
+   "recent": 19
   },
   {
    "name": "Reddit r/Kurdistan comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 15,
-   "recent": 2
+   "recent": 0
   },
   {
    "name": "X posts",
@@ -1538,18 +1652,28 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.5634,
+ "cost_usd": 0.531,
  "watch": [
   {
-   "type": "falling",
-   "id": "bukamal-flooding-cold-weather",
-   "key": "2026-11-06-bukamal-flooding-cold-weather",
-   "title": "Floods Collapse Suweiya Bridge in Albu Kamal, Damage Other Bridges",
-   "title_ar": "السيول تهدم جسر السويعية في البوكمال وتضر جسوراً أخرى",
-   "share": 0.016,
-   "from": -0.15,
-   "to": -0.5,
-   "hours": 33
+   "type": "gap",
+   "id": "electricity-smart-meters",
+   "key": "2026-11-08-electricity-smart-meters",
+   "title": "Syria Signs Deal for 6.5 Million Chinese Smart Electricity Meters",
+   "title_ar": "سوريا توقع اتفاقية لتوريد ٦٫٥ مليون عداد كهرباء ذكي صيني",
+   "share": 0.033,
+   "public": -0.3,
+   "outlet": 0.2
+  },
+  {
+   "type": "rising",
+   "id": "saudi-syria-military-cooperation",
+   "key": "2026-11-06-saudi-syria-military-cooperation",
+   "title": "Dispute Over Reports of Syrian Troops Deploying to Saudi Arabia and Yemen",
+   "title_ar": "جدل حول تقارير نشر جنود سوريين في السعودية واليمن",
+   "share": 0.429,
+   "from": 0.3,
+   "to": 0.429,
+   "updates": 2
   }
  ]
 }
