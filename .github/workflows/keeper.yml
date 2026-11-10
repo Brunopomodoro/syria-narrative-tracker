@@ -73,3 +73,29 @@ jobs:
           fi
           gh workflow run keeper.yml --ref main -f hours="$KEEPER_HOURS"
           gh workflow run brief-timer.yml --ref main   # for the same reason, the daily brief timer is set from here too
+
+      - name: Re-arm if this countdown was cancelled without a newer one
+        # A newer finished update cancels this countdown and starts its own: nothing to do then. But GitHub also
+        # cancels a waiting job now and then for its own reasons (10 November: at 04:36, three hours into the wait,
+        # with no newer countdown), which left the site without updates until someone noticed. In that case start
+        # a new countdown for the time that was left.
+        if: cancelled()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          others=$(gh run list --repo "$GH_REPO" --workflow keeper.yml --limit 10 --json databaseId,status \
+                   -q "[.[] | select(.status != \"completed\" and .databaseId != $RUN_ID)] | length" || echo 1)
+          if [ "${others:-1}" -gt 0 ]; then
+            echo "A newer countdown is running; nothing to do."
+            exit 0
+          fi
+          generated=$(gh api "repos/$GH_REPO/contents/data/latest.json?ref=main" -H "Accept: application/vnd.github.raw" | python3 -c "import sys,json; print(json.load(sys.stdin)['generated_at'])" || echo "")
+          hours=$(python3 -c "
+          import datetime as d
+          g = '$generated'
+          age = (d.datetime.now(d.timezone.utc) - d.datetime.fromisoformat(g.replace('Z', '+00:00'))).total_seconds() / 3600 if g else 0
+          print(round(max(0.0, float('$KEEPER_HOURS') - age), 2))")
+          echo "Countdown cancelled with no newer one; starting a new one: next update in $hours hours."
+          gh workflow run keeper.yml --ref main -f hours="$hours"
