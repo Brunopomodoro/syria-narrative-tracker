@@ -3,33 +3,33 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-11-15T15:57:14Z",
- "checked_at": "2026-11-15T15:57:14Z",
+ "generated_at": "2026-11-15T20:57:41Z",
+ "checked_at": "2026-11-15T20:57:41Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1703,
-  "relevant": 950,
-  "posts_analyzed": 768,
-  "public_posts": 543,
-  "outlet_posts": 225,
+  "collected": 1959,
+  "relevant": 1178,
+  "posts_analyzed": 829,
+  "public_posts": 589,
+  "outlet_posts": 240,
   "reactions_posts": 0,
-  "unique_posts": 750,
+  "unique_posts": 800,
   "sources_ok": 48,
   "sources_total": 49,
   "platforms": {
-   "news": 46,
-   "telegram": 179,
+   "telegram": 192,
+   "news": 48,
    "bluesky": 164,
-   "youtube": 339,
-   "reddit": 22
+   "youtube": 370,
+   "reddit": 26
   },
   "languages": {
-   "ar": 562,
-   "en": 180,
-   "ku": 7,
+   "en": 214,
+   "ar": 580,
+   "ku": 5,
    "other": 1
   }
  },
@@ -37,35 +37,130 @@
   "sentiment": 0.05,
   "mood": "Mixed",
   "mood_ar": "متباين",
-  "public_sentiment": -0.3,
+  "public_sentiment": -0.4,
   "public_mood": "Frustrated",
   "public_mood_ar": "محبَط",
-  "brief": "Outlets focused on the diesel price cut, the Jaramana car bombing, the Lebanese interior minister's visit, Israeli incursions in Quneitra and Daraa, and economic/diplomatic news. Public reaction was dominated by skepticism over whether the diesel cut would actually lower living costs, continued anger over the car bombing and sectarian fears, mockery of government priorities (mosque-building vs poverty), and frustration over electricity and currency. Kurdish-language audiences focused on north-east judicial integration and Rojava film festival, often framed differently from Arabic-majority discourse.",
-  "brief_ar": "ركزت وسائل الإعلام على خفض سعر المازوت، وتفجير جرمانا، وزيارة وزير الداخلية اللبناني، والتوغلات الإسرائيلية في القنيطرة ودرعا، إضافة إلى أخبار اقتصادية ودبلوماسية. وغلب على تفاعل الناس الشك في أن يؤدي خفض المازوت فعلياً إلى خفض تكاليف المعيشة، واستمرار الغضب والمخاوف الطائفية بعد التفجير، والسخرية من أولويات الحكومة (بناء الجوامع مقابل الفقر)، والإحباط من الكهرباء وسعر الصرف. وركز الجمهور الكردي على اندماج القضاء في شمال شرق سوريا ومهرجان روج آفا السينمائي، بزاوية مختلفة عن الخطاب العربي السائد.",
-  "rest": "Unassigned posts include religious greetings and prayers, scattered local news (sports medals, archaeology, cultural events), off-topic comments about unrelated global politics, Kurdish-language greetings, and miscellaneous product ads for knives referencing 'Damascus steel'.",
-  "rest_ar": "تضم المنشورات غير المصنفة تهانٍ وأدعية دينية، وأخباراً محلية متفرقة (ميداليات رياضية، آثار، فعاليات ثقافية)، وتعليقات خارجة عن الموضوع حول سياسات عالمية غير متصلة، وتحيات بالكردية، وإعلانات منتجات تذكر «الفولاذ الدمشقي».",
-  "rest_share": 0.464
+  "brief": "Syrians continued to debate economic hardship, with the lira nearing 15,000 to the dollar and a modest diesel price cut that most commenters called cosmetic. A car bombing in Jaramana killed a man and a child, reviving fears about security gaps. Diplomatic meetings (Syria-Lebanon, Syria-Jordan) and infrastructure projects (Aleppo airport, power plant) got official attention, while Israeli incursions in the south and north-east judicial integration disputes continued. A sermon criticizing economic conditions sparked wide, polarized public reaction.",
+  "brief_ar": "واصل السوريون الحديث عن الأزمة الاقتصادية مع اقتراب الليرة من ١٥ ألفاً مقابل الدولار وتخفيض طفيف لسعر المازوت اعتبره كثيرون شكلياً. وأسفر تفجير سيارة في جرمانا عن مقتل رجل وطفلة، ما أعاد المخاوف الأمنية. وحظيت لقاءات دبلوماسية (سوريا-لبنان، سوريا-الأردن) ومشاريع بنية تحتية (مطار حلب، محطة توليد) باهتمام رسمي، بينما تواصلت التوغلات الإسرائيلية جنوباً والجدل حول الاندماج القضائي في شمال شرق سوريا. أثارت خطبة انتقدت الأوضاع المعيشية ردود فعل واسعة ومنقسمة.",
+  "rest": "Unassigned posts include sports results (chess, wrestling, taekwondo), religious greetings and prayers, scattered local culture and tourism items, international news unrelated to Syria (Yemen-Houthi strikes, Iran-US tensions, Gorbachev-era references), and miscellaneous personal comments.",
+  "rest_ar": "تشمل المنشورات غير المصنّفة نتائج رياضية (الشطرنج، المصارعة، المواي تاي)، تحيات وأدعية دينية، أخباراً ثقافية وسياحية متفرقة، وأخباراً دولية لا علاقة لها مباشرة بسوريا (هجمات الحوثيين، التوتر الإيراني الأميركي)، وتعليقات شخصية متنوعة.",
+  "rest_share": 0.549
  },
  "narratives": [
+  {
+   "id": "imam-sermon-controversy",
+   "key": "2026-11-15-imam-sermon-controversy",
+   "theme": "society",
+   "title": "Imam Removed After Sermon on Public Hardship Sparks Nationwide Debate",
+   "title_ar": "إقالة إمام بعد خطبة عن معاناة الناس تثير جدلاً واسعاً",
+   "summary": "A mosque imam was reportedly removed after a sermon describing public hardship and comparing hardships to the former regime, sparking wide debate online. Supporters praised him for honesty while critics called the comparison an insult to those who suffered under Assad; some outlets noted the circulating video was old.",
+   "summary_ar": "أُقيل إمام مسجد، بحسب ما تداولته التقارير، بعد خطبة تحدث فيها عن معاناة الناس المعيشية وقارن الأوضاع بعهد النظام السابق، ما أثار جدلاً واسعاً على الإنترنت. أشاد مؤيدون بصراحته بينما اعتبر منتقدون المقارنة إهانة لمن عانوا في ظل حكم الأسد، ولفتت بعض التعليقات إلى أن الفيديو المتداول قديم.",
+   "detail": "A YouTube video titled about an imam being removed for discussing public hardship drew hundreds of comments. Supporters (many religious) prayed for and praised the sheikh for speaking truth to power, framing his removal as suppression of honest criticism. Critics strongly objected to his reported remark that people are nostalgic for the ousted regime, calling it unacceptable given the scale of past repression, with some calling for his arrest or apology. A few commenters noted the clip may be recycled from an earlier incident. The debate reflects broader economic grievances over fuel, electricity and living costs feeding into political framing of the transitional government's performance versus the Assad era. This is a new, highly engaged narrative not present in the prior snapshot.",
+   "detail_ar": "أثار مقطع فيديو على يوتيوب بعنوان عن إقالة إمام بسبب حديثه عن معاناة الناس مئات التعليقات. أثنى مؤيدون كثر، معظمهم بخلفية دينية، على الشيخ لقوله الحق، معتبرين إقالته قمعاً للنقد الصادق. في المقابل، اعترض منتقدون بشدة على ما نُقل عن تصريحه بأن الناس تترحم على النظام المخلوع، واصفين ذلك بأنه غير مقبول نظراً لحجم القمع السابق، ودعا بعضهم لاعتقاله أو مطالبته بالاعتذار. ولفت بعض المعلقين إلى أن المقطع قد يكون معاداً نشره من حادثة سابقة. ويعكس الجدل مظالم اقتصادية أوسع تتعلق بالمحروقات والكهرباء وكلفة المعيشة تتسلل إلى تأطير سياسي لأداء الحكومة الانتقالية مقارنة بعهد الأسد. وتُعد هذه الرواية جديدة وذات تفاعل مرتفع لم ترد في التحديث السابق.",
+   "public_reaction": "Public reaction was sharply divided between those defending the imam's honesty about hardship and those condemning any comparison to the Assad era as offensive to victims of past repression.",
+   "public_reaction_ar": "انقسم التفاعل الشعبي بشدة بين مدافعين عن صراحة الإمام في الحديث عن المعاناة، ومنتقدين اعتبروا أي مقارنة بعهد الأسد إهانة لضحايا القمع السابق.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.2,
+   "outlet_tone": {},
+   "public_tone": {
+    "ar": -0.2
+   },
+   "emotions": [
+    "anger",
+    "sympathy",
+    "division"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "تعاطف",
+    "انقسام"
+   ],
+   "framings": [
+    "Honest-critic framing by supporters",
+    "Offensive-comparison framing by critics",
+    "Economic-hardship framing underlying both sides"
+   ],
+   "framings_ar": [
+    "تأطير الناقد الصادق من المؤيدين",
+    "تأطير المقارنة المسيئة من المنتقدين",
+    "تأطير المعاناة الاقتصادية الكامن لدى الطرفين"
+   ],
+   "flags": [
+    "Possible recycled/old video being shared as new",
+    "Polarized comment threads with repeated religious phrases"
+   ],
+   "flags_ar": [
+    "احتمال تداول فيديو قديم على أنه جديد",
+    "تعليقات منقسمة تتكرر فيها عبارات دينية"
+   ],
+   "volume": 124,
+   "public_volume": 123,
+   "share": 0.15,
+   "engagement": 5592,
+   "platforms": {
+    "youtube": 119,
+    "telegram": 1
+   },
+   "languages": {
+    "ar": 119,
+    "en": 1
+   },
+   "public_languages": {
+    "ar": 118,
+    "en": 1
+   },
+   "kinds": {
+    "independent": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "YouTube comments on Halab Today TV",
+    "Syria TV - opposition-origin broadcaster"
+   ],
+   "examples": [
+    {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/98310",
+     "platform": "telegram"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=5JvcWTTP53g",
+     "platform": "youtube"
+    },
+    {
+     "source": "YouTube comments on Halab Today TV",
+     "url": "https://www.youtube.com/watch?v=Q82YD9_nXY4",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-11-15T20:57:41Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
   {
    "id": "fuel-price-cut",
    "key": "2026-11-14-fuel-price-cut",
    "theme": "economy",
    "title": "Diesel Price Cut to 150 Lira Meets Public Skepticism",
-   "title_ar": "خفض سعر المازوت إلى ١٥٠ ليرة يقابله شك شعبي",
-   "summary": "Syria's pricing committee cut diesel to 150 lira per liter (down 14-25 lira) ahead of winter, with gasoline and gas unchanged. Officials and state media framed it as easing living costs; many commenters called the cut too small to matter given continued inflation and high heating costs.",
-   "summary_ar": "خفضت اللجنة السورية المختصة سعر المازوت إلى ١٥٠ ليرة للتر (بانخفاض يتراوح بين ١٤ و٢٥ ليرة) قبيل الشتاء، فيما بقيت أسعار البنزين والغاز ثابتة. قدّمت وسائل الإعلام الرسمية القرار بوصفه تخفيفاً لأعباء المعيشة، لكن كثيرين من المعلقين اعتبروه غير كافٍ أمام استمرار الغلاء وتكاليف التدفئة المرتفعة.",
-   "detail": "The Permanent Committee for Pricing Petroleum Products lowered diesel to 150 lira per liter, citing state subsidies and dollar-denominated imports, according to SANA and People's Assembly energy committee chair Iqbal Mansour. Independent outlets like Al-Watan and Syria Plus ran street-reaction pieces questioning whether transport fares and goods prices would follow; drivers on the Aleppo-Azaz route said fares would not drop since the tariff doesn't cover costs. Public reaction, especially on YouTube, was heavily sarcastic, calling the cut a 'mockery' given diesel had been raised to 175 lira only months earlier and remains far above pre-war levels relative to wages. Some commenters linked high electricity bills and heating costs to continued hardship, while a few expressed cautious gratitude. No comparable cut was made to heating diesel specifically, a frequent complaint.",
-   "detail_ar": "خفضت اللجنة الدائمة لتسعير المشتقات النفطية سعر المازوت إلى 150 ليرة للتر، مستندة إلى دعم الدولة واستيراد المشتقات بالدولار، بحسب سانا ورئيس لجنة الطاقة في مجلس الشعب إقبال منصور. ونشرت وسائل إعلام مستقلة مثل الوطن وسوريا بلس تقارير عن ردود فعل الشارع تتساءل عما إذا كانت أجور النقل وأسعار السلع ستنخفض تبعاً لذلك؛ وقال سائقون على خط حلب-أعزاز إن الأجور لن تنخفض لأن التعرفة الحالية لا تغطي التكاليف التشغيلية. وغلب على تفاعل الجمهور، خصوصاً على يوتيوب، السخرية الشديدة، إذ اعتبر كثيرون القرار «مسخرة» بعدما كان المازوت قد رُفع إلى 175 ليرة قبل أشهر فقط ولا يزال أعلى بكثير من مستويات ما قبل الحرب نسبة إلى الأجور. وربط بعض المعلقين بين فواتير الكهرباء المرتفعة وتكاليف التدفئة واستمرار الصعوبات المعيشية، بينما عبّر قلة عن امتنان حذر. ولم يصدر خفض مماثل خاص بمازوت التدفئة، وهو شكوى متكررة.",
-   "public_reaction": "Overwhelmingly skeptical and mocking, with many calling the cut insignificant compared to earlier price hikes and wages; some expressed weary gratitude or prayers, a minority defended the move as a step in the right direction.",
-   "public_reaction_ar": "غلب على التفاعل الشعبي الشك والسخرية، واعتبر كثيرون الخفض غير ذي قيمة مقارنة بالزيادات السابقة والأجور، فيما عبّر بعضهم عن امتنان متعب أو دعاء، ودافع قلة عن القرار بوصفه خطوة إيجابية.",
+   "title_ar": "خفض سعر المازوت إلى ١٥٠ ليرة يقابله تشكيك شعبي",
+   "summary": "Syria's pricing committee cut diesel from 175 to 150 lira per liter starting November 15, a 14% reduction after September's 40% hike, while keeping gasoline and gas prices unchanged. Officials framed it as easing winter heating burdens. Many commenters called the cut too small given wages and overall price levels.",
+   "summary_ar": "خفّضت اللجنة المختصة سعر ليتر المازوت من ١٧٥ إلى ١٥٠ ليرة اعتباراً من ١٥ تشرين الثاني، بنسبة ١٤٪ بعد زيادة ٤٠٪ في أيلول، مع تثبيت أسعار البنزين والغاز. وقدّمت الجهات الرسمية القرار كخطوة لتخفيف أعباء التدفئة الشتوية، فيما اعتبره كثير من المعلقين تخفيضاً هامشياً لا يتناسب مع الرواتب ومستوى الأسعار العام.",
+   "detail": "The Permanent Committee for Petroleum Pricing set diesel at 150 lira, down 25 lira from the September level, while gasoline (195/185) and gas prices stayed fixed. State and independent outlets (SANA, Daraa 24, Step News) reported official framing that the state absorbs part of the subsidy burden amid dollar-denominated imports. A parliamentary energy committee head said the move eases living costs ahead of winter. Public comments across YouTube and Reddit were largely dismissive, comparing the cut unfavorably to the prior 40% hike, noting continuing high heating-oil costs, and mocking officials' living standards versus ordinary citizens'. Some linked the issue to broader anger over electricity and currency problems. No major change from the previous snapshot beyond the price taking effect.",
+   "detail_ar": "حددت اللجنة الدائمة لتسعير المشتقات النفطية سعر المازوت بـ150 ليرة، بانخفاض 25 ليرة عن مستوى أيلول، مع تثبيت أسعار البنزين (195/185) والغاز. ونقلت وسائل إعلام رسمية ومستقلة (سانا، درعا 24، ستيب نيوز) الموقف الرسمي القائل إن الدولة تتحمل جزءاً من كلفة الدعم في ظل استيراد المشتقات بالدولار. وقال رئيس لجنة الطاقة في مجلس الشعب إن القرار يخفف الأعباء المعيشية قبيل الشتاء. أما التعليقات الشعبية على يوتيوب وريديت فجاءت ساخرة في غالبها، إذ قارنت التخفيض بالزيادة السابقة البالغة 40%، ولفتت إلى استمرار ارتفاع كلفة التدفئة، وسخرت من مستوى معيشة المسؤولين مقارنة بالمواطنين. وربط البعض الأزمة بالغضب الأوسع من الكهرباء وانهيار العملة. لم يطرأ تغيير جوهري منذ التحديث السابق سوى دخول السعر الجديد حيز التنفيذ.",
+   "public_reaction": "Public reaction was overwhelmingly skeptical and mocking, with many saying the cut barely dents living costs compared to September's hike, and some directly blaming government officials for rising prices across the board.",
+   "public_reaction_ar": "جاء التفاعل الشعبي متشككاً وساخراً في معظمه، إذ رأى كثيرون أن التخفيض لا يكاد يخفف كلفة المعيشة مقارنة بزيادة أيلول، وحمّل بعضهم المسؤولين مباشرة مسؤولية ارتفاع الأسعار في مختلف المجالات.",
    "sentiment": 0.1,
-   "public_sentiment": -0.4,
+   "public_sentiment": -0.5,
    "outlet_tone": {
-    "independent": 0.0
+    "independent": 0.0,
+    "aggregator": 0.1
    },
    "public_tone": {
-    "ar": -0.4
+    "ar": -0.5
    },
    "emotions": [
     "frustration",
@@ -78,353 +173,66 @@
     "أمل متعب"
    ],
    "framings": [
-    "official framing as relief measure",
-    "independent framing as insufficient",
-    "public framing as a PR stunt"
+    "Official framing as relief measure",
+    "Public framing as cosmetic/insufficient",
+    "Comparison to pre-war subsidized prices"
    ],
    "framings_ar": [
-    "تأطير رسمي كإجراء للتخفيف",
-    "تأطير مستقل كغير كافٍ",
-    "تأطير شعبي كخدعة إعلامية"
+    "تأطير رسمي كإجراء إغاثي",
+    "تأطير شعبي كخطوة شكلية غير كافية",
+    "مقارنة بأسعار الدعم قبل الحرب"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 159,
-   "public_volume": 132,
-   "share": 0.207,
-   "engagement": 25315,
+   "volume": 93,
+   "public_volume": 84,
+   "share": 0.112,
+   "engagement": 10964,
    "platforms": {
-    "telegram": 25,
-    "news": 2,
-    "youtube": 116,
-    "reddit": 6,
-    "bluesky": 4
+    "telegram": 8,
+    "news": 1,
+    "bluesky": 2,
+    "youtube": 62
    },
    "languages": {
-    "ar": 151,
-    "en": 1,
+    "ar": 72,
     "other": 1
    },
    "public_languages": {
-    "ar": 125,
+    "ar": 63,
     "other": 1
    },
    "kinds": {
+    "independent": 7,
     "kurdish": 1,
-    "independent": 26
+    "aggregator": 1
    },
    "sources": [
     "YouTube comments",
-    "Syria Plus (SY+) - news platform",
-    "Reddit r/syria comments",
-    "Al-Watan - Damascus daily newspaper",
     "Daraa 24 - local, Daraa",
-    "Bluesky posts"
+    "Bluesky posts",
+    "Sawt Dimashq - local, Damascus",
+    "Step News Agency - opposition-origin",
+    "North Press Agency - Qamishli-based (AR)"
    ],
    "examples": [
     {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110268",
-     "platform": "telegram"
-    },
-    {
      "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/98295",
+     "url": "https://t.me/TelevisionSyria/98308",
      "platform": "telegram"
     },
     {
      "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28690",
+     "url": "https://t.me/daraa24_org/28692",
+     "platform": "telegram"
+    },
+    {
+     "source": "Step News Agency - opposition-origin",
+     "url": "https://t.me/stepnews/187081",
      "platform": "telegram"
     }
    ],
    "first_seen": "2026-11-14T21:30:48Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "jaramana-car-bombing",
-   "key": "2026-11-14-jaramana-car-bombing",
-   "theme": "security",
-   "title": "Car Bomb Kills Man and Girl in Jaramana",
-   "title_ar": "انفجار سيارة مفخخة يقتل رجلاً وطفلة في جرمانا",
-   "summary": "A car bomb exploded Saturday in Jaramana, a Damascus suburb with a large Druze and minority population, killing a man and a girl (reportedly a Shia cleric's son) and wounding others, near a battery factory. Internal Security Forces launched an investigation; no perpetrator has been identified.",
-   "summary_ar": "انفجرت سيارة مفخخة مساء السبت في جرمانا، ضاحية دمشق ذات الكثافة السكانية من الدروز وأقليات أخرى، ما أسفر عن مقتل رجل وطفلة (ذُكر أنه ابن رجل دين شيعي) وإصابة آخرين قرب معمل لتصنيع البطاريات. وباشرت قوى الأمن الداخلي التحقيق دون تحديد الجهة المسؤولة.",
-   "detail": "State and independent outlets (SANA, Al-Ikhbariya, Enab Baladi) reported the blast killed one man and one girl and wounded one or two others; Sawt al-Asima identified the victim as the son of a Shia cleric of Pakistani origin. Security forces cordoned off the area and began investigations but have not named suspects or motive. Regional and international outlets (Anadolu, Sky News Arabia, Al Jazeera, Middle East Eye) widely covered it, often noting Syria's pattern of attacks since Assad's fall, some attributed to ISIS-affiliated groups without confirmation. Public reaction mixed sectarian fear, suspicion of the new government's security capacity, and accusations against 'remnants of the former regime.' Some commenters linked the explosion to a separate incident near a Tartus checkpoint, alleging coordination, an unverified claim.",
-   "detail_ar": "نقلت وسائل الإعلام الرسمية والمستقلة (سانا، الإخبارية، عنب بلدي) أن الانفجار أودى بحياة رجل وطفلة وأصاب شخصاً أو شخصين، وذكرت صوت العاصمة أن الضحية ابن رجل دين شيعي من أصول باكستانية. وفرضت قوى الأمن طوقاً أمنياً وبدأت التحقيق دون الإعلان عن مشتبهين أو دافع. وغطت وسائل إعلام إقليمية ودولية (الأناضول، سكاي نيوز عربية، الجزيرة، Middle East Eye) الحادثة على نطاق واسع، مشيرة غالباً إلى نمط الهجمات المتكرر في سوريا منذ سقوط الأسد، ونسب بعضها دون تأكيد إلى جماعات مرتبطة بتنظيم داعش. ومزج تفاعل الجمهور بين المخاوف الطائفية، والتشكيك بقدرة الحكومة الجديدة على ضبط الأمن، واتهامات لـ«فلول النظام السابق». وربط بعض المعلقين الانفجار بحادثة أخرى قرب حاجز في طرطوس مدّعين تنسيقاً بينهما، وهو ادعاء لم يُتحقق منه.",
-   "public_reaction": "Fear and anger dominate, with some blaming the new authorities or 'remnants of the old regime,' others expressing sectarian suspicion, and some dismissing the incident as exaggerated media attention away from other crises like Gaza.",
-   "public_reaction_ar": "يسود الخوف والغضب، مع اتهام بعضهم السلطات الجديدة أو «فلول النظام السابق»، وتعبير آخرين عن شكوك طائفية، فيما استخف بعضهم بالحادثة واعتبرها تغطية إعلامية مبالغاً فيها تصرف الانتباه عن أزمات أخرى مثل غزة.",
-   "sentiment": -0.5,
-   "public_sentiment": -0.6,
-   "outlet_tone": {
-    "independent": -0.5,
-    "kurdish": -0.4,
-    "regional": -0.5,
-    "aggregator": -0.4
-   },
-   "public_tone": {
-    "ar": -0.6,
-    "en": -0.5
-   },
-   "emotions": [
-    "fear",
-    "anger",
-    "grief",
-    "suspicion"
-   ],
-   "emotions_ar": [
-    "خوف",
-    "غضب",
-    "حزن",
-    "شك"
-   ],
-   "framings": [
-    "official framing as isolated security incident under investigation",
-    "independent/regional framing linking to pattern of post-Assad attacks",
-    "public framing with sectarian and conspiratorial overtones"
-   ],
-   "framings_ar": [
-    "تأطير رسمي كحادث أمني معزول قيد التحقيق",
-    "تأطير مستقل وإقليمي يربطه بنمط الهجمات بعد سقوط الأسد",
-    "تأطير شعبي بنبرة طائفية وتآمرية"
-   ],
-   "flags": [
-    "unverified claims about perpetrator and motive",
-    "sectarian framing in some comments"
-   ],
-   "flags_ar": [
-    "ادعاءات لم يُتحقق منها حول الجهة المسؤولة والدافع",
-    "تأطير طائفي في بعض التعليقات"
-   ],
-   "volume": 74,
-   "public_volume": 61,
-   "share": 0.096,
-   "engagement": 10436,
-   "platforms": {
-    "telegram": 11,
-    "news": 2,
-    "youtube": 26,
-    "bluesky": 30
-   },
-   "languages": {
-    "ar": 47,
-    "en": 22
-   },
-   "public_languages": {
-    "ar": 38,
-    "en": 18
-   },
-   "kinds": {
-    "regional": 4,
-    "independent": 6,
-    "aggregator": 1,
-    "kurdish": 2
-   },
-   "sources": [
-    "Bluesky posts",
-    "YouTube comments",
-    "Sawt al-Asima - local, Damascus",
-    "North Press Agency (EN)",
-    "Anadolu Agency - Turkish state news agency (AR)",
-    "Sawt Dimashq - local, Damascus"
-   ],
-   "examples": [
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110265",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44301",
-     "platform": "telegram"
-    },
-    {
-     "source": "Anadolu Agency - Turkish state news agency (AR)",
-     "url": "https://t.me/aa_arabic/173401",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-14T21:30:48Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "quneitra-jabata-raid",
-   "key": "2026-11-14-quneitra-jabata-raid",
-   "theme": "israel-south",
-   "title": "Israeli Forces Continue Incursions and Raids Across Quneitra and Daraa",
-   "title_ar": "استمرار التوغلات والمداهمات الإسرائيلية في القنيطرة ودرعا",
-   "summary": "Israeli forces staged checkpoints, raids and low-altitude flights across Quneitra and Daraa countryside, including raiding about 20 homes in Jubbata al-Khashab and shelling farmland near al-Asbah. A war monitor counted around 70-125 incursions in recent weeks; Haaretz reported Israeli soldiers admit fabricating pretexts to justify continued presence.",
-   "summary_ar": "نفذت القوات الإسرائيلية حواجز ومداهمات وتحليقاً منخفضاً في ريفي القنيطرة ودرعا، من بينها مداهمة نحو ٢٠ منزلاً في جباتا الخشب وقصف أراضٍ زراعية قرب الأصبح. ورصد مرصد حربي نحو 70-125 توغلاً خلال الأسابيع الأخيرة، في حين نقلت هآرتس عن جنود إسرائيليين اعترافهم باختلاق ذرائع لتبرير استمرار الوجود.",
-   "detail": "Daraa 24, Syria TV, and Shaam News reported troops setting up checkpoints near Nasr mosque in Oufaniya, raiding homes in Jubbata al-Khashab (breaking doors and windows in about 20 houses), and shelling farmland near al-Asbah village. North Press and ANHA noted flyovers near Palmyra and the Yarmouk basin. Haaretz, cited widely (Al Jazeera, Jerusalem Post, Levant24), quoted Israeli soldiers and officers saying the military fabricates operational activity to justify its presence amid no active threat, warning of West Bank-style friction risking a new resistance front. A war monitor cited on Bluesky counted around 70 incursions in two weeks, with Google News citing 125 incursions in October. Public reaction, especially Arabic-language, condemned the raids as humiliating and sometimes voiced hope for 'resistance' or war; English-language Bluesky users framed it as part of broader Israeli aggression regionally.",
-   "detail_ar": "نقلت درعا 24 وتلفزيون سوريا وشام عن نصب حواجز قرب جامع النصر في أوفانيا، ومداهمة منازل في جباتا الخشب (تحطيم أبواب ونوافذ نحو 20 منزلاً)، وقصف أراضٍ زراعية قرب الأصبح. وأشارت نورث برس وهاوار إلى تحليق استطلاعي قرب تدمر ووادي اليرموك. ونقلت وسائل إعلام عدة (الجزيرة، جيروزاليم بوست، ليفانت24) عن هآرتس اعتراف جنود وضباط إسرائيليين بأن الجيش يختلق أنشطة عملياتية لتبرير وجوده رغم غياب تهديد فعلي، محذرين من احتكاك على طريقة الضفة الغربية قد يولّد مقاومة محلية جديدة. ورصد مرصد حربي على بلوسكاي نحو 70 توغلاً خلال أسبوعين، فيما ذكرت غوغل نيوز 125 توغلاً خلال تشرين الأول. وأدان تفاعل الجمهور، خصوصاً بالعربية، المداهمات واصفاً إياها بالمهينة، وعبّر بعضهم عن أمل في «المقاومة» أو الحرب، بينما أطّرها مستخدمو بلوسكاي الناطقون بالإنكليزية كجزء من عدوان إسرائيلي إقليمي أوسع.",
-   "public_reaction": "Arabic-language commenters express anger, humiliation and occasional calls for armed resistance; some fault the government for not responding; English-language posts frame it within broader anti-Israel solidarity narratives.",
-   "public_reaction_ar": "عبّر المعلقون بالعربية عن غضب وشعور بالإهانة ودعوات أحياناً للمقاومة المسلحة، ولام بعضهم الحكومة لعدم الرد، بينما أطّرت منشورات بالإنكليزية الحادثة ضمن سرديات تضامن أوسع مناهضة لإسرائيل.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.5,
-   "outlet_tone": {
-    "independent": -0.4,
-    "kurdish": -0.3,
-    "aggregator": -0.3
-   },
-   "public_tone": {
-    "ar": -0.5,
-    "en": -0.3
-   },
-   "emotions": [
-    "anger",
-    "humiliation",
-    "fear",
-    "defiance"
-   ],
-   "emotions_ar": [
-    "غضب",
-    "إهانة",
-    "خوف",
-    "تحدٍّ"
-   ],
-   "framings": [
-    "independent/local framing as ongoing occupation abuse",
-    "Israeli military self-criticism via Haaretz",
-    "public framing calling for resistance"
-   ],
-   "framings_ar": [
-    "تأطير محلي ومستقل كاستمرار للانتهاكات الاحتلالية",
-    "نقد ذاتي إسرائيلي عبر هآرتس",
-    "تأطير شعبي يدعو للمقاومة"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 53,
-   "public_volume": 30,
-   "share": 0.069,
-   "engagement": 21476,
-   "platforms": {
-    "telegram": 17,
-    "news": 6,
-    "youtube": 12,
-    "reddit": 1,
-    "bluesky": 15
-   },
-   "languages": {
-    "ar": 31,
-    "en": 20
-   },
-   "public_languages": {
-    "ar": 13,
-    "en": 15
-   },
-   "kinds": {
-    "independent": 16,
-    "aggregator": 6,
-    "kurdish": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "YouTube comments",
-    "Daraa 24 - local, Daraa",
-    "Google News - Syria (AR)",
-    "Levant24 - Syria news (EN)",
-    "Syria TV - opposition-origin broadcaster"
-   ],
-   "examples": [
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110270",
-     "platform": "telegram"
-    },
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/98298",
-     "platform": "telegram"
-    },
-    {
-     "source": "Daraa 24 - local, Daraa",
-     "url": "https://t.me/daraa24_org/28691",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-14T01:29:41Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "governance-corruption-debate",
-   "key": "2026-11-15-governance-corruption-debate",
-   "theme": "governance",
-   "title": "Debate Over Government Spending Priorities and Perceived Corruption",
-   "title_ar": "جدل حول أولويات الإنفاق الحكومي واتهامات بالفساد",
-   "summary": "The opening of a new mosque at Damascus University campus and the Qatari grants scandal fueled renewed public debate over government priorities, with many commenters contrasting mosque-building with unmet needs for housing, hospitals, schools, and poverty relief. Some defended the move as religiously meritorious.",
-   "summary_ar": "أثار افتتاح جامع جديد في المدينة الجامعية بدمشق، إلى جانب الجدل حول المنح القطرية، نقاشاً شعبياً متجدداً حول أولويات الحكومة، إذ قارن كثيرون بين بناء المساجد وعدم تلبية احتياجات الإسكان والمستشفيات والمدارس ومكافحة الفقر، بينما دافع آخرون عن الخطوة بوصفها عملاً دينياً مستحسناً.",
-   "detail": "Al-Ikhbariya and public posts covered the opening of the Bashir Mosque in Damascus University's student city by the Higher Education and Endowments ministers. While some commenters praised it religiously, a large volume of comments (especially on YouTube) criticized the government for building mosques while people remain homeless, in tents, jobless, or lacking medical care, citing a hadith that 'feeding the hungry is better than building a thousand mosques.' Separately, posts referenced an earlier video alleging corruption around Qatari aid to Syria and Azerbaijan ('Qatari grants'), and comments about officials' salaries and perceived self-enrichment (e.g., claims about a 'shabih' earning $1200/month) circulated, alongside persistent criticism of the People's Assembly's new Tucson cars allocation. This reflects an ongoing broader narrative of distrust in the transitional government's economic management and transparency.",
-   "detail_ar": "غطت الإخبارية ومنشورات عامة افتتاح جامع البشير في المدينة الجامعية بدمشق من قبل وزيري التعليم العالي والأوقاف. وبينما أشاد بعض المعلقين بالخطوة دينياً، انتقد حجم كبير من التعليقات (خصوصاً على يوتيوب) الحكومة لبنائها المساجد بينما لا يزال الناس بلا مأوى أو في الخيام أو عاطلين عن العمل أو محرومين من الرعاية الصحية، مستشهدين بحديث «إطعام جائع خير من بناء ألف جامع». كما أشارت منشورات إلى فيديو سابق يتهم بالفساد حول المساعدات القطرية لسوريا وأذربيجان، وتداولت تعليقات حول رواتب المسؤولين والإثراء المزعوم (كادعاء حصول أحدهم على 1200 دولار شهرياً)، إلى جانب استمرار الانتقاد لتخصيص سيارات «توسان» لأعضاء مجلس الشعب. ويعكس ذلك سردية أوسع مستمرة من انعدام الثقة بإدارة الحكومة الانتقالية الاقتصادية وشفافيتها.",
-   "public_reaction": "Highly critical and sarcastic on YouTube, contrasting religious construction spending with poverty; a minority voiced religious approval.",
-   "public_reaction_ar": "كان التفاعل على يوتيوب نقدياً وساخراً بشدة، إذ قارن بين الإنفاق على البناء الديني والفقر المنتشر، فيما عبّرت أقلية عن استحسان ديني للخطوة.",
-   "sentiment": 0.1,
-   "public_sentiment": -0.4,
-   "outlet_tone": {},
-   "public_tone": {
-    "ar": -0.4
-   },
-   "emotions": [
-    "frustration",
-    "cynicism",
-    "piety"
-   ],
-   "emotions_ar": [
-    "إحباط",
-    "تشكيك",
-    "تدين"
-   ],
-   "framings": [
-    "official framing as religious/cultural achievement",
-    "public framing as misplaced priorities amid poverty"
-   ],
-   "framings_ar": [
-    "تأطير رسمي كإنجاز ديني وثقافي",
-    "تأطير شعبي كأولويات خاطئة وسط الفقر"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 48,
-   "public_volume": 48,
-   "share": 0.062,
-   "engagement": 60,
-   "platforms": {
-    "youtube": 38,
-    "reddit": 6,
-    "bluesky": 2
-   },
-   "languages": {
-    "ar": 46
-   },
-   "public_languages": {
-    "ar": 46
-   },
-   "kinds": {},
-   "sources": [
-    "YouTube comments",
-    "Reddit r/syria comments",
-    "Bluesky posts"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=EcLs683LPF4",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-11-15T07:31:43Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -436,71 +244,72 @@
    "key": "2026-11-15-lebanon-interior-ministers-meeting",
    "theme": "international",
    "title": "Syrian and Lebanese Interior Ministers Meet in Damascus",
-   "title_ar": "وزيرا داخلية سوريا ولبنان يجتمعان في دمشق",
-   "summary": "Syrian Interior Minister Anas Khattab hosted his Lebanese counterpart Ahmad al-Hajjar in Damascus on November 15 to discuss bilateral security cooperation, including the Hezbollah file. Official and independent outlets framed it positively; some public comments were skeptical or mocking of the formal reception.",
-   "summary_ar": "استقبل وزير الداخلية السوري أنس خطاب نظيره اللبناني أحمد الحجار في دمشق يوم ١٥ تشرين الثاني لبحث التعاون الأمني الثنائي، بما في ذلك ملف حزب الله. قدّمت وسائل الإعلام الرسمية والمستقلة الزيارة بشكل إيجابي، فيما أبدى بعض الجمهور شكاً أو سخرية من مراسم الاستقبال.",
-   "detail": "SANA, Al-Ikhbariya, Al-Watan and Levant24 covered the meeting, quoting Khattab describing it as a 'brotherly' encounter to boost security coordination between the two countries, including the Hezbollah file per Syria TV. Aggregators (Anadolu, Arab News, Google News) ran similar wire coverage. Public reaction was limited but included mockery of the formality of the greeting ('مشرشح'), calls for Lebanon's government to collapse, and a request that the ministers address Israeli incursions affecting Quneitra and Damascus countryside instead. Overall framing across outlet types was largely neutral-to-positive, emphasizing diplomatic normalization since Assad's fall.",
-   "detail_ar": "غطت سانا والإخبارية والوطن وليفانت24 اللقاء، ناقلة عن خطاب وصفه بأنه لقاء «أخوي» لتعزيز التنسيق الأمني بين البلدين، بما في ذلك ملف حزب الله بحسب تلفزيون سوريا. ونقلت مواقع التجميع (الأناضول، عرب نيوز، غوغل نيوز) تغطية مماثلة. وكان تفاعل الجمهور محدوداً لكنه تضمن سخرية من رسميات الاستقبال، ودعوات لسقوط الحكومة اللبنانية، وطلب بأن يبحث الوزيران ملف التوغلات الإسرائيلية في القنيطرة وريف دمشق بدلاً من ذلك. وجاء التأطير العام عبر أنواع وسائل الإعلام محايداً إلى إيجابي، مع التركيز على التطبيع الدبلوماسي منذ سقوط الأسد.",
-   "public_reaction": "Mostly muted, with scattered mockery of formal diplomatic ceremony and calls to prioritize the Israeli incursion issue instead.",
-   "public_reaction_ar": "كان التفاعل محدوداً إجمالاً، مع سخرية متفرقة من مراسم الاستقبال الرسمية ودعوات لإعطاء الأولوية لملف التوغل الإسرائيلي بدلاً من ذلك.",
-   "sentiment": 0.3,
-   "public_sentiment": -0.1,
+   "title_ar": "وزيرا الداخلية السوري واللبناني يجتمعان في دمشق",
+   "summary": "Syrian Interior Minister Anas Khattab received Lebanese counterpart Ahmad al-Hajjar in Damascus on November 15, discussing bilateral security cooperation and border coordination. Officials described the talks as part of a shift from case-by-case files to institutionalized cooperation. Separately, Lebanon asked Syria to cooperate on investigating the killing of Ahmed al-Alwani.",
+   "summary_ar": "استقبل وزير الداخلية السوري أنس خطاب نظيره اللبناني أحمد الحجار في دمشق يوم ١٥ تشرين الثاني لبحث التعاون الأمني وضبط الحدود، ووصف المسؤولون اللقاء بأنه خطوة نحو تعاون مؤسسي بدل معالجة الملفات بشكل منفرد. وبالتوازي، طلب لبنان من سوريا التعاون في التحقيق بمقتل أحمد العلواني.",
+   "detail": "State media (Ministry of Interior, SANA, Al-Ikhbariya) extensively covered the visit, framing it as deepening fraternal ties and security coordination following the political transition. Independent outlets (Levant24, Enab Baladi) echoed the official line while regional outlets (Al Arabiya, Al-Hadath) focused on a parallel request by Lebanon for Syrian cooperation in the investigation into the killing of Iraqi MP Ahmed al-Alwani. Analysts on state TV described the relationship as moving beyond specific files toward a clear cooperative track. Public engagement was limited, with a few Bluesky posts summarizing the meeting neutrally. No significant controversy was visible among ordinary commenters, unlike more contentious domestic economic stories.",
+   "detail_ar": "غطت وسائل الإعلام الرسمية (وزارة الداخلية، سانا، الإخبارية السورية) الزيارة بشكل موسع، مؤطرة إياها بتعميق العلاقات الأخوية والتنسيق الأمني بعد المرحلة الانتقالية. وتناولتها وسائل إعلام مستقلة (ليفانت24، عنب بلدي) بالخط نفسه، بينما ركزت وسائل إعلام إقليمية (العربية، الحدث) على طلب لبناني مواز بالتعاون السوري في التحقيق بمقتل النائب العراقي أحمد العلواني. ووصف محللون على التلفزيون الرسمي العلاقة بأنها تجاوزت معالجة ملفات محددة نحو مسار تعاون واضح. وكان التفاعل الشعبي محدوداً، مع بعض منشورات على بلوسكي لخّصت اللقاء بحياد، دون جدل يُذكر مقارنة بالقصص الاقتصادية الداخلية الأكثر إثارة للجدل.",
+   "public_reaction": "Public engagement was limited and largely neutral, summarizing the meeting without strong emotional reaction.",
+   "public_reaction_ar": "كان التفاعل الشعبي محدوداً وحيادياً في معظمه، اقتصر على تلخيص اللقاء دون ردود فعل عاطفية قوية.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.1,
    "outlet_tone": {
-    "official": 0.5,
-    "independent": 0.3,
-    "regional": 0.3,
-    "aggregator": 0.2
+    "official": 0.6,
+    "independent": 0.4,
+    "regional": 0.2,
+    "aggregator": 0.3
    },
    "public_tone": {
-    "ar": -0.1
+    "ar": 0.1,
+    "en": 0.1
    },
    "emotions": [
-    "cautious optimism",
-    "mockery"
+    "cautious optimism"
    ],
    "emotions_ar": [
-    "تفاؤل حذر",
-    "سخرية"
+    "تفاؤل حذر"
    ],
    "framings": [
-    "official framing as fraternal cooperation",
-    "public framing as empty formality"
+    "Official framing as deepening brotherly ties",
+    "Regional framing tied to Alwani investigation"
    ],
    "framings_ar": [
-    "تأطير رسمي كتعاون أخوي",
-    "تأطير شعبي كشكليات فارغة"
+    "تأطير رسمي كتعميق للعلاقات الأخوية",
+    "تأطير إقليمي مرتبط بالتحقيق في قضية العلواني"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 24,
-   "public_volume": 7,
-   "share": 0.031,
-   "engagement": 41829,
+   "volume": 29,
+   "public_volume": 4,
+   "share": 0.035,
+   "engagement": 63390,
    "platforms": {
-    "telegram": 12,
+    "telegram": 20,
     "news": 5,
-    "youtube": 7
+    "bluesky": 1,
+    "youtube": 3
    },
    "languages": {
-    "ar": 21,
-    "en": 3
+    "ar": 24,
+    "en": 5
    },
    "public_languages": {
-    "ar": 7
+    "en": 1,
+    "ar": 3
    },
    "kinds": {
-    "official": 6,
-    "aggregator": 4,
-    "independent": 6,
-    "regional": 1
+    "independent": 10,
+    "official": 10,
+    "aggregator": 3,
+    "regional": 2
    },
    "sources": [
-    "YouTube comments",
-    "Syrian Ministry of Interior - official",
-    "Google News - Syria (AR)",
-    "Google News - Syria (EN)",
     "Al-Ikhbariya Syria - state TV",
-    "Euphrates Post - Deir ez-Zor and the east"
+    "Syrian Ministry of Interior - official",
+    "YouTube comments",
+    "Euphrates Post - Deir ez-Zor and the east",
+    "Levant24 - Syria news (EN)",
+    "Google News - Syria (AR)"
    ],
    "examples": [
     {
@@ -509,13 +318,13 @@
      "platform": "telegram"
     },
     {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142923",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/98311",
      "platform": "telegram"
     },
     {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/191424",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110276",
      "platform": "telegram"
     }
    ],
@@ -527,72 +336,377 @@
    }
   },
   {
-   "id": "afrin-kurdish-language-rights",
-   "key": "2026-11-15-afrin-kurdish-language-rights",
+   "id": "quneitra-jabata-raid",
+   "key": "2026-11-14-quneitra-jabata-raid",
+   "theme": "israel-south",
+   "title": "Israeli Forces Continue Incursions and Raids Across Quneitra and Daraa",
+   "title_ar": "القوات الإسرائيلية تواصل التوغلات والمداهمات في القنيطرة ودرعا",
+   "summary": "Israeli forces shelled southern Quneitra and advanced into Ofaniya village on November 15, setting up checkpoints and searching residents, part of reported 70 incursions into southern Syria over two weeks according to the Syrian Observatory. Israeli soldiers quoted anonymously said activity is sometimes fabricated to justify continued presence.",
+   "summary_ar": "قصفت القوات الإسرائيلية جنوب القنيطرة وتوغلت في قرية أوفانيا يوم ١٥ تشرين الثاني، ونصبت حواجز وفتشت المارة، ضمن ما ذكره المرصد السوري لحقوق الإنسان من نحو ٧٠ توغلاً في جنوب سوريا خلال أسبوعين. ونقلت تقارير عن جنود إسرائيليين مجهولي الهوية قولهم إن بعض الأنشطة مُفتعلة لتبرير استمرار الوجود.",
+   "detail": "North Press Agency and Daraa 24 reported artillery shelling of al-Asbah village and a new incursion into Ofaniya, with checkpoints and searches of passersby, alongside low-altitude military overflights near the Yarmouk basin. Levant24 cited Israeli soldiers alleging deliberately manufactured friction with civilians to justify ongoing presence, a claim also reported by Haaretz and relayed by Kurdish outlet ANHA. The Syrian Observatory for Human Rights documented about 70 incursions in the first half of November. Enab Baladi reported Quneitra activists calling for practical support for southern communities. Public commenters, especially on YouTube and Bluesky, expressed anger, with some calling for armed resistance and others alleging the government is too passive. This continues the previous snapshot's ongoing-incursions narrative with added detail about fabricated pretexts.",
+   "detail_ar": "أفادت نورث برس ودرعا 24 بقصف مدفعي لقرية الأصبح وتوغل جديد في أوفانيا، مع نصب حواجز وتفتيش المارة، إلى جانب تحليق عسكري منخفض قرب حوض اليرموك. ونقلت ليفانت24 عن جنود إسرائيليين زعمهم افتعال احتكاك مع المدنيين لتبرير استمرار الوجود، وهو ما نقلته أيضاً صحيفة هآرتس وأعادت نشره وكالة ANHA الكردية. ووثّق المرصد السوري لحقوق الإنسان نحو 70 توغلاً خلال النصف الأول من تشرين الثاني. وأفادت عنب بلدي بمطالبة ناشطين في القنيطرة بدعم عملي للمجتمعات الجنوبية. وعبّر المعلقون، لا سيما على يوتيوب وبلوسكي، عن غضب، ودعا بعضهم للمقاومة المسلحة واتهم آخرون الحكومة بالتقاعس. وتُكمل هذه الحادثة رواية التوغلات المستمرة من التحديث السابق مع تفاصيل إضافية عن افتعال الذرائع.",
+   "public_reaction": "Public reaction showed anger and frustration, with some demanding armed resistance against Israeli incursions and others criticizing the Syrian government's perceived passivity.",
+   "public_reaction_ar": "أظهر التفاعل الشعبي غضباً وإحباطاً، إذ طالب بعضهم بالمقاومة المسلحة ضد التوغلات الإسرائيلية بينما انتقد آخرون ما اعتبروه تقاعساً حكومياً.",
+   "sentiment": -0.5,
+   "public_sentiment": -0.6,
+   "outlet_tone": {
+    "independent": -0.5,
+    "kurdish": -0.5,
+    "aggregator": -0.4
+   },
+   "public_tone": {
+    "ar": -0.6,
+    "en": -0.5
+   },
+   "emotions": [
+    "anger",
+    "fear",
+    "defiance"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "خوف",
+    "تحدٍّ"
+   ],
+   "framings": [
+    "Fabricated-pretext framing by soldiers",
+    "Occupation/incursion framing by outlets",
+    "Call-for-resistance framing by public"
+   ],
+   "framings_ar": [
+    "تأطير افتعال الذرائع من قبل الجنود",
+    "تأطير الاحتلال والتوغل من وسائل الإعلام",
+    "تأطير الدعوة للمقاومة من الجمهور"
+   ],
+   "flags": [
+    "Unverified anonymous soldier testimony"
+   ],
+   "flags_ar": [
+    "شهادات جنود مجهولي الهوية لم يُتحقق منها"
+   ],
+   "volume": 29,
+   "public_volume": 14,
+   "share": 0.035,
+   "engagement": 9033,
+   "platforms": {
+    "telegram": 13,
+    "news": 2,
+    "bluesky": 7,
+    "youtube": 7
+   },
+   "languages": {
+    "en": 13,
+    "ar": 16
+   },
+   "public_languages": {
+    "en": 6,
+    "ar": 8
+   },
+   "kinds": {
+    "independent": 11,
+    "kurdish": 3,
+    "aggregator": 1
+   },
+   "sources": [
+    "Bluesky posts",
+    "YouTube comments",
+    "Levant24 - Syria news (EN)",
+    "Daraa 24 - local, Daraa",
+    "North Press Agency (EN)",
+    "Enab Baladi - independent (EN)"
+   ],
+   "examples": [
+    {
+     "source": "Daraa 24 - local, Daraa",
+     "url": "https://t.me/daraa24_org/28693",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93814",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/46630",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-11-14T01:29:41Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "jaramana-car-bombing",
+   "key": "2026-11-14-jaramana-car-bombing",
+   "theme": "security",
+   "title": "Car Bomb Kills Man and Girl in Jaramana",
+   "title_ar": "تفجير سيارة يقتل رجلاً وطفلة في جرمانا",
+   "summary": "A car bomb exploded in Jaramana, a Damascus suburb with a large Druze and minority population, on November 14-15, killing a man and a child and wounding others. Syrian Internal Security Forces said they are investigating; reports identified the dead man as the son of a Shia cleric of Pakistani origin.",
+   "summary_ar": "انفجرت عبوة ناسفة داخل سيارة في جرمانا بريف دمشق يومي ١٤ و١٥ تشرين الثاني، ما أسفر عن مقتل رجل وطفلة وإصابة آخرين. وأعلنت قوى الأمن الداخلي فتح تحقيق، فيما أفادت تقارير بأن القتيل هو نجل رجل دين شيعي من أصول باكستانية.",
+   "detail": "State media and independent outlets reported the bombing near a battery factory in Jaramana, with Internal Security Forces confirming one man and one girl killed and at least one person wounded. Sawt al-Asima identified the victim as Mohammed al-Mousawi, son of Shia cleric Taher al-Mousawi. International outlets (Al Jazeera, Jerusalem Post, Middle East Eye) framed it within continued post-transition instability. Public commenters expressed shock and grief, with some linking it to sectarian tensions in Jaramana given its mixed Druze and minority population, while others called for accountability over recurring security gaps. No perpetrator has been officially identified as of this snapshot.",
+   "detail_ar": "نقلت وسائل الإعلام الرسمية والمستقلة وقوع التفجير قرب معمل بطاريات في جرمانا، مؤكدة قوى الأمن الداخلي مقتل رجل وطفلة وإصابة شخص واحد على الأقل. وحدد صوت العاصمة هوية القتيل بأنه محمد الموسوي نجل رجل الدين الشيعي طاهر الموسوي. وأطرت وسائل إعلام دولية (الجزيرة، جيروزاليم بوست، ميدل إيست آي) الحادثة ضمن استمرار الاضطراب الأمني بعد المرحلة الانتقالية. وعبّر المعلقون عن صدمة وحزن، وربط بعضهم الحادثة بالتوترات الطائفية في جرمانا نظراً لتنوعها السكاني بين الدروز والأقليات، بينما طالب آخرون بمحاسبة عن الثغرات الأمنية المتكررة. ولم تُحدَّد هوية الجناة رسمياً حتى الآن.",
+   "public_reaction": "Public reaction combined grief and alarm, with some raising sectarian concerns about Jaramana's mixed community and others criticizing continued security lapses under the new government.",
+   "public_reaction_ar": "جمع التفاعل الشعبي بين الحزن والقلق، إذ أثار البعض مخاوف طائفية بشأن التنوع السكاني في جرمانا، فيما انتقد آخرون استمرار الثغرات الأمنية في ظل الحكومة الجديدة.",
+   "sentiment": -0.4,
+   "public_sentiment": -0.6,
+   "outlet_tone": {
+    "independent": -0.4
+   },
+   "public_tone": {
+    "ar": -0.6,
+    "en": -0.4
+   },
+   "emotions": [
+    "grief",
+    "fear",
+    "anger"
+   ],
+   "emotions_ar": [
+    "حزن",
+    "خوف",
+    "غضب"
+   ],
+   "framings": [
+    "Security/accountability framing",
+    "Sectarian community vulnerability framing",
+    "Diplomatic-context framing by international outlets"
+   ],
+   "framings_ar": [
+    "تأطير أمني يتعلق بالمحاسبة",
+    "تأطير يتعلق بهشاشة المجتمعات الطائفية",
+    "تأطير دولي يربط الحادثة بالسياق الدبلوماسي"
+   ],
+   "flags": [
+    "Unverified claims about perpetrator identity circulating"
+   ],
+   "flags_ar": [
+    "ادعاءات لم يُتحقق منها حول هوية الجناة تتداول"
+   ],
+   "volume": 28,
+   "public_volume": 23,
+   "share": 0.034,
+   "engagement": 1607,
+   "platforms": {
+    "news": 2,
+    "telegram": 3,
+    "bluesky": 22,
+    "youtube": 1
+   },
+   "languages": {
+    "ar": 12,
+    "en": 16
+   },
+   "public_languages": {
+    "en": 14,
+    "ar": 9
+   },
+   "kinds": {
+    "independent": 4,
+    "aggregator": 1
+   },
+   "sources": [
+    "Bluesky posts",
+    "Syria TV - opposition-origin",
+    "Levant24 - Syria news (EN)",
+    "Sawt al-Asima - local, Damascus",
+    "Enab Baladi - independent (AR)",
+    "YouTube comments"
+   ],
+   "examples": [
+    {
+     "source": "Sawt al-Asima - local, Damascus",
+     "url": "https://t.me/damascusv011/44311",
+     "platform": "telegram"
+    },
+    {
+     "source": "Enab Baladi - independent (AR)",
+     "url": "https://t.me/enabbaladi/93811",
+     "platform": "telegram"
+    },
+    {
+     "source": "Levant24 - Syria news (EN)",
+     "url": "https://t.me/Levant24/46633",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-11-14T21:30:48Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "electricity-aleppo-power",
+   "key": "2026-11-15-electricity-aleppo-power",
+   "theme": "economy",
+   "title": "Power Cuts Return to Damascus as Aleppo Plant Rehabilitation Deal Signed",
+   "title_ar": "عودة تقنين الكهرباء إلى دمشق مع توقيع اتفاقية تأهيل محطة حلب الحرارية",
+   "summary": "Syria signed a $93 million deal with a Czech firm to rehabilitate three generating units at Aleppo's thermal power plant, raising capacity toward 1,000 MW. Meanwhile, long power cuts suddenly returned to Damascus and its countryside, and Raqqa suffered a full outage after a transmission line fault, frustrating residents.",
+   "summary_ar": "وقّعت سوريا اتفاقية بقيمة ٩٣ مليون دولار مع شركة تشيكية لتأهيل ثلاث مجموعات توليدية في محطة حلب الحرارية، لرفع الطاقة نحو ١٠٠٠ ميغاواط. في المقابل، عادت ساعات التقنين الطويلة فجأة إلى دمشق وريفها، وتعرضت الرقة لانقطاع كامل إثر عطل في خط النقل، ما أثار استياء السكان.",
+   "detail": "SANA, Halab Today and Levant24 reported Energy Minister Mohammed al-Bashir announcing the $93 million Czech-funded rehabilitation of three generating units at Aleppo's thermal station, part of a broader plan to raise capacity above 1,000 MW; work on individual units will take 18-30 months. Separately, Sawt al-Asima reported a sudden return of long rationing hours in Damascus and its countryside, raising questions among residents about causes and duration. Euphrates Post reported a complete power outage in Raqqa city after a fault on a 230kV line feeding the province, also halting water pumping stations. Public comments expressed anger over recurring cuts despite announced investment deals, with some directly blaming the Energy Ministry and mocking promises of improvement. This extends the previous snapshot's electricity-rationing narrative with the new Aleppo deal and Raqqa outage.",
+   "detail_ar": "نقلت سانا وحلب اليوم وليفانت24 إعلان وزير الطاقة محمد البشير عن اتفاقية بتمويل تشيكي بقيمة 93 مليون دولار لتأهيل ثلاث مجموعات توليدية في محطة حلب الحرارية، ضمن خطة أوسع لرفع الطاقة إلى أكثر من 1000 ميغاواط، على أن يستغرق العمل على كل مجموعة بين 18 و30 شهراً. وفي المقابل، أفاد صوت العاصمة بعودة مفاجئة لساعات تقنين طويلة في دمشق وريفها، ما أثار تساؤلات السكان حول الأسباب والمدة. وأفادت فرات بوست بانقطاع كامل للكهرباء في مدينة الرقة إثر عطل في خط نقل بقدرة 230 كيلوفولط يغذي المحافظة، ما أدى أيضاً لتوقف محطات ضخ المياه. وعبّر المعلقون عن غضب من استمرار الانقطاعات رغم إعلان اتفاقيات استثمارية، محمّلين وزارة الطاقة المسؤولية بشكل مباشر وساخرين من وعود التحسين. وتُوسّع هذه القضية رواية تقنين الكهرباء من التحديث السابق بإضافة اتفاقية حلب وانقطاع الرقة.",
+   "public_reaction": "Residents expressed frustration at the sudden return of long power cuts despite announced investment deals, with sharp criticism directed at the Energy Ministry.",
+   "public_reaction_ar": "عبّر السكان عن استيائهم من العودة المفاجئة لساعات التقنين الطويلة رغم إعلان اتفاقيات استثمارية، مع انتقادات حادة وُجهت لوزارة الطاقة.",
+   "sentiment": 0.1,
+   "public_sentiment": -0.5,
+   "outlet_tone": {
+    "official": 0.3,
+    "independent": 0.0,
+    "aggregator": 0.1
+   },
+   "public_tone": {
+    "ar": -0.5
+   },
+   "emotions": [
+    "frustration",
+    "anger",
+    "mild hope"
+   ],
+   "emotions_ar": [
+    "إحباط",
+    "غضب",
+    "أمل طفيف"
+   ],
+   "framings": [
+    "Official investment/progress framing",
+    "Public framing of broken promises"
+   ],
+   "framings_ar": [
+    "تأطير رسمي للاستثمار والتقدم",
+    "تأطير شعبي للوعود غير المنجزة"
+   ],
+   "flags": [],
+   "flags_ar": [],
+   "volume": 20,
+   "public_volume": 9,
+   "share": 0.024,
+   "engagement": 15491,
+   "platforms": {
+    "news": 2,
+    "telegram": 9,
+    "bluesky": 4,
+    "youtube": 4,
+    "reddit": 1
+   },
+   "languages": {
+    "en": 3,
+    "ar": 17
+   },
+   "public_languages": {
+    "ar": 9
+   },
+   "kinds": {
+    "aggregator": 1,
+    "independent": 9,
+    "official": 1
+   },
+   "sources": [
+    "Bluesky posts",
+    "YouTube comments",
+    "Levant24 - Syria news (EN)",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Google News - Syria (EN)",
+    "Shaam News Network - opposition-origin"
+   ],
+   "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142928",
+     "platform": "telegram"
+    },
+    {
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110273",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/240552",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-11-15T20:57:41Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "northeast-kurdish-integration",
+   "key": "2026-11-15-northeast-kurdish-integration",
    "theme": "northeast-kurdish",
    "title": "North-East Judicial Integration and Kurdish Education Disputes Continue",
-   "title_ar": "استمرار الجدل حول دمج القضاء الكردي وحقوق التعليم باللغة الكردية في شمال شرق سوريا",
-   "summary": "The Qamishli courthouse reopened after nearly two years with 31 Autonomous Administration judges integrated into Syria's judiciary, while lawyers demand integration of 156 colleagues into the state bar. Separately, a parliamentarian said this year's university placement exam is singular, leaving unregistered students without university access, reigniting Kurdish education concerns.",
-   "summary_ar": "أعيد افتتاح القصر العدلي في القامشلي بعد توقف دام نحو عامين مع دمج ٣١ قاضياً من الإدارة الذاتية في القضاء السوري، فيما يطالب محامون بدمج ١٥٦ زميلاً لهم في نقابة الدولة. وفي سياق منفصل، قال نائب في البرلمان إن مفاضلة القبول الجامعي هذا العام واحدة فقط، ما يترك الطلاب غير المسجلين بلا جامعة، الأمر الذي أعاد إحياء المخاوف حول التعليم الكردي.",
-   "detail": "North Press, ANHA, and Rudaw reported Hasakah's governor inaugurating the Qamishli courthouse, with the Justice Ministry having interviewed 100 judges from the former Autonomous Administration courts and integrated 31 so far; a lawyers' union in the north-east demands integration of 156 more lawyers into the state bar, citing unresolved ambiguity. Separately, MP Ahmad Murad said this year's university placement exam is unified (not dual), meaning Kobani University students facing registration problems risk being left without a university place; a Kobani university administrator said they're working with affected students. ANHA also covered discussions on Rojava University's integration into Hasakah University and recognition of Autonomous Administration degrees and Kurdish-language teaching. Kurdish-language outlets framed these as ongoing struggles for recognition and rights, while Arabic state media coverage was comparatively sparse on these specific integration disputes.",
-   "detail_ar": "نقلت نورث برس وهاوار ورووداو افتتاح محافظ الحسكة للقصر العدلي في القامشلي، بعد أن أجرت وزارة العدل مقابلات مع 100 قاضٍ من محاكم الإدارة الذاتية السابقة ودمجت 31 منهم حتى الآن؛ ويطالب اتحاد محامين في شمال شرق سوريا بدمج 156 محامياً إضافياً في نقابة الدولة، مشيرين إلى غموض لم يُحل بعد. وفي سياق منفصل، قال النائب أحمد مراد إن مفاضلة القبول الجامعي هذا العام موحدة (وليست مزدوجة)، ما يعني أن طلاب جامعة كوباني الذين واجهوا مشاكل في التسجيل قد يبقون بلا جامعة؛ وقال مسؤول إداري في الجامعة إنهم يعملون مع الطلاب المتضررين. كما غطت هاوار نقاشات حول دمج جامعة روج آفا ضمن جامعة الحسكة والاعتراف بشهادات الإدارة الذاتية وتدريس اللغة الكردية. وأطّرت وسائل الإعلام الكردية هذه القضايا كنضال مستمر من أجل الاعتراف والحقوق، في حين كانت تغطية الإعلام الرسمي العربي لهذه النزاعات التكاملية محدودة نسبياً.",
-   "public_reaction": "Limited public commentary, mostly Kurdish-language congratulatory posts about the courthouse reopening alongside concern over unresolved integration issues for lawyers, judges, and students.",
-   "public_reaction_ar": "كان التعليق الشعبي محدوداً، وغلبت عليه منشورات تهنئة بالكردية حول إعادة افتتاح القصر العدلي، إلى جانب قلق إزاء قضايا الدمج غير المحلولة للمحامين والقضاة والطلاب.",
+   "title_ar": "استمرار الجدل حول الاندماج القضائي وتعليم اللغة الكردية في شمال شرق سوريا",
+   "summary": "Qamishli's Justice Courthouse reopened after nearly two years, with lawyers demanding clarity on integrating 156 Autonomous Administration-era lawyers into the Syrian bar. Separately, officials discussed integrating Rojava University into the state system and disputes over Kurdish-language school hours and university admission quotas.",
+   "summary_ar": "أُعيد افتتاح القصر العدلي في القامشلي بعد إغلاق استمر نحو عامين، فيما طالب محامون بتوضيح آلية اندماج ١٥٦ محامياً عملوا في ظل الإدارة الذاتية ضمن نقابة المحامين. وبالتوازي، نوقش دمج جامعة روج آفا في منظومة الدولة والخلاف حول حصص تعليم اللغة الكردية ومفاضلة القبول الجامعي.",
+   "detail": "North Press Agency and Kurdish-run ANHA reported the Hasakah governor and judicial officials inaugurating the Qamishli courthouse, while a lawyer, Khaled Omar, called for clarity on integrating 156 lawyers who worked under the Autonomous Administration, citing lingering ambiguity despite earlier promises. Separately, Shafaq News and North Press reported MP Ahmed Murad discussing Rojava University's integration into the Education Ministry system and Kurdish-language school hour allocations, with Murad warning students who miss the single unified admission round will be left without a university seat. Public Kurdish-language posts (Bluesky, Hawar) covered the courthouse reopening and press conferences neutrally. This continues and extends the previous snapshot's narrative on north-east judicial integration and Kurdish education disputes, with the courthouse reopening as a new concrete development.",
+   "detail_ar": "نقلت نورث برس ووكالة ANHA الكردية افتتاح محافظ الحسكة ومسؤولين قضائيين القصر العدلي في القامشلي، فيما طالب المحامي خالد عمر بتوضيح آلية اندماج 156 محامياً عملوا في ظل الإدارة الذاتية، مشيراً إلى استمرار الغموض رغم وعود سابقة. وبالتوازي، نقلت شفق نيوز ونورث برس تصريحات النائب أحمد مراد حول دمج جامعة روج آفا في منظومة وزارة التعليم وتوزيع حصص تعليم اللغة الكردية، محذراً من أن الطلاب الذين لم يسجلوا في المفاضلة الموحدة سيبقون دون مقعد جامعي. وتناولت منشورات كردية عامة (بلوسكي، هاوار) افتتاح القصر العدلي والمؤتمرات الصحفية بحياد. وتُكمل هذه القضية وتوسّع رواية التحديث السابق حول الاندماج القضائي والجدل التعليمي الكردي، مع افتتاح القصر العدلي كتطور ملموس جديد.",
+   "public_reaction": "Kurdish-language public posts covered developments mostly neutrally, while Arabic-language commentary was scarce; lawyers publicly pressed for clarity on their professional status.",
+   "public_reaction_ar": "غطت المنشورات العامة باللغة الكردية التطورات بحياد في معظمها، بينما كان التعليق بالعربية نادراً، وضغط المحامون علناً للمطالبة بتوضيح وضعهم المهني.",
    "sentiment": 0.1,
    "public_sentiment": 0.0,
    "outlet_tone": {
-    "kurdish": 0.1
+    "kurdish": 0.1,
+    "aggregator": 0.0
    },
    "public_tone": {
     "ku": 0.0
    },
    "emotions": [
-    "cautious hope",
-    "frustration"
+    "uncertainty",
+    "cautious hope"
    ],
    "emotions_ar": [
-    "أمل حذر",
-    "إحباط"
+    "قلق",
+    "أمل حذر"
    ],
    "framings": [
-    "Kurdish outlets framing as rights and recognition struggle",
-    "official framing as administrative integration progress"
+    "Integration progress framing by officials",
+    "Unresolved-status framing by lawyers/Kurdish outlets"
    ],
    "framings_ar": [
-    "تأطير كردي كنضال من أجل الحقوق والاعتراف",
-    "تأطير رسمي كتقدم إداري في الدمج"
+    "تأطير رسمي للتقدم في الاندماج",
+    "تأطير المحامين والوسائل الكردية لعدم حسم الوضع"
    ],
    "flags": [],
    "flags_ar": [],
    "volume": 19,
-   "public_volume": 6,
-   "share": 0.025,
-   "engagement": 5028,
+   "public_volume": 7,
+   "share": 0.023,
+   "engagement": 9114,
    "platforms": {
-    "telegram": 13,
-    "bluesky": 5,
-    "youtube": 1
+    "telegram": 11,
+    "news": 1,
+    "bluesky": 7
    },
    "languages": {
-    "ar": 12,
-    "en": 2,
+    "ar": 10,
+    "en": 4,
     "ku": 5
    },
    "public_languages": {
-    "ku": 5,
-    "en": 1
+    "en": 2,
+    "ku": 5
    },
    "kinds": {
-    "kurdish": 12,
-    "independent": 1
+    "independent": 2,
+    "kurdish": 8,
+    "aggregator": 1,
+    "official": 1
    },
    "sources": [
-    "North Press Agency - Qamishli-based (AR)",
     "Bluesky posts",
-    "ANHA (Hawar) - north-east administration news agency (AR)",
-    "Rudaw Arabic - Kurdistan Region outlet",
+    "North Press Agency - Qamishli-based (AR)",
+    "Syria TV - opposition-origin broadcaster",
     "North Press Agency (EN)",
-    "Euphrates Post - Deir ez-Zor and the east"
+    "Google News - Syria (EN)",
+    "ANHA (Hawar) - north-east administration news agency (AR)"
    ],
    "examples": [
     {
@@ -601,17 +715,17 @@
      "platform": "telegram"
     },
     {
-     "source": "Rudaw Arabic - Kurdistan Region outlet",
-     "url": "https://t.me/RudawArabic/124276",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/98316",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/85092",
+     "source": "Al-Ikhbariya Syria - state TV",
+     "url": "https://t.me/AlekhbariahSY/240549",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-11-15T07:31:43Z",
+   "first_seen": "2026-11-15T20:57:41Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -619,277 +733,91 @@
    }
   },
   {
-   "id": "syria-poisoning-outbreaks",
-   "key": "2026-11-14-syria-poisoning-outbreaks",
-   "theme": "society",
-   "title": "Mushroom and Water Poisoning, Polio Outbreak Response",
-   "title_ar": "تسمم بالفطر والمياه وحملة الاستجابة لشلل الأطفال",
-   "summary": "Syria launched a second polio vaccination round in Deir ez-Zor countryside targeting about 49,000 children after three polio cases in al-Mayadin, while Hasakah's Ras al-Ain hospital registered 290 poisoning cases possibly linked to contaminated water, and earlier mushroom poisoning killed children in Raqqa/Hasakah.",
-   "summary_ar": "أطلقت سوريا الجولة الثانية من حملة لقاح شلل الأطفال في ريف دير الزور تستهدف نحو ٤٩ ألف طفل بعد تسجيل ثلاث إصابات في الميادين، في حين سجّل مستشفى رأس العين بالحسكة ٢٩٠ حالة تسمم يُحتمل ارتباطها بمياه ملوثة، إضافة إلى تسمم سابق بالفطر أودى بحياة أطفال في الرقة والحسكة.",
-   "detail": "Health Ministry and SANA/Al-Ikhbariya announced the second polio vaccination round in Deir ez-Zor, targeting children under five following three confirmed cases in al-Mayadin linked to person-to-person contact. Independent outlets (Syria TV, Euphrates Post) covered vaccination teams reaching villages like Dheiban. Separately, North Press and Enab Baladi reported about 290 poisoning cases at Ras al-Ain hospital in Hasakah over four days, suspected to be linked to drinking water, prompting an agricultural directorate campaign to destroy crops irrigated with contaminated water. Earlier reports (carried over from prior snapshot) of mushroom and water poisoning deaths in Raqqa and Hasakah continue to circulate. English-language aggregators (WHO, Beacon) confirmed the vaccination campaign internationally. Public reaction showed concern and prayers, some blaming poor infrastructure and water management under the new authorities.",
-   "detail_ar": "أعلنت وزارة الصحة وسانا والإخبارية الجولة الثانية من حملة لقاح شلل الأطفال في ريف دير الزور، تستهدف الأطفال دون سن الخامسة بعد تسجيل ثلاث إصابات مؤكدة في الميادين ناجمة عن مخالطة. وغطت وسائل إعلام مستقلة (تلفزيون سوريا، فرات بوست) وصول فرق التلقيح إلى قرى مثل ذيبان. وفي سياق منفصل، أفادت نورث برس وعنب بلدي بتسجيل نحو 290 حالة تسمم في مستشفى رأس العين بالحسكة خلال أربعة أيام، يُحتمل ارتباطها بمياه الشرب، ما دفع مديرية الزراعة لإطلاق حملة لإتلاف المحاصيل المروية بمياه ملوثة. وتستمر تقارير سابقة (من التحديث الماضي) حول وفيات بالتسمم بالفطر والمياه في الرقة والحسكة بالتداول. وأكدت مصادر دولية ناطقة بالإنكليزية (منظمة الصحة العالمية، Beacon) الحملة دولياً. وأظهر تفاعل الجمهور قلقاً ودعاءً، مع لوم بعضهم ضعف البنية التحتية وإدارة المياه في ظل السلطات الجديدة.",
-   "public_reaction": "Concern and prayers for affected children's families; some anger directed at poor water infrastructure and health services.",
-   "public_reaction_ar": "عبّر الجمهور عن القلق والدعاء لأسر الأطفال المتضررين، مع غضب موجّه نحو ضعف البنية التحتية المائية والخدمات الصحية.",
-   "sentiment": -0.1,
+   "id": "border-guard-dismissal-denial",
+   "key": "2026-11-15-border-guard-dismissal-denial",
+   "theme": "governance",
+   "title": "Defense Ministry Denies Mass Dismissal of 220 Border Guards",
+   "title_ar": "وزارة الدفاع تنفي فصل ٢٢٠ عنصراً من حرس الحدود",
+   "summary": "Multiple outlets denied circulating reports that 220 officers and personnel were dismissed from border guard forces for alleged smuggling and corruption along the Lebanese border. The Defense Ministry's media director Asem Ghalyoun called the reports false and urged reliance on official sources. Some public commenters shared personal border-crossing bribery anecdotes.",
+   "summary_ar": "نفت وسائل إعلام متعددة تقارير متداولة عن فصل ٢٢٠ ضابطاً وجندياً من قوى حرس الحدود بتهم تهريب وفساد على الحدود اللبنانية. وقال مدير الإعلام في وزارة الدفاع عاصم غليون إن الأنباء غير صحيحة، داعياً إلى الاعتماد على المصادر الرسمية، فيما شارك بعض المعلقين قصصاً شخصية عن رشاوى عند المعابر الحدودية.",
+   "detail": "Independent outlets (Halab Today, Shaam, Euphrates Post, Syria Plus, Al-Watan, Syria TV) uniformly reported the Defense Ministry's denial of reports alleging mass dismissal of border guard personnel over smuggling, embezzlement and bribery. Levant24 provided fuller context, explaining that the original reports cited state sources alleging corruption-related dismissals along the Lebanese border. The ministry called for verification before publishing defense-related news. Public comments on YouTube were skeptical of the denial, with some sharing personal accounts of paying bribes at crossings and criticizing continued corruption regardless of official statements. This is a new development not present in the previous snapshot's narrative list.",
+   "detail_ar": "نقلت وسائل إعلام مستقلة (حلب اليوم، شام، فرات بوست، سوريا بلس، الوطن، سوريا تي في) بشكل موحّد نفي وزارة الدفاع للتقارير القائلة بفصل جماعي لعناصر من حرس الحدود بتهم التهريب والاختلاس والرشى. وقدّمت ليفانت24 سياقاً أوسع موضحة أن التقارير الأصلية استندت إلى مصادر حكومية زعمت فصلاً مرتبطاً بالفساد على الحدود اللبنانية. ودعت الوزارة إلى التحقق قبل نشر الأخبار المتعلقة بالدفاع. وجاءت تعليقات الجمهور على يوتيوب متشككة في النفي، إذ شارك بعضهم قصصاً شخصية عن دفع رشى عند المعابر، منتقدين استمرار الفساد بصرف النظر عن البيانات الرسمية. وتُعد هذه القضية تطوراً جديداً لم يرد في قائمة روايات التحديث السابق.",
+   "public_reaction": "Public reaction was skeptical of the official denial, with some commenters sharing personal experiences of bribery at border crossings as evidence of ongoing corruption.",
+   "public_reaction_ar": "جاء التفاعل الشعبي متشككاً في النفي الرسمي، إذ شارك بعض المعلقين تجارب شخصية عن دفع رشى عند المعابر كدليل على استمرار الفساد.",
+   "sentiment": 0.0,
    "public_sentiment": -0.3,
    "outlet_tone": {
-    "official": 0.1,
-    "independent": -0.1,
-    "aggregator": 0.0
+    "independent": 0.0
    },
    "public_tone": {
     "ar": -0.3
    },
    "emotions": [
-    "concern",
-    "grief",
-    "fear"
+    "doubt",
+    "cynicism"
    ],
    "emotions_ar": [
-    "قلق",
-    "حزن",
-    "خوف"
+    "شك",
+    "تهكم"
    ],
    "framings": [
-    "official framing as public health response",
-    "independent framing highlighting infrastructure failures"
+    "Official denial framing",
+    "Public skepticism/corruption framing"
    ],
    "framings_ar": [
-    "تأطير رسمي كاستجابة صحية عامة",
-    "تأطير مستقل يسلط الضوء على إخفاقات البنية التحتية"
+    "تأطير النفي الرسمي",
+    "تأطير الشك الشعبي بالفساد"
    ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 13,
-   "public_volume": 4,
-   "share": 0.017,
-   "engagement": 11072,
+   "flags": [
+    "Unverified original claim about dismissals being denied by official source"
+   ],
+   "flags_ar": [
+    "ادعاء أصلي لم يُتحقق منه نفته جهة رسمية"
+   ],
+   "volume": 12,
+   "public_volume": 5,
+   "share": 0.014,
+   "engagement": 10002,
    "platforms": {
-    "telegram": 8,
-    "news": 1,
-    "bluesky": 3,
-    "youtube": 1
+    "telegram": 7,
+    "youtube": 5
    },
    "languages": {
-    "en": 5,
-    "ar": 8
-   },
-   "public_languages": {
-    "en": 2,
-    "ar": 2
-   },
-   "kinds": {
-    "official": 4,
-    "independent": 4,
-    "aggregator": 1
-   },
-   "sources": [
-    "Bluesky posts",
-    "Al-Ikhbariya Syria - state TV",
-    "SANA - state news agency (EN)",
-    "Syria Plus (SY+) - news platform",
-    "Syria TV - opposition-origin broadcaster",
-    "Google News - Syria (EN)"
-   ],
-   "examples": [
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110271",
-     "platform": "telegram"
-    },
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/98300",
-     "platform": "telegram"
-    },
-    {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/191430",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-14T16:30:21Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "electricity-rationing-complaints",
-   "key": "2026-11-15-electricity-rationing-complaints",
-   "theme": "economy",
-   "title": "Power Cuts Return to Damascus, Raqqa Outage, Aleppo Rehabilitation Deal",
-   "title_ar": "عودة تقنين الكهرباء إلى دمشق وانقطاعها في الرقة واتفاقية لتأهيل محطة حلب",
-   "summary": "Long power cuts returned suddenly to Damascus and its countryside, blamed on Tishreen plant outage, fuel/gas shortages and illegal grid tapping; Raqqa suffered a full blackout after a technical fault on its main feeder line. Separately, a $93 million deal was signed to rehabilitate three generating units at Aleppo's thermal plant, adding 639 MW.",
-   "summary_ar": "عادت ساعات التقنين الطويلة فجأة إلى دمشق وريفها، وعُزي ذلك إلى خروج محطة تشرين عن الخدمة ونقص الفيول والغاز والاستجرار غير المشروع للكهرباء، في حين انقطعت الكهرباء بالكامل عن الرقة إثر عطل فني بخط التغذية الرئيسي. وفي سياق منفصل، وُقعت اتفاقية بقيمة ٩٣ مليون دولار لإعادة تأهيل ثلاث مجموعات توليدية في محطة حلب الحرارية بقدرة إضافية ٦٣٩ ميغاواط.",
-   "detail": "Sawt al-Asima and Sawt Dimashq reported the Syrian Electricity Company explaining increased rationing hours due to Tishreen plant going offline, fuel and Azerbaijani gas shortfalls, maintenance works, and illegal power siphoning. Syria Plus described hours varying across Damascus neighborhoods, with Tadamon suffering days-long outages due to transformer and cable faults, forcing families to rely on costly generators and amperes. Separately, Euphrates Post and Al-Watan reported a full blackout in Raqqa city after the 230kV line serving the province failed, halting drinking water pumps. Energy Minister Mohammad al-Bashir announced a $93 million deal (with a Czech partner per Syria TV) to rehabilitate three units at Aleppo's thermal plant, adding 639 MW, part of a broader plan to reach over 1,000 MW capacity. Public reaction combined anger over billing (one commenter described a 3.23 million lira bill) with resignation about continued instability, while some linked rationing to unpaid consumer debts exceeding $1 billion to the electricity company.",
-   "detail_ar": "أفادت صوت العاصمة وصوت دمشق بأن الشركة السورية للكهرباء عزت زيادة ساعات التقنين إلى خروج محطة تشرين عن الخدمة ونقص الفيول والغاز الأذربيجاني وأعمال الصيانة والاستجرار غير المشروع. ووصفت سوريا بلس تفاوت الساعات بين أحياء دمشق، مع معاناة حي التضامن من انقطاعات تمتد أياماً بسبب أعطال المحولات والكابلات، ما يضطر العائلات للاعتماد على المولدات والأمبيرات المكلفة. وفي سياق منفصل، أفادت فرات بوست والوطن بانقطاع كامل للكهرباء في مدينة الرقة إثر عطل في خط 230 ك.ف المغذي للمحافظة، ما أوقف مضخات مياه الشرب. وأعلن وزير الطاقة محمد البشير اتفاقية بقيمة 93 مليون دولار (مع شريك تشيكي بحسب تلفزيون سوريا) لإعادة تأهيل ثلاث مجموعات في محطة حلب الحرارية بإضافة 639 ميغاواط، ضمن خطة أوسع للوصول إلى طاقة تفوق 1000 ميغاواط. ومزج تفاعل الجمهور بين الغضب من الفواتير (وصف أحد المعلقين فاتورة بلغت 3.23 مليون ليرة) والاستسلام لاستمرار عدم الاستقرار، بينما ربط بعضهم التقنين بديون المستهلكين غير المسددة التي تتجاوز مليار دولار للشركة.",
-   "public_reaction": "Anger over billing costs and continued outages; some blame unpaid consumer debts, others blame government mismanagement; mixed with cautious hope about the Aleppo plant rehabilitation.",
-   "public_reaction_ar": "غضب من تكاليف الفواتير واستمرار الانقطاعات، ولام بعضهم ديون المستهلكين غير المسددة بينما لام آخرون سوء الإدارة الحكومية، مع أمل حذر بخصوص تأهيل محطة حلب.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.5,
-   "outlet_tone": {
-    "independent": -0.2
-   },
-   "public_tone": {
-    "ar": -0.5
-   },
-   "emotions": [
-    "frustration",
-    "exhaustion"
-   ],
-   "emotions_ar": [
-    "إحباط",
-    "إنهاك"
-   ],
-   "framings": [
-    "official framing as technical/supply challenges with investment progress",
-    "public framing as unresolved daily hardship"
-   ],
-   "framings_ar": [
-    "تأطير رسمي كتحديات فنية وتوريدية مع تقدم استثماري",
-    "تأطير شعبي كمعاناة يومية مستمرة دون حل"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 8,
-   "public_volume": 3,
-   "share": 0.01,
-   "engagement": 4672,
-   "platforms": {
-    "telegram": 5,
-    "bluesky": 3
-   },
-   "languages": {
-    "ar": 8
-   },
-   "public_languages": {
-    "ar": 3
-   },
-   "kinds": {
-    "independent": 5
-   },
-   "sources": [
-    "Bluesky posts",
-    "Sawt al-Asima - local, Damascus",
-    "Euphrates Post - Deir ez-Zor and the east",
-    "Syria Plus (SY+) - news platform",
-    "Enab Baladi - independent (AR)",
-    "Al-Watan - Damascus daily newspaper"
-   ],
-   "examples": [
-    {
-     "source": "Euphrates Post - Deir ez-Zor and the east",
-     "url": "https://t.me/Euphrats_post/110273",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44308",
-     "platform": "telegram"
-    },
-    {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/205732",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-11-15T10:56:42Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "israel-iran-regional-tension",
-   "key": "2026-11-15-israel-iran-regional-tension",
-   "theme": "international",
-   "title": "Israel-Iran Shadow War Intersects with Syria Coverage",
-   "title_ar": "الحرب الخفية بين إسرائيل وإيران تتقاطع مع تغطية سوريا",
-   "summary": "Regional outlets widely covered an Israeli operation to abduct an Iranian general from Damascus while searching for missing airman Ron Arad, alongside reports of Mossad sharing intelligence with the CIA on Iranian drone threats to Trump officials. Public commentary mixed surprise, mockery, and concern over Syria's role as a stage for this shadow conflict.",
-   "summary_ar": "غطت وسائل إعلام إقليمية على نطاق واسع عملية إسرائيلية لخطف جنرال إيراني من دمشق في إطار البحث عن الطيار المفقود رون أراد، إلى جانب تقارير عن تبادل الموساد معلومات استخباراتية مع وكالة الاستخبارات المركزية الأميركية حول تهديدات مسيّرات إيرانية لمسؤولين في إدارة ترامب. ومزج التعليق الشعبي بين الاستغراب والسخرية والقلق من دور سوريا كمسرح لهذا الصراع الخفي.",
-   "detail": "Al-Hadath, Al Arabiya, and Google News reported on Israel's operation abducting an Iranian general (reported as Abdullah Saberi, 2021) from Damascus disguised as movers, part of the long search for missing Israeli airman Ron Arad; a New York Times investigation (circulated in Persian on Bluesky) found Arad likely died in Lebanon in 1988 and was never transferred to Iran. North Press (EN) and other outlets also reported Mossad sharing intelligence with the CIA about alleged Iranian drone plots against Trump and senior US officials, prompting security tightening in Washington. English-language Bluesky commenters expressed shock at an abduction happening in 'broad daylight in Damascus,' while some framed it as part of wider Israeli overreach in the region. The story intersects with ongoing coverage of Israeli activity in and around Syria more broadly.",
-   "detail_ar": "نقلت الحدث والعربية وغوغل نيوز عملية إسرائيلية اختطفت جنرالاً إيرانياً (ذُكر أنه عبد الله صابري، 2021) من دمشق متنكرين بزي عمال نقل أثاث، ضمن البحث الطويل عن الطيار الإسرائيلي المفقود رون أراد؛ وكشف تحقيق لصحيفة نيويورك تايمز (متداول بالفارسية على بلوسكاي) أن أراد قُتل على الأرجح في لبنان عام 1988 ولم يُنقل قط إلى إيران. كما نقلت نورث برس (بالإنكليزية) ووسائل أخرى أن الموساد يزوّد وكالة الاستخبارات المركزية الأميركية بمعلومات حول مخططات إيرانية مزعومة لاستهداف ترامب ومسؤولين كبار، ما دفع لتشديد الإجراءات الأمنية في واشنطن. وعبّر معلقون ناطقون بالإنكليزية على بلوسكاي عن صدمتهم من عملية خطف وقعت «في وضح النهار في دمشق»، بينما أطّرها آخرون كجزء من تجاوزات إسرائيلية أوسع في المنطقة. وتتقاطع هذه القصة مع التغطية المستمرة للنشاط الإسرائيلي في سوريا وما حولها.",
-   "public_reaction": "Mostly surprised or mocking commentary in English, with some framing it as further evidence of Israeli operations across Syria.",
-   "public_reaction_ar": "غلب على التعليقات بالإنكليزية الاستغراب أو السخرية، مع تأطير بعضها كدليل إضافي على العمليات الإسرائيلية في سوريا.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.1,
-   "outlet_tone": {
-    "kurdish": 0.0,
-    "regional": 0.0,
-    "aggregator": 0.0
-   },
-   "public_tone": {
-    "en": -0.1
-   },
-   "emotions": [
-    "surprise",
-    "intrigue"
-   ],
-   "emotions_ar": [
-    "استغراب",
-    "فضول"
-   ],
-   "framings": [
-    "regional framing as intelligence drama",
-    "public framing as evidence of Israeli overreach"
-   ],
-   "framings_ar": [
-    "تأطير إقليمي كدراما استخباراتية",
-    "تأطير شعبي كدليل على تجاوزات إسرائيلية"
-   ],
-   "flags": [],
-   "flags_ar": [],
-   "volume": 7,
-   "public_volume": 2,
-   "share": 0.009,
-   "engagement": 3245,
-   "platforms": {
-    "telegram": 4,
-    "news": 1,
-    "bluesky": 2
-   },
-   "languages": {
-    "ar": 5,
-    "en": 2
-   },
-   "public_languages": {
-    "ar": 1,
+    "ar": 11,
     "en": 1
    },
+   "public_languages": {
+    "ar": 5
+   },
    "kinds": {
-    "regional": 2,
-    "kurdish": 2,
-    "aggregator": 1
+    "independent": 7
    },
    "sources": [
-    "Bluesky posts",
-    "Al-Hadath - Saudi-owned",
-    "Al Arabiya - Saudi-owned",
-    "North Press Agency (EN)",
-    "Google News - Syria (AR)",
-    "North Press Agency - Qamishli-based (AR)"
+    "YouTube comments",
+    "Al-Watan - Damascus daily newspaper",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "Levant24 - Syria news (EN)",
+    "Euphrates Post - Deir ez-Zor and the east",
+    "Syria Plus (SY+) - news platform"
    ],
    "examples": [
     {
-     "source": "Al-Hadath - Saudi-owned",
-     "url": "https://t.me/alhadath/53211",
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/98312",
      "platform": "telegram"
     },
     {
-     "source": "Al Arabiya - Saudi-owned",
-     "url": "https://t.me/Alarabiya/169847",
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142944",
      "platform": "telegram"
     },
     {
-     "source": "North Press Agency - Qamishli-based (AR)",
-     "url": "https://t.me/npa_syria/85088",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110280",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-11-15T15:57:14Z",
+   "first_seen": "2026-11-15T20:57:41Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -901,68 +829,94 @@
    "key": "2026-11-14-currency-dollar-exchange-rate",
    "theme": "economy",
    "title": "Lira Nears 15,000 to the Dollar Amid Economic Debate",
-   "title_ar": "اقتراب الليرة من ١٥ ألفاً مقابل الدولار وسط جدل اقتصادي",
-   "summary": "The Syrian lira approached roughly 15,000 to the dollar (around 150 new lira), with Daraa 24 and Enab Baladi reporting continued depreciation attributed to global factors and local financial disputes; Shaam News noted a slight improvement in some sessions. Public reaction largely blamed government financial management and infighting among officials.",
-   "summary_ar": "اقتربت الليرة السورية من نحو ١٥ ألف ليرة مقابل الدولار (حوالي ١٥٠ ليرة جديدة)، وأفادت درعا ٢٤ وعنب بلدي باستمرار التراجع لأسباب عالمية ونزاعات مالية محلية، فيما لاحظت شبكة شام تحسناً طفيفاً في بعض الجلسات. وألقى تفاعل الجمهور باللوم إلى حد كبير على سوء الإدارة المالية الحكومية والصراعات بين المسؤولين.",
-   "detail": "Daraa 24 and Euphrates Post reported the dollar nearing 15,000 old lira (around 150 new lira) on November 15, citing rising buy/sell rates; Enab Baladi quoted an expert explaining causes behind the dollar surpassing 150 lira. A Bluesky post alleged the surge stemmed from internal conflicts within the government's financial administration involving named officials (Abu Abdul Rahman al-Zarba, Muhannad al-Masri, Hazem al-Shara), an unverified claim circulating online. Shaam News reported a slight improvement against the dollar on November 15. Reddit/YouTube discussions tied currency weakness to the diesel price cut debate and broader global economic pressures, including references to regional conflicts affecting oil supply. Public sentiment was largely frustrated, viewing the currency slide as evidence of economic mismanagement.",
-   "detail_ar": "أفادت درعا 24 وفرات بوست باقتراب الدولار من 15 ألف ليرة قديمة (نحو 150 ليرة جديدة) في 15 تشرين الثاني، مشيرة إلى ارتفاع أسعار الشراء والبيع؛ ونقلت عنب بلدي عن خبير تفسيراً لأسباب تجاوز الدولار 150 ليرة. وزعم منشور على بلوسكاي أن الارتفاع ناجم عن صراعات داخل الإدارة المالية الحكومية تشمل مسؤولين بالاسم (أبو عبد الرحمن الزربة، مهند المصري، حازم الشرع)، وهو ادعاء لم يُتحقق منه يتداول عبر الإنترنت. ونقلت شبكة شام تحسناً طفيفاً أمام الدولار في 15 تشرين الثاني. وربطت نقاشات على ريدِت ويوتيوب ضعف العملة بجدل خفض سعر المازوت وضغوط اقتصادية عالمية أوسع، بما فيها إشارات إلى نزاعات إقليمية تؤثر على إمدادات النفط. وغلب على المزاج الشعبي الإحباط، إذ اعتبر كثيرون تراجع العملة دليلاً على سوء الإدارة الاقتصادية.",
-   "public_reaction": "Frustrated and blame-oriented, citing government mismanagement, alleged internal financial power struggles, and linking it to global oil market disruptions from regional conflicts.",
-   "public_reaction_ar": "تفاعل محبط وبطابع إلقاء اللوم، إذ أشار كثيرون إلى سوء الإدارة الحكومية، وصراعات مالية داخلية مزعومة، وربطوها باضطرابات سوق النفط العالمية الناجمة عن نزاعات إقليمية.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.4,
-   "outlet_tone": {},
+   "title_ar": "الليرة تقترب من ١٥ ألفاً مقابل الدولار وسط جدل اقتصادي",
+   "summary": "The Syrian pound approached 15,000 to the dollar in mid-November, with Enab Baladi and Syria TV citing economists blaming the budget deficit and declining confidence. Poverty rates reportedly exceed 90%. Public commenters debated causes, from monetary mismanagement to internal government rivalries over financial policy.",
+   "summary_ar": "اقتربت الليرة السورية من ١٥ ألفاً مقابل الدولار في منتصف تشرين الثاني، ونقلت عنب بلدي وسوريا تي في عن خبراء اقتصاديين ربط الانخفاض بعجز الموازنة وتراجع الثقة، وسط إشارات إلى تجاوز نسبة الفقر ٩٠٪. واختلف المعلقون حول الأسباب بين سوء الإدارة النقدية وصراعات داخل الإدارة المالية الحكومية.",
+   "detail": "Independent outlets reported the dollar exceeding 150 (new) lira in the parallel market, nearing the symbolic 15,000 (old lira) threshold, with Daraa 24 and Euphrates Post publishing daily rate updates. Economists cited by Enab Baladi linked the slide to the budget deficit and weakening confidence, while some Reddit users debated the central bank governor's qualifications. One Bluesky post alleged internal rivalries among financial officials (Zarbah, al-Masri, al-Sharaa) as a driver. Kurdish outlet Rudaw reported Qamishli market vendors keeping shops closed pending resolution of old-currency status. Commenters widely expressed resignation and anger, with some invoking religious phrases of weary hope. No resolution has been announced since the previous snapshot.",
+   "detail_ar": "أفادت وسائل إعلام مستقلة بتجاوز الدولار 150 ليرة (جديدة) في السوق الموازية، مقترباً من عتبة الـ15 ألفاً (ليرة قديمة) الرمزية، مع نشر درعا 24 وفرات بوست تحديثات يومية للسعر. وربط خبراء نقلت عنهم عنب بلدي الانخفاض بعجز الموازنة وتراجع الثقة، فيما ناقش بعض مستخدمي ريديت مؤهلات محافظ المصرف المركزي. وزعم منشور على بلوسكي وجود صراعات داخلية بين مسؤولين ماليين (الزربة، المصري، الشرع) كأحد الأسباب. وأفادت رووداو الكردية بأن تجار سوق الهال في القامشلي أبقوا محالهم مغلقة انتظاراً لحسم وضع العملة القديمة. وعبّر المعلقون عموماً عن استسلام وغضب، مستخدمين أحياناً عبارات دينية تحمل أملاً متعباً. لم يُعلن أي حل منذ التحديث السابق.",
+   "public_reaction": "Public reaction mixed anger, resignation and technical debate over causes, with some blaming government financial mismanagement and others citing global economic pressures.",
+   "public_reaction_ar": "مزج التفاعل الشعبي بين الغضب والاستسلام والنقاش التقني حول الأسباب، إذ حمّل بعضهم سوء الإدارة المالية الحكومية المسؤولية فيما أشار آخرون إلى ضغوط اقتصادية عالمية.",
+   "sentiment": -0.2,
+   "public_sentiment": -0.5,
+   "outlet_tone": {
+    "independent": -0.3,
+    "kurdish": -0.2
+   },
    "public_tone": {
-    "ar": -0.4
+    "ar": -0.5,
+    "en": -0.2
    },
    "emotions": [
-    "frustration",
-    "anxiety"
+    "anxiety",
+    "anger",
+    "resignation"
    ],
    "emotions_ar": [
-    "إحباط",
-    "قلق"
+    "قلق",
+    "غضب",
+    "استسلام"
    ],
    "framings": [
-    "independent framing as expert-explained market dynamics",
-    "public framing as government mismanagement/corruption"
+    "Economic mismanagement framing",
+    "Structural/budget deficit framing",
+    "Kurdish market impact framing"
    ],
    "framings_ar": [
-    "تأطير مستقل كديناميكيات سوقية يفسرها خبراء",
-    "تأطير شعبي كسوء إدارة حكومية وفساد"
+    "تأطير سوء الإدارة الاقتصادية",
+    "تأطير العجز الهيكلي بالموازنة",
+    "تأطير تأثر الأسواق في شمال شرق سوريا"
    ],
    "flags": [
-    "unverified claim about internal financial power struggle"
+    "Unverified claim about internal financial rivalries"
    ],
    "flags_ar": [
-    "ادعاء لم يُتحقق منه حول صراع مالي داخلي"
+    "ادعاء لم يُتحقق منه حول صراعات مالية داخلية"
    ],
-   "volume": 5,
-   "public_volume": 4,
-   "share": 0.007,
-   "engagement": 1670,
+   "volume": 12,
+   "public_volume": 5,
+   "share": 0.014,
+   "engagement": 7590,
    "platforms": {
-    "reddit": 2,
+    "telegram": 6,
+    "news": 1,
     "bluesky": 2,
-    "telegram": 1
+    "reddit": 2,
+    "youtube": 1
    },
    "languages": {
-    "ar": 5
+    "ar": 10,
+    "en": 2
    },
    "public_languages": {
-    "ar": 4
+    "ar": 4,
+    "en": 1
    },
    "kinds": {
-    "independent": 1
+    "independent": 6,
+    "kurdish": 1
    },
    "sources": [
-    "Reddit r/syria comments",
     "Bluesky posts",
-    "Sawt al-Asima - local, Damascus"
+    "Reddit r/syria comments",
+    "Syria TV - opposition-origin broadcaster",
+    "Enab Baladi - independent (EN)",
+    "Enab Baladi - independent (AR)",
+    "Daraa 24 - local, Daraa"
    ],
    "examples": [
     {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44302",
+     "source": "Euphrates Post - Deir ez-Zor and the east",
+     "url": "https://t.me/Euphrats_post/110274",
+     "platform": "telegram"
+    },
+    {
+     "source": "Daraa 24 - local, Daraa",
+     "url": "https://t.me/daraa24_org/28694",
+     "platform": "telegram"
+    },
+    {
+     "source": "Syria TV - opposition-origin broadcaster",
+     "url": "https://t.me/TelevisionSyria/98317",
      "platform": "telegram"
     }
    ],
@@ -974,69 +928,65 @@
    }
   },
   {
-   "id": "mtn-zain-telecom-settlement",
-   "key": "2026-11-14-mtn-zain-telecom-settlement",
-   "theme": "economy",
-   "title": "Government Settles MTN Dispute, Clears Way for Zain Entry",
-   "title_ar": "الحكومة تسوّي نزاع MTN وتمهّد لدخول زين",
-   "summary": "Syria's government signed a final settlement with MTN on November 14 ending its mobile license in Syria, paying $43.9 million compensation, clearing the way for Kuwait's Zain to take over network operations. Officials framed it as organizing the telecom sector; coverage was largely factual with limited public reaction.",
-   "summary_ar": "وقّعت الحكومة السورية اتفاق تسوية نهائياً مع MTN في ١٤ تشرين الثاني لإنهاء ترخيصها للهاتف الخلوي في سوريا، مقابل تعويض قدره ٤٣٫٩ مليون دولار، تمهيداً لتولي شركة زين الكويتية تشغيل الشبكة. قدّمت الجهات الرسمية الخطوة كتنظيم لقطاع الاتصالات، وسط تغطية إخبارية بحتة وتفاعل جمهوري محدود.",
-   "detail": "The Syrian Telecom Company hosted the signing ceremony on November 14, 2026, paying $43.9 million from its own liquidity on behalf of the telecom regulator to cover compensation tied to ending MTN's license, according to Al-Watan and Syria Plus; the amount is expected to be reimbursed later for infrastructure development. Daraa 24 and Syria TV reported Communications Minister Abdul Salam Haykal and the Sovereign Fund confirming continued work to launch Zain in Syria. Coverage across official and independent outlets was neutral-to-positive, emphasizing sector organization and continuity of services; there was minimal public commentary, reflecting lower salience compared to fuel prices or security incidents.",
-   "detail_ar": "استضافت الشركة السورية للاتصالات حفل التوقيع في 14 تشرين الثاني 2026، وسددت 43.9 مليون دولار من سيولتها الخاصة نيابة عن الهيئة الناظمة للاتصالات لتغطية التعويض المرتبط بإنهاء ترخيص MTN، بحسب الوطن وسوريا بلس؛ ومن المتوقع أن يُعاد المبلغ لاحقاً لتوظيفه في تطوير البنية التحتية. ونقلت درعا 24 وتلفزيون سوريا تأكيد وزير الاتصالات عبد السلام هيكل والصندوق السيادي استمرار العمل لإطلاق زين في سوريا. جاءت التغطية عبر وسائل الإعلام الرسمية والمستقلة محايدة إلى إيجابية، مع التركيز على تنظيم القطاع واستمرارية الخدمات؛ وكان التعليق الشعبي محدوداً جداً، ما يعكس أهمية أقل مقارنة بأسعار الوقود أو الحوادث الأمنية.",
-   "public_reaction": "",
-   "public_reaction_ar": "",
-   "sentiment": 0.3,
-   "public_sentiment": null,
-   "outlet_tone": {
-    "independent": 0.3
+   "id": "governance-corruption-debate",
+   "key": "2026-11-15-governance-corruption-debate",
+   "theme": "governance",
+   "title": "Debate Over Parliament Cars and Perceived Government Spending Priorities",
+   "title_ar": "جدل حول سيارات مجلس الشعب وأولويات الإنفاق الحكومي",
+   "summary": "News that the People's Assembly delivered new Tucson cars to all its members fueled online debate on Reddit about perceived misuse of public funds, with critics citing poverty and unpaid salaries while some defended it as standard parliamentary practice. The exchange tied into broader complaints about low wages, corruption claims, and prioritization of spending.",
+   "summary_ar": "أثار خبر تسليم مجلس الشعب سيارات «توسان» جديدة لجميع أعضائه جدلاً على ريديت حول ما اعتُبر سوء استخدام للمال العام، إذ انتقد البعض ذلك في ظل الفقر وتأخر الرواتب، بينما دافع آخرون عنه باعتباره ممارسة برلمانية معتادة. وارتبط النقاش بشكاوى أوسع حول تدني الأجور واتهامات بالفساد وأولويات الإنفاق.",
+   "detail": "A Reddit thread about the People's Assembly distributing Tucson vehicles to its 210 members sparked extended debate: critics calculated the total customs value (roughly $6.3 million) as money 'stolen' from citizens, while others argued travel allowances and vehicles are standard parliamentary benefits used in many countries, comparing to US House practices. The dispute remained unresolved within the thread, reflecting deeper frustration over perceived government excess amid economic hardship. This connects to the broader governance-corruption-debate narrative from the previous snapshot, now centered on this specific controversy rather than general spending critique.",
+   "detail_ar": "أثار منشور على ريديت حول توزيع مجلس الشعب سيارات «توسان» على أعضائه الـ210 جدلاً مطولاً، إذ احتسب منتقدون القيمة الجمركية الإجمالية (نحو 6.3 مليون دولار) كأموال «مسروقة» من المواطنين، بينما جادل آخرون بأن بدل التنقل والسيارات امتيازات برلمانية معتادة في دول كثيرة، مقارنين ذلك بممارسات مجلس النواب الأميركي. وبقي الخلاف دون حسم ضمن النقاش، ما يعكس إحباطاً أعمق من تبذير حكومي متصوَّر في ظل الضائقة الاقتصادية. وترتبط هذه القضية برواية الجدل حول الحوكمة والفساد من التحديث السابق، لكنها تتمحور الآن حول هذا الجدل المحدد بدل النقد العام للإنفاق.",
+   "public_reaction": "Public reaction was divided between sharp criticism of parliamentary spending as wasteful amid poverty, and defenses framing the vehicles as standard institutional benefits.",
+   "public_reaction_ar": "انقسم التفاعل الشعبي بين انتقاد حاد للإنفاق البرلماني بوصفه تبذيراً في ظل الفقر، ودفاع يصف السيارات بأنها امتيازات مؤسسية معتادة.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.4,
+   "outlet_tone": {},
+   "public_tone": {
+    "ar": -0.3,
+    "en": -0.3
    },
-   "public_tone": {},
    "emotions": [
-    "neutral"
+    "anger",
+    "cynicism",
+    "defensiveness"
    ],
    "emotions_ar": [
-    "محايد"
+    "غضب",
+    "تهكم",
+    "دفاعية"
    ],
    "framings": [
-    "official/independent framing as sector regulation and modernization"
+    "Waste/misuse framing",
+    "Standard-practice defense framing"
    ],
    "framings_ar": [
-    "تأطير رسمي ومستقل كتنظيم وتحديث للقطاع"
+    "تأطير التبذير وسوء الاستخدام",
+    "تأطير الدفاع بالممارسة المعتادة"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 2,
-   "public_volume": 0,
-   "share": 0.003,
-   "engagement": 219,
+   "volume": 8,
+   "public_volume": 8,
+   "share": 0.01,
+   "engagement": 0,
    "platforms": {
-    "telegram": 1,
-    "news": 1
+    "reddit": 8
    },
    "languages": {
-    "ar": 2
+    "ar": 3,
+    "en": 5
    },
-   "public_languages": {},
-   "kinds": {
-    "independent": 2
+   "public_languages": {
+    "ar": 3,
+    "en": 5
    },
+   "kinds": {},
    "sources": [
-    "Al-Watan - Damascus daily newspaper",
-    "Syria TV - opposition-origin"
+    "Reddit r/syria comments"
    ],
-   "examples": [
-    {
-     "source": "Al-Watan - Damascus daily newspaper",
-     "url": "https://t.me/alwatan_sy/205740",
-     "platform": "telegram"
-    },
-    {
-     "source": "Syria TV - opposition-origin",
-     "url": "https://www.syria.tv/%D8%A7%D9%84%D8%B5%D9%86%D8%AF%D9%88%D9%82-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AF%D9%8A-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%85%D8%B3%D8%AA%D9%85%D8%B1-%D9%84%D8%A7%D8%B3%D8%AA%D9%83%D9%85%D8%A7%D9%84-%D8%A5%D8%AC%D8%B1%D8%A7%D8%A1%D8%A7%D8%AA-%D8%A5%D8%B7%D9%84%D8%A7%D9%82-%D8%B4%D8%B1%D9%83%D8%A9-%D8%B2%D9%8A%D9%86-%D9%81%D9%8A-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7",
-     "platform": "news"
-    }
-   ],
-   "first_seen": "2026-11-14T16:30:21Z",
+   "examples": [],
+   "first_seen": "2026-11-15T07:31:43Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -1152,15 +1102,15 @@
    "name": "SANA - state news agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 18,
-   "recent": 18
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "SANA - state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 10,
-   "recent": 10
+   "fetched": 16,
+   "recent": 16
   },
   {
    "name": "Syrian Presidency - official",
@@ -1173,8 +1123,8 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 13
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -1188,35 +1138,35 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 8
+   "recent": 12
   },
   {
    "name": "Enab Baladi - independent (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 4
   },
   {
    "name": "Halab Today TV - opposition-origin, Aleppo",
    "platform": "telegram",
    "ok": true,
-   "fetched": 11,
-   "recent": 11
+   "fetched": 13,
+   "recent": 13
   },
   {
    "name": "Shaam News Network - opposition-origin",
    "platform": "telegram",
    "ok": true,
-   "fetched": 8,
-   "recent": 8
+   "fetched": 17,
+   "recent": 17
   },
   {
    "name": "Levant24 - Syria news (EN)",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 16
+   "recent": 14
   },
   {
    "name": "Syria TV - opposition-origin broadcaster",
@@ -1229,8 +1179,8 @@
    "name": "Al-Watan - Damascus daily newspaper",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 13
+   "fetched": 12,
+   "recent": 12
   },
   {
    "name": "Syria Plus (SY+) - news platform",
@@ -1251,27 +1201,27 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 3
+   "recent": 2
   },
   {
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 9,
-   "recent": 9
+   "fetched": 16,
+   "recent": 16
   },
   {
    "name": "North Press Agency - Qamishli-based (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 13
+   "fetched": 14,
+   "recent": 14
   },
   {
    "name": "North Press Agency (EN)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
+   "fetched": 13,
    "recent": 5
   },
   {
@@ -1285,15 +1235,15 @@
    "name": "Rudaw Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 17,
-   "recent": 2
+   "fetched": 11,
+   "recent": 1
   },
   {
    "name": "Kurdistan24 Arabic - Kurdistan Region outlet",
    "platform": "telegram",
    "ok": true,
-   "fetched": 15,
-   "recent": 2
+   "fetched": 20,
+   "recent": 0
   },
   {
    "name": "Kurdistan24 English",
@@ -1314,7 +1264,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 1
   },
   {
    "name": "Asharq News - Saudi-owned",
@@ -1334,7 +1284,7 @@
    "name": "Anadolu Agency - Turkish state news agency (AR)",
    "platform": "telegram",
    "ok": true,
-   "fetched": 20,
+   "fetched": 17,
    "recent": 1
   },
   {
@@ -1342,14 +1292,14 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "Al-Hadath - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "France 24 Arabic - French public broadcaster",
@@ -1362,8 +1312,8 @@
    "name": "Arabi21 - London-based",
    "platform": "telegram",
    "ok": true,
-   "fetched": 16,
-   "recent": 1
+   "fetched": 13,
+   "recent": 0
   },
   {
    "name": "Suwayda 24 - local, Druze south",
@@ -1390,21 +1340,21 @@
    "name": "Daraa 24 - local, Daraa",
    "platform": "telegram",
    "ok": true,
-   "fetched": 13,
-   "recent": 12
+   "fetched": 15,
+   "recent": 10
   },
   {
    "name": "Sawt al-Asima - local, Damascus",
    "platform": "telegram",
    "ok": true,
    "fetched": 15,
-   "recent": 15
+   "recent": 14
   },
   {
    "name": "Sawt Dimashq - local, Damascus",
    "platform": "telegram",
    "ok": true,
-   "fetched": 14,
+   "fetched": 15,
    "recent": 1
   },
   {
@@ -1412,14 +1362,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 49
+   "recent": 45
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 29
+   "recent": 30
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1433,20 +1383,20 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 42
+   "recent": 43
   },
   {
    "name": "Sky News Arabia - UAE-based",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 1
+   "recent": 0
   },
   {
    "name": "BBC Arabic",
    "platform": "news",
    "ok": true,
-   "fetched": 23,
+   "fetched": 24,
    "recent": 0
   },
   {
@@ -1460,8 +1410,8 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 508,
-   "recent": 508
+   "fetched": 735,
+   "recent": 735
   },
   {
    "name": "Bluesky posts",
@@ -1475,14 +1425,14 @@
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 22
+   "recent": 24
   },
   {
    "name": "Reddit r/Kurdistan comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 15,
-   "recent": 0
+   "recent": 2
   },
   {
    "name": "X posts",
@@ -1638,39 +1588,26 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.5456,
+ "cost_usd": 0.5931,
  "watch": [
   {
    "type": "falling",
    "id": "fuel-price-cut",
    "key": "2026-11-14-fuel-price-cut",
    "title": "Diesel Price Cut to 150 Lira Meets Public Skepticism",
-   "title_ar": "خفض سعر المازوت إلى ١٥٠ ليرة يقابله شك شعبي",
-   "share": 0.207,
+   "title_ar": "خفض سعر المازوت إلى ١٥٠ ليرة يقابله تشكيك شعبي",
+   "share": 0.112,
    "from": 0.05,
-   "to": -0.4,
-   "hours": 18
+   "to": -0.5,
+   "hours": 23
   },
   {
-   "type": "gap",
-   "id": "governance-corruption-debate",
-   "key": "2026-11-15-governance-corruption-debate",
-   "title": "Debate Over Government Spending Priorities and Perceived Corruption",
-   "title_ar": "جدل حول أولويات الإنفاق الحكومي واتهامات بالفساد",
-   "share": 0.062,
-   "public": -0.4,
-   "outlet": 0.1
-  },
-  {
-   "type": "rising",
-   "id": "quneitra-jabata-raid",
-   "key": "2026-11-14-quneitra-jabata-raid",
-   "title": "Israeli Forces Continue Incursions and Raids Across Quneitra and Daraa",
-   "title_ar": "استمرار التوغلات والمداهمات الإسرائيلية في القنيطرة ودرعا",
-   "share": 0.069,
-   "from": 0.019,
-   "to": 0.069,
-   "updates": 3
+   "type": "new",
+   "id": "imam-sermon-controversy",
+   "key": "2026-11-15-imam-sermon-controversy",
+   "title": "Imam Removed After Sermon on Public Hardship Sparks Nationwide Debate",
+   "title_ar": "إقالة إمام بعد خطبة عن معاناة الناس تثير جدلاً واسعاً",
+   "share": 0.15
   }
  ]
 }
