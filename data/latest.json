@@ -3,61 +3,263 @@
  "site_title": "Syria Narrative Tracker",
  "site_title_ar": "متتبّع السرديات السورية",
  "default_language": "en",
- "generated_at": "2026-11-16T21:24:13Z",
- "checked_at": "2026-11-16T21:24:13Z",
+ "generated_at": "2026-11-17T02:24:42Z",
+ "checked_at": "2026-11-17T02:24:42Z",
  "window_hours": 24,
  "history_hours": 336,
  "headline_days": 7,
  "model": "claude-sonnet-5",
  "stats": {
-  "collected": 1894,
-  "relevant": 1119,
-  "posts_analyzed": 814,
-  "public_posts": 574,
+  "collected": 2016,
+  "relevant": 1194,
+  "posts_analyzed": 817,
+  "public_posts": 577,
   "outlet_posts": 240,
   "reactions_posts": 0,
   "unique_posts": 800,
   "sources_ok": 48,
   "sources_total": 49,
   "platforms": {
-   "news": 48,
-   "telegram": 192,
-   "youtube": 349,
-   "reddit": 22,
-   "bluesky": 189
+   "news": 46,
+   "telegram": 194,
+   "bluesky": 196,
+   "youtube": 338,
+   "reddit": 26
   },
   "languages": {
-   "ar": 573,
-   "en": 215,
-   "ku": 12
+   "en": 221,
+   "ar": 567,
+   "ku": 11,
+   "other": 1
   }
  },
  "overall": {
-  "sentiment": 0.2,
-  "mood": "Diplomatic",
-  "mood_ar": "دبلوماسي",
-  "public_sentiment": -0.15,
+  "sentiment": -0.05,
+  "mood": "Watchful",
+  "mood_ar": "متحفظ",
+  "public_sentiment": -0.2,
   "public_mood": "Divided",
   "public_mood_ar": "منقسم",
-  "brief": "Outlets focused heavily on EU moves to upgrade ties with Syria, UN Security Council statements on Israeli actions, and economic/diplomatic news, while ordinary people reacted most strongly to the viral visit of former adult-film actress Amarna Miller to the Umayyad Mosque and to clashes at Rojava University over Kurdish language rights. Public sentiment was split: anger and mockery over the Miller visit, frustration over the currency and cost of living, and sharp division along Kurdish/Arab lines over the university dispute. Diplomatic and reconstruction stories drew calmer, more measured public reaction than social and identity-charged stories.",
-  "brief_ar": "ركزت وسائل الإعلام بشكل كبير على تحركات الاتحاد الأوروبي لرفع مستوى العلاقات مع سوريا، وبيانات مجلس الأمن حول الاعتداءات الإسرائيلية، إضافة إلى أخبار اقتصادية ودبلوماسية، في حين تفاعل الناس العاديون بقوة أكبر مع فيديو منتشر لزيارة ممثلة أفلام إباحية سابقة إلى الجامع الأموي ومع احتجاجات جامعة روج آفا حول حقوق اللغة الكردية. انقسم الرأي العام: غضب وسخرية من زيارة الممثلة، وإحباط من انهيار الليرة وغلاء المعيشة، وانقسام حاد بين الكرد والعرب حول قضية الجامعة. أما القصص الدبلوماسية وإعادة الإعمار فقد لقيت تفاعلاً أكثر هدوءاً من القصص الاجتماعية والهوياتية المشحونة.",
-  "rest": "The unassigned posts are mostly scattered personal comments and small talk: religious greetings, prayers, jokes about unrelated videos, padel and shopping questions, giveaways, random international news shares (Iran-Hormuz tankers, Yemen, Turkey politics) and local daily-life remarks not tied to a specific Syria narrative.",
-  "rest_ar": "تتكون المنشورات غير المصنفة في معظمها من تعليقات شخصية متفرقة وأحاديث عامة: تحيات دينية ودعوات، نكات على فيديوهات غير متعلقة، أسئلة عن لعبة البادل والتسوق، مسابقات هدايا، أخبار دولية عشوائية (ناقلات هرمز، اليمن، السياسة التركية) وملاحظات يومية محلية لا ترتبط برواية سورية محددة.",
-  "rest_share": 0.476
+  "brief": "Coverage is dominated by Israeli incursions and shooting in Daraa's Yarmouk Basin villages, which outlets report heavily and officials and UN diplomats condemn, while ordinary Syrians express weary anger and skepticism about any Israeli-Syrian deal. A controversy over a former porn actress's hijab-clad visit to the Umayyad Mosque with a government escort dominates public comment sections with strong religious and political backlash. The EU's move to revive its association agreement with Syria draws cautious optimism from outlets but indifference or cynicism from ordinary commenters focused on daily hardship, the falling lira, and Rojava University protests over Kurdish-language education.",
+  "brief_ar": "تتصدر التغطية عمليات التوغل وإطلاق النار الإسرائيلية في قرى حوض اليرموك بريف درعا، وهو ما توثقه وسائل الإعلام بكثافة وتدينه الحكومة ومندوبون في الأمم المتحدة، بينما يعبّر السوريون العاديون عن غضب متعب وشكوك إزاء أي اتفاق مع إسرائيل. وتهيمن قضية زيارة ممثلة أفلام إباحية سابقة بالحجاب للجامع الأموي برفقة وفد حكومي على التعليقات العامة مع ردود فعل دينية وسياسية غاضبة. كما يحظى تحرك الاتحاد الأوروبي لإحياء اتفاقية الشراكة بتفاؤل حذر من وسائل الإعلام لكن بلا مبالاة أو سخرية من المعلقين المنشغلين بغلاء المعيشة وتراجع الليرة واحتجاجات جامعة روج آفا حول التعليم باللغة الكردية.",
+  "rest": "The unassigned posts are mostly scattered: religious greetings and prayers, football and sports news, general international news unrelated to Syria (Yemen, Libya, Ukraine, Hormuz), personal commentary, and miscellaneous local service announcements.",
+  "rest_ar": "تتوزع المنشورات غير المصنفة بين تهانٍ وأدعية دينية، وأخبار رياضية وكروية، وأخبار دولية عامة لا علاقة لها مباشرة بسوريا (اليمن وليبيا وأوكرانيا ومضيق هرمز)، وتعليقات شخصية متفرقة، وإعلانات خدمية محلية متنوعة.",
+  "rest_share": 0.424
  },
  "narratives": [
+  {
+   "id": "israel-south-incursions",
+   "key": "2026-10-31-israel-south-incursions",
+   "theme": "israel-south",
+   "title": "Israeli Incursions and Shooting in Daraa's Yarmouk Basin Villages",
+   "title_ar": "توغلات إسرائيلية وإطلاق نار في قرى حوض اليرموك بدرعا",
+   "summary": "Israeli forces repeatedly raided and opened fire in Kouya, Maariyeh, Abidin and al-Rafeed villages in western Daraa and southern Quneitra countryside on 16-17 November, searching homes, beating an elderly man, and prompting displacement. State and independent outlets reported the events almost in real time, while Syria's UN envoy Ibrahim Olabi told the Security Council Syrians are 'tired' of the attacks.",
+   "summary_ar": "نفذت القوات الإسرائيلية توغلات متكررة وأطلقت النار في قرى كويا ومعرية وعابدين والرفيد بريف درعا الغربي وجنوب القنيطرة يومي ١٦ و١٧ تشرين الثاني، مع تفتيش منازل والاعتداء بالضرب على رجل مسن ونزوح بعض الأهالي. غطت وسائل الإعلام الرسمية والمستقلة الأحداث بشكل شبه لحظي، فيما قال مندوب سوريا لدى الأمم المتحدة إبراهيم علبي أمام مجلس الأمن إن السوريين «سئموا» هذه الاعتداءات.",
+   "detail": "Over several hours on 16-17 November, Israeli troops entered Kouya, Maariyeh and Abidin villages with armored columns of up to 23 vehicles, conducting house searches, firing in the air and with heavy machine guns, and damaging a civilian vehicle while beating its driver. A fire broke out in a house hit by gunfire; some families fled toward neighboring villages. SANA, Syria TV, Al-Ikhbariya and local outlets like Daraa 24 covered it continuously, with Al Jazeera, Al Arabiya and Al Mayadeen also reporting troop movements near al-Rafeed in Quneitra. At the UN Security Council, Syria's envoy Ibrahim Olabi said Israeli 'aggressive policies' justified by 'flimsy pretexts' have exhausted Syrians, while Denmark, Russia and China called for Israeli withdrawal; the US struck a more measured tone, backing Syria-Israel dialogue. An Israeli paper (Haaretz) cited by regional outlets questioned the military rationale for continued occupation.",
+   "detail_ar": "على مدى ساعات يومي ١٦ و١٧ تشرين الثاني، دخلت القوات الإسرائيلية قرى كويا ومعرية وعابدين برتل مدرع ضم حتى ٢٣ آلية، ونفذت تفتيشاً للمنازل وأطلقت النار في الهواء وبالرشاشات الثقيلة، وحطمت مركبة مدنية واعتدت بالضرب على سائقها. واندلع حريق في منزل أصيب بإطلاق نار، ونزح بعض الأهالي نحو القرى المجاورة. وتابعت سانا وتلفزيون سوريا والإخبارية ودرعا24 الأحداث بشكل مستمر، فيما نقلت الجزيرة والعربية والميادين أيضاً تحركات قرب الرفيد بالقنيطرة. وفي مجلس الأمن، قال المندوب السوري إبراهيم علبي إن السياسات الإسرائيلية «العدوانية» المبررة بـ«ذرائع واهية» أنهكت السوريين، بينما طالبت الدنمارك وروسيا والصين بالانسحاب الإسرائيلي، في حين دعت الولايات المتحدة بلهجة أكثر اعتدالاً إلى حوار سوري إسرائيلي. ونقلت وسائل إعلام إقليمية عن صحيفة هآرتس تشكيكاً بجدوى استمرار الاحتلال عسكرياً.",
+   "public_reaction": "Public posts, mostly in English and Arabic on social media, show anger and weariness toward Israel's raids, with some skepticism about the government's ability to respond, and scattered debate over whether a peace deal is viable.",
+   "public_reaction_ar": "أظهرت المنشورات العامة، غالباً بالإنكليزية والعربية، غضباً وتعباً من الغارات الإسرائيلية، مع تشكيك لدى البعض بقدرة الحكومة على الرد، ونقاش متفرق حول جدوى أي اتفاق سلام.",
+   "sentiment": -0.5,
+   "public_sentiment": -0.4,
+   "outlet_tone": {
+    "official": -0.5,
+    "independent": -0.5,
+    "kurdish": -0.3,
+    "regional": -0.3,
+    "aggregator": -0.2
+   },
+   "public_tone": {
+    "ar": -0.4,
+    "en": -0.3
+   },
+   "emotions": [
+    "anger",
+    "fear",
+    "resentment"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "خوف",
+    "استياء"
+   ],
+   "framings": [
+    "State media frames it as unprovoked occupation violence",
+    "Independent outlets stress civilian harm and displacement",
+    "UN diplomats split between condemning Israel and urging dialogue"
+   ],
+   "framings_ar": [
+    "الإعلام الرسمي يصوره عنفاً احتلالياً غير مبرر",
+    "وسائل الإعلام المستقلة تركز على الضرر المدني والنزوح",
+    "انقسام الدبلوماسيين في الأمم المتحدة بين إدانة إسرائيل والدعوة للحوار"
+   ],
+   "flags": [
+    "Multiple outlets republish near-identical wire language about troop numbers"
+   ],
+   "flags_ar": [
+    "نشرت عدة وسائل إعلام صياغات شبه متطابقة حول أعداد الآليات"
+   ],
+   "volume": 163,
+   "public_volume": 84,
+   "share": 0.2,
+   "engagement": 98937,
+   "platforms": {
+    "news": 16,
+    "telegram": 63,
+    "bluesky": 28,
+    "youtube": 55
+   },
+   "languages": {
+    "en": 37,
+    "ar": 125
+   },
+   "public_languages": {
+    "en": 29,
+    "ar": 54
+   },
+   "kinds": {
+    "aggregator": 8,
+    "official": 16,
+    "independent": 45,
+    "regional": 6,
+    "kurdish": 4
+   },
+   "sources": [
+    "YouTube comments",
+    "Bluesky posts",
+    "Al-Ikhbariya Syria - state TV",
+    "Daraa 24 - local, Daraa",
+    "Syria TV - opposition-origin broadcaster",
+    "Syria TV - opposition-origin"
+   ],
+   "examples": [
+    {
+     "source": "Al Mayadeen - Beirut-based",
+     "url": "https://t.me/almayadeen/406851",
+     "platform": "telegram"
+    },
+    {
+     "source": "Al Jazeera - Qatar-based",
+     "url": "https://t.me/AjaNews/521759",
+     "platform": "telegram"
+    },
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142979",
+     "platform": "telegram"
+    }
+   ],
+   "first_seen": "2026-10-31T09:50:14Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
+  {
+   "id": "amarna-miller-mosque-visit",
+   "key": "2026-11-16-amarna-miller-mosque-visit",
+   "theme": "society",
+   "title": "Former Porn Actress's Visit to Umayyad Mosque Sparks Public Controversy",
+   "title_ar": "زيارة ممثلة أفلام إباحية سابقة للجامع الأموي تثير جدلاً واسعاً",
+   "summary": "Spanish former adult-film actress Amarna Miller visited the Umayyad Mosque in Damascus and Palmyra wearing a hijab, accompanied by Syrian officials including culture ministry representatives, in mid-November. The visit, widely shared on social media and YouTube, triggered intense public backlash demanding the culture minister's resignation and questioning the vetting of foreign visitors.",
+   "summary_ar": "زارت الممثلة الإسبانية السابقة في الأفلام الإباحية أمارنا ميلر الجامع الأموي بدمشق وتدمر وهي ترتدي الحجاب، برفقة مسؤولين سوريين من بينهم ممثلون عن وزارة الثقافة، في منتصف تشرين الثاني. أثارت الزيارة، التي انتشرت على نطاق واسع عبر وسائل التواصل ويوتيوب، ردود فعل غاضبة طالبت باستقالة وزير الثقافة وشككت في آلية التحقق من خلفيات الزوار الأجانب.",
+   "detail": "News aggregators and YouTube repost channels circulated footage of Miller, identified by commenters as a former adult-film performer who has since left the industry, touring the Umayyad Mosque, Palmyra and Bosra with an official escort. The story generated thousands of comments, overwhelmingly critical, with many demanding the resignation of the culture minister for allowing the visit and some invoking religious language ('God's refuge') and mockery of the accompanying officials. A minority defended her right to religious repentance or questioned why her past mattered if she now dresses modestly. Some commenters linked the episode to broader anxieties about governance competence and cultural policy under the new administration, while others framed it as evidence of hypocrisy or political theater.",
+   "detail_ar": "تداولت مواقع تجميع الأخبار وقنوات يوتيوب مقاطع فيديو لأمارنا ميلر، التي وصفها المعلقون بأنها ممثلة سابقة في الأفلام الإباحية اعتزلت المهنة، وهي تزور الجامع الأموي وتدمر وبصرى الشام برفقة مسؤولين. أثار الخبر آلاف التعليقات الغاضبة في غالبيتها، وطالب كثيرون باستقالة وزير الثقافة لسماحه بالزيارة، واستخدم البعض عبارات دينية («حسبنا الله ونعم الوكيل») وسخرية من المسؤولين المرافقين. في المقابل دافعت أقلية عن حقها في التوبة أو تساءلت عن أهمية ماضيها طالما ترتدي اللباس المحتشم الآن. وربط بعض المعلقين الحادثة بمخاوف أوسع إزاء كفاءة الحكم والسياسة الثقافية في ظل الإدارة الجديدة، فيما اعتبرها آخرون دليلاً على نفاق أو استعراض سياسي.",
+   "public_reaction": "Reaction was overwhelmingly negative and emotionally charged, mixing religious invocations, calls for the culture minister's removal, mockery of officials photographed with her, and a smaller current defending tolerance and repentance.",
+   "public_reaction_ar": "كانت ردود الفعل سلبية وشديدة الانفعال في معظمها، ومزجت بين الاستغاثة الدينية والمطالبة بإقالة وزير الثقافة والسخرية من المسؤولين الذين صوروا برفقتها، مع تيار أصغر يدافع عن التسامح وحق التوبة.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.4,
+   "outlet_tone": {
+    "aggregator": -0.1
+   },
+   "public_tone": {
+    "ar": -0.4,
+    "en": -0.2
+   },
+   "emotions": [
+    "outrage",
+    "mockery",
+    "shame",
+    "religious anxiety"
+   ],
+   "emotions_ar": [
+    "غضب",
+    "سخرية",
+    "خجل",
+    "قلق ديني"
+   ],
+   "framings": [
+    "Religious commentators frame it as moral decline",
+    "Critics frame it as governance incompetence/hypocrisy",
+    "A minority frames it as tolerance toward repentance"
+   ],
+   "framings_ar": [
+    "معلقون دينيون يرونه انحداراً أخلاقياً",
+    "منتقدون يرونه دليل عجز حكومي أو نفاق",
+    "أقلية تؤطره كتسامح مع التوبة"
+   ],
+   "flags": [
+    "Repeated near-identical phrases ('حسبنا الله ونعم الوكيل') suggest some copy-paste religious reaction, though common expression"
+   ],
+   "flags_ar": [
+    "تكرار عبارات شبه متطابقة («حسبنا الله ونعم الوكيل») قد يشير لنسخ جزئي رغم شيوع التعبير دينياً"
+   ],
+   "volume": 103,
+   "public_volume": 102,
+   "share": 0.126,
+   "engagement": 671,
+   "platforms": {
+    "news": 1,
+    "youtube": 98,
+    "bluesky": 2
+   },
+   "languages": {
+    "ar": 99,
+    "en": 2
+   },
+   "public_languages": {
+    "ar": 98,
+    "en": 2
+   },
+   "kinds": {
+    "aggregator": 1
+   },
+   "sources": [
+    "YouTube comments",
+    "Bluesky posts",
+    "Google News - Syria (AR)"
+   ],
+   "examples": [
+    {
+     "source": "Google News - Syria (AR)",
+     "url": "https://news.google.com/rss/articles/CBMiigNBVV95cUxNY3A3Yy1iT1VfSHBWWFI1U2ZRbzhMUGRGcHN6MUd1b1hnb3VLbjN3SURCSGRUczgyLURlU2tvbEpCWmdsTjhmX1FuT2J1ZEsxdHF2N1VEUmQzTFd4VktDMnF6N0xjcmtOOGUtcnNQNmQzeklvdkV3R0d5cWxnaWNQMWZwUEVwdEJqZEdvVlpfbnZYcVAwTVFxNG5vQmRiRlZaOHNiMEk3RngySm5ZbWJDc1RmdXZqcHBRaWUxeldjYXY4WnV1UVZsWjRCRkxXVkpEX1otWmtrOHN6YkRjc1VCZ0sxbnBYRmxzbnhzMXMxM0hKUUpXNHVrZUxhSGtnX2RlMGVaZl9XSkhDMmJILVRqcFZFSVdpUDVwYlhEUXBjN1I1NlZPLUlWNXM3UDBxZkYxSDJRNU1qT0l2RGV3U0RKYjFLb3RvM0ozR0xtUk5fYzNuWkZieFNLNmJidHlDR085bUdmQXJsdmt1ai1rMzdwYTNuV2piSTR4eHpEMWdsRGZKT0c2RXJ2dE1n?oc=5",
+     "platform": "news"
+    },
+    {
+     "source": "YouTube comments",
+     "url": "https://www.youtube.com/watch?v=8FMWfyDJSYw",
+     "platform": "youtube"
+    }
+   ],
+   "first_seen": "2026-11-16T16:24:10Z",
+   "signals": {
+    "level": "none",
+    "score": 0,
+    "items": []
+   }
+  },
   {
    "id": "rojava-university-protest",
    "key": "2026-11-16-rojava-university-protest",
    "theme": "northeast-kurdish",
    "title": "Protests at Rojava University Over Kurdish Language and Academic Independence",
-   "title_ar": "احتجاجات في جامعة روج آفا للمطالبة باللغة الكردية والاستقلال الأكاديمي",
-   "summary": "Students at Rojava University in Qamishli blocked a Syrian government delegation's vehicle from leaving campus on 16 November, demanding Kurdish-language education and academic independence as the university faces forced integration into the unified Syrian higher-education system. Syrian security forces reportedly used tear gas; the university administration condemned the raid and 'forced integration,' while the Education Ministry's integration committee said unlisted colleges are not recognized.",
-   "summary_ar": "منع طلاب في جامعة روج آفا بالقامشلي، يوم ١٦ تشرين الثاني، مركبة وفد حكومي سوري من مغادرة الحرم الجامعي، مطالبين بالتعليم باللغة الكردية والاستقلال الأكاديمي، في ظل اندماج الجامعة القسري ضمن نظام التعليم العالي الموحد. واستخدمت قوى الأمن الداخلي الغاز المسيل للدموع بحسب تقارير، بينما أدانت إدارة الجامعة «اقتحام» الحرم و«الدمج القسري»، في حين قالت لجنة الدمج التابعة لوزارة التعليم العالي إن الكليات غير المدرجة في مفاضلتها غير معترف بها.",
-   "detail": "The dispute centers on whether Rojava University, run by the north-east's Autonomous Administration, can retain Kurdish-language instruction and academic autonomy as Damascus works to integrate north-east institutions. Students blocked a government delegation's departure, and Syrian security forces used tear gas, according to Kurdish outlets (ANHA, North Press) and Turkish-language and English posts citing the same events. The university's administration and Kobani students issued statements condemning the raid and the 'forced integration,' while a deputy higher-education minister said non-ministry-approved admissions are not recognized, and an integration committee source said recognized colleges will resume alongside other Syrian universities while others remain under negotiation. Arabic-language public comments were sharply divided: some mocked the existence of 'Rojava' as a name, others expressed solidarity with Kurdish rights, while Kurdish-language and English-language posts overwhelmingly framed this as repression of Kurdish identity and a betrayal of integration promises.",
-   "detail_ar": "يتمحور الخلاف حول قدرة جامعة روج آفا، التي تديرها الإدارة الذاتية في شمال شرق سوريا، على الحفاظ على التعليم باللغة الكردية والاستقلال الأكاديمي في ظل سعي دمشق لدمج مؤسسات المنطقة. منع الطلاب مغادرة وفد حكومي، واستخدمت قوى الأمن الداخلي الغاز المسيل للدموع بحسب وسائل إعلام كردية (هاوار، نورث برس) ومنشورات بالتركية والإنجليزية تناولت الأحداث ذاتها. أصدرت إدارة الجامعة وطلاب كوباني بيانات تدين الاقتحام و«الدمج القسري»، فيما قال معاون وزير التعليم العالي إن القبول خارج مفاضلة الوزارة غير معترف به، وأوضح مصدر في لجنة الدمج أن الكليات المعترف بها ستستأنف دوامها مع بقية الجامعات السورية فيما يبقى مصير كليات أخرى قيد النقاش. انقسمت التعليقات العربية بحدة: سخر بعضها من وجود اسم «روج آفا» أصلاً، وعبّر آخرون عن تضامن مع الحقوق الكردية، في حين أطّرت المنشورات بالكردية والإنجليزية الحدث غالباً باعتباره قمعاً للهوية الكردية وخيانة لوعود الاندماج.",
-   "public_reaction": "Arabic-speaking commenters were split between mockery of Kurdish institutional names and claims, and sympathy framed around national unity; Kurdish-language commenters expressed anger and solidarity, some calling for renewed protest and warning of broken integration promises.",
-   "public_reaction_ar": "انقسم المعلقون الناطقون بالعربية بين السخرية من الأسماء والمطالب الكردية المؤسسية، والتعاطف المؤطَّر بخطاب الوحدة الوطنية؛ بينما عبّر المعلقون بالكردية عن غضب وتضامن، ودعا بعضهم لتجديد الاحتجاج محذرين من خرق وعود الاندماج.",
+   "title_ar": "احتجاجات في جامعة روج آفا للمطالبة بالتعليم باللغة الكردية والاستقلالية الأكاديمية",
+   "summary": "Students at Rojava University in Qamishli blocked a Syrian Ministry of Education delegation's vehicle on 16 November, demanding Kurdish-language education and academic independence after Damascus moved to affiliate some colleges with Euphrates University. Security forces used tear gas; the ministry says unlisted colleges won't be recognized, while the university's administration and Kobani students condemned the raid.",
+   "summary_ar": "حاصر طلاب جامعة روج آفا بالقامشلي يوم ١٦ تشرين الثاني مركبة وفد من وزارة التربية والتعليم، مطالبين بالتعليم باللغة الكردية والاستقلالية الأكاديمية بعد خطوة دمشق لإلحاق بعض الكليات بجامعة الفرات. استخدمت قوى الأمن الغاز المسيل للدموع، فيما تقول الوزارة إن الكليات غير المدرجة في مفاضلتها لن تُعترف بها، وأدانت إدارة الجامعة وطلاب كوباني عملية الاقتحام.",
+   "detail": "The integration committee overseeing the merger of Autonomous Administration institutions into the Syrian state said Rojava University's own admission process is not recognized by the higher education ministry, and only colleges listed in the ministry's unified system are official; students in unlisted colleges remain outside the formal system with no mechanism yet to resolve their status. On 16 November, Kurdish-language and dormitory students physically prevented a government delegation from leaving campus, protesting proposed subordination to Euphrates University and demanding constitutional recognition of Kurdish-language instruction; Syrian security forces responded with tear gas. Hawar News Agency (ANHA), North Press and Kurdish-language social media framed this as suppression of Kurdish academic and linguistic rights, with Kobani students voicing solidarity. Arabic-language YouTube commenters were split, some dismissing 'Rojava' as an invalid name and mocking Kurdish demands, others blaming government incompetence for failing to integrate the north-east peacefully.",
+   "detail_ar": "قالت لجنة الدمج المشرفة على إلحاق مؤسسات الإدارة الذاتية بالدولة السورية إن مفاضلة جامعة روج آفا الخاصة غير معترف بها من وزارة التعليم العالي، وأن الكليات الرسمية فقط هي المدرجة ضمن مفاضلة الوزارة الموحدة، بينما يبقى طلاب الكليات غير المدرجة خارج النظام الرسمي دون آلية لحل وضعهم حتى الآن. وفي ١٦ تشرين الثاني، منع طلاب يطالبون بالتعليم باللغة الكردية وفداً حكومياً من مغادرة الحرم الجامعي احتجاجاً على اقتراح إلحاق الجامعة بجامعة الفرات، مطالبين بالاعتراف الدستوري بالتعليم الكردي، فردت قوى الأمن الداخلي بالغاز المسيل للدموع. وأطرت وكالة أنباء هاوار ونورث برس ووسائل التواصل الناطقة بالكردية الحادثة باعتبارها قمعاً للحقوق الأكاديمية واللغوية الكردية، وأعرب طلاب كوباني عن تضامنهم. أما التعليقات العربية على يوتيوب فجاءت منقسمة، بين من يستخف باسم «روج آفا» ويسخر من المطالب الكردية، ومن يحمّل الحكومة مسؤولية الفشل في دمج شمال شرق سوريا سلمياً.",
+   "public_reaction": "Kurdish-language and north-east outlets and commenters frame this as repression of language rights and solidarity across Kurdish cities; Arabic-language YouTube commenters are sharply divided, with many mocking Kurdish demands as separatist and others blaming the government's heavy-handed approach.",
+   "public_reaction_ar": "تؤطر وسائل الإعلام والمعلقون الناطقون بالكردية وفي شمال شرق سوريا الحادثة كقمع لحقوق اللغة وتضامن بين المدن الكردية، بينما ينقسم معلقو يوتيوب الناطقون بالعربية بحدة، إذ يسخر كثيرون من المطالب الكردية باعتبارها انفصالية، فيما يحمّل آخرون الحكومة مسؤولية الأسلوب الأمني القاسي.",
    "sentiment": -0.2,
    "public_sentiment": -0.3,
    "outlet_tone": {
@@ -65,70 +267,64 @@
    },
    "public_tone": {
     "ar": -0.3,
-    "ku": -0.4,
-    "en": -0.2
+    "ku": -0.2,
+    "en": -0.1
    },
    "emotions": [
-    "anger",
     "frustration",
     "defiance",
-    "solidarity"
+    "division"
    ],
    "emotions_ar": [
-    "غضب",
     "إحباط",
     "تحدٍ",
-    "تضامن"
+    "انقسام"
    ],
    "framings": [
-    "Kurdish rights and identity suppressed",
-    "government: unified national education system necessary",
-    "Arabic public mockery of Kurdish institutional legitimacy",
-    "Kurdish framing as betrayal of integration promises"
+    "Kurdish-run outlets frame it as suppression of linguistic/academic rights",
+    "Government-aligned Arabic commenters frame Kurdish demands as separatism",
+    "Some commenters blame the transitional government's handling of integration"
    ],
    "framings_ar": [
-    "قمع الحقوق والهوية الكردية",
-    "الحكومة: ضرورة نظام تعليمي وطني موحد",
-    "سخرية عربية من شرعية المؤسسات الكردية",
-    "تأطير كردي باعتباره خيانة لوعود الاندماج"
+    "وسائل إعلام كردية تؤطره قمعاً للحقوق اللغوية والأكاديمية",
+    "معلقون عرب موالون يؤطرون المطالب الكردية كنزعة انفصالية",
+    "بعض المعلقين يحمّلون الحكومة الانتقالية مسؤولية سوء إدارة الدمج"
    ],
    "flags": [
-    "many near-duplicate Kurdish-language outlet posts republished across Hawar/ANHA and public accounts",
-    "sectarian-tinged mockery of Kurdish naming in some Arabic comments"
+    "Sectarian/ethnic framing in Arabic comments dismissing Kurdish identity claims",
+    "Coordinated-looking short Kurdish solidarity phrases across Hawar posts"
    ],
    "flags_ar": [
-    "تكرار شبه متطابق لمنشورات إعلامية كردية عبر هاوار/ANHA وحسابات عامة",
-    "سخرية ذات طابع طائفي من التسمية الكردية في بعض التعليقات العربية"
+    "تأطير عرقي في بعض التعليقات العربية ينكر مطالب الهوية الكردية",
+    "عبارات تضامن كردية قصيرة متشابهة عبر منشورات هاوار قد تعكس تنسيقاً"
    ],
-   "volume": 108,
-   "public_volume": 99,
-   "share": 0.133,
-   "engagement": 1056,
+   "volume": 95,
+   "public_volume": 87,
+   "share": 0.116,
+   "engagement": 911,
    "platforms": {
-    "telegram": 9,
-    "reddit": 1,
-    "youtube": 67,
-    "bluesky": 30
+    "telegram": 8,
+    "youtube": 59,
+    "bluesky": 25
    },
    "languages": {
-    "en": 53,
-    "ar": 45,
-    "ku": 9
+    "en": 41,
+    "ar": 43,
+    "ku": 8
    },
    "public_languages": {
-    "en": 51,
-    "ar": 38,
-    "ku": 9
+    "ar": 37,
+    "en": 39,
+    "ku": 8
    },
    "kinds": {
-    "kurdish": 9
+    "kurdish": 8
    },
    "sources": [
     "YouTube comments",
     "Bluesky posts",
     "North Press Agency - Qamishli-based (AR)",
-    "North Press Agency (EN)",
-    "Reddit r/Kurdistan comments"
+    "North Press Agency (EN)"
    ],
    "examples": [
     {
@@ -155,295 +351,101 @@
    }
   },
   {
-   "id": "amarna-miller-mosque-visit",
-   "key": "2026-11-16-amarna-miller-mosque-visit",
-   "theme": "society",
-   "title": "Former Porn Actress's Visit to Umayyad Mosque Sparks Public Controversy",
-   "title_ar": "زيارة ممثلة أفلام إباحية سابقة للجامع الأموي تثير جدلاً واسعاً",
-   "summary": "Spanish former adult-film actress Amarna Miller visited the Umayyad Mosque in Damascus and Palmyra accompanied by Syrian officials, including reportedly the culture minister, sparking a storm online. Syria TV described the content she made as 'films for adults', avoiding the explicit term, which many commenters mocked. Critics called for the minister's resignation and accused the government of embarrassing Syria's Islamic identity, while others defended her right to visit as a tourist or hoped she would repent.",
-   "summary_ar": "زارت الممثلة الإسبانية السابقة في الأفلام الإباحية أمارنا ميلر الجامع الأموي بدمشق وتدمر برفقة مسؤولين سوريين، من بينهم وزير الثقافة بحسب ما تردد، ما أثار عاصفة على الإنترنت. واستخدم تلفزيون سوريا عبارة «أفلام مخصصة للكبار» متجنباً المصطلح الصريح، وهو ما سخر منه كثير من المعلقين. وطالب منتقدون باستقالة الوزير واتهموا الحكومة بإحراج الهوية الإسلامية لسوريا، بينما دافع آخرون عن حقها في الزيارة كسائحة أو تمنوا لها التوبة.",
-   "detail": "Videos showing Amarna Miller, a well-known Spanish adult-film performer, wearing a hijab and touring the Umayyad Mosque, Palmyra and Bosra accompanied by Syrian officials went viral on YouTube and social media. Syria TV and other outlets used euphemisms like 'films for adults' rather than naming the industry explicitly, drawing ridicule for perceived dishonesty. The story generated thousands of comments, overwhelmingly critical: many called for the resignation of the culture minister for allowing officials to escort her, framed it as a sign of moral decline or government incompetence, and some tied it to broader sectarian commentary about the authorities' legitimacy. A minority defended her presence as acceptable tourism or hoped she would convert/repent, while a few accused commenters of hypocrisy for knowing her background. No official government statement addressing the backlash appeared in the posts.",
-   "detail_ar": "انتشرت مقاطع فيديو تُظهر أمارنا ميلر، الممثلة الإسبانية المعروفة في مجال الأفلام الإباحية، وهي ترتدي الحجاب وتزور الجامع الأموي وتدمر وبصرى برفقة مسؤولين سوريين، على يوتيوب ومواقع التواصل. استخدم تلفزيون سوريا ووسائل أخرى عبارات ملطفة مثل «أفلام مخصصة للكبار» بدل تسمية المجال الفعلي بشكل صريح، ما أثار سخرية واسعة بسبب ما اعتُبر تضليلاً. تفاعل الناس بالآلاف من التعليقات، الغالبية الساحقة منها منتقدة: طالب كثيرون باستقالة وزير الثقافة لسماحه لمسؤولين بمرافقتها، واعتبروا الحادثة علامة على التراجع الأخلاقي أو عدم الكفاءة الحكومية، وربط بعضهم الأمر بتعليقات طائفية أوسع حول شرعية السلطة. ودافعت أقلية عن حضورها باعتبارها سياحة مقبولة أو تمنت لها الهداية والتوبة، بينما اتهم البعض المعلقين بالنفاق لأنهم يعرفون خلفيتها أصلاً. لم يصدر أي بيان حكومي رسمي يتناول ردود الفعل ضمن المنشورات المتاحة.",
-   "public_reaction": "Overwhelming public anger and mockery directed at the culture minister and the euphemistic media coverage; smaller voices expressed religious hope for her repentance or defended her as a tourist, revealing a divide between moral outrage and tolerance.",
-   "public_reaction_ar": "غضب شعبي طاغٍ وسخرية موجهة نحو وزير الثقافة والتغطية الإعلامية الملطفة؛ في حين عبّرت أصوات أقل عن أمل ديني بتوبتها أو دافعت عنها كسائحة، ما كشف انقساماً بين الغضب الأخلاقي والتسامح.",
-   "sentiment": -0.2,
-   "public_sentiment": -0.6,
-   "outlet_tone": {},
-   "public_tone": {
-    "ar": -0.6,
-    "en": -0.3
-   },
-   "emotions": [
-    "anger",
-    "shame",
-    "mockery",
-    "disgust"
-   ],
-   "emotions_ar": [
-    "غضب",
-    "خجل",
-    "سخرية",
-    "اشمئزاز"
-   ],
-   "framings": [
-    "moral/religious betrayal by officials",
-    "media dishonesty via euphemism",
-    "defense of personal freedom/tourism",
-    "sectarian/political mockery of government legitimacy"
-   ],
-   "framings_ar": [
-    "خيانة أخلاقية/دينية من قبل المسؤولين",
-    "تضليل إعلامي عبر التلطيف اللغوي",
-    "دفاع عن الحرية الشخصية والسياحة",
-    "سخرية سياسية طائفية من شرعية الحكومة"
-   ],
-   "flags": [
-    "viral unverified claims about her identity and background circulating widely",
-    "mocking comments far exceeding supportive ones, suggesting organic viral backlash rather than coordination"
-   ],
-   "flags_ar": [
-    "ادعاءات لم يتحقق منها حول هويتها وخلفيتها منتشرة على نطاق واسع",
-    "تعليقات ساخرة تفوق بكثير التعليقات الداعمة، ما يشير إلى ردة فعل عفوية واسعة لا منسقة"
-   ],
-   "volume": 104,
-   "public_volume": 104,
-   "share": 0.128,
-   "engagement": 498,
-   "platforms": {
-    "youtube": 100,
-    "bluesky": 4
-   },
-   "languages": {
-    "en": 3,
-    "ar": 100,
-    "ku": 1
-   },
-   "public_languages": {
-    "en": 3,
-    "ar": 100,
-    "ku": 1
-   },
-   "kinds": {},
-   "sources": [
-    "YouTube comments",
-    "Bluesky posts"
-   ],
-   "examples": [
-    {
-     "source": "YouTube comments",
-     "url": "https://www.youtube.com/watch?v=8FMWfyDJSYw",
-     "platform": "youtube"
-    }
-   ],
-   "first_seen": "2026-11-16T16:24:10Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
-   "id": "israel-south-incursions",
-   "key": "2026-10-31-israel-south-incursions",
-   "theme": "israel-south",
-   "title": "Israeli Incursions and Strikes in Southern Syria, Lebanon Border",
-   "title_ar": "توغلات إسرائيلية وغارات في جنوب سوريا وعلى الحدود اللبنانية",
-   "summary": "Israeli forces repeatedly entered villages in Quneitra and Daraa countryside (al-Rafid, Maariyeh) on 16 November, while Israel struck a weapons shipment near the Lebanon-Syria border allegedly bound for Hezbollah. Syria's UN envoy Ibrahim Olabi told the Security Council Syrians are 'tired' of Israeli attacks, citing bombardment and land seizure. Multiple Security Council members, including China, Denmark and Russia, called for Israeli withdrawal.",
-   "summary_ar": "دخلت القوات الإسرائيلية مراراً قرى في ريف القنيطرة ودرعا (الرفيد، معرية) يوم ١٦ تشرين الثاني، بينما استهدفت إسرائيل شحنة أسلحة قرب الحدود اللبنانية السورية قالت إنها كانت مخصصة لحزب الله. وقال مندوب سوريا لدى الأمم المتحدة إبراهيم علبي في مجلس الأمن إن السوريين «سئموا» من الاعتداءات الإسرائيلية، مشيراً إلى القصف والاستيلاء على الأراضي. ودعت عدة دول في مجلس الأمن، منها الصين والدنمارك وروسيا، إلى الانسحاب الإسرائيلي.",
-   "detail": "Independent outlets (Daraa 24, Syria TV, Euphrates Post) reported near-continuous Israeli incursions into Quneitra and Daraa villages, with convoys of up to nine vehicles. Israel's military confirmed a strike on a weapons shipment near Janta on the Lebanon border meant for Hezbollah, also reported by Enab Baladi and Levant24. At the UN Security Council, Olabi detailed Israeli 'aggressive policies' including bombardment, enforced disappearances and land bulldozing, prompting Syrian protests, and said Syria has become a 'bridge' rather than a threat. France, the UK, Denmark, Russia, China and the US all offered statements; Denmark and Russia explicitly called for Israeli withdrawal, while the US urged dialogue and border security. An Israeli newspaper, Haaretz, reportedly quoted soldiers saying there is no real threat justifying continued occupation. Palestinians were also run over by a settler in the West Bank, reported alongside this narrative.",
-   "detail_ar": "نقلت وسائل إعلام مستقلة (درعا ٢٤، تلفزيون سوريا، فرات بوست) عن توغلات إسرائيلية شبه مستمرة في قرى القنيطرة ودرعا، برتل يصل إلى تسع آليات. وأكد الجيش الإسرائيلي استهداف شحنة أسلحة قرب جنتا على الحدود اللبنانية كانت مخصصة لحزب الله، كما نقلت عنب بلدي وLevant24. وفي مجلس الأمن، فصّل علبي «السياسات العدوانية» الإسرائيلية من قصف وتغييب قسري وتجريف أراضٍ، مما أثار احتجاجات في سوريا، وقال إن سوريا تحولت إلى «جسر» لا تهديد. وأدلت فرنسا وبريطانيا والدنمارك وروسيا والصين والولايات المتحدة ببيانات؛ ودعت الدنمارك وروسيا صراحة للانسحاب الإسرائيلي، بينما دعت واشنطن إلى الحوار وتعزيز أمن الحدود. ونقلت صحيفة هآرتس الإسرائيلية عن جنود قولهم إنه لا يوجد تهديد حقيقي يبرر استمرار الاحتلال. كما دُهس فلسطينيون من قبل مستوطن في الضفة الغربية ضمن الأخبار المرتبطة.",
-   "public_reaction": "Public commenters expressed weary anger and sarcasm about Israeli actions and perceived government inaction, with some mocking claims of Syrian sovereignty and others expressing hope the occupation will end.",
-   "public_reaction_ar": "عبّر المعلقون عن غضب متعب وسخرية من الأفعال الإسرائيلية والتقاعس الحكومي المتصوَّر، مع سخرية بعضهم من ادعاءات السيادة السورية وتعبير آخرين عن أمل بانتهاء الاحتلال.",
-   "sentiment": -0.4,
-   "public_sentiment": -0.3,
-   "outlet_tone": {
-    "official": -0.3,
-    "independent": -0.4,
-    "kurdish": -0.2,
-    "regional": -0.3,
-    "aggregator": -0.2
-   },
-   "public_tone": {
-    "ar": -0.3,
-    "en": -0.2
-   },
-   "emotions": [
-    "anger",
-    "frustration",
-    "defiance"
-   ],
-   "emotions_ar": [
-    "غضب",
-    "إحباط",
-    "تحدٍ"
-   ],
-   "framings": [
-    "Syrian sovereignty violated",
-    "international community sympathetic but passive",
-    "Israeli media questioning occupation's purpose"
-   ],
-   "framings_ar": [
-    "انتهاك للسيادة السورية",
-    "مجتمع دولي متعاطف لكنه سلبي",
-    "إعلام إسرائيلي يشكك بجدوى الاحتلال"
-   ],
-   "flags": [
-    "near-identical copy of Olabi UN statement repeated across many outlets"
-   ],
-   "flags_ar": [
-    "تكرار شبه متطابق لبيان علبي في الأمم المتحدة عبر وسائل إعلام عديدة"
-   ],
-   "volume": 104,
-   "public_volume": 43,
-   "share": 0.128,
-   "engagement": 58986,
-   "platforms": {
-    "telegram": 51,
-    "news": 10,
-    "youtube": 14,
-    "bluesky": 27
-   },
-   "languages": {
-    "ar": 65,
-    "en": 37
-   },
-   "public_languages": {
-    "ar": 15,
-    "en": 26
-   },
-   "kinds": {
-    "independent": 39,
-    "aggregator": 5,
-    "regional": 4,
-    "kurdish": 7,
-    "official": 6
-   },
-   "sources": [
-    "Bluesky posts",
-    "Syria Plus (SY+) - news platform",
-    "YouTube comments",
-    "YouTube comments on Al Jazeera Arabic",
-    "Daraa 24 - local, Daraa",
-    "Halab Today TV - opposition-origin, Aleppo"
-   ],
-   "examples": [
-    {
-     "source": "Al Mayadeen - Beirut-based",
-     "url": "https://t.me/almayadeen/406851",
-     "platform": "telegram"
-    },
-    {
-     "source": "Syria TV - opposition-origin broadcaster",
-     "url": "https://t.me/TelevisionSyria/98362",
-     "platform": "telegram"
-    },
-    {
-     "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142979",
-     "platform": "telegram"
-    }
-   ],
-   "first_seen": "2026-10-31T09:50:14Z",
-   "signals": {
-    "level": "none",
-    "score": 0,
-    "items": []
-   }
-  },
-  {
    "id": "eu-syria-ties-kallas",
    "key": "2026-11-16-eu-syria-ties-kallas",
    "theme": "international",
    "title": "EU Foreign Ministers Agree to Advance Association Agreement With Syria",
    "title_ar": "وزراء خارجية الاتحاد الأوروبي يوافقون على المضي في اتفاقية الشراكة مع سوريا",
-   "summary": "EU foreign ministers meeting in Brussels on 16 November agreed to move ahead with a Syria Association Agreement first drafted in 2008, EU foreign policy chief Kaja Kallas said. Officials including EU Commissioner Dubravka Šuica stressed Syria's stability matters for regional security. State and independent Syrian media widely covered the announcement as a diplomatic win.",
-   "summary_ar": "وافق وزراء خارجية الاتحاد الأوروبي، خلال اجتماعهم في بروكسل يوم ١٦ تشرين الثاني، على المضي في اتفاقية شراكة مع سوريا وُضعت مسودتها عام ٢٠٠٨، بحسب مسؤولة السياسة الخارجية كايا كالاس. وشددت مسؤولون، من بينهم المفوضة الأوروبية دوبرافكا شويسا، على أن استقرار سوريا مهم لأمن المنطقة، وتناولت وسائل الإعلام السورية الرسمية والمستقلة الخبر باعتباره مكسباً دبلوماسياً.",
-   "detail": "Kallas announced that EU foreign ministers backed reviving the Association Agreement, with technical and legal work to follow before signing. She said the bloc aims to provide a framework for trade, political dialogue and economic cooperation, and will push for refugee return conditions. State media (SANA, Al-Ikhbariya) and independent outlets (Al-Watan, Enab Baladi, Syria TV) all echoed the announcement approvingly, framing it as recognition of Syria's new government. Kurdish outlets (Rudaw, North Press, ANHA) also covered it extensively. Malta's foreign minister urged the EU not to impose too many preconditions. Public reaction on Bluesky and other platforms was largely informational, reposting official statements with limited independent commentary, though some skeptics questioned whether EU support is genuine partnership or conditional leverage.",
-   "detail_ar": "أعلنت كالاس أن وزراء خارجية الاتحاد أيدوا إحياء اتفاقية الشراكة، على أن يلي ذلك عمل فني وقانوني قبل التوقيع. وقالت إن الاتحاد يسعى لتوفير إطار للتجارة والحوار السياسي والتعاون الاقتصادي، وسيدفع نحو تهيئة شروط عودة اللاجئين. وتناولت وسائل الإعلام الرسمية (سانا، الإخبارية) والمستقلة (الوطن، عنب بلدي، تلفزيون سوريا) الخبر بإيجابية، معتبرة إياه اعترافاً بالحكومة الجديدة، كما غطته وسائل إعلام كردية (رووداو، نورث برس، هاوار) بشكل واسع. ودعا وزير خارجية مالطا الاتحاد إلى عدم فرض شروط مسبقة كثيرة. أما تفاعل الناس على مثل بلوسكاي فكان في معظمه إعادة نشر للبيانات الرسمية دون تعليق مستقل كبير، مع بعض الشكوك حول ما إذا كان الدعم الأوروبي شراكة حقيقية أم أداة ضغط مشروطة.",
-   "public_reaction": "Public reaction was muted and mostly consisted of reposting official announcements; some skeptical voices questioned EU motives and double standards regarding international law.",
-   "public_reaction_ar": "كان تفاعل الناس محدوداً واقتصر غالباً على إعادة نشر البيانات الرسمية، مع بعض الأصوات المتشككة التي شككت في دوافع الاتحاد الأوروبي وازدواجية معاييره في تطبيق القانون الدولي.",
-   "sentiment": 0.5,
-   "public_sentiment": 0.1,
+   "summary": "EU foreign ministers meeting in Brussels on 16 November, led by Kaja Kallas, agreed to move forward with a 2008-drafted association agreement with Syria, aiming to build trade and political-dialogue frameworks after sanctions were lifted. Officials and EU commissioners framed Syria's stability as vital to regional security; Syrian state and independent media covered it widely.",
+   "summary_ar": "وافق وزراء خارجية الاتحاد الأوروبي، في اجتماع ببروكسل يوم ١٦ تشرين الثاني بقيادة كايا كالاس، على المضي في اتفاقية شراكة وُضعت مسودتها عام ٢٠٠٨ مع سوريا، بهدف بناء أطر للتجارة والحوار السياسي بعد رفع العقوبات. واعتبر مسؤولون ومفوضون أوروبيون استقرار سوريا أساسياً لأمن المنطقة، وغطت وسائل الإعلام الرسمية والمستقلة السورية الخبر على نطاق واسع.",
+   "detail": "Kallas announced the EU's decision to proceed with technical and legal preparations for the long-stalled 2008 association agreement, aiming to create a framework for trade, political dialogue and economic cooperation, with EU commissioner Dubravka Šuica calling Syria's stability 'vital' to regional security. Syrian state media (SANA) and independent outlets (Enab Baladi, Levant24, Al-Watan) relayed the news favorably, while aggregators (Al Jazeera, Al-Monitor, Reuters-sourced pieces) added context about sanctions relief and Russian-influence concerns tied to the deal. Public reaction was largely indifferent or skeptical, with many social media shares simply repeating headlines rather than commenting, and some noting Syria's continued instability undercuts optimism.",
+   "detail_ar": "أعلنت كايا كالاس قرار الاتحاد الأوروبي المضي في التحضيرات الفنية والقانونية لاتفاقية الشراكة المتعثرة منذ ٢٠٠٨، بهدف إقامة إطار للتجارة والحوار السياسي والتعاون الاقتصادي، فيما وصفت المفوضة دوبرافكا شويتسا استقرار سوريا بأنه «حيوي» لأمن المنطقة. نقلت وكالة سانا ووسائل إعلام مستقلة (عنب بلدي، Levant24، الوطن) الخبر بإيجابية، بينما أضافت مواقع التجميع (الجزيرة، Al-Monitor) سياقاً حول تخفيف العقوبات ومخاوف مرتبطة بالنفوذ الروسي. أما ردود الفعل العامة فكانت غالباً غير مبالية أو متشككة، إذ اكتفى كثيرون بإعادة نشر العناوين دون تعليق، ولاحظ البعض أن استمرار عدم الاستقرار في سوريا يقوّض هذا التفاؤل.",
+   "public_reaction": "Public sharing was mostly neutral headline-repetition across languages (English, Turkish, Arabic, Persian), with little emotional engagement; a few commenters expressed cynicism about tangible benefits reaching ordinary Syrians.",
+   "public_reaction_ar": "اقتصر التفاعل العام غالباً على إعادة نشر العناوين بحياد بعدة لغات (إنكليزية وتركية وعربية وفارسية) دون انخراط عاطفي يذكر، مع تعليقات متفرقة تشكك في وصول أي فائدة ملموسة للمواطن السوري.",
+   "sentiment": 0.4,
+   "public_sentiment": 0.0,
    "outlet_tone": {
-    "official": 0.6,
-    "independent": 0.5,
+    "official": 0.5,
+    "independent": 0.4,
     "kurdish": 0.4,
-    "aggregator": 0.4
+    "aggregator": 0.3
    },
    "public_tone": {
     "ar": 0.1,
-    "en": 0.1
+    "en": 0.0
    },
    "emotions": [
     "hope",
-    "cautious optimism"
+    "cautious optimism",
+    "indifference"
    ],
    "emotions_ar": [
     "أمل",
-    "تفاؤل حذر"
+    "تفاؤل حذر",
+    "لامبالاة"
    ],
    "framings": [
-    "diplomatic recognition of new government",
-    "conditional engagement with preconditions",
-    "geopolitical rebalancing against Russian influence"
+    "Official media frames it as diplomatic validation",
+    "Independent outlets note sanctions-relief and investment angle",
+    "Some public commenters frame it as disconnected from daily hardship"
    ],
    "framings_ar": [
-    "اعتراف دبلوماسي بالحكومة الجديدة",
-    "انخراط مشروط بشروط مسبقة",
-    "إعادة توازن جيوسياسي في مواجهة النفوذ الروسي"
+    "الإعلام الرسمي يصوره تثبيتاً دبلوماسياً",
+    "وسائل الإعلام المستقلة تبرز زاوية تخفيف العقوبات والاستثمار",
+    "بعض المعلقين يرونه منفصلاً عن معاناة الحياة اليومية"
    ],
    "flags": [
-    "many near-identical repost of same SANA/Kallas statement across outlets and public accounts"
+    "Many near-identical headline shares across Bluesky and Telegram, suggesting wide algorithmic/wire republishing rather than organic discussion"
    ],
    "flags_ar": [
-    "تكرار شبه متطابق لنفس بيان سانا/كالاس عبر عدة وسائل إعلام وحسابات عامة"
+    "نشر متكرر شبه متطابق للعناوين عبر Bluesky وتيليغرام، ما يشير لإعادة نشر آلي أكثر من نقاش عضوي"
    ],
-   "volume": 75,
-   "public_volume": 44,
-   "share": 0.092,
-   "engagement": 7590,
+   "volume": 72,
+   "public_volume": 48,
+   "share": 0.088,
+   "engagement": 6901,
    "platforms": {
-    "news": 13,
-    "telegram": 18,
-    "bluesky": 36,
-    "youtube": 8
+    "telegram": 13,
+    "news": 11,
+    "bluesky": 42,
+    "youtube": 2
    },
    "languages": {
-    "ar": 44,
-    "en": 31
+    "en": 45,
+    "ar": 23
    },
    "public_languages": {
-    "ar": 24,
-    "en": 20
+    "en": 35,
+    "ar": 9
    },
    "kinds": {
-    "official": 8,
-    "aggregator": 9,
-    "independent": 10,
-    "kurdish": 4
+    "kurdish": 4,
+    "aggregator": 10,
+    "independent": 7,
+    "official": 3
    },
    "sources": [
     "Bluesky posts",
-    "YouTube comments",
-    "Google News - Syria (AR)",
     "Google News - Syria (EN)",
+    "Google News - Syria (AR)",
     "SANA - state news agency (EN)",
-    "SANA website - state news agency (AR)"
+    "YouTube comments",
+    "Kurdistan24 English"
    ],
    "examples": [
-    {
-     "source": "SANA - state news agency (AR)",
-     "url": "https://t.me/sana_gov/191560",
-     "platform": "telegram"
-    },
     {
      "source": "Euphrates Post - Deir ez-Zor and the east",
      "url": "https://t.me/Euphrats_post/110298",
      "platform": "telegram"
     },
     {
+     "source": "SANA - state news agency (AR)",
+     "url": "https://t.me/sana_gov/191560",
+     "platform": "telegram"
+    },
+    {
      "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44334",
+     "url": "https://t.me/damascusv011/44338",
      "platform": "telegram"
     }
    ],
@@ -458,76 +460,67 @@
    "id": "currency-dollar-exchange-rate",
    "key": "2026-11-14-currency-dollar-exchange-rate",
    "theme": "economy",
-   "title": "Lira Continues Slide Past 150 to the Dollar",
-   "title_ar": "الليرة تواصل التراجع متجاوزة ١٥٠ مقابل الدولار",
-   "summary": "Syria's pound continued to weaken, with outlets and public commenters attributing the slide to trade deficits, weak production and fiscal strains. Comments on YouTube reports from Homs and Aleppo expressed anger at corruption, government incompetence and lack of trust, contrasting sharply with earlier hopes after sanctions relief.",
-   "summary_ar": "واصلت الليرة السورية تراجعها، إذ عزت وسائل الإعلام والمعلقون الهبوط إلى عجز تجاري وضعف الإنتاج وضغوط مالية. وعبّرت تعليقات على تقارير يوتيوب من حمص وحلب عن غضب من الفساد وعدم كفاءة الحكومة وفقدان الثقة، في تناقض حاد مع آمال سابقة أعقبت رفع العقوبات.",
-   "detail": "Google News aggregated a Syrian Observer report attributing the pound's decline to trade deficits, weak production and fiscal strains, while the Central Bank issued its daily exchange rate bulletin. Public comments on YouTube reports about the exchange rate in Homs and Aleppo were overwhelmingly negative, blaming government corruption, lack of industrial production, reliance on imports, and distrust in institutions. Some commenters noted the irony that lifting international sanctions did not improve the exchange rate as expected, with the dollar now higher than during the sanctions era (comparing old and new lira denominations). Others criticized the shift of fuel/petroleum resources without clear benefit reaching citizens. This reflects continued economic anxiety despite diplomatic gains like the EU agreement covered elsewhere.",
-   "detail_ar": "نقل تجميع Google News عن تقرير لـ Syrian Observer أن تراجع الليرة يعود إلى عجز تجاري وضعف الإنتاج وضغوط مالية، فيما أصدر المصرف المركزي نشرته اليومية لأسعار الصرف. وجاءت التعليقات العامة على تقارير يوتيوب حول سعر الصرف في حمص وحلب سلبية بمعظمها، محمّلة الفساد الحكومي وضعف الإنتاج الصناعي والاعتماد على الاستيراد وفقدان الثقة بالمؤسسات المسؤولية. ولاحظ بعض المعلقين سخرية من أن رفع العقوبات الدولية لم يحسّن سعر الصرف كما كان متوقعاً، إذ بات الدولار أعلى مما كان عليه أثناء فترة العقوبات (بالمقارنة بين الليرة القديمة والجديدة). وانتقد آخرون تحويل موارد النفط والمحروقات دون فائدة واضحة تصل للمواطنين، ما يعكس استمرار القلق الاقتصادي رغم المكاسب الدبلوماسية كالاتفاق مع الاتحاد الأوروبي المغطى في موضع آخر.",
-   "public_reaction": "Public reaction was strongly negative, mixing anger, sarcasm and despair over the falling lira, with many blaming corruption and government mismanagement rather than external factors.",
-   "public_reaction_ar": "كان تفاعل الناس سلبياً بشدة، يمزج بين الغضب والسخرية واليأس من تراجع الليرة، مع تحميل كثيرين المسؤولية للفساد وسوء الإدارة الحكومية بدلاً من العوامل الخارجية.",
-   "sentiment": -0.1,
-   "public_sentiment": -0.6,
-   "outlet_tone": {
-    "aggregator": -0.1
-   },
+   "title": "Lira Continues Slide Past 14,900 to the Dollar",
+   "title_ar": "الليرة السورية تواصل التراجع إلى نحو ١٤٩٠٠ مقابل الدولار",
+   "summary": "Public comments and outlets note the Syrian pound continuing to weaken against the dollar, reaching around 14,900-16,000 in parts of the market, fueling renewed complaints about living costs. Some commenters blame government corruption and weak industry, while others defend the transitional government citing wartime legacy problems.",
+   "summary_ar": "تشير التعليقات العامة ووسائل الإعلام إلى استمرار تراجع الليرة السورية أمام الدولار لتصل إلى نحو ١٤٩٠٠-١٦٠٠٠ في بعض السوق، ما يجدد الشكاوى من غلاء المعيشة. يحمّل بعض المعلقين الفساد وضعف الصناعة المسؤولية، فيما يدافع آخرون عن الحكومة الانتقالية مستحضرين إرث الحرب.",
+   "detail": "Reddit and YouTube commenters discuss the lira's depreciation past 14,900 to the dollar, with sharp debate over whether blame lies with the transitional government's inexperience, inherited Assad-era destruction, or ongoing corruption. Some argue the government lacks the skills to manage the economy despite good intentions; others insist conditions are incomparable to the brutality of the former regime. A central bank daily exchange bulletin was also shared. The discussion overlaps with broader public anxiety about fuel, industry weakness and the government's economic competence, echoing the earlier diesel price story.",
+   "detail_ar": "يناقش معلقون على ريديت ويوتيوب تراجع الليرة إلى ما بعد ١٤٩٠٠ مقابل الدولار، مع جدال حاد حول ما إذا كانت المسؤولية تقع على قلة خبرة الحكومة الانتقالية، أو إرث الدمار الذي خلفه نظام الأسد، أو الفساد المستمر. يرى البعض أن الحكومة تفتقر للكفاءة اللازمة رغم حسن النية، فيما يصر آخرون على أن الأوضاع الحالية لا تُقارن بوحشية النظام السابق. ونُشرت أيضاً نشرة أسعار الصرف اليومية للمصرف المركزي. يتقاطع النقاش مع قلق عام أوسع بشأن الوقود وضعف الصناعة وكفاءة الحكومة الاقتصادية، بما يتصل بقصة خفض سعر الديزل السابقة.",
+   "public_reaction": "Public reaction is split between frustration at continued economic decline and defensiveness toward the new government, with some personal, emotional recollections of wartime suffering used to argue against nostalgia for the Assad era.",
+   "public_reaction_ar": "تنقسم ردود الفعل العامة بين الإحباط من استمرار التدهور الاقتصادي والدفاع عن الحكومة الجديدة، مع استحضار بعض المعلقين لذكريات شخصية مؤلمة عن الحرب لمواجهة أي حنين لعهد الأسد.",
+   "sentiment": 0.0,
+   "public_sentiment": -0.4,
+   "outlet_tone": {},
    "public_tone": {
-    "ar": -0.6
+    "ar": -0.3,
+    "en": -0.4
    },
    "emotions": [
-    "anger",
-    "despair",
-    "distrust"
+    "frustration",
+    "resignation",
+    "defensiveness"
    ],
    "emotions_ar": [
-    "غضب",
-    "يأس",
-    "انعدام ثقة"
+    "إحباط",
+    "استسلام",
+    "دفاعية"
    ],
    "framings": [
-    "structural economic weakness",
-    "government corruption and mismanagement",
-    "irony that sanctions relief hasn't improved economy"
+    "Critics frame it as government incompetence",
+    "Defenders frame it as inherited wartime damage",
+    "Some frame it as corruption-driven"
    ],
    "framings_ar": [
-    "ضعف اقتصادي هيكلي",
-    "فساد حكومي وسوء إدارة",
-    "مفارقة عدم تحسن الاقتصاد رغم رفع العقوبات"
+    "منتقدون يؤطرونه كعجز حكومي",
+    "مدافعون يؤطرونه كإرث دمار الحرب",
+    "آخرون يربطونه بالفساد"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 17,
-   "public_volume": 16,
-   "share": 0.021,
-   "engagement": 11,
+   "volume": 19,
+   "public_volume": 19,
+   "share": 0.023,
+   "engagement": 2,
    "platforms": {
-    "news": 1,
-    "bluesky": 1,
-    "youtube": 14,
-    "reddit": 1
+    "reddit": 11,
+    "youtube": 7,
+    "bluesky": 1
    },
    "languages": {
-    "en": 1,
-    "ar": 16
+    "en": 11,
+    "ar": 8
    },
    "public_languages": {
-    "ar": 16
+    "en": 11,
+    "ar": 8
    },
-   "kinds": {
-    "aggregator": 1
-   },
+   "kinds": {},
    "sources": [
+    "Reddit r/syria comments",
     "YouTube comments",
-    "Google News - Syria (EN)",
-    "Bluesky posts",
-    "Reddit r/syria comments"
+    "Bluesky posts"
    ],
    "examples": [
-    {
-     "source": "Google News - Syria (EN)",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNa1hWZ055NUstc3RsNldBSXFDQ0JnTUNkUkNpYmZmV05WQmNxY1phbDJLVG1xNi01Mkp3MUVYNGxaUEFYUVN5bjQ1Q2dRaGNVMk9oVHRpVzc0Z2xxaG5oNnhuSnh2QnZBZTd3NExZaDV0RWlsYVdJNEMzR19kdnNjR0ZOb1doeHlVMU5jcVpyT3I2a0p1SkRZY1hid0NVVmVKdEROUDV5VzhzQ3p1S0xiMnVTbE8?oc=5",
-     "platform": "news"
-    },
     {
      "source": "YouTube comments",
      "url": "https://www.youtube.com/watch?v=8DMQNK5IP-M",
@@ -542,95 +535,84 @@
    }
   },
   {
-   "id": "un-security-council-syria-briefing",
-   "key": "2026-11-16-un-security-council-syria-briefing",
-   "theme": "governance",
-   "title": "UN Security Council Session on Syria's Political Transition and Humanitarian Needs",
-   "title_ar": "جلسة مجلس الأمن حول التحول السياسي في سوريا والاحتياجات الإنسانية",
-   "summary": "The UN Security Council held a session on Syria where deputy special envoy Claudio Cordone stressed the importance of the People's Assembly and transparent debate on the transitional justice law, while humanitarian officials warned 2.4 million people need additional aid as winter approaches. Members including France, the UK, the US and Russia offered statements supporting Syria's political process while raising concerns on inclusivity and explosive remnants of war.",
-   "summary_ar": "عقد مجلس الأمن الدولي جلسة حول سوريا شدد خلالها نائب المبعوث الخاص كلاوديو كوردوني على أهمية مجلس الشعب والنقاش الشفاف حول قانون العدالة الانتقالية، بينما حذر مسؤولون إنسانيون من أن ٢٫٤ مليون شخص يحتاجون مساعدات إضافية مع اقتراب الشتاء. وأدلت دول أعضاء، منها فرنسا وبريطانيا والولايات المتحدة وروسيا، ببيانات تدعم المسار السياسي السوري مع إثارة مخاوف بشأن الشمولية ومخلفات الحرب المتفجرة.",
-   "detail": "UN officials, including Cordone, highlighted that rapid economic recovery is a priority despite regional instability, and praised the growing number of registered civil society organizations while urging further action on the transitional justice law and women's representation. Assistant Secretary-General Mohammed Yahya said 2.4 million people need additional humanitarian aid with winter approaching, and about 100,000 displaced and returnee people live in damaged shelters. Security Council members' statements varied: the UK and France praised an inclusive political process; Russia rejected separatist attempts in the south and called for Israeli withdrawal; the US highlighted counter-terrorism cooperation and urged tighter border controls with Lebanon; Denmark and China also stressed Israeli withdrawal and humanitarian needs. This reflects continued diplomatic engagement alongside persistent humanitarian and governance challenges.",
-   "detail_ar": "سلّط مسؤولو الأمم المتحدة، ومنهم كوردوني، الضوء على أن التعافي الاقتصادي السريع يمثل أولوية رغم عدم الاستقرار الإقليمي، وأشادوا بتزايد عدد منظمات المجتمع المدني المسجلة مع حثّهم على مزيد من العمل بشأن قانون العدالة الانتقالية وتمثيل المرأة. وقال الأمين العام المساعد محمد يحيى إن نحو ٢.٤ مليون شخص يحتاجون مساعدات إضافية مع اقتراب الشتاء، وإن نحو ١٠٠ ألف نازح وعائد يعيشون في ملاجئ متضررة. تباينت بيانات أعضاء مجلس الأمن: أشادت بريطانيا وفرنسا بعملية سياسية جامعة؛ ورفضت روسيا محاولات انفصالية في الجنوب ودعت لانسحاب إسرائيلي؛ وأبرزت الولايات المتحدة التعاون في مكافحة الإرهاب ودعت لتشديد الرقابة الحدودية مع لبنان؛ كما شددت الدنمارك والصين على الانسحاب الإسرائيلي والاحتياجات الإنسانية. يعكس هذا استمرار الانخراط الدبلوماسي إلى جانب تحديات إنسانية وحوكمية مستمرة.",
-   "public_reaction": "Minimal direct public commentary beyond reposting of official statements; the session's content largely fed into the broader Israel-related narrative discussed separately.",
-   "public_reaction_ar": "كان التعليق الشعبي المباشر محدوداً إلى جانب إعادة نشر البيانات الرسمية؛ وغذّى مضمون الجلسة إلى حد كبير الرواية الأوسع المتعلقة بإسرائيل والمتناولة في موضع منفصل.",
-   "sentiment": 0.1,
-   "public_sentiment": 0.0,
+   "id": "justice-court-proceedings-regime-figures",
+   "key": "2026-11-17-justice-court-proceedings-regime-figures",
+   "theme": "justice",
+   "title": "Damascus Court Begins Trial of Former Deir ez-Zor Security Chief and Officials in Absentia",
+   "title_ar": "محكمة دمشق تبدأ محاكمة رئيس فرع أمن الدولة السابق في دير الزور ومسؤولين غيابياً",
+   "summary": "Syria's Fourth Criminal Court in Damascus, specializing in transitional justice, held its first session trying former Deir ez-Zor state security chief Ali Hassan Daas and a former general in person, alongside 24 defendants in absentia including Bashar al-Assad and Ali Mamlouk, on charges of murder, torture, enforced disappearance and looting public funds.",
+   "summary_ar": "عقدت محكمة الجنايات الرابعة المتخصصة بالعدالة الانتقالية في دمشق أولى جلساتها لمحاكمة علي حسن دعاس، رئيس فرع أمن الدولة السابق في دير الزور، واللواء عادل عيسى حضورياً، إلى جانب ٢٤ متهماً غيابياً من بينهم بشار الأسد وعلي مملوك، بتهم القتل العمد والتعذيب والإخفاء القسري ونهب المال العام.",
+   "detail": "SANA reported that the specialized court held its first hearing against Daas and Issa in person, while 24 others, including former president Bashar al-Assad and intelligence chief Ali Mamlouk, were tried in absentia on charges tied to the former regime's repression apparatus. This is part of a broader push, alongside the Justice Ministry's detentions of judicial-palace staff implicated in abuses, to build transitional justice mechanisms nearly two years after Assad's fall. The trial received relatively limited direct public comment in this batch, overshadowed by other news, but reflects an ongoing institutional effort watched by independent and international observers tracking accountability.",
+   "detail_ar": "ذكرت سانا أن المحكمة المتخصصة عقدت جلستها الأولى لمحاكمة دعاس وعيسى حضورياً، فيما حوكم ٢٤ آخرون غيابياً، من بينهم الرئيس السابق بشار الأسد ورئيس المخابرات علي مملوك، بتهم مرتبطة بجهاز قمع النظام السابق. ويأتي ذلك ضمن مسار أوسع لبناء آليات العدالة الانتقالية بعد نحو عامين من سقوط الأسد، إلى جانب توقيف وزارة العدل لعاملين في القصر العدلي متورطين بانتهاكات. وحظيت المحاكمة بتعليق عام مباشر محدود نسبياً في هذه الدفعة، طغت عليها أخبار أخرى، لكنها تعكس جهداً مؤسسياً مستمراً يتابعه مراقبون مستقلون ودوليون معنيون بالمحاسبة.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.2,
+   "public_sentiment": null,
    "outlet_tone": {
-    "official": 0.2,
-    "independent": 0.1,
-    "aggregator": 0.0
+    "official": 0.3,
+    "independent": 0.2
    },
    "public_tone": {},
    "emotions": [
-    "concern",
-    "cautious hope"
+    "resolve",
+    "grim justice"
    ],
    "emotions_ar": [
-    "قلق",
-    "أمل حذر"
+    "عزم",
+    "عدالة متجهمة"
    ],
    "framings": [
-    "international community supportive but cautious",
-    "humanitarian crisis persists despite political progress"
+    "Official media frames it as progress on accountability"
    ],
    "framings_ar": [
-    "مجتمع دولي داعم لكن حذر",
-    "استمرار الأزمة الإنسانية رغم التقدم السياسي"
+    "الإعلام الرسمي يؤطره كتقدم في المحاسبة"
    ],
-   "flags": [
-    "multiple outlets reproducing near-identical bullet-point summaries of the same council statements"
-   ],
-   "flags_ar": [
-    "تكرار عدة وسائل إعلام لملخصات نقطية شبه متطابقة لنفس بيانات المجلس"
-   ],
-   "volume": 9,
-   "public_volume": 2,
-   "share": 0.011,
-   "engagement": 5717,
+   "flags": [],
+   "flags_ar": [],
+   "volume": 12,
+   "public_volume": 5,
+   "share": 0.015,
+   "engagement": 8168,
    "platforms": {
-    "telegram": 5,
-    "news": 2,
-    "bluesky": 2
+    "telegram": 6,
+    "news": 1,
+    "youtube": 5
    },
    "languages": {
-    "ar": 4,
-    "en": 5
+    "ar": 12
    },
    "public_languages": {
-    "en": 1,
-    "ar": 1
+    "ar": 5
    },
    "kinds": {
-    "independent": 4,
-    "aggregator": 2,
+    "independent": 6,
     "official": 1
    },
    "sources": [
-    "Sawt al-Asima - local, Damascus",
-    "Google News - Syria (EN)",
-    "Bluesky posts",
-    "Levant24 - Syria news (EN)",
-    "SANA - state news agency (EN)",
-    "Halab Today TV - opposition-origin, Aleppo"
+    "YouTube comments",
+    "Syria Plus (SY+) - news platform",
+    "Shaam News Network - opposition-origin",
+    "Halab Today TV - opposition-origin, Aleppo",
+    "SANA website - state news agency (AR)"
    ],
    "examples": [
     {
      "source": "Halab Today TV - opposition-origin, Aleppo",
-     "url": "https://t.me/HalabTodayTV/142972",
+     "url": "https://t.me/HalabTodayTV/142981",
      "platform": "telegram"
     },
     {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44340",
+     "source": "Shaam News Network - opposition-origin",
+     "url": "https://t.me/ShaamNetwork/108196",
      "platform": "telegram"
     },
     {
-     "source": "Levant24 - Syria news (EN)",
-     "url": "https://t.me/Levant24/46652",
+     "source": "Syria Plus (SY+) - news platform",
+     "url": "https://t.me/sy_platform/41581",
      "platform": "telegram"
     }
    ],
-   "first_seen": "2026-11-16T21:24:13Z",
+   "first_seen": "2026-11-17T02:24:42Z",
    "signals": {
     "level": "none",
     "score": 0,
@@ -641,69 +623,66 @@
    "id": "fuel-price-cut",
    "key": "2026-11-14-fuel-price-cut",
    "theme": "economy",
-   "title": "Diesel Price Cut to 150 Lira Meets Public Skepticism",
-   "title_ar": "خفض سعر الديزل إلى ١٥٠ ليرة يقابله تشكيك شعبي",
-   "summary": "Syria cut diesel prices by 15%, prompting Local Administration Minister Mohammed Anjrani to order governorates to re-study internal transport tariffs to reflect lower fuel costs. Outlets reported mixed public reaction, with many questioning whether the cut is meaningful given high living costs, while officials highlighted ongoing distribution of subsidized heating diesel.",
-   "summary_ar": "خفضت سوريا سعر الديزل بنسبة ١٥٪، ما دفع وزير الإدارة المحلية والبيئة محمد عنجراني إلى توجيه المحافظات لإعادة دراسة تعرفة النقل الداخلي بما يعكس انخفاض كلفة المحروقات. ونقلت وسائل الإعلام ردود فعل متباينة من الجمهور، إذ شكك كثيرون في جدوى الخفض في ظل ارتفاع تكاليف المعيشة، بينما أبرزت الجهات الرسمية استمرار توزيع مازوت التدفئة المدعوم.",
-   "detail": "Following the 15% diesel price cut, Minister Anjrani directed governorates to review internal transport tariffs while maintaining oversight on compliance with approved rates. SANA reported the start of subsidized heating diesel distribution (100 liters per household) in Talbiseh, Homs countryside. Independent outlets (Sawt al-Asima, Daraa 24) surveyed public opinion, finding skepticism about whether the cut will meaningfully lower transport and heating costs given broader inflation. YouTube comments on related Halab Today and other reports were largely cynical, with phrases like 'corrupt government' appearing, and complaints that officials and parliament members drive new cars while citizens struggle, linking to broader governance-corruption anger (a separate but related narrative). Some commenters questioned where Syria's oil wealth is going.",
-   "detail_ar": "عقب خفض سعر الديزل بنسبة ١٥٪، وجّه الوزير عنجراني المحافظات لمراجعة تعرفة النقل الداخلي مع تشديد الرقابة على الالتزام بالتعرفة المعتمدة. ونقلت سانا بدء توزيع مازوت التدفئة المدعوم (١٠٠ ليتر لكل أسرة) في تلبيسة بريف حمص. واستطلعت وسائل إعلام مستقلة (صوت العاصمة، درعا ٢٤) آراء المواطنين، فوجدت تشككاً في أن يُحدث الخفض فرقاً حقيقياً في تكاليف النقل والتدفئة في ظل التضخم العام. وجاءت تعليقات يوتيوب على تقارير حلب اليوم وغيرها ساخرة بمعظمها، مع عبارات مثل «حكومة فاسدة»، وشكاوى من أن المسؤولين وأعضاء مجلس الشعب يقتنون سيارات جديدة بينما يعاني المواطنون، في ارتباط مع غضب أوسع يتعلق بالحوكمة والفساد. وتساءل بعض المعلقين عن مصير ثروة سوريا النفطية.",
-   "public_reaction": "Public reaction ranged from cautious questioning of whether the cut is sufficient to outright cynicism about government priorities and corruption, with little outright celebration.",
-   "public_reaction_ar": "تراوح تفاعل الناس بين تساؤل حذر عما إذا كان الخفض كافياً، وسخرية صريحة من أولويات الحكومة وفسادها، مع قلة واضحة في الاحتفاء الصريح.",
-   "sentiment": 0.0,
-   "public_sentiment": -0.4,
+   "title": "Diesel Price Cut to 150 Lira Meets Mixed Reactions and Transit Fare Review",
+   "title_ar": "خفض سعر الديزل إلى ١٥٠ ليرة يقابله ترقب بشأن أجور النقل",
+   "summary": "Authorities cut diesel prices by 15% to around 150 lira, prompting the local administration minister to order governorates to review internal transport tariffs accordingly. Sawt al-Asima and other outlets polled public opinion; commenters questioned whether the cut is sufficient given still-high living costs.",
+   "summary_ar": "خفضت السلطات سعر الديزل بنسبة ١٥٪ ليصل إلى نحو ١٥٠ ليرة، ما دفع وزير الإدارة المحلية لتوجيه المحافظات لإعادة دراسة تعرفة النقل الداخلي وفقاً لذلك. استطلعت صوت العاصمة ووسائل أخرى آراء الناس، فيما تساءل المعلقون عن كفاية الخفض في ظل استمرار ارتفاع تكاليف المعيشة.",
+   "detail": "Following the diesel price reduction, Minister of Local Administration and Environment Mohammed Anjrani directed provinces to re-examine internal transport tariffs to reflect lower fuel costs while protecting operators' interests and citizens alike, with tighter oversight of compliance. Independent outlets like Sawt al-Asima ran public polls asking whether the 15% cut was adequate, reflecting skepticism about whether savings would reach consumers through lower transport and heating costs this winter. This connects to broader public frustration over cost of living and perceived gaps between policy announcements and tangible relief.",
+   "detail_ar": "عقب خفض سعر الديزل، وجّه وزير الإدارة المحلية والبيئة محمد عنجراني المحافظات لإعادة دراسة تعرفة النقل الداخلي بما يعكس انخفاض كلفة الوقود مع مراعاة مصلحة المشغلين والمواطنين، وتشديد الرقابة على الالتزام بالتعرفة. وأجرت وسائل إعلام مستقلة مثل صوت العاصمة استطلاعات حول كفاية خفض ١٥٪، ما يعكس تشككاً في وصول أي وفر فعلي للمواطنين عبر خفض تكاليف النقل والتدفئة هذا الشتاء.",
+   "public_reaction": "",
+   "public_reaction_ar": "",
+   "sentiment": 0.1,
+   "public_sentiment": null,
    "outlet_tone": {
-    "independent": -0.1
+    "independent": 0.0
    },
-   "public_tone": {
-    "ar": -0.4
-   },
+   "public_tone": {},
    "emotions": [
     "skepticism",
-    "frustration"
+    "mild hope"
    ],
    "emotions_ar": [
-    "تشكيك",
-    "إحباط"
+    "تشكك",
+    "أمل خفيف"
    ],
    "framings": [
-    "government presents cut as relief measure",
-    "public frames it as insufficient amid broader inflation",
-    "corruption framing tied to cost of living"
+    "Official framing as responsive policy",
+    "Independent outlets frame it as insufficient relief"
    ],
    "framings_ar": [
-    "الحكومة تقدم الخفض كإجراء إغاثي",
-    "الجمهور يعتبره غير كافٍ وسط التضخم العام",
-    "تأطير الفساد المرتبط بغلاء المعيشة"
+    "التأطير الرسمي كسياسة استجابية",
+    "وسائل الإعلام المستقلة تؤطره كإغاثة غير كافية"
    ],
    "flags": [],
    "flags_ar": [],
-   "volume": 7,
-   "public_volume": 3,
-   "share": 0.009,
-   "engagement": 2047,
+   "volume": 5,
+   "public_volume": 0,
+   "share": 0.006,
+   "engagement": 4452,
    "platforms": {
-    "news": 1,
-    "telegram": 3,
-    "youtube": 3
+    "telegram": 4,
+    "news": 1
    },
    "languages": {
-    "ar": 7
+    "ar": 5
    },
-   "public_languages": {
-    "ar": 3
-   },
+   "public_languages": {},
    "kinds": {
-    "independent": 4
+    "independent": 5
    },
    "sources": [
-    "YouTube comments",
-    "Syria TV - opposition-origin",
+    "Halab Today TV - opposition-origin, Aleppo",
     "Sawt al-Asima - local, Damascus",
-    "Daraa 24 - local, Daraa",
+    "Syria TV - opposition-origin",
     "Al-Watan - Damascus daily newspaper",
-    "YouTube comments on Halab Today TV"
+    "Daraa 24 - local, Daraa"
    ],
    "examples": [
+    {
+     "source": "Halab Today TV - opposition-origin, Aleppo",
+     "url": "https://t.me/HalabTodayTV/142984",
+     "platform": "telegram"
+    },
     {
      "source": "Daraa 24 - local, Daraa",
      "url": "https://t.me/daraa24_org/28709",
@@ -712,11 +691,6 @@
     {
      "source": "Al-Watan - Damascus daily newspaper",
      "url": "https://t.me/alwatan_sy/205811",
-     "platform": "telegram"
-    },
-    {
-     "source": "Sawt al-Asima - local, Damascus",
-     "url": "https://t.me/damascusv011/44344",
      "platform": "telegram"
     }
    ],
@@ -731,20 +705,20 @@
    "id": "harasta-mass-grave-remains",
    "key": "2026-11-16-harasta-mass-grave-remains",
    "theme": "justice",
-   "title": "Remains of Six Found in Harasta, Mass Grave Count Rises",
-   "title_ar": "العثور على رفات ستة أشخاص في حرستا وارتفاع عدد المقابر الجماعية المكتشفة",
-   "summary": "Rural Damascus authorities said remains of six people were found during rubble-clearance work in Harasta's al-Ajami neighborhood, part of a project removing roughly 300,000 cubic meters of debris to enable reconstruction and return. Kurdish outlet ANHA reported this brings the number of mass graves discovered in Syria since early 2026 to 28.",
-   "summary_ar": "قالت محافظة ريف دمشق إنه عُثر على رفات ستة أشخاص أثناء أعمال إزالة الأنقاض في حي العجمي بحرستا، ضمن مشروع لإزالة نحو ٣٠٠ ألف متر مكعب من الأنقاض تمهيداً لإعادة الإعمار وعودة الأهالي. ونقلت وكالة هاوار الكردية أن هذا يرفع عدد المقابر الجماعية المكتشفة في سوريا منذ مطلع ٢٠٢٦ إلى ٢٨ مقبرة.",
-   "detail": "The Rural Damascus Governorate confirmed discovery of six sets of remains during ongoing rubble-removal in Harasta's al-Ajami neighborhood, part of broader reconstruction efforts covering roughly 300,000 cubic meters of debris. ANHA (Hawar) contextualized the find within a growing tally of mass graves uncovered across Syria since the start of 2026, now numbering 28, underscoring the scale of unresolved transitional justice issues from the Assad era. The story appears to have evolved from an earlier retraction/reconfirmation noted in the previous snapshot, now presented as confirmed fact by both English and Arabic posts. No further detail on victim identities or investigation timeline was given in available posts.",
-   "detail_ar": "أكدت محافظة ريف دمشق العثور على رفات ستة أشخاص خلال أعمال إزالة الأنقاض المستمرة في حي العجمي بحرستا، ضمن جهود إعادة إعمار أوسع تشمل نحو ٣٠٠ ألف متر مكعب من الأنقاض. ووضعت وكالة هاوار الاكتشاف في سياق تزايد عدد المقابر الجماعية المكتشفة في سوريا منذ بداية ٢٠٢٦، إذ بلغ عددها الآن ٢٨ مقبرة، ما يبرز حجم قضايا العدالة الانتقالية غير المحسومة الموروثة عن حقبة الأسد. ويبدو أن القصة تطورت من تراجع ثم إعادة تأكيد وردت في التحديث السابق، وتُعرض الآن كحقيقة مؤكدة في منشورات عربية وإنجليزية على حد سواء. لم تتوفر في المنشورات المتاحة تفاصيل إضافية عن هوية الضحايا أو الجدول الزمني للتحقيق.",
-   "public_reaction": "Limited public reaction visible in these posts; mostly presented as outlet/public reposts without extensive commentary attached.",
-   "public_reaction_ar": "كان التفاعل الشعبي الظاهر محدوداً في هذه المنشورات، إذ قُدّم الخبر غالباً كإعادة نشر دون تعليقات موسّعة مرفقة.",
+   "title": "Remains of Six Found in Harasta, Mass Grave Count Rises to 28",
+   "title_ar": "العثور على رفات ستة أشخاص في حرستا ليرتفع عدد المقابر الجماعية إلى ٢٨",
+   "summary": "Remains of six people were uncovered during rubble-clearing in Harasta's al-Ajami neighborhood in Rural Damascus, part of a project removing some 300,000 cubic meters of debris left by the former regime's bombardment. This brings the number of discovered mass graves in Syria since early 2026 to 28, according to Hawar News Agency.",
+   "summary_ar": "عُثر على رفات ستة أشخاص خلال أعمال إزالة الأنقاض في حي العجمي بحرستا بريف دمشق، ضمن مشروع يستهدف إزالة نحو ٣٠٠ ألف متر مكعب من الركام الذي خلفه قصف النظام السابق. ويرفع هذا الاكتشاف عدد المقابر الجماعية المكتشفة في سوريا منذ مطلع ٢٠٢٦ إلى ٢٨ مقبرة بحسب وكالة أنباء هاوار.",
+   "detail": "The Rural Damascus governorate reported the remains were found during debris-clearing work tied to a reconstruction project aimed at restoring infrastructure and enabling residents' return to Harasta. Hawar News Agency's figure of 28 mass graves discovered since early 2026 situates this finding within an ongoing pattern of exhumations linked to transitional justice efforts following the former regime's collapse. The story received limited but pointed public engagement, reflecting continued attention to accountability for Assad-era crimes alongside broader rubble-removal and reconstruction news from the same area.",
+   "detail_ar": "أفادت محافظة ريف دمشق بأن الرفات عُثر عليها أثناء أعمال إزالة الأنقاض ضمن مشروع إعادة إعمار يهدف لتأهيل البنية التحتية وتمكين عودة الأهالي إلى حرستا. ويضع رقم ٢٨ مقبرة جماعية مكتشفة منذ مطلع ٢٠٢٦، بحسب وكالة أنباء هاوار، هذا الاكتشاف ضمن نمط مستمر من عمليات استخراج الرفات المرتبطة بجهود العدالة الانتقالية بعد سقوط النظام السابق. حظيت القصة باهتمام عام محدود لكنه لافت، يعكس استمرار التركيز على محاسبة جرائم حقبة الأسد إلى جانب أخبار أوسع عن إزالة الأنقاض وإعادة الإعمار في المنطقة ذاتها.",
+   "public_reaction": "The limited public reaction reflects grim acknowledgment rather than surprise, consistent with ongoing mass-grave discoveries since the regime's fall.",
+   "public_reaction_ar": "تعكس ردود الفعل العامة المحدودة تقبلاً كئيباً أكثر منه مفاجأة، بما يتسق مع استمرار اكتشاف مقابر جماعية منذ سقوط النظام.",
    "sentiment": -0.3,
    "public_sentiment": -0.3,
    "outlet_tone": {},
    "public_tone": {
     "ar": -0.3,
-    "en": -0.3
+    "en": -0.2
    },
    "emotions": [
     "grief",
@@ -755,12 +729,10 @@
     "عزم كئيب"
    ],
    "framings": [
-    "ongoing legacy of Assad-era crimes",
-    "reconstruction tied to justice process"
+    "Framed as continuation of accountability for former regime crimes"
    ],
    "framings_ar": [
-    "إرث مستمر لجرائم حقبة الأسد",
-    "إعادة الإعمار مرتبطة بمسار العدالة"
+    "يُؤطر كاستمرار لمحاسبة جرائم النظام السابق"
    ],
    "flags": [],
    "flags_ar": [],
@@ -921,8 +893,8 @@
    "name": "Al-Ikhbariya Syria - state TV",
    "platform": "telegram",
    "ok": true,
-   "fetched": 16,
-   "recent": 16
+   "fetched": 20,
+   "recent": 20
   },
   {
    "name": "Syrian Ministry of Interior - official",
@@ -999,7 +971,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 2
+   "recent": 5
   },
   {
    "name": "ANHA (Hawar) - north-east administration news agency (AR)",
@@ -1055,28 +1027,28 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Al Arabiya - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Asharq News - Saudi-owned",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "Al Mayadeen - Beirut-based",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 1
+   "recent": 2
   },
   {
    "name": "Anadolu Agency - Turkish state news agency (AR)",
@@ -1097,7 +1069,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 0
+   "recent": 1
   },
   {
    "name": "France 24 Arabic - French public broadcaster",
@@ -1111,7 +1083,7 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 3
+   "recent": 2
   },
   {
    "name": "Suwayda 24 - local, Druze south",
@@ -1132,14 +1104,14 @@
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 17
+   "recent": 16
   },
   {
    "name": "Daraa 24 - local, Daraa",
    "platform": "telegram",
    "ok": true,
    "fetched": 20,
-   "recent": 10
+   "recent": 17
   },
   {
    "name": "Sawt al-Asima - local, Damascus",
@@ -1160,14 +1132,14 @@
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 52
+   "recent": 55
   },
   {
    "name": "Google News - Syria (EN)",
    "platform": "news",
    "ok": true,
    "fetched": 60,
-   "recent": 31
+   "recent": 33
   },
   {
    "name": "SANA website - state news agency (AR)",
@@ -1208,29 +1180,29 @@
    "name": "YouTube comments",
    "platform": "youtube",
    "ok": true,
-   "fetched": 617,
-   "recent": 617
+   "fetched": 733,
+   "recent": 733
   },
   {
    "name": "Bluesky posts",
    "platform": "bluesky",
    "ok": true,
-   "fetched": 254,
-   "recent": 189
+   "fetched": 256,
+   "recent": 196
   },
   {
    "name": "Reddit r/syria comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 25,
-   "recent": 21
+   "recent": 23
   },
   {
    "name": "Reddit r/Kurdistan comments",
    "platform": "reddit",
    "ok": true,
    "fetched": 15,
-   "recent": 1
+   "recent": 3
   },
   {
    "name": "X posts",
@@ -1386,29 +1358,18 @@
   "YouTube comments on Ronahi TV (Kurdish)": "تعليقات يوتيوب على قناة روناهي (كردية)",
   "YouTube comments on Al Jazeera Arabic": "تعليقات يوتيوب على الجزيرة"
  },
- "cost_usd": 0.5409,
+ "cost_usd": 0.508,
  "watch": [
   {
    "type": "falling",
    "id": "rojava-university-protest",
    "key": "2026-11-16-rojava-university-protest",
    "title": "Protests at Rojava University Over Kurdish Language and Academic Independence",
-   "title_ar": "احتجاجات في جامعة روج آفا للمطالبة باللغة الكردية والاستقلال الأكاديمي",
-   "share": 0.133,
+   "title_ar": "احتجاجات في جامعة روج آفا للمطالبة بالتعليم باللغة الكردية والاستقلالية الأكاديمية",
+   "share": 0.116,
    "from": 0.1,
    "to": -0.3,
-   "hours": 10
-  },
-  {
-   "type": "rising",
-   "id": "eu-syria-ties-kallas",
-   "key": "2026-11-16-eu-syria-ties-kallas",
-   "title": "EU Foreign Ministers Agree to Advance Association Agreement With Syria",
-   "title_ar": "وزراء خارجية الاتحاد الأوروبي يوافقون على المضي في اتفاقية الشراكة مع سوريا",
-   "share": 0.092,
-   "from": 0.052,
-   "to": 0.092,
-   "updates": 2
+   "hours": 15
   }
  ]
 }
