@@ -1206,15 +1206,43 @@ def write_social_feeds(cfg: dict, now: dt.datetime, state: dict | None = None) -
             path.write_text(xml, encoding="utf-8")
 
 
+def story_hours_ahead(cfg: dict, state: dict, now: dt.datetime) -> list:
+    """The coming story times (UTC), soonest first, for the posting timer (.github/workflows/social-timer.yml): the
+    Facebook feed's hours (the first `stories_per_day` of its story_hours) and, with X stories on, the hours today's
+    X allowance takes. Each hour once, today's if still ahead, else tomorrow's. When the timer wakes, social.py
+    still decides whether anything is due."""
+    out = set()
+    fb, xs = settings(cfg, "facebook"), settings(cfg, "x")
+    if fb["enabled"] and int(fb.get("stories_per_day") or 0) > 0 and fb.get("feed_story_languages"):
+        out |= {(int(h), float(fb.get("utc_offset") or 0)) for h in (fb.get("story_hours") or [])[: int(fb["stories_per_day"])]}
+    if xs["enabled"] and xs.get("stories"):
+        try:
+            n = story_allowance(cfg, state, now)["today"]
+        except Exception:  # noqa: BLE001  (a timer without the X hours still serves the Facebook feed)
+            n = 0
+        out |= {(int(h), float(xs.get("utc_offset") or 0)) for h in (xs.get("story_hours") or [])[:n]}
+    times = []
+    for h, off in out:
+        local = now + dt.timedelta(hours=off)
+        at = local.replace(hour=h % 24, minute=0, second=0, microsecond=0) - dt.timedelta(hours=off)
+        times.append(at if at > now else at + dt.timedelta(days=1))
+    return sorted(times)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="check the keys and print what would be posted; post nothing")
     ap.add_argument("--preview", action="store_true", help="print the latest posts of each kind, due or not; post nothing")
     ap.add_argument("--only", choices=["facebook", "x"], help="one network only")
+    ap.add_argument("--next-story", action="store_true", help="print the seconds until the next story time; post nothing")
     args = ap.parse_args()
     cfg = P.load_config()
     now = dt.datetime.now(dt.timezone.utc)
     state = load_state()
+    if args.next_story:
+        ahead = story_hours_ahead(cfg, state, now)
+        print(int((ahead[0] - now).total_seconds()) if ahead else -1)
+        return 0
     before = json.dumps(state, sort_keys=True)
     check = args.dry_run or args.preview
     preview_fb = preview_x = None

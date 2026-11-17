@@ -80,7 +80,11 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # the X posts are written in a human voice (about a cent each)
-        run: python scripts/social.py
+        run: |
+          # the posting timer (social-timer.yml) may have posted while this update ran: start from the newest record
+          # of what was posted, so nothing goes out twice
+          git fetch -q origin main && git checkout origin/main -- data/social.json || true
+          python scripts/social.py
 
       - name: Send the newsletter (once Brevo is set up and newsletter.enabled is true; every hour)
         if: ${{ !cancelled() }}
