@@ -73,6 +73,7 @@ jobs:
           fi
           gh workflow run keeper.yml --ref main -f hours="$KEEPER_HOURS"
           gh workflow run brief-timer.yml --ref main   # for the same reason, the daily brief timer is set from here too
+          gh workflow run social-timer.yml --ref main  # and the posting timer
 
       - name: Re-arm if this countdown was cancelled without a newer one
         # A newer finished update cancels this countdown and starts its own: nothing to do then. But GitHub also
