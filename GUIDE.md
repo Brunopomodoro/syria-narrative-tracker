@@ -289,6 +289,8 @@ Both are small next to Telegram and YouTube, and lean English-speaking and diasp
 3. Add two secrets in GitHub (same way as step 5): `BLUESKY_HANDLE` (for example `yourname.bsky.social`) and `BLUESKY_APP_PASSWORD`.
 4. In `config.yaml`, under `bluesky:`, change `enabled: false` to `enabled: true`. Commit and run the workflow.
 
+Bluesky search returns every post that names Syria, including US politics or world news with Syria in a list. With `central: true` (the default) only posts about Syria are kept: a short post (up to 160 characters) naming it, a post naming it in its first 120 characters, or one naming it at least twice (`about_syria` in `scripts/pipeline.py`).
+
 ### A4. Add Threads posts (free, about an hour plus Meta's review)
 
 Threads is the one Meta platform whose public posts you can search yourself. Meta's Threads API has a keyword search that returns recent public posts for a word, in Arabic too, for apps that Meta has approved.

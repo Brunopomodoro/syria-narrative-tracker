@@ -1031,6 +1031,10 @@ bluesky:
   search_terms: ["سوريا", "السوريين", "دمشق", "حلب", "الشرع", "السويداء", "Syria", "Damascus", "Rojava", "Sûriyê", "Qamişlo"]
   posts_per_term: 50
   filter: true
+  # Keep only posts that are about Syria, not ones that mention it in passing: a short post (up to 160 characters)
+  # naming it, a post naming it in its first 120 characters, or one naming it at least twice (November 2026: most
+  # Bluesky posts were US politics or world news with Syria in a list, and belonged to no story).
+  central: true
 
 # 8) Threads (Meta) - free. Public posts found by keyword through Meta's Threads API.
 #    Needs a Meta developer app approved for keyword search and the

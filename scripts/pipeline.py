@@ -423,6 +423,7 @@ def collect_bluesky(cfg: dict, since: dt.datetime) -> list:
             out.append(post("bsky:" + hashlib.sha1(x["uri"].encode()).hexdigest()[:16], "bluesky", "Bluesky posts",
                             rec.get("text", ""), parse_iso(rec.get("createdAt", "")), eng, "", False,
                             cfg.get("filter", True), "public", "", who_hash((x.get("author") or {}).get("did"))))
+            out[-1]["central"] = bool(cfg.get("central", True))   # Syria must be what the post is about (prepare)
         time.sleep(1)
     return out
 
@@ -633,6 +634,16 @@ def collect_all(cfg: dict) -> tuple[list, list]:
 
 # ----------------------------------------------------------------- cleaning
 
+def about_syria(text: str, kws: list) -> bool:
+    """Whether Syria is what a post is about, not a passing mention: a short post (up to 160 characters) that names
+    it, a post that names it near the start (in the first 120 characters), or one that names it at least twice.
+    Used for keyword-searched sources such as Bluesky, where posts on US politics, Ukraine or football that
+    mention Syria once in passing belong to no Syrian story."""
+    t = text.lower()
+    hits = [m.start() for m in re.finditer("|".join(re.escape(k) for k in sorted(kws, key=len, reverse=True)), t)]
+    return bool(hits) and (len(t) <= 160 or hits[0] < 120 or len(hits) >= 2)
+
+
 def prepare(posts: list, cfg: dict) -> list:
     """Clean, keep recent + relevant posts, merge duplicates (and count them)."""
     since = NOW - dt.timedelta(hours=cfg.get("window_hours", 24))
@@ -649,6 +660,8 @@ def prepare(posts: list, cfg: dict) -> list:
             continue
         # comments also count as on-topic when the post they reply to is ("post: ..." context)
         if p["filter"] and kws and not any(k in (p["text"] + " " + p.get("context", "")).lower() for k in kws):
+            continue
+        if p.get("central") and kws and not about_syria(p["text"], kws):
             continue
         key = p["voice"] + hashlib.sha1(re.sub(r"\W+", "", p["text"].lower())[:220].encode()).hexdigest()
         if key in seen:  # same text again: a repeat reaction, a repost, or possibly coordination
