@@ -430,16 +430,13 @@ def collect_bluesky(cfg: dict, since: dt.datetime) -> list:
 
 REDDIT_CACHE: dict = {}      # one combined request per run for all communities (Reddit allows one request a minute from GitHub)
 REDDIT_SUBS: dict = {"comments": [], "new": []}
+REDDIT_FAILED: dict = {}     # kind -> {community (lower case): why it could not be read}, when read one by one
 
 
-def _reddit_fetch(kind: str) -> list:
-    """The combined feed of every configured community of this type (r/a+b+c), fetched once per run."""
-    if kind in REDDIT_CACHE:
-        return REDDIT_CACHE[kind]
-    subs = REDDIT_SUBS.get(kind) or []
+def _reddit_get(path: str):
     r = None
     for attempt in (1, 2, 3):
-        r = requests.get(f"https://www.reddit.com/r/{'+'.join(subs)}/{kind}/.rss?limit=100", timeout=25,
+        r = requests.get(f"https://www.reddit.com/r/{path}/.rss?limit=100", timeout=25,
                          headers={"User-Agent": "python:syria-narrative-tracker:v1.2 (public research dashboard)"})
         if r.status_code != 429:
             break
@@ -447,7 +444,32 @@ def _reddit_fetch(kind: str) -> list:
     if r.status_code == 429:
         raise RuntimeError("Reddit rate limit reached - it will try again next hour")
     r.raise_for_status()
-    REDDIT_CACHE[kind] = feedparser.parse(r.content).entries
+    return feedparser.parse(r.content).entries
+
+
+def _reddit_fetch(kind: str) -> list:
+    """The combined feed of every configured community of this type (r/a+b+c), fetched once per run. If Reddit
+    refuses the combined feed (one community banned, private or renamed makes the whole r/a+b+c feed fail, as on
+    17 November 2026), each community is read on its own, so the others still count and the log names the one
+    that fails."""
+    if kind in REDDIT_CACHE:
+        return REDDIT_CACHE[kind]
+    subs = REDDIT_SUBS.get(kind) or []
+    try:
+        REDDIT_CACHE[kind] = _reddit_get(f"{'+'.join(subs)}/{kind}")
+    except requests.HTTPError as e:
+        if len(subs) < 2 or e.response is None or e.response.status_code not in (403, 404):
+            raise
+        entries, failed = [], {}
+        for i, sub in enumerate(subs):
+            if i:
+                time.sleep(5)
+            try:
+                entries += _reddit_get(f"{sub}/{kind}")
+            except (requests.RequestException, RuntimeError) as e1:
+                failed[sub.lower()] = str(e1)
+        REDDIT_FAILED[kind] = failed
+        REDDIT_CACHE[kind] = entries
     return REDDIT_CACHE[kind]
 
 
@@ -457,7 +479,10 @@ def collect_reddit(feed: dict) -> list:
     kind = "comments" if feed.get("type", "comments") == "comments" else "new"
     label = feed.get("label") or f"Reddit r/{sub}"
     out = []
-    for e in _reddit_fetch(kind):
+    entries = _reddit_fetch(kind)
+    if sub.lower() in REDDIT_FAILED.get(kind, {}):
+        raise RuntimeError(f"r/{sub}: {REDDIT_FAILED[kind][sub.lower()]}")
+    for e in entries:
         link = e.get("link", "")
         if f"/r/{sub}/".lower() not in link.lower():
             continue   # an entry from one of the other communities in the combined feed
