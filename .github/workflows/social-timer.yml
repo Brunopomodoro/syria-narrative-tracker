@@ -5,7 +5,8 @@ name: Posting timer
 # few hours, so an evening story could come hours late or not at all. Like the daily brief timer, this timer starts
 # whenever an update finishes (and from the update keeper): it waits until the next story time and then runs only the
 # posting step (scripts/social.py), which decides what is due, exactly as in an update. A newer finished update
-# replaces the waiting timer. If the next story time is more than 5.3 hours away, a later update sets the timer.
+# replaces the waiting timer. It serves every story time within 5.3 hours of its start; a later update sets the timer
+# for the ones after.
 # If an update is running at that time, the timer leaves the posting to it. Runner time is free for public repositories.
 on:
   workflow_run:
@@ -36,22 +37,7 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
 
-      - name: Wait until the next story time
-        id: wait
-        run: |
-          wait=$(python scripts/social.py --next-story | tail -n 1); wait=${wait:--1}
-          if [ "$wait" -lt 0 ] || [ "$wait" -gt $(( 53 * 360 )) ]; then
-            echo "No story time in the next 5.3 hours; a later update will set the timer."
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          wait=$(( wait + 180 ))   # a few minutes into the hour, so the slot is surely open
-          echo "Posting in $(( wait / 60 )) minutes unless a newer update replaces this timer."
-          sleep "$wait"
-
-      - name: Post (unless an update is running, which posts itself)
-        id: post
-        if: steps.wait.outputs.skip != 'true'
+      - name: Wait for each story time in the next 5.3 hours and post (unless an update is running, which posts itself)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -64,26 +50,34 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # the X posts are written in a human voice (about a cent each)
         run: |
-          busy=$(gh run list --repo "$GH_REPO" --workflow update.yml --limit 10 --json status -q '[.[] | select(.status == "in_progress")] | length' || echo 0)
-          if [ "${busy:-0}" -gt 0 ]; then
-            echo "An update is running; it posts what is due when it finishes."
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git pull -q --ff-only   # the newest stories and the newest record of what was posted
-          python scripts/social.py
-
-      - name: Save the posts
-        if: ${{ !cancelled() && steps.wait.outputs.skip != 'true' && steps.post.outputs.skip != 'true' }}
-        run: |
           git config user.name "narrative-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data/social.json feed-social.xml feed-social-ar.xml cards 2>/dev/null || git add data/social.json
-          if git diff --cached --quiet; then
-            echo "Nothing was due."
-          else
-            git commit -m "Social posts $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git stash push --include-untracked -q || true
-            git pull --rebase || { git rebase --abort; git pull --rebase -X theirs; }
-            git push
-          fi
+          # one story time after another (17:00 and then 21:00 on X and Facebook, for example) until the next one is
+          # more than 5.3 hours after this timer started; a later update sets a new timer for those
+          while true; do
+            wait=$(python scripts/social.py --next-story | tail -n 1); wait=${wait:--1}
+            if [ "$wait" -lt 0 ] || [ $(( SECONDS + wait )) -gt $(( 53 * 360 )) ]; then
+              echo "No more story times within this timer's 5.3 hours; a later update will set the next timer."
+              break
+            fi
+            wait=$(( wait + 180 ))   # a few minutes into the hour, so the slot is surely open
+            echo "Posting in $(( wait / 60 )) minutes unless a newer update replaces this timer."
+            sleep "$wait"
+            busy=$(gh run list --repo "$GH_REPO" --workflow update.yml --limit 10 --json status -q '[.[] | select(.status == "in_progress")] | length' || echo 0)
+            if [ "${busy:-0}" -gt 0 ]; then
+              echo "An update is running; it posts what is due when it finishes."
+              continue
+            fi
+            git pull -q --ff-only   # the newest stories and the newest record of what was posted
+            python scripts/social.py || echo "::warning::social.py failed; what it recorded is still saved"
+            git add -A data/social.json feed-social.xml feed-social-ar.xml cards 2>/dev/null || git add data/social.json
+            if git diff --cached --quiet; then
+              echo "Nothing was due."
+            else
+              git commit -q -m "Social posts $(date -u +'%Y-%m-%d %H:%M UTC')"
+              git stash push --include-untracked -q || true
+              git pull --rebase || { git rebase --abort; git pull --rebase -X theirs; }
+              git push
+              git stash drop -q 2>/dev/null || true
+            fi
+          done
