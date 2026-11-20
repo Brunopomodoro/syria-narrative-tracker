@@ -1120,11 +1120,23 @@ def feed_recent(cfg: dict, state: dict, now: dt.datetime, lang: str) -> tuple:
     return keys, themes
 
 
+def top_news(cands: list, now: dt.datetime, fresh_hours: float = 48) -> list:
+    """The candidates as the top news of the latest update: stories that began in the last `fresh_hours` first,
+    then by their share of everything posted (the home page's "Most discussed overall"), so the Page carries the
+    day's biggest news rather than an older story that people still talk about."""
+    def key(c):
+        n = c[0]
+        first = archive_parse(n.get("first_seen"))
+        fresh = bool(first and now - first < dt.timedelta(hours=fresh_hours))
+        return (not fresh, -float(n.get("share") or 0), -int(n.get("volume") or 0))
+    return sorted(cands, key=key)
+
+
 def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
     """Story posts in the feeds of ready-made posts, for the Facebook Page through Zapier: `stories_per_day` a day
     (under facebook: in config.yaml), at the first hours of its `story_hours` (Damascus time), in each of
-    `feed_story_languages`; the best current story the Page has not carried in the last three days (feed_recent),
-    on another topic than the last day's posts when there is one. Each post is kept in
+    `feed_story_languages`; the top news of the latest update that the Page has not carried in the last three days
+    (feed_recent, top_news): the biggest story that began in the last two days, else the biggest. Each post is kept in
     data/social.json, so the feed item stays the same until it leaves the feed."""
     s = settings(cfg, "facebook")
     per_day = int(s.get("stories_per_day") or 0)
@@ -1147,10 +1159,9 @@ def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
         if feed_room(cfg, state, now, lang) < 1:
             print(f"Facebook feed: no story post at {slot}:00 ({lang}); the rest of this Zapier month's posts are kept for the reports.")
             continue
-        seen, themes = feed_recent(cfg, state, now, lang)
-        cands = [c for c in story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang], pool_hours=24)
-                 if c[0].get("key") not in seen]
-        cands = [c for c in cands if c[0].get("theme") not in themes] or cands       # another topic when there is one
+        seen, _ = feed_recent(cfg, state, now, lang)
+        cands = top_news([c for c in story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang])
+                          if c[0].get("key") not in seen], now)
         if not cands:
             print(f"Facebook feed: no new story for the {slot}:00 slot ({lang}).")
             continue
