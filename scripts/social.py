@@ -1096,47 +1096,17 @@ def feed_room(cfg: dict, state: dict, now: dt.datetime, lang: str) -> int:
     return max(0, limit - used - reserve)
 
 
-def feed_recent(cfg: dict, state: dict, now: dt.datetime, lang: str) -> tuple:
-    """What the Page has carried lately, so a story post brings something new: the stories it posted or that led a
-    daily report, a hand-added post or a story post in the last three days, and the topics of the last day's story
-    posts and brief."""
-    keys, themes = set(), set()
-    for e in (state.get("fb_feed") or {}).get("story_posts") or []:
-        if e.get("lang") == lang and (at := archive_parse(e.get("at"))) and now - at < dt.timedelta(hours=72):
-            keys.add(e.get("key"))
-            if now - at < dt.timedelta(hours=24) and e.get("theme"):
-                themes.add(e["theme"])
-    for e in archive._load(pages.DATA / "social_extra.json", []) or []:
-        if e.get("lang") == lang and (at := archive_parse(e.get("at"))) and now - at < dt.timedelta(hours=72):
-            keys.update(re.findall(r"/stories/\w+/([\w-]+)\.html", str(e.get("link") or "")))
-    for back in (1, 2, 3):
-        day = (now.date() - dt.timedelta(days=back)).isoformat()
-        summ = pages.daily_summary(cfg, archive.load_day(day)) if day in archive.all_days() else None
-        if not summ or not summ["stories"]:
-            continue
-        keys.add(summ["stories"][0].get("key"))                   # the brief's headline and card
-        if back == 1:
-            themes.add(summ["stories"][0].get("theme"))
-    return keys, themes
-
-
-def top_news(cands: list, now: dt.datetime, fresh_hours: float = 48) -> list:
-    """The candidates as the top news of the latest update: stories that began in the last `fresh_hours` first,
-    then by their share of everything posted (the home page's "Most discussed overall"), so the Page carries the
-    day's biggest news rather than an older story that people still talk about."""
-    def key(c):
-        n = c[0]
-        first = archive_parse(n.get("first_seen"))
-        fresh = bool(first and now - first < dt.timedelta(hours=fresh_hours))
-        return (not fresh, -float(n.get("share") or 0), -int(n.get("volume") or 0))
-    return sorted(cands, key=key)
+def top_news(cands: list) -> list:
+    """The candidates biggest first: by their share of everything posted in the latest update (the home page's
+    "Most discussed overall"), so each story post carries the biggest story at the time of posting."""
+    return sorted(cands, key=lambda c: (-float(c[0].get("share") or 0), -int(c[0].get("volume") or 0)))
 
 
 def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
     """Story posts in the feeds of ready-made posts, for the Facebook Page through Zapier: `stories_per_day` a day
     (under facebook: in config.yaml), at the first hours of its `story_hours` (Damascus time), in each of
-    `feed_story_languages`; the top news of the latest update that the Page has not carried in the last three days
-    (feed_recent, top_news): the biggest story that began in the last two days, else the biggest. Each post is kept in
+    `feed_story_languages`; the biggest story of the latest update at the time of posting (top_news), unless the
+    Page carried it as a story post in the last 24 hours, then the next biggest. Each post is kept in
     data/social.json, so the feed item stays the same until it leaves the feed."""
     s = settings(cfg, "facebook")
     per_day = int(s.get("stories_per_day") or 0)
@@ -1159,9 +1129,9 @@ def run_feed_stories(cfg: dict, state: dict, now: dt.datetime) -> None:
         if feed_room(cfg, state, now, lang) < 1:
             print(f"Facebook feed: no story post at {slot}:00 ({lang}); the rest of this Zapier month's posts are kept for the reports.")
             continue
-        seen, _ = feed_recent(cfg, state, now, lang)
-        cands = top_news([c for c in story_candidates(cfg, state, now, lang, [p for p in posts if p.get("lang") == lang])
-                          if c[0].get("key") not in seen], now)
+        today = {p.get("key") for p in posts if p.get("lang") == lang
+                 and (at := archive_parse(p.get("at"))) and now - at < dt.timedelta(hours=24)}
+        cands = top_news([c for c in story_candidates(cfg, state, now, lang, []) if c[0].get("key") not in today])
         if not cands:
             print(f"Facebook feed: no new story for the {slot}:00 slot ({lang}).")
             continue
