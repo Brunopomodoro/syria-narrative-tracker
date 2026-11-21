@@ -718,8 +718,7 @@ def report_media(cfg: dict, pid: str, start: str, end: str, lang: str, root: str
                 seen.add(i["id"])
                 items.append(i)
     sources = (f'<h3>{w["mediaSources"].format(n=num(len(items), lang))}</h3><ul class="srcs">' + "".join(
-        f'<li>{esc(i["org"])}: <a href="{esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{esc(i.get("lang") or "en")}" '
-        f'dir="{"rtl" if i.get("lang") in X.RTL else "ltr"}">{esc(i["title"])}</a> <span class="sub">{esc(fmt_date(i["date"], lang))}</span></li>'
+        f'<li>{esc(X.org_name(i["org"], lang))}: {X.item_text(i, lang)[0]} <span class="sub">{esc(fmt_date(i["date"], lang))}</span></li>'
         for i in items) + f'</ul><p class="sub">{esc(xw["note"])}</p>') if items else f'<p class="sub">{esc(xw["note"])}</p>'
     return {"compare": compare, "media": "".join(body), "watch": [X.linked(x, a) for x in tr(o, "watch") or []], "sources": sources}
 
@@ -768,8 +767,7 @@ def day_media(date: str, lang: str, root: str = "../../") -> dict | None:
     body.append(f'<p class="full">→ <a href="{root}experts/{lang}/{date}.html">{w["fullPage"]}</a></p>')
     items = X.cited_items(a, o)
     sources = (f'<h3>{w["mediaSources"].format(n=num(len(items), lang))}</h3><ul class="srcs">' + "".join(
-        f'<li>{esc(i["org"])}: <a href="{esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{esc(i.get("lang") or "en")}" '
-        f'dir="{"rtl" if i.get("lang") in X.RTL else "ltr"}">{esc(i["title"])}</a></li>' for i in items) + "</ul>") if items else ""
+        f'<li>{esc(X.org_name(i["org"], lang))}: {X.item_text(i, lang)[0]}</li>' for i in items) + "</ul>") if items else ""
     return {"media": "".join(body), "sources": sources + f'<p class="sub">{esc(xw["note"])}</p>'}
 
 
