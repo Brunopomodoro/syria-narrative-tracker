@@ -795,6 +795,70 @@ def tr(d: dict, field: str, lang: str):
     return (d.get(field + "_ar") or d.get(field)) if lang == "ar" else (d.get(field) or d.get(field + "_ar"))
 
 
+# Outlets and organisations with a well-established Arabic name (others keep their Latin name in Arabic text, as
+# the analysis prompt asks), and the reverse for English pages, so a list of sources reads in the page's language.
+ORG_AR = {"Syria TV": "تلفزيون سوريا", "Enab Baladi": "عنب بلدي", "SANA": "سانا", "Syrian Arab News Agency": "سانا",
+          "Zaman al-Wasl": "زمان الوصل", "Hawar News": "هاوار", "ANHA": "هاوار", "North Press": "نورث برس",
+          "Halab Today": "حلب اليوم", "Syria Direct": "سوريا على طول", "Al-Watan Online": "الوطن أونلاين",
+          "Shaam Network": "شبكة شام", "Al-Jumhuriya": "الجمهورية", "Alikhbaria": "الإخبارية السورية",
+          "Syrian Observatory for Human Rights": "المرصد السوري لحقوق الإنسان", "SOHR": "المرصد السوري لحقوق الإنسان",
+          "Syrian Network for Human Rights": "الشبكة السورية لحقوق الإنسان", "SNHR": "الشبكة السورية لحقوق الإنسان",
+          "Syrian Dialogue Center": "مركز الحوار السوري", "Jusoor": "مركز جسور للدراسات", "Omran": "مركز عمران للدراسات الاستراتيجية",
+          "Harmoon": "مركز حرمون للدراسات المعاصرة", "Al Jazeera": "الجزيرة", "Al Arabiya": "العربية", "Al Arabiya English": "العربية",
+          "Asharq Al-Awsat": "الشرق الأوسط", "ASHARQ AL-AWSAT English": "الشرق الأوسط", "The New Arab": "العربي الجديد",
+          "Independent Arabia": "إندبندنت عربية", "Sky News Arabia": "سكاي نيوز عربية", "Anadolu Agency": "الأناضول",
+          "Anadolu Ajansı": "الأناضول", "Shafaq News": "شفق نيوز", "Rudaw": "رووداو", "Al-Quds Al-Arabi": "القدس العربي",
+          "Al-Modon": "المدن", "Al Akhbar": "الأخبار", "Al-Akhbar": "الأخبار", "Al-Majalla": "المجلة", "Noon Post": "نون بوست",
+          "Al Mayadeen": "الميادين", "Al-Ahram": "الأهرام", "Arab News": "عرب نيوز", "BBC": "بي بي سي", "Reuters": "رويترز",
+          "France 24": "فرانس 24", "Kurdistan24": "كردستان 24", "UN News": "أخبار الأمم المتحدة", "United Nations": "الأمم المتحدة",
+          "World Bank": "البنك الدولي", "IMF": "صندوق النقد الدولي", "International Monetary Fund": "صندوق النقد الدولي",
+          "Human Rights Watch": "هيومن رايتس ووتش", "Amnesty International": "منظمة العفو الدولية", "UNICEF": "اليونيسف",
+          "UNHCR": "المفوضية السامية للأمم المتحدة لشؤون اللاجئين", "WFP": "برنامج الأغذية العالمي",
+          "World Food Programme": "برنامج الأغذية العالمي", "WHO": "منظمة الصحة العالمية", "World Health Organization": "منظمة الصحة العالمية",
+          "ICRC": "اللجنة الدولية للصليب الأحمر", "International Committee of the Red Cross": "اللجنة الدولية للصليب الأحمر",
+          "European Union": "الاتحاد الأوروبي", "European Commission": "المفوضية الأوروبية"}
+ORG_EN = {"المدن": "Al-Modon", "سانا": "SANA", "الشرق الأوسط": "Asharq Al-Awsat", "العربي الجديد": "The New Arab",
+          "المرصد السوري لحقوق الإنسان": "Syrian Observatory for Human Rights", "شفق نيوز": "Shafaq News",
+          "القدس العربي": "Al-Quds Al-Arabi", "اندبندنت عربية": "Independent Arabia", "إندبندنت عربية": "Independent Arabia",
+          "الجمهورية.نت": "Al-Jumhuriya", "الجمهورية": "Al-Jumhuriya", "مركز الحوار السوري": "Syrian Dialogue Center",
+          "شبكة شام الإخبارية": "Shaam Network", "شبكة شام": "Shaam Network", "مجلة المجلة": "Al-Majalla", "المجلة": "Al-Majalla",
+          "الجزيرة نت": "Al Jazeera", "الجزيرة": "Al Jazeera", "نون بوست": "Noon Post", "سكاي نيوز عربية": "Sky News Arabia",
+          "کردپرس": "Kurdpress", "عنب بلدي": "Enab Baladi", "تلفزيون سوريا": "Syria TV", "زمان الوصل": "Zaman al-Wasl",
+          "نورث برس": "North Press", "حلب اليوم": "Halab Today", "هاوار": "Hawar News", "الأخبار": "Al Akhbar",
+          "الميادين": "Al Mayadeen", "الأهرام": "Al-Ahram", "رووداو": "Rudaw", "الأناضول": "Anadolu Agency",
+          "الشبكة السورية لحقوق الإنسان": "Syrian Network for Human Rights", "مركز جسور للدراسات": "Jusoor",
+          "مركز عمران للدراسات الاستراتيجية": "Omran", "مركز حرمون للدراسات المعاصرة": "Harmoon", "العربية": "Al Arabiya",
+          "أخبار الأمم المتحدة": "UN News", "البنك الدولي": "World Bank", "الإخبارية السورية": "Alikhbaria"}
+IN_LANG = {"ar": {"en": "بالإنجليزية", "fr": "بالفرنسية", "de": "بالألمانية", "tr": "بالتركية", "he": "بالعبرية", "ru": "بالروسية",
+                  "fa": "بالفارسية", "ku": "بالكردية", "zh": "بالصينية", "it": "بالإيطالية", "es": "بالإسبانية", "": "بلغة أخرى"},
+           "en": {"ar": "in Arabic", "fr": "in French", "de": "in German", "tr": "in Turkish", "he": "in Hebrew", "ru": "in Russian",
+                  "fa": "in Persian", "ku": "in Kurdish", "zh": "in Chinese", "it": "in Italian", "es": "in Spanish", "": "in another language"}}
+
+
+def org_name(org: str, lang: str) -> str:
+    """The organisation's name as the page's language knows it (ORG_AR, ORG_EN); otherwise as published."""
+    o = str(org or "").strip()
+    return (ORG_AR if lang == "ar" else ORG_EN).get(o, o)
+
+
+def item_text(i: dict, lang: str) -> tuple:
+    """What a link to a report shows on a page in `lang`: its title when it is in the page's language, else its
+    one-sentence summary in the page's language with a note of the original language, so an Arabic page does not
+    fill with English headlines (and the reverse). Returns (anchor html, whether the summary was used)."""
+    il = str(i.get("lang") or "en")
+    summ = str((i.get("summary_ar") if lang == "ar" else i.get("summary")) or "").strip()
+    if il == lang or not summ:
+        return (f'<a href="{P_esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{P_esc(il)}" '
+                f'dir="{"rtl" if il in RTL else "ltr"}">{P_esc(i["title"])}</a>'), False
+    note = IN_LANG[lang].get(il, IN_LANG[lang][""])
+    return (f'<a href="{P_esc(i["url"])}" target="_blank" rel="noopener nofollow" title="{P_esc(i["title"])}">{P_esc(summ)}</a>'
+            f' <span class="sub">({note})</span>'), True
+
+
+def P_esc(x) -> str:
+    return html.escape(str(x or ""), quote=True)
+
+
 def page_name(pid: str, area: str) -> str:
     return f"{pid}.html" if area == "overall" else f"{pid}-{area}.html"
 
@@ -810,9 +874,10 @@ def period_label(a: dict, lang: str) -> str:
 
 def item_li(i: dict, lang: str) -> str:
     w = WORDS[lang]
-    return (f'<li><a href="{pages.esc(i["url"])}" target="_blank" rel="noopener nofollow" lang="{pages.esc(i.get("lang") or "en")}" dir="{"rtl" if i.get("lang") in RTL else "ltr"}">{pages.esc(i["title"])}</a> '
-            f'<span class="sub">{pages.esc(i["org"])} · {pages.esc(w["kinds"].get(i.get("kind"), ""))} · {pages.esc(pages.fmt_date(i["date"], lang))}</span>'
-            f'<br><span>{pages.esc(tr(i, "summary", lang) or "")}</span></li>')
+    link, summarised = item_text(i, lang)
+    return (f'<li>{link} '
+            f'<span class="sub">{pages.esc(org_name(i["org"], lang))} · {pages.esc(w["kinds"].get(i.get("kind"), ""))} · {pages.esc(pages.fmt_date(i["date"], lang))}</span>'
+            + ("" if summarised else f'<br><span>{pages.esc(tr(i, "summary", lang) or "")}</span>') + '</li>')
 
 
 def lst(items: list, a: dict) -> str:
