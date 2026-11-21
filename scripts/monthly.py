@@ -223,6 +223,9 @@ def generate(cfg: dict, month: str, log=print) -> dict | None:
                                   output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": review_schema()}})
     text = "".join(b.text for b in resp.content if b.type == "text")
     d = arabic.tidy(archive.no_dashes(json.loads(text)))   # no long dashes; Arabic fixes
+    extra = {"input_tokens": 0, "output_tokens": 0}
+    if weekly.fix_report_languages(cfg, d, extra):
+        log(f"  monthly {month}: text in the wrong language rewritten")
     keys = {e["key"] for e in s["top_stories"]} | {e["key"] for e in s["flagged"]}
     highlights, used = [], set()
     for h in d.get("highlights") or []:
@@ -237,7 +240,7 @@ def generate(cfg: dict, month: str, log=print) -> dict | None:
               "flagged": [{"key": e["key"], "title": e["title"], "title_ar": e["title_ar"], "theme": e["theme"], "signals": e["signals"]} for e in s["flagged"]],
               "stats": {k: s[k] for k in ("days", "posts", "runs", "public_sentiment", "outlet_sentiment", "prev_public_sentiment", "prev_outlet_sentiment",
                                           "prev_days", "themes", "weeks", "languages", "platforms", "events", "stories_total")},
-              "usage": {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}}
+              "usage": {"input_tokens": resp.usage.input_tokens + extra["input_tokens"], "output_tokens": resp.usage.output_tokens + extra["output_tokens"]}}
     archive._save(MONTHLY_DATA / f"{month}.json", review)
     index = [x for x in archive._load(MONTHLY_DATA / "index.json", []) if x.get("month") != month]
     index.append({"month": month, "from": s["from"], "to": s["to"], "title": review["title"], "title_ar": review["title_ar"],

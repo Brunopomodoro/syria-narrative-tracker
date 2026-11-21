@@ -152,6 +152,65 @@ def build_message(cfg: dict, s: dict) -> str:
     return "\n".join(lines)
 
 
+SKIP = {"week", "month", "from", "to", "generated_at", "model", "digests", "flagged", "stats", "usage", "highlights"}
+
+
+def fix_report_languages(cfg: dict, d: dict, usage: dict | None = None) -> int:
+    """A weekly or monthly report's text fields in the right language: the model now and then writes a whole
+    English field in Arabic (the weeks of 2 and 9 November 2026). The media analysis's language repair
+    (experts.fix_languages: one short Claude call, only when a field is wrong) is run on the text fields and the
+    highlights. Changes d in place; returns how many fields were rewritten."""
+    import experts as X
+    usage = usage if usage is not None else {"input_tokens": 0, "output_tokens": 0}
+    flat = {}
+    for k, v in d.items():
+        if k not in SKIP and isinstance(v, (str, list)) and all(isinstance(x, str) for x in (v if isinstance(v, list) else [v])):
+            flat[k] = list(v) if isinstance(v, list) else v
+    for i, h in enumerate(d.get("highlights") or []):
+        for hk, hv in h.items():
+            if hk != "key" and isinstance(hv, str):
+                flat[f"h{i}.{hk}"] = hv
+    n = X.fix_languages(cfg, flat, usage)
+    if n:
+        for k, v in flat.items():
+            if k.startswith("h") and "." in k and k.split(".")[0][1:].isdigit():
+                i, hk = k.split(".", 1)
+                d["highlights"][int(i[1:])][hk] = v
+            else:
+                d[k] = v
+    return n
+
+
+def fix_published(cfg: dict, log=print) -> int:
+    """Run the language repair on every weekly and monthly report already written; rewrite those that changed."""
+    import monthly
+    n = 0
+    for folder, key, write, listing, feeds in ((WEEKLY_DATA, "week", pages.write_weekly_pages, pages.write_weekly_listing, pages.write_feeds),
+                                               (monthly.MONTHLY_DATA, "month", pages.write_monthly_pages, pages.write_monthly_listing, pages.write_monthly_feeds)):
+        index = archive._load(folder / "index.json", [])
+        changed = False
+        for x in index:
+            f = folder / f"{x[key]}.json"
+            d = archive._load(f, None)
+            if not d:
+                continue
+            fixed = fix_report_languages(cfg, d)
+            if not fixed:
+                continue
+            archive._save(f, d)
+            x.update({k: d[k] for k in ("title", "title_ar")})
+            x.update({k: d[k][:1] for k in ("paragraphs", "paragraphs_ar")})
+            write(cfg, d)
+            changed = True
+            n += fixed
+            log(f"  {x[key]}: {fixed} fields rewritten in the right language")
+        if changed:
+            archive._save(folder / "index.json", index)
+            listing(cfg, index)
+            feeds(cfg, index)
+    return n
+
+
 def generate(cfg: dict, week: str, log=print) -> dict | None:
     """Write the digest for one week. Returns it, or None when the week has too little data."""
     import anthropic
@@ -169,6 +228,9 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
                                   output_config={"effort": str(cfg.get("effort", "low")), "format": {"type": "json_schema", "schema": digest_schema()}})
     text = "".join(b.text for b in resp.content if b.type == "text")
     d = arabic.tidy(archive.no_dashes(json.loads(text)))   # no long dashes; Arabic fixes
+    extra = {"input_tokens": 0, "output_tokens": 0}
+    if fix_report_languages(cfg, d, extra):
+        log(f"  weekly {week}: text in the wrong language rewritten")
     keys = {e["key"] for e in s["top_stories"]}
     highlights, used = [], set()   # only stories of the week, each once
     for h in d.get("highlights") or []:
@@ -180,7 +242,7 @@ def generate(cfg: dict, week: str, log=print) -> dict | None:
               "paragraphs": d["paragraphs"], "paragraphs_ar": d["paragraphs_ar"],
               "highlights": d["highlights"], "watch": d["watch"], "watch_ar": d["watch_ar"],
               "stats": {k: s[k] for k in ("days", "posts", "runs", "public_sentiment", "outlet_sentiment", "prev_public_sentiment", "themes", "events")},
-              "usage": {"input_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens}}
+              "usage": {"input_tokens": resp.usage.input_tokens + extra["input_tokens"], "output_tokens": resp.usage.output_tokens + extra["output_tokens"]}}
     archive._save(WEEKLY_DATA / f"{week}.json", digest)
     index = [x for x in archive._load(WEEKLY_DATA / "index.json", []) if x.get("week") != week]
     index.append({"week": week, "from": s["from"], "to": s["to"], "title": digest["title"], "title_ar": digest["title_ar"],
@@ -237,7 +299,9 @@ def backfill(cfg: dict, log=print) -> int:
 if __name__ == "__main__":
     import pipeline as P
     cfg = P.load_config()
-    if sys.argv[1:]:                                # one week, rewritten: python scripts/weekly.py 2026-W42
+    if sys.argv[1:] == ["fix-languages"]:           # weekly and monthly reports with text in the wrong language
+        print(f"{fix_published(cfg)} fields rewritten.")
+    elif sys.argv[1:]:                              # one week, rewritten: python scripts/weekly.py 2026-W42
         print("written" if generate(cfg, sys.argv[1]) else "not written")
     else:
         print(f"{backfill(cfg)} digests written.")

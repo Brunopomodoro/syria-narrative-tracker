@@ -26,6 +26,7 @@ on:
           - experts-weekly              # write the Expert view analyses of the last complete week, or the week in 'period' (about 40 cents)
           - experts-monthly             # write the Expert view analyses of the last complete month, or the month in 'period' (about 70 cents)
           - experts-fix-languages       # rewrite in the right language any analysis field written in the other one (a cent or two)
+          - reports-fix-languages       # the same for the weekly and monthly reports, then rewrite their pages (a cent or two)
           - words-not-scores            # rewrite the tone scores (-0.15 and so on) in past reports as words, then rebuild the pages (a cent or two a report)
           - newsletter-setup            # make the newsletter's six lists in Brevo (once, after adding BREVO_API_KEY; free)
           - newsletter-check            # the newsletter's lists and subscriber counts, and what would be sent now; sends nothing (free)
@@ -120,6 +121,7 @@ jobs:
             experts-monthly)           python scripts/experts.py monthly $(printf '%s' "$PERIOD" | tr -cd '0-9W-') ;;
             experts-probe)             python scripts/experts.py probe ;;
             experts-fix-languages)     python scripts/experts.py fix-languages ;;
+            reports-fix-languages)     python scripts/weekly.py fix-languages ;;
             words-not-scores)          python scripts/words_not_scores.py ;;
             newsletter-setup)          python scripts/newsletter.py setup ;;
             newsletter-check)          python scripts/newsletter.py --preview ;;
