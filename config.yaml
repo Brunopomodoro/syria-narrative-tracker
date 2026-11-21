@@ -469,6 +469,14 @@ max_chars_per_post: 400
 # the rest (false lets outlets take the unused room).
 public_share: 0.7
 strict_public_share: true
+# public_caps: the most posts by people one platform may bring to the analysis. Since Reddit stopped answering and
+# fewer Bluesky posts pass the Syria filter (November 2026), YouTube comments filled the room the others left (about
+# 410 of 560 people's posts), and many of them react to the video rather than to a story, so "Everything else" rose
+# to 60-75%. Within the cap, YouTube's videos and channels still take turns. The room left goes to the other
+# platforms; when they have too few posts the analysis gets fewer posts (a little cheaper). rest_by_platform in
+# data/quality.json shows each platform's share of "Everything else". Remove a line to lift that platform's cap.
+public_caps:
+  youtube: 300
 
 # Hours of history kept for the trend views and story search (336 = 14 days).
 history_hours: 336

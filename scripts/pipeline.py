@@ -433,11 +433,45 @@ REDDIT_SUBS: dict = {"comments": [], "new": []}
 REDDIT_FAILED: dict = {}     # kind -> {community (lower case): why it could not be read}, when read one by one
 
 
+REDDIT_UA = "python:syria-narrative-tracker:v1.3 (public research dashboard)"
+REDDIT_TOKEN: dict = {}
+
+
+def _reddit_api(path: str) -> list:
+    """The same listing through Reddit's official API (app-only OAuth with the REDDIT_CLIENT_ID and
+    REDDIT_CLIENT_SECRET secrets, GUIDE.md A3), as entries shaped like the RSS ones collect_reddit reads. Used when
+    the secrets exist: since 17 November 2026 Reddit answers its public feeds from GitHub's servers with 404."""
+    if "token" not in REDDIT_TOKEN:
+        r = requests.post("https://www.reddit.com/api/v1/access_token", data={"grant_type": "client_credentials"},
+                          auth=(secret("REDDIT_CLIENT_ID"), secret("REDDIT_CLIENT_SECRET")),
+                          headers={"User-Agent": REDDIT_UA}, timeout=25)
+        if r.status_code in (400, 401, 403):
+            raise RuntimeError("Reddit refused the app keys - check the REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET secrets")
+        r.raise_for_status()
+        REDDIT_TOKEN["token"] = r.json()["access_token"]
+    r = requests.get(f"https://oauth.reddit.com/r/{path}", params={"limit": 100, "raw_json": 1}, timeout=25,
+                     headers={"User-Agent": REDDIT_UA, "Authorization": f"Bearer {REDDIT_TOKEN['token']}"})
+    if r.status_code == 429:
+        raise RuntimeError("Reddit rate limit reached - it will try again next hour")
+    r.raise_for_status()
+    out = []
+    for c in (r.json().get("data") or {}).get("children") or []:
+        d = c.get("data") or {}
+        comment = c.get("kind") == "t1"
+        out.append({"link": "https://www.reddit.com" + str(d.get("permalink") or ""),
+                    "id": f"{c.get('kind')}_{d.get('id')}",
+                    "title": f"/u/{d.get('author')} on {d.get('link_title') or ''}" if comment else str(d.get("title") or ""),
+                    "summary": re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", re.sub(r"\*\*|__|~~", "", str((d.get("body") if comment else d.get("selftext")) or ""))),
+                    "updated_parsed": time.gmtime(float(d["created_utc"])) if d.get("created_utc") else None})
+    return out
+
+
 def _reddit_get(path: str):
+    if secret("REDDIT_CLIENT_ID") and secret("REDDIT_CLIENT_SECRET"):
+        return _reddit_api(path)
     r = None
     for attempt in (1, 2, 3):
-        r = requests.get(f"https://www.reddit.com/r/{path}/.rss?limit=100", timeout=25,
-                         headers={"User-Agent": "python:syria-narrative-tracker:v1.2 (public research dashboard)"})
+        r = requests.get(f"https://www.reddit.com/r/{path}/.rss?limit=100", timeout=25, headers={"User-Agent": REDDIT_UA})
         if r.status_code != 429:
             break
         time.sleep(20 * attempt)  # Reddit asks for a pause between requests
@@ -715,11 +749,21 @@ def _round_robin(posts: list, limit: int) -> list:
     return out
 
 
-def balanced_sample(posts: list, limit: int, public_share: float, strict: bool = True) -> list:
+def balanced_sample(posts: list, limit: int, public_share: float, strict: bool = True, caps: dict | None = None) -> list:
     """Reserve most of the budget for ordinary people's voices, spread fairly across sources. With strict, outlets
     keep their share even when there are too few public posts to fill the rest (at least 60, for context), instead
-    of taking the unused room."""
+    of taking the unused room. caps: the most public posts a platform may bring ({"youtube": 300}), so one platform
+    cannot fill the room the others leave; within the cap its sources still take turns."""
     public = [p for p in posts if p["voice"] == "public"]
+    if caps:
+        kept, used = [], Counter()
+        for p in _round_robin(public, len(public)):       # the same turn order the sample uses, so a cap keeps the fair spread
+            cap = caps.get(p.get("platform"))
+            if cap is not None and used[p.get("platform")] >= int(cap):
+                continue
+            used[p.get("platform")] += 1
+            kept.append(p)
+        public = kept
     outlet = [p for p in posts if p["voice"] != "public"]
     n_public = min(len(public), int(limit * public_share))
     n_outlet = min(len(outlet), limit - n_public)
@@ -1376,8 +1420,22 @@ def write_validation_sample(cfg: dict, sample: list, result: dict, narratives: l
 
 # ----------------------------------------------------------------- main
 
+def rest_by_platform(sample, narratives) -> dict:
+    """For each platform, the share of its people's posts (copies counted, like rest_people) in no story, so the
+    quality log shows which source "Everything else" comes from."""
+    linked = {pid for n in narratives for pid in (n.get("post_pids") or [])}
+    tot, rest = Counter(), Counter()
+    for p in sample:
+        if p.get("voice") == "public":
+            c = int(p.get("copies") or 1)
+            tot[p.get("platform", "?")] += c
+            if p.get("pid") not in linked:
+                rest[p.get("platform", "?")] += c
+    return {k: round(rest[k] / v, 3) for k, v in tot.items() if v}
+
+
 def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narratives=(), usage=None,
-                   cost=0.0, retried=False, arabic_filled=0, model="", rest_people=None) -> None:
+                   cost=0.0, retried=False, arabic_filled=0, model="", rest_people=None, rest_platforms=None) -> None:
     """Append this run's health numbers to data/quality.json (kept for 60 days). Counts and source names
     only, never post text. The weekly quality review reads it to spot sources going quiet, a drifting outlet share,
     retries, missing Arabic and rising cost."""
@@ -1404,6 +1462,7 @@ def record_quality(outcome: str, status: list, raw=(), posts=(), sample=(), narr
             "top_share": shares[0] if shares else None,
             "retried": retried,
             "rest_people": rest_people,   # share of people's posts in no story ("Everything else"), after the second pass
+            "rest_by_platform": rest_platforms or {},   # the same, for each platform (rest_by_platform)
             "arabic_filled": arabic_filled,
             "tokens_in": (usage or {}).get("input_tokens", 0),
             "tokens_out": (usage or {}).get("output_tokens", 0),
@@ -1438,7 +1497,8 @@ def main() -> int:
     log("Collecting...")
     raw, status = collect_all(cfg)
     posts = prepare(raw, cfg)
-    sample = balanced_sample(posts, int(cfg.get("max_posts", 150)), float(cfg.get("public_share", 0.7)), bool(cfg.get("strict_public_share", True)))
+    sample = balanced_sample(posts, int(cfg.get("max_posts", 150)), float(cfg.get("public_share", 0.7)), bool(cfg.get("strict_public_share", True)),
+                             cfg.get("public_caps") or None)
     for i, p in enumerate(sample, 1):
         p["pid"] = f"p{i}"
     counts = Counter(p["source"] for p in posts)
@@ -1519,6 +1579,7 @@ def main() -> int:
     narratives, result, usage, retried, rest_people = place_and_check(cfg, msg, result, narratives, sample, usage, first_seen,
                                                                      [t["id"] for t in themes], retried)
     cost = estimate_cost(cfg.get("model", ""), usage)
+    rest_platforms = rest_by_platform(sample, narratives)   # before attach, which drops the story's post ids
     signals.attach(narratives, sample)   # coordination signals per story, from the posts assigned to it
     if args.validation_sample:
         write_validation_sample(cfg, sample, result, narratives, args.validation_sample)
@@ -1632,7 +1693,8 @@ def main() -> int:
     save_json(history_path, history)
     compact_json(DATA / "stories.json", build_story_index(history))
     save_json(state_path, state)
-    record_quality("published", status, raw, posts, sample, narratives, usage, cost, retried, filled, cfg.get("model", ""), rest_people)
+    record_quality("published", status, raw, posts, sample, narratives, usage, cost, retried, filled, cfg.get("model", ""), rest_people,
+                   rest_platforms)
     log(f"Saved {len(narratives)} narratives.")
 
     # Media and experts first (new reports, then a daily brief or a week's or month's analysis when due), then the
